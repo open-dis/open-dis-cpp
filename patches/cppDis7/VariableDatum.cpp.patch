@@ -1,0 +1,37 @@
+--- VariableDatum.cpp.orig	2011-07-25 11:11:43.000000000 -0700
++++ VariableDatum.cpp	2011-07-25 11:12:19.000000000 -0700
+@@ -58,17 +58,29 @@
+ void VariableDatum::marshal(DataStream& dataStream) const
+ {
+     dataStream << _variableDatumID;
+-    dataStream << _variableDatumLength;
+-    dataStream << _variableDatumBits;
+-    dataStream << _padding;
++    dataStream << ( unsigned int )_variableDatums.size() * 64;
++
++     for(size_t idx = 0; idx < _variableDatums.size(); idx++)
++     {
++        EightByteChunk x = _variableDatums[idx];
++        x.marshal(dataStream);
++     }
++
+ }
+ 
+ void VariableDatum::unmarshal(DataStream& dataStream)
+ {
+     dataStream >> _variableDatumID;
+     dataStream >> _variableDatumLength;
+-    dataStream >> _variableDatumBits;
+-    dataStream >> _padding;
++    _variableDatumLength = (_variableDatumLength / 64) + ((_variableDatumLength % 64) > 0);
++
++     _variableDatums.clear();
++     for(size_t idx = 0; idx < _variableDatumLength; idx++)
++     {
++        EightByteChunk x;
++        x.unmarshal(dataStream);
++        _variableDatums.push_back(x);
++     }
+ }
+ 
+ 

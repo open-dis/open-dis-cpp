@@ -1,0 +1,3 @@
+[submodule "DISDescription"]
+	path = DISDescription
+	url = https://github.com/open-dis/DISDescription.git

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="DIS">
+		<Project filename="DIS.cbp" />
+		<Project filename="UnitTest_DIS.cbp">
+			<Depends filename="DIS.cbp" />
+		</Project>
+		<Project filename="Example_Send.cbp">
+			<Depends filename="DIS.cbp" />
+		</Project>
+		<Project filename="Example_Receive.cbp" active="1">
+			<Depends filename="DIS.cbp" />
+		</Project>
+	</Workspace>
+</CodeBlocks_workspace_file>

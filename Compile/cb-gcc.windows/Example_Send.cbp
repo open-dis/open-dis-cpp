@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Example_Send" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="../../bin/Example_Send_debug.exe" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj_cb-gcc_Example_Send_debug" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_CONSOLE" />
+					<Add directory="../.." />
+					<Add directory="../../cpp" />
+					<Add directory="../../CppUtils" />
+					<Add directory="$(HAWKNL_INC_DIR)" />
+				</Compiler>
+				<Linker>
+					<Add directory="../../bin" />
+					<Add directory="$(HAWKNL_LIB_DIR)" />
+					<Add library="HawkNL" />
+					<Add library="DIS_debug" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="../../bin/Example_Send.exe" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj_cb-gcc_Example_Send" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O" />
+					<Add option="-DWIN32" />
+					<Add option="-D_CONSOLE" />
+					<Add directory="../.." />
+					<Add directory="../../cpp" />
+					<Add directory="../../CppUtils" />
+					<Add directory="$(HAWKNL_INC_DIR)" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add directory="../../bin" />
+					<Add directory="$(HAWKNL_LIB_DIR)" />
+					<Add library="HawkNL" />
+					<Add library="DIS" />
+				</Linker>
+			</Target>
+		</Build>
+		<Unit filename="../../Example/main.cpp">
+			<Option compilerVar="CPP" />
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="../../Example/Connection.h">
+			<Option compilerVar="CPP" />
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="../../Example/Connection.cpp">
+			<Option compilerVar="CPP" />
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="../../Example/Utils.h">
+			<Option compilerVar="CPP" />
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="../../Example/Utils.cpp">
+			<Option compilerVar="CPP" />
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="../../Example/Timer.h">
+			<Option compilerVar="CPP" />
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="../../Example/Timer.cpp">
+			<Option compilerVar="CPP" />
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>

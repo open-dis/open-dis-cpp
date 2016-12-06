@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>README</title>
+</head>
+<body>
+<span style="font-weight: bold;">README.html</span><br>
+<br>
+<span style="font-weight: bold;">Introduction</span><br>
+<br>
+This directory contains the C++ code to implement the
+Distributed
+Interactive Simulation (DIS) IEEE-1278 standard, which is often used in
+military simulations.<br>
+<br>
+The C++ code consists of two portions. The protocol
+code itself consists of classes that represent Protocol Data Units
+(PDUs). These classes have fields, getters, and setters, and are able
+to marshal and unmarshal themselves to and from the DIS binary format.
+The Java implementation can also marshal itself to XML and Java
+serialization format. This code was automatically generated via XMLPG,
+a tool that generates
+Java, CSharp, Objective C, and C++ code automatically from an XML description. The
+generated code is in the cpp directory. <br>
+<br>
+The second portion of the code is supporting classes that read and
+write PDUs from the network, log PDUs to a file, and more. These are
+essentially example files that demonstrate the use of the generated DIS
+code. The cpp code for this is in CppUtils and Example. Unit tests are 
+in the UnitTestDIS directory. Make files and project files were automatically
+generated, and reside in the Compile directory. <br>
+<br>
+<span style="font-weight: bold;">XML Description File</span><br>
+<br>
+An XML file that is an abstract description of the protocol classes is
+in DIS1998.xml. This file is used by XML Multi-Language Protocol
+Generator
+(XMLPG), which is available at the sourceforge site for download. <br>
+<br>
+The XML file is processed by XMLPG and writes the  C++
+protocol code. The idea is to use the XMLPG tool to get the final
+product "close", and then manually modify the source code in subversion
+to tweak the last bit.<br>
+<br>
+<span style="font-weight: bold;">Java</span><br>
+<br>
+<span style="font-weight: bold;">C++</span><br>
+<br>
+The C++ code is in the Cpp directory. The prefab C++ implemenation uses
+the <span style="font-family: Courier New,Courier,monospace;">DIS</span>
+namespace to contain the protocol code. The Compile directory contains
+Microsoft Visual C++ build files, which allows the code to be compiled
+and linked to a dll or executable. The CppUtils directory contains
+supporting files for the DIS protocol, including a data stream class
+for marshaling and unmarshaling, a factory class, and some simple
+example code that generates Entity State PDUs. Simple unit test code is
+also available in the UnitTestDIS directory.<br>
+<br>
+* Automated patch application. The Unix patch utility is used to modify
+the auotmatically generated code. See the patch directory in the
+open-dis
+directory. Patches are applied via the ant task "patch". Windows
+users&nbsp; need to install cygwin utilities to be able to use patch,
+and make some minor changes to the ant build.xml file.<br>
+<br>
+LICENSE</span><br>
+<br>
+All code is BSD license, three-clause for compatibility with debian and
+other distributions. See <a href="License.html">License.html</a><br>
+<a href="License.html"><span style="font-weight: bold;"></span></a><span
+ style="font-weight: bold;"></span><br>
+<br>
+<br>
+<br>
+</version-number>
+</body>
+</html>

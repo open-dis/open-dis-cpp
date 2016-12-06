@@ -1,0 +1,1015 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>Distributed Interactive Simulation</title>
+</head>
+<body>
+<div style="text-align: center;"><big style="font-weight: bold;"><big><span
+ style="font-family: Helvetica,Arial,sans-serif;">Distributed
+Interactive Simulation </span><br
+ style="font-family: Helvetica,Arial,sans-serif;">
+<span style="font-family: Helvetica,Arial,sans-serif;">IEEE Std 1278</span></big></big><br>
+</div>
+<br>
+<br>
+<a href="#Introduction">Introduction</a><br>
+<a href="#The_Problem">The Problem</a><br>
+<a href="#Entity_State_Protocol_Data_Unit_">Entity State PDU</a><br>
+<a href="#Other_PDUs">Other PDUs</a><br>
+<a href="#Networking">Networking</a><br>
+<a href="#Heartbeat">Heartbeat</a><br>
+<a href="#Examples">Examples</a><br>
+<br>
+<span style="font-weight: bold;"><a name="Introduction"></a>Introduction</span><br>
+<br>
+Distributed Interactive Simulation (DIS) is an open standards network
+protocol used in military simulations. It can be used to set the
+position, orientation, and speed of entities in a virtual world. It is
+a peer-to-peer architecture, with no central server, and can be used
+with multicast, UDP, and TCP network transports.<br>
+<br>
+You can find open source implementations of DIS for Java and C++ at the
+<a href="https://sourceforge.net/projects/xmsf">XMSF project</a>,
+hosted at sourceforge.net. There are actually more than one
+implementations that have been developed over the years. <br>
+<br>
+<ul>
+  <li>DIS-XML is a Java language implementation that is capable of
+reading and writing the information contained in the DIS protocol in an
+XML format. It also reads and writes information in the IEEE standard
+binary format.</li>
+  <li>XML Multi-Language Protocol Generator (XMLPG) is a general
+purpose tool that writes parallel Java and C++ protocol
+implementations. As an example parts of the DIS protocol have been
+implemented with this tool.</li>
+  <li>DIS-Java is a conventional, hand-written implementation of DIS in
+the Java language. It is unlikely to be further maintained.<br>
+  </li>
+</ul>
+Which one you choose to use depends on your needs. If you just want a
+Java implementation, or want to archive to&nbsp; an XML representation
+of DIS, DIS-XML is probably the way to go. If you want to use C++, or
+both Java and C++, XMLPG's implementation of DIS should be your choice.
+Both implementations use a BSD open source license.<br>
+<br>
+<span style="font-weight: bold;"><a name="The_Problem"></a>The Problem</span><br>
+<br>
+Suppose you have two computers, each of which controls a tank in a
+virtual environment. You want to draw your own tank in the 3D world in
+which it is placed; this is easy enough, since you know its position
+and orientation. What you need is the information about the other tank.
+This needs to be transmitted across the network, typically using
+sockets of one sort or another. Likewise, you must send your own
+information to the other entity so that simulator can draw your tank
+accurately.<br>
+<br>
+<br>
+<img style="width: 185px; height: 148px;" alt="Tank Picture"
+ src="images/Heading%20for%20Bagdad_small.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img style="width: 185px; height: 148px;" alt="Tank Picture"
+ src="images/Heading%20for%20Bagdad_small.jpg"><br>
+&nbsp; <span style="font-weight: bold;">View from Computer 1</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span style="font-weight: bold;">View from Computer 2</span><br>
+<br>
+What information needs to be passed? The approach used in DIS is to
+sent out a binary format packet containing nearly all the entity's
+state information. This includes the entity's position, orientation,
+and velocity, and information about what type of entity this is. This
+is the most frequently used packet in DIS, accounting for well over 90%
+of DIS's network traffic. It is called the Entity State Protocol Data
+Unit (ESPDU).<br>
+<br>
+<span style="font-weight: bold;"><a
+ name="Entity_State_Protocol_Data_Unit_"></a>Entity State Protocol Data
+Unit</span><br style="font-weight: bold;">
+<br>
+Periodically the software controlling an entity will send out an ESPDU.
+In the example above, one computer is controlling a tank in an armored
+platoon. The software on that computer will send out an ESPDU as often
+as needed to keep the other computers in the overall simulation
+informed about its location. All other computers in the simulation do
+the same thing for entities under their control.<br>
+<br>
+The basics of the ESPDU are reasonably straightforward. The paragraphs
+below discuss the various major parts and how to use them.<br>
+<br>
+The <span style="font-style: italic;">PDU header </span>contains
+information that is common to all&nbsp; PDUs, including non-ESPDUs.
+This includes:<br>
+<br>
+<ul>
+  <li>IEEE DIS Protocol Version</li>
+  <li>Exercise ID</li>
+  <li>PDU Type ( = 1 for ESPDUs)</li>
+  <li>Protocol Family (=1 for ESPDUs)</li>
+  <li>Timestamp</li>
+  <li>Length of PDU in bytes (typically 144 bytes)</li>
+</ul>
+The protocol version refers to the revision of the IEEE standard being
+used. The 1998 revision of the DIS standard uses a version number of 6.<br>
+<br>
+The exercise ID refers to an identifier for an exercise being conducted
+on a network. For example, a one group on a network may be running a
+simulation of tank combat in central Europe, while another group might
+be conducting a simulation of naval warfare in the Persian Gulf. Each
+exercise is given a unique identifer so the ESPDUs from one simulation
+can be easily distinguished from ESPDUs from another.<br>
+<br>
+DIS has over a hundred different types of PDUs in addition to the
+ESPDU. Each type of PDU is given a unique identifier. The identifier
+assigned to ESPDUs is 1.<br>
+<br>
+The many PDUs defined in the standard are grouped into families of
+related PDUs, such as electromagnetic warfare or logistics. The ESPDU
+is in the "Entity Information/Interaction" family, and has an
+identifier of 1.<br>
+<br>
+Because ESPDUs very often use multicast or UDP as a network transport
+it is possible that packets will arrive out of order or be duplicated.
+The timestamp field is used to reduce the impact of these events. Often
+client software will be configured to discard packets if the timestamp
+precedes that of the last packet received from that entity. For
+example, suppose a packet arrives for an entity with a timestamp value
+of 42. Shortly afterwards, a packet for that entity arrives with a
+timestamp of 41. Very often a client will assume that a problem has
+occured in the transport layer, and that the more recently arrived
+packet with a timestamp of 41 actually represents older data. It is
+therefore discarded. The same assumption may be applied to packets with
+the same timestamp as the previous packet--the software may assume that
+the PDU is a duplicate and discard it.<br>
+<br>
+The implications of this for the application programmer are important.
+It means that if you send a stream of ESPDU updates, you <span
+ style="font-style: italic;">must</span> increase the timestamp field.
+Otherwise, the receiving software is likely to discard every packet
+after the first.<br>
+<br>
+Officially, the timestamp represents the time at which the ESPDU was
+generated. For most interactive virtual simulations this is&nbsp;
+represented by UTC time. The units are 1.676 microseconds per tick, and
+the least significant bit of the field should be set to 1 in order to
+specify that absolute time is being used. In practice, so long as you
+are working only with ESPDUs generated by you, it's simpler to just use
+the Unix convention for time of seconds or milliseconds since January
+1, 1970. This is the value returned by most system calls that determine
+the time. In modern implementations this is a long, while the timestamp
+field is a 4 byte integer, but you can simply take the lowest four
+bytes, or do a cast, which will work until the year 2038. In a pinch
+you can simply increase the timestamp by one every time you send a new
+ESPDU, though this is much less reliable and does a lot more violence
+to the standard.<br>
+<br>
+The <span style="font-style: italic;">length</span> is the length of
+the PDU, in bytes. this is usually 144 bytes for an ESPDU, but you
+should add 16 bytes to the length for every instance of Articulation
+Parameter added to the PDU.<br>
+<br>
+The <span style="font-style: italic;">EntityID</span> is the next
+major part of the ESPDU. Every update sent out is tied to a specific
+entity in the world, so we need a unique identifier for every one of
+those entities. This is what the Entity ID provides. The entity ID is a
+triplet of three numbers, the site, application, and entity. Imagine a
+large distributed simulation with sites at Fort Benning and Fort
+Campbell. ESPDUs originating from each site would be assigned a site
+ID. A single simulation might have several applications (a tank
+simulator, a helicopter simulator) and each of those applications is
+also assigned an identifier. Finally, within each application, the
+application is responsible for handing out unique entity identifiers.
+The combination of these thre--site, application, and entity--combines
+to form a unique identifier for every entity in the virtual world.<br>
+<br>
+Typically on arrival an ESPDU is examined and the entityID extracted.
+Based on this information the new state information is sent to a
+programming language object that represents that entity.<br>
+<br>
+The <span style="font-style: italic;">Force ID</span> represents the
+"side" the entity is on. A value of 1 means the entity is friendly, 2
+is opposinng, and 3 is neutral.<br>
+<br>
+While a vehicle or entity may be placed in the world with the correct
+orientation, there may be parts attached to the entity pointing in
+different directions. A tank may have its turret rotated, and the gun
+elevated. Articulation parameters are designed to handle this case.
+They allow the programmer to specify the orientation of attached parts.
+Since there may be a variable number of articulation parameters, the <span
+ style="font-style: italic;">articulation parameter count </span>field
+provides a way to specify how many articulation parameters are included.<br>
+<br>
+The <span style="font-style: italic;">Entity Type</span> field is a
+multi-value structure that defines exactly what an entity is. The
+Entity Kind subfield identifies the entity in very broad terms--as a
+life form, a platform, a munition, a cultural feature, a supply, a
+radio emmission, etc.&nbsp; The <span style="font-style: italic;">domain</span>
+subfield identifies where an entity operates; typical values are
+surface, subsurface, air, land, etc.) The <span
+ style="font-style: italic;">country</span> subfield identifies the
+country to which the design of the entity is attributed. The US has an
+enumerated value of 225, the UK one of 224, Turkey of 218, Greece of
+82, Iran of 101, etc.&nbsp; The <span style="font-style: italic;">Category,
+Subcategory, </span>and<span style="font-style: italic;"> Specific</span>
+subfield's interpretation depends on the preceding kind, domain, and
+country fields. US equipment should have a kind value of 1 and a
+country value of 225. Within that context, a category value of 1 means
+tanks, a subcategory of 1 means an M1 Abrams, and a specific of 3 means
+an M1A2 Abrams, a specific field value of 4 means an M1A1 with mine
+rollers, etc. If the country code changes, to the UK for example, these
+enumerated values may have completely different meanings in the context
+of UK equipment, perhaps describing Challenger tanks rather than M1
+tanks. The enumerated values for these fields is described in the
+Institute for Simulation and Training document entitled <span
+ style="font-style: italic;">Enumeration and Bit Encoding Values for
+Use with Protocols for Distributed Interactive Simulation Applications</span>.<br>
+<br>
+The <span style="font-style: italic;">Alternative Entity Type</span>
+field of ESPDU contains the same information, but as it appears to
+forces other than those of the issuing entity. This allows for some
+degree of deception; an entity can claim that opposing forces should
+see a M1A1 tank as an M1A2 tank, for example.<br>
+<br>
+The <span style="font-style: italic;">Entity Linear Velocity </span>field
+describes the entities velocity in the form of a vector with three
+values. Officially, the DIS standard specifies a coordinate system with
+its origin at the earth's center, the Z-axis pointing up through the
+north pole, the X-axis pointing out through the equator and prime
+meridian, and the Y-axis pointing out at the 90 degree east meridian.
+Many simulations simply use their own, arbitrary coordinate systems,
+though. <br>
+<br>
+The <span style="font-style: italic;">Entity Location</span> field is
+used to describe the entity's location in a 3-value vector of double
+precision floating point values. As mentioned, the coordinate system is
+offically located at the earth's center, but other coordinate systems
+can be used. <br>
+<br>
+The <span style="font-style: italic;">Entity Orientation</span> field
+describes the entity's rotation when located at a particular point in
+space. The three values, psi, theta, and phi, describe the order and
+axis about which the entity should be rotated, using units of radians.
+First, the entity is rotated aroudn the z axis by psi; then, about the
+y axis by theta; and finally around the x axis by phi. Note that the
+order in which these rotations are performed is significant. Psi and
+phi can vary from negative pi to pi randians, while theta can range
+from +/- pi/2.<br>
+<br>
+The <span style="font-style: italic;">Entity Appearance</span> field
+is a series of bit-flags that help software accurately draw the entity.
+The 0th bit position, for example, specifies whether the vehicle should
+be drawn with a uniform color or with camouflage. Bit positions 5-6
+specify whether and how much the entity is smoking.<br>
+<br>
+<span style="font-style: italic;">Dead Reckoning Parameters</span>
+provide the system with information to fill in the gaps between
+arrivals of entity state PDUs. One of the subfields is the <span
+ style="font-style: italic;">dead reckoning algorithm</span> field,
+which specifies what system is to be used. A value of 1 means no dead
+reckoning should be performed; a value of 2 means that only velocity
+should be used for dead reckoning; a value of 5 means that both
+velocity and acceleration should be used. The Other parameters field
+allows 120 bits of specialized dead reckoning data to be passed. The <span
+ style="font-style: italic;">linear</span> and <span
+ style="font-style: italic;">angular velocity</span> subfields provide
+more information for the dead reckoning implementation.<br>
+<br>
+<span style="font-style: italic;">Entity Marking</span> allows a few
+characters to be sent along with the PDU. This can be useful for
+debugging, or for drawing a unit number or vehicle number on an entity.<br>
+<br>
+The <span style="font-style: italic;">capabilties</span> field is
+another series of bit-flags, mostly used for logistics simulations.<br>
+<br>
+The articulation parameters are a variable length list. The list length
+is defined by the articulation parameter count field. As mentioned, the
+articulation parameters allow the user to describe the orientation of
+parts attached to the entity, such as turrets or gun elevations. <br>
+<br>
+<a name="Other_PDUs"></a>Other PDUs<br>
+<br>
+The ESPDU accounts for, typically, over 95% of the PDU traffic. There
+are other PDUs, however, including those that simulation logistics or
+electronic warfare. <br>
+<br>
+<span style="font-weight: bold;"><a name="Networking"></a>Networking</span><br>
+<br>
+Any network transport can be used to send DIS packets. On older
+simulations hosted on a single machine even things like shared memory
+have been used to send PDUs. But today most DIS PDU traffic goes across
+the network. <br>
+<br>
+On a single LAN or within a single campus it is typical to use
+multicast, and place one PDU inside of each multicast packet. At NPS we
+have a habit of using multicast group 239.1.2.3 on port 62040. The
+multicast group should typically be in the 239.x.x.x range; this is
+defined as a site-local multicast group and is not routed off the local
+site. If you must cross a router, be sure that the Time to Live value
+in the network packet is set to an appropriate number of hops. To cross
+a router it should be set to at least two when sent.<br>
+<br>
+Multicast is not usually available on the big internet. In that
+situation you can use unicast UDP. This is inherently less efficient,
+since you must send an individual ESPDU update packet to each host in
+the simulation.<br>
+<br>
+You can also use TCP sockets. However, this is not a prefered solution
+for interactive systems. TCP, if it drops a packet, will resend data,
+and may have pathological behavior in the face of unreliable networks.<br>
+<br>
+If you're adventurous you can use DIS-XML to place DIS packets into XML
+format and send DIS packets across an XMPP (chat) backbone.<br>
+<br>
+<span style="font-weight: bold;"><a name="Heartbeat"></a>Heartbeat</span><br>
+<br>
+Because DIS is a peer-to-peer system, there is no one place a host that
+has just joined the system can go to get a list of all the participants
+in a simulation. Instead, a new host simply listens for ESPDU packets,
+and builds up its knowledge of the world via the ESPDUs it receives.
+However, if an enitity sends out no PDUs, it cannot be discovered. To
+solve this problem an entity is required to send out an ESPDU at least
+once every five seconds, whether it moves or "needs" to or not. <br>
+<br>
+<span style="font-weight: bold;"><a name="Examples"></a>Examples</span><br>
+<br>
+Some example code using different DIS APIs follows.<br>
+<br>
+First of all, DIS-XML, a Java API. This example that moves an entity
+with an ID of (0,1,2) along the X-axis.<br>
+<br>
+<small><small><span style="font-family: Courier New,Courier,monospace;">import
+org.web3d.xmsf.dis.*;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">import
+org.web3d.xmsf.disutil.*;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">import
+java.io.*;</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">import
+java.math.*;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">import
+java.net.*;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">import
+java.util.*;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">/**</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;* The
+objective here is to be as simply as possible generate DIS entity state
+PDUs with</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;*
+minimally interesting behavior, and send them out on the network. As
+such a lot of</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;* stuff
+is stripped out.&lt;p&gt;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;*</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;* This
+generates entity state PDUs (espdus) that drives an entity along the
+x-axis, with</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;* some
+orientation changes.&lt;p&gt;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;*</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;*
+@author DMcG</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;*/</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">public class
+SimpleDriver extends Object</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">{</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+public static void main(String args[])</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+{</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EntityStatePduType&nbsp; espdu;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MulticastSocket socket;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+InetAddress&nbsp;&nbsp;&nbsp;&nbsp; address;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DatagramPacket&nbsp; packet;&nbsp;&nbsp;&nbsp;&nbsp; // The
+UDP/Multicast packet we will send</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+byte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+buffer[];&nbsp;&nbsp; // Holds binary format DIS packet</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+try</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// The PduFactory is where we go to get new instances of PDUs; it works
+as</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// something like a constructor in that it initializes the PDUs.</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+PduFactory pduFactory = new PduFactory();</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// The DisMarshaller is responsible for converting a Java DIS object
+into</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// DIS-compliant binary format.</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DisMarshaller disMarshaller = new DisMarshaller();</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Create a new entity state PDU. this will be re-used below, with only</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// some values changed. We set the ID for this to be (0,1,2), the unique</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// identifer in the DIS world of that entity.</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+espdu = pduFactory.getEntityStatePdu();</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EntityIDType id = espdu.getEntityID();</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+id.setSite(0);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+id.setApplication(1);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+id.setEntity(2);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Create a new multicast socket to send data</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+socket = new MulticastSocket(1234);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+socket.joinGroup(InetAddress.getByName("239.1.2.3"));</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// loop forever, moving the entity along the x-axis and rotating it.</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+while(true)</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Move along the x-axis, left to right, in 100 steps.</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+for(int idx = -50; idx &lt; 50&nbsp; ; idx++)</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Vector3Double location = espdu.getEntityLocation();</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// update location</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+location.setX((double)idx);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+location.setY(0.0);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+location.setZ(0.0);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Modify the enity orientation. The units are in radians</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+EulerAnglesType eulers = espdu.getEntityOrientation();</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+eulers.setPhi((float)((float)idx / 6.0));</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// This updates the timestamp to make it current. Since UDP and
+multicast may</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// deliver packets out of order, this is a safety measure that allows
+us to throw</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// away packets older than what we've already received. This is actually</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// non-DIS-compliant; the packet expects to be set to the wall clock
+time.</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// However, the xj3d browser (and many others) are only checking that
+the</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// timestamp is monotonically increasing; it throws away packets that
+have</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// lower timestamps than have already been processed.</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+espdu.getPduHeader().setTimestamp(idx);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Set the PDU length</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+espdu.getPduHeader().setLength((short)144);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// There are a lot of other things we can (and should!) set here,
+including</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// the entity type. But this is OK for an example.</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Marshall the Java DIS object to DIS binary format. This updates the
+timestamp</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// automatically; to do without this use marshallPdu().</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+buffer = disMarshaller.marshallPduToSend(espdu);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// And create a UDP packet sent to the node specified in the .x3dv file.</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+packet = new DatagramPacket(buffer, buffer.length,</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+InetAddress.getByName("239.1.2.3"),</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+62040);</span><br style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// And finally send it.</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+socket.send(packet);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// It moves right along without this. Sleep for 30 ms to slow things
+down.</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Thread.sleep(75);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//Thread.sleep(2000);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+catch(Exception e)</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+System.out.println(e);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+}</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">}</span><br>
+</small></small><br>
+<br>
+<br>
+The next example uses the code generated by XMLPG. This API does not
+read or write XML.<br>
+<br>
+<br>
+<small><small><span style="font-family: Courier New,Courier,monospace;">import
+java.io.*;</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">import
+java.net.*;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">import
+java.util.*;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">import
+edu.nps.moves.dis.*;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">/**</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;*
+Creates and sends ESPDUs generated by the XML file.</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;*</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;*
+@author DMcG</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;*/</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">public class
+EspduSender </span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">{</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+public static final String MULTICAST_GROUP="239.1.2.3";</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+public static final int&nbsp;&nbsp;&nbsp; PORT = 62040;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">public static
+void main(String args[])</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">{</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+EntityStatePdu espdu = new EntityStatePdu();</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+MulticastSocket socket;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+InetAddress&nbsp;&nbsp;&nbsp;&nbsp; address;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+espdu.setProtocolVersion((short)6);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+espdu.setExerciseID((short)0);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+espdu.setPduType((short)1);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+espdu.setProtocolFamily((short)1);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+espdu.setLength(144);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+// The EID is the unique identifier for objects in the world. This </span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+// EID should match up with the ID for the object specified in the </span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+// VMRL/x3d world.</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+EntityID eid = espdu.getEntityID();</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+eid.setSite(0);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+eid.setApplication(1);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+eid.setEntity(2);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+try</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+{</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+socket = new MulticastSocket(PORT);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+address = InetAddress.getByName(MULTICAST_GROUP);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+socket.joinGroup(address);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+while(true)</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+for(int idx = 0; idx &lt; 100; idx++)</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// The timestamp should be monotonically increasing. Many
+implementations</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// discard packets that have earlier timestamps (assumption is that it</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// arrived out of order) or non-increasing timestamp (dupe packet).</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+long timestamp = espdu.getTimestamp();</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+timestamp++;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+espdu.setTimestamp(timestamp);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Modify the x-axis position of the object</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Vector3Double location = espdu.getEntityLocation();</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+location.setX(idx);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+location.setY(idx);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Do some rotation to make sure that works</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Orientation orientation = espdu.getEntityOrientation();</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+float psi = orientation.getPsi();</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+psi = psi + idx;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+orientation.setPsi(psi);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+orientation.setTheta((float)(orientation.getTheta() + idx /2.0));</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// Marshal out the object to a byte array, then send a datagram</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+// packet with that data in it.</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ByteArrayOutputStream baos = new ByteArrayOutputStream();</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DataOutputStream dos = new DataOutputStream(baos);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+espdu.marshal(dos);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+byte[] data = baos.toByteArray();</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DatagramPacket packet = new DatagramPacket(data, data.length, address,
+PORT);</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+socket.send(packet);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Thread.sleep(1000);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+System.out.println("Moving espdu");</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+}</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+catch(Exception e)</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+{</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+System.out.println(e);</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;
+}</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">}</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">}</span></small></small><br>
+<br>
+In both cases the procedure is relatviely straightforward: create a new
+object, set the fields, then marshal it out to a byte array and put it
+into a datagram packet. <br>
+<br>
+The C++ code for receiving DIS from te network with the XMLPG-generated
+API is as follows:<br>
+<br>
+<small><small><span style="font-family: Courier New,Courier,monospace;">#include
+&lt;DIS/IncomingMessage.h&gt;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">#include
+&lt;DIS/IPacketProcessor.h&gt;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">#include
+&lt;DIS/Pdu.h&gt;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">#include
+&lt;DIS/DataStream.h&gt;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">#include
+&lt;iostream&gt;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">using
+namespace DIS;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">IncomingMessage::IncomingMessage()</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">{</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">}</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">IncomingMessage::~IncomingMessage()</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">{</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">}</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">void
+IncomingMessage::Process(const char* buf, unsigned int size, Endian e)</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">{</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;
+if( size &lt; 1 )</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp; {</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+return;</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp; }</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;
+// assumes the location in the buffer is the packet id.</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;
+PacketProcessorContainer::iterator iter = _processors.find( buf[2] );</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;
+if( iter != _processors.end() )</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp; {</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DataStream ds( e );</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ds.SetBuffer( buf , size , e );</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Pdu* pdu = _factory.CreatePacket( buf[2] );</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+pdu-&gt;unmarshal( ds );</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(iter-&gt;second)-&gt;Process( *pdu );</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+delete pdu;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp; }</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;
+else</span><br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp; {</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+std::cerr &lt;&lt; "no registered processor for id = " &lt;&lt; buf[0]
+&lt;&lt; std::endl;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp; }</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">}</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">///\warning
+erases any processor registered for the id</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">bool
+IncomingMessage::RemoveProcessor(char id, const IPacketProcessor* pp)</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">{</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;
+return _processors.erase( id );</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">}</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">IncomingMessage::PacketProcessorContainer&amp;
+IncomingMessage::GetProcessors()</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">{</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;
+return _processors;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">}</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">const
+IncomingMessage::PacketProcessorContainer&amp;
+IncomingMessage::GetProcessors() const</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">{</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;
+return _processors;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">}</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">PacketFactory&amp;
+IncomingMessage::GetFactory()</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">{</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;
+return _factory;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">}</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<br style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">const
+PacketFactory&amp; IncomingMessage::GetFactory() const</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">{</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">&nbsp;&nbsp;
+return _factory;</span><br
+ style="font-family: Courier New,Courier,monospace;">
+<span style="font-family: Courier New,Courier,monospace;">}</span></small></small><br>
+<br>
+<br>
+<br>
+</body>
+</html>

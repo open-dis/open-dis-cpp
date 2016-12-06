@@ -1,0 +1,19 @@
+--- oldCpp/DIS/VariableDatum.cpp	2008-10-28 10:49:57.000000000 -0700
++++ cpp/DIS/VariableDatum.cpp	2008-10-28 10:48:26.000000000 -0700
+@@ -47,7 +47,7 @@
+ void VariableDatum::marshal(DataStream& dataStream) const
+ {
+     dataStream << _variableDatumID;
+-    dataStream << ( unsigned int )_variableDatums.size();
++    dataStream << ( unsigned int )_variableDatums.size() * 64;
+ 
+      for(size_t idx = 0; idx < _variableDatums.size(); idx++)
+      {
+@@ -61,6 +61,7 @@
+ {
+     dataStream >> _variableDatumID;
+     dataStream >> _variableDatumLength;
++    _variableDatumLength = (_variableDatumLength / 64) + ((_variableDatumLength % 64) > 0);
+ 
+      _variableDatums.clear();
+      for(size_t idx = 0; idx < _variableDatumLength; idx++)
