@@ -1,5 +1,7 @@
 #include <DIS/FastEntityStatePdu.h> 
 
+#include <cstring>
+
 using namespace DIS;
 
 
@@ -456,7 +458,7 @@ void FastEntityStatePdu::setMarking(const char* x)
 // An alternate method to set the value if this could be a string. This is not strictly comnpliant with the DIS standard.
 void FastEntityStatePdu::setByStringMarking(const char* x)
 {
-   strncpy(_marking, x, 12-1);
+   std::strncpy(_marking, x, 12-1);
    _marking[12 -1] = '\0';
 }
 
