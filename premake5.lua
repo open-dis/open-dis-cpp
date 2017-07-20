@@ -22,7 +22,7 @@ workspace "open-dis-cpp"
   configuration { "linux", "gmake" }
     buildoptions {
       "-Wall",
-      "-Werror"
+      "-Werror",
       "-Wno-error=strict-aliasing" -- workaround compiler error in DataStream.h#ReadAlgorithm
     }
 
