@@ -28,7 +28,6 @@ workspace "open-dis-cpp"
 project "OpenDIS"
   language "C++"
   kind "StaticLib"
-  symbols "On"
   includedirs { 
     "cpp/DIS",
     "CPPUtils/DIS"
