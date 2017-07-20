@@ -29,12 +29,12 @@ project "OpenDIS"
   language "C++"
   kind "StaticLib"
   includedirs { 
-    "cpp/DIS",
-    "CPPUtils/DIS"
+    "cpp",
+    "CppUtils"
   }
   files { 
     "cpp/DIS/*.h",
     "cpp/DIS/*.cpp",
-    "CPPUtils/DIS/*.h",
-    "CPPUtils/DIS/*.cpp"
+    "CppUtils/DIS/*.h",
+    "CppUtils/DIS/*.cpp"
   }
