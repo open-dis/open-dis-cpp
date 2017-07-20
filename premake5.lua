@@ -39,6 +39,6 @@ project "OpenDIS"
 	files { 
     "cpp/DIS/*.h",
     "cpp/DIS/*.cpp",
-    "CPPUtils/DIS/*.h"
+    "CPPUtils/DIS/*.h",
     "CPPUtils/DIS/*.cpp"
 	}
