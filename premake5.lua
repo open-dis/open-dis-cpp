@@ -23,6 +23,7 @@ workspace "open-dis-cpp"
     buildoptions {
       "-Wall",
       "-Werror"
+      "-Wno-error=strict-aliasing" -- workaround compiler error in DataStream.h#ReadAlgorithm
     }
 
 project "OpenDIS"
