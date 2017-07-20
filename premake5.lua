@@ -10,7 +10,7 @@ workspace "open-dis-cpp"
   }
   targetdir "Build/lib/%{cfg.buildcfg}"
   configuration "Debug*"
-    defines { "DEBUG", }
+    defines { "DEBUG" }
     symbols "On"
  
   configuration "Release*"
