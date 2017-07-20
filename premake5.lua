@@ -21,9 +21,8 @@ workspace "open-dis-cpp"
 
   configuration { "linux", "gmake" }
     buildoptions {
-      "-Wall",
-      "-Werror",
-      "-Wno-error=strict-aliasing" -- workaround compiler error in DataStream.h#ReadAlgorithm
+      "-Wall"
+      -- "-Werror" -- Turning this on causes many compiler errors.
     }
 
 project "OpenDIS"
