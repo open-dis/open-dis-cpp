@@ -11,7 +11,7 @@ install:
   
 # Run premake to generate makefiles.
 before_script:
-  - premake5 gmake
+  - ./premake5 gmake
   
 script: 
   - make config=release
