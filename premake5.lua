@@ -38,3 +38,5 @@ project "OpenDIS"
     "CppUtils/DIS/*.h",
     "CppUtils/DIS/*.cpp"
   }
+
+-- TODO: add project sections for the unit tests and the examples.
