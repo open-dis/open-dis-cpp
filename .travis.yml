@@ -10,9 +10,8 @@ install:
   - mv premake-5.0.0-alpha6/bin/release/premake5 premake5
   
 # Run premake to generate makefiles.
-# Have to cd into directory and back out since premake5 doesn't appear to accept a directory argument.
 before_script:
-  - cd Compile/premake/Projects && ../../../premake5 --file=DIS.lua gmake && cd ../../../
+  - premake5 gmake
   
 script: 
-  - cd Compile/gnu.linux && make CONFIG=Release
+  - make config=release
