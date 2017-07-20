@@ -11,7 +11,6 @@ workspace "open-dis-cpp"
   targetdir "Build/lib/%{cfg.buildcfg}"
   configuration "Debug*"
     defines { "DEBUG" }
-    symbols "On"
  
   configuration "Release*"
     defines { "NDEBUG" }
@@ -29,6 +28,7 @@ workspace "open-dis-cpp"
 project "OpenDIS"
   language "C++"
   kind "StaticLib"
+  symbols "On"
   includedirs { 
     "cpp/DIS",
     "CPPUtils/DIS"
