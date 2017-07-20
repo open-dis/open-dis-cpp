@@ -12,7 +12,7 @@ install:
 # Run premake to generate makefiles.
 # Have to cd into directory and back out since premake5 doesn't appear to accept a directory argument.
 before_script:
-  - cd Compile/premake/Projects && ../../../premake5 --file DIS.lua --target gnu && cd ../../../
+  - cd Compile/premake/Projects && ../../../premake5 --file=DIS.lua gmake && cd ../../../
   
 script: 
   - cd Compile/gnu.linux && make CONFIG=Release
