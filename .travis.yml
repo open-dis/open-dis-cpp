@@ -1,0 +1,2 @@
+language: cpp
+script: cd Compile/gnu.linux && make
