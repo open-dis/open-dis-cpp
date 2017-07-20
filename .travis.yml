@@ -1,2 +1,2 @@
 language: cpp
-script: cd Compile/gnu.linux && make
+script: cd Compile/gnu.linux && make CONFIG=Release
