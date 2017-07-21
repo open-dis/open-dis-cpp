@@ -1,5 +1,7 @@
 #include <DIS/Marking.h> 
 
+#include <cstring>
+
 using namespace DIS;
 
 
@@ -49,7 +51,7 @@ void Marking::setCharacters(const char* x)
 // An alternate method to set the value if this could be a string. This is not strictly comnpliant with the DIS standard.
 void Marking::setByStringCharacters(const char* x)
 {
-   strncpy(_characters, x, 11-1);
+   std::strncpy(_characters, x, 11-1);
    _characters[11 -1] = '\0';
 }
 
