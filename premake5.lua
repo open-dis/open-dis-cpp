@@ -17,7 +17,7 @@ workspace "open-dis-cpp"
     optimize "On"
 
   configuration "windows"
-    defines { "WIN32" }
+    defines { "WIN32", "EXPORT_LIBRARY" }
 
   configuration { "linux", "gmake" }
     buildoptions {
@@ -27,7 +27,7 @@ workspace "open-dis-cpp"
 
 project "OpenDIS"
   language "C++"
-  kind "StaticLib"
+  kind "SharedLib"
   includedirs { 
     "cpp",
     "CppUtils"
