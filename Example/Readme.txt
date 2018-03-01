@@ -6,7 +6,7 @@ The example socket implementation is outside the scope
 of the DIS implementation, but provided so that the
 testing is complete.  This socket implementation depends
 upon the HawkNL library.  Please visit
-http://www.hawksoft.com/hawknl/
+https://web.archive.org/web/20150606035441/http://hawksoft.com/hawknl/
 for information about how to download, build, and install the SDK.
 I am using version 1.68 of HawkNL.
 
