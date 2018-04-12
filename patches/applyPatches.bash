@@ -42,24 +42,6 @@ case "$1" in
       patch src/main/edu/nps/moves/dis/Vector3Double.java patches/dis/Vector3Double.patch
       ;;
 
-  dismobile)
-     # Pdu.java, apply patch file
-      patch src/main/edu/nps/moves/dismobile/Pdu.java patches/dismobile/Pdu.patch
-
-      # Marking.java, apply patch file to ensure character fields are exactly 11 bytes long after set operations
-      patch src/main/edu/nps/moves/dismobile/Marking.java patches/dismobile/Marking.patch
-
-      # Apply patch to VariableDatum.java
-      patch src/main/edu/nps/moves/dismobile/VariableDatum.java patches/dismobile/VariableDatum.patch
-
-      # Apply patch to EntityID to get equality, hashcode
-      patch src/main/edu/nps/moves/dismobile/EntityID.java patches/dismobile/EntityID.patch
-
-      # Apply patch to Vector3Double to get some convienience methods for
-      # converting back and forth to DIS coordinates from lat/lon/alt.
-      patch src/main/edu/nps/moves/dismobile/Vector3Double.java patches/dismobile/Vector3Double.patch
-      ;;
-
    cpp)
       # Apply patch to VariableDatum.java
       patch cpp/DIS/VariableDatum.cpp patches/cpp/VariableDatum.cpp.patch
