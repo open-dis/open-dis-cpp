@@ -2,6 +2,7 @@
 A C++ implementation of the Distributed Interactive Simulation (DIS) protocol
 
 [![Travis (Linux) Build Status](https://travis-ci.org/open-dis/open-dis-cpp.svg?branch=master)](https://travis-ci.org/open-dis/open-dis-cpp)
+[![CodeDocs status](https://codedocs.xyz/open-dis/open-dis-cpp.svg)](https://codedocs.xyz/open-dis/open-dis-cpp/)
 
 ## Building Open DIS
 
