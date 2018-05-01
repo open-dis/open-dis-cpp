@@ -24,33 +24,16 @@
 echo Arguments: $0, $1, $2
 
 case "$1" in
-  dis)
-      # Pdu.java, apply patch file
-      patch src/main/edu/nps/moves/dis/Pdu.java patches/dis/Pdu.patch
-
-      # Marking.java, apply patch file to ensure character fields are exactly 11 bytes long after set operations
-      patch src/main/edu/nps/moves/dis/Marking.java patches/dis/Marking.patch
-
-      # Apply patch to VariableDatum.java
-      patch src/main/edu/nps/moves/dis/VariableDatum.java patches/dis/VariableDatum.patch
-
-      # Apply patch to EntityID to get equality, hashcode
-      patch src/main/edu/nps/moves/dis/EntityID.java patches/dis/EntityID.patch
-
-      # Apply patch to Vector3Double to get some convienience methods for 
-      # converting back and forth to DIS coordinates from lat/lon/alt.
-      patch src/main/edu/nps/moves/dis/Vector3Double.java patches/dis/Vector3Double.patch
-      ;;
 
    cpp)
-      # Apply patch to VariableDatum.java
+      # Apply patch to VariableDatum
       patch cpp/DIS/VariableDatum.cpp patches/cpp/VariableDatum.cpp.patch
       patch cpp/DIS/VariableDatum.h patches/cpp/VariableDatum.h.patch
       patch cpp/DIS/Pdu.cpp patches/cpp/Pdu.patch
       ;;
 
   cppDis7)
-      # Apply patch to VariableDatum.java
+      # Apply patch to VariableDatum
       patch cpp/DIS7/VariableDatum.cpp patches/cppDis7/VariableDatum.cpp.patch
       ;;
 
