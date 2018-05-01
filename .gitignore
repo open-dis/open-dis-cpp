@@ -1,3 +1,5 @@
+Makefile
+OpenDis.make
 *.obj
 *.vcxproj*
 *.sln
