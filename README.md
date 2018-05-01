@@ -18,6 +18,10 @@ Open DIS uses [premake5](http://premake.github.io/) to build platform specific p
 1. Run `premake5 vs2015`
 1. Open the solution and build.
 
+## Developer Docs
+
+The latest doxygen docs for the Open DIS master branch can be found [here](https://codedocs.xyz/open-dis/open-dis-cpp/).
+
 ## Git submodule
 This repository includes a git submodule for the XML descripton files. These
 files contain a machine-readable description of the DIS messages that are 
