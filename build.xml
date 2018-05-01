@@ -49,7 +49,7 @@
     </target>
 
 <target name="generateDisSourceCode" depends="init, check-prerequisites-generate" description = "run program to generate DIS source code">
-        <echo message="Generating DIS source code csharp"/>
+        <echo message="Generating DIS source code cpp"/>
         <java classname="edu.nps.moves.xmlpg.Xmlpg">
             <classpath refid="lib.path"/>
             <arg value="${xmlSourceFile}"/>
