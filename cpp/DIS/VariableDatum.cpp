@@ -1,4 +1,5 @@
 #include <DIS/VariableDatum.h> 
+#include <iostream>
 
 using namespace DIS;
 
@@ -7,11 +8,20 @@ VariableDatum::VariableDatum():
    _variableDatumID(0), 
    _variableDatumLength(0)
 {
+     // Initialize fixed length array
+	//_variableDatums = new char[8];
+	_arrayLength = 0;
+
+     for(int lengthvariableDatums= 0; lengthvariableDatums < STATIC_ARRAY_LENGTH; lengthvariableDatums++)
+     {
+         _variableDatums[lengthvariableDatums] = 0;
+     }
+
 }
 
 VariableDatum::~VariableDatum()
 {
-    _variableDatums.clear();
+	//delete [] _variableDatums;
 }
 
 unsigned int VariableDatum::getVariableDatumID() const
@@ -26,33 +36,63 @@ void VariableDatum::setVariableDatumID(unsigned int pX)
 
 unsigned int VariableDatum::getVariableDatumLength() const
 {
-   return _variableDatums.size();
+    return _variableDatumLength;
 }
 
-std::vector<EightByteChunk>& VariableDatum::getVariableDatums() 
+void VariableDatum::setVariableDatumLength(unsigned int pX)
+{
+    _variableDatumLength = pX;
+}
+
+char* VariableDatum::getVariableDatums()
 {
     return _variableDatums;
 }
 
-const std::vector<EightByteChunk>& VariableDatum::getVariableDatums() const
+const char* VariableDatum::getVariableDatums() const
 {
     return _variableDatums;
 }
 
-void VariableDatum::setVariableDatums(const std::vector<EightByteChunk>& pX)
+void VariableDatum::setVariableDatums(const char* x, int length)
 {
-     _variableDatums = pX;
+	// Trying to set something too big. Punt, for now.
+	if(length > STATIC_ARRAY_LENGTH)
+	{
+		std::cout << " The VariableDatum is too large to fit into the VariableDatum object. Punting." << std::endl;
+		return;
+	}
+
+	int byteLength = length;
+	_variableDatumLength = length * 8; // in bits
+
+	// Figure out padding
+	int chunks = byteLength / 8;
+	int remainder = byteLength % 8;
+	if(remainder != 0)
+		chunks++;
+	_arrayLength = chunks * 8;
+
+	int padding =  8 - remainder;
+
+   for(int i = 0; i < length; i++)
+   {
+        _variableDatums[i] = x[i];
+   }
+   for(int i = length; i < STATIC_ARRAY_LENGTH; i++)
+   {
+	   _variableDatums[i] = 0;
+   }
 }
 
 void VariableDatum::marshal(DataStream& dataStream) const
 {
     dataStream << _variableDatumID;
-    dataStream << ( unsigned int )_variableDatums.size();
+    dataStream << _variableDatumLength;
 
-     for(size_t idx = 0; idx < _variableDatums.size(); idx++)
+     for(size_t idx = 0; idx < _arrayLength; idx++)
      {
-        EightByteChunk x = _variableDatums[idx];
-        x.marshal(dataStream);
+        dataStream << _variableDatums[idx];
      }
 
 }
@@ -61,26 +101,39 @@ void VariableDatum::unmarshal(DataStream& dataStream)
 {
     dataStream >> _variableDatumID;
     dataStream >> _variableDatumLength;
+	
+	int byteLength = _variableDatumLength / 8;
+	int chunks = byteLength / 8;
+	if(byteLength % 8 > 0)
+		chunks++;
+	_arrayLength = chunks * 8;
 
-     _variableDatums.clear();
-     for(size_t idx = 0; idx < _variableDatumLength; idx++)
+	//std::cout << "Variable datum #" << (int)_variableDatumID << " arrayLength=" << (int)_arrayLength << " ";
+
+     for(size_t idx = 0; idx < _arrayLength; idx++)
      {
-        EightByteChunk x;
-        x.unmarshal(dataStream);
-        _variableDatums.push_back(x);
+        dataStream >> _variableDatums[idx];
+		//std::cout << (int)_variableDatums[idx] << " ";
      }
-}
+	 //std::cout << std::endl;
+	 for(size_t idx = _arrayLength; idx < STATIC_ARRAY_LENGTH; idx++)
+	 {
+		 _variableDatums[idx] = 0;
+	 }
+	 //std::cout << " Created and copied data to new _variableDatums array" << std::endl;
 
+}
 
 bool VariableDatum::operator ==(const VariableDatum& rhs) const
  {
      bool ivarsEqual = true;
 
      if( ! (_variableDatumID == rhs._variableDatumID) ) ivarsEqual = false;
+     if( ! (_variableDatumLength == rhs._variableDatumLength) ) ivarsEqual = false;
 
-     for(size_t idx = 0; idx < _variableDatums.size(); idx++)
+     for(char idx = 0; idx < 8; idx++)
      {
-        if( ! ( _variableDatums[idx] == rhs._variableDatums[idx]) ) ivarsEqual = false;
+          if(!(_variableDatums[idx] == rhs._variableDatums[idx]) ) ivarsEqual = false;
      }
 
 
@@ -94,11 +147,7 @@ int VariableDatum::getMarshalledSize() const
    marshalSize = marshalSize + 4;  // _variableDatumID
    marshalSize = marshalSize + 4;  // _variableDatumLength
 
-   for(int idx=0; idx < _variableDatums.size(); idx++)
-   {
-        EightByteChunk listElement = _variableDatums[idx];
-        marshalSize = marshalSize + listElement.getMarshalledSize();
-    }
+	marshalSize = marshalSize + _arrayLength;
 
     return marshalSize;
 }
