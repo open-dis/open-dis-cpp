@@ -23,7 +23,7 @@ protected:
   unsigned int _variableDatumID; 
 
   /** length of the variable datums */
-  unsigned int _variableDatumBitLength;
+  unsigned int _variableDatumLength;
 
   /** The variable datum data.*/
   std::vector<char> _variableDatums;
