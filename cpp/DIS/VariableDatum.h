@@ -3,6 +3,7 @@
 
 #include <DIS/DataStream.h>
 #include <DIS/msLibMacro.h>
+#include <vector>
 
 // length in bytes for the variable data. This should be a dynamically allocated array.
 #define STATIC_ARRAY_LENGTH 128
@@ -22,11 +23,10 @@ protected:
   unsigned int _variableDatumID; 
 
   /** length of the variable datums */
-  unsigned int _variableDatumLength; 
+  unsigned int _variableDatumLength;
 
-  /** The data. This should be dynamic, but I'm having memory management problems. 8 longs should
-   * be enough for almost all data. Only the actual data plus padding is written.*/
-  char _variableDatums[STATIC_ARRAY_LENGTH];
+  /** The variable datum data.*/
+  std::vector<char> _variableDatums;
   int _arrayLength;
 
 
@@ -45,7 +45,7 @@ protected:
 
     char*  getVariableDatums();
     const char*  getVariableDatums() const;
-    void setVariableDatums( const char*    pX, int length);
+    void setVariableDatums(const char*    pX, const int length);
 
 
 virtual int getMarshalledSize() const;

@@ -6,16 +6,10 @@ using namespace DIS;
 
 VariableDatum::VariableDatum():
    _variableDatumID(0), 
-   _variableDatumLength(0)
+   _variableDatumLength(0),
+   _variableDatums(static_cast<std::size_t>(STATIC_ARRAY_LENGTH), char(0)), // can (theoretically) throw
+   _arrayLength(0)
 {
-     // Initialize fixed length array
-	//_variableDatums = new char[8];
-	_arrayLength = 0;
-
-     for(int lengthvariableDatums= 0; lengthvariableDatums < STATIC_ARRAY_LENGTH; lengthvariableDatums++)
-     {
-         _variableDatums[lengthvariableDatums] = 0;
-     }
 
 }
 
@@ -44,45 +38,48 @@ void VariableDatum::setVariableDatumLength(unsigned int pX)
     _variableDatumLength = pX;
 }
 
-char* VariableDatum::getVariableDatums()
+char* VariableDatum::getVariableDatums() // a bit dangerous. we could just return a ref to _variableDatums
 {
-    return _variableDatums;
+    return _variableDatums.data();
 }
 
 const char* VariableDatum::getVariableDatums() const
 {
-    return _variableDatums;
+    return _variableDatums.data();
 }
 
-void VariableDatum::setVariableDatums(const char* x, int length)
+void VariableDatum::setVariableDatums(const char* x, const int length)
 {
-	// Trying to set something too big. Punt, for now.
-	if(length > STATIC_ARRAY_LENGTH)
-	{
-		std::cout << " The VariableDatum is too large to fit into the VariableDatum object. Punting." << std::endl;
-		return;
-	}
+    if(length < 0) {
+        // *** One should really be using unsigned for size values! f.e. std::size_t
+        std::cout << " The VariableDatum pointer size parameter is negative. Punting." << std::endl;
+    }
 
-	int byteLength = length;
-	_variableDatumLength = length * 8; // in bits
+    int byteLength = length; // why this copy?
+    _variableDatumLength = length * 8; // in bits
 
 	// Figure out padding
-	int chunks = byteLength / 8;
+    int chunks = byteLength / 8; // should be const, unsigned
 	int remainder = byteLength % 8;
 	if(remainder != 0)
 		chunks++;
-	_arrayLength = chunks * 8;
+    _arrayLength = chunks * 8;
 
-	int padding =  8 - remainder;
+    int padding =  8 - remainder;
 
-   for(int i = 0; i < length; i++)
-   {
+    // .resize() might (theoretically) throw. want to catch? : what to do? zombie datum?
+    // negative "length" would be a disaster : signed->unsigned->huge allocation
+    if(_variableDatums.size() < length)
+        _variableDatums.resize(length);
+
+    for(int i = 0; i < length; i++)
+    {
         _variableDatums[i] = x[i];
-   }
-   for(int i = length; i < STATIC_ARRAY_LENGTH; i++)
-   {
-	   _variableDatums[i] = 0;
-   }
+    }
+    for(int i = length; i < _variableDatums.size(); i++)
+    {
+        _variableDatums[i] = 0;
+    }
 }
 
 void VariableDatum::marshal(DataStream& dataStream) const
@@ -90,10 +87,10 @@ void VariableDatum::marshal(DataStream& dataStream) const
     dataStream << _variableDatumID;
     dataStream << _variableDatumLength;
 
-     for(size_t idx = 0; idx < _arrayLength; idx++)
-     {
+    for(size_t idx = 0; idx < _arrayLength; idx++)
+    {
         dataStream << _variableDatums[idx];
-     }
+    }
 
 }
 
@@ -102,7 +99,7 @@ void VariableDatum::unmarshal(DataStream& dataStream)
     dataStream >> _variableDatumID;
     dataStream >> _variableDatumLength;
 	
-	int byteLength = _variableDatumLength / 8;
+    int byteLength = _variableDatumLength / 8;
 	int chunks = byteLength / 8;
 	if(byteLength % 8 > 0)
 		chunks++;
@@ -110,13 +107,17 @@ void VariableDatum::unmarshal(DataStream& dataStream)
 
 	//std::cout << "Variable datum #" << (int)_variableDatumID << " arrayLength=" << (int)_arrayLength << " ";
 
+    // .resize() might (theoretically) throw. want to catch? : what to do? zombie datum?
+    if(_variableDatums.size() < _arrayLength)
+        _variableDatums.resize(_arrayLength);
+
      for(size_t idx = 0; idx < _arrayLength; idx++)
      {
         dataStream >> _variableDatums[idx];
 		//std::cout << (int)_variableDatums[idx] << " ";
      }
 	 //std::cout << std::endl;
-	 for(size_t idx = _arrayLength; idx < STATIC_ARRAY_LENGTH; idx++)
+     for(size_t idx = _arrayLength; idx < _variableDatums.size(); idx++)
 	 {
 		 _variableDatums[idx] = 0;
 	 }
@@ -125,20 +126,21 @@ void VariableDatum::unmarshal(DataStream& dataStream)
 }
 
 bool VariableDatum::operator ==(const VariableDatum& rhs) const
- {
-     bool ivarsEqual = true;
+{
+    bool ivarsEqual = true;
 
-     if( ! (_variableDatumID == rhs._variableDatumID) ) ivarsEqual = false;
-     if( ! (_variableDatumLength == rhs._variableDatumLength) ) ivarsEqual = false;
-
-     for(char idx = 0; idx < 8; idx++)
-     {
-          if(!(_variableDatums[idx] == rhs._variableDatums[idx]) ) ivarsEqual = false;
-     }
-
+    if( ! (_variableDatumID == rhs._variableDatumID) ) ivarsEqual = false;
+    if( ! (_variableDatumLength == rhs._variableDatumLength) ) ivarsEqual = false;
+    if( ! (_variableDatums.size() == rhs._variableDatums.size()) ) ivarsEqual = false;
+    else {
+        for(std::size_t idx = 0; idx < _variableDatums.size(); idx++)
+        {
+            if(!(_variableDatums[idx] == rhs._variableDatums[idx]) ) {ivarsEqual = false; break; }
+        }
+    }
 
     return ivarsEqual;
- }
+}
 
 int VariableDatum::getMarshalledSize() const
 {
