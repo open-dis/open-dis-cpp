@@ -26,8 +26,8 @@ protected:
   unsigned int _variableDatumBitLength;
 
   /** The variable datum data.*/
-  std::vector<char> _variableDatums; // this is kind of like a buffer
-  int _arrayLength; // this is the actual data size inside the buffer
+  std::vector<char> _variableDatums;
+  int _arrayLength;
 
 
  public:

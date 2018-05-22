@@ -6,7 +6,7 @@ using namespace DIS;
 
 VariableDatum::VariableDatum():
    _variableDatumID(0), 
-   _variableDatumBitLength(0),
+   _variableDatumLength(0),
    _variableDatums(static_cast<std::size_t>(STATIC_ARRAY_LENGTH), char(0)), // can (theoretically) throw
    _arrayLength(0)
 {
@@ -30,12 +30,12 @@ void VariableDatum::setVariableDatumID(unsigned int pX)
 
 unsigned int VariableDatum::getVariableDatumLength() const
 {
-    return _variableDatumBitLength;
+    return _variableDatumLength;
 }
 
 void VariableDatum::setVariableDatumLength(unsigned int pX)
 {
-    _variableDatumBitLength = pX;
+    _variableDatumLength = pX;
 }
 
 char* VariableDatum::getVariableDatums() // a bit dangerous. we could just return a ref to _variableDatums
@@ -50,18 +50,18 @@ const char* VariableDatum::getVariableDatums() const
 
 void VariableDatum::setVariableDatums(const char* x, const int length)
 {
-    // Should we still check for too large a size? I Don't want to brake anything, but this limitation is no longer holds.
+    // Should we still check for too large a size? This particular limitation no longer holds.
     if(length > STATIC_ARRAY_LENGTH)
     {
         std::cout << " The VariableDatum is too large to fit into the VariableDatum object. Punting." << std::endl;
         return;
     } else if(length < 0) {
-        // *** should really be using unsigned for size values! f.e. std::size_t
+        // *** One should really be using unsigned for size values! f.e. std::size_t
         std::cout << " The VariableDatum pointer size parameter is negative. Punting." << std::endl;
     }
 
     int byteLength = length; // why this copy?
-    _variableDatumBitLength = length * 8; // in bits
+    _variableDatumLength = length * 8; // in bits
 
 	// Figure out padding
     int chunks = byteLength / 8; // should be const, unsigned
@@ -72,15 +72,10 @@ void VariableDatum::setVariableDatums(const char* x, const int length)
 
     int padding =  8 - remainder;
 
-    // .resize() might (theoretically) throw. This means allocation fails.
-    // Also if "_arrayLength" is negative, will most certainly throw (signed->unsigned->huge allocation value)
-    try {
-        if(_variableDatums.size() < _arrayLength)
-            _variableDatums.resize(_arrayLength);
-    } catch (std::exception &e) {
-        std::cerr<<__FUNCTION__<<':'<<e.what()<<std::endl;
-        throw; // Can't allocate memory, throw the wrench?
-    }
+    // .resize() might (theoretically) throw. want to catch? : what to do? zombie datum?
+    // negative "length" would be a disaster : signed->unsigned->huge allocation
+    if(_variableDatums.size() < length)
+        _variableDatums.resize(length);
 
     for(int i = 0; i < length; i++)
     {
@@ -95,7 +90,7 @@ void VariableDatum::setVariableDatums(const char* x, const int length)
 void VariableDatum::marshal(DataStream& dataStream) const
 {
     dataStream << _variableDatumID;
-    dataStream << _variableDatumBitLength;
+    dataStream << _variableDatumLength;
 
     for(size_t idx = 0; idx < _arrayLength; idx++)
     {
@@ -107,9 +102,9 @@ void VariableDatum::marshal(DataStream& dataStream) const
 void VariableDatum::unmarshal(DataStream& dataStream)
 {
     dataStream >> _variableDatumID;
-    dataStream >> _variableDatumBitLength;
+    dataStream >> _variableDatumLength;
 	
-    int byteLength = _variableDatumBitLength / 8;
+    int byteLength = _variableDatumLength / 8;
 	int chunks = byteLength / 8;
 	if(byteLength % 8 > 0)
 		chunks++;
@@ -117,14 +112,9 @@ void VariableDatum::unmarshal(DataStream& dataStream)
 
 	//std::cout << "Variable datum #" << (int)_variableDatumID << " arrayLength=" << (int)_arrayLength << " ";
 
-    // .resize() might (theoretically) throw.
-    try {
-        if(_variableDatums.size() < _arrayLength)
-            _variableDatums.resize(_arrayLength);
-    } catch (std::exception &e) {
-        std::cerr<<__FUNCTION__<<':'<<e.what()<<std::endl;
-        throw; // Can't allocate memory, throw the wrench?
-    }
+    // .resize() might (theoretically) throw. want to catch? : what to do? zombie datum?
+    if(_variableDatums.size() < _arrayLength)
+        _variableDatums.resize(_arrayLength);
 
      for(size_t idx = 0; idx < _arrayLength; idx++)
      {
@@ -145,7 +135,7 @@ bool VariableDatum::operator ==(const VariableDatum& rhs) const
     bool ivarsEqual = true;
 
     if( ! (_variableDatumID == rhs._variableDatumID) ) ivarsEqual = false;
-    if( ! (_variableDatumBitLength == rhs._variableDatumBitLength) ) ivarsEqual = false;
+    if( ! (_variableDatumLength == rhs._variableDatumLength) ) ivarsEqual = false;
     if( ! (_variableDatums.size() == rhs._variableDatums.size()) ) ivarsEqual = false;
     else {
         for(std::size_t idx = 0; idx < _variableDatums.size(); idx++)
