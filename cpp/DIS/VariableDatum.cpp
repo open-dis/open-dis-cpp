@@ -50,12 +50,7 @@ const char* VariableDatum::getVariableDatums() const
 
 void VariableDatum::setVariableDatums(const char* x, const int length)
 {
-    // Should we still check for too large a size? This particular limitation no longer holds.
-    if(length > STATIC_ARRAY_LENGTH)
-    {
-        std::cout << " The VariableDatum is too large to fit into the VariableDatum object. Punting." << std::endl;
-        return;
-    } else if(length < 0) {
+    if(length < 0) {
         // *** One should really be using unsigned for size values! f.e. std::size_t
         std::cout << " The VariableDatum pointer size parameter is negative. Punting." << std::endl;
     }
