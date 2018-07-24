@@ -25,14 +25,14 @@
     --> 
     <target name="generateCppDisSourceCode" depends="init" description = "run program to generate cpp">
         <property name="xmlSourceFile" value="DISDescription/DIS6.xml"/>
-        <property name="cppdir" value="cpp/DIS"/>
-        <property name="product" value="cpp"/>
+        <property name="cppdir" value="src/dis6"/>
+        <property name="product" value="cppDis6"/>
         <antcall target="generateDisSourceCode"/>
     </target>
 
     <target name="generateCppDis7SourceCode" depends="init" description = "run program to generate cpp">
         <property name="xmlSourceFile" value="DISDescription/DIS7.xml"/>
-        <property name="cppdir" value="cpp/DIS7"/>
+        <property name="cppdir" value="src/dis7"/>
         <property name="product" value="cppDis7"/>
         <antcall target="generateDisSourceCode"/>
     </target>
