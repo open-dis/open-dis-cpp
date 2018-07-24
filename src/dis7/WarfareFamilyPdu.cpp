@@ -1,4 +1,4 @@
-#include <DIS/WarfareFamilyPdu.h> 
+#include <dis7/WarfareFamilyPdu.h>
 
 using namespace DIS;
 

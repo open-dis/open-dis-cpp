@@ -1,4 +1,4 @@
-#include <DIS/SystemIdentifier.h> 
+#include <dis7/SystemIdentifier.h>
 
 using namespace DIS;
 

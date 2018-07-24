@@ -1,12 +1,12 @@
 #ifndef DATAQUERYRELIABLEPDU_H
 #define DATAQUERYRELIABLEPDU_H
 
-#include <DIS/FixedDatum.h>
-#include <DIS/VariableDatum.h>
+#include <dis7/FixedDatum.h>
+#include <dis7/VariableDatum.h>
 #include <vector>
-#include <DIS/SimulationManagementWithReliabilityFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/SimulationManagementWithReliabilityFamilyPdu.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

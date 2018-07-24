@@ -1,4 +1,4 @@
-#include <DIS/EventReportReliablePdu.h> 
+#include <dis7/EventReportReliablePdu.h>
 
 using namespace DIS;
 

@@ -1,4 +1,4 @@
-#include <DIS/AcknowledgeReliablePdu.h> 
+#include <dis6/AcknowledgeReliablePdu.h>
 
 using namespace DIS;
 

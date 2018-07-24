@@ -1,4 +1,4 @@
-#include <DIS/ModulationType.h> 
+#include <dis6/ModulationType.h>
 
 using namespace DIS;
 

@@ -1,4 +1,4 @@
-#include <DIS/AngularVelocityVector.h> 
+#include <dis6/AngularVelocityVector.h>
 
 using namespace DIS;
 

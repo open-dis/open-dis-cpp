@@ -1,4 +1,4 @@
-#include <DIS/ElectronicEmissionBeamData.h> 
+#include <dis6/ElectronicEmissionBeamData.h>
 
 using namespace DIS;
 

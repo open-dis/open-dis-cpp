@@ -1,4 +1,4 @@
-#include <DIS/ActionRequestPdu.h> 
+#include <dis6/ActionRequestPdu.h>
 
 using namespace DIS;
 

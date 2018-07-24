@@ -1,4 +1,4 @@
-#include <DIS/PropulsionSystemData.h> 
+#include <dis6/PropulsionSystemData.h>
 
 using namespace DIS;
 

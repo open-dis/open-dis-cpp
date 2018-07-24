@@ -1,4 +1,4 @@
-#include <DIS/UAFundamentalParameter.h> 
+#include <dis7/UAFundamentalParameter.h>
 
 using namespace DIS;
 

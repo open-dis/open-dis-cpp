@@ -1,4 +1,4 @@
-#include <DIS/BlankingSector.h> 
+#include <dis7/BlankingSector.h>
 
 using namespace DIS;
 

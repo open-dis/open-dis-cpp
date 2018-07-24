@@ -1,9 +1,9 @@
 #ifndef BURSTDESCRIPTOR_H
 #define BURSTDESCRIPTOR_H
 
-#include <DIS/EntityType.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis6/EntityType.h>
+#include <dis6/DataStream.h>
+#include <dis6/msLibMacro.h>
 
 
 namespace DIS

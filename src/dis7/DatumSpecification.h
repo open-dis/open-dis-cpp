@@ -1,11 +1,11 @@
 #ifndef DATUMSPECIFICATION_H
 #define DATUMSPECIFICATION_H
 
-#include <DIS/FixedDatum.h>
-#include <DIS/VariableDatum.h>
+#include <dis7/FixedDatum.h>
+#include <dis7/VariableDatum.h>
 #include <vector>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

@@ -1,4 +1,4 @@
-#include <DIS/IOEffect.h> 
+#include <dis7/IOEffect.h>
 
 using namespace DIS;
 

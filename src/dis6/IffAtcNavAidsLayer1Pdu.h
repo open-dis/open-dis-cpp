@@ -1,14 +1,14 @@
 #ifndef IFFATCNAVAIDSLAYER1PDU_H
 #define IFFATCNAVAIDSLAYER1PDU_H
 
-#include <DIS/EntityID.h>
-#include <DIS/EventID.h>
-#include <DIS/Vector3Float.h>
-#include <DIS/SystemID.h>
-#include <DIS/IffFundamentalData.h>
-#include <DIS/DistributedEmissionsFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis6/EntityID.h>
+#include <dis6/EventID.h>
+#include <dis6/Vector3Float.h>
+#include <dis6/SystemID.h>
+#include <dis6/IffFundamentalData.h>
+#include <dis6/DistributedEmissionsFamilyPdu.h>
+#include <dis6/DataStream.h>
+#include <dis6/msLibMacro.h>
 
 
 namespace DIS

@@ -1,4 +1,4 @@
-#include <DIS/FastEntityStatePdu.h> 
+#include <dis6/FastEntityStatePdu.h>
 #include <cstring>
 
 using namespace DIS;

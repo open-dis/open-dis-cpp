@@ -1,14 +1,14 @@
 #ifndef IFFATCNAVAIDSLAYER2PDU_H
 #define IFFATCNAVAIDSLAYER2PDU_H
 
-#include <DIS/LayerHeader.h>
-#include <DIS/BeamData.h>
-#include <DIS/BeamData.h>
-#include <DIS/FundamentalParameterDataIff.h>
+#include <dis6/LayerHeader.h>
+#include <dis6/BeamData.h>
+#include <dis6/BeamData.h>
+#include <dis6/FundamentalParameterDataIff.h>
 #include <vector>
-#include <DIS/IffAtcNavAidsLayer1Pdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis6/IffAtcNavAidsLayer1Pdu.h>
+#include <dis6/DataStream.h>
+#include <dis6/msLibMacro.h>
 
 
 namespace DIS

@@ -1,7 +1,7 @@
 #ifndef SYMBOLIC_NAMES_H_INCLUDED
 #define SYMBOLIC_NAMES_H_INCLUDED
 
-#include <DIS/EntityID.h>
+#include <dis6/EntityID.h>
 
 /**
  * Symbolic names as defined in 5.1.4

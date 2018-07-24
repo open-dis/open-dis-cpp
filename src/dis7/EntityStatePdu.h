@@ -1,19 +1,19 @@
 #ifndef ENTITYSTATEPDU_H
 #define ENTITYSTATEPDU_H
 
-#include <DIS/EntityID.h>
-#include <DIS/EntityType.h>
-#include <DIS/EntityType.h>
-#include <DIS/Vector3Float.h>
-#include <DIS/Vector3Double.h>
-#include <DIS/EulerAngles.h>
-#include <DIS/DeadReckoningParameters.h>
-#include <DIS/EntityMarking.h>
-#include <DIS/VariableParameter.h>
+#include <dis7/EntityID.h>
+#include <dis7/EntityType.h>
+#include <dis7/EntityType.h>
+#include <dis7/Vector3Float.h>
+#include <dis7/Vector3Double.h>
+#include <dis7/EulerAngles.h>
+#include <dis7/DeadReckoningParameters.h>
+#include <dis7/EntityMarking.h>
+#include <dis7/VariableParameter.h>
 #include <vector>
-#include <DIS/EntityInformationFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/EntityInformationFamilyPdu.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

@@ -1,4 +1,4 @@
-#include <DIS/Expendable.h> 
+#include <dis7/Expendable.h>
 
 using namespace DIS;
 

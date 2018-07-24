@@ -1,15 +1,15 @@
 #ifndef UAPDU_H
 #define UAPDU_H
 
-#include <DIS/EntityID.h>
-#include <DIS/EventID.h>
-#include <DIS/ShaftRPMs.h>
-#include <DIS/ApaData.h>
-#include <DIS/AcousticEmitterSystemData.h>
+#include <dis6/EntityID.h>
+#include <dis6/EventID.h>
+#include <dis6/ShaftRPMs.h>
+#include <dis6/ApaData.h>
+#include <dis6/AcousticEmitterSystemData.h>
 #include <vector>
-#include <DIS/DistributedEmissionsFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis6/DistributedEmissionsFamilyPdu.h>
+#include <dis6/DataStream.h>
+#include <dis6/msLibMacro.h>
 
 
 namespace DIS

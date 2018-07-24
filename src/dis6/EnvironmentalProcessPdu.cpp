@@ -1,4 +1,4 @@
-#include <DIS/EnvironmentalProcessPdu.h> 
+#include <dis6/EnvironmentalProcessPdu.h>
 
 using namespace DIS;
 

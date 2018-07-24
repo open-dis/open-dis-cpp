@@ -1,4 +1,4 @@
-#include <DIS/SixByteChunk.h> 
+#include <dis6/SixByteChunk.h>
 
 using namespace DIS;
 

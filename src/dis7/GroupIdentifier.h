@@ -1,9 +1,9 @@
 #ifndef GROUPIDENTIFIER_H
 #define GROUPIDENTIFIER_H
 
-#include <DIS/EntityType.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/EntityType.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

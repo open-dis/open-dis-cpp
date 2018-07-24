@@ -1,9 +1,9 @@
 #ifndef PDU_H
 #define PDU_H
 
-#include <DIS/PduSuperclass.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/PduSuperclass.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

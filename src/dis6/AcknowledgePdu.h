@@ -1,9 +1,9 @@
 #ifndef ACKNOWLEDGEPDU_H
 #define ACKNOWLEDGEPDU_H
 
-#include <DIS/SimulationManagementFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis6/SimulationManagementFamilyPdu.h>
+#include <dis6/DataStream.h>
+#include <dis6/msLibMacro.h>
 
 
 namespace DIS

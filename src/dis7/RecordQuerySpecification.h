@@ -1,10 +1,10 @@
 #ifndef RECORDQUERYSPECIFICATION_H
 #define RECORDQUERYSPECIFICATION_H
 
-#include <DIS/FourByteChunk.h>
+#include <dis7/FourByteChunk.h>
 #include <vector>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

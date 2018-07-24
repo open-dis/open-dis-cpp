@@ -1,12 +1,12 @@
 #ifndef INTERCOMSIGNALPDU_H
 #define INTERCOMSIGNALPDU_H
 
-#include <DIS/EntityID.h>
-#include <DIS/OneByteChunk.h>
+#include <dis7/EntityID.h>
+#include <dis7/OneByteChunk.h>
 #include <vector>
-#include <DIS/RadioCommunicationsFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/RadioCommunicationsFamilyPdu.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

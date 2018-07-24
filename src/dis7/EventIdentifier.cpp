@@ -1,4 +1,4 @@
-#include <DIS/EventIdentifier.h> 
+#include <dis7/EventIdentifier.h>
 
 using namespace DIS;
 

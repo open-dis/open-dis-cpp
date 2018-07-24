@@ -1,4 +1,4 @@
-#include <DIS/IffDataSpecification.h> 
+#include <dis7/IffDataSpecification.h>
 
 using namespace DIS;
 

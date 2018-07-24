@@ -1,10 +1,10 @@
 #ifndef STANDARDVARIABLESPECIFICATION_H
 #define STANDARDVARIABLESPECIFICATION_H
 
-#include <DIS/SimulationManagementPduHeader.h>
+#include <dis7/SimulationManagementPduHeader.h>
 #include <vector>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

@@ -1,4 +1,4 @@
-#include <DIS/TransferControlRequestPdu.h> 
+#include <dis6/TransferControlRequestPdu.h>
 
 using namespace DIS;
 

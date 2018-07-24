@@ -1,4 +1,4 @@
-#include <DIS/DetonationPdu.h> 
+#include <dis7/DetonationPdu.h>
 
 using namespace DIS;
 

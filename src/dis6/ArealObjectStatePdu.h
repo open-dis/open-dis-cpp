@@ -1,17 +1,17 @@
 #ifndef AREALOBJECTSTATEPDU_H
 #define AREALOBJECTSTATEPDU_H
 
-#include <DIS/EntityID.h>
-#include <DIS/EntityID.h>
-#include <DIS/EntityType.h>
-#include <DIS/SixByteChunk.h>
-#include <DIS/SimulationAddress.h>
-#include <DIS/SimulationAddress.h>
-#include <DIS/Vector3Double.h>
+#include <dis6/EntityID.h>
+#include <dis6/EntityID.h>
+#include <dis6/EntityType.h>
+#include <dis6/SixByteChunk.h>
+#include <dis6/SimulationAddress.h>
+#include <dis6/SimulationAddress.h>
+#include <dis6/Vector3Double.h>
 #include <vector>
-#include <DIS/SyntheticEnvironmentFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis6/SyntheticEnvironmentFamilyPdu.h>
+#include <dis6/DataStream.h>
+#include <dis6/msLibMacro.h>
 
 
 namespace DIS

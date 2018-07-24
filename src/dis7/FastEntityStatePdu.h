@@ -1,11 +1,11 @@
 #ifndef FASTENTITYSTATEPDU_H
 #define FASTENTITYSTATEPDU_H
 
-#include <DIS/VariableParameter.h>
+#include <dis7/VariableParameter.h>
 #include <vector>
-#include <DIS/EntityInformationFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/EntityInformationFamilyPdu.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

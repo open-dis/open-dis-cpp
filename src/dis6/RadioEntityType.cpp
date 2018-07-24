@@ -1,4 +1,4 @@
-#include <DIS/RadioEntityType.h> 
+#include <dis6/RadioEntityType.h>
 
 using namespace DIS;
 

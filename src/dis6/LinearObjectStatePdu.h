@@ -1,16 +1,16 @@
 #ifndef LINEAROBJECTSTATEPDU_H
 #define LINEAROBJECTSTATEPDU_H
 
-#include <DIS/EntityID.h>
-#include <DIS/EntityID.h>
-#include <DIS/SimulationAddress.h>
-#include <DIS/SimulationAddress.h>
-#include <DIS/ObjectType.h>
-#include <DIS/LinearSegmentParameter.h>
+#include <dis6/EntityID.h>
+#include <dis6/EntityID.h>
+#include <dis6/SimulationAddress.h>
+#include <dis6/SimulationAddress.h>
+#include <dis6/ObjectType.h>
+#include <dis6/LinearSegmentParameter.h>
 #include <vector>
-#include <DIS/SyntheticEnvironmentFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis6/SyntheticEnvironmentFamilyPdu.h>
+#include <dis6/DataStream.h>
+#include <dis6/msLibMacro.h>
 
 
 namespace DIS

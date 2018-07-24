@@ -1,14 +1,14 @@
 #ifndef DESIGNATORPDU_H
 #define DESIGNATORPDU_H
 
-#include <DIS/EntityID.h>
-#include <DIS/EntityID.h>
-#include <DIS/Vector3Float.h>
-#include <DIS/Vector3Double.h>
-#include <DIS/Vector3Float.h>
-#include <DIS/DistributedEmissionsFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/EntityID.h>
+#include <dis7/EntityID.h>
+#include <dis7/Vector3Float.h>
+#include <dis7/Vector3Double.h>
+#include <dis7/Vector3Float.h>
+#include <dis7/DistributedEmissionsFamilyPdu.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

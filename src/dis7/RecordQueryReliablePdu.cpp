@@ -1,4 +1,4 @@
-#include <DIS/RecordQueryReliablePdu.h> 
+#include <dis7/RecordQueryReliablePdu.h>
 
 using namespace DIS;
 

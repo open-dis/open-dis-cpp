@@ -1,4 +1,4 @@
-#include <DIS/IsGroupOfPdu.h> 
+#include <dis6/IsGroupOfPdu.h>
 
 using namespace DIS;
 

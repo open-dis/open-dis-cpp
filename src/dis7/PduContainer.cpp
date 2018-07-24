@@ -1,4 +1,4 @@
-#include <DIS/PduContainer.h> 
+#include <dis7/PduContainer.h>
 
 using namespace DIS;
 

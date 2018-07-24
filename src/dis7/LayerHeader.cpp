@@ -1,4 +1,4 @@
-#include <DIS/LayerHeader.h> 
+#include <dis7/LayerHeader.h>
 
 using namespace DIS;
 

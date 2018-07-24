@@ -1,4 +1,4 @@
-#include <DIS/IFFFundamentalParameterData.h> 
+#include <dis7/IFFFundamentalParameterData.h>
 
 using namespace DIS;
 

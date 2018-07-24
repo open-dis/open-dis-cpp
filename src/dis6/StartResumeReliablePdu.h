@@ -1,11 +1,11 @@
 #ifndef STARTRESUMERELIABLEPDU_H
 #define STARTRESUMERELIABLEPDU_H
 
-#include <DIS/ClockTime.h>
-#include <DIS/ClockTime.h>
-#include <DIS/SimulationManagementWithReliabilityFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis6/ClockTime.h>
+#include <dis6/ClockTime.h>
+#include <dis6/SimulationManagementWithReliabilityFamilyPdu.h>
+#include <dis6/DataStream.h>
+#include <dis6/msLibMacro.h>
 
 
 namespace DIS

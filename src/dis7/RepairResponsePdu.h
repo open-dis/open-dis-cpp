@@ -1,11 +1,11 @@
 #ifndef REPAIRRESPONSEPDU_H
 #define REPAIRRESPONSEPDU_H
 
-#include <DIS/EntityID.h>
-#include <DIS/EntityID.h>
-#include <DIS/LogisticsFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/EntityID.h>
+#include <dis7/EntityID.h>
+#include <dis7/LogisticsFamilyPdu.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

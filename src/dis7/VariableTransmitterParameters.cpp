@@ -1,4 +1,4 @@
-#include <DIS/VariableTransmitterParameters.h> 
+#include <dis7/VariableTransmitterParameters.h>
 
 using namespace DIS;
 

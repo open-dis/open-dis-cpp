@@ -1,4 +1,4 @@
-#include <DIS/SimulationAddress.h> 
+#include <dis6/SimulationAddress.h>
 
 using namespace DIS;
 

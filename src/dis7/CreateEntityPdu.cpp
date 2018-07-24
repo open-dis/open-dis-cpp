@@ -1,4 +1,4 @@
-#include <DIS/CreateEntityPdu.h> 
+#include <dis7/CreateEntityPdu.h>
 
 using namespace DIS;
 

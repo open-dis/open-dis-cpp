@@ -1,9 +1,9 @@
 #ifndef DISTRIBUTEDEMISSIONSFAMILYPDU_H
 #define DISTRIBUTEDEMISSIONSFAMILYPDU_H
 
-#include <DIS/Pdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis6/Pdu.h>
+#include <dis6/DataStream.h>
+#include <dis6/msLibMacro.h>
 
 
 namespace DIS

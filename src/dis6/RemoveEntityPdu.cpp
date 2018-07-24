@@ -1,4 +1,4 @@
-#include <DIS/RemoveEntityPdu.h> 
+#include <dis6/RemoveEntityPdu.h>
 
 using namespace DIS;
 

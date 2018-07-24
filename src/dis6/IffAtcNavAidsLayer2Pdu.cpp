@@ -1,4 +1,4 @@
-#include <DIS/IffAtcNavAidsLayer2Pdu.h> 
+#include <dis6/IffAtcNavAidsLayer2Pdu.h>
 
 using namespace DIS;
 

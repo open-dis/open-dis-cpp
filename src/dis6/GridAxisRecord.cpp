@@ -1,4 +1,4 @@
-#include <DIS/GridAxisRecord.h> 
+#include <dis6/GridAxisRecord.h>
 
 using namespace DIS;
 

@@ -1,4 +1,4 @@
-#include <DIS/DirectedEnergyTargetEnergyDeposition.h> 
+#include <dis7/DirectedEnergyTargetEnergyDeposition.h>
 
 using namespace DIS;
 

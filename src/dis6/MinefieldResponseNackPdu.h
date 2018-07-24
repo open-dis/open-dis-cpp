@@ -1,13 +1,13 @@
 #ifndef MINEFIELDRESPONSENACKPDU_H
 #define MINEFIELDRESPONSENACKPDU_H
 
-#include <DIS/EntityID.h>
-#include <DIS/EntityID.h>
-#include <DIS/EightByteChunk.h>
+#include <dis6/EntityID.h>
+#include <dis6/EntityID.h>
+#include <dis6/EightByteChunk.h>
 #include <vector>
-#include <DIS/MinefieldFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis6/MinefieldFamilyPdu.h>
+#include <dis6/DataStream.h>
+#include <dis6/msLibMacro.h>
 
 
 namespace DIS

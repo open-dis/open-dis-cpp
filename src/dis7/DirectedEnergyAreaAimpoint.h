@@ -1,11 +1,11 @@
 #ifndef DIRECTEDENERGYAREAAIMPOINT_H
 #define DIRECTEDENERGYAREAAIMPOINT_H
 
-#include <DIS/BeamAntennaPattern.h>
-#include <DIS/DirectedEnergyTargetEnergyDeposition.h>
+#include <dis7/BeamAntennaPattern.h>
+#include <dis7/DirectedEnergyTargetEnergyDeposition.h>
 #include <vector>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

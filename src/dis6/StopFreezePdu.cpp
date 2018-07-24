@@ -1,4 +1,4 @@
-#include <DIS/StopFreezePdu.h> 
+#include <dis6/StopFreezePdu.h>
 
 using namespace DIS;
 

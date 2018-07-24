@@ -1,4 +1,4 @@
-#include <DIS/LinearSegmentParameter.h> 
+#include <dis6/LinearSegmentParameter.h>
 
 using namespace DIS;
 

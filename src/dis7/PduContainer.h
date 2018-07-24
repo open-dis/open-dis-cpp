@@ -1,10 +1,10 @@
 #ifndef PDUCONTAINER_H
 #define PDUCONTAINER_H
 
-#include <DIS/Pdu.h>
+#include <dis7/Pdu.h>
 #include <vector>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

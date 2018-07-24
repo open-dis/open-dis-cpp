@@ -1,11 +1,11 @@
 #ifndef SETRECORDRELIABLEPDU_H
 #define SETRECORDRELIABLEPDU_H
 
-#include <DIS/RecordSet.h>
+#include <dis6/RecordSet.h>
 #include <vector>
-#include <DIS/SimulationManagementWithReliabilityFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis6/SimulationManagementWithReliabilityFamilyPdu.h>
+#include <dis6/DataStream.h>
+#include <dis6/msLibMacro.h>
 
 
 namespace DIS

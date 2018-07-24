@@ -1,4 +1,4 @@
-#include <DIS/IntercomCommunicationsParameters.h> 
+#include <dis6/IntercomCommunicationsParameters.h>
 
 using namespace DIS;
 

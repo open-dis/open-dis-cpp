@@ -1,9 +1,9 @@
 #ifndef LIVEENTITYIDENTIFIER_H
 #define LIVEENTITYIDENTIFIER_H
 
-#include <DIS/LiveSimulationAddress.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/LiveSimulationAddress.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

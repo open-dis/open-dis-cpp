@@ -1,10 +1,10 @@
 #ifndef DEADRECKONINGPARAMETERS_H
 #define DEADRECKONINGPARAMETERS_H
 
-#include <DIS/Vector3Float.h>
-#include <DIS/Vector3Float.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/Vector3Float.h>
+#include <dis7/Vector3Float.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

@@ -1,4 +1,4 @@
-#include <DIS/ReceiverPdu.h> 
+#include <dis6/ReceiverPdu.h>
 
 using namespace DIS;
 

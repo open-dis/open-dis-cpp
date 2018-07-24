@@ -1,8 +1,8 @@
 #ifndef RELATIONSHIP_H
 #define RELATIONSHIP_H
 
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis6/DataStream.h>
+#include <dis6/msLibMacro.h>
 
 
 namespace DIS

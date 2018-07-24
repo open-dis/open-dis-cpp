@@ -1,4 +1,4 @@
-#include <DIS/BeamData.h> 
+#include <dis6/BeamData.h>
 
 using namespace DIS;
 

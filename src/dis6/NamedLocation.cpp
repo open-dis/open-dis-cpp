@@ -1,4 +1,4 @@
-#include <DIS/NamedLocation.h> 
+#include <dis6/NamedLocation.h>
 
 using namespace DIS;
 

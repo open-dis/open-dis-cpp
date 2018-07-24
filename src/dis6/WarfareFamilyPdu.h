@@ -1,11 +1,11 @@
 #ifndef WARFAREFAMILYPDU_H
 #define WARFAREFAMILYPDU_H
 
-#include <DIS/EntityID.h>
-#include <DIS/EntityID.h>
-#include <DIS/Pdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis6/EntityID.h>
+#include <dis6/EntityID.h>
+#include <dis6/Pdu.h>
+#include <dis6/DataStream.h>
+#include <dis6/msLibMacro.h>
 
 
 namespace DIS

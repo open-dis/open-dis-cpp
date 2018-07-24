@@ -1,4 +1,4 @@
-#include <DIS/EntityAssociation.h> 
+#include <dis7/EntityAssociation.h>
 
 using namespace DIS;
 

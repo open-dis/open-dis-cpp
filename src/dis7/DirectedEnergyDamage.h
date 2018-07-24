@@ -1,10 +1,10 @@
 #ifndef DIRECTEDENERGYDAMAGE_H
 #define DIRECTEDENERGYDAMAGE_H
 
-#include <DIS/Vector3Float.h>
-#include <DIS/EventIdentifier.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/Vector3Float.h>
+#include <dis7/EventIdentifier.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

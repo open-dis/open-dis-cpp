@@ -1,13 +1,13 @@
 #ifndef SEESPDU_H
 #define SEESPDU_H
 
-#include <DIS/EntityID.h>
-#include <DIS/PropulsionSystemData.h>
-#include <DIS/VectoringNozzleSystem.h>
+#include <dis7/EntityID.h>
+#include <dis7/PropulsionSystemData.h>
+#include <dis7/VectoringNozzleSystem.h>
 #include <vector>
-#include <DIS/DistributedEmissionsFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/DistributedEmissionsFamilyPdu.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

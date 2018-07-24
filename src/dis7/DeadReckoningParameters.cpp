@@ -1,4 +1,4 @@
-#include <DIS/DeadReckoningParameters.h> 
+#include <dis7/DeadReckoningParameters.h>
 
 using namespace DIS;
 

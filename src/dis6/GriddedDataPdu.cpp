@@ -1,4 +1,4 @@
-#include <DIS/GriddedDataPdu.h> 
+#include <dis6/GriddedDataPdu.h>
 
 using namespace DIS;
 

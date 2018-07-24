@@ -1,4 +1,4 @@
-#include <DIS/PduSuperclass.h> 
+#include <dis7/PduSuperclass.h>
 
 using namespace DIS;
 

@@ -1,4 +1,4 @@
-#include <DIS/DirectedEnergyFirePdu.h> 
+#include <dis7/DirectedEnergyFirePdu.h>
 
 using namespace DIS;
 

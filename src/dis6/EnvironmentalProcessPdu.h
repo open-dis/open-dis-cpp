@@ -1,13 +1,13 @@
 #ifndef ENVIRONMENTALPROCESSPDU_H
 #define ENVIRONMENTALPROCESSPDU_H
 
-#include <DIS/EntityID.h>
-#include <DIS/EntityType.h>
-#include <DIS/Environment.h>
+#include <dis6/EntityID.h>
+#include <dis6/EntityType.h>
+#include <dis6/Environment.h>
 #include <vector>
-#include <DIS/SyntheticEnvironmentFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis6/SyntheticEnvironmentFamilyPdu.h>
+#include <dis6/DataStream.h>
+#include <dis6/msLibMacro.h>
 
 
 namespace DIS

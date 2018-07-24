@@ -1,4 +1,4 @@
-#include <DIS/ArealObjectStatePdu.h> 
+#include <dis6/ArealObjectStatePdu.h>
 
 using namespace DIS;
 

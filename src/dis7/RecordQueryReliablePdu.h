@@ -1,11 +1,11 @@
 #ifndef RECORDQUERYRELIABLEPDU_H
 #define RECORDQUERYRELIABLEPDU_H
 
-#include <DIS/FourByteChunk.h>
+#include <dis7/FourByteChunk.h>
 #include <vector>
-#include <DIS/SimulationManagementWithReliabilityFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/SimulationManagementWithReliabilityFamilyPdu.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

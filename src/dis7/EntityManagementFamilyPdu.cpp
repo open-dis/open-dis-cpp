@@ -1,4 +1,4 @@
-#include <DIS/EntityManagementFamilyPdu.h> 
+#include <dis7/EntityManagementFamilyPdu.h>
 
 using namespace DIS;
 

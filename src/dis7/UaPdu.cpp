@@ -1,4 +1,4 @@
-#include <DIS/UaPdu.h> 
+#include <dis7/UaPdu.h>
 
 using namespace DIS;
 

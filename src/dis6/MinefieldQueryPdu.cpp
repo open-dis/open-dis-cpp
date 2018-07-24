@@ -1,4 +1,4 @@
-#include <DIS/MinefieldQueryPdu.h> 
+#include <dis6/MinefieldQueryPdu.h>
 
 using namespace DIS;
 

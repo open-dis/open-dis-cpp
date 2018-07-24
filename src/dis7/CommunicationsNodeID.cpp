@@ -1,4 +1,4 @@
-#include <DIS/CommunicationsNodeID.h> 
+#include <dis7/CommunicationsNodeID.h>
 
 using namespace DIS;
 

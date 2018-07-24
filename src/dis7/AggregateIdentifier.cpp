@@ -1,4 +1,4 @@
-#include <DIS/AggregateIdentifier.h> 
+#include <dis7/AggregateIdentifier.h>
 
 using namespace DIS;
 

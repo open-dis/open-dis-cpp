@@ -1,4 +1,4 @@
-#include <DIS/CommentReliablePdu.h> 
+#include <dis6/CommentReliablePdu.h>
 
 using namespace DIS;
 

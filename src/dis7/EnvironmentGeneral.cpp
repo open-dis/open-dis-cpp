@@ -1,4 +1,4 @@
-#include <DIS/EnvironmentGeneral.h> 
+#include <dis7/EnvironmentGeneral.h>
 
 using namespace DIS;
 

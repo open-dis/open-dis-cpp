@@ -1,4 +1,4 @@
-#include <DIS/AcousticBeamData.h> 
+#include <dis6/AcousticBeamData.h>
 
 using namespace DIS;
 

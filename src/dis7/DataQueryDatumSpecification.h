@@ -1,11 +1,11 @@
 #ifndef DATAQUERYDATUMSPECIFICATION_H
 #define DATAQUERYDATUMSPECIFICATION_H
 
-#include <DIS/UnsignedDISInteger.h>
-#include <DIS/UnsignedDISInteger.h>
+#include <dis7/UnsignedDISInteger.h>
+#include <dis7/UnsignedDISInteger.h>
 #include <vector>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

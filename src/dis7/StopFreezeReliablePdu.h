@@ -1,10 +1,10 @@
 #ifndef STOPFREEZERELIABLEPDU_H
 #define STOPFREEZERELIABLEPDU_H
 
-#include <DIS/ClockTime.h>
-#include <DIS/SimulationManagementWithReliabilityFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/ClockTime.h>
+#include <dis7/SimulationManagementWithReliabilityFamilyPdu.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

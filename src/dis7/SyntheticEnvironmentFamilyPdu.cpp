@@ -1,4 +1,4 @@
-#include <DIS/SyntheticEnvironmentFamilyPdu.h> 
+#include <dis7/SyntheticEnvironmentFamilyPdu.h>
 
 using namespace DIS;
 

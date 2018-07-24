@@ -1,4 +1,4 @@
-#include <DIS/EEFundamentalParameterData.h> 
+#include <dis7/EEFundamentalParameterData.h>
 
 using namespace DIS;
 

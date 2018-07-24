@@ -1,4 +1,4 @@
-#include <DIS/ResupplyReceivedPdu.h> 
+#include <dis6/ResupplyReceivedPdu.h>
 
 using namespace DIS;
 

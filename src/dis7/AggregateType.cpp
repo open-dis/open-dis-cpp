@@ -1,4 +1,4 @@
-#include <DIS/AggregateType.h> 
+#include <dis7/AggregateType.h>
 
 using namespace DIS;
 

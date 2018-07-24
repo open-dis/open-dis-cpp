@@ -1,4 +1,4 @@
-#include <DIS/Relationship.h> 
+#include <dis6/Relationship.h>
 
 using namespace DIS;
 

@@ -1,4 +1,4 @@
-#include <DIS/CollisionElasticPdu.h> 
+#include <dis6/CollisionElasticPdu.h>
 
 using namespace DIS;
 

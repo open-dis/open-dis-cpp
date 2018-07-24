@@ -1,4 +1,4 @@
-#include <DIS/EntityMarking.h> 
+#include <dis7/EntityMarking.h>
 
 #include <cstring>
 

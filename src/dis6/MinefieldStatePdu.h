@@ -1,16 +1,16 @@
 #ifndef MINEFIELDSTATEPDU_H
 #define MINEFIELDSTATEPDU_H
 
-#include <DIS/EntityID.h>
-#include <DIS/EntityType.h>
-#include <DIS/Vector3Double.h>
-#include <DIS/Orientation.h>
-#include <DIS/Point.h>
-#include <DIS/EntityType.h>
+#include <dis6/EntityID.h>
+#include <dis6/EntityType.h>
+#include <dis6/Vector3Double.h>
+#include <dis6/Orientation.h>
+#include <dis6/Point.h>
+#include <dis6/EntityType.h>
 #include <vector>
-#include <DIS/MinefieldFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis6/MinefieldFamilyPdu.h>
+#include <dis6/DataStream.h>
+#include <dis6/msLibMacro.h>
 
 
 namespace DIS

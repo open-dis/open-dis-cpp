@@ -1,4 +1,4 @@
-#include <DIS/AcousticEmitter.h> 
+#include <dis7/AcousticEmitter.h>
 
 using namespace DIS;
 

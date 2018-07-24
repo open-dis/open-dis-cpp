@@ -1,16 +1,16 @@
 #ifndef TRANSMITTERPDU_H
 #define TRANSMITTERPDU_H
 
-#include <DIS/RadioEntityType.h>
-#include <DIS/Vector3Double.h>
-#include <DIS/Vector3Float.h>
-#include <DIS/ModulationType.h>
-#include <DIS/Vector3Float.h>
-#include <DIS/Vector3Float.h>
+#include <dis6/RadioEntityType.h>
+#include <dis6/Vector3Double.h>
+#include <dis6/Vector3Float.h>
+#include <dis6/ModulationType.h>
+#include <dis6/Vector3Float.h>
+#include <dis6/Vector3Float.h>
 #include <vector>
-#include <DIS/RadioCommunicationsFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis6/RadioCommunicationsFamilyPdu.h>
+#include <dis6/DataStream.h>
+#include <dis6/msLibMacro.h>
 
 
 namespace DIS

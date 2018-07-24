@@ -1,4 +1,4 @@
-#include <DIS/AggregateStatePdu.h> 
+#include <dis6/AggregateStatePdu.h>
 
 using namespace DIS;
 

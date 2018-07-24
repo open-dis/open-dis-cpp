@@ -1,14 +1,14 @@
 #ifndef FIREPDU_H
 #define FIREPDU_H
 
-#include <DIS/EntityID.h>
-#include <DIS/EventIdentifier.h>
-#include <DIS/Vector3Double.h>
-#include <DIS/MunitionDescriptor.h>
-#include <DIS/Vector3Float.h>
-#include <DIS/WarfareFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/EntityID.h>
+#include <dis7/EventIdentifier.h>
+#include <dis7/Vector3Double.h>
+#include <dis7/MunitionDescriptor.h>
+#include <dis7/Vector3Float.h>
+#include <dis7/WarfareFamilyPdu.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

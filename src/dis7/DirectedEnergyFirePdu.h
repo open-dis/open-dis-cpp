@@ -1,14 +1,14 @@
 #ifndef DIRECTEDENERGYFIREPDU_H
 #define DIRECTEDENERGYFIREPDU_H
 
-#include <DIS/EntityType.h>
-#include <DIS/ClockTime.h>
-#include <DIS/Vector3Float.h>
-#include <DIS/StandardVariableSpecification.h>
+#include <dis7/EntityType.h>
+#include <dis7/ClockTime.h>
+#include <dis7/Vector3Float.h>
+#include <dis7/StandardVariableSpecification.h>
 #include <vector>
-#include <DIS/WarfareFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/WarfareFamilyPdu.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

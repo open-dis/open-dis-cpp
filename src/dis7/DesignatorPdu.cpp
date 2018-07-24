@@ -1,4 +1,4 @@
-#include <DIS/DesignatorPdu.h> 
+#include <dis7/DesignatorPdu.h>
 
 using namespace DIS;
 

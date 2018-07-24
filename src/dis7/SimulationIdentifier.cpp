@@ -1,4 +1,4 @@
-#include <DIS/SimulationIdentifier.h> 
+#include <dis7/SimulationIdentifier.h>
 
 using namespace DIS;
 

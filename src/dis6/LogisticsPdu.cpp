@@ -1,4 +1,4 @@
-#include <DIS/LogisticsPdu.h> 
+#include <dis6/LogisticsPdu.h>
 
 using namespace DIS;
 

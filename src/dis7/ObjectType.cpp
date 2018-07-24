@@ -1,4 +1,4 @@
-#include <DIS/ObjectType.h> 
+#include <dis7/ObjectType.h>
 
 using namespace DIS;
 

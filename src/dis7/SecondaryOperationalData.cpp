@@ -1,4 +1,4 @@
-#include <DIS/SecondaryOperationalData.h> 
+#include <dis7/SecondaryOperationalData.h>
 
 using namespace DIS;
 

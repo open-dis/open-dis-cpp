@@ -1,4 +1,4 @@
-#include <DIS/DataQueryDatumSpecification.h> 
+#include <dis7/DataQueryDatumSpecification.h>
 
 using namespace DIS;
 

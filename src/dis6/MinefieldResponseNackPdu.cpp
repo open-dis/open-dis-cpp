@@ -1,4 +1,4 @@
-#include <DIS/MinefieldResponseNackPdu.h> 
+#include <dis6/MinefieldResponseNackPdu.h>
 
 using namespace DIS;
 

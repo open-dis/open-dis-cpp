@@ -1,12 +1,12 @@
 #ifndef ACTIONREQUESTRELIABLEPDU_H
 #define ACTIONREQUESTRELIABLEPDU_H
 
-#include <DIS/FixedDatum.h>
-#include <DIS/VariableDatum.h>
+#include <dis6/FixedDatum.h>
+#include <dis6/VariableDatum.h>
 #include <vector>
-#include <DIS/SimulationManagementWithReliabilityFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis6/SimulationManagementWithReliabilityFamilyPdu.h>
+#include <dis6/DataStream.h>
+#include <dis6/msLibMacro.h>
 
 
 namespace DIS

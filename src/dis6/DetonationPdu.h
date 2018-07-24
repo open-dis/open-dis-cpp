@@ -1,17 +1,17 @@
 #ifndef DETONATIONPDU_H
 #define DETONATIONPDU_H
 
-#include <DIS/EntityID.h>
-#include <DIS/EventID.h>
-#include <DIS/Vector3Float.h>
-#include <DIS/Vector3Double.h>
-#include <DIS/BurstDescriptor.h>
-#include <DIS/Vector3Float.h>
-#include <DIS/ArticulationParameter.h>
+#include <dis6/EntityID.h>
+#include <dis6/EventID.h>
+#include <dis6/Vector3Float.h>
+#include <dis6/Vector3Double.h>
+#include <dis6/BurstDescriptor.h>
+#include <dis6/Vector3Float.h>
+#include <dis6/ArticulationParameter.h>
 #include <vector>
-#include <DIS/WarfareFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis6/WarfareFamilyPdu.h>
+#include <dis6/DataStream.h>
+#include <dis6/msLibMacro.h>
 
 
 namespace DIS

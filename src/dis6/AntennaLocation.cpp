@@ -1,4 +1,4 @@
-#include <DIS/AntennaLocation.h> 
+#include <dis6/AntennaLocation.h>
 
 using namespace DIS;
 

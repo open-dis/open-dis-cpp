@@ -1,4 +1,4 @@
-#include <DIS/RadioType.h> 
+#include <dis7/RadioType.h>
 
 using namespace DIS;
 

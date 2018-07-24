@@ -1,10 +1,10 @@
 #ifndef LINEARSEGMENTPARAMETER_H
 #define LINEARSEGMENTPARAMETER_H
 
-#include <DIS/Vector3Double.h>
-#include <DIS/EulerAngles.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/Vector3Double.h>
+#include <dis7/EulerAngles.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

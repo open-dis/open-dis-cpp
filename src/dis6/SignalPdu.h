@@ -1,11 +1,11 @@
 #ifndef SIGNALPDU_H
 #define SIGNALPDU_H
 
-#include <DIS/OneByteChunk.h>
+#include <dis6/OneByteChunk.h>
 #include <vector>
-#include <DIS/RadioCommunicationsFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis6/RadioCommunicationsFamilyPdu.h>
+#include <dis6/DataStream.h>
+#include <dis6/msLibMacro.h>
 
 
 namespace DIS

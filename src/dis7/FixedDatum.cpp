@@ -1,4 +1,4 @@
-#include <DIS/FixedDatum.h> 
+#include <dis7/FixedDatum.h>
 
 using namespace DIS;
 

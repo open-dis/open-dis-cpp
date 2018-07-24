@@ -1,4 +1,4 @@
-#include <DIS/StartResumeReliablePdu.h> 
+#include <dis6/StartResumeReliablePdu.h>
 
 using namespace DIS;
 

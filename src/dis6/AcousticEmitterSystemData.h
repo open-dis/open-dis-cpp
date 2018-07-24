@@ -1,12 +1,12 @@
 #ifndef ACOUSTICEMITTERSYSTEMDATA_H
 #define ACOUSTICEMITTERSYSTEMDATA_H
 
-#include <DIS/AcousticEmitterSystem.h>
-#include <DIS/Vector3Float.h>
-#include <DIS/AcousticBeamData.h>
+#include <dis6/AcousticEmitterSystem.h>
+#include <dis6/Vector3Float.h>
+#include <dis6/AcousticBeamData.h>
 #include <vector>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis6/DataStream.h>
+#include <dis6/msLibMacro.h>
 
 
 namespace DIS

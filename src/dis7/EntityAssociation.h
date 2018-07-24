@@ -1,9 +1,9 @@
 #ifndef ENTITYASSOCIATION_H
 #define ENTITYASSOCIATION_H
 
-#include <DIS/EntityID.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/EntityID.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

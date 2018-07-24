@@ -1,10 +1,10 @@
 #ifndef STOPFREEZEPDU_H
 #define STOPFREEZEPDU_H
 
-#include <DIS/ClockTime.h>
-#include <DIS/SimulationManagementFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis6/ClockTime.h>
+#include <dis6/SimulationManagementFamilyPdu.h>
+#include <dis6/DataStream.h>
+#include <dis6/msLibMacro.h>
 
 
 namespace DIS

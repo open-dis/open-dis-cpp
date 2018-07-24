@@ -1,9 +1,9 @@
 #ifndef SYSTEMIDENTIFIER_H
 #define SYSTEMIDENTIFIER_H
 
-#include <DIS/ChangeOptions.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/ChangeOptions.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

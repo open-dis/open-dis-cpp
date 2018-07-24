@@ -1,4 +1,4 @@
-#include <DIS/DatumSpecification.h> 
+#include <dis7/DatumSpecification.h>
 
 using namespace DIS;
 

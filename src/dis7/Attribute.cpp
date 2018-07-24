@@ -1,4 +1,4 @@
-#include <DIS/Attribute.h> 
+#include <dis7/Attribute.h>
 
 using namespace DIS;
 

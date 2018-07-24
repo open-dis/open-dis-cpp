@@ -1,4 +1,4 @@
-#include <DIS/MinefieldStatePdu.h> 
+#include <dis6/MinefieldStatePdu.h>
 
 using namespace DIS;
 

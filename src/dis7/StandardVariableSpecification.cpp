@@ -1,4 +1,4 @@
-#include <DIS/StandardVariableSpecification.h> 
+#include <dis7/StandardVariableSpecification.h>
 
 using namespace DIS;
 

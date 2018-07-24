@@ -1,4 +1,4 @@
-#include <DIS/ObjectIdentifier.h> 
+#include <dis7/ObjectIdentifier.h>
 
 using namespace DIS;
 

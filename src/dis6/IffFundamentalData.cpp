@@ -1,4 +1,4 @@
-#include <DIS/IffFundamentalData.h> 
+#include <dis6/IffFundamentalData.h>
 
 using namespace DIS;
 

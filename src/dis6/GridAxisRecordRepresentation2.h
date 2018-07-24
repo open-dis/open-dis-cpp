@@ -1,11 +1,11 @@
 #ifndef GRIDAXISRECORDREPRESENTATION2_H
 #define GRIDAXISRECORDREPRESENTATION2_H
 
-#include <DIS/FourByteChunk.h>
+#include <dis6/FourByteChunk.h>
 #include <vector>
-#include <DIS/GridAxisRecord.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis6/GridAxisRecord.h>
+#include <dis6/DataStream.h>
+#include <dis6/msLibMacro.h>
 
 
 namespace DIS

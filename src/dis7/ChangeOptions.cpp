@@ -1,4 +1,4 @@
-#include <DIS/ChangeOptions.h> 
+#include <dis7/ChangeOptions.h>
 
 using namespace DIS;
 

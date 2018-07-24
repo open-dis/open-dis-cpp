@@ -1,4 +1,4 @@
-#include <DIS/BurstDescriptor.h> 
+#include <dis6/BurstDescriptor.h>
 
 using namespace DIS;
 

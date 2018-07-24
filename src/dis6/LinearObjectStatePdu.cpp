@@ -1,4 +1,4 @@
-#include <DIS/LinearObjectStatePdu.h> 
+#include <dis6/LinearObjectStatePdu.h>
 
 using namespace DIS;
 

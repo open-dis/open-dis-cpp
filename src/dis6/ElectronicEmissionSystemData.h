@@ -1,12 +1,12 @@
 #ifndef ELECTRONICEMISSIONSYSTEMDATA_H
 #define ELECTRONICEMISSIONSYSTEMDATA_H
 
-#include <DIS/EmitterSystem.h>
-#include <DIS/Vector3Float.h>
-#include <DIS/ElectronicEmissionBeamData.h>
+#include <dis6/EmitterSystem.h>
+#include <dis6/Vector3Float.h>
+#include <dis6/ElectronicEmissionBeamData.h>
 #include <vector>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis6/DataStream.h>
+#include <dis6/msLibMacro.h>
 
 
 namespace DIS

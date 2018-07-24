@@ -1,4 +1,4 @@
-#include <DIS/ElectronicEmissionsPdu.h> 
+#include <dis7/ElectronicEmissionsPdu.h>
 
 using namespace DIS;
 

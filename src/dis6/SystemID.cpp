@@ -1,4 +1,4 @@
-#include <DIS/SystemID.h> 
+#include <dis6/SystemID.h>
 
 using namespace DIS;
 

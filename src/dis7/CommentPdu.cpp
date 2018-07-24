@@ -1,4 +1,4 @@
-#include <DIS/CommentPdu.h> 
+#include <dis7/CommentPdu.h>
 
 using namespace DIS;
 

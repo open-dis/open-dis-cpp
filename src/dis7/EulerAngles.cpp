@@ -1,4 +1,4 @@
-#include <DIS/EulerAngles.h> 
+#include <dis7/EulerAngles.h>
 
 using namespace DIS;
 

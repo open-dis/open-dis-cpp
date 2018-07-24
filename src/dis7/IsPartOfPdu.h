@@ -1,15 +1,15 @@
 #ifndef ISPARTOFPDU_H
 #define ISPARTOFPDU_H
 
-#include <DIS/EntityID.h>
-#include <DIS/EntityID.h>
-#include <DIS/Relationship.h>
-#include <DIS/Vector3Float.h>
-#include <DIS/NamedLocationIdentification.h>
-#include <DIS/EntityType.h>
-#include <DIS/EntityManagementFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/EntityID.h>
+#include <dis7/EntityID.h>
+#include <dis7/Relationship.h>
+#include <dis7/Vector3Float.h>
+#include <dis7/NamedLocationIdentification.h>
+#include <dis7/EntityType.h>
+#include <dis7/EntityManagementFamilyPdu.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

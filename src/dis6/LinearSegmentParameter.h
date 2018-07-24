@@ -1,11 +1,11 @@
 #ifndef LINEARSEGMENTPARAMETER_H
 #define LINEARSEGMENTPARAMETER_H
 
-#include <DIS/SixByteChunk.h>
-#include <DIS/Vector3Double.h>
-#include <DIS/Orientation.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis6/SixByteChunk.h>
+#include <dis6/Vector3Double.h>
+#include <dis6/Orientation.h>
+#include <dis6/DataStream.h>
+#include <dis6/msLibMacro.h>
 
 
 namespace DIS

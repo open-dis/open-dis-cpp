@@ -1,4 +1,4 @@
-#include <DIS/ExplosionDescriptor.h> 
+#include <dis7/ExplosionDescriptor.h>
 
 using namespace DIS;
 

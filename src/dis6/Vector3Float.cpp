@@ -1,4 +1,4 @@
-#include <DIS/Vector3Float.h> 
+#include <dis6/Vector3Float.h>
 
 using namespace DIS;
 

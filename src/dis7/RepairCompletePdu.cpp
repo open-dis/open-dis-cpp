@@ -1,4 +1,4 @@
-#include <DIS/RepairCompletePdu.h> 
+#include <dis7/RepairCompletePdu.h>
 
 using namespace DIS;
 

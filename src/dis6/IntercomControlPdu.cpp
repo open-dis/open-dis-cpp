@@ -1,4 +1,4 @@
-#include <DIS/IntercomControlPdu.h> 
+#include <dis6/IntercomControlPdu.h>
 
 using namespace DIS;
 

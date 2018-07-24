@@ -1,4 +1,4 @@
-#include <DIS/Sensor.h> 
+#include <dis7/Sensor.h>
 
 using namespace DIS;
 

@@ -1,4 +1,4 @@
-#include <DIS/VariableParameter.h> 
+#include <dis7/VariableParameter.h>
 
 using namespace DIS;
 

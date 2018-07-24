@@ -1,4 +1,4 @@
-#include <DIS/OwnershipStatus.h> 
+#include <dis7/OwnershipStatus.h>
 
 using namespace DIS;
 

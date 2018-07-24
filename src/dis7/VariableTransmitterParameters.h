@@ -1,8 +1,8 @@
 #ifndef VARIABLETRANSMITTERPARAMETERS_H
 #define VARIABLETRANSMITTERPARAMETERS_H
 
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

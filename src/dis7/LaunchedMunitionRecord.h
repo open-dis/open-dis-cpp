@@ -1,12 +1,12 @@
 #ifndef LAUNCHEDMUNITIONRECORD_H
 #define LAUNCHEDMUNITIONRECORD_H
 
-#include <DIS/EventIdentifier.h>
-#include <DIS/EventIdentifier.h>
-#include <DIS/EventIdentifier.h>
-#include <DIS/Vector3Double.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/EventIdentifier.h>
+#include <dis7/EventIdentifier.h>
+#include <dis7/EventIdentifier.h>
+#include <dis7/Vector3Double.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

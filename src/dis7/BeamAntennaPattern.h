@@ -1,9 +1,9 @@
 #ifndef BEAMANTENNAPATTERN_H
 #define BEAMANTENNAPATTERN_H
 
-#include <DIS/EulerAngles.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/EulerAngles.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

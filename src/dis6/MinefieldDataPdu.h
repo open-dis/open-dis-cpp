@@ -1,15 +1,15 @@
 #ifndef MINEFIELDDATAPDU_H
 #define MINEFIELDDATAPDU_H
 
-#include <DIS/EntityID.h>
-#include <DIS/EntityID.h>
-#include <DIS/EntityType.h>
-#include <DIS/TwoByteChunk.h>
-#include <DIS/Vector3Float.h>
+#include <dis6/EntityID.h>
+#include <dis6/EntityID.h>
+#include <dis6/EntityType.h>
+#include <dis6/TwoByteChunk.h>
+#include <dis6/Vector3Float.h>
 #include <vector>
-#include <DIS/MinefieldFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis6/MinefieldFamilyPdu.h>
+#include <dis6/DataStream.h>
+#include <dis6/msLibMacro.h>
 
 
 namespace DIS

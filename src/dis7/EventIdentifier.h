@@ -1,9 +1,9 @@
 #ifndef EVENTIDENTIFIER_H
 #define EVENTIDENTIFIER_H
 
-#include <DIS/SimulationAddress.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/SimulationAddress.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

@@ -1,4 +1,4 @@
-#include <DIS/RecordSpecificationElement.h> 
+#include <dis7/RecordSpecificationElement.h>
 
 using namespace DIS;
 

@@ -1,4 +1,4 @@
-#include <DIS/EntityID.h> 
+#include <dis6/EntityID.h>
 
 using namespace DIS;
 

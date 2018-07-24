@@ -1,4 +1,4 @@
-#include <DIS/RecordQuerySpecification.h> 
+#include <dis7/RecordQuerySpecification.h>
 
 using namespace DIS;
 

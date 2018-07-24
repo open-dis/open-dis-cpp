@@ -1,4 +1,4 @@
-#include <DIS/VariableDatum.h> 
+#include <dis6/VariableDatum.h>
 #include <iostream>
 
 using namespace DIS;

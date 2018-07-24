@@ -1,4 +1,4 @@
-#include <DIS/Point.h> 
+#include <dis6/Point.h>
 
 using namespace DIS;
 

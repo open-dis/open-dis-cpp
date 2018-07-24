@@ -1,11 +1,11 @@
 #ifndef CREATEENTITYPDU_H
 #define CREATEENTITYPDU_H
 
-#include <DIS/EntityID.h>
-#include <DIS/EntityID.h>
-#include <DIS/SimulationManagementFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/EntityID.h>
+#include <dis7/EntityID.h>
+#include <dis7/SimulationManagementFamilyPdu.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

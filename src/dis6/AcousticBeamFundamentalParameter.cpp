@@ -1,4 +1,4 @@
-#include <DIS/AcousticBeamFundamentalParameter.h> 
+#include <dis6/AcousticBeamFundamentalParameter.h>
 
 using namespace DIS;
 

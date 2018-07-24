@@ -1,4 +1,4 @@
-#include <DIS/PointObjectStatePdu.h> 
+#include <dis6/PointObjectStatePdu.h>
 
 using namespace DIS;
 

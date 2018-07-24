@@ -1,4 +1,4 @@
-#include <DIS/EntityStateUpdatePdu.h> 
+#include <dis6/EntityStateUpdatePdu.h>
 
 using namespace DIS;
 

@@ -1,4 +1,4 @@
-#include <DIS/RadioCommunicationsFamilyPdu.h> 
+#include <dis6/RadioCommunicationsFamilyPdu.h>
 
 using namespace DIS;
 

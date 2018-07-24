@@ -1,4 +1,4 @@
-#include <DIS/ShaftRPMs.h> 
+#include <dis6/ShaftRPMs.h>
 
 using namespace DIS;
 

@@ -1,4 +1,4 @@
-#include <DIS/ArticulationParameter.h> 
+#include <dis6/ArticulationParameter.h>
 
 using namespace DIS;
 

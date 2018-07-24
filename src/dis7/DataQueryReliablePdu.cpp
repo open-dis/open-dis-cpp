@@ -1,4 +1,4 @@
-#include <DIS/DataQueryReliablePdu.h> 
+#include <dis7/DataQueryReliablePdu.h>
 
 using namespace DIS;
 

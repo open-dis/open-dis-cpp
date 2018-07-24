@@ -1,4 +1,4 @@
-#include <DIS/ServiceRequestPdu.h> 
+#include <dis7/ServiceRequestPdu.h>
 
 using namespace DIS;
 

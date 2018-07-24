@@ -1,12 +1,12 @@
 #ifndef ENTITYDAMAGESTATUSPDU_H
 #define ENTITYDAMAGESTATUSPDU_H
 
-#include <DIS/EntityID.h>
-#include <DIS/DirectedEnergyDamage.h>
+#include <dis7/EntityID.h>
+#include <dis7/DirectedEnergyDamage.h>
 #include <vector>
-#include <DIS/WarfareFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/WarfareFamilyPdu.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS

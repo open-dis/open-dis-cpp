@@ -1,4 +1,4 @@
-#include <DIS/TransmitterPdu.h> 
+#include <dis6/TransmitterPdu.h>
 
 using namespace DIS;
 

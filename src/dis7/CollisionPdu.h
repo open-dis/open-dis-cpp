@@ -1,14 +1,14 @@
 #ifndef COLLISIONPDU_H
 #define COLLISIONPDU_H
 
-#include <DIS/EntityID.h>
-#include <DIS/EntityID.h>
-#include <DIS/EventIdentifier.h>
-#include <DIS/Vector3Float.h>
-#include <DIS/Vector3Float.h>
-#include <DIS/EntityInformationFamilyPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/msLibMacro.h>
+#include <dis7/EntityID.h>
+#include <dis7/EntityID.h>
+#include <dis7/EventIdentifier.h>
+#include <dis7/Vector3Float.h>
+#include <dis7/Vector3Float.h>
+#include <dis7/EntityInformationFamilyPdu.h>
+#include <dis7/DataStream.h>
+#include <dis7/msLibMacro.h>
 
 
 namespace DIS
