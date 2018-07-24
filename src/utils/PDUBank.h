@@ -2,7 +2,7 @@
 #define _PDU_BANK_H_
 
 #include <dis6/Pdu.h>
-#include <utils/PduType.h>
+#include <utils/PDUType.h>
 
 namespace DIS
 {

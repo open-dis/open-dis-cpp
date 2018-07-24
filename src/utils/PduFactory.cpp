@@ -6,7 +6,7 @@
 #include <DIS/CreateEntityPdu.h>
 #include <DIS/RemoveEntityPdu.h>
 #include <utils/Endian.h>
-#include <utils/PduType.h>
+#include <utils/PDUType.h>
 
 #include <iostream>
 

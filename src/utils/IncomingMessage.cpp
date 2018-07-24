@@ -2,7 +2,7 @@
 #include <utils/IPacketProcessor.h>
 #include <dis6/Pdu.h>
 #include <utils/DataStream.h>
-#include <utils/PduType.h>
+#include <utils/PDUType.h>
 #include <utils/PDUBank.h>
 #include <iostream>
 
