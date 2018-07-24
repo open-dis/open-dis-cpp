@@ -16,7 +16,7 @@
     </path>
     
     <target name="init" description="create initial directories">
-        <mkdir dir="cpp/obj"/>
+        <mkdir dir="src/obj"/>
     </target>
     
     <!-- Generate the  C++ Open-DIS code. This relies on the jar file xmlpg.jar, from 
