@@ -1,10 +1,10 @@
 #include "PduFactory.h"
-#include <DIS/EntityStatePdu.h>
-#include <DIS/FirePdu.h>
-#include <DIS/SetDataPdu.h>
-#include <DIS/DetonationPdu.h>
-#include <DIS/CreateEntityPdu.h>
-#include <DIS/RemoveEntityPdu.h>
+#include <dis6/EntityStatePdu.h>
+#include <dis6/FirePdu.h>
+#include <dis6/SetDataPdu.h>
+#include <dis6/DetonationPdu.h>
+#include <dis6/CreateEntityPdu.h>
+#include <dis6/RemoveEntityPdu.h>
 #include <utils/Endian.h>
 #include <utils/PDUType.h>
 

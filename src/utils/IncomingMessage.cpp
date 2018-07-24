@@ -6,7 +6,7 @@
 #include <utils/PDUBank.h>
 #include <iostream>
 
-#include <DIS/EntityStatePdu.h>
+#include <dis6/EntityStatePdu.h>
 
 #include <iostream>
 

@@ -1,25 +1,25 @@
 #include <utils/PDUBank.h>
-#include <DIS/EntityStatePdu.h>
-#include <DIS/FirePdu.h>
-#include <DIS/DetonationPdu.h>
-#include <DIS/CollisionPdu.h>
-#include <DIS/ServiceRequestPdu.h>
-#include <DIS/ResupplyOfferPdu.h>
-#include <DIS/ResupplyReceivedPdu.h>
-#include <DIS/ResupplyCancelPdu.h>
-#include <DIS/RepairCompletePdu.h>
-#include <DIS/RepairResponsePdu.h>
-#include <DIS/CreateEntityPdu.h>
-#include <DIS/RemoveEntityPdu.h>
-#include <DIS/StartResumePdu.h>
-#include <DIS/AcknowledgePdu.h>
-#include <DIS/ActionRequestPdu.h>
-#include <DIS/ActionResponsePdu.h>
-#include <DIS/DataQueryPdu.h>
-#include <DIS/SetDataPdu.h>
-#include <DIS/EventReportPdu.h>
-#include <DIS/CommentPdu.h>
-#include <DIS/StopFreezePdu.h>
+#include <dis6/EntityStatePdu.h>
+#include <dis6/FirePdu.h>
+#include <dis6/DetonationPdu.h>
+#include <dis6/CollisionPdu.h>
+#include <dis6/ServiceRequestPdu.h>
+#include <dis6/ResupplyOfferPdu.h>
+#include <dis6/ResupplyReceivedPdu.h>
+#include <dis6/ResupplyCancelPdu.h>
+#include <dis6/RepairCompletePdu.h>
+#include <dis6/RepairResponsePdu.h>
+#include <dis6/CreateEntityPdu.h>
+#include <dis6/RemoveEntityPdu.h>
+#include <dis6/StartResumePdu.h>
+#include <dis6/AcknowledgePdu.h>
+#include <dis6/ActionRequestPdu.h>
+#include <dis6/ActionResponsePdu.h>
+#include <dis6/DataQueryPdu.h>
+#include <dis6/SetDataPdu.h>
+#include <dis6/EventReportPdu.h>
+#include <dis6/CommentPdu.h>
+#include <dis6/StopFreezePdu.h>
 
 
 using namespace DIS;
