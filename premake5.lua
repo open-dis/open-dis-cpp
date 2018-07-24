@@ -29,8 +29,7 @@ project "OpenDIS"
   language "C++"
   kind "SharedLib"
   includedirs { 
-    "cpp",
-    "CppUtils"
+    "src"
   }
   files { 
     "src/dis6/*.h",
