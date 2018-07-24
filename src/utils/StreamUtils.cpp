@@ -1,4 +1,4 @@
-#include <DIS/StreamUtils.h>
+#include <utils/StreamUtils.h>
 
 #include <DIS/EntityStatePdu.h>
 #include <DIS/EntityID.h>

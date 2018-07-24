@@ -5,7 +5,7 @@
 #define _dcl_dis_packet_factory_h_
 
 #include <map>                      // for member
-#include <DIS/msLibMacro.h>         // for library symbols
+#include <dis6/msLibMacro.h>         // for library symbols
 
 namespace DIS
 {

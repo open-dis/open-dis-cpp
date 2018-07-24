@@ -5,7 +5,7 @@
 #ifndef _dcl_dis_i_buffer_processor_h_
 #define _dcl_dis_i_buffer_processor_h_
 
-#include <DIS/Endian.h>
+#include <utils/Endian.h>
 
 namespace DIS
 {

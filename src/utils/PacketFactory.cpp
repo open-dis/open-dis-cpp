@@ -1,5 +1,5 @@
-#include <DIS/PacketFactory.h>
-#include <DIS/Pdu.h>
+#include <utils/PacketFactory.h>
+#include <dis6/Pdu.h>
 #include <cstdlib>
 
 using namespace DIS;

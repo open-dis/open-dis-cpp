@@ -1,8 +1,8 @@
 #ifndef _PDU_BANK_H_
 #define _PDU_BANK_H_
 
-#include <DIS/Pdu.h>
-#include <DIS/PDUType.h>
+#include <dis6/Pdu.h>
+#include <utils/PduType.h>
 
 namespace DIS
 {

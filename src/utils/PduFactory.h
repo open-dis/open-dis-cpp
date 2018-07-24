@@ -1,7 +1,7 @@
 #pragma once
 
-#include <DIS/msLibMacro.h>         // for library symbols
-#include <DIS/Pdu.h>
+#include <dis6/msLibMacro.h>         // for library symbols
+#include <dis6/Pdu.h>
 
 namespace DIS
 {

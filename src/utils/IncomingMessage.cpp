@@ -1,9 +1,9 @@
-#include <DIS/IncomingMessage.h>
-#include <DIS/IPacketProcessor.h>
-#include <DIS/Pdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/PDUType.h>
-#include <DIS/PDUBank.h>
+#include <utils/IncomingMessage.h>
+#include <utils/IPacketProcessor.h>
+#include <dis6/Pdu.h>
+#include <utils/DataStream.h>
+#include <utils/PduType.h>
+#include <utils/PDUBank.h>
 #include <iostream>
 
 #include <DIS/EntityStatePdu.h>

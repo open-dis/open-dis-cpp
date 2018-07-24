@@ -15,8 +15,8 @@
 
 #include <string>                 // for typedef, member
 #include <vector>                 // for typedef, member
-#include <DIS/Endian.h>           // for enum
-#include <DIS/msLibMacro.h>       // for library symbols
+#include <utils/Endian.h>           // for enum
+#include <dis6/msLibMacro.h>       // for library symbols
 #include <cstdlib>                // for size_t and NULL definition
 
 namespace DIS

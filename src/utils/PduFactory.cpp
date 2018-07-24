@@ -5,8 +5,8 @@
 #include <DIS/DetonationPdu.h>
 #include <DIS/CreateEntityPdu.h>
 #include <DIS/RemoveEntityPdu.h>
-#include <DIS/Endian.h>
-#include <DIS/PDUType.h>
+#include <utils/Endian.h>
+#include <utils/PduType.h>
 
 #include <iostream>
 
