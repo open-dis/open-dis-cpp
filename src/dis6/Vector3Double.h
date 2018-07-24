@@ -1,7 +1,7 @@
 #ifndef VECTOR3DOUBLE_H
 #define VECTOR3DOUBLE_H
 
-#include <dis6/DataStream.h>
+#include <utils/DataStream.h>
 #include <dis6/msLibMacro.h>
 
 

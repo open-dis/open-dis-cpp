@@ -5,7 +5,7 @@
 #include <dis6/VariableDatum.h>
 #include <vector>
 #include <dis6/SimulationManagementFamilyPdu.h>
-#include <dis6/DataStream.h>
+#include <utils/DataStream.h>
 #include <dis6/msLibMacro.h>
 
 

@@ -7,7 +7,7 @@
 #include <dis7/MunitionDescriptor.h>
 #include <dis7/Vector3Float.h>
 #include <dis7/WarfareFamilyPdu.h>
-#include <dis7/DataStream.h>
+#include <utils/DataStream.h>
 #include <dis7/msLibMacro.h>
 
 

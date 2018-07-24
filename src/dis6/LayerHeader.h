@@ -1,7 +1,7 @@
 #ifndef LAYERHEADER_H
 #define LAYERHEADER_H
 
-#include <dis6/DataStream.h>
+#include <utils/DataStream.h>
 #include <dis6/msLibMacro.h>
 
 

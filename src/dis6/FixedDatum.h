@@ -1,7 +1,7 @@
 #ifndef FIXEDDATUM_H
 #define FIXEDDATUM_H
 
-#include <dis6/DataStream.h>
+#include <utils/DataStream.h>
 #include <dis6/msLibMacro.h>
 
 

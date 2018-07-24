@@ -1,7 +1,7 @@
 #ifndef POINT_H
 #define POINT_H
 
-#include <dis6/DataStream.h>
+#include <utils/DataStream.h>
 #include <dis6/msLibMacro.h>
 
 

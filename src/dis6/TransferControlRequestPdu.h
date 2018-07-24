@@ -7,7 +7,7 @@
 #include <dis6/RecordSet.h>
 #include <vector>
 #include <dis6/EntityManagementFamilyPdu.h>
-#include <dis6/DataStream.h>
+#include <utils/DataStream.h>
 #include <dis6/msLibMacro.h>
 
 

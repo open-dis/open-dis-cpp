@@ -3,7 +3,7 @@
 
 #include <dis7/Vector3Float.h>
 #include <dis7/EventIdentifier.h>
-#include <dis7/DataStream.h>
+#include <utils/DataStream.h>
 #include <dis7/msLibMacro.h>
 
 

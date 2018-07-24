@@ -12,7 +12,7 @@
 #include <dis7/VariableParameter.h>
 #include <vector>
 #include <dis7/EntityInformationFamilyPdu.h>
-#include <dis7/DataStream.h>
+#include <utils/DataStream.h>
 #include <dis7/msLibMacro.h>
 
 

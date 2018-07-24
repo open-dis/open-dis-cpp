@@ -6,7 +6,7 @@
 #include <dis7/SupplyQuantity.h>
 #include <vector>
 #include <dis7/LogisticsFamilyPdu.h>
-#include <dis7/DataStream.h>
+#include <utils/DataStream.h>
 #include <dis7/msLibMacro.h>
 
 

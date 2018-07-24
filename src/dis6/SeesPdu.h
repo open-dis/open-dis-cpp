@@ -6,7 +6,7 @@
 #include <dis6/VectoringNozzleSystemData.h>
 #include <vector>
 #include <dis6/DistributedEmissionsFamilyPdu.h>
-#include <dis6/DataStream.h>
+#include <utils/DataStream.h>
 #include <dis6/msLibMacro.h>
 
 

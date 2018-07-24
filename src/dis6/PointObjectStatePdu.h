@@ -9,7 +9,7 @@
 #include <dis6/SimulationAddress.h>
 #include <dis6/SimulationAddress.h>
 #include <dis6/SyntheticEnvironmentFamilyPdu.h>
-#include <dis6/DataStream.h>
+#include <utils/DataStream.h>
 #include <dis6/msLibMacro.h>
 
 

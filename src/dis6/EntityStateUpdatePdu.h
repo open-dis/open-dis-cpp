@@ -8,7 +8,7 @@
 #include <dis6/ArticulationParameter.h>
 #include <vector>
 #include <dis6/EntityInformationFamilyPdu.h>
-#include <dis6/DataStream.h>
+#include <utils/DataStream.h>
 #include <dis6/msLibMacro.h>
 
 

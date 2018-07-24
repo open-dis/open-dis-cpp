@@ -3,7 +3,7 @@
 
 #include <dis6/ClockTime.h>
 #include <dis6/SimulationManagementWithReliabilityFamilyPdu.h>
-#include <dis6/DataStream.h>
+#include <utils/DataStream.h>
 #include <dis6/msLibMacro.h>
 
 

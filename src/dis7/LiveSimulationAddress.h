@@ -1,7 +1,7 @@
 #ifndef LIVESIMULATIONADDRESS_H
 #define LIVESIMULATIONADDRESS_H
 
-#include <dis7/DataStream.h>
+#include <utils/DataStream.h>
 #include <dis7/msLibMacro.h>
 
 

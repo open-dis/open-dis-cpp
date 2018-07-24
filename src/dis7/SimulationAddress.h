@@ -1,7 +1,7 @@
 #ifndef SIMULATIONADDRESS_H
 #define SIMULATIONADDRESS_H
 
-#include <dis7/DataStream.h>
+#include <utils/DataStream.h>
 #include <dis7/msLibMacro.h>
 
 

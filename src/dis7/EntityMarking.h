@@ -1,7 +1,7 @@
 #ifndef ENTITYMARKING_H
 #define ENTITYMARKING_H
 
-#include <dis7/DataStream.h>
+#include <utils/DataStream.h>
 #include <dis7/msLibMacro.h>
 
 

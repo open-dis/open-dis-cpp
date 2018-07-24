@@ -1,7 +1,7 @@
 #ifndef ONEBYTECHUNK_H
 #define ONEBYTECHUNK_H
 
-#include <dis6/DataStream.h>
+#include <utils/DataStream.h>
 #include <dis6/msLibMacro.h>
 
 

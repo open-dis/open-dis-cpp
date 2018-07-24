@@ -4,7 +4,7 @@
 #include <dis7/FixedDatum.h>
 #include <dis7/VariableDatum.h>
 #include <vector>
-#include <dis7/DataStream.h>
+#include <utils/DataStream.h>
 #include <dis7/msLibMacro.h>
 
 

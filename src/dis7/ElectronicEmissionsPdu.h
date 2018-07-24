@@ -8,7 +8,7 @@
 #include <dis7/Vector3Float.h>
 #include <vector>
 #include <dis7/DistributedEmissionsFamilyPdu.h>
-#include <dis7/DataStream.h>
+#include <utils/DataStream.h>
 #include <dis7/msLibMacro.h>
 
 

@@ -8,7 +8,7 @@
 #include <dis7/NamedLocationIdentification.h>
 #include <dis7/EntityType.h>
 #include <dis7/EntityManagementFamilyPdu.h>
-#include <dis7/DataStream.h>
+#include <utils/DataStream.h>
 #include <dis7/msLibMacro.h>
 
 
