@@ -29,14 +29,13 @@ project "OpenDIS"
   language "C++"
   kind "SharedLib"
   includedirs { 
-    "cpp",
-    "CppUtils"
+    "src"
   }
   files { 
-    "cpp/DIS/*.h",
-    "cpp/DIS/*.cpp",
-    "CppUtils/DIS/*.h",
-    "CppUtils/DIS/*.cpp"
+    "src/dis6/*.h",
+    "src/dis6/*.cpp",
+    "src/utils/*.h",
+    "src/utils/*.cpp"
   }
 
 -- TODO: add project sections for the unit tests and the examples.
