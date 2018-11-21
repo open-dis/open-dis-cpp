@@ -38,4 +38,23 @@ project "OpenDIS"
     "src/utils/*.cpp"
   }
 
+-- Uncomment this if you have the HawkNL library and want to build the example.
+--[[
+project "ExampleSender"
+  language "C++"
+  kind "ConsoleApp"
+  includedirs {
+    "cpp",
+    "CppUtils",
+    "."
+  }
+  files {
+    "Example/main.cpp",
+    "Example/Connection.*",
+    "Example/Utils.*",
+    "Example/Timer.*"
+  }
+  links { "OpenDIS", "HawkNL" }
+--]]
+
 -- TODO: add project sections for the unit tests and the examples.
