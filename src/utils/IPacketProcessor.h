@@ -14,6 +14,7 @@ namespace DIS
    class IPacketProcessor
    {
    public:
+      virtual ~IPacketProcessor() {}
       virtual void Process(const Pdu& p)=0;
    };
 
