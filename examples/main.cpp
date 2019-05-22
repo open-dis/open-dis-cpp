@@ -1,17 +1,17 @@
 
 // specific for the example
-#include <Example/Connection.h>
-#include <Example/Utils.h>
-#include <Example/Timer.h>
+#include <examples/Connection.h>
+#include <examples/Utils.h>
+#include <examples/Timer.h>
 
 // the DIS library usage
-#include <DIS/EntityStatePdu.h>
-#include <DIS/DetonationPdu.h>
-#include <DIS/DataStream.h>
-#include <DIS/Vector3Double.h>
-#include <DIS/BurstDescriptor.h>
+#include <dis6/EntityStatePdu.h>
+#include <dis6/DetonationPdu.h>
+#include <utils/DataStream.h>
+#include <dis6/Vector3Double.h>
+#include <dis6/BurstDescriptor.h>
 
-#include <DIS/Conversion.h>
+#include <utils/Conversion.h>
 
 #include <iostream>
 
@@ -197,7 +197,7 @@ void init_effects(DIS::DetonationPdu &detonation, const DIS::EntityID& firing, c
    }
 
    /// entity id data
-   {           
+   {
       DIS::EntityID detonation_entity_id;
       detonation_entity_id.setSite( 0 );
       detonation_entity_id.setApplication( 1 );
@@ -207,12 +207,12 @@ void init_effects(DIS::DetonationPdu &detonation, const DIS::EntityID& firing, c
    }
 
    /// event id data
-   { 
+   {
       //Event ID.
-      //   This field shall contain the same data as in the Event ID Þeld of the Fire PDU that communicated
-      //   the launch of the munition. If the detonation is not preceded by a corresponding Þre event,
-      //   then the Event Number Þeld of the Event IdentiÞer record shall be zero (e.g., land mines detonation).
-      //   This Þeld shall be represented by an Event IdentiÞer record (see 5.2.18).
+      //   This field shall contain the same data as in the Event ID field of the Fire PDU that communicated
+      //   the launch of the munition. If the detonation is not preceded by a corresponding fire event,
+      //   then the Event Number field of the Event Identifier record shall be zero (e.g., land mines detonation).
+      //   This field shall be represented by an Event Identifier record (see 5.2.18).
 
       // 0200 Point Detonation (PD)
       DIS::EventID detonation_event_id;
@@ -293,7 +293,7 @@ void UpdateTank(DIS::EntityStatePdu& tank, Example::TankDynamics& dynamics, doub
 int main(int argc, char* argv[])
 {
    unsigned int port(62040);
-   std::string ip("239.1.2.3");
+   std::string ip("224.0.0.1");
    if( argc > 2 )
    {
       port = Example::ToType<unsigned int>( argv[1] );
@@ -302,11 +302,11 @@ int main(int argc, char* argv[])
 
    /// the basic pieces for sending data
    Example::Connection multicast;
-   multicast.Connect( port , ip );
+   multicast.Connect( port , ip , false);
    DIS::DataStream buffer( DIS::BIG );
 
    DIS::EntityStatePdu enemy;
-   DIS::EntityStatePdu friendly[2];   
+   DIS::EntityStatePdu friendly[2];
    init_entities( friendly[0], friendly[1], enemy );
 
    DIS::DetonationPdu tank_round;
@@ -331,13 +331,13 @@ int main(int argc, char* argv[])
 
    // define the content to be sent of the network
    double sim_time = 0;
-   double dt = 0;  
+   double dt = 0;
    unsigned int frame_stamp=0;
 
    Example::TimedAlert isDetonationReady(10.0);   // alert us at 10.0 second intervals
    Example::TimedAlert isTimeToPrintStatistics(5.0);   // alert us at 10.0 second intervals
 
-   double last_time = timer.GetSeconds();  
+   double last_time = timer.GetSeconds();
 
    // the simulation loop
    ///\todo find an exit condition so we don't need to explicitly kill the app

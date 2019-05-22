@@ -1,4 +1,4 @@
-#include <Example/EntityStatePduProcessor.h>
+#include <examples/EntityStatePduProcessor.h>
 
 #include <iostream>
 
@@ -16,4 +16,3 @@ void EntityStatePduProcessor::Process(const DIS::Pdu& packet)
                 << std::endl;
    }
 }
-

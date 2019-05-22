@@ -1,7 +1,8 @@
 #ifndef _example_timer_h_
 #define _example_timer_h_
 
-#include <nl.h>          // for member
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_timer.h>
 
 namespace Example
 {
@@ -9,19 +10,14 @@ namespace Example
    class Timer
    {
    public:
+      Timer();
       void Update();
 
-      NLlong GetCurrentSeconds() const;
-      NLlong GetCurrentMSeconds() const;
-      NLlong GetCurrentUSeconds() const;
-
-      // @return the time of day in seconds
+      // @return the ms ticks since SDL_Init in seconds
       double GetSeconds() const;
 
-      NLtime GetData() const;
-
    private:
-      NLtime _time_of_day;
+      Uint32 _ticks;
    };
 }
 

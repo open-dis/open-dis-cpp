@@ -4,14 +4,14 @@
 --
 
 workspace "open-dis-cpp"
-  configurations { 
+  configurations {
     "Debug",
     "Release"
   }
   targetdir "Build/lib/%{cfg.buildcfg}"
   configuration "Debug*"
     defines { "DEBUG" }
- 
+
   configuration "Release*"
     defines { "NDEBUG" }
     optimize "On"
@@ -28,10 +28,10 @@ workspace "open-dis-cpp"
 project "OpenDIS"
   language "C++"
   kind "SharedLib"
-  includedirs { 
+  includedirs {
     "src"
   }
-  files { 
+  files {
     "src/dis6/*.h",
     "src/dis6/*.cpp",
     "src/utils/*.h",
@@ -39,22 +39,37 @@ project "OpenDIS"
   }
 
 -- Uncomment this if you have the HawkNL library and want to build the example.
---[[
+
 project "ExampleSender"
   language "C++"
   kind "ConsoleApp"
   includedirs {
-    "cpp",
-    "CppUtils",
+    "src",
     "."
   }
   files {
-    "Example/main.cpp",
-    "Example/Connection.*",
-    "Example/Utils.*",
-    "Example/Timer.*"
+    "examples/main.cpp",
+    "examples/Connection.*",
+    "examples/Utils.*",
+    "examples/Timer.*"
   }
-  links { "OpenDIS", "HawkNL" }
---]]
+  links { "OpenDIS", "SDL2", "SDL2_net" }
+
+project "ExampleReciever"
+  language "C++"
+  kind "ConsoleApp"
+  includedirs {
+    "src",
+    "."
+  }
+  files {
+    "examples/main_receive.cpp",
+    "examples/Connection.*",
+    "examples/Utils.*",
+    "examples/Timer.*",
+	"examples/EntityStatePduProcessor.*"
+  }
+  links { "OpenDIS", "SDL2", "SDL2_net" }
+
 
 -- TODO: add project sections for the unit tests and the examples.

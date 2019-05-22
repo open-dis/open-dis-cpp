@@ -1,8 +1,8 @@
 #ifndef _example_entity_state_pdu_processor_h_
 #define _example_entity_state_pdu_processor_h_
 
-#include <DIS/EntityStatePdu.h>                  // for typedef
-#include <DIS/IPacketProcessor.h>                // for base class
+#include <dis6/EntityStatePdu.h>                  // for typedef
+#include <utils/IPacketProcessor.h>                // for base class
 
 namespace Example
 {
