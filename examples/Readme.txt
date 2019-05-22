@@ -20,5 +20,9 @@ work across different systems.
 Build instructions:
 1. cd to the repo root
 2. run `premake5 gmake` (If not done already)
-3. run `make all`
+3. run `make`
 Files will be located in ./Build/lib/Debug
+Running instructions: 
+1. open up 2 terminals in the git repo root:
+2. Run `./Build/lib/Debug/ExampleReciever` in one terminal
+3. Run `./Build/lib/Debug/ExampleSender` in the other terminal

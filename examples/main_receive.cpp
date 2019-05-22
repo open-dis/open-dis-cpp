@@ -41,6 +41,10 @@ int main(int argc, char* argv[])
 
       // engage the higher level support
       incoming.Process( buffer , bytes_read , endian );
+
+      // Add a short sleep delay to avoid locking up machine
+      // (SDL UDP Reads are non-blocking)
+      Example::sleep(10);
    }
 
    incoming.RemoveProcessor( es_pdu_type , &processor );
