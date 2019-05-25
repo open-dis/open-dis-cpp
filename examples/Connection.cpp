@@ -1,64 +1,52 @@
-#include <Example/Connection.h>
-#include <Example/Logging.h>
+#include <examples/Connection.h>
+#include <examples/Logging.h>
 
 #include <sstream>
+#include <cstring>
+
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_net.h>
 
 using namespace Example;
 
-void Connection::Connect(unsigned int port, const std::string& host)
-{
-   NLboolean success = nlInit();  
 
+void Connection::Connect(unsigned int port, const std::string& host, bool listening)
+{
+   bool success = SDL_Init(0) != -1 && SDLNet_Init() != -1;
    if (!success)
    {
       HandleError();
       return;
    }
 
-   if (nlSelectNetwork(NL_IP) == NL_INVALID)
+   if (SDLNet_ResolveHost(&mAddr, host.c_str(), port) == -1 )
    {
-      LOG_ERROR("Can't select network type");
-   }   
-
-   NLaddress  maddr;
-   if (nlStringToAddr(host.c_str(), &maddr) == NL_INVALID )
-   {      
       std::ostringstream strm;
       strm << "Can't get address for : " + host + ". "
-           << "Error:" << nlGetErrorStr(nlGetError())
-           << ". System: " << nlGetSystemErrorStr(nlGetSystemError());
+           << "Error:" << SDLNet_GetError()
+		       << "\n. System: " <<  SDL_GetError();
       LOG_ERROR( strm.str() );
    }
 
-   nlSetAddrPort(&maddr, port);
+   if (listening) {
+      mSocket = SDLNet_UDP_Open(port);
+   } else {
+      mSocket = SDLNet_UDP_Open(0);
+   }
 
-   nlHint(NL_MULTICAST_TTL, NL_TTL_LOCAL);
-   nlHint(NL_REUSE_ADDRESS, NL_TRUE);
-
-   mSocket = nlOpen(port, NL_UDP_MULTICAST);
-
-   if(mSocket == NL_INVALID)
+   if(!mSocket)
    {
       std::ostringstream strm;
-      strm << "Can't open socket: " << nlGetErrorStr(nlGetError())
-           << ". System: " << + nlGetSystemErrorStr(nlGetSystemError());
+      strm << "Can't open socket: " << SDLNet_GetError();
       LOG_ERROR( strm.str() )
    }
 
-   if(nlConnect(mSocket, &maddr) == NL_FALSE)
-   {
-      nlClose(mSocket);
-
-      std::ostringstream strm;
-      strm << "Can't connect to socket: " << nlGetErrorStr(nlGetError())
-           << ". System: " << nlGetSystemErrorStr(nlGetSystemError());
-      LOG_ERROR( strm.str() );
-   }
 }
 
 void Connection::Disconnect()
 {
-   nlShutdown();
+   SDLNet_UDP_Close(mSocket);
+   SDLNet_Quit();
 }
 
 void Connection::Send(const char* buf, size_t numbytes)
@@ -68,41 +56,43 @@ void Connection::Send(const char* buf, size_t numbytes)
       return;
    }
 
-   if (int ret = nlWrite(mSocket, (NLvoid *)buf, numbytes ))
+   UDPpacket * packet = SDLNet_AllocPacket(numbytes);
+   if (!packet)
    {
+      HandleError();
+   }
+   else
+   {
+      memcpy(packet->data, buf, numbytes);
+      packet->address = mAddr;
+      int ret = SDLNet_UDP_Send(mSocket, -1, packet);
       if (ret == 0)
       {
-         LOG_WARNING("Network buffers are full");
+         HandleError();
       }
-      else if (ret == NL_INVALID)
-      {
-         std::ostringstream strm;
-         strm << "Problem sending: ";
-         LOG_ERROR(strm.str() + nlGetErrorStr(nlGetError()) + 
-                   ". System: " + nlGetSystemErrorStr(nlGetSystemError()) );
-      }
+      SDLNet_FreePacket(packet);
    }
 }
 
-size_t Connection::Receive(char* buf, size_t numbytes)
+size_t Connection::Receive(char* buf)
 {
-   NLint result = nlRead(mSocket, (NLvoid *)buf, (NLint)numbytes);
+   UDPpacket* packet = SDLNet_AllocPacket(MTU_SIZE);
+   int packetRecvd = SDLNet_UDP_Recv(mSocket, packet);
 
-   if ( result == NL_INVALID )
+   if ( packetRecvd != 1 )
    {
-      HandleError();
+      if (packetRecvd == -1) {
+         HandleError();
+      }
       return 0;
-   }  
-
-   return result;
+   }
+   memcpy(buf, packet->data, packet->len);
+   return packet->len;
 }
 
 void Connection::HandleError()
 {
-   NLenum error = nlGetError();
-   const NLchar* errorString = nlGetErrorStr( error );
+   const char* errorString = SDLNet_GetError();
 
-   LOG_ERROR("A network error occurred: " + std::string(errorString));   
+   LOG_ERROR("A network error occurred: " + std::string(errorString));
 }
-
-

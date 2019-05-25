@@ -6,18 +6,15 @@
 #include <unistd.h>
 #endif
 
-#include <DIS/Orientation.h>
-#include <DIS/Vector3Float.h>
-#include <DIS/Vector3Double.h>
+#include <dis6/Orientation.h>
+#include <dis6/Vector3Float.h>
+#include <dis6/Vector3Double.h>
+#include <SDL2/SDL_timer.h>
 
 ///\todo make cross platform solution
 void Example::sleep(unsigned int ms)
 {
-#ifdef WIN32
-   Sleep( ms );
-#else
-   usleep( ms*1000 );
-#endif
+    SDL_Delay(ms);
 }
 
 using namespace Example;

@@ -1,40 +1,37 @@
 
-#include <Example/Timer.h>
+#include <examples/Timer.h>
 #include <iostream>
+#include "Logging.h"
+
+#include <sstream>
+
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_timer.h>
 
 using namespace Example;
 
 const double MILLI = 0.001;
 const double MICRO = 0.000001;
 
+Timer::Timer() {
+   // Added to allow Timer to be a stand alone class
+   // Supposedly SDL_Init ignores repeated calls
+   // source : https://discourse.libsdl.org/t/behaviour-of-sdl-init-when-called-more-than-once/6156
+   if (SDL_Init(0) != 0) {
+      std::ostringstream strm;
+      strm << "SDL_Init failed due to error: " << SDL_GetError();
+      LOG_ERROR(strm.str());
+   }
+
+}
+
 void Timer::Update()
 {
-   nlTime( &_time_of_day );
+   _ticks = SDL_GetTicks();
 }
 
-NLlong Timer::GetCurrentSeconds() const
-{
-   return _time_of_day.useconds;
-}
-
-NLlong Timer::GetCurrentMSeconds() const
-{
-   return _time_of_day.useconds;
-}
-
-NLlong Timer::GetCurrentUSeconds() const
-{
-   return _time_of_day.useconds;
-}
 
 double Timer::GetSeconds() const
 {
-   //return( _time_of_day.seconds + _time_of_day.mseconds*MILLI + _time_of_day.useconds*MICRO );
-   return( _time_of_day.seconds + _time_of_day.mseconds*MILLI );
-   //return( _time_of_day.seconds + _time_of_day.useconds*MICRO );
-}
-
-NLtime Timer::GetData() const
-{
-   return _time_of_day;
+   return (_ticks * MILLI);
 }

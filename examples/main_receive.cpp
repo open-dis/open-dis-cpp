@@ -1,18 +1,19 @@
 
-#include <Example/Connection.h>                  // for reading packets from the socket
-#include <Example/EntityStatePduProcessor.h>     // for usage
-#include <Example/Utils.h>
+#include <examples/Connection.h>                  // for reading packets from the socket
+#include <examples/EntityStatePduProcessor.h>     // for usage
+#include <examples/Utils.h>
 
-#include <DIS/IncomingMessage.h>                 // for library usage
-#include <DIS/EntityStatePdu.h>                  // for library usage
+#include <utils/IncomingMessage.h>                 // for library usage
+#include <dis6/EntityStatePdu.h>                  // for library usage
 
 #include <cstring>                       // for strlen
 #include <cstddef>                       // for size_t definition
 
+#include <iostream>
 int main(int argc, char* argv[])
 {
    unsigned int port(62040);
-   std::string ip("239.1.2.3");
+   std::string ip("224.0.0.1");
    if( argc > 2 )
    {
       port = Example::ToType<unsigned int>( argv[1] );
@@ -20,7 +21,7 @@ int main(int argc, char* argv[])
    }
 
    Example::Connection multicast;
-   multicast.Connect( port , ip );
+   multicast.Connect( port , ip , true);
    DIS::Endian endian = DIS::BIG;
 
    char buffer[Example::MTU_SIZE+1];
@@ -36,14 +37,17 @@ int main(int argc, char* argv[])
       ///\todo find a way to use the stream rather than a raw char buffer,
       /// so that copying the buffer into the DataStream within the IncomingMessage
       /// will not be necessary.
-      size_t bytes_read = multicast.Receive( buffer , Example::MTU_SIZE );
+      size_t bytes_read = multicast.Receive( buffer );
 
       // engage the higher level support
       incoming.Process( buffer , bytes_read , endian );
+
+      // Add a short sleep delay to avoid locking up machine
+      // (SDL UDP Reads are non-blocking)
+      Example::sleep(10);
    }
 
    incoming.RemoveProcessor( es_pdu_type , &processor );
    multicast.Disconnect();
    return 0;
 }
-

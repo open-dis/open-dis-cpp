@@ -7,9 +7,9 @@
 #define _USE_MATH_DEFINES
 #include <cmath>
 
-#include <DIS/Vector3Double.h>
-#include <DIS/Vector3Float.h>
-#include <DIS/Orientation.h>
+#include <dis6/Vector3Double.h>
+#include <dis6/Vector3Float.h>
+#include <dis6/Orientation.h>
 
 namespace Example
 {

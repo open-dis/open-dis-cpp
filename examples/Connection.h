@@ -1,9 +1,11 @@
 #ifndef _example_dis_connection_h_
 #define _example_dis_connection_h_
 
-#include <nl.h>                          // for member & implementation
 #include <string>                        // for param
 #include <cstddef>                       // for size_t definition
+
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_net.h>
 
 
 namespace Example
@@ -17,7 +19,7 @@ namespace Example
    class Connection
    {
    public:
-      void Connect(unsigned int port, const std::string& host);
+      void Connect(unsigned int port, const std::string& host, bool listen);
       void Disconnect();
 
       void Send(const char* buf, size_t numbytes);
@@ -26,12 +28,13 @@ namespace Example
       /// @param buf the buffer to be written to with network bytes
       /// @param numbytes the maximum index used for the buffer (buf)
       /// @return the number of bytes read from the connection
-      size_t Receive(char* buf, size_t numbytes);
+      size_t Receive(char* buf);
 
    private:
       void HandleError();
 
-      NLsocket mSocket;
+      UDPsocket mSocket;
+      IPaddress mAddr;
    };
 }
 
