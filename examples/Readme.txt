@@ -24,5 +24,5 @@ Build instructions:
 Files will be located in ./Build/lib/Debug
 Running instructions: 
 1. open up 2 terminals in the git repo root:
-2. Run `./Build/lib/Debug/ExampleReciever` in one terminal
+2. Run `./Build/lib/Debug/ExampleReceiver` in one terminal
 3. Run `./Build/lib/Debug/ExampleSender` in the other terminal
