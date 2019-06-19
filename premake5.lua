@@ -55,7 +55,7 @@ project "ExampleSender"
   }
   links { "OpenDIS", "SDL2", "SDL2_net" }
 
-project "ExampleReciever"
+project "ExampleReceiver"
   language "C++"
   kind "ConsoleApp"
   includedirs {
