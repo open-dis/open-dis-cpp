@@ -35,12 +35,12 @@ void IncomingMessage::Process(const char* buf, unsigned int size, Endian e)
 
    while( ds.GetReadPos() < ds.size() )
    {  
-      unsigned int pdu_type = ds[PDU_TYPE_POSITION];
+      unsigned char pdu_type = ds[PDU_TYPE_POSITION];
       SwitchOnType( pdu_type, ds );
    }
 }
 
-void IncomingMessage::SwitchOnType(unsigned int pdu_type, DataStream& ds)
+void IncomingMessage::SwitchOnType(unsigned char pdu_type, DataStream& ds)
 {
    DIS::PDUType enumType = (DIS::PDUType)pdu_type;
    Pdu *pdu = PduBank::GetStaticPDU(enumType);
