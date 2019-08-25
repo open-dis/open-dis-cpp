@@ -44,7 +44,7 @@ namespace DIS
 
       PacketProcessorContainer _processors;
 
-      void SwitchOnType(unsigned int pdu_type, DataStream& ds);
+      void SwitchOnType(unsigned char pdu_type, DataStream& ds);
 
       /// Searches the proccesor container multimap for a matching container and returns the iterator
       bool FindProccessorContainer(unsigned char id, const IPacketProcessor* pp, PacketProcessorContainer::iterator &containerIter);

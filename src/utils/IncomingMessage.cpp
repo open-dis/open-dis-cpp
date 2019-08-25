@@ -35,35 +35,36 @@ void IncomingMessage::Process(const char* buf, unsigned int size, Endian e)
 
    while( ds.GetReadPos() < ds.size() )
    {  
-      unsigned int pdu_type = ds[PDU_TYPE_POSITION];
+      unsigned char pdu_type = ds[PDU_TYPE_POSITION];
       SwitchOnType( pdu_type, ds );
    }
 }
 
-void IncomingMessage::SwitchOnType(unsigned int pdu_type, DataStream& ds)
+void IncomingMessage::SwitchOnType(unsigned char pdu_type, DataStream& ds)
 {
    DIS::PDUType enumType = (DIS::PDUType)pdu_type;
    Pdu *pdu = PduBank::GetStaticPDU(enumType);
 
-   if (pdu)
+   // if valid pdu point, and at least 1 processor
+   if (pdu && (_processors.count(pdu_type) > 0))
    {
       pdu->unmarshal( ds );
+
+      // assumes the location in the buffer is the packet id.
+      typedef std::pair<PacketProcessorContainer::iterator,PacketProcessorContainer::iterator> RangePair;
+      RangePair rangepair = _processors.equal_range( pdu_type );
+      PacketProcessorContainer::iterator processor_iter = rangepair.first;
+      PacketProcessorContainer::iterator processor_end = rangepair.second;
+      while( processor_iter != processor_end )
+      {
+        (processor_iter->second)->Process( *pdu );
+        ++processor_iter;
+      }
    }
    else
    {
       ds.clear();
    }   
-
-   // assumes the location in the buffer is the packet id.
-   typedef std::pair<PacketProcessorContainer::iterator,PacketProcessorContainer::iterator> RangePair;
-   RangePair rangepair = _processors.equal_range( pdu_type );
-   PacketProcessorContainer::iterator processor_iter = rangepair.first;
-   PacketProcessorContainer::iterator processor_end = rangepair.second;
-   while( processor_iter != processor_end )
-   {
-      (processor_iter->second)->Process( *pdu ); 
-      ++processor_iter;
-   }  
 }
 
 
