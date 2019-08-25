@@ -48,22 +48,22 @@ void IncomingMessage::SwitchOnType(unsigned char pdu_type, DataStream& ds)
    if (pdu)
    {
       pdu->unmarshal( ds );
+
+      // assumes the location in the buffer is the packet id.
+      typedef std::pair<PacketProcessorContainer::iterator,PacketProcessorContainer::iterator> RangePair;
+      RangePair rangepair = _processors.equal_range( pdu_type );
+      PacketProcessorContainer::iterator processor_iter = rangepair.first;
+      PacketProcessorContainer::iterator processor_end = rangepair.second;
+      while( processor_iter != processor_end )
+      {
+        (processor_iter->second)->Process( *pdu );
+        ++processor_iter;
+      }
    }
    else
    {
       ds.clear();
    }   
-
-   // assumes the location in the buffer is the packet id.
-   typedef std::pair<PacketProcessorContainer::iterator,PacketProcessorContainer::iterator> RangePair;
-   RangePair rangepair = _processors.equal_range( pdu_type );
-   PacketProcessorContainer::iterator processor_iter = rangepair.first;
-   PacketProcessorContainer::iterator processor_end = rangepair.second;
-   while( processor_iter != processor_end )
-   {
-      (processor_iter->second)->Process( *pdu ); 
-      ++processor_iter;
-   }  
 }
 
 
