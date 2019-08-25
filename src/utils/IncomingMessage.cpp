@@ -45,7 +45,8 @@ void IncomingMessage::SwitchOnType(unsigned char pdu_type, DataStream& ds)
    DIS::PDUType enumType = (DIS::PDUType)pdu_type;
    Pdu *pdu = PduBank::GetStaticPDU(enumType);
 
-   if (pdu)
+   // if valid pdu point, and at least 1 processor
+   if (pdu && (_processors.count(pdu_type) > 0))
    {
       pdu->unmarshal( ds );
 
