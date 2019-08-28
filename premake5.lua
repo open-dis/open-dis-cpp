@@ -38,8 +38,6 @@ project "OpenDIS"
     "src/utils/*.cpp"
   }
 
--- Uncomment this if you have the HawkNL library and want to build the example.
-
 project "ExampleSender"
   language "C++"
   kind "ConsoleApp"
