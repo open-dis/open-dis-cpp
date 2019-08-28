@@ -65,6 +65,7 @@ void Connection::Send(const char* buf, size_t numbytes)
    {
       memcpy(packet->data, buf, numbytes);
       packet->address = mAddr;
+      packet->len = numbytes;
       int ret = SDLNet_UDP_Send(mSocket, -1, packet);
       if (ret == 0)
       {
