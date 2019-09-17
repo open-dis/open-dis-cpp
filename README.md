@@ -7,7 +7,9 @@ Initially generated with [xmlpg](https://github.com/open-dis/xmlpg).
 
 ## Building Open DIS
 
-Open DIS uses [premake5](http://premake.github.io/) to build platform specific projects. Download it and make sure it's available on your path, or specify the path to it.
+* [premake5](http://premake.github.io/) is required to build the platform specific projects. Download it and make sure it's available on your path, or specify the path to it. 
+
+* SDL2 and SDL2_net are required libraries to compile the examples. See the [.travis.yml](.travis.yml) for more details on setting up a build environment.
 
 ### Linux
 
