@@ -16,9 +16,9 @@ namespace DIS
 class EXPORT_MACRO EventIdentifierLiveEntity
 {
 protected:
-  unsigned char _siteNumber; 
+  uint8_t _siteNumber; 
 
-  unsigned char _applicationNumber; 
+  uint8_t _applicationNumber; 
 
   unsigned short _eventNumber; 
 
@@ -30,11 +30,11 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getSiteNumber() const; 
-    void setSiteNumber(unsigned char pX); 
+    uint8_t getSiteNumber() const; 
+    void setSiteNumber(uint8_t pX); 
 
-    unsigned char getApplicationNumber() const; 
-    void setApplicationNumber(unsigned char pX); 
+    uint8_t getApplicationNumber() const; 
+    void setApplicationNumber(uint8_t pX); 
 
     unsigned short getEventNumber() const; 
     void setEventNumber(unsigned short pX); 

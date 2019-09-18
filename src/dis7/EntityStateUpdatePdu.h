@@ -30,7 +30,7 @@ protected:
   char _padding1; 
 
   /** This field shall specify the number of variable parameters present. This field shall be represented by an 8-bit unsigned integer (see Annex I). */
-  unsigned char _numberOfVariableParameters; 
+  uint8_t _numberOfVariableParameters; 
 
   /** This field shall specify an entity’s linear velocity. The coordinate system for an entity’s linear velocity depends on the dead reckoning algorithm used. This field shall be represented by a Linear Velocity Vector record [see 6.2.95 item c)]). */
   Vector3Float _entityLinearVelocity; 
@@ -62,7 +62,7 @@ protected:
     char getPadding1() const; 
     void setPadding1(char pX); 
 
-    unsigned char getNumberOfVariableParameters() const; 
+    uint8_t getNumberOfVariableParameters() const; 
 
     Vector3Float& getEntityLinearVelocity(); 
     const Vector3Float&  getEntityLinearVelocity() const; 

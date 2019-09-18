@@ -23,12 +23,12 @@ void LiveEntityPdu::setSubprotocolNumber(unsigned short pX)
     _subprotocolNumber = pX;
 }
 
-unsigned char LiveEntityPdu::getPadding() const
+uint8_t LiveEntityPdu::getPadding() const
 {
     return _padding;
 }
 
-void LiveEntityPdu::setPadding(unsigned char pX)
+void LiveEntityPdu::setPadding(uint8_t pX)
 {
     _padding = pX;
 }

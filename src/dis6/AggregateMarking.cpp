@@ -18,12 +18,12 @@ AggregateMarking::~AggregateMarking()
 {
 }
 
-unsigned char AggregateMarking::getCharacterSet() const
+uint8_t AggregateMarking::getCharacterSet() const
 {
     return _characterSet;
 }
 
-void AggregateMarking::setCharacterSet(unsigned char pX)
+void AggregateMarking::setCharacterSet(uint8_t pX)
 {
     _characterSet = pX;
 }
@@ -75,7 +75,7 @@ bool AggregateMarking::operator ==(const AggregateMarking& rhs) const
 
      if( ! (_characterSet == rhs._characterSet) ) ivarsEqual = false;
 
-     for(char idx = 0; idx < 31; idx++)
+     for(uint8_t idx = 0; idx < 31; idx++)
      {
           if(!(_characters[idx] == rhs._characters[idx]) ) ivarsEqual = false;
      }

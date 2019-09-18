@@ -21,10 +21,10 @@ protected:
   EntityID _trackJam; 
 
   /** Emitter ID */
-  unsigned char _emitterID; 
+  uint8_t _emitterID; 
 
   /** beam ID */
-  unsigned char _beamID; 
+  uint8_t _beamID; 
 
 
  public:
@@ -38,11 +38,11 @@ protected:
     const EntityID&  getTrackJam() const; 
     void setTrackJam(const EntityID    &pX);
 
-    unsigned char getEmitterID() const; 
-    void setEmitterID(unsigned char pX); 
+    uint8_t getEmitterID() const; 
+    void setEmitterID(uint8_t pX); 
 
-    unsigned char getBeamID() const; 
-    void setBeamID(unsigned char pX); 
+    uint8_t getBeamID() const; 
+    void setBeamID(uint8_t pX); 
 
 
 virtual int getMarshalledSize() const;

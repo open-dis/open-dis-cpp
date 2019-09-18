@@ -16,9 +16,9 @@ namespace DIS
 class EXPORT_MACRO ArticulationParameter
 {
 protected:
-  unsigned char _parameterTypeDesignator; 
+  uint8_t _parameterTypeDesignator; 
 
-  unsigned char _changeIndicator; 
+  uint8_t _changeIndicator; 
 
   unsigned short _partAttachedTo; 
 
@@ -34,11 +34,11 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getParameterTypeDesignator() const; 
-    void setParameterTypeDesignator(unsigned char pX); 
+    uint8_t getParameterTypeDesignator() const; 
+    void setParameterTypeDesignator(uint8_t pX); 
 
-    unsigned char getChangeIndicator() const; 
-    void setChangeIndicator(unsigned char pX); 
+    uint8_t getChangeIndicator() const; 
+    void setChangeIndicator(uint8_t pX); 
 
     unsigned short getPartAttachedTo() const; 
     void setPartAttachedTo(unsigned short pX); 

@@ -129,22 +129,22 @@ void DirectedEnergyPrecisionAimpoint::setTargetEntityID(const EntityID &pX)
     _targetEntityID = pX;
 }
 
-unsigned char DirectedEnergyPrecisionAimpoint::getTargetComponentID() const
+uint8_t DirectedEnergyPrecisionAimpoint::getTargetComponentID() const
 {
     return _targetComponentID;
 }
 
-void DirectedEnergyPrecisionAimpoint::setTargetComponentID(unsigned char pX)
+void DirectedEnergyPrecisionAimpoint::setTargetComponentID(uint8_t pX)
 {
     _targetComponentID = pX;
 }
 
-unsigned char DirectedEnergyPrecisionAimpoint::getSpotShape() const
+uint8_t DirectedEnergyPrecisionAimpoint::getSpotShape() const
 {
     return _SpotShape;
 }
 
-void DirectedEnergyPrecisionAimpoint::setSpotShape(unsigned char pX)
+void DirectedEnergyPrecisionAimpoint::setSpotShape(uint8_t pX)
 {
     _SpotShape = pX;
 }

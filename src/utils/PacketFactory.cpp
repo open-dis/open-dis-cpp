@@ -4,7 +4,7 @@
 
 using namespace DIS;
 
-Pdu* PacketFactory::CreatePacket(unsigned char id)
+Pdu* PacketFactory::CreatePacket(uint8_t id)
 {
    FunctionMap::iterator iter =_fMap.find( id );
    if( iter != _fMap.end() )
@@ -20,7 +20,7 @@ void PacketFactory::DestroyPacket(Pdu* pdu)
    delete pdu;
 }
 
-bool PacketFactory::IsRegistered(unsigned char id) const
+bool PacketFactory::IsRegistered(uint8_t id) const
 {
    FunctionMap::const_iterator iter = _fMap.find(id);
    return( iter != _fMap.end() );

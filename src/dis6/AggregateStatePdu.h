@@ -34,10 +34,10 @@ protected:
   EntityID _aggregateID; 
 
   /** force ID */
-  unsigned char _forceID; 
+  uint8_t _forceID; 
 
   /** state of aggregate */
-  unsigned char _aggregateState; 
+  uint8_t _aggregateState; 
 
   /** entity type of the aggregated entities */
   EntityType _aggregateType; 
@@ -79,7 +79,7 @@ protected:
   std::vector<EntityID> _entityIDList; 
 
   /** ^^^padding to put the start of the next list on a 32 bit boundary. This needs to be fixed */
-  unsigned char _pad2; 
+  uint8_t _pad2; 
 
   /** silent entity types */
   std::vector<EntityType> _silentAggregateSystemList; 
@@ -105,11 +105,11 @@ protected:
     const EntityID&  getAggregateID() const; 
     void setAggregateID(const EntityID    &pX);
 
-    unsigned char getForceID() const; 
-    void setForceID(unsigned char pX); 
+    uint8_t getForceID() const; 
+    void setForceID(uint8_t pX); 
 
-    unsigned char getAggregateState() const; 
-    void setAggregateState(unsigned char pX); 
+    uint8_t getAggregateState() const; 
+    void setAggregateState(uint8_t pX); 
 
     EntityType& getAggregateType(); 
     const EntityType&  getAggregateType() const; 
@@ -154,8 +154,8 @@ protected:
     const std::vector<EntityID>& getEntityIDList() const; 
     void setEntityIDList(const std::vector<EntityID>&    pX);
 
-    unsigned char getPad2() const; 
-    void setPad2(unsigned char pX); 
+    uint8_t getPad2() const; 
+    void setPad2(uint8_t pX); 
 
     std::vector<EntityType>& getSilentAggregateSystemList(); 
     const std::vector<EntityType>& getSilentAggregateSystemList() const; 

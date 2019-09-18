@@ -17,7 +17,7 @@ class EXPORT_MACRO LiveSimulationAddress
 {
 protected:
   /** facility, installation, organizational unit or geographic location may have multiple sites associated with it. The Site Number is the first component of the Live Simulation Address, which defines a live simulation. */
-  unsigned char _liveSiteNumber; 
+  uint8_t _liveSiteNumber; 
 
   /** An application associated with a live site is termed a live application. Each live application participating in an event  */
   unsigned short _liveApplicationNumber; 
@@ -30,8 +30,8 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getLiveSiteNumber() const; 
-    void setLiveSiteNumber(unsigned char pX); 
+    uint8_t getLiveSiteNumber() const; 
+    void setLiveSiteNumber(uint8_t pX); 
 
     unsigned short getLiveApplicationNumber() const; 
     void setLiveApplicationNumber(unsigned short pX); 

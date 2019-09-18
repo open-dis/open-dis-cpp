@@ -19,7 +19,7 @@ class EXPORT_MACRO DeadReckoningParameter
 {
 protected:
   /** enumeration of what dead reckoning algorighm to use */
-  unsigned char _deadReckoningAlgorithm; 
+  uint8_t _deadReckoningAlgorithm; 
 
   /** other parameters to use in the dead reckoning algorithm */
   char _otherParameters[15]; 
@@ -38,8 +38,8 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getDeadReckoningAlgorithm() const; 
-    void setDeadReckoningAlgorithm(unsigned char pX); 
+    uint8_t getDeadReckoningAlgorithm() const; 
+    void setDeadReckoningAlgorithm(uint8_t pX); 
 
     char*  getOtherParameters(); 
     const char*  getOtherParameters() const; 

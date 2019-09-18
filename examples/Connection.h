@@ -15,7 +15,7 @@ namespace Example
 
    /// makes a multicast connection to support DIS networks.
    /// requires the HawkNL socket library.
-   /// http://www.hawksoft.com/hawknl/
+   /// http://www.hawksoft.com/hawknl/ <- That is outdated
    class Connection
    {
    public:

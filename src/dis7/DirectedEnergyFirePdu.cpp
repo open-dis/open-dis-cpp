@@ -153,12 +153,12 @@ void DirectedEnergyFirePdu::setPulseShape(char pX)
     _pulseShape = pX;
 }
 
-unsigned char DirectedEnergyFirePdu::getPadding1() const
+uint8_t DirectedEnergyFirePdu::getPadding1() const
 {
     return _padding1;
 }
 
-void DirectedEnergyFirePdu::setPadding1(unsigned char pX)
+void DirectedEnergyFirePdu::setPadding1(uint8_t pX)
 {
     _padding1 = pX;
 }
@@ -310,7 +310,7 @@ int DirectedEnergyFirePdu::getMarshalledSize() const
    marshalSize = marshalSize + 2;  // _padding3
    marshalSize = marshalSize + 2;  // _numberOfDERecords
 
-   for(int idx=0; idx < _dERecords.size(); idx++)
+   for(size_t idx=0; idx < _dERecords.size(); idx++)
    {
         StandardVariableSpecification listElement = _dERecords[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

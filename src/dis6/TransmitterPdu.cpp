@@ -46,22 +46,22 @@ void TransmitterPdu::setRadioEntityType(const RadioEntityType &pX)
     _radioEntityType = pX;
 }
 
-unsigned char TransmitterPdu::getTransmitState() const
+uint8_t TransmitterPdu::getTransmitState() const
 {
     return _transmitState;
 }
 
-void TransmitterPdu::setTransmitState(unsigned char pX)
+void TransmitterPdu::setTransmitState(uint8_t pX)
 {
     _transmitState = pX;
 }
 
-unsigned char TransmitterPdu::getInputSource() const
+uint8_t TransmitterPdu::getInputSource() const
 {
     return _inputSource;
 }
 
-void TransmitterPdu::setInputSource(unsigned char pX)
+void TransmitterPdu::setInputSource(uint8_t pX)
 {
     _inputSource = pX;
 }
@@ -186,7 +186,7 @@ void TransmitterPdu::setCryptoKeyId(unsigned short pX)
     _cryptoKeyId = pX;
 }
 
-unsigned char TransmitterPdu::getModulationParameterCount() const
+uint8_t TransmitterPdu::getModulationParameterCount() const
 {
    return _modulationParametersList.size();
 }
@@ -201,12 +201,12 @@ void TransmitterPdu::setPadding2(unsigned short pX)
     _padding2 = pX;
 }
 
-unsigned char TransmitterPdu::getPadding3() const
+uint8_t TransmitterPdu::getPadding3() const
 {
     return _padding3;
 }
 
-void TransmitterPdu::setPadding3(unsigned char pX)
+void TransmitterPdu::setPadding3(uint8_t pX)
 {
     _padding3 = pX;
 }
@@ -258,7 +258,7 @@ void TransmitterPdu::marshal(DataStream& dataStream) const
     _modulationType.marshal(dataStream);
     dataStream << _cryptoSystem;
     dataStream << _cryptoKeyId;
-    dataStream << ( unsigned char )_modulationParametersList.size();
+    dataStream << ( uint8_t )_modulationParametersList.size();
     dataStream << _padding2;
     dataStream << _padding3;
 
@@ -376,14 +376,14 @@ int TransmitterPdu::getMarshalledSize() const
    marshalSize = marshalSize + 2;  // _padding2
    marshalSize = marshalSize + 1;  // _padding3
 
-   for(int idx=0; idx < _modulationParametersList.size(); idx++)
+   for(size_t idx=0; idx < _modulationParametersList.size(); idx++)
    {
         Vector3Float listElement = _modulationParametersList[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
     }
 
 
-   for(int idx=0; idx < _antennaPatternList.size(); idx++)
+   for(size_t idx=0; idx < _antennaPatternList.size(); idx++)
    {
         Vector3Float listElement = _antennaPatternList[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

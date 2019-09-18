@@ -12,12 +12,12 @@ PduStatus::~PduStatus()
 {
 }
 
-unsigned char PduStatus::getPduStatus() const
+uint8_t PduStatus::getPduStatus() const
 {
     return _pduStatus;
 }
 
-void PduStatus::setPduStatus(unsigned char pX)
+void PduStatus::setPduStatus(uint8_t pX)
 {
     _pduStatus = pX;
 }

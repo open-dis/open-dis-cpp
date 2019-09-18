@@ -18,22 +18,22 @@ RadioType::~RadioType()
 {
 }
 
-unsigned char RadioType::getEntityKind() const
+uint8_t RadioType::getEntityKind() const
 {
     return _entityKind;
 }
 
-void RadioType::setEntityKind(unsigned char pX)
+void RadioType::setEntityKind(uint8_t pX)
 {
     _entityKind = pX;
 }
 
-unsigned char RadioType::getDomain() const
+uint8_t RadioType::getDomain() const
 {
     return _domain;
 }
 
-void RadioType::setDomain(unsigned char pX)
+void RadioType::setDomain(uint8_t pX)
 {
     _domain = pX;
 }
@@ -48,42 +48,42 @@ void RadioType::setCountry(unsigned short pX)
     _country = pX;
 }
 
-unsigned char RadioType::getCategory() const
+uint8_t RadioType::getCategory() const
 {
     return _category;
 }
 
-void RadioType::setCategory(unsigned char pX)
+void RadioType::setCategory(uint8_t pX)
 {
     _category = pX;
 }
 
-unsigned char RadioType::getSubcategory() const
+uint8_t RadioType::getSubcategory() const
 {
     return _subcategory;
 }
 
-void RadioType::setSubcategory(unsigned char pX)
+void RadioType::setSubcategory(uint8_t pX)
 {
     _subcategory = pX;
 }
 
-unsigned char RadioType::getSpecific() const
+uint8_t RadioType::getSpecific() const
 {
     return _specific;
 }
 
-void RadioType::setSpecific(unsigned char pX)
+void RadioType::setSpecific(uint8_t pX)
 {
     _specific = pX;
 }
 
-unsigned char RadioType::getExtra() const
+uint8_t RadioType::getExtra() const
 {
     return _extra;
 }
 
-void RadioType::setExtra(unsigned char pX)
+void RadioType::setExtra(uint8_t pX)
 {
     _extra = pX;
 }

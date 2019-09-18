@@ -88,42 +88,42 @@ void DirectedEnergyDamage::setTemperature(float pX)
     _temperature = pX;
 }
 
-unsigned char DirectedEnergyDamage::getComponentIdentification() const
+uint8_t DirectedEnergyDamage::getComponentIdentification() const
 {
     return _componentIdentification;
 }
 
-void DirectedEnergyDamage::setComponentIdentification(unsigned char pX)
+void DirectedEnergyDamage::setComponentIdentification(uint8_t pX)
 {
     _componentIdentification = pX;
 }
 
-unsigned char DirectedEnergyDamage::getComponentDamageStatus() const
+uint8_t DirectedEnergyDamage::getComponentDamageStatus() const
 {
     return _componentDamageStatus;
 }
 
-void DirectedEnergyDamage::setComponentDamageStatus(unsigned char pX)
+void DirectedEnergyDamage::setComponentDamageStatus(uint8_t pX)
 {
     _componentDamageStatus = pX;
 }
 
-unsigned char DirectedEnergyDamage::getComponentVisualDamageStatus() const
+uint8_t DirectedEnergyDamage::getComponentVisualDamageStatus() const
 {
     return _componentVisualDamageStatus;
 }
 
-void DirectedEnergyDamage::setComponentVisualDamageStatus(unsigned char pX)
+void DirectedEnergyDamage::setComponentVisualDamageStatus(uint8_t pX)
 {
     _componentVisualDamageStatus = pX;
 }
 
-unsigned char DirectedEnergyDamage::getComponentVisualSmokeColor() const
+uint8_t DirectedEnergyDamage::getComponentVisualSmokeColor() const
 {
     return _componentVisualSmokeColor;
 }
 
-void DirectedEnergyDamage::setComponentVisualSmokeColor(unsigned char pX)
+void DirectedEnergyDamage::setComponentVisualSmokeColor(uint8_t pX)
 {
     _componentVisualSmokeColor = pX;
 }

@@ -64,22 +64,22 @@ void PointObjectStatePdu::setUpdateNumber(unsigned short pX)
     _updateNumber = pX;
 }
 
-unsigned char PointObjectStatePdu::getForceID() const
+uint8_t PointObjectStatePdu::getForceID() const
 {
     return _forceID;
 }
 
-void PointObjectStatePdu::setForceID(unsigned char pX)
+void PointObjectStatePdu::setForceID(uint8_t pX)
 {
     _forceID = pX;
 }
 
-unsigned char PointObjectStatePdu::getModifications() const
+uint8_t PointObjectStatePdu::getModifications() const
 {
     return _modifications;
 }
 
-void PointObjectStatePdu::setModifications(unsigned char pX)
+void PointObjectStatePdu::setModifications(uint8_t pX)
 {
     _modifications = pX;
 }

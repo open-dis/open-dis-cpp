@@ -25,12 +25,12 @@ void AcousticBeamData::setBeamDataLength(unsigned short pX)
     _beamDataLength = pX;
 }
 
-unsigned char AcousticBeamData::getBeamIDNumber() const
+uint8_t AcousticBeamData::getBeamIDNumber() const
 {
     return _beamIDNumber;
 }
 
-void AcousticBeamData::setBeamIDNumber(unsigned char pX)
+void AcousticBeamData::setBeamIDNumber(uint8_t pX)
 {
     _beamIDNumber = pX;
 }

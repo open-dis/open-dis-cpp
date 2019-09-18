@@ -17,10 +17,10 @@ class EXPORT_MACRO AttachedParts
 {
 protected:
   /** the identification of the Variable Parameter record. Enumeration from EBV */
-  unsigned char _recordType; 
+  uint8_t _recordType; 
 
   /** 0 = attached, 1 = detached. See I.2.3.1 for state transition diagram */
-  unsigned char _detachedIndicator; 
+  uint8_t _detachedIndicator; 
 
   /** the identification of the articulated part to which this articulation parameter is attached. This field shall be specified by a 16-bit unsigned integer. This field shall contain the value zero if the articulated part is attached directly to the entity. */
   unsigned short _partAttachedTo; 
@@ -39,11 +39,11 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getRecordType() const; 
-    void setRecordType(unsigned char pX); 
+    uint8_t getRecordType() const; 
+    void setRecordType(uint8_t pX); 
 
-    unsigned char getDetachedIndicator() const; 
-    void setDetachedIndicator(unsigned char pX); 
+    uint8_t getDetachedIndicator() const; 
+    void setDetachedIndicator(uint8_t pX); 
 
     unsigned short getPartAttachedTo() const; 
     void setPartAttachedTo(unsigned short pX); 

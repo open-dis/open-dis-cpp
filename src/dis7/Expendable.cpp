@@ -51,22 +51,22 @@ void Expendable::setQuantity(unsigned short pX)
     _quantity = pX;
 }
 
-unsigned char Expendable::getExpendableStatus() const
+uint8_t Expendable::getExpendableStatus() const
 {
     return _expendableStatus;
 }
 
-void Expendable::setExpendableStatus(unsigned char pX)
+void Expendable::setExpendableStatus(uint8_t pX)
 {
     _expendableStatus = pX;
 }
 
-unsigned char Expendable::getPadding() const
+uint8_t Expendable::getPadding() const
 {
     return _padding;
 }
 
-void Expendable::setPadding(unsigned char pX)
+void Expendable::setPadding(uint8_t pX)
 {
     _padding = pX;
 }

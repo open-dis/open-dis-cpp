@@ -44,10 +44,10 @@ protected:
   Vector3Float _locationInEntityCoordinates; 
 
   /** result of the explosion */
-  unsigned char _detonationResult; 
+  uint8_t _detonationResult; 
 
   /** How many articulation parameters we have */
-  unsigned char _numberOfArticulationParameters; 
+  uint8_t _numberOfArticulationParameters; 
 
   /** padding */
   short _pad; 
@@ -86,10 +86,10 @@ protected:
     const Vector3Float&  getLocationInEntityCoordinates() const; 
     void setLocationInEntityCoordinates(const Vector3Float    &pX);
 
-    unsigned char getDetonationResult() const; 
-    void setDetonationResult(unsigned char pX); 
+    uint8_t getDetonationResult() const; 
+    void setDetonationResult(uint8_t pX); 
 
-    unsigned char getNumberOfArticulationParameters() const; 
+    uint8_t getNumberOfArticulationParameters() const; 
 
     short getPad() const; 
     void setPad(short pX); 

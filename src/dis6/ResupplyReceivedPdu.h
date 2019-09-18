@@ -28,7 +28,7 @@ protected:
   EntityID _supplyingEntityID; 
 
   /** how many supplies are being offered */
-  unsigned char _numberOfSupplyTypes; 
+  uint8_t _numberOfSupplyTypes; 
 
   /** padding */
   short _padding1; 
@@ -54,7 +54,7 @@ protected:
     const EntityID&  getSupplyingEntityID() const; 
     void setSupplyingEntityID(const EntityID    &pX);
 
-    unsigned char getNumberOfSupplyTypes() const; 
+    uint8_t getNumberOfSupplyTypes() const; 
 
     short getPadding1() const; 
     void setPadding1(short pX); 

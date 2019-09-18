@@ -28,12 +28,12 @@ void SupplyQuantity::setSupplyType(const EntityType &pX)
     _supplyType = pX;
 }
 
-unsigned char SupplyQuantity::getQuantity() const
+uint8_t SupplyQuantity::getQuantity() const
 {
     return _quantity;
 }
 
-void SupplyQuantity::setQuantity(unsigned char pX)
+void SupplyQuantity::setQuantity(uint8_t pX)
 {
     _quantity = pX;
 }

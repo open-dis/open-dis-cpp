@@ -15,42 +15,42 @@ JammingTechnique::~JammingTechnique()
 {
 }
 
-unsigned char JammingTechnique::getKind() const
+uint8_t JammingTechnique::getKind() const
 {
     return _kind;
 }
 
-void JammingTechnique::setKind(unsigned char pX)
+void JammingTechnique::setKind(uint8_t pX)
 {
     _kind = pX;
 }
 
-unsigned char JammingTechnique::getCategory() const
+uint8_t JammingTechnique::getCategory() const
 {
     return _category;
 }
 
-void JammingTechnique::setCategory(unsigned char pX)
+void JammingTechnique::setCategory(uint8_t pX)
 {
     _category = pX;
 }
 
-unsigned char JammingTechnique::getSubcategory() const
+uint8_t JammingTechnique::getSubcategory() const
 {
     return _subcategory;
 }
 
-void JammingTechnique::setSubcategory(unsigned char pX)
+void JammingTechnique::setSubcategory(uint8_t pX)
 {
     _subcategory = pX;
 }
 
-unsigned char JammingTechnique::getSpecific() const
+uint8_t JammingTechnique::getSpecific() const
 {
     return _specific;
 }
 
-void JammingTechnique::setSpecific(unsigned char pX)
+void JammingTechnique::setSpecific(uint8_t pX)
 {
     _specific = pX;
 }

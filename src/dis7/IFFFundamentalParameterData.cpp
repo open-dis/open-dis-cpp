@@ -73,27 +73,27 @@ void IFFFundamentalParameterData::setBurstLength(unsigned int pX)
     _burstLength = pX;
 }
 
-unsigned char IFFFundamentalParameterData::getApplicableModes() const
+uint8_t IFFFundamentalParameterData::getApplicableModes() const
 {
     return _applicableModes;
 }
 
-void IFFFundamentalParameterData::setApplicableModes(unsigned char pX)
+void IFFFundamentalParameterData::setApplicableModes(uint8_t pX)
 {
     _applicableModes = pX;
 }
 
-unsigned char* IFFFundamentalParameterData::getSystemSpecificData() 
+uint8_t* IFFFundamentalParameterData::getSystemSpecificData() 
 {
     return _systemSpecificData;
 }
 
-const unsigned char* IFFFundamentalParameterData::getSystemSpecificData() const
+const uint8_t* IFFFundamentalParameterData::getSystemSpecificData() const
 {
     return _systemSpecificData;
 }
 
-void IFFFundamentalParameterData::setSystemSpecificData(const unsigned char* x)
+void IFFFundamentalParameterData::setSystemSpecificData(const uint8_t* x)
 {
    for(int i = 0; i < 3; i++)
    {
@@ -145,7 +145,7 @@ bool IFFFundamentalParameterData::operator ==(const IFFFundamentalParameterData&
      if( ! (_burstLength == rhs._burstLength) ) ivarsEqual = false;
      if( ! (_applicableModes == rhs._applicableModes) ) ivarsEqual = false;
 
-     for(unsigned char idx = 0; idx < 3; idx++)
+     for(uint8_t idx = 0; idx < 3; idx++)
      {
           if(!(_systemSpecificData[idx] == rhs._systemSpecificData[idx]) ) ivarsEqual = false;
      }

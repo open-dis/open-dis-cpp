@@ -21,42 +21,42 @@ FundamentalOperationalData::~FundamentalOperationalData()
 {
 }
 
-unsigned char FundamentalOperationalData::getSystemStatus() const
+uint8_t FundamentalOperationalData::getSystemStatus() const
 {
     return _systemStatus;
 }
 
-void FundamentalOperationalData::setSystemStatus(unsigned char pX)
+void FundamentalOperationalData::setSystemStatus(uint8_t pX)
 {
     _systemStatus = pX;
 }
 
-unsigned char FundamentalOperationalData::getDataField1() const
+uint8_t FundamentalOperationalData::getDataField1() const
 {
     return _dataField1;
 }
 
-void FundamentalOperationalData::setDataField1(unsigned char pX)
+void FundamentalOperationalData::setDataField1(uint8_t pX)
 {
     _dataField1 = pX;
 }
 
-unsigned char FundamentalOperationalData::getInformationLayers() const
+uint8_t FundamentalOperationalData::getInformationLayers() const
 {
     return _informationLayers;
 }
 
-void FundamentalOperationalData::setInformationLayers(unsigned char pX)
+void FundamentalOperationalData::setInformationLayers(uint8_t pX)
 {
     _informationLayers = pX;
 }
 
-unsigned char FundamentalOperationalData::getDataField2() const
+uint8_t FundamentalOperationalData::getDataField2() const
 {
     return _dataField2;
 }
 
-void FundamentalOperationalData::setDataField2(unsigned char pX)
+void FundamentalOperationalData::setDataField2(uint8_t pX)
 {
     _dataField2 = pX;
 }

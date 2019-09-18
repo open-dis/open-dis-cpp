@@ -16,12 +16,12 @@ CreateEntityReliablePdu::~CreateEntityReliablePdu()
 {
 }
 
-unsigned char CreateEntityReliablePdu::getRequiredReliabilityService() const
+uint8_t CreateEntityReliablePdu::getRequiredReliabilityService() const
 {
     return _requiredReliabilityService;
 }
 
-void CreateEntityReliablePdu::setRequiredReliabilityService(unsigned char pX)
+void CreateEntityReliablePdu::setRequiredReliabilityService(uint8_t pX)
 {
     _requiredReliabilityService = pX;
 }
@@ -36,12 +36,12 @@ void CreateEntityReliablePdu::setPad1(unsigned short pX)
     _pad1 = pX;
 }
 
-unsigned char CreateEntityReliablePdu::getPad2() const
+uint8_t CreateEntityReliablePdu::getPad2() const
 {
     return _pad2;
 }
 
-void CreateEntityReliablePdu::setPad2(unsigned char pX)
+void CreateEntityReliablePdu::setPad2(uint8_t pX)
 {
     _pad2 = pX;
 }

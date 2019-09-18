@@ -23,10 +23,10 @@ protected:
   unsigned short _length; 
 
   /** identifies the sequntially numbered record index */
-  unsigned char _index; 
+  uint8_t _index; 
 
   /** padding */
-  unsigned char _padding; 
+  uint8_t _padding; 
 
 
  public:
@@ -42,11 +42,11 @@ protected:
     unsigned short getLength() const; 
     void setLength(unsigned short pX); 
 
-    unsigned char getIndex() const; 
-    void setIndex(unsigned char pX); 
+    uint8_t getIndex() const; 
+    void setIndex(uint8_t pX); 
 
-    unsigned char getPadding() const; 
-    void setPadding(unsigned char pX); 
+    uint8_t getPadding() const; 
+    void setPadding(uint8_t pX); 
 
 
 virtual int getMarshalledSize() const;

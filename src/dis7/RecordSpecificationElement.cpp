@@ -67,12 +67,12 @@ void RecordSpecificationElement::setRecordValues(unsigned short pX)
     _recordValues = pX;
 }
 
-unsigned char RecordSpecificationElement::getPad4() const
+uint8_t RecordSpecificationElement::getPad4() const
 {
     return _pad4;
 }
 
-void RecordSpecificationElement::setPad4(unsigned char pX)
+void RecordSpecificationElement::setPad4(uint8_t pX)
 {
     _pad4 = pX;
 }

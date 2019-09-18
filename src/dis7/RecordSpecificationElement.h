@@ -32,7 +32,7 @@ protected:
   unsigned short _recordValues; 
 
   /** Padding of 0 to 31 unused bits as required for 32-bit alignment of the Record Set field. ^^^This is wrong--variable sized padding. MUST be patched post-code generation */
-  unsigned char _pad4; 
+  uint8_t _pad4; 
 
 
  public:
@@ -57,8 +57,8 @@ protected:
     unsigned short getRecordValues() const; 
     void setRecordValues(unsigned short pX); 
 
-    unsigned char getPad4() const; 
-    void setPad4(unsigned char pX); 
+    uint8_t getPad4() const; 
+    void setPad4(uint8_t pX); 
 
 
 virtual int getMarshalledSize() const;

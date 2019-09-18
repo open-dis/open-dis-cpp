@@ -33,22 +33,22 @@ protected:
   unsigned short _minefieldSequenceNumbeer; 
 
   /** request ID */
-  unsigned char _requestID; 
+  uint8_t _requestID; 
 
   /** pdu sequence number */
-  unsigned char _pduSequenceNumber; 
+  uint8_t _pduSequenceNumber; 
 
   /** number of pdus in response */
-  unsigned char _numberOfPdus; 
+  uint8_t _numberOfPdus; 
 
   /** how many mines are in this PDU */
-  unsigned char _numberOfMinesInThisPdu; 
+  uint8_t _numberOfMinesInThisPdu; 
 
   /** how many sensor type are in this PDU */
-  unsigned char _numberOfSensorTypes; 
+  uint8_t _numberOfSensorTypes; 
 
   /** padding */
-  unsigned char _pad2; 
+  uint8_t _pad2; 
 
   /** 32 boolean fields */
   unsigned int _dataFilter; 
@@ -60,7 +60,7 @@ protected:
   std::vector<TwoByteChunk> _sensorTypes; 
 
   /** Padding to get things 32-bit aligned. ^^^this is wrong--dyanmically sized padding needed */
-  unsigned char _pad3; 
+  uint8_t _pad3; 
 
   /** Mine locations */
   std::vector<Vector3Float> _mineLocation; 
@@ -84,21 +84,21 @@ protected:
     unsigned short getMinefieldSequenceNumbeer() const; 
     void setMinefieldSequenceNumbeer(unsigned short pX); 
 
-    unsigned char getRequestID() const; 
-    void setRequestID(unsigned char pX); 
+    uint8_t getRequestID() const; 
+    void setRequestID(uint8_t pX); 
 
-    unsigned char getPduSequenceNumber() const; 
-    void setPduSequenceNumber(unsigned char pX); 
+    uint8_t getPduSequenceNumber() const; 
+    void setPduSequenceNumber(uint8_t pX); 
 
-    unsigned char getNumberOfPdus() const; 
-    void setNumberOfPdus(unsigned char pX); 
+    uint8_t getNumberOfPdus() const; 
+    void setNumberOfPdus(uint8_t pX); 
 
-    unsigned char getNumberOfMinesInThisPdu() const; 
+    uint8_t getNumberOfMinesInThisPdu() const; 
 
-    unsigned char getNumberOfSensorTypes() const; 
+    uint8_t getNumberOfSensorTypes() const; 
 
-    unsigned char getPad2() const; 
-    void setPad2(unsigned char pX); 
+    uint8_t getPad2() const; 
+    void setPad2(uint8_t pX); 
 
     unsigned int getDataFilter() const; 
     void setDataFilter(unsigned int pX); 
@@ -111,8 +111,8 @@ protected:
     const std::vector<TwoByteChunk>& getSensorTypes() const; 
     void setSensorTypes(const std::vector<TwoByteChunk>&    pX);
 
-    unsigned char getPad3() const; 
-    void setPad3(unsigned char pX); 
+    uint8_t getPad3() const; 
+    void setPad3(uint8_t pX); 
 
     std::vector<Vector3Float>& getMineLocation(); 
     const std::vector<Vector3Float>& getMineLocation() const; 

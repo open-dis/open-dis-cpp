@@ -79,7 +79,7 @@ int RecordQuerySpecification::getMarshalledSize() const
 
    marshalSize = marshalSize + 4;  // _numberOfRecords
 
-   for(int idx=0; idx < _records.size(); idx++)
+   for(size_t idx=0; idx < _records.size(); idx++)
    {
         FourByteChunk listElement = _records[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

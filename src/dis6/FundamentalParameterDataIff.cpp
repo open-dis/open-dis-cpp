@@ -69,12 +69,12 @@ void FundamentalParameterDataIff::setBurstLength(unsigned int pX)
     _burstLength = pX;
 }
 
-unsigned char FundamentalParameterDataIff::getApplicableModes() const
+uint8_t FundamentalParameterDataIff::getApplicableModes() const
 {
     return _applicableModes;
 }
 
-void FundamentalParameterDataIff::setApplicableModes(unsigned char pX)
+void FundamentalParameterDataIff::setApplicableModes(uint8_t pX)
 {
     _applicableModes = pX;
 }
@@ -89,12 +89,12 @@ void FundamentalParameterDataIff::setPad2(unsigned short pX)
     _pad2 = pX;
 }
 
-unsigned char FundamentalParameterDataIff::getPad3() const
+uint8_t FundamentalParameterDataIff::getPad3() const
 {
     return _pad3;
 }
 
-void FundamentalParameterDataIff::setPad3(unsigned char pX)
+void FundamentalParameterDataIff::setPad3(uint8_t pX)
 {
     _pad3 = pX;
 }

@@ -19,10 +19,10 @@ class EXPORT_MACRO LinearSegmentParameter
 {
 protected:
   /** the individual segment of the linear segment  */
-  unsigned char _segmentNumber; 
+  uint8_t _segmentNumber; 
 
   /**  whether a modification has been made to the point object’s location or orientation */
-  unsigned char _segmentModification; 
+  uint8_t _segmentModification; 
 
   /** general dynamic appearance attributes of the segment. This record shall be defined as a 16-bit record of enumerations. The values defined for this record are included in Section 12 of SISO-REF-010. */
   unsigned short _generalSegmentAppearance; 
@@ -56,11 +56,11 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getSegmentNumber() const; 
-    void setSegmentNumber(unsigned char pX); 
+    uint8_t getSegmentNumber() const; 
+    void setSegmentNumber(uint8_t pX); 
 
-    unsigned char getSegmentModification() const; 
-    void setSegmentModification(unsigned char pX); 
+    uint8_t getSegmentModification() const; 
+    void setSegmentModification(uint8_t pX); 
 
     unsigned short getGeneralSegmentAppearance() const; 
     void setGeneralSegmentAppearance(unsigned short pX); 

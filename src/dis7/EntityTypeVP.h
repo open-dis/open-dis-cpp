@@ -18,10 +18,10 @@ class EXPORT_MACRO EntityTypeVP
 {
 protected:
   /** the identification of the Variable Parameter record. Enumeration from EBV */
-  unsigned char _recordType; 
+  uint8_t _recordType; 
 
   /** Indicates if this VP has changed since last issuance */
-  unsigned char _changeIndicator; 
+  uint8_t _changeIndicator; 
 
   /**  */
   EntityType _entityType; 
@@ -40,11 +40,11 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getRecordType() const; 
-    void setRecordType(unsigned char pX); 
+    uint8_t getRecordType() const; 
+    void setRecordType(uint8_t pX); 
 
-    unsigned char getChangeIndicator() const; 
-    void setChangeIndicator(unsigned char pX); 
+    uint8_t getChangeIndicator() const; 
+    void setChangeIndicator(uint8_t pX); 
 
     EntityType& getEntityType(); 
     const EntityType&  getEntityType() const; 

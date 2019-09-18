@@ -21,12 +21,12 @@ DataQueryReliablePdu::~DataQueryReliablePdu()
     _variableDatumRecords.clear();
 }
 
-unsigned char DataQueryReliablePdu::getRequiredReliabilityService() const
+uint8_t DataQueryReliablePdu::getRequiredReliabilityService() const
 {
     return _requiredReliabilityService;
 }
 
-void DataQueryReliablePdu::setRequiredReliabilityService(unsigned char pX)
+void DataQueryReliablePdu::setRequiredReliabilityService(uint8_t pX)
 {
     _requiredReliabilityService = pX;
 }
@@ -41,12 +41,12 @@ void DataQueryReliablePdu::setPad1(unsigned short pX)
     _pad1 = pX;
 }
 
-unsigned char DataQueryReliablePdu::getPad2() const
+uint8_t DataQueryReliablePdu::getPad2() const
 {
     return _pad2;
 }
 
-void DataQueryReliablePdu::setPad2(unsigned char pX)
+void DataQueryReliablePdu::setPad2(uint8_t pX)
 {
     _pad2 = pX;
 }
@@ -206,14 +206,14 @@ int DataQueryReliablePdu::getMarshalledSize() const
    marshalSize = marshalSize + 4;  // _numberOfFixedDatumRecords
    marshalSize = marshalSize + 4;  // _numberOfVariableDatumRecords
 
-   for(int idx=0; idx < _fixedDatumRecords.size(); idx++)
+   for(size_t idx=0; idx < _fixedDatumRecords.size(); idx++)
    {
         FixedDatum listElement = _fixedDatumRecords[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
     }
 
 
-   for(int idx=0; idx < _variableDatumRecords.size(); idx++)
+   for(size_t idx=0; idx < _variableDatumRecords.size(); idx++)
    {
         VariableDatum listElement = _variableDatumRecords[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

@@ -29,22 +29,22 @@ void TrackJamTarget::setTrackJam(const EntityID &pX)
     _trackJam = pX;
 }
 
-unsigned char TrackJamTarget::getEmitterID() const
+uint8_t TrackJamTarget::getEmitterID() const
 {
     return _emitterID;
 }
 
-void TrackJamTarget::setEmitterID(unsigned char pX)
+void TrackJamTarget::setEmitterID(uint8_t pX)
 {
     _emitterID = pX;
 }
 
-unsigned char TrackJamTarget::getBeamID() const
+uint8_t TrackJamTarget::getBeamID() const
 {
     return _beamID;
 }
 
-void TrackJamTarget::setBeamID(unsigned char pX)
+void TrackJamTarget::setBeamID(uint8_t pX)
 {
     _beamID = pX;
 }

@@ -32,13 +32,13 @@ protected:
   unsigned int _burstLength; 
 
   /** Applicable modes enumeration */
-  unsigned char _applicableModes; 
+  uint8_t _applicableModes; 
 
   /** padding */
   unsigned short _pad2; 
 
   /** padding */
-  unsigned char _pad3; 
+  uint8_t _pad3; 
 
 
  public:
@@ -63,14 +63,14 @@ protected:
     unsigned int getBurstLength() const; 
     void setBurstLength(unsigned int pX); 
 
-    unsigned char getApplicableModes() const; 
-    void setApplicableModes(unsigned char pX); 
+    uint8_t getApplicableModes() const; 
+    void setApplicableModes(uint8_t pX); 
 
     unsigned short getPad2() const; 
     void setPad2(unsigned short pX); 
 
-    unsigned char getPad3() const; 
-    void setPad3(unsigned char pX); 
+    uint8_t getPad3() const; 
+    void setPad3(uint8_t pX); 
 
 
 virtual int getMarshalledSize() const;

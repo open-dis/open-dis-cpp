@@ -17,10 +17,10 @@ class EXPORT_MACRO LayerHeader
 {
 protected:
   /** Layer number */
-  unsigned char _layerNumber; 
+  uint8_t _layerNumber; 
 
   /** Layer speccific information enumeration */
-  unsigned char _layerSpecificInformaiton; 
+  uint8_t _layerSpecificInformaiton; 
 
   /** information length */
   unsigned short _length; 
@@ -33,11 +33,11 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getLayerNumber() const; 
-    void setLayerNumber(unsigned char pX); 
+    uint8_t getLayerNumber() const; 
+    void setLayerNumber(uint8_t pX); 
 
-    unsigned char getLayerSpecificInformaiton() const; 
-    void setLayerSpecificInformaiton(unsigned char pX); 
+    uint8_t getLayerSpecificInformaiton() const; 
+    void setLayerSpecificInformaiton(uint8_t pX); 
 
     unsigned short getLength() const; 
     void setLength(unsigned short pX); 

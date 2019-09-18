@@ -79,7 +79,7 @@ int StandardVariableSpecification::getMarshalledSize() const
 
    marshalSize = marshalSize + 2;  // _numberOfStandardVariableRecords
 
-   for(int idx=0; idx < _standardVariables.size(); idx++)
+   for(size_t idx=0; idx < _standardVariables.size(); idx++)
    {
         SimulationManagementPduHeader listElement = _standardVariables[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

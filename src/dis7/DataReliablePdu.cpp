@@ -30,12 +30,12 @@ void DataReliablePdu::setRequestID(unsigned int pX)
     _requestID = pX;
 }
 
-unsigned char DataReliablePdu::getRequiredReliabilityService() const
+uint8_t DataReliablePdu::getRequiredReliabilityService() const
 {
     return _requiredReliabilityService;
 }
 
-void DataReliablePdu::setRequiredReliabilityService(unsigned char pX)
+void DataReliablePdu::setRequiredReliabilityService(uint8_t pX)
 {
     _requiredReliabilityService = pX;
 }
@@ -50,12 +50,12 @@ void DataReliablePdu::setPad1(unsigned short pX)
     _pad1 = pX;
 }
 
-unsigned char DataReliablePdu::getPad2() const
+uint8_t DataReliablePdu::getPad2() const
 {
     return _pad2;
 }
 
-void DataReliablePdu::setPad2(unsigned char pX)
+void DataReliablePdu::setPad2(uint8_t pX)
 {
     _pad2 = pX;
 }
@@ -191,14 +191,14 @@ int DataReliablePdu::getMarshalledSize() const
    marshalSize = marshalSize + 4;  // _numberOfFixedDatumRecords
    marshalSize = marshalSize + 4;  // _numberOfVariableDatumRecords
 
-   for(int idx=0; idx < _fixedDatumRecords.size(); idx++)
+   for(size_t idx=0; idx < _fixedDatumRecords.size(); idx++)
    {
         FixedDatum listElement = _fixedDatumRecords[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
     }
 
 
-   for(int idx=0; idx < _variableDatumRecords.size(); idx++)
+   for(size_t idx=0; idx < _variableDatumRecords.size(); idx++)
    {
         VariableDatum listElement = _variableDatumRecords[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

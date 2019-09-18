@@ -18,22 +18,22 @@ AggregateType::~AggregateType()
 {
 }
 
-unsigned char AggregateType::getAggregateKind() const
+uint8_t AggregateType::getAggregateKind() const
 {
     return _aggregateKind;
 }
 
-void AggregateType::setAggregateKind(unsigned char pX)
+void AggregateType::setAggregateKind(uint8_t pX)
 {
     _aggregateKind = pX;
 }
 
-unsigned char AggregateType::getDomain() const
+uint8_t AggregateType::getDomain() const
 {
     return _domain;
 }
 
-void AggregateType::setDomain(unsigned char pX)
+void AggregateType::setDomain(uint8_t pX)
 {
     _domain = pX;
 }
@@ -48,42 +48,42 @@ void AggregateType::setCountry(unsigned short pX)
     _country = pX;
 }
 
-unsigned char AggregateType::getCategory() const
+uint8_t AggregateType::getCategory() const
 {
     return _category;
 }
 
-void AggregateType::setCategory(unsigned char pX)
+void AggregateType::setCategory(uint8_t pX)
 {
     _category = pX;
 }
 
-unsigned char AggregateType::getSubcategory() const
+uint8_t AggregateType::getSubcategory() const
 {
     return _subcategory;
 }
 
-void AggregateType::setSubcategory(unsigned char pX)
+void AggregateType::setSubcategory(uint8_t pX)
 {
     _subcategory = pX;
 }
 
-unsigned char AggregateType::getSpecific() const
+uint8_t AggregateType::getSpecific() const
 {
     return _specific;
 }
 
-void AggregateType::setSpecific(unsigned char pX)
+void AggregateType::setSpecific(uint8_t pX)
 {
     _specific = pX;
 }
 
-unsigned char AggregateType::getExtra() const
+uint8_t AggregateType::getExtra() const
 {
     return _extra;
 }
 
-void AggregateType::setExtra(unsigned char pX)
+void AggregateType::setExtra(uint8_t pX)
 {
     _extra = pX;
 }

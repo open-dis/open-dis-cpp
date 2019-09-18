@@ -17,7 +17,7 @@ class EXPORT_MACRO VariableParameter
 {
 protected:
   /** the identification of the Variable Parameter record. Enumeration from EBV */
-  unsigned char _recordType; 
+  uint8_t _recordType; 
 
   /** Variable parameter data fields. Two doubles minus one byte */
   double _variableParameterFields1; 
@@ -29,7 +29,7 @@ protected:
   unsigned short _variableParameterFields3; 
 
   /** Variable parameter data fields.  */
-  unsigned char _variableParameterFields4; 
+  uint8_t _variableParameterFields4; 
 
 
  public:
@@ -39,8 +39,8 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getRecordType() const; 
-    void setRecordType(unsigned char pX); 
+    uint8_t getRecordType() const; 
+    void setRecordType(uint8_t pX); 
 
     double getVariableParameterFields1() const; 
     void setVariableParameterFields1(double pX); 
@@ -51,8 +51,8 @@ protected:
     unsigned short getVariableParameterFields3() const; 
     void setVariableParameterFields3(unsigned short pX); 
 
-    unsigned char getVariableParameterFields4() const; 
-    void setVariableParameterFields4(unsigned char pX); 
+    uint8_t getVariableParameterFields4() const; 
+    void setVariableParameterFields4(uint8_t pX); 
 
 
 virtual int getMarshalledSize() const;

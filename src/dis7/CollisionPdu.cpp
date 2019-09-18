@@ -66,12 +66,12 @@ void CollisionPdu::setEventID(const EventIdentifier &pX)
     _eventID = pX;
 }
 
-unsigned char CollisionPdu::getCollisionType() const
+uint8_t CollisionPdu::getCollisionType() const
 {
     return _collisionType;
 }
 
-void CollisionPdu::setCollisionType(unsigned char pX)
+void CollisionPdu::setCollisionType(uint8_t pX)
 {
     _collisionType = pX;
 }

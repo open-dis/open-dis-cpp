@@ -56,7 +56,7 @@ protected:
   char _pulseShape; 
 
   /** padding, Section 7.3.4  */
-  unsigned char _padding1; 
+  uint8_t _padding1; 
 
   /** padding, Section 7.3.4  */
   unsigned int _padding2; 
@@ -114,8 +114,8 @@ protected:
     char getPulseShape() const; 
     void setPulseShape(char pX); 
 
-    unsigned char getPadding1() const; 
-    void setPadding1(unsigned char pX); 
+    uint8_t getPadding1() const; 
+    void setPadding1(uint8_t pX); 
 
     unsigned int getPadding2() const; 
     void setPadding2(unsigned int pX); 

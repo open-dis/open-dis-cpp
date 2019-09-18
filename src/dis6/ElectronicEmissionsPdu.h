@@ -28,10 +28,10 @@ protected:
   EventID _eventID; 
 
   /** This field shall be used to indicate if the data in the PDU represents a state update or just data that has changed since issuance of the last Electromagnetic Emission PDU [relative to the identified entity and emission system(s)]. */
-  unsigned char _stateUpdateIndicator; 
+  uint8_t _stateUpdateIndicator; 
 
   /** This field shall specify the number of emission systems being described in the current PDU. */
-  unsigned char _numberOfSystems; 
+  uint8_t _numberOfSystems; 
 
   /** padding */
   unsigned short _paddingForEmissionsPdu; 
@@ -55,10 +55,10 @@ protected:
     const EventID&  getEventID() const; 
     void setEventID(const EventID    &pX);
 
-    unsigned char getStateUpdateIndicator() const; 
-    void setStateUpdateIndicator(unsigned char pX); 
+    uint8_t getStateUpdateIndicator() const; 
+    void setStateUpdateIndicator(uint8_t pX); 
 
-    unsigned char getNumberOfSystems() const; 
+    uint8_t getNumberOfSystems() const; 
 
     unsigned short getPaddingForEmissionsPdu() const; 
     void setPaddingForEmissionsPdu(unsigned short pX); 

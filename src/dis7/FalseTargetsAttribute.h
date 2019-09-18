@@ -22,13 +22,13 @@ protected:
 
   unsigned short _padding; 
 
-  unsigned char _emitterNumber; 
+  uint8_t _emitterNumber; 
 
-  unsigned char _beamNumber; 
+  uint8_t _beamNumber; 
 
-  unsigned char _stateIndicator; 
+  uint8_t _stateIndicator; 
 
-  unsigned char _padding2; 
+  uint8_t _padding2; 
 
   float _falseTargetCount; 
 
@@ -61,17 +61,17 @@ protected:
     unsigned short getPadding() const; 
     void setPadding(unsigned short pX); 
 
-    unsigned char getEmitterNumber() const; 
-    void setEmitterNumber(unsigned char pX); 
+    uint8_t getEmitterNumber() const; 
+    void setEmitterNumber(uint8_t pX); 
 
-    unsigned char getBeamNumber() const; 
-    void setBeamNumber(unsigned char pX); 
+    uint8_t getBeamNumber() const; 
+    void setBeamNumber(uint8_t pX); 
 
-    unsigned char getStateIndicator() const; 
-    void setStateIndicator(unsigned char pX); 
+    uint8_t getStateIndicator() const; 
+    void setStateIndicator(uint8_t pX); 
 
-    unsigned char getPadding2() const; 
-    void setPadding2(unsigned char pX); 
+    uint8_t getPadding2() const; 
+    void setPadding2(uint8_t pX); 
 
     float getFalseTargetCount() const; 
     void setFalseTargetCount(float pX); 

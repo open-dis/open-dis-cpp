@@ -17,7 +17,7 @@ class EXPORT_MACRO BeamStatus
 {
 protected:
   /** First bit zero means beam is active, first bit = 1 means deactivated. The rest is padding. */
-  unsigned char _beamState; 
+  uint8_t _beamState; 
 
 
  public:
@@ -27,8 +27,8 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getBeamState() const; 
-    void setBeamState(unsigned char pX); 
+    uint8_t getBeamState() const; 
+    void setBeamState(uint8_t pX); 
 
 
 virtual int getMarshalledSize() const;

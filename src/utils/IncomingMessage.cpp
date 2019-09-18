@@ -35,12 +35,12 @@ void IncomingMessage::Process(const char* buf, unsigned int size, Endian e)
 
    while( ds.GetReadPos() < ds.size() )
    {  
-      unsigned char pdu_type = ds[PDU_TYPE_POSITION];
+      uint8_t pdu_type = ds[PDU_TYPE_POSITION];
       SwitchOnType( pdu_type, ds );
    }
 }
 
-void IncomingMessage::SwitchOnType(unsigned char pdu_type, DataStream& ds)
+void IncomingMessage::SwitchOnType(uint8_t pdu_type, DataStream& ds)
 {
    DIS::PDUType enumType = (DIS::PDUType)pdu_type;
    Pdu *pdu = PduBank::GetStaticPDU(enumType);
@@ -68,7 +68,7 @@ void IncomingMessage::SwitchOnType(unsigned char pdu_type, DataStream& ds)
 }
 
 
-bool IncomingMessage::AddProcessor(unsigned char id, IPacketProcessor* pp)
+bool IncomingMessage::AddProcessor(uint8_t id, IPacketProcessor* pp)
 {
    PacketProcessorContainer::value_type candidate(id,pp);
    PacketProcessorContainer::iterator containerIter;
@@ -85,7 +85,7 @@ bool IncomingMessage::AddProcessor(unsigned char id, IPacketProcessor* pp)
 
 ///\todo add proper support for erasing from a multimap.
 ///\warning erases any processor registered for the id
-bool IncomingMessage::RemoveProcessor(unsigned char id, const IPacketProcessor* pp)
+bool IncomingMessage::RemoveProcessor(uint8_t id, const IPacketProcessor* pp)
 {
    PacketProcessorContainer::iterator containerIter;
 
@@ -111,7 +111,7 @@ const IncomingMessage::PacketProcessorContainer& IncomingMessage::GetProcessors(
 }
 
 
-bool IncomingMessage::FindProccessorContainer(unsigned char id, const IPacketProcessor* pp, PacketProcessorContainer::iterator &containerIter)
+bool IncomingMessage::FindProccessorContainer(uint8_t id, const IPacketProcessor* pp, PacketProcessorContainer::iterator &containerIter)
 {  
    PacketProcessIteratorPair iterPair = _processors.equal_range(id);
 

@@ -16,12 +16,12 @@ RemoveEntityReliablePdu::~RemoveEntityReliablePdu()
 {
 }
 
-unsigned char RemoveEntityReliablePdu::getRequiredReliabilityService() const
+uint8_t RemoveEntityReliablePdu::getRequiredReliabilityService() const
 {
     return _requiredReliabilityService;
 }
 
-void RemoveEntityReliablePdu::setRequiredReliabilityService(unsigned char pX)
+void RemoveEntityReliablePdu::setRequiredReliabilityService(uint8_t pX)
 {
     _requiredReliabilityService = pX;
 }
@@ -36,12 +36,12 @@ void RemoveEntityReliablePdu::setPad1(unsigned short pX)
     _pad1 = pX;
 }
 
-unsigned char RemoveEntityReliablePdu::getPad2() const
+uint8_t RemoveEntityReliablePdu::getPad2() const
 {
     return _pad2;
 }
 
-void RemoveEntityReliablePdu::setPad2(unsigned char pX)
+void RemoveEntityReliablePdu::setPad2(uint8_t pX)
 {
     _pad2 = pX;
 }

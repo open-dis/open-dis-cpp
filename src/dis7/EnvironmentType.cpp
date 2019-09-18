@@ -18,22 +18,22 @@ EnvironmentType::~EnvironmentType()
 {
 }
 
-unsigned char EnvironmentType::getEntityKind() const
+uint8_t EnvironmentType::getEntityKind() const
 {
     return _entityKind;
 }
 
-void EnvironmentType::setEntityKind(unsigned char pX)
+void EnvironmentType::setEntityKind(uint8_t pX)
 {
     _entityKind = pX;
 }
 
-unsigned char EnvironmentType::getDomain() const
+uint8_t EnvironmentType::getDomain() const
 {
     return _domain;
 }
 
-void EnvironmentType::setDomain(unsigned char pX)
+void EnvironmentType::setDomain(uint8_t pX)
 {
     _domain = pX;
 }
@@ -48,42 +48,42 @@ void EnvironmentType::setEntityClass(unsigned short pX)
     _entityClass = pX;
 }
 
-unsigned char EnvironmentType::getCategory() const
+uint8_t EnvironmentType::getCategory() const
 {
     return _category;
 }
 
-void EnvironmentType::setCategory(unsigned char pX)
+void EnvironmentType::setCategory(uint8_t pX)
 {
     _category = pX;
 }
 
-unsigned char EnvironmentType::getSubcategory() const
+uint8_t EnvironmentType::getSubcategory() const
 {
     return _subcategory;
 }
 
-void EnvironmentType::setSubcategory(unsigned char pX)
+void EnvironmentType::setSubcategory(uint8_t pX)
 {
     _subcategory = pX;
 }
 
-unsigned char EnvironmentType::getSpecific() const
+uint8_t EnvironmentType::getSpecific() const
 {
     return _specific;
 }
 
-void EnvironmentType::setSpecific(unsigned char pX)
+void EnvironmentType::setSpecific(uint8_t pX)
 {
     _specific = pX;
 }
 
-unsigned char EnvironmentType::getExtra() const
+uint8_t EnvironmentType::getExtra() const
 {
     return _extra;
 }
 
-void EnvironmentType::setExtra(unsigned char pX)
+void EnvironmentType::setExtra(uint8_t pX)
 {
     _extra = pX;
 }

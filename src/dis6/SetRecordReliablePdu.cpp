@@ -28,12 +28,12 @@ void SetRecordReliablePdu::setRequestID(unsigned int pX)
     _requestID = pX;
 }
 
-unsigned char SetRecordReliablePdu::getRequiredReliabilityService() const
+uint8_t SetRecordReliablePdu::getRequiredReliabilityService() const
 {
     return _requiredReliabilityService;
 }
 
-void SetRecordReliablePdu::setRequiredReliabilityService(unsigned char pX)
+void SetRecordReliablePdu::setRequiredReliabilityService(uint8_t pX)
 {
     _requiredReliabilityService = pX;
 }
@@ -48,12 +48,12 @@ void SetRecordReliablePdu::setPad1(unsigned short pX)
     _pad1 = pX;
 }
 
-unsigned char SetRecordReliablePdu::getPad2() const
+uint8_t SetRecordReliablePdu::getPad2() const
 {
     return _pad2;
 }
 
-void SetRecordReliablePdu::setPad2(unsigned char pX)
+void SetRecordReliablePdu::setPad2(uint8_t pX)
 {
     _pad2 = pX;
 }
@@ -145,7 +145,7 @@ int SetRecordReliablePdu::getMarshalledSize() const
    marshalSize = marshalSize + 1;  // _pad2
    marshalSize = marshalSize + 4;  // _numberOfRecordSets
 
-   for(int idx=0; idx < _recordSets.size(); idx++)
+   for(size_t idx=0; idx < _recordSets.size(); idx++)
    {
         RecordSet listElement = _recordSets[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

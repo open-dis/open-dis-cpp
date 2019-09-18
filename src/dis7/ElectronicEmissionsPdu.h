@@ -30,19 +30,19 @@ protected:
   EventIdentifier _eventID; 
 
   /** This field shall be used to indicate if the data in the PDU represents a state update or just data that has changed since issuance of the last Electromagnetic Emission PDU [relative to the identified entity and emission system(s)]. */
-  unsigned char _stateUpdateIndicator; 
+  uint8_t _stateUpdateIndicator; 
 
   /** This field shall specify the number of emission systems being described in the current PDU. */
-  unsigned char _numberOfSystems; 
+  uint8_t _numberOfSystems; 
 
   /** padding */
   unsigned short _paddingForEmissionsPdu; 
 
   /**  this field shall specify the length of this emitter system's data in 32-bit words. */
-  unsigned char _systemDataLength; 
+  uint8_t _systemDataLength; 
 
   /** the number of beams being described in the current PDU for the emitter system being described.  */
-  unsigned char _numberOfBeams; 
+  uint8_t _numberOfBeams; 
 
   /**  information about a particular emitter system and shall be represented by an Emitter System record (see 6.2.23). */
   EmitterSystem _emitterSystem; 
@@ -69,19 +69,19 @@ protected:
     const EventIdentifier&  getEventID() const; 
     void setEventID(const EventIdentifier    &pX);
 
-    unsigned char getStateUpdateIndicator() const; 
-    void setStateUpdateIndicator(unsigned char pX); 
+    uint8_t getStateUpdateIndicator() const; 
+    void setStateUpdateIndicator(uint8_t pX); 
 
-    unsigned char getNumberOfSystems() const; 
+    uint8_t getNumberOfSystems() const; 
 
     unsigned short getPaddingForEmissionsPdu() const; 
     void setPaddingForEmissionsPdu(unsigned short pX); 
 
-    unsigned char getSystemDataLength() const; 
-    void setSystemDataLength(unsigned char pX); 
+    uint8_t getSystemDataLength() const; 
+    void setSystemDataLength(uint8_t pX); 
 
-    unsigned char getNumberOfBeams() const; 
-    void setNumberOfBeams(unsigned char pX); 
+    uint8_t getNumberOfBeams() const; 
+    void setNumberOfBeams(uint8_t pX); 
 
     EmitterSystem& getEmitterSystem(); 
     const EmitterSystem&  getEmitterSystem() const; 

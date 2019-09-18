@@ -37,16 +37,16 @@ protected:
   float _temperature; 
 
   /** enumeration */
-  unsigned char _componentIdentification; 
+  uint8_t _componentIdentification; 
 
   /** enumeration */
-  unsigned char _componentDamageStatus; 
+  uint8_t _componentDamageStatus; 
 
   /** enumeration */
-  unsigned char _componentVisualDamageStatus; 
+  uint8_t _componentVisualDamageStatus; 
 
   /** enumeration */
-  unsigned char _componentVisualSmokeColor; 
+  uint8_t _componentVisualSmokeColor; 
 
   /** For any component damage resulting this field shall be set to the fire event ID from that PDU. */
   EventIdentifier _fireEventID; 
@@ -81,17 +81,17 @@ protected:
     float getTemperature() const; 
     void setTemperature(float pX); 
 
-    unsigned char getComponentIdentification() const; 
-    void setComponentIdentification(unsigned char pX); 
+    uint8_t getComponentIdentification() const; 
+    void setComponentIdentification(uint8_t pX); 
 
-    unsigned char getComponentDamageStatus() const; 
-    void setComponentDamageStatus(unsigned char pX); 
+    uint8_t getComponentDamageStatus() const; 
+    void setComponentDamageStatus(uint8_t pX); 
 
-    unsigned char getComponentVisualDamageStatus() const; 
-    void setComponentVisualDamageStatus(unsigned char pX); 
+    uint8_t getComponentVisualDamageStatus() const; 
+    void setComponentVisualDamageStatus(uint8_t pX); 
 
-    unsigned char getComponentVisualSmokeColor() const; 
-    void setComponentVisualSmokeColor(unsigned char pX); 
+    uint8_t getComponentVisualSmokeColor() const; 
+    void setComponentVisualSmokeColor(uint8_t pX); 
 
     EventIdentifier& getFireEventID(); 
     const EventIdentifier&  getFireEventID() const; 

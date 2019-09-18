@@ -17,22 +17,22 @@ RadioEntityType::~RadioEntityType()
 {
 }
 
-unsigned char RadioEntityType::getEntityKind() const
+uint8_t RadioEntityType::getEntityKind() const
 {
     return _entityKind;
 }
 
-void RadioEntityType::setEntityKind(unsigned char pX)
+void RadioEntityType::setEntityKind(uint8_t pX)
 {
     _entityKind = pX;
 }
 
-unsigned char RadioEntityType::getDomain() const
+uint8_t RadioEntityType::getDomain() const
 {
     return _domain;
 }
 
-void RadioEntityType::setDomain(unsigned char pX)
+void RadioEntityType::setDomain(uint8_t pX)
 {
     _domain = pX;
 }
@@ -47,22 +47,22 @@ void RadioEntityType::setCountry(unsigned short pX)
     _country = pX;
 }
 
-unsigned char RadioEntityType::getCategory() const
+uint8_t RadioEntityType::getCategory() const
 {
     return _category;
 }
 
-void RadioEntityType::setCategory(unsigned char pX)
+void RadioEntityType::setCategory(uint8_t pX)
 {
     _category = pX;
 }
 
-unsigned char RadioEntityType::getNomenclatureVersion() const
+uint8_t RadioEntityType::getNomenclatureVersion() const
 {
     return _nomenclatureVersion;
 }
 
-void RadioEntityType::setNomenclatureVersion(unsigned char pX)
+void RadioEntityType::setNomenclatureVersion(uint8_t pX)
 {
     _nomenclatureVersion = pX;
 }

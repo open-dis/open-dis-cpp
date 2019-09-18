@@ -24,10 +24,10 @@ protected:
   EntityID _groupEntityID; 
 
   /** type of entities constituting the group */
-  unsigned char _groupedEntityCategory; 
+  uint8_t _groupedEntityCategory; 
 
   /** Number of individual entities constituting the group */
-  unsigned char _numberOfGroupedEntities; 
+  uint8_t _numberOfGroupedEntities; 
 
   /** padding */
   unsigned int _pad2; 
@@ -53,10 +53,10 @@ protected:
     const EntityID&  getGroupEntityID() const; 
     void setGroupEntityID(const EntityID    &pX);
 
-    unsigned char getGroupedEntityCategory() const; 
-    void setGroupedEntityCategory(unsigned char pX); 
+    uint8_t getGroupedEntityCategory() const; 
+    void setGroupedEntityCategory(uint8_t pX); 
 
-    unsigned char getNumberOfGroupedEntities() const; 
+    uint8_t getNumberOfGroupedEntities() const; 
 
     unsigned int getPad2() const; 
     void setPad2(unsigned int pX); 

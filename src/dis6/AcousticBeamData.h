@@ -21,7 +21,7 @@ protected:
   unsigned short _beamDataLength; 
 
   /** beamIDNumber */
-  unsigned char _beamIDNumber; 
+  uint8_t _beamIDNumber; 
 
   /** padding */
   unsigned short _pad2; 
@@ -40,8 +40,8 @@ protected:
     unsigned short getBeamDataLength() const; 
     void setBeamDataLength(unsigned short pX); 
 
-    unsigned char getBeamIDNumber() const; 
-    void setBeamIDNumber(unsigned char pX); 
+    uint8_t getBeamIDNumber() const; 
+    void setBeamIDNumber(uint8_t pX); 
 
     unsigned short getPad2() const; 
     void setPad2(unsigned short pX); 

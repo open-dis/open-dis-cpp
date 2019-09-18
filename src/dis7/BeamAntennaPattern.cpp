@@ -66,12 +66,12 @@ void BeamAntennaPattern::setReferenceSystem(float pX)
     _referenceSystem = pX;
 }
 
-unsigned char BeamAntennaPattern::getPadding1() const
+uint8_t BeamAntennaPattern::getPadding1() const
 {
     return _padding1;
 }
 
-void BeamAntennaPattern::setPadding1(unsigned char pX)
+void BeamAntennaPattern::setPadding1(uint8_t pX)
 {
     _padding1 = pX;
 }

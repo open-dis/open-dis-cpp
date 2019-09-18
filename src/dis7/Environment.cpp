@@ -35,22 +35,22 @@ void Environment::setLength(unsigned short pX)
     _length = pX;
 }
 
-unsigned char Environment::getIndex() const
+uint8_t Environment::getIndex() const
 {
     return _index;
 }
 
-void Environment::setIndex(unsigned char pX)
+void Environment::setIndex(uint8_t pX)
 {
     _index = pX;
 }
 
-unsigned char Environment::getPadding() const
+uint8_t Environment::getPadding() const
 {
     return _padding;
 }
 
-void Environment::setPadding(unsigned char pX)
+void Environment::setPadding(uint8_t pX)
 {
     _padding = pX;
 }

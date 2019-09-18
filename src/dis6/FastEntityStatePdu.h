@@ -29,50 +29,50 @@ protected:
   unsigned short _entity; 
 
   /** what force this entity is affiliated with, eg red, blue, neutral, etc */
-  unsigned char _forceId; 
+  uint8_t _forceId; 
 
   /** How many articulation parameters are in the variable length list */
-  char _numberOfArticulationParameters; 
+  int8_t _numberOfArticulationParameters; 
 
   /** Kind of entity */
-  unsigned char _entityKind; 
+  uint8_t _entityKind; 
 
   /** Domain of entity (air, surface, subsurface, space, etc) */
-  unsigned char _domain; 
+  uint8_t _domain; 
 
   /** country to which the design of the entity is attributed */
   unsigned short _country; 
 
   /** category of entity */
-  unsigned char _category; 
+  uint8_t _category; 
 
   /** subcategory of entity */
-  unsigned char _subcategory; 
+  uint8_t _subcategory; 
 
   /** specific info based on subcategory field */
-  unsigned char _specific; 
+  uint8_t _specific; 
 
-  unsigned char _extra; 
+  uint8_t _extra; 
 
   /** Kind of entity */
-  unsigned char _altEntityKind; 
+  uint8_t _altEntityKind; 
 
   /** Domain of entity (air, surface, subsurface, space, etc) */
-  unsigned char _altDomain; 
+  uint8_t _altDomain; 
 
   /** country to which the design of the entity is attributed */
   unsigned short _altCountry; 
 
   /** category of entity */
-  unsigned char _altCategory; 
+  uint8_t _altCategory; 
 
   /** subcategory of entity */
-  unsigned char _altSubcategory; 
+  uint8_t _altSubcategory; 
 
   /** specific info based on subcategory field */
-  unsigned char _altSpecific; 
+  uint8_t _altSpecific; 
 
-  unsigned char _altExtra; 
+  uint8_t _altExtra; 
 
   /** X velo */
   float _xVelocity; 
@@ -102,7 +102,7 @@ protected:
   int _entityAppearance; 
 
   /** enumeration of what dead reckoning algorighm to use */
-  unsigned char _deadReckoningAlgorithm; 
+  uint8_t _deadReckoningAlgorithm; 
 
   /** other parameters to use in the dead reckoning algorithm */
   char _otherParameters[15]; 
@@ -151,52 +151,52 @@ protected:
     unsigned short getEntity() const; 
     void setEntity(unsigned short pX); 
 
-    unsigned char getForceId() const; 
-    void setForceId(unsigned char pX); 
+    uint8_t getForceId() const; 
+    void setForceId(uint8_t pX); 
 
     char getNumberOfArticulationParameters() const; 
 
-    unsigned char getEntityKind() const; 
-    void setEntityKind(unsigned char pX); 
+    uint8_t getEntityKind() const; 
+    void setEntityKind(uint8_t pX); 
 
-    unsigned char getDomain() const; 
-    void setDomain(unsigned char pX); 
+    uint8_t getDomain() const; 
+    void setDomain(uint8_t pX); 
 
     unsigned short getCountry() const; 
     void setCountry(unsigned short pX); 
 
-    unsigned char getCategory() const; 
-    void setCategory(unsigned char pX); 
+    uint8_t getCategory() const; 
+    void setCategory(uint8_t pX); 
 
-    unsigned char getSubcategory() const; 
-    void setSubcategory(unsigned char pX); 
+    uint8_t getSubcategory() const; 
+    void setSubcategory(uint8_t pX); 
 
-    unsigned char getSpecific() const; 
-    void setSpecific(unsigned char pX); 
+    uint8_t getSpecific() const; 
+    void setSpecific(uint8_t pX); 
 
-    unsigned char getExtra() const; 
-    void setExtra(unsigned char pX); 
+    uint8_t getExtra() const; 
+    void setExtra(uint8_t pX); 
 
-    unsigned char getAltEntityKind() const; 
-    void setAltEntityKind(unsigned char pX); 
+    uint8_t getAltEntityKind() const; 
+    void setAltEntityKind(uint8_t pX); 
 
-    unsigned char getAltDomain() const; 
-    void setAltDomain(unsigned char pX); 
+    uint8_t getAltDomain() const; 
+    void setAltDomain(uint8_t pX); 
 
     unsigned short getAltCountry() const; 
     void setAltCountry(unsigned short pX); 
 
-    unsigned char getAltCategory() const; 
-    void setAltCategory(unsigned char pX); 
+    uint8_t getAltCategory() const; 
+    void setAltCategory(uint8_t pX); 
 
-    unsigned char getAltSubcategory() const; 
-    void setAltSubcategory(unsigned char pX); 
+    uint8_t getAltSubcategory() const; 
+    void setAltSubcategory(uint8_t pX); 
 
-    unsigned char getAltSpecific() const; 
-    void setAltSpecific(unsigned char pX); 
+    uint8_t getAltSpecific() const; 
+    void setAltSpecific(uint8_t pX); 
 
-    unsigned char getAltExtra() const; 
-    void setAltExtra(unsigned char pX); 
+    uint8_t getAltExtra() const; 
+    void setAltExtra(uint8_t pX); 
 
     float getXVelocity() const; 
     void setXVelocity(float pX); 
@@ -228,8 +228,8 @@ protected:
     int getEntityAppearance() const; 
     void setEntityAppearance(int pX); 
 
-    unsigned char getDeadReckoningAlgorithm() const; 
-    void setDeadReckoningAlgorithm(unsigned char pX); 
+    uint8_t getDeadReckoningAlgorithm() const; 
+    void setDeadReckoningAlgorithm(uint8_t pX); 
 
     char*  getOtherParameters(); 
     const char*  getOtherParameters() const; 

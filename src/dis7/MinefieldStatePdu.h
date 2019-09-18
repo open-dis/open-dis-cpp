@@ -31,10 +31,10 @@ protected:
   unsigned short _minefieldSequence; 
 
   /** force ID */
-  unsigned char _forceID; 
+  uint8_t _forceID; 
 
   /** Number of permieter points */
-  unsigned char _numberOfPerimeterPoints; 
+  uint8_t _numberOfPerimeterPoints; 
 
   /** type of minefield */
   EntityType _minefieldType; 
@@ -75,10 +75,10 @@ protected:
     unsigned short getMinefieldSequence() const; 
     void setMinefieldSequence(unsigned short pX); 
 
-    unsigned char getForceID() const; 
-    void setForceID(unsigned char pX); 
+    uint8_t getForceID() const; 
+    void setForceID(uint8_t pX); 
 
-    unsigned char getNumberOfPerimeterPoints() const; 
+    uint8_t getNumberOfPerimeterPoints() const; 
 
     EntityType& getMinefieldType(); 
     const EntityType&  getMinefieldType() const; 

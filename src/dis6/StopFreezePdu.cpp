@@ -32,22 +32,22 @@ void StopFreezePdu::setRealWorldTime(const ClockTime &pX)
     _realWorldTime = pX;
 }
 
-unsigned char StopFreezePdu::getReason() const
+uint8_t StopFreezePdu::getReason() const
 {
     return _reason;
 }
 
-void StopFreezePdu::setReason(unsigned char pX)
+void StopFreezePdu::setReason(uint8_t pX)
 {
     _reason = pX;
 }
 
-unsigned char StopFreezePdu::getFrozenBehavior() const
+uint8_t StopFreezePdu::getFrozenBehavior() const
 {
     return _frozenBehavior;
 }
 
-void StopFreezePdu::setFrozenBehavior(unsigned char pX)
+void StopFreezePdu::setFrozenBehavior(uint8_t pX)
 {
     _frozenBehavior = pX;
 }

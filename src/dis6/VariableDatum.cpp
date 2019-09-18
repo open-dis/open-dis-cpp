@@ -5,17 +5,14 @@ using namespace DIS;
 
 
 VariableDatum::VariableDatum():
-   _variableDatumID(0), 
-   _variableDatumLength(0),
-   _variableDatums(static_cast<std::size_t>(STATIC_ARRAY_LENGTH), char(0)), // can (theoretically) throw
-   _arrayLength(0)
+   _variableDatumID(0),
+   _variableDatums(static_cast<std::size_t>(STATIC_ARRAY_LENGTH), '0') // can (theoretically) throw
 {
 
 }
 
 VariableDatum::~VariableDatum()
 {
-	//delete [] _variableDatums;
 }
 
 unsigned int VariableDatum::getVariableDatumID() const
@@ -30,15 +27,15 @@ void VariableDatum::setVariableDatumID(unsigned int pX)
 
 unsigned int VariableDatum::getVariableDatumLength() const
 {
-    return _variableDatumLength;
+    return _variableDatums.size();
 }
 
 void VariableDatum::setVariableDatumLength(unsigned int pX)
 {
-    _variableDatumLength = pX;
+    _variableDatums.resize(pX);
 }
 
-char* VariableDatum::getVariableDatums() // a bit dangerous. we could just return a ref to _variableDatums
+char* VariableDatum::getVariableDatums()
 {
     return _variableDatums.data();
 }
@@ -48,110 +45,65 @@ const char* VariableDatum::getVariableDatums() const
     return _variableDatums.data();
 }
 
-void VariableDatum::setVariableDatums(const char* x, const int length)
+void VariableDatum::setVariableDatums(const char* x, const unsigned int length)
 {
-    if(length < 0) {
-        // *** One should really be using unsigned for size values! f.e. std::size_t
-        std::cout << " The VariableDatum pointer size parameter is negative. Punting." << std::endl;
-    }
-
-    int byteLength = length; // why this copy?
-    _variableDatumLength = length * 8; // in bits
-
-	// Figure out padding
-    int chunks = byteLength / 8; // should be const, unsigned
-	int remainder = byteLength % 8;
-	if(remainder != 0)
-		chunks++;
-    _arrayLength = chunks * 8;
-
-    int padding =  8 - remainder;
-
-    // .resize() might (theoretically) throw. want to catch? : what to do? zombie datum?
-    // negative "length" would be a disaster : signed->unsigned->huge allocation
-    if(_variableDatums.size() < length)
-        _variableDatums.resize(length);
-
-    for(int i = 0; i < length; i++)
+    if(_variableDatums.size() != length)
     {
-        _variableDatums[i] = x[i];
+        // Standard library will set new size to length but may not unallocate memory
+        // As a result, resizing to a smaller size doesn't mean we'll waste time allocating
+        // when a larger datum arrives.
+        _variableDatums.resize(length); 
     }
-    for(int i = length; i < _variableDatums.size(); i++)
-    {
-        _variableDatums[i] = 0;
-    }
+    std::memcpy(&_variableDatums[0], x, length);
 }
 
 void VariableDatum::marshal(DataStream& dataStream) const
 {
     dataStream << _variableDatumID;
-    dataStream << _variableDatumLength;
+    dataStream << _variableDatums.size();
 
-    for(size_t idx = 0; idx < _arrayLength; idx++)
+    for(size_t idx = 0; idx < _variableDatums.size(); idx++)
     {
         dataStream << _variableDatums[idx];
     }
-
 }
 
 void VariableDatum::unmarshal(DataStream& dataStream)
 {
     dataStream >> _variableDatumID;
-    dataStream >> _variableDatumLength;
+
+    size_t incoming_length;
+
+    dataStream >> incoming_length;
 	
-    int byteLength = _variableDatumLength / 8;
+    int byteLength = incoming_length / 8;
 	int chunks = byteLength / 8;
 	if(byteLength % 8 > 0)
-		chunks++;
-	_arrayLength = chunks * 8;
+    {
+        chunks++;
+    }
 
-	//std::cout << "Variable datum #" << (int)_variableDatumID << " arrayLength=" << (int)_arrayLength << " ";
+	size_t _arrayLength = chunks * 8;
 
-    // .resize() might (theoretically) throw. want to catch? : what to do? zombie datum?
-    if(_variableDatums.size() < _arrayLength)
+    if(_variableDatums.size() != _arrayLength)
+    {
         _variableDatums.resize(_arrayLength);
+    }   
 
-     for(size_t idx = 0; idx < _arrayLength; idx++)
-     {
+    for(size_t idx = 0; idx < _variableDatums.size(); idx++)
+    {
         dataStream >> _variableDatums[idx];
-		//std::cout << (int)_variableDatums[idx] << " ";
-     }
-	 //std::cout << std::endl;
-     for(size_t idx = _arrayLength; idx < _variableDatums.size(); idx++)
-	 {
-		 _variableDatums[idx] = 0;
-	 }
-	 //std::cout << " Created and copied data to new _variableDatums array" << std::endl;
-
+    }
 }
 
 bool VariableDatum::operator ==(const VariableDatum& rhs) const
 {
-    bool ivarsEqual = true;
-
-    if( ! (_variableDatumID == rhs._variableDatumID) ) ivarsEqual = false;
-    if( ! (_variableDatumLength == rhs._variableDatumLength) ) ivarsEqual = false;
-    if( ! (_variableDatums.size() == rhs._variableDatums.size()) ) ivarsEqual = false;
-    else {
-        for(std::size_t idx = 0; idx < _variableDatums.size(); idx++)
-        {
-            if(!(_variableDatums[idx] == rhs._variableDatums[idx]) ) {ivarsEqual = false; break; }
-        }
-    }
-
-    return ivarsEqual;
+    return _variableDatumID == rhs._variableDatumID && _variableDatums == rhs._variableDatums;
 }
 
 int VariableDatum::getMarshalledSize() const
 {
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 4;  // _variableDatumID
-   marshalSize = marshalSize + 4;  // _variableDatumLength
-
-	marshalSize = marshalSize + _arrayLength;
-
-    return marshalSize;
+    return sizeof(_variableDatumID) + sizeof(_variableDatums.size()) + _variableDatums.size();
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.

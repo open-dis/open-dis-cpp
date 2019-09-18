@@ -84,27 +84,27 @@ void UaPdu::setPassiveParameterIndex(unsigned short pX)
     _passiveParameterIndex = pX;
 }
 
-unsigned char UaPdu::getPropulsionPlantConfiguration() const
+uint8_t UaPdu::getPropulsionPlantConfiguration() const
 {
     return _propulsionPlantConfiguration;
 }
 
-void UaPdu::setPropulsionPlantConfiguration(unsigned char pX)
+void UaPdu::setPropulsionPlantConfiguration(uint8_t pX)
 {
     _propulsionPlantConfiguration = pX;
 }
 
-unsigned char UaPdu::getNumberOfShafts() const
+uint8_t UaPdu::getNumberOfShafts() const
 {
    return _shaftRPMs.size();
 }
 
-unsigned char UaPdu::getNumberOfAPAs() const
+uint8_t UaPdu::getNumberOfAPAs() const
 {
    return _apaData.size();
 }
 
-unsigned char UaPdu::getNumberOfUAEmitterSystems() const
+uint8_t UaPdu::getNumberOfUAEmitterSystems() const
 {
    return _emitterSystems.size();
 }
@@ -163,9 +163,9 @@ void UaPdu::marshal(DataStream& dataStream) const
     dataStream << _pad;
     dataStream << _passiveParameterIndex;
     dataStream << _propulsionPlantConfiguration;
-    dataStream << ( unsigned char )_shaftRPMs.size();
-    dataStream << ( unsigned char )_apaData.size();
-    dataStream << ( unsigned char )_emitterSystems.size();
+    dataStream << ( uint8_t )_shaftRPMs.size();
+    dataStream << ( uint8_t )_apaData.size();
+    dataStream << ( uint8_t )_emitterSystems.size();
 
      for(size_t idx = 0; idx < _shaftRPMs.size(); idx++)
      {
@@ -277,21 +277,21 @@ int UaPdu::getMarshalledSize() const
    marshalSize = marshalSize + 1;  // _numberOfAPAs
    marshalSize = marshalSize + 1;  // _numberOfUAEmitterSystems
 
-   for(int idx=0; idx < _shaftRPMs.size(); idx++)
+   for(size_t idx=0; idx < _shaftRPMs.size(); idx++)
    {
         Vector3Float listElement = _shaftRPMs[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
     }
 
 
-   for(int idx=0; idx < _apaData.size(); idx++)
+   for(size_t idx=0; idx < _apaData.size(); idx++)
    {
         Vector3Float listElement = _apaData[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
     }
 
 
-   for(int idx=0; idx < _emitterSystems.size(); idx++)
+   for(size_t idx=0; idx < _emitterSystems.size(); idx++)
    {
         Vector3Float listElement = _emitterSystems[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

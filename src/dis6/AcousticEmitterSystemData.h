@@ -21,10 +21,10 @@ class EXPORT_MACRO AcousticEmitterSystemData
 {
 protected:
   /** Length of emitter system data */
-  unsigned char _emitterSystemDataLength; 
+  uint8_t _emitterSystemDataLength; 
 
   /** Number of beams */
-  unsigned char _numberOfBeams; 
+  uint8_t _numberOfBeams; 
 
   /** padding */
   unsigned short _pad2; 
@@ -46,10 +46,10 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getEmitterSystemDataLength() const; 
-    void setEmitterSystemDataLength(unsigned char pX); 
+    uint8_t getEmitterSystemDataLength() const; 
+    void setEmitterSystemDataLength(uint8_t pX); 
 
-    unsigned char getNumberOfBeams() const; 
+    uint8_t getNumberOfBeams() const; 
 
     unsigned short getPad2() const; 
     void setPad2(unsigned short pX); 

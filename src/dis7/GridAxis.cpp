@@ -48,22 +48,22 @@ void GridAxis::setDomainPointsXi(unsigned short pX)
     _domainPointsXi = pX;
 }
 
-unsigned char GridAxis::getInterleafFactor() const
+uint8_t GridAxis::getInterleafFactor() const
 {
     return _interleafFactor;
 }
 
-void GridAxis::setInterleafFactor(unsigned char pX)
+void GridAxis::setInterleafFactor(uint8_t pX)
 {
     _interleafFactor = pX;
 }
 
-unsigned char GridAxis::getAxisType() const
+uint8_t GridAxis::getAxisType() const
 {
     return _axisType;
 }
 
-void GridAxis::setAxisType(unsigned char pX)
+void GridAxis::setAxisType(uint8_t pX)
 {
     _axisType = pX;
 }

@@ -37,22 +37,22 @@ void IOCommunicationsNode::setRecordLength(unsigned short pX)
     _recordLength = pX;
 }
 
-unsigned char IOCommunicationsNode::getCommuncationsNodeType() const
+uint8_t IOCommunicationsNode::getCommuncationsNodeType() const
 {
     return _communcationsNodeType;
 }
 
-void IOCommunicationsNode::setCommuncationsNodeType(unsigned char pX)
+void IOCommunicationsNode::setCommuncationsNodeType(uint8_t pX)
 {
     _communcationsNodeType = pX;
 }
 
-unsigned char IOCommunicationsNode::getPadding() const
+uint8_t IOCommunicationsNode::getPadding() const
 {
     return _padding;
 }
 
-void IOCommunicationsNode::setPadding(unsigned char pX)
+void IOCommunicationsNode::setPadding(uint8_t pX)
 {
     _padding = pX;
 }

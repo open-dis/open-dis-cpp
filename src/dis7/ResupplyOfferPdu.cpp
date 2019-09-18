@@ -48,7 +48,7 @@ void ResupplyOfferPdu::setSupplyingEntityID(const EntityID &pX)
     _supplyingEntityID = pX;
 }
 
-unsigned char ResupplyOfferPdu::getNumberOfSupplyTypes() const
+uint8_t ResupplyOfferPdu::getNumberOfSupplyTypes() const
 {
    return _supplies.size();
 }
@@ -93,7 +93,7 @@ void ResupplyOfferPdu::marshal(DataStream& dataStream) const
     LogisticsFamilyPdu::marshal(dataStream); // Marshal information in superclass first
     _receivingEntityID.marshal(dataStream);
     _supplyingEntityID.marshal(dataStream);
-    dataStream << ( unsigned char )_supplies.size();
+    dataStream << ( uint8_t )_supplies.size();
     dataStream << _padding1;
     dataStream << _padding2;
 
@@ -155,7 +155,7 @@ int ResupplyOfferPdu::getMarshalledSize() const
    marshalSize = marshalSize + 1;  // _padding1
    marshalSize = marshalSize + 2;  // _padding2
 
-   for(int idx=0; idx < _supplies.size(); idx++)
+   for(size_t idx=0; idx < _supplies.size(); idx++)
    {
         SupplyQuantity listElement = _supplies[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

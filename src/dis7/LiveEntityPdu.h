@@ -21,7 +21,7 @@ protected:
   unsigned short _subprotocolNumber; 
 
   /** zero-filled array of padding */
-  unsigned char _padding; 
+  uint8_t _padding; 
 
 
  public:
@@ -34,8 +34,8 @@ protected:
     unsigned short getSubprotocolNumber() const; 
     void setSubprotocolNumber(unsigned short pX); 
 
-    unsigned char getPadding() const; 
-    void setPadding(unsigned char pX); 
+    uint8_t getPadding() const; 
+    void setPadding(uint8_t pX); 
 
 
 virtual int getMarshalledSize() const;

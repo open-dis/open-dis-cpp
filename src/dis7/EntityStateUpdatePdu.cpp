@@ -46,7 +46,7 @@ void EntityStateUpdatePdu::setPadding1(char pX)
     _padding1 = pX;
 }
 
-unsigned char EntityStateUpdatePdu::getNumberOfVariableParameters() const
+uint8_t EntityStateUpdatePdu::getNumberOfVariableParameters() const
 {
    return _variableParameters.size();
 }
@@ -126,7 +126,7 @@ void EntityStateUpdatePdu::marshal(DataStream& dataStream) const
     EntityInformationFamilyPdu::marshal(dataStream); // Marshal information in superclass first
     _entityID.marshal(dataStream);
     dataStream << _padding1;
-    dataStream << ( unsigned char )_variableParameters.size();
+    dataStream << ( uint8_t )_variableParameters.size();
     _entityLinearVelocity.marshal(dataStream);
     _entityLocation.marshal(dataStream);
     _entityOrientation.marshal(dataStream);
@@ -196,7 +196,7 @@ int EntityStateUpdatePdu::getMarshalledSize() const
    marshalSize = marshalSize + _entityOrientation.getMarshalledSize();  // _entityOrientation
    marshalSize = marshalSize + 4;  // _entityAppearance
 
-   for(int idx=0; idx < _variableParameters.size(); idx++)
+   for(size_t idx=0; idx < _variableParameters.size(); idx++)
    {
         VariableParameter listElement = _variableParameters[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

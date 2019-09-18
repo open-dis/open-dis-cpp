@@ -26,7 +26,7 @@ protected:
 
   float _referenceSystem; 
 
-  unsigned char _padding1; 
+  uint8_t _padding1; 
 
   unsigned short _padding2; 
 
@@ -63,8 +63,8 @@ protected:
     float getReferenceSystem() const; 
     void setReferenceSystem(float pX); 
 
-    unsigned char getPadding1() const; 
-    void setPadding1(unsigned char pX); 
+    uint8_t getPadding1() const; 
+    void setPadding1(uint8_t pX); 
 
     unsigned short getPadding2() const; 
     void setPadding2(unsigned short pX); 

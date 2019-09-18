@@ -17,17 +17,17 @@ ElectronicEmissionSystemData::~ElectronicEmissionSystemData()
     _beamDataRecords.clear();
 }
 
-unsigned char ElectronicEmissionSystemData::getSystemDataLength() const
+uint8_t ElectronicEmissionSystemData::getSystemDataLength() const
 {
     return _systemDataLength;
 }
 
-void ElectronicEmissionSystemData::setSystemDataLength(unsigned char pX)
+void ElectronicEmissionSystemData::setSystemDataLength(uint8_t pX)
 {
     _systemDataLength = pX;
 }
 
-unsigned char ElectronicEmissionSystemData::getNumberOfBeams() const
+uint8_t ElectronicEmissionSystemData::getNumberOfBeams() const
 {
    return _beamDataRecords.size();
 }
@@ -90,7 +90,7 @@ void ElectronicEmissionSystemData::setBeamDataRecords(const std::vector<Electron
 void ElectronicEmissionSystemData::marshal(DataStream& dataStream) const
 {
     dataStream << _systemDataLength;
-    dataStream << ( unsigned char )_beamDataRecords.size();
+    dataStream << ( uint8_t )_beamDataRecords.size();
     dataStream << _emissionsPadding2;
     _emitterSystem.marshal(dataStream);
     _location.marshal(dataStream);
@@ -149,7 +149,7 @@ int ElectronicEmissionSystemData::getMarshalledSize() const
    marshalSize = marshalSize + _emitterSystem.getMarshalledSize();  // _emitterSystem
    marshalSize = marshalSize + _location.getMarshalledSize();  // _location
 
-   for(int idx=0; idx < _beamDataRecords.size(); idx++)
+   for(size_t idx=0; idx < _beamDataRecords.size(); idx++)
    {
         ElectronicEmissionBeamData listElement = _beamDataRecords[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

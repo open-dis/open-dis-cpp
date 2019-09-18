@@ -38,10 +38,10 @@ protected:
   unsigned short _coordinateSystem; 
 
   /** number of grid axes for the environmental data */
-  unsigned char _numberOfGridAxes; 
+  uint8_t _numberOfGridAxes; 
 
   /** are domain grid axes identidal to those of the priveious domain update? */
-  unsigned char _constantGrid; 
+  uint8_t _constantGrid; 
 
   /** type of environment */
   EntityType _environmentType; 
@@ -56,13 +56,13 @@ protected:
   unsigned int _totalValues; 
 
   /** total number of data values at each grid point. */
-  unsigned char _vectorDimension; 
+  uint8_t _vectorDimension; 
 
   /** padding */
   unsigned short _padding1; 
 
   /** padding */
-  unsigned char _padding2; 
+  uint8_t _padding2; 
 
   /** Grid data ^^^This is wrong */
   std::vector<GridAxisRecord> _gridDataList; 
@@ -91,10 +91,10 @@ protected:
     unsigned short getCoordinateSystem() const; 
     void setCoordinateSystem(unsigned short pX); 
 
-    unsigned char getNumberOfGridAxes() const; 
+    uint8_t getNumberOfGridAxes() const; 
 
-    unsigned char getConstantGrid() const; 
-    void setConstantGrid(unsigned char pX); 
+    uint8_t getConstantGrid() const; 
+    void setConstantGrid(uint8_t pX); 
 
     EntityType& getEnvironmentType(); 
     const EntityType&  getEnvironmentType() const; 
@@ -110,14 +110,14 @@ protected:
     unsigned int getTotalValues() const; 
     void setTotalValues(unsigned int pX); 
 
-    unsigned char getVectorDimension() const; 
-    void setVectorDimension(unsigned char pX); 
+    uint8_t getVectorDimension() const; 
+    void setVectorDimension(uint8_t pX); 
 
     unsigned short getPadding1() const; 
     void setPadding1(unsigned short pX); 
 
-    unsigned char getPadding2() const; 
-    void setPadding2(unsigned char pX); 
+    uint8_t getPadding2() const; 
+    void setPadding2(uint8_t pX); 
 
     std::vector<GridAxisRecord>& getGridDataList(); 
     const std::vector<GridAxisRecord>& getGridDataList() const; 

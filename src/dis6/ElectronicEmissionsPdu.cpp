@@ -49,17 +49,17 @@ void ElectronicEmissionsPdu::setEventID(const EventID &pX)
     _eventID = pX;
 }
 
-unsigned char ElectronicEmissionsPdu::getStateUpdateIndicator() const
+uint8_t ElectronicEmissionsPdu::getStateUpdateIndicator() const
 {
     return _stateUpdateIndicator;
 }
 
-void ElectronicEmissionsPdu::setStateUpdateIndicator(unsigned char pX)
+void ElectronicEmissionsPdu::setStateUpdateIndicator(uint8_t pX)
 {
     _stateUpdateIndicator = pX;
 }
 
-unsigned char ElectronicEmissionsPdu::getNumberOfSystems() const
+uint8_t ElectronicEmissionsPdu::getNumberOfSystems() const
 {
    return _systems.size();
 }
@@ -95,7 +95,7 @@ void ElectronicEmissionsPdu::marshal(DataStream& dataStream) const
     _emittingEntityID.marshal(dataStream);
     _eventID.marshal(dataStream);
     dataStream << _stateUpdateIndicator;
-    dataStream << ( unsigned char )_systems.size();
+    dataStream << ( uint8_t )_systems.size();
     dataStream << _paddingForEmissionsPdu;
 
      for(size_t idx = 0; idx < _systems.size(); idx++)
@@ -156,7 +156,7 @@ int ElectronicEmissionsPdu::getMarshalledSize() const
    marshalSize = marshalSize + 1;  // _numberOfSystems
    marshalSize = marshalSize + 2;  // _paddingForEmissionsPdu
 
-   for(int idx=0; idx < _systems.size(); idx++)
+   for(size_t idx=0; idx < _systems.size(); idx++)
    {
         ElectronicEmissionSystemData listElement = _systems[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

@@ -20,16 +20,16 @@ protected:
   unsigned int _fuelQuantity; 
 
   /** Units in which the fuel is measured */
-  unsigned char _fuelMeasurementUnits; 
+  uint8_t _fuelMeasurementUnits; 
 
   /** Type of fuel */
-  unsigned char _fuelType; 
+  uint8_t _fuelType; 
 
   /** Location of fuel as related to entity. See section 14 of EBV document */
-  unsigned char _fuelLocation; 
+  uint8_t _fuelLocation; 
 
   /** padding */
-  unsigned char _padding; 
+  uint8_t _padding; 
 
 
  public:
@@ -42,17 +42,17 @@ protected:
     unsigned int getFuelQuantity() const; 
     void setFuelQuantity(unsigned int pX); 
 
-    unsigned char getFuelMeasurementUnits() const; 
-    void setFuelMeasurementUnits(unsigned char pX); 
+    uint8_t getFuelMeasurementUnits() const; 
+    void setFuelMeasurementUnits(uint8_t pX); 
 
-    unsigned char getFuelType() const; 
-    void setFuelType(unsigned char pX); 
+    uint8_t getFuelType() const; 
+    void setFuelType(uint8_t pX); 
 
-    unsigned char getFuelLocation() const; 
-    void setFuelLocation(unsigned char pX); 
+    uint8_t getFuelLocation() const; 
+    void setFuelLocation(uint8_t pX); 
 
-    unsigned char getPadding() const; 
-    void setPadding(unsigned char pX); 
+    uint8_t getPadding() const; 
+    void setPadding(uint8_t pX); 
 
 
 virtual int getMarshalledSize() const;

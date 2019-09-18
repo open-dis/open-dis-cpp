@@ -28,16 +28,16 @@ protected:
   short _padding2; 
 
   /** This field shall represent the type of the PDU that is being extended or updated, if applicable. It shall be represented by an 8-bit enumeration. */
-  unsigned char _attributeRecordPduType; 
+  uint8_t _attributeRecordPduType; 
 
   /** This field shall indicate the Protocol Version associated with the Attribute Record PDU Type. It shall be represented by an 8-bit enumeration. */
-  unsigned char _attributeRecordProtocolVersion; 
+  uint8_t _attributeRecordProtocolVersion; 
 
   /** This field shall contain the Attribute record type of the Attribute records in the PDU if they all have the same Attribute record type. It shall be represented by a 32-bit enumeration. */
   unsigned int _masterAttributeRecordType; 
 
   /** This field shall identify the action code applicable to this Attribute PDU. The Action Code shall apply to all Attribute records contained in the PDU. It shall be represented by an 8-bit enumeration. */
-  unsigned char _actionCode; 
+  uint8_t _actionCode; 
 
   /** Padding */
   char _padding3; 
@@ -63,17 +63,17 @@ protected:
     short getPadding2() const; 
     void setPadding2(short pX); 
 
-    unsigned char getAttributeRecordPduType() const; 
-    void setAttributeRecordPduType(unsigned char pX); 
+    uint8_t getAttributeRecordPduType() const; 
+    void setAttributeRecordPduType(uint8_t pX); 
 
-    unsigned char getAttributeRecordProtocolVersion() const; 
-    void setAttributeRecordProtocolVersion(unsigned char pX); 
+    uint8_t getAttributeRecordProtocolVersion() const; 
+    void setAttributeRecordProtocolVersion(uint8_t pX); 
 
     unsigned int getMasterAttributeRecordType() const; 
     void setMasterAttributeRecordType(unsigned int pX); 
 
-    unsigned char getActionCode() const; 
-    void setActionCode(unsigned char pX); 
+    uint8_t getActionCode() const; 
+    void setActionCode(uint8_t pX); 
 
     char getPadding3() const; 
     void setPadding3(char pX); 

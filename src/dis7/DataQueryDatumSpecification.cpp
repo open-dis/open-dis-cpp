@@ -125,14 +125,14 @@ int DataQueryDatumSpecification::getMarshalledSize() const
    marshalSize = marshalSize + 4;  // _numberOfFixedDatums
    marshalSize = marshalSize + 4;  // _numberOfVariableDatums
 
-   for(int idx=0; idx < _fixedDatumIDList.size(); idx++)
+   for(size_t idx=0; idx < _fixedDatumIDList.size(); idx++)
    {
         UnsignedDISInteger listElement = _fixedDatumIDList[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
     }
 
 
-   for(int idx=0; idx < _variableDatumIDList.size(); idx++)
+   for(size_t idx=0; idx < _variableDatumIDList.size(); idx++)
    {
         UnsignedDISInteger listElement = _variableDatumIDList[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

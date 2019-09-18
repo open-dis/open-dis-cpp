@@ -14,22 +14,22 @@ EventIdentifierLiveEntity::~EventIdentifierLiveEntity()
 {
 }
 
-unsigned char EventIdentifierLiveEntity::getSiteNumber() const
+uint8_t EventIdentifierLiveEntity::getSiteNumber() const
 {
     return _siteNumber;
 }
 
-void EventIdentifierLiveEntity::setSiteNumber(unsigned char pX)
+void EventIdentifierLiveEntity::setSiteNumber(uint8_t pX)
 {
     _siteNumber = pX;
 }
 
-unsigned char EventIdentifierLiveEntity::getApplicationNumber() const
+uint8_t EventIdentifierLiveEntity::getApplicationNumber() const
 {
     return _applicationNumber;
 }
 
-void EventIdentifierLiveEntity::setApplicationNumber(unsigned char pX)
+void EventIdentifierLiveEntity::setApplicationNumber(uint8_t pX)
 {
     _applicationNumber = pX;
 }

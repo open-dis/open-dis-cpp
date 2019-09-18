@@ -27,10 +27,10 @@ protected:
   unsigned short _quantity; 
 
   /**  the status of the munition. It shall be represented by an 8-bit enumeration.  */
-  unsigned char _munitionStatus; 
+  uint8_t _munitionStatus; 
 
   /** padding  */
-  unsigned char _padding; 
+  uint8_t _padding; 
 
 
  public:
@@ -50,11 +50,11 @@ protected:
     unsigned short getQuantity() const; 
     void setQuantity(unsigned short pX); 
 
-    unsigned char getMunitionStatus() const; 
-    void setMunitionStatus(unsigned char pX); 
+    uint8_t getMunitionStatus() const; 
+    void setMunitionStatus(uint8_t pX); 
 
-    unsigned char getPadding() const; 
-    void setPadding(unsigned char pX); 
+    uint8_t getPadding() const; 
+    void setPadding(uint8_t pX); 
 
 
 virtual int getMarshalledSize() const;

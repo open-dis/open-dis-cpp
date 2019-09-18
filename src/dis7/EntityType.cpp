@@ -18,22 +18,22 @@ EntityType::~EntityType()
 {
 }
 
-unsigned char EntityType::getEntityKind() const
+uint8_t EntityType::getEntityKind() const
 {
     return _entityKind;
 }
 
-void EntityType::setEntityKind(unsigned char pX)
+void EntityType::setEntityKind(uint8_t pX)
 {
     _entityKind = pX;
 }
 
-unsigned char EntityType::getDomain() const
+uint8_t EntityType::getDomain() const
 {
     return _domain;
 }
 
-void EntityType::setDomain(unsigned char pX)
+void EntityType::setDomain(uint8_t pX)
 {
     _domain = pX;
 }
@@ -48,42 +48,42 @@ void EntityType::setCountry(unsigned short pX)
     _country = pX;
 }
 
-unsigned char EntityType::getCategory() const
+uint8_t EntityType::getCategory() const
 {
     return _category;
 }
 
-void EntityType::setCategory(unsigned char pX)
+void EntityType::setCategory(uint8_t pX)
 {
     _category = pX;
 }
 
-unsigned char EntityType::getSubcategory() const
+uint8_t EntityType::getSubcategory() const
 {
     return _subcategory;
 }
 
-void EntityType::setSubcategory(unsigned char pX)
+void EntityType::setSubcategory(uint8_t pX)
 {
     _subcategory = pX;
 }
 
-unsigned char EntityType::getSpecific() const
+uint8_t EntityType::getSpecific() const
 {
     return _specific;
 }
 
-void EntityType::setSpecific(unsigned char pX)
+void EntityType::setSpecific(uint8_t pX)
 {
     _specific = pX;
 }
 
-unsigned char EntityType::getExtra() const
+uint8_t EntityType::getExtra() const
 {
     return _extra;
 }
 
-void EntityType::setExtra(unsigned char pX)
+void EntityType::setExtra(uint8_t pX)
 {
     _extra = pX;
 }

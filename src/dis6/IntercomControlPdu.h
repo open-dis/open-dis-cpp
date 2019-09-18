@@ -22,28 +22,28 @@ class EXPORT_MACRO IntercomControlPdu : public RadioCommunicationsFamilyPdu
 {
 protected:
   /** control type */
-  unsigned char _controlType; 
+  uint8_t _controlType; 
 
   /** control type */
-  unsigned char _communicationsChannelType; 
+  uint8_t _communicationsChannelType; 
 
   /** Source entity ID */
   EntityID _sourceEntityID; 
 
   /** The specific intercom device being simulated within an entity. */
-  unsigned char _sourceCommunicationsDeviceID; 
+  uint8_t _sourceCommunicationsDeviceID; 
 
   /** Line number to which the intercom control refers */
-  unsigned char _sourceLineID; 
+  uint8_t _sourceLineID; 
 
   /** priority of this message relative to transmissons from other intercom devices */
-  unsigned char _transmitPriority; 
+  uint8_t _transmitPriority; 
 
   /** current transmit state of the line */
-  unsigned char _transmitLineState; 
+  uint8_t _transmitLineState; 
 
   /** detailed type requested. */
-  unsigned char _command; 
+  uint8_t _command; 
 
   /** eid of the entity that has created this intercom channel. */
   EntityID _masterEntityID; 
@@ -65,30 +65,30 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getControlType() const; 
-    void setControlType(unsigned char pX); 
+    uint8_t getControlType() const; 
+    void setControlType(uint8_t pX); 
 
-    unsigned char getCommunicationsChannelType() const; 
-    void setCommunicationsChannelType(unsigned char pX); 
+    uint8_t getCommunicationsChannelType() const; 
+    void setCommunicationsChannelType(uint8_t pX); 
 
     EntityID& getSourceEntityID(); 
     const EntityID&  getSourceEntityID() const; 
     void setSourceEntityID(const EntityID    &pX);
 
-    unsigned char getSourceCommunicationsDeviceID() const; 
-    void setSourceCommunicationsDeviceID(unsigned char pX); 
+    uint8_t getSourceCommunicationsDeviceID() const; 
+    void setSourceCommunicationsDeviceID(uint8_t pX); 
 
-    unsigned char getSourceLineID() const; 
-    void setSourceLineID(unsigned char pX); 
+    uint8_t getSourceLineID() const; 
+    void setSourceLineID(uint8_t pX); 
 
-    unsigned char getTransmitPriority() const; 
-    void setTransmitPriority(unsigned char pX); 
+    uint8_t getTransmitPriority() const; 
+    void setTransmitPriority(uint8_t pX); 
 
-    unsigned char getTransmitLineState() const; 
-    void setTransmitLineState(unsigned char pX); 
+    uint8_t getTransmitLineState() const; 
+    void setTransmitLineState(uint8_t pX); 
 
-    unsigned char getCommand() const; 
-    void setCommand(unsigned char pX); 
+    uint8_t getCommand() const; 
+    void setCommand(uint8_t pX); 
 
     EntityID& getMasterEntityID(); 
     const EntityID&  getMasterEntityID() const; 

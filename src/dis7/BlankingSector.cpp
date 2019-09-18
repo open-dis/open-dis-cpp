@@ -41,32 +41,32 @@ void BlankingSector::setRecordLength(unsigned short pX)
     _recordLength = pX;
 }
 
-unsigned char BlankingSector::getEmitterNumber() const
+uint8_t BlankingSector::getEmitterNumber() const
 {
     return _emitterNumber;
 }
 
-void BlankingSector::setEmitterNumber(unsigned char pX)
+void BlankingSector::setEmitterNumber(uint8_t pX)
 {
     _emitterNumber = pX;
 }
 
-unsigned char BlankingSector::getBeamNumber() const
+uint8_t BlankingSector::getBeamNumber() const
 {
     return _beamNumber;
 }
 
-void BlankingSector::setBeamNumber(unsigned char pX)
+void BlankingSector::setBeamNumber(uint8_t pX)
 {
     _beamNumber = pX;
 }
 
-unsigned char BlankingSector::getStateIndicator() const
+uint8_t BlankingSector::getStateIndicator() const
 {
     return _stateIndicator;
 }
 
-void BlankingSector::setStateIndicator(unsigned char pX)
+void BlankingSector::setStateIndicator(uint8_t pX)
 {
     _stateIndicator = pX;
 }

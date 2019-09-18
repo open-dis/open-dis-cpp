@@ -52,32 +52,32 @@ void MinefieldQueryPdu::setRequestingEntityID(const EntityID &pX)
     _requestingEntityID = pX;
 }
 
-unsigned char MinefieldQueryPdu::getRequestID() const
+uint8_t MinefieldQueryPdu::getRequestID() const
 {
     return _requestID;
 }
 
-void MinefieldQueryPdu::setRequestID(unsigned char pX)
+void MinefieldQueryPdu::setRequestID(uint8_t pX)
 {
     _requestID = pX;
 }
 
-unsigned char MinefieldQueryPdu::getNumberOfPerimeterPoints() const
+uint8_t MinefieldQueryPdu::getNumberOfPerimeterPoints() const
 {
    return _requestedPerimeterPoints.size();
 }
 
-unsigned char MinefieldQueryPdu::getPad2() const
+uint8_t MinefieldQueryPdu::getPad2() const
 {
     return _pad2;
 }
 
-void MinefieldQueryPdu::setPad2(unsigned char pX)
+void MinefieldQueryPdu::setPad2(uint8_t pX)
 {
     _pad2 = pX;
 }
 
-unsigned char MinefieldQueryPdu::getNumberOfSensorTypes() const
+uint8_t MinefieldQueryPdu::getNumberOfSensorTypes() const
 {
    return _sensorTypes.size();
 }
@@ -143,9 +143,9 @@ void MinefieldQueryPdu::marshal(DataStream& dataStream) const
     _minefieldID.marshal(dataStream);
     _requestingEntityID.marshal(dataStream);
     dataStream << _requestID;
-    dataStream << ( unsigned char )_requestedPerimeterPoints.size();
+    dataStream << ( uint8_t )_requestedPerimeterPoints.size();
     dataStream << _pad2;
-    dataStream << ( unsigned char )_sensorTypes.size();
+    dataStream << ( uint8_t )_sensorTypes.size();
     dataStream << _dataFilter;
     _requestedMineType.marshal(dataStream);
 
@@ -236,14 +236,14 @@ int MinefieldQueryPdu::getMarshalledSize() const
    marshalSize = marshalSize + 4;  // _dataFilter
    marshalSize = marshalSize + _requestedMineType.getMarshalledSize();  // _requestedMineType
 
-   for(int idx=0; idx < _requestedPerimeterPoints.size(); idx++)
+   for(size_t idx=0; idx < _requestedPerimeterPoints.size(); idx++)
    {
         Point listElement = _requestedPerimeterPoints[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
     }
 
 
-   for(int idx=0; idx < _sensorTypes.size(); idx++)
+   for(size_t idx=0; idx < _sensorTypes.size(); idx++)
    {
         TwoByteChunk listElement = _sensorTypes[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

@@ -24,12 +24,12 @@ void Attribute::setRecordType(unsigned int pX)
     _recordType = pX;
 }
 
-unsigned char Attribute::getRecordLength() const
+uint8_t Attribute::getRecordLength() const
 {
     return _recordLength;
 }
 
-void Attribute::setRecordLength(unsigned char pX)
+void Attribute::setRecordLength(uint8_t pX)
 {
     _recordLength = pX;
 }

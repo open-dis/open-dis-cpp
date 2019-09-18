@@ -32,16 +32,16 @@ protected:
   unsigned int _requestID; 
 
   /** required level of reliabliity service. */
-  unsigned char _requiredReliabilityService; 
+  uint8_t _requiredReliabilityService; 
 
   /** type of transfer desired */
-  unsigned char _tranferType; 
+  uint8_t _tranferType; 
 
   /** The entity for which control is being requested to transfer */
   EntityID _transferEntityID; 
 
   /** number of record sets to transfer */
-  unsigned char _numberOfRecordSets; 
+  uint8_t _numberOfRecordSets; 
 
   /** ^^^This is wrong--the RecordSet class needs more work */
   std::vector<RecordSet> _recordSets; 
@@ -65,17 +65,17 @@ protected:
     unsigned int getRequestID() const; 
     void setRequestID(unsigned int pX); 
 
-    unsigned char getRequiredReliabilityService() const; 
-    void setRequiredReliabilityService(unsigned char pX); 
+    uint8_t getRequiredReliabilityService() const; 
+    void setRequiredReliabilityService(uint8_t pX); 
 
-    unsigned char getTranferType() const; 
-    void setTranferType(unsigned char pX); 
+    uint8_t getTranferType() const; 
+    void setTranferType(uint8_t pX); 
 
     EntityID& getTransferEntityID(); 
     const EntityID&  getTransferEntityID() const; 
     void setTransferEntityID(const EntityID    &pX);
 
-    unsigned char getNumberOfRecordSets() const; 
+    uint8_t getNumberOfRecordSets() const; 
 
     std::vector<RecordSet>& getRecordSets(); 
     const std::vector<RecordSet>& getRecordSets() const; 

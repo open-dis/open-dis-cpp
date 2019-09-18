@@ -30,7 +30,7 @@ protected:
   char _padding1; 
 
   /** How many articulation parameters are in the variable length list */
-  unsigned char _numberOfArticulationParameters; 
+  uint8_t _numberOfArticulationParameters; 
 
   /** Describes the speed of the entity in the world */
   Vector3Float _entityLinearVelocity; 
@@ -61,7 +61,7 @@ protected:
     char getPadding1() const; 
     void setPadding1(char pX); 
 
-    unsigned char getNumberOfArticulationParameters() const; 
+    uint8_t getNumberOfArticulationParameters() const; 
 
     Vector3Float& getEntityLinearVelocity(); 
     const Vector3Float&  getEntityLinearVelocity() const; 

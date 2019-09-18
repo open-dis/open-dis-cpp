@@ -18,16 +18,16 @@ class EXPORT_MACRO EntityAssociation
 {
 protected:
   /** the identification of the Variable Parameter record. Enumeration from EBV */
-  unsigned char _recordType; 
+  uint8_t _recordType; 
 
   /** Indicates if this VP has changed since last issuance */
-  unsigned char _changeIndicator; 
+  uint8_t _changeIndicator; 
 
   /** Indicates association status between two entities; 8 bit enum */
-  unsigned char _associationStatus; 
+  uint8_t _associationStatus; 
 
   /** Type of association; 8 bit enum */
-  unsigned char _associationType; 
+  uint8_t _associationType; 
 
   /** Object ID of entity associated with this entity */
   EntityID _entityID; 
@@ -39,7 +39,7 @@ protected:
   unsigned short _physicalConnectionType; 
 
   /** Type of member the entity is within th egroup */
-  unsigned char _groupMemberType; 
+  uint8_t _groupMemberType; 
 
   /** Group if any to which the entity belongs */
   unsigned short _groupNumber; 
@@ -52,17 +52,17 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getRecordType() const; 
-    void setRecordType(unsigned char pX); 
+    uint8_t getRecordType() const; 
+    void setRecordType(uint8_t pX); 
 
-    unsigned char getChangeIndicator() const; 
-    void setChangeIndicator(unsigned char pX); 
+    uint8_t getChangeIndicator() const; 
+    void setChangeIndicator(uint8_t pX); 
 
-    unsigned char getAssociationStatus() const; 
-    void setAssociationStatus(unsigned char pX); 
+    uint8_t getAssociationStatus() const; 
+    void setAssociationStatus(uint8_t pX); 
 
-    unsigned char getAssociationType() const; 
-    void setAssociationType(unsigned char pX); 
+    uint8_t getAssociationType() const; 
+    void setAssociationType(uint8_t pX); 
 
     EntityID& getEntityID(); 
     const EntityID&  getEntityID() const; 
@@ -74,8 +74,8 @@ protected:
     unsigned short getPhysicalConnectionType() const; 
     void setPhysicalConnectionType(unsigned short pX); 
 
-    unsigned char getGroupMemberType() const; 
-    void setGroupMemberType(unsigned char pX); 
+    uint8_t getGroupMemberType() const; 
+    void setGroupMemberType(uint8_t pX); 
 
     unsigned short getGroupNumber() const; 
     void setGroupNumber(unsigned short pX); 

@@ -30,10 +30,10 @@ protected:
   ClockTime _realWorldTime; 
 
   /** Reason the simulation was stopped or frozen (see section 7 of SISO-REF-010) represented by an 8-bit enumeration */
-  unsigned char _reason; 
+  uint8_t _reason; 
 
   /** Internal behavior of the entity(or simulation) and its appearance while frozen to the other participants */
-  unsigned char _frozenBehavior; 
+  uint8_t _frozenBehavior; 
 
   /** padding */
   short _padding1; 
@@ -61,11 +61,11 @@ protected:
     const ClockTime&  getRealWorldTime() const; 
     void setRealWorldTime(const ClockTime    &pX);
 
-    unsigned char getReason() const; 
-    void setReason(unsigned char pX); 
+    uint8_t getReason() const; 
+    void setReason(uint8_t pX); 
 
-    unsigned char getFrozenBehavior() const; 
-    void setFrozenBehavior(unsigned char pX); 
+    uint8_t getFrozenBehavior() const; 
+    void setFrozenBehavior(uint8_t pX); 
 
     short getPadding1() const; 
     void setPadding1(short pX); 

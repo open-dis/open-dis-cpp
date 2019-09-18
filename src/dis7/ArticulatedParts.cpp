@@ -16,22 +16,22 @@ ArticulatedParts::~ArticulatedParts()
 {
 }
 
-unsigned char ArticulatedParts::getRecordType() const
+uint8_t ArticulatedParts::getRecordType() const
 {
     return _recordType;
 }
 
-void ArticulatedParts::setRecordType(unsigned char pX)
+void ArticulatedParts::setRecordType(uint8_t pX)
 {
     _recordType = pX;
 }
 
-unsigned char ArticulatedParts::getChangeIndicator() const
+uint8_t ArticulatedParts::getChangeIndicator() const
 {
     return _changeIndicator;
 }
 
-void ArticulatedParts::setChangeIndicator(unsigned char pX)
+void ArticulatedParts::setChangeIndicator(uint8_t pX)
 {
     _changeIndicator = pX;
 }

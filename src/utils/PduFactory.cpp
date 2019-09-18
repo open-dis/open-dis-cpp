@@ -81,3 +81,9 @@ Pdu * PduFactory::createPdu(const char* data)
 	return pdu;
 
 }
+
+void deletePdu(Pdu* del)
+{
+	delete del;
+	del = nullptr;
+}

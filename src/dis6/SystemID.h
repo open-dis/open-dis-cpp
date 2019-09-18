@@ -23,10 +23,10 @@ protected:
   unsigned short _systemName; 
 
   /** System mode */
-  unsigned char _systemMode; 
+  uint8_t _systemMode; 
 
   /** Change Options */
-  unsigned char _changeOptions; 
+  uint8_t _changeOptions; 
 
 
  public:
@@ -42,11 +42,11 @@ protected:
     unsigned short getSystemName() const; 
     void setSystemName(unsigned short pX); 
 
-    unsigned char getSystemMode() const; 
-    void setSystemMode(unsigned char pX); 
+    uint8_t getSystemMode() const; 
+    void setSystemMode(uint8_t pX); 
 
-    unsigned char getChangeOptions() const; 
-    void setChangeOptions(unsigned char pX); 
+    uint8_t getChangeOptions() const; 
+    void setChangeOptions(uint8_t pX); 
 
 
 virtual int getMarshalledSize() const;

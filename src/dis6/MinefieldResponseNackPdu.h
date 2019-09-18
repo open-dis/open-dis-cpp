@@ -28,10 +28,10 @@ protected:
   EntityID _requestingEntityID; 
 
   /** request ID */
-  unsigned char _requestID; 
+  uint8_t _requestID; 
 
   /** how many pdus were missing */
-  unsigned char _numberOfMissingPdus; 
+  uint8_t _numberOfMissingPdus; 
 
   /** PDU sequence numbers that were missing */
   std::vector<EightByteChunk> _missingPduSequenceNumbers; 
@@ -52,10 +52,10 @@ protected:
     const EntityID&  getRequestingEntityID() const; 
     void setRequestingEntityID(const EntityID    &pX);
 
-    unsigned char getRequestID() const; 
-    void setRequestID(unsigned char pX); 
+    uint8_t getRequestID() const; 
+    void setRequestID(uint8_t pX); 
 
-    unsigned char getNumberOfMissingPdus() const; 
+    uint8_t getNumberOfMissingPdus() const; 
 
     std::vector<EightByteChunk>& getMissingPduSequenceNumbers(); 
     const std::vector<EightByteChunk>& getMissingPduSequenceNumbers() const; 

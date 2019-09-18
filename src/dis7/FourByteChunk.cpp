@@ -61,7 +61,7 @@ bool FourByteChunk::operator ==(const FourByteChunk& rhs) const
      bool ivarsEqual = true;
 
 
-     for(char idx = 0; idx < 4; idx++)
+     for(uint8_t idx = 0; idx < 4; idx++)
      {
           if(!(_otherParameters[idx] == rhs._otherParameters[idx]) ) ivarsEqual = false;
      }

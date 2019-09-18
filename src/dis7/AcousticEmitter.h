@@ -20,10 +20,10 @@ protected:
   unsigned short _acousticName; 
 
   /** The function of the acoustic system */
-  unsigned char _function; 
+  uint8_t _function; 
 
   /** The UA emitter identification number relative to a specific system */
-  unsigned char _acousticIdNumber; 
+  uint8_t _acousticIdNumber; 
 
 
  public:
@@ -36,11 +36,11 @@ protected:
     unsigned short getAcousticName() const; 
     void setAcousticName(unsigned short pX); 
 
-    unsigned char getFunction() const; 
-    void setFunction(unsigned char pX); 
+    uint8_t getFunction() const; 
+    void setFunction(uint8_t pX); 
 
-    unsigned char getAcousticIdNumber() const; 
-    void setAcousticIdNumber(unsigned char pX); 
+    uint8_t getAcousticIdNumber() const; 
+    void setAcousticIdNumber(uint8_t pX); 
 
 
 virtual int getMarshalledSize() const;

@@ -18,7 +18,7 @@ class EXPORT_MACRO Attribute
 protected:
   unsigned int _recordType; 
 
-  unsigned char _recordLength; 
+  uint8_t _recordLength; 
 
   long _recordSpecificFields; 
 
@@ -33,8 +33,8 @@ protected:
     unsigned int getRecordType() const; 
     void setRecordType(unsigned int pX); 
 
-    unsigned char getRecordLength() const; 
-    void setRecordLength(unsigned char pX); 
+    uint8_t getRecordLength() const; 
+    void setRecordLength(uint8_t pX); 
 
     long getRecordSpecificFields() const; 
     void setRecordSpecificFields(long pX); 

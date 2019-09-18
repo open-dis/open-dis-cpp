@@ -46,10 +46,10 @@ protected:
   EntityID _targetEntityID; 
 
   /** Target Component ID ENUM, same as in DamageDescriptionRecord. */
-  unsigned char _targetComponentID; 
+  uint8_t _targetComponentID; 
 
   /** Spot Shape ENUM. */
-  unsigned char _SpotShape; 
+  uint8_t _SpotShape; 
 
   /** Beam Spot Cross Section Semi-Major Axis. */
   float _BeamSpotXSecSemiMajorAxis; 
@@ -97,11 +97,11 @@ protected:
     const EntityID&  getTargetEntityID() const; 
     void setTargetEntityID(const EntityID    &pX);
 
-    unsigned char getTargetComponentID() const; 
-    void setTargetComponentID(unsigned char pX); 
+    uint8_t getTargetComponentID() const; 
+    void setTargetComponentID(uint8_t pX); 
 
-    unsigned char getSpotShape() const; 
-    void setSpotShape(unsigned char pX); 
+    uint8_t getSpotShape() const; 
+    void setSpotShape(uint8_t pX); 
 
     float getBeamSpotXSecSemiMajorAxis() const; 
     void setBeamSpotXSecSemiMajorAxis(float pX); 

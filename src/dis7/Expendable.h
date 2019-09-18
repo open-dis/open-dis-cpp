@@ -24,9 +24,9 @@ protected:
 
   unsigned short _quantity; 
 
-  unsigned char _expendableStatus; 
+  uint8_t _expendableStatus; 
 
-  unsigned char _padding; 
+  uint8_t _padding; 
 
 
  public:
@@ -46,11 +46,11 @@ protected:
     unsigned short getQuantity() const; 
     void setQuantity(unsigned short pX); 
 
-    unsigned char getExpendableStatus() const; 
-    void setExpendableStatus(unsigned char pX); 
+    uint8_t getExpendableStatus() const; 
+    void setExpendableStatus(uint8_t pX); 
 
-    unsigned char getPadding() const; 
-    void setPadding(unsigned char pX); 
+    uint8_t getPadding() const; 
+    void setPadding(uint8_t pX); 
 
 
 virtual int getMarshalledSize() const;

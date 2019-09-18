@@ -61,7 +61,7 @@ bool OneByteChunk::operator ==(const OneByteChunk& rhs) const
      bool ivarsEqual = true;
 
 
-     for(char idx = 0; idx < 1; idx++)
+     for(uint8_t idx = 0; idx < 1; idx++)
      {
           if(!(_otherParameters[idx] == rhs._otherParameters[idx]) ) ivarsEqual = false;
      }

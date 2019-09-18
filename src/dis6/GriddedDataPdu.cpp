@@ -82,17 +82,17 @@ void GriddedDataPdu::setCoordinateSystem(unsigned short pX)
     _coordinateSystem = pX;
 }
 
-unsigned char GriddedDataPdu::getNumberOfGridAxes() const
+uint8_t GriddedDataPdu::getNumberOfGridAxes() const
 {
    return _gridDataList.size();
 }
 
-unsigned char GriddedDataPdu::getConstantGrid() const
+uint8_t GriddedDataPdu::getConstantGrid() const
 {
     return _constantGrid;
 }
 
-void GriddedDataPdu::setConstantGrid(unsigned char pX)
+void GriddedDataPdu::setConstantGrid(uint8_t pX)
 {
     _constantGrid = pX;
 }
@@ -147,12 +147,12 @@ void GriddedDataPdu::setTotalValues(unsigned int pX)
     _totalValues = pX;
 }
 
-unsigned char GriddedDataPdu::getVectorDimension() const
+uint8_t GriddedDataPdu::getVectorDimension() const
 {
     return _vectorDimension;
 }
 
-void GriddedDataPdu::setVectorDimension(unsigned char pX)
+void GriddedDataPdu::setVectorDimension(uint8_t pX)
 {
     _vectorDimension = pX;
 }
@@ -167,12 +167,12 @@ void GriddedDataPdu::setPadding1(unsigned short pX)
     _padding1 = pX;
 }
 
-unsigned char GriddedDataPdu::getPadding2() const
+uint8_t GriddedDataPdu::getPadding2() const
 {
     return _padding2;
 }
 
-void GriddedDataPdu::setPadding2(unsigned char pX)
+void GriddedDataPdu::setPadding2(uint8_t pX)
 {
     _padding2 = pX;
 }
@@ -200,7 +200,7 @@ void GriddedDataPdu::marshal(DataStream& dataStream) const
     dataStream << _pduNumber;
     dataStream << _pduTotal;
     dataStream << _coordinateSystem;
-    dataStream << ( unsigned char )_gridDataList.size();
+    dataStream << ( uint8_t )_gridDataList.size();
     dataStream << _constantGrid;
     _environmentType.marshal(dataStream);
     _orientation.marshal(dataStream);
@@ -295,7 +295,7 @@ int GriddedDataPdu::getMarshalledSize() const
    marshalSize = marshalSize + 2;  // _padding1
    marshalSize = marshalSize + 1;  // _padding2
 
-   for(int idx=0; idx < _gridDataList.size(); idx++)
+   for(size_t idx=0; idx < _gridDataList.size(); idx++)
    {
         GridAxisRecord listElement = _gridDataList[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

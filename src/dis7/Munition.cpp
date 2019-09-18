@@ -51,22 +51,22 @@ void Munition::setQuantity(unsigned short pX)
     _quantity = pX;
 }
 
-unsigned char Munition::getMunitionStatus() const
+uint8_t Munition::getMunitionStatus() const
 {
     return _munitionStatus;
 }
 
-void Munition::setMunitionStatus(unsigned char pX)
+void Munition::setMunitionStatus(uint8_t pX)
 {
     _munitionStatus = pX;
 }
 
-unsigned char Munition::getPadding() const
+uint8_t Munition::getPadding() const
 {
     return _padding;
 }
 
-void Munition::setPadding(unsigned char pX)
+void Munition::setPadding(uint8_t pX)
 {
     _padding = pX;
 }

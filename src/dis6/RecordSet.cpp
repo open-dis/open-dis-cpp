@@ -67,12 +67,12 @@ void RecordSet::setRecordValues(unsigned short pX)
     _recordValues = pX;
 }
 
-unsigned char RecordSet::getPad4() const
+uint8_t RecordSet::getPad4() const
 {
     return _pad4;
 }
 
-void RecordSet::setPad4(unsigned char pX)
+void RecordSet::setPad4(uint8_t pX)
 {
     _pad4 = pX;
 }

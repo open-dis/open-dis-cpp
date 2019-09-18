@@ -23,13 +23,13 @@ protected:
   unsigned int _requestID; 
 
   /** level of reliability service used for this transaction */
-  unsigned char _requiredReliabilityService; 
+  uint8_t _requiredReliabilityService; 
 
   /** padding. The spec is unclear and contradictory here. */
   unsigned short _pad1; 
 
   /** padding */
-  unsigned char _pad2; 
+  uint8_t _pad2; 
 
   /** Number of record sets in list */
   unsigned int _numberOfRecordSets; 
@@ -48,14 +48,14 @@ protected:
     unsigned int getRequestID() const; 
     void setRequestID(unsigned int pX); 
 
-    unsigned char getRequiredReliabilityService() const; 
-    void setRequiredReliabilityService(unsigned char pX); 
+    uint8_t getRequiredReliabilityService() const; 
+    void setRequiredReliabilityService(uint8_t pX); 
 
     unsigned short getPad1() const; 
     void setPad1(unsigned short pX); 
 
-    unsigned char getPad2() const; 
-    void setPad2(unsigned char pX); 
+    uint8_t getPad2() const; 
+    void setPad2(uint8_t pX); 
 
     unsigned int getNumberOfRecordSets() const; 
 

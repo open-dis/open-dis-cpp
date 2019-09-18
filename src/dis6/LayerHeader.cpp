@@ -14,22 +14,22 @@ LayerHeader::~LayerHeader()
 {
 }
 
-unsigned char LayerHeader::getLayerNumber() const
+uint8_t LayerHeader::getLayerNumber() const
 {
     return _layerNumber;
 }
 
-void LayerHeader::setLayerNumber(unsigned char pX)
+void LayerHeader::setLayerNumber(uint8_t pX)
 {
     _layerNumber = pX;
 }
 
-unsigned char LayerHeader::getLayerSpecificInformaiton() const
+uint8_t LayerHeader::getLayerSpecificInformaiton() const
 {
     return _layerSpecificInformaiton;
 }
 
-void LayerHeader::setLayerSpecificInformaiton(unsigned char pX)
+void LayerHeader::setLayerSpecificInformaiton(uint8_t pX)
 {
     _layerSpecificInformaiton = pX;
 }

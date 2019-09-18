@@ -16,22 +16,22 @@ AttachedParts::~AttachedParts()
 {
 }
 
-unsigned char AttachedParts::getRecordType() const
+uint8_t AttachedParts::getRecordType() const
 {
     return _recordType;
 }
 
-void AttachedParts::setRecordType(unsigned char pX)
+void AttachedParts::setRecordType(uint8_t pX)
 {
     _recordType = pX;
 }
 
-unsigned char AttachedParts::getDetachedIndicator() const
+uint8_t AttachedParts::getDetachedIndicator() const
 {
     return _detachedIndicator;
 }
 
-void AttachedParts::setDetachedIndicator(unsigned char pX)
+void AttachedParts::setDetachedIndicator(uint8_t pX)
 {
     _detachedIndicator = pX;
 }

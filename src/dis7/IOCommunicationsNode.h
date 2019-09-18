@@ -21,9 +21,9 @@ protected:
 
   unsigned short _recordLength; 
 
-  unsigned char _communcationsNodeType; 
+  uint8_t _communcationsNodeType; 
 
-  unsigned char _padding; 
+  uint8_t _padding; 
 
   EntityID _communicationsNode; 
 
@@ -43,11 +43,11 @@ protected:
     unsigned short getRecordLength() const; 
     void setRecordLength(unsigned short pX); 
 
-    unsigned char getCommuncationsNodeType() const; 
-    void setCommuncationsNodeType(unsigned char pX); 
+    uint8_t getCommuncationsNodeType() const; 
+    void setCommuncationsNodeType(uint8_t pX); 
 
-    unsigned char getPadding() const; 
-    void setPadding(unsigned char pX); 
+    uint8_t getPadding() const; 
+    void setPadding(uint8_t pX); 
 
     EntityID& getCommunicationsNode(); 
     const EntityID&  getCommunicationsNode() const; 

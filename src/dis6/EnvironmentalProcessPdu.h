@@ -28,13 +28,13 @@ protected:
   EntityType _environmentType; 
 
   /** model type */
-  unsigned char _modelType; 
+  uint8_t _modelType; 
 
   /** Environment status */
-  unsigned char _environmentStatus; 
+  uint8_t _environmentStatus; 
 
   /** number of environment records  */
-  unsigned char _numberOfEnvironmentRecords; 
+  uint8_t _numberOfEnvironmentRecords; 
 
   /** PDU sequence number for the environmentla process if pdu sequencing required */
   unsigned short _sequenceNumber; 
@@ -58,13 +58,13 @@ protected:
     const EntityType&  getEnvironmentType() const; 
     void setEnvironmentType(const EntityType    &pX);
 
-    unsigned char getModelType() const; 
-    void setModelType(unsigned char pX); 
+    uint8_t getModelType() const; 
+    void setModelType(uint8_t pX); 
 
-    unsigned char getEnvironmentStatus() const; 
-    void setEnvironmentStatus(unsigned char pX); 
+    uint8_t getEnvironmentStatus() const; 
+    void setEnvironmentStatus(uint8_t pX); 
 
-    unsigned char getNumberOfEnvironmentRecords() const; 
+    uint8_t getNumberOfEnvironmentRecords() const; 
 
     unsigned short getSequenceNumber() const; 
     void setSequenceNumber(unsigned short pX); 

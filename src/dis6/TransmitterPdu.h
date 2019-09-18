@@ -28,10 +28,10 @@ protected:
   RadioEntityType _radioEntityType; 
 
   /** transmit state */
-  unsigned char _transmitState; 
+  uint8_t _transmitState; 
 
   /** input source */
-  unsigned char _inputSource; 
+  uint8_t _inputSource; 
 
   /** padding */
   unsigned short _padding1; 
@@ -67,13 +67,13 @@ protected:
   unsigned short _cryptoKeyId; 
 
   /** how many modulation parameters we have */
-  unsigned char _modulationParameterCount; 
+  uint8_t _modulationParameterCount; 
 
   /** padding2 */
   unsigned short _padding2; 
 
   /** padding3 */
-  unsigned char _padding3; 
+  uint8_t _padding3; 
 
   /** variable length list of modulation parameters */
   std::vector<Vector3Float> _modulationParametersList; 
@@ -93,11 +93,11 @@ protected:
     const RadioEntityType&  getRadioEntityType() const; 
     void setRadioEntityType(const RadioEntityType    &pX);
 
-    unsigned char getTransmitState() const; 
-    void setTransmitState(unsigned char pX); 
+    uint8_t getTransmitState() const; 
+    void setTransmitState(uint8_t pX); 
 
-    unsigned char getInputSource() const; 
-    void setInputSource(unsigned char pX); 
+    uint8_t getInputSource() const; 
+    void setInputSource(uint8_t pX); 
 
     unsigned short getPadding1() const; 
     void setPadding1(unsigned short pX); 
@@ -134,13 +134,13 @@ protected:
     unsigned short getCryptoKeyId() const; 
     void setCryptoKeyId(unsigned short pX); 
 
-    unsigned char getModulationParameterCount() const; 
+    uint8_t getModulationParameterCount() const; 
 
     unsigned short getPadding2() const; 
     void setPadding2(unsigned short pX); 
 
-    unsigned char getPadding3() const; 
-    void setPadding3(unsigned char pX); 
+    uint8_t getPadding3() const; 
+    void setPadding3(uint8_t pX); 
 
     std::vector<Vector3Float>& getModulationParametersList(); 
     const std::vector<Vector3Float>& getModulationParametersList() const; 

@@ -20,10 +20,10 @@ protected:
   unsigned short _acousticName; 
 
   /** This field shall describe the function of the acoustic system.  */
-  unsigned char _acousticFunction; 
+  uint8_t _acousticFunction; 
 
   /** This field shall specify the UA emitter identification number relative to a specific system. This field shall be represented by an 8-bit unsigned integer. This field allows the differentiation of multiple systems on an entity, even if in some instances two or more of the systems may be identical UA emitter types. Numbering of systems shall begin with the value 1.  */
-  unsigned char _acousticID; 
+  uint8_t _acousticID; 
 
 
  public:
@@ -36,11 +36,11 @@ protected:
     unsigned short getAcousticName() const; 
     void setAcousticName(unsigned short pX); 
 
-    unsigned char getAcousticFunction() const; 
-    void setAcousticFunction(unsigned char pX); 
+    uint8_t getAcousticFunction() const; 
+    void setAcousticFunction(uint8_t pX); 
 
-    unsigned char getAcousticID() const; 
-    void setAcousticID(unsigned char pX); 
+    uint8_t getAcousticID() const; 
+    void setAcousticID(uint8_t pX); 
 
 
 virtual int getMarshalledSize() const;

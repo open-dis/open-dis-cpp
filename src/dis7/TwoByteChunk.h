@@ -21,18 +21,17 @@ protected:
 
 
  public:
-    TwoByteChunk();
-    virtual ~TwoByteChunk();
+     TwoByteChunk();
+     virtual ~TwoByteChunk();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+     virtual void marshal(DataStream& dataStream) const;
+     virtual void unmarshal(DataStream& dataStream);
 
-    char*  getOtherParameters(); 
-    const char*  getOtherParameters() const; 
-    void setOtherParameters( const char*    pX);
+     char*  getOtherParameters(); 
+     const char*  getOtherParameters() const; 
+     void setOtherParameters( const char*    pX);
 
-
-virtual int getMarshalledSize() const;
+     virtual int getMarshalledSize() const;
 
      bool operator  ==(const TwoByteChunk& rhs) const;
 };

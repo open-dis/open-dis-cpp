@@ -40,17 +40,17 @@ void EntityStatePdu::setEntityID(const EntityID &pX)
     _entityID = pX;
 }
 
-unsigned char EntityStatePdu::getForceId() const
+uint8_t EntityStatePdu::getForceId() const
 {
     return _forceId;
 }
 
-void EntityStatePdu::setForceId(unsigned char pX)
+void EntityStatePdu::setForceId(uint8_t pX)
 {
     _forceId = pX;
 }
 
-unsigned char EntityStatePdu::getNumberOfVariableParameters() const
+uint8_t EntityStatePdu::getNumberOfVariableParameters() const
 {
    return _variableParameters.size();
 }
@@ -200,7 +200,7 @@ void EntityStatePdu::marshal(DataStream& dataStream) const
     EntityInformationFamilyPdu::marshal(dataStream); // Marshal information in superclass first
     _entityID.marshal(dataStream);
     dataStream << _forceId;
-    dataStream << ( unsigned char )_variableParameters.size();
+    dataStream << ( uint8_t )_variableParameters.size();
     _entityType.marshal(dataStream);
     _alternativeEntityType.marshal(dataStream);
     _entityLinearVelocity.marshal(dataStream);
@@ -290,7 +290,7 @@ int EntityStatePdu::getMarshalledSize() const
    marshalSize = marshalSize + _marking.getMarshalledSize();  // _marking
    marshalSize = marshalSize + 4;  // _capabilities
 
-   for(int idx=0; idx < _variableParameters.size(); idx++)
+   for(size_t idx=0; idx < _variableParameters.size(); idx++)
    {
         VariableParameter listElement = _variableParameters[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

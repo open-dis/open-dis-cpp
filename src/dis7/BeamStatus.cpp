@@ -12,12 +12,12 @@ BeamStatus::~BeamStatus()
 {
 }
 
-unsigned char BeamStatus::getBeamState() const
+uint8_t BeamStatus::getBeamState() const
 {
     return _beamState;
 }
 
-void BeamStatus::setBeamState(unsigned char pX)
+void BeamStatus::setBeamState(uint8_t pX)
 {
     _beamState = pX;
 }

@@ -39,16 +39,16 @@ protected:
   unsigned short _passiveParameterIndex; 
 
   /** This field shall specify the entity propulsion plant configuration. This field is used to determine the passive signature characteristics of an entity. */
-  unsigned char _propulsionPlantConfiguration; 
+  uint8_t _propulsionPlantConfiguration; 
 
   /**  This field shall represent the number of shafts on a platform */
-  unsigned char _numberOfShafts; 
+  uint8_t _numberOfShafts; 
 
   /** This field shall indicate the number of APAs described in the current UA PDU */
-  unsigned char _numberOfAPAs; 
+  uint8_t _numberOfAPAs; 
 
   /** This field shall specify the number of UA emitter systems being described in the current UA PDU */
-  unsigned char _numberOfUAEmitterSystems; 
+  uint8_t _numberOfUAEmitterSystems; 
 
   /** shaft RPM values */
   std::vector<ShaftRPMs> _shaftRPMs; 
@@ -83,14 +83,14 @@ protected:
     unsigned short getPassiveParameterIndex() const; 
     void setPassiveParameterIndex(unsigned short pX); 
 
-    unsigned char getPropulsionPlantConfiguration() const; 
-    void setPropulsionPlantConfiguration(unsigned char pX); 
+    uint8_t getPropulsionPlantConfiguration() const; 
+    void setPropulsionPlantConfiguration(uint8_t pX); 
 
-    unsigned char getNumberOfShafts() const; 
+    uint8_t getNumberOfShafts() const; 
 
-    unsigned char getNumberOfAPAs() const; 
+    uint8_t getNumberOfAPAs() const; 
 
-    unsigned char getNumberOfUAEmitterSystems() const; 
+    uint8_t getNumberOfUAEmitterSystems() const; 
 
     std::vector<ShaftRPMs>& getShaftRPMs(); 
     const std::vector<ShaftRPMs>& getShaftRPMs() const; 

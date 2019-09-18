@@ -24,22 +24,22 @@ void AcousticEmitter::setAcousticName(unsigned short pX)
     _acousticName = pX;
 }
 
-unsigned char AcousticEmitter::getFunction() const
+uint8_t AcousticEmitter::getFunction() const
 {
     return _function;
 }
 
-void AcousticEmitter::setFunction(unsigned char pX)
+void AcousticEmitter::setFunction(uint8_t pX)
 {
     _function = pX;
 }
 
-unsigned char AcousticEmitter::getAcousticIdNumber() const
+uint8_t AcousticEmitter::getAcousticIdNumber() const
 {
     return _acousticIdNumber;
 }
 
-void AcousticEmitter::setAcousticIdNumber(unsigned char pX)
+void AcousticEmitter::setAcousticIdNumber(uint8_t pX)
 {
     _acousticIdNumber = pX;
 }

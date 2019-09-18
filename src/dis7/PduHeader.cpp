@@ -19,42 +19,42 @@ PduHeader::~PduHeader()
 {
 }
 
-unsigned char PduHeader::getProtocolVersion() const
+uint8_t PduHeader::getProtocolVersion() const
 {
     return _protocolVersion;
 }
 
-void PduHeader::setProtocolVersion(unsigned char pX)
+void PduHeader::setProtocolVersion(uint8_t pX)
 {
     _protocolVersion = pX;
 }
 
-unsigned char PduHeader::getExerciseID() const
+uint8_t PduHeader::getExerciseID() const
 {
     return _exerciseID;
 }
 
-void PduHeader::setExerciseID(unsigned char pX)
+void PduHeader::setExerciseID(uint8_t pX)
 {
     _exerciseID = pX;
 }
 
-unsigned char PduHeader::getPduType() const
+uint8_t PduHeader::getPduType() const
 {
     return _pduType;
 }
 
-void PduHeader::setPduType(unsigned char pX)
+void PduHeader::setPduType(uint8_t pX)
 {
     _pduType = pX;
 }
 
-unsigned char PduHeader::getProtocolFamily() const
+uint8_t PduHeader::getProtocolFamily() const
 {
     return _protocolFamily;
 }
 
-void PduHeader::setProtocolFamily(unsigned char pX)
+void PduHeader::setProtocolFamily(uint8_t pX)
 {
     _protocolFamily = pX;
 }
@@ -69,12 +69,12 @@ void PduHeader::setTimestamp(unsigned int pX)
     _timestamp = pX;
 }
 
-unsigned char PduHeader::getPduLength() const
+uint8_t PduHeader::getPduLength() const
 {
     return _pduLength;
 }
 
-void PduHeader::setPduLength(unsigned char pX)
+void PduHeader::setPduLength(uint8_t pX)
 {
     _pduLength = pX;
 }
@@ -89,12 +89,12 @@ void PduHeader::setPduStatus(unsigned short pX)
     _pduStatus = pX;
 }
 
-unsigned char PduHeader::getPadding() const
+uint8_t PduHeader::getPadding() const
 {
     return _padding;
 }
 
-void PduHeader::setPadding(unsigned char pX)
+void PduHeader::setPadding(uint8_t pX)
 {
     _padding = pX;
 }

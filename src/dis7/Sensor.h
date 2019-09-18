@@ -17,10 +17,10 @@ class EXPORT_MACRO Sensor
 {
 protected:
   /**  the source of the Sensor Type field  */
-  unsigned char _sensorTypeSource; 
+  uint8_t _sensorTypeSource; 
 
   /** the on/off status of the sensor */
-  unsigned char _sensorOnOffStatus; 
+  uint8_t _sensorOnOffStatus; 
 
   /** the sensor type and shall be represented by a 16-bit enumeration.  */
   unsigned short _sensorType; 
@@ -42,11 +42,11 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getSensorTypeSource() const; 
-    void setSensorTypeSource(unsigned char pX); 
+    uint8_t getSensorTypeSource() const; 
+    void setSensorTypeSource(uint8_t pX); 
 
-    unsigned char getSensorOnOffStatus() const; 
-    void setSensorOnOffStatus(unsigned char pX); 
+    uint8_t getSensorOnOffStatus() const; 
+    void setSensorOnOffStatus(uint8_t pX); 
 
     unsigned short getSensorType() const; 
     void setSensorType(unsigned short pX); 

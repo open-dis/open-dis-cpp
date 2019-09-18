@@ -55,42 +55,42 @@ void FalseTargetsAttribute::setPadding(unsigned short pX)
     _padding = pX;
 }
 
-unsigned char FalseTargetsAttribute::getEmitterNumber() const
+uint8_t FalseTargetsAttribute::getEmitterNumber() const
 {
     return _emitterNumber;
 }
 
-void FalseTargetsAttribute::setEmitterNumber(unsigned char pX)
+void FalseTargetsAttribute::setEmitterNumber(uint8_t pX)
 {
     _emitterNumber = pX;
 }
 
-unsigned char FalseTargetsAttribute::getBeamNumber() const
+uint8_t FalseTargetsAttribute::getBeamNumber() const
 {
     return _beamNumber;
 }
 
-void FalseTargetsAttribute::setBeamNumber(unsigned char pX)
+void FalseTargetsAttribute::setBeamNumber(uint8_t pX)
 {
     _beamNumber = pX;
 }
 
-unsigned char FalseTargetsAttribute::getStateIndicator() const
+uint8_t FalseTargetsAttribute::getStateIndicator() const
 {
     return _stateIndicator;
 }
 
-void FalseTargetsAttribute::setStateIndicator(unsigned char pX)
+void FalseTargetsAttribute::setStateIndicator(uint8_t pX)
 {
     _stateIndicator = pX;
 }
 
-unsigned char FalseTargetsAttribute::getPadding2() const
+uint8_t FalseTargetsAttribute::getPadding2() const
 {
     return _padding2;
 }
 
-void FalseTargetsAttribute::setPadding2(unsigned char pX)
+void FalseTargetsAttribute::setPadding2(uint8_t pX)
 {
     _padding2 = pX;
 }

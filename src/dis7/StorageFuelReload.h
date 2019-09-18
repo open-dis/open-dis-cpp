@@ -23,22 +23,22 @@ protected:
   unsigned int _maximumQuantity; 
 
   /** the seconds normally required to reload the standard quantity of this fuel type at this specific station/launcher. When the Station/Launcher field is set to zero, this shall be the time it takes to perform a standard quantity reload of this fuel type at all applicable stations/launchers for this entity. */
-  unsigned char _standardQuantityReloadTime; 
+  uint8_t _standardQuantityReloadTime; 
 
   /** the seconds normally required to reload the maximum possible quantity of this fuel type at this station/launcher. When the Station/Launcher field is set to zero, this shall be the time it takes to perform a maximum quantity load/reload of this fuel type at all applicable stations/launchers for this entity. */
-  unsigned char _maximumQuantityReloadTime; 
+  uint8_t _maximumQuantityReloadTime; 
 
   /** the fuel measurement units. Enumeration */
-  unsigned char _fuelMeasurementUnits; 
+  uint8_t _fuelMeasurementUnits; 
 
   /** Fuel type. Enumeration */
-  unsigned char _fuelType; 
+  uint8_t _fuelType; 
 
   /** Location of fuel as related to entity. See section 14 of EBV document */
-  unsigned char _fuelLocation; 
+  uint8_t _fuelLocation; 
 
   /** padding */
-  unsigned char _padding; 
+  uint8_t _padding; 
 
 
  public:
@@ -54,23 +54,23 @@ protected:
     unsigned int getMaximumQuantity() const; 
     void setMaximumQuantity(unsigned int pX); 
 
-    unsigned char getStandardQuantityReloadTime() const; 
-    void setStandardQuantityReloadTime(unsigned char pX); 
+    uint8_t getStandardQuantityReloadTime() const; 
+    void setStandardQuantityReloadTime(uint8_t pX); 
 
-    unsigned char getMaximumQuantityReloadTime() const; 
-    void setMaximumQuantityReloadTime(unsigned char pX); 
+    uint8_t getMaximumQuantityReloadTime() const; 
+    void setMaximumQuantityReloadTime(uint8_t pX); 
 
-    unsigned char getFuelMeasurementUnits() const; 
-    void setFuelMeasurementUnits(unsigned char pX); 
+    uint8_t getFuelMeasurementUnits() const; 
+    void setFuelMeasurementUnits(uint8_t pX); 
 
-    unsigned char getFuelType() const; 
-    void setFuelType(unsigned char pX); 
+    uint8_t getFuelType() const; 
+    void setFuelType(uint8_t pX); 
 
-    unsigned char getFuelLocation() const; 
-    void setFuelLocation(unsigned char pX); 
+    uint8_t getFuelLocation() const; 
+    void setFuelLocation(uint8_t pX); 
 
-    unsigned char getPadding() const; 
-    void setPadding(unsigned char pX); 
+    uint8_t getPadding() const; 
+    void setPadding(uint8_t pX); 
 
 
 virtual int getMarshalledSize() const;

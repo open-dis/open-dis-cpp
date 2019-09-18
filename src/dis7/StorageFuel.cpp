@@ -26,42 +26,42 @@ void StorageFuel::setFuelQuantity(unsigned int pX)
     _fuelQuantity = pX;
 }
 
-unsigned char StorageFuel::getFuelMeasurementUnits() const
+uint8_t StorageFuel::getFuelMeasurementUnits() const
 {
     return _fuelMeasurementUnits;
 }
 
-void StorageFuel::setFuelMeasurementUnits(unsigned char pX)
+void StorageFuel::setFuelMeasurementUnits(uint8_t pX)
 {
     _fuelMeasurementUnits = pX;
 }
 
-unsigned char StorageFuel::getFuelType() const
+uint8_t StorageFuel::getFuelType() const
 {
     return _fuelType;
 }
 
-void StorageFuel::setFuelType(unsigned char pX)
+void StorageFuel::setFuelType(uint8_t pX)
 {
     _fuelType = pX;
 }
 
-unsigned char StorageFuel::getFuelLocation() const
+uint8_t StorageFuel::getFuelLocation() const
 {
     return _fuelLocation;
 }
 
-void StorageFuel::setFuelLocation(unsigned char pX)
+void StorageFuel::setFuelLocation(uint8_t pX)
 {
     _fuelLocation = pX;
 }
 
-unsigned char StorageFuel::getPadding() const
+uint8_t StorageFuel::getPadding() const
 {
     return _padding;
 }
 
-void StorageFuel::setPadding(unsigned char pX)
+void StorageFuel::setPadding(uint8_t pX)
 {
     _padding = pX;
 }

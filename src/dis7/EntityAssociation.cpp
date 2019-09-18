@@ -20,42 +20,42 @@ EntityAssociation::~EntityAssociation()
 {
 }
 
-unsigned char EntityAssociation::getRecordType() const
+uint8_t EntityAssociation::getRecordType() const
 {
     return _recordType;
 }
 
-void EntityAssociation::setRecordType(unsigned char pX)
+void EntityAssociation::setRecordType(uint8_t pX)
 {
     _recordType = pX;
 }
 
-unsigned char EntityAssociation::getChangeIndicator() const
+uint8_t EntityAssociation::getChangeIndicator() const
 {
     return _changeIndicator;
 }
 
-void EntityAssociation::setChangeIndicator(unsigned char pX)
+void EntityAssociation::setChangeIndicator(uint8_t pX)
 {
     _changeIndicator = pX;
 }
 
-unsigned char EntityAssociation::getAssociationStatus() const
+uint8_t EntityAssociation::getAssociationStatus() const
 {
     return _associationStatus;
 }
 
-void EntityAssociation::setAssociationStatus(unsigned char pX)
+void EntityAssociation::setAssociationStatus(uint8_t pX)
 {
     _associationStatus = pX;
 }
 
-unsigned char EntityAssociation::getAssociationType() const
+uint8_t EntityAssociation::getAssociationType() const
 {
     return _associationType;
 }
 
-void EntityAssociation::setAssociationType(unsigned char pX)
+void EntityAssociation::setAssociationType(uint8_t pX)
 {
     _associationType = pX;
 }
@@ -95,12 +95,12 @@ void EntityAssociation::setPhysicalConnectionType(unsigned short pX)
     _physicalConnectionType = pX;
 }
 
-unsigned char EntityAssociation::getGroupMemberType() const
+uint8_t EntityAssociation::getGroupMemberType() const
 {
     return _groupMemberType;
 }
 
-void EntityAssociation::setGroupMemberType(unsigned char pX)
+void EntityAssociation::setGroupMemberType(uint8_t pX)
 {
     _groupMemberType = pX;
 }

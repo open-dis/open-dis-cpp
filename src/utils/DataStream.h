@@ -5,7 +5,7 @@
 #ifndef _dcl_dis_data_stream_h_
 #define _dcl_dis_data_stream_h_
 
-// the class member, DataStream::BufferType is causing warnign 4251.
+// the class member, DataStream::BufferType is causing warning 4251.
 // disable it until a proper fix is found, as instructed from the enlightening article:
 // http://www.unknownroad.com/rtfm/VisualStudio/warningC4251.html
 #if _MSC_VER
@@ -47,30 +47,20 @@ namespace DIS
       void SetStream(const char* buffer, size_t length, Endian order);
 
       // write operations
-      DataStream& operator <<(bool c);
-      DataStream& operator <<(char c);
-      DataStream& operator <<(unsigned char c);
-      DataStream& operator <<(float c);
-      DataStream& operator <<(double c);
-      DataStream& operator <<(int c);
-      DataStream& operator <<(unsigned int c);
-      DataStream& operator <<(long c);
-      DataStream& operator <<(unsigned long c);
-      DataStream& operator <<(unsigned short c);
-      DataStream& operator <<(short c);
+      template<typename T>
+      DataStream& operator <<(T t)
+      {
+         WriteAlgorithm( t );
+         return *this;
+      }
 
       // read operations
-      DataStream& operator >>(bool& c);
-      DataStream& operator >>(char& c);
-      DataStream& operator >>(unsigned char& c);
-      DataStream& operator >>(float& c);
-      DataStream& operator >>(double& c);
-      DataStream& operator >>(int& c);
-      DataStream& operator >>(unsigned int& c);
-      DataStream& operator >>(long& c);
-      DataStream& operator >>(unsigned long& c);
-      DataStream& operator >>(unsigned short& c);
-      DataStream& operator >>(short& c);
+      template<typename T>
+      DataStream& operator >>(T& t)
+      {
+         ReadAlgorithm( t );
+         return *this;
+      }
 
       Endian GetStreamEndian() const;
       Endian GetMachineEndian() const;

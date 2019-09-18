@@ -32,7 +32,7 @@ protected:
   EventIdentifier _eventID; 
 
   /** This field shall identify the type of collision. The Collision Type field shall be represented by an 8-bit record of enumerations */
-  unsigned char _collisionType; 
+  uint8_t _collisionType; 
 
   /** some padding */
   char _pad; 
@@ -66,8 +66,8 @@ protected:
     const EventIdentifier&  getEventID() const; 
     void setEventID(const EventIdentifier    &pX);
 
-    unsigned char getCollisionType() const; 
-    void setCollisionType(unsigned char pX); 
+    uint8_t getCollisionType() const; 
+    void setCollisionType(uint8_t pX); 
 
     char getPad() const; 
     void setPad(char pX); 

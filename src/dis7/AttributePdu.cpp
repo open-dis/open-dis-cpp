@@ -55,22 +55,22 @@ void AttributePdu::setPadding2(short pX)
     _padding2 = pX;
 }
 
-unsigned char AttributePdu::getAttributeRecordPduType() const
+uint8_t AttributePdu::getAttributeRecordPduType() const
 {
     return _attributeRecordPduType;
 }
 
-void AttributePdu::setAttributeRecordPduType(unsigned char pX)
+void AttributePdu::setAttributeRecordPduType(uint8_t pX)
 {
     _attributeRecordPduType = pX;
 }
 
-unsigned char AttributePdu::getAttributeRecordProtocolVersion() const
+uint8_t AttributePdu::getAttributeRecordProtocolVersion() const
 {
     return _attributeRecordProtocolVersion;
 }
 
-void AttributePdu::setAttributeRecordProtocolVersion(unsigned char pX)
+void AttributePdu::setAttributeRecordProtocolVersion(uint8_t pX)
 {
     _attributeRecordProtocolVersion = pX;
 }
@@ -85,12 +85,12 @@ void AttributePdu::setMasterAttributeRecordType(unsigned int pX)
     _masterAttributeRecordType = pX;
 }
 
-unsigned char AttributePdu::getActionCode() const
+uint8_t AttributePdu::getActionCode() const
 {
     return _actionCode;
 }
 
-void AttributePdu::setActionCode(unsigned char pX)
+void AttributePdu::setActionCode(uint8_t pX)
 {
     _actionCode = pX;
 }

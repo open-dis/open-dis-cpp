@@ -21,10 +21,10 @@ class EXPORT_MACRO ElectronicEmissionSystemData
 {
 protected:
   /** This field shall specify the length of this emitter system�s data (including beam data and its track/jam information) in 32-bit words. The length shall include the System Data Length field.  */
-  unsigned char _systemDataLength; 
+  uint8_t _systemDataLength; 
 
   /** This field shall specify the number of beams being described in the current PDU for the system being described.  */
-  unsigned char _numberOfBeams; 
+  uint8_t _numberOfBeams; 
 
   /** padding. */
   unsigned short _emissionsPadding2; 
@@ -46,10 +46,10 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getSystemDataLength() const; 
-    void setSystemDataLength(unsigned char pX); 
+    uint8_t getSystemDataLength() const; 
+    void setSystemDataLength(uint8_t pX); 
 
-    unsigned char getNumberOfBeams() const; 
+    uint8_t getNumberOfBeams() const; 
 
     unsigned short getEmissionsPadding2() const; 
     void setEmissionsPadding2(unsigned short pX); 

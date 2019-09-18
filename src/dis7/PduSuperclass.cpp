@@ -17,42 +17,42 @@ PduSuperclass::~PduSuperclass()
 {
 }
 
-unsigned char PduSuperclass::getProtocolVersion() const
+uint8_t PduSuperclass::getProtocolVersion() const
 {
     return _protocolVersion;
 }
 
-void PduSuperclass::setProtocolVersion(unsigned char pX)
+void PduSuperclass::setProtocolVersion(uint8_t pX)
 {
     _protocolVersion = pX;
 }
 
-unsigned char PduSuperclass::getExerciseID() const
+uint8_t PduSuperclass::getExerciseID() const
 {
     return _exerciseID;
 }
 
-void PduSuperclass::setExerciseID(unsigned char pX)
+void PduSuperclass::setExerciseID(uint8_t pX)
 {
     _exerciseID = pX;
 }
 
-unsigned char PduSuperclass::getPduType() const
+uint8_t PduSuperclass::getPduType() const
 {
     return _pduType;
 }
 
-void PduSuperclass::setPduType(unsigned char pX)
+void PduSuperclass::setPduType(uint8_t pX)
 {
     _pduType = pX;
 }
 
-unsigned char PduSuperclass::getProtocolFamily() const
+uint8_t PduSuperclass::getProtocolFamily() const
 {
     return _protocolFamily;
 }
 
-void PduSuperclass::setProtocolFamily(unsigned char pX)
+void PduSuperclass::setProtocolFamily(uint8_t pX)
 {
     _protocolFamily = pX;
 }

@@ -21,42 +21,42 @@ IffFundamentalData::~IffFundamentalData()
 {
 }
 
-unsigned char IffFundamentalData::getSystemStatus() const
+uint8_t IffFundamentalData::getSystemStatus() const
 {
     return _systemStatus;
 }
 
-void IffFundamentalData::setSystemStatus(unsigned char pX)
+void IffFundamentalData::setSystemStatus(uint8_t pX)
 {
     _systemStatus = pX;
 }
 
-unsigned char IffFundamentalData::getAlternateParameter4() const
+uint8_t IffFundamentalData::getAlternateParameter4() const
 {
     return _alternateParameter4;
 }
 
-void IffFundamentalData::setAlternateParameter4(unsigned char pX)
+void IffFundamentalData::setAlternateParameter4(uint8_t pX)
 {
     _alternateParameter4 = pX;
 }
 
-unsigned char IffFundamentalData::getInformationLayers() const
+uint8_t IffFundamentalData::getInformationLayers() const
 {
     return _informationLayers;
 }
 
-void IffFundamentalData::setInformationLayers(unsigned char pX)
+void IffFundamentalData::setInformationLayers(uint8_t pX)
 {
     _informationLayers = pX;
 }
 
-unsigned char IffFundamentalData::getModifier() const
+uint8_t IffFundamentalData::getModifier() const
 {
     return _modifier;
 }
 
-void IffFundamentalData::setModifier(unsigned char pX)
+void IffFundamentalData::setModifier(uint8_t pX)
 {
     _modifier = pX;
 }

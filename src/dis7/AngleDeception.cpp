@@ -57,32 +57,32 @@ void AngleDeception::setPadding(unsigned short pX)
     _padding = pX;
 }
 
-unsigned char AngleDeception::getEmitterNumber() const
+uint8_t AngleDeception::getEmitterNumber() const
 {
     return _emitterNumber;
 }
 
-void AngleDeception::setEmitterNumber(unsigned char pX)
+void AngleDeception::setEmitterNumber(uint8_t pX)
 {
     _emitterNumber = pX;
 }
 
-unsigned char AngleDeception::getBeamNumber() const
+uint8_t AngleDeception::getBeamNumber() const
 {
     return _beamNumber;
 }
 
-void AngleDeception::setBeamNumber(unsigned char pX)
+void AngleDeception::setBeamNumber(uint8_t pX)
 {
     _beamNumber = pX;
 }
 
-unsigned char AngleDeception::getStateIndicator() const
+uint8_t AngleDeception::getStateIndicator() const
 {
     return _stateIndicator;
 }
 
-void AngleDeception::setStateIndicator(unsigned char pX)
+void AngleDeception::setStateIndicator(uint8_t pX)
 {
     _stateIndicator = pX;
 }

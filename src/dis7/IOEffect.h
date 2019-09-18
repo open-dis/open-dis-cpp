@@ -21,13 +21,13 @@ protected:
 
   unsigned short _recordLength; 
 
-  unsigned char _ioStatus; 
+  uint8_t _ioStatus; 
 
-  unsigned char _ioLinkType; 
+  uint8_t _ioLinkType; 
 
   EntityID _ioEffect; 
 
-  unsigned char _ioEffectDutyCycle; 
+  uint8_t _ioEffectDutyCycle; 
 
   unsigned short _ioEffectDuration; 
 
@@ -49,18 +49,18 @@ protected:
     unsigned short getRecordLength() const; 
     void setRecordLength(unsigned short pX); 
 
-    unsigned char getIoStatus() const; 
-    void setIoStatus(unsigned char pX); 
+    uint8_t getIoStatus() const; 
+    void setIoStatus(uint8_t pX); 
 
-    unsigned char getIoLinkType() const; 
-    void setIoLinkType(unsigned char pX); 
+    uint8_t getIoLinkType() const; 
+    void setIoLinkType(uint8_t pX); 
 
     EntityID& getIoEffect(); 
     const EntityID&  getIoEffect() const; 
     void setIoEffect(const EntityID    &pX);
 
-    unsigned char getIoEffectDutyCycle() const; 
-    void setIoEffectDutyCycle(unsigned char pX); 
+    uint8_t getIoEffectDutyCycle() const; 
+    void setIoEffectDutyCycle(uint8_t pX); 
 
     unsigned short getIoEffectDuration() const; 
     void setIoEffectDuration(unsigned short pX); 

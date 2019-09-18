@@ -40,12 +40,12 @@ void EntityStatePdu::setEntityID(const EntityID &pX)
     _entityID = pX;
 }
 
-unsigned char EntityStatePdu::getForceId() const
+uint8_t EntityStatePdu::getForceId() const
 {
     return _forceId;
 }
 
-void EntityStatePdu::setForceId(unsigned char pX)
+void EntityStatePdu::setForceId(uint8_t pX)
 {
     _forceId = pX;
 }
@@ -236,7 +236,7 @@ void EntityStatePdu::unmarshal(DataStream& dataStream)
     dataStream >> _capabilities;
 
      _articulationParameters.clear();
-     for(size_t idx = 0; idx < _numberOfArticulationParameters; idx++)
+     for(int8_t idx = 0; idx < _numberOfArticulationParameters; idx++)
      {
         ArticulationParameter x;
         x.unmarshal(dataStream);
@@ -290,7 +290,7 @@ int EntityStatePdu::getMarshalledSize() const
    marshalSize = marshalSize + _marking.getMarshalledSize();  // _marking
    marshalSize = marshalSize + 4;  // _capabilities
 
-   for(int idx=0; idx < _articulationParameters.size(); idx++)
+   for(size_t idx=0; idx < _articulationParameters.size(); idx++)
    {
         ArticulationParameter listElement = _articulationParameters[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

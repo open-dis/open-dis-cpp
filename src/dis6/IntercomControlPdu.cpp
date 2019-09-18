@@ -24,22 +24,22 @@ IntercomControlPdu::~IntercomControlPdu()
     _intercomParameters.clear();
 }
 
-unsigned char IntercomControlPdu::getControlType() const
+uint8_t IntercomControlPdu::getControlType() const
 {
     return _controlType;
 }
 
-void IntercomControlPdu::setControlType(unsigned char pX)
+void IntercomControlPdu::setControlType(uint8_t pX)
 {
     _controlType = pX;
 }
 
-unsigned char IntercomControlPdu::getCommunicationsChannelType() const
+uint8_t IntercomControlPdu::getCommunicationsChannelType() const
 {
     return _communicationsChannelType;
 }
 
-void IntercomControlPdu::setCommunicationsChannelType(unsigned char pX)
+void IntercomControlPdu::setCommunicationsChannelType(uint8_t pX)
 {
     _communicationsChannelType = pX;
 }
@@ -59,52 +59,52 @@ void IntercomControlPdu::setSourceEntityID(const EntityID &pX)
     _sourceEntityID = pX;
 }
 
-unsigned char IntercomControlPdu::getSourceCommunicationsDeviceID() const
+uint8_t IntercomControlPdu::getSourceCommunicationsDeviceID() const
 {
     return _sourceCommunicationsDeviceID;
 }
 
-void IntercomControlPdu::setSourceCommunicationsDeviceID(unsigned char pX)
+void IntercomControlPdu::setSourceCommunicationsDeviceID(uint8_t pX)
 {
     _sourceCommunicationsDeviceID = pX;
 }
 
-unsigned char IntercomControlPdu::getSourceLineID() const
+uint8_t IntercomControlPdu::getSourceLineID() const
 {
     return _sourceLineID;
 }
 
-void IntercomControlPdu::setSourceLineID(unsigned char pX)
+void IntercomControlPdu::setSourceLineID(uint8_t pX)
 {
     _sourceLineID = pX;
 }
 
-unsigned char IntercomControlPdu::getTransmitPriority() const
+uint8_t IntercomControlPdu::getTransmitPriority() const
 {
     return _transmitPriority;
 }
 
-void IntercomControlPdu::setTransmitPriority(unsigned char pX)
+void IntercomControlPdu::setTransmitPriority(uint8_t pX)
 {
     _transmitPriority = pX;
 }
 
-unsigned char IntercomControlPdu::getTransmitLineState() const
+uint8_t IntercomControlPdu::getTransmitLineState() const
 {
     return _transmitLineState;
 }
 
-void IntercomControlPdu::setTransmitLineState(unsigned char pX)
+void IntercomControlPdu::setTransmitLineState(uint8_t pX)
 {
     _transmitLineState = pX;
 }
 
-unsigned char IntercomControlPdu::getCommand() const
+uint8_t IntercomControlPdu::getCommand() const
 {
     return _command;
 }
 
-void IntercomControlPdu::setCommand(unsigned char pX)
+void IntercomControlPdu::setCommand(uint8_t pX)
 {
     _command = pX;
 }
@@ -245,7 +245,7 @@ int IntercomControlPdu::getMarshalledSize() const
    marshalSize = marshalSize + 2;  // _masterCommunicationsDeviceID
    marshalSize = marshalSize + 4;  // _intercomParametersLength
 
-   for(int idx=0; idx < _intercomParameters.size(); idx++)
+   for(size_t idx=0; idx < _intercomParameters.size(); idx++)
    {
         IntercomCommunicationsParameters listElement = _intercomParameters[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

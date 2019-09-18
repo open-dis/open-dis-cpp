@@ -17,22 +17,22 @@ Sensor::~Sensor()
 {
 }
 
-unsigned char Sensor::getSensorTypeSource() const
+uint8_t Sensor::getSensorTypeSource() const
 {
     return _sensorTypeSource;
 }
 
-void Sensor::setSensorTypeSource(unsigned char pX)
+void Sensor::setSensorTypeSource(uint8_t pX)
 {
     _sensorTypeSource = pX;
 }
 
-unsigned char Sensor::getSensorOnOffStatus() const
+uint8_t Sensor::getSensorOnOffStatus() const
 {
     return _sensorOnOffStatus;
 }
 
-void Sensor::setSensorOnOffStatus(unsigned char pX)
+void Sensor::setSensorOnOffStatus(uint8_t pX)
 {
     _sensorOnOffStatus = pX;
 }

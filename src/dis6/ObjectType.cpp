@@ -16,22 +16,22 @@ ObjectType::~ObjectType()
 {
 }
 
-unsigned char ObjectType::getEntityKind() const
+uint8_t ObjectType::getEntityKind() const
 {
     return _entityKind;
 }
 
-void ObjectType::setEntityKind(unsigned char pX)
+void ObjectType::setEntityKind(uint8_t pX)
 {
     _entityKind = pX;
 }
 
-unsigned char ObjectType::getDomain() const
+uint8_t ObjectType::getDomain() const
 {
     return _domain;
 }
 
-void ObjectType::setDomain(unsigned char pX)
+void ObjectType::setDomain(uint8_t pX)
 {
     _domain = pX;
 }
@@ -46,22 +46,22 @@ void ObjectType::setCountry(unsigned short pX)
     _country = pX;
 }
 
-unsigned char ObjectType::getCategory() const
+uint8_t ObjectType::getCategory() const
 {
     return _category;
 }
 
-void ObjectType::setCategory(unsigned char pX)
+void ObjectType::setCategory(uint8_t pX)
 {
     _category = pX;
 }
 
-unsigned char ObjectType::getSubcategory() const
+uint8_t ObjectType::getSubcategory() const
 {
     return _subcategory;
 }
 
-void ObjectType::setSubcategory(unsigned char pX)
+void ObjectType::setSubcategory(uint8_t pX)
 {
     _subcategory = pX;
 }

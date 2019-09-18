@@ -17,10 +17,10 @@ class EXPORT_MACRO AggregateMarking
 {
 protected:
   /** The character set */
-  unsigned char _characterSet; 
+  uint8_t _characterSet; 
 
   /** The characters */
-  unsigned char _characters[31]; 
+  uint8_t _characters[31]; 
 
 
  public:
@@ -30,12 +30,12 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getCharacterSet() const; 
-    void setCharacterSet(unsigned char pX); 
+    uint8_t getCharacterSet() const; 
+    void setCharacterSet(uint8_t pX); 
 
-    unsigned char*  getCharacters(); 
-    const unsigned char*  getCharacters() const; 
-    void setCharacters( const unsigned char*    pX);
+    uint8_t*  getCharacters(); 
+    const uint8_t*  getCharacters() const; 
+    void setCharacters( const uint8_t*    pX);
 
 
 virtual int getMarshalledSize() const;

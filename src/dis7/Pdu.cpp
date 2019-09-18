@@ -13,22 +13,22 @@ Pdu::~Pdu()
 {
 }
 
-unsigned char Pdu::getPduStatus() const
+uint8_t Pdu::getPduStatus() const
 {
     return _pduStatus;
 }
 
-void Pdu::setPduStatus(unsigned char pX)
+void Pdu::setPduStatus(uint8_t pX)
 {
     _pduStatus = pX;
 }
 
-unsigned char Pdu::getPadding() const
+uint8_t Pdu::getPadding() const
 {
     return _padding;
 }
 
-void Pdu::setPadding(unsigned char pX)
+void Pdu::setPadding(uint8_t pX)
 {
     _padding = pX;
 }

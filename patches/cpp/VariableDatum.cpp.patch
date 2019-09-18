@@ -101,7 +101,7 @@
 -   marshalSize = marshalSize + 4;  // _variableDatumID
 -   marshalSize = marshalSize + 4;  // _variableDatumLength
 -
--   for(int idx=0; idx < _variableDatums.size(); idx++)
+-   for(size_t idx=0; idx < _variableDatums.size(); idx++)
 -   {
 -        EightByteChunk listElement = _variableDatums[idx];
 -        marshalSize = marshalSize + listElement.getMarshalledSize();
@@ -269,7 +269,7 @@
 +     if( ! (_variableDatumID == rhs._variableDatumID) ) ivarsEqual = false;
 +     if( ! (_variableDatumLength == rhs._variableDatumLength) ) ivarsEqual = false;
 +
-+     for(char idx = 0; idx < 8; idx++)
++     for(uint8_t idx = 0; idx < 8; idx++)
 +     {
 +          if(!(_variableDatums[idx] == rhs._variableDatums[idx]) ) ivarsEqual = false;
 +     }

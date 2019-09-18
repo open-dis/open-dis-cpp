@@ -79,7 +79,7 @@ int RecordSpecification::getMarshalledSize() const
 
    marshalSize = marshalSize + 4;  // _numberOfRecordSets
 
-   for(int idx=0; idx < _recordSets.size(); idx++)
+   for(size_t idx=0; idx < _recordSets.size(); idx++)
    {
         RecordSpecificationElement listElement = _recordSets[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

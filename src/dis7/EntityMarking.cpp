@@ -20,12 +20,12 @@ EntityMarking::~EntityMarking()
 {
 }
 
-unsigned char EntityMarking::getCharacterSet() const
+uint8_t EntityMarking::getCharacterSet() const
 {
     return _characterSet;
 }
 
-void EntityMarking::setCharacterSet(unsigned char pX)
+void EntityMarking::setCharacterSet(uint8_t pX)
 {
     _characterSet = pX;
 }
@@ -84,7 +84,7 @@ bool EntityMarking::operator ==(const EntityMarking& rhs) const
 
      if( ! (_characterSet == rhs._characterSet) ) ivarsEqual = false;
 
-     for(char idx = 0; idx < 11; idx++)
+     for(uint8_t idx = 0; idx < 11; idx++)
      {
           if(!(_characters[idx] == rhs._characters[idx]) ) ivarsEqual = false;
      }

@@ -27,52 +27,52 @@ void Environment::setEnvironmentType(unsigned int pX)
     _environmentType = pX;
 }
 
-unsigned char Environment::getLength() const
+uint8_t Environment::getLength() const
 {
     return _length;
 }
 
-void Environment::setLength(unsigned char pX)
+void Environment::setLength(uint8_t pX)
 {
     _length = pX;
 }
 
-unsigned char Environment::getIndex() const
+uint8_t Environment::getIndex() const
 {
     return _index;
 }
 
-void Environment::setIndex(unsigned char pX)
+void Environment::setIndex(uint8_t pX)
 {
     _index = pX;
 }
 
-unsigned char Environment::getPadding1() const
+uint8_t Environment::getPadding1() const
 {
     return _padding1;
 }
 
-void Environment::setPadding1(unsigned char pX)
+void Environment::setPadding1(uint8_t pX)
 {
     _padding1 = pX;
 }
 
-unsigned char Environment::getGeometry() const
+uint8_t Environment::getGeometry() const
 {
     return _geometry;
 }
 
-void Environment::setGeometry(unsigned char pX)
+void Environment::setGeometry(uint8_t pX)
 {
     _geometry = pX;
 }
 
-unsigned char Environment::getPadding2() const
+uint8_t Environment::getPadding2() const
 {
     return _padding2;
 }
 
-void Environment::setPadding2(unsigned char pX)
+void Environment::setPadding2(uint8_t pX)
 {
     _padding2 = pX;
 }

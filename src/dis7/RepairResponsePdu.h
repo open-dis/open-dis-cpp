@@ -26,7 +26,7 @@ protected:
   EntityID _repairingEntityID; 
 
   /** Result of repair operation */
-  unsigned char _repairResult; 
+  uint8_t _repairResult; 
 
   /** padding */
   short _padding1; 
@@ -50,8 +50,8 @@ protected:
     const EntityID&  getRepairingEntityID() const; 
     void setRepairingEntityID(const EntityID    &pX);
 
-    unsigned char getRepairResult() const; 
-    void setRepairResult(unsigned char pX); 
+    uint8_t getRepairResult() const; 
+    void setRepairResult(uint8_t pX); 
 
     short getPadding1() const; 
     void setPadding1(short pX); 

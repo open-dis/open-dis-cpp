@@ -29,13 +29,13 @@ protected:
   unsigned int _maximumQuantityReloadTime; 
 
   /** Units of measure */
-  unsigned char _fuelMeasurmentUnits; 
+  uint8_t _fuelMeasurmentUnits; 
 
   /** fuel  location as related to the entity */
-  unsigned char _fuelLocation; 
+  uint8_t _fuelLocation; 
 
   /** padding */
-  unsigned char _padding; 
+  uint8_t _padding; 
 
 
  public:
@@ -57,14 +57,14 @@ protected:
     unsigned int getMaximumQuantityReloadTime() const; 
     void setMaximumQuantityReloadTime(unsigned int pX); 
 
-    unsigned char getFuelMeasurmentUnits() const; 
-    void setFuelMeasurmentUnits(unsigned char pX); 
+    uint8_t getFuelMeasurmentUnits() const; 
+    void setFuelMeasurmentUnits(uint8_t pX); 
 
-    unsigned char getFuelLocation() const; 
-    void setFuelLocation(unsigned char pX); 
+    uint8_t getFuelLocation() const; 
+    void setFuelLocation(uint8_t pX); 
 
-    unsigned char getPadding() const; 
-    void setPadding(unsigned char pX); 
+    uint8_t getPadding() const; 
+    void setPadding(uint8_t pX); 
 
 
 virtual int getMarshalledSize() const;

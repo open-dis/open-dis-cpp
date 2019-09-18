@@ -49,17 +49,17 @@ void MinefieldStatePdu::setMinefieldSequence(unsigned short pX)
     _minefieldSequence = pX;
 }
 
-unsigned char MinefieldStatePdu::getForceID() const
+uint8_t MinefieldStatePdu::getForceID() const
 {
     return _forceID;
 }
 
-void MinefieldStatePdu::setForceID(unsigned char pX)
+void MinefieldStatePdu::setForceID(uint8_t pX)
 {
     _forceID = pX;
 }
 
-unsigned char MinefieldStatePdu::getNumberOfPerimeterPoints() const
+uint8_t MinefieldStatePdu::getNumberOfPerimeterPoints() const
 {
    return _perimeterPoints.size();
 }
@@ -170,7 +170,7 @@ void MinefieldStatePdu::marshal(DataStream& dataStream) const
     _minefieldID.marshal(dataStream);
     dataStream << _minefieldSequence;
     dataStream << _forceID;
-    dataStream << ( unsigned char )_perimeterPoints.size();
+    dataStream << ( uint8_t )_perimeterPoints.size();
     _minefieldType.marshal(dataStream);
     dataStream << ( unsigned short )_mineType.size();
     _minefieldLocation.marshal(dataStream);
@@ -271,14 +271,14 @@ int MinefieldStatePdu::getMarshalledSize() const
    marshalSize = marshalSize + 2;  // _appearance
    marshalSize = marshalSize + 2;  // _protocolMode
 
-   for(int idx=0; idx < _perimeterPoints.size(); idx++)
+   for(size_t idx=0; idx < _perimeterPoints.size(); idx++)
    {
         Vector2Float listElement = _perimeterPoints[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
     }
 
 
-   for(int idx=0; idx < _mineType.size(); idx++)
+   for(size_t idx=0; idx < _mineType.size(); idx++)
    {
         EntityType listElement = _mineType[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

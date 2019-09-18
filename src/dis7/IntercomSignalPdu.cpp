@@ -180,7 +180,7 @@ int IntercomSignalPdu::getMarshalledSize() const
    marshalSize = marshalSize + 2;  // _dataLength
    marshalSize = marshalSize + 2;  // _samples
 
-   for(int idx=0; idx < _data.size(); idx++)
+   for(size_t idx=0; idx < _data.size(); idx++)
    {
         OneByteChunk listElement = _data[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

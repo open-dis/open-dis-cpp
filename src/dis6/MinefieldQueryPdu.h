@@ -30,16 +30,16 @@ protected:
   EntityID _requestingEntityID; 
 
   /** request ID */
-  unsigned char _requestID; 
+  uint8_t _requestID; 
 
   /** Number of perimeter points for the minefield */
-  unsigned char _numberOfPerimeterPoints; 
+  uint8_t _numberOfPerimeterPoints; 
 
   /** Padding */
-  unsigned char _pad2; 
+  uint8_t _pad2; 
 
   /** Number of sensor types */
-  unsigned char _numberOfSensorTypes; 
+  uint8_t _numberOfSensorTypes; 
 
   /** data filter, 32 boolean fields */
   unsigned int _dataFilter; 
@@ -69,15 +69,15 @@ protected:
     const EntityID&  getRequestingEntityID() const; 
     void setRequestingEntityID(const EntityID    &pX);
 
-    unsigned char getRequestID() const; 
-    void setRequestID(unsigned char pX); 
+    uint8_t getRequestID() const; 
+    void setRequestID(uint8_t pX); 
 
-    unsigned char getNumberOfPerimeterPoints() const; 
+    uint8_t getNumberOfPerimeterPoints() const; 
 
-    unsigned char getPad2() const; 
-    void setPad2(unsigned char pX); 
+    uint8_t getPad2() const; 
+    void setPad2(uint8_t pX); 
 
-    unsigned char getNumberOfSensorTypes() const; 
+    uint8_t getNumberOfSensorTypes() const; 
 
     unsigned int getDataFilter() const; 
     void setDataFilter(unsigned int pX); 

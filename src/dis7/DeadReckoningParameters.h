@@ -19,10 +19,10 @@ class EXPORT_MACRO DeadReckoningParameters
 {
 protected:
   /** Algorithm to use in computing dead reckoning. See EBV doc. */
-  unsigned char _deadReckoningAlgorithm; 
+  uint8_t _deadReckoningAlgorithm; 
 
   /** Dead reckoning parameters. Contents depends on algorithm. */
-  unsigned char _parameters[15]; 
+  uint8_t _parameters[15]; 
 
   /** Linear acceleration of the entity */
   Vector3Float _entityLinearAcceleration; 
@@ -38,12 +38,12 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getDeadReckoningAlgorithm() const; 
-    void setDeadReckoningAlgorithm(unsigned char pX); 
+    uint8_t getDeadReckoningAlgorithm() const; 
+    void setDeadReckoningAlgorithm(uint8_t pX); 
 
-    unsigned char*  getParameters(); 
-    const unsigned char*  getParameters() const; 
-    void setParameters( const unsigned char*    pX);
+    uint8_t*  getParameters(); 
+    const uint8_t*  getParameters() const; 
+    void setParameters( const uint8_t*    pX);
 
     Vector3Float& getEntityLinearAcceleration(); 
     const Vector3Float&  getEntityLinearAcceleration() const; 

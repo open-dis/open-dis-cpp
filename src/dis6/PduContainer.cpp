@@ -50,7 +50,7 @@ void PduContainer::unmarshal(DataStream& dataStream)
     dataStream >> _numberOfPdus;
 
      _pdus.clear();
-     for(size_t idx = 0; idx < _numberOfPdus; idx++)
+     for(int idx = 0; idx < _numberOfPdus; idx++)
      {
         Pdu x;
         x.unmarshal(dataStream);
@@ -79,7 +79,7 @@ int PduContainer::getMarshalledSize() const
 
    marshalSize = marshalSize + 4;  // _numberOfPdus
 
-   for(int idx=0; idx < _pdus.size(); idx++)
+   for(size_t idx=0; idx < _pdus.size(); idx++)
    {
         Pdu listElement = _pdus[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

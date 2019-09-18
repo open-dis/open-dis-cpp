@@ -25,5 +25,7 @@ public:
 	 * for failures or unrecognized PDU types.
 	 */
 	Pdu* createPdu(const char * data);
+
+	void deletePdu(Pdu* del);
 };
 }

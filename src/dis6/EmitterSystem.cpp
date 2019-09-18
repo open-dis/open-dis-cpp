@@ -24,22 +24,22 @@ void EmitterSystem::setEmitterName(unsigned short pX)
     _emitterName = pX;
 }
 
-unsigned char EmitterSystem::getFunction() const
+uint8_t EmitterSystem::getFunction() const
 {
     return _function;
 }
 
-void EmitterSystem::setFunction(unsigned char pX)
+void EmitterSystem::setFunction(uint8_t pX)
 {
     _function = pX;
 }
 
-unsigned char EmitterSystem::getEmitterIdNumber() const
+uint8_t EmitterSystem::getEmitterIdNumber() const
 {
     return _emitterIdNumber;
 }
 
-void EmitterSystem::setEmitterIdNumber(unsigned char pX)
+void EmitterSystem::setEmitterIdNumber(uint8_t pX)
 {
     _emitterIdNumber = pX;
 }

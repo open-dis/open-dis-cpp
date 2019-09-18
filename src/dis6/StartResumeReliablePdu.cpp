@@ -48,12 +48,12 @@ void StartResumeReliablePdu::setSimulationTime(const ClockTime &pX)
     _simulationTime = pX;
 }
 
-unsigned char StartResumeReliablePdu::getRequiredReliabilityService() const
+uint8_t StartResumeReliablePdu::getRequiredReliabilityService() const
 {
     return _requiredReliabilityService;
 }
 
-void StartResumeReliablePdu::setRequiredReliabilityService(unsigned char pX)
+void StartResumeReliablePdu::setRequiredReliabilityService(uint8_t pX)
 {
     _requiredReliabilityService = pX;
 }
@@ -68,12 +68,12 @@ void StartResumeReliablePdu::setPad1(unsigned short pX)
     _pad1 = pX;
 }
 
-unsigned char StartResumeReliablePdu::getPad2() const
+uint8_t StartResumeReliablePdu::getPad2() const
 {
     return _pad2;
 }
 
-void StartResumeReliablePdu::setPad2(unsigned char pX)
+void StartResumeReliablePdu::setPad2(uint8_t pX)
 {
     _pad2 = pX;
 }

@@ -20,12 +20,12 @@ LinearSegmentParameter::~LinearSegmentParameter()
 {
 }
 
-unsigned char LinearSegmentParameter::getSegmentNumber() const
+uint8_t LinearSegmentParameter::getSegmentNumber() const
 {
     return _segmentNumber;
 }
 
-void LinearSegmentParameter::setSegmentNumber(unsigned char pX)
+void LinearSegmentParameter::setSegmentNumber(uint8_t pX)
 {
     _segmentNumber = pX;
 }

@@ -31,10 +31,10 @@ protected:
   EntityID _entityID; 
 
   /** What force this entity is affiliated with, eg red, blue, neutral, etc */
-  unsigned char _forceId; 
+  uint8_t _forceId; 
 
   /** How many articulation parameters are in the variable length list */
-  char _numberOfArticulationParameters; 
+  int8_t _numberOfArticulationParameters;
 
   /** Describes the type of entity in the world */
   EntityType _entityType; 
@@ -77,8 +77,8 @@ protected:
     const EntityID&  getEntityID() const; 
     void setEntityID(const EntityID    &pX);
 
-    unsigned char getForceId() const; 
-    void setForceId(unsigned char pX); 
+    uint8_t getForceId() const; 
+    void setForceId(uint8_t pX); 
 
     char getNumberOfArticulationParameters() const; 
 

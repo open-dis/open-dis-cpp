@@ -35,22 +35,22 @@ void SystemID::setSystemName(unsigned short pX)
     _systemName = pX;
 }
 
-unsigned char SystemID::getSystemMode() const
+uint8_t SystemID::getSystemMode() const
 {
     return _systemMode;
 }
 
-void SystemID::setSystemMode(unsigned char pX)
+void SystemID::setSystemMode(uint8_t pX)
 {
     _systemMode = pX;
 }
 
-unsigned char SystemID::getChangeOptions() const
+uint8_t SystemID::getChangeOptions() const
 {
     return _changeOptions;
 }
 
-void SystemID::setChangeOptions(unsigned char pX)
+void SystemID::setChangeOptions(uint8_t pX)
 {
     _changeOptions = pX;
 }

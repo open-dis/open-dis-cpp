@@ -22,16 +22,16 @@ protected:
   ClockTime _realWorldTime; 
 
   /** Reason for stopping/freezing simulation */
-  unsigned char _reason; 
+  uint8_t _reason; 
 
   /** internal behvior of the simulation while frozen */
-  unsigned char _frozenBehavior; 
+  uint8_t _frozenBehavior; 
 
   /** reliablity level */
-  unsigned char _requiredReliablityService; 
+  uint8_t _requiredReliablityService; 
 
   /** padding */
-  unsigned char _pad1; 
+  uint8_t _pad1; 
 
   /** Request ID */
   unsigned int _requestID; 
@@ -48,17 +48,17 @@ protected:
     const ClockTime&  getRealWorldTime() const; 
     void setRealWorldTime(const ClockTime    &pX);
 
-    unsigned char getReason() const; 
-    void setReason(unsigned char pX); 
+    uint8_t getReason() const; 
+    void setReason(uint8_t pX); 
 
-    unsigned char getFrozenBehavior() const; 
-    void setFrozenBehavior(unsigned char pX); 
+    uint8_t getFrozenBehavior() const; 
+    void setFrozenBehavior(uint8_t pX); 
 
-    unsigned char getRequiredReliablityService() const; 
-    void setRequiredReliablityService(unsigned char pX); 
+    uint8_t getRequiredReliablityService() const; 
+    void setRequiredReliablityService(uint8_t pX); 
 
-    unsigned char getPad1() const; 
-    void setPad1(unsigned char pX); 
+    uint8_t getPad1() const; 
+    void setPad1(uint8_t pX); 
 
     unsigned int getRequestID() const; 
     void setRequestID(unsigned int pX); 

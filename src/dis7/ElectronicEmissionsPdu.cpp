@@ -53,17 +53,17 @@ void ElectronicEmissionsPdu::setEventID(const EventIdentifier &pX)
     _eventID = pX;
 }
 
-unsigned char ElectronicEmissionsPdu::getStateUpdateIndicator() const
+uint8_t ElectronicEmissionsPdu::getStateUpdateIndicator() const
 {
     return _stateUpdateIndicator;
 }
 
-void ElectronicEmissionsPdu::setStateUpdateIndicator(unsigned char pX)
+void ElectronicEmissionsPdu::setStateUpdateIndicator(uint8_t pX)
 {
     _stateUpdateIndicator = pX;
 }
 
-unsigned char ElectronicEmissionsPdu::getNumberOfSystems() const
+uint8_t ElectronicEmissionsPdu::getNumberOfSystems() const
 {
    return _systems.size();
 }
@@ -78,22 +78,22 @@ void ElectronicEmissionsPdu::setPaddingForEmissionsPdu(unsigned short pX)
     _paddingForEmissionsPdu = pX;
 }
 
-unsigned char ElectronicEmissionsPdu::getSystemDataLength() const
+uint8_t ElectronicEmissionsPdu::getSystemDataLength() const
 {
     return _systemDataLength;
 }
 
-void ElectronicEmissionsPdu::setSystemDataLength(unsigned char pX)
+void ElectronicEmissionsPdu::setSystemDataLength(uint8_t pX)
 {
     _systemDataLength = pX;
 }
 
-unsigned char ElectronicEmissionsPdu::getNumberOfBeams() const
+uint8_t ElectronicEmissionsPdu::getNumberOfBeams() const
 {
     return _numberOfBeams;
 }
 
-void ElectronicEmissionsPdu::setNumberOfBeams(unsigned char pX)
+void ElectronicEmissionsPdu::setNumberOfBeams(uint8_t pX)
 {
     _numberOfBeams = pX;
 }
@@ -149,7 +149,7 @@ void ElectronicEmissionsPdu::marshal(DataStream& dataStream) const
     _emittingEntityID.marshal(dataStream);
     _eventID.marshal(dataStream);
     dataStream << _stateUpdateIndicator;
-    dataStream << ( unsigned char )_systems.size();
+    dataStream << ( uint8_t )_systems.size();
     dataStream << _paddingForEmissionsPdu;
     dataStream << _systemDataLength;
     dataStream << _numberOfBeams;
@@ -226,7 +226,7 @@ int ElectronicEmissionsPdu::getMarshalledSize() const
    marshalSize = marshalSize + _emitterSystem.getMarshalledSize();  // _emitterSystem
    marshalSize = marshalSize + _location.getMarshalledSize();  // _location
 
-   for(int idx=0; idx < _systems.size(); idx++)
+   for(size_t idx=0; idx < _systems.size(); idx++)
    {
         Vector3Float listElement = _systems[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

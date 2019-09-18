@@ -34,10 +34,10 @@ protected:
   unsigned short _updateNumber; 
 
   /** force ID */
-  unsigned char _forceID; 
+  uint8_t _forceID; 
 
   /** number of linear segment parameters */
-  unsigned char _numberOfSegments; 
+  uint8_t _numberOfSegments; 
 
   /** requesterID */
   SimulationAddress _requesterID; 
@@ -70,10 +70,10 @@ protected:
     unsigned short getUpdateNumber() const; 
     void setUpdateNumber(unsigned short pX); 
 
-    unsigned char getForceID() const; 
-    void setForceID(unsigned char pX); 
+    uint8_t getForceID() const; 
+    void setForceID(uint8_t pX); 
 
-    unsigned char getNumberOfSegments() const; 
+    uint8_t getNumberOfSegments() const; 
 
     SimulationAddress& getRequesterID(); 
     const SimulationAddress&  getRequesterID() const; 

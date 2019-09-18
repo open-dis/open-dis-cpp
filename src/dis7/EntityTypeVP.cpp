@@ -16,22 +16,22 @@ EntityTypeVP::~EntityTypeVP()
 {
 }
 
-unsigned char EntityTypeVP::getRecordType() const
+uint8_t EntityTypeVP::getRecordType() const
 {
     return _recordType;
 }
 
-void EntityTypeVP::setRecordType(unsigned char pX)
+void EntityTypeVP::setRecordType(uint8_t pX)
 {
     _recordType = pX;
 }
 
-unsigned char EntityTypeVP::getChangeIndicator() const
+uint8_t EntityTypeVP::getChangeIndicator() const
 {
     return _changeIndicator;
 }
 
-void EntityTypeVP::setChangeIndicator(unsigned char pX)
+void EntityTypeVP::setChangeIndicator(uint8_t pX)
 {
     _changeIndicator = pX;
 }

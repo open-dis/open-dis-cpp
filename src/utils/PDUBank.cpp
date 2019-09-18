@@ -71,6 +71,7 @@ Pdu* PduBank::GetStaticPDU( DIS::PDUType pdu_type )
       case PDU_EVENT_REPORT:      return &eventReportPdu;      break; 
       case PDU_COMMENT:           return &commentPdu;          break; 
       case PDU_STOP_FREEZE:       return &stopFreezePdu;       break;
+      default:                    return nullptr;              break;
    }
 
    return NULL;

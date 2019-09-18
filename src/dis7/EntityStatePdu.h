@@ -31,10 +31,10 @@ protected:
   EntityID _entityID; 
 
   /** What force this entity is affiliated with, eg red, blue, neutral, etc */
-  unsigned char _forceId; 
+  uint8_t _forceId; 
 
   /** How many variable parameters are in the variable length list. In earlier versions of DIS these were known as articulation parameters */
-  unsigned char _numberOfVariableParameters; 
+  uint8_t _numberOfVariableParameters; 
 
   /** Describes the type of entity in the world */
   EntityType _entityType; 
@@ -77,10 +77,10 @@ protected:
     const EntityID&  getEntityID() const; 
     void setEntityID(const EntityID    &pX);
 
-    unsigned char getForceId() const; 
-    void setForceId(unsigned char pX); 
+    uint8_t getForceId() const; 
+    void setForceId(uint8_t pX); 
 
-    unsigned char getNumberOfVariableParameters() const; 
+    uint8_t getNumberOfVariableParameters() const; 
 
     EntityType& getEntityType(); 
     const EntityType&  getEntityType() const; 

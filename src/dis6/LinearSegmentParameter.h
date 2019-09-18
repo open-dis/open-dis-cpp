@@ -20,7 +20,7 @@ class EXPORT_MACRO LinearSegmentParameter
 {
 protected:
   /** number of segments */
-  unsigned char _segmentNumber; 
+  uint8_t _segmentNumber; 
 
   /** segment appearance */
   SixByteChunk _segmentAppearance; 
@@ -54,8 +54,8 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getSegmentNumber() const; 
-    void setSegmentNumber(unsigned char pX); 
+    uint8_t getSegmentNumber() const; 
+    void setSegmentNumber(uint8_t pX); 
 
     SixByteChunk& getSegmentAppearance(); 
     const SixByteChunk&  getSegmentAppearance() const; 

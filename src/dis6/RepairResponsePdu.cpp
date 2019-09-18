@@ -47,12 +47,12 @@ void RepairResponsePdu::setRepairingEntityID(const EntityID &pX)
     _repairingEntityID = pX;
 }
 
-unsigned char RepairResponsePdu::getRepairResult() const
+uint8_t RepairResponsePdu::getRepairResult() const
 {
     return _repairResult;
 }
 
-void RepairResponsePdu::setRepairResult(unsigned char pX)
+void RepairResponsePdu::setRepairResult(uint8_t pX)
 {
     _repairResult = pX;
 }

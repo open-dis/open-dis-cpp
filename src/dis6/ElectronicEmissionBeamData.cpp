@@ -21,22 +21,22 @@ ElectronicEmissionBeamData::~ElectronicEmissionBeamData()
     _trackJamTargets.clear();
 }
 
-unsigned char ElectronicEmissionBeamData::getBeamDataLength() const
+uint8_t ElectronicEmissionBeamData::getBeamDataLength() const
 {
     return _beamDataLength;
 }
 
-void ElectronicEmissionBeamData::setBeamDataLength(unsigned char pX)
+void ElectronicEmissionBeamData::setBeamDataLength(uint8_t pX)
 {
     _beamDataLength = pX;
 }
 
-unsigned char ElectronicEmissionBeamData::getBeamIDNumber() const
+uint8_t ElectronicEmissionBeamData::getBeamIDNumber() const
 {
     return _beamIDNumber;
 }
 
-void ElectronicEmissionBeamData::setBeamIDNumber(unsigned char pX)
+void ElectronicEmissionBeamData::setBeamIDNumber(uint8_t pX)
 {
     _beamIDNumber = pX;
 }
@@ -66,37 +66,37 @@ void ElectronicEmissionBeamData::setFundamentalParameterData(const FundamentalPa
     _fundamentalParameterData = pX;
 }
 
-unsigned char ElectronicEmissionBeamData::getBeamFunction() const
+uint8_t ElectronicEmissionBeamData::getBeamFunction() const
 {
     return _beamFunction;
 }
 
-void ElectronicEmissionBeamData::setBeamFunction(unsigned char pX)
+void ElectronicEmissionBeamData::setBeamFunction(uint8_t pX)
 {
     _beamFunction = pX;
 }
 
-unsigned char ElectronicEmissionBeamData::getNumberOfTrackJamTargets() const
+uint8_t ElectronicEmissionBeamData::getNumberOfTrackJamTargets() const
 {
    return _trackJamTargets.size();
 }
 
-unsigned char ElectronicEmissionBeamData::getHighDensityTrackJam() const
+uint8_t ElectronicEmissionBeamData::getHighDensityTrackJam() const
 {
     return _highDensityTrackJam;
 }
 
-void ElectronicEmissionBeamData::setHighDensityTrackJam(unsigned char pX)
+void ElectronicEmissionBeamData::setHighDensityTrackJam(uint8_t pX)
 {
     _highDensityTrackJam = pX;
 }
 
-unsigned char ElectronicEmissionBeamData::getPad4() const
+uint8_t ElectronicEmissionBeamData::getPad4() const
 {
     return _pad4;
 }
 
-void ElectronicEmissionBeamData::setPad4(unsigned char pX)
+void ElectronicEmissionBeamData::setPad4(uint8_t pX)
 {
     _pad4 = pX;
 }
@@ -133,7 +133,7 @@ void ElectronicEmissionBeamData::marshal(DataStream& dataStream) const
     dataStream << _beamParameterIndex;
     _fundamentalParameterData.marshal(dataStream);
     dataStream << _beamFunction;
-    dataStream << ( unsigned char )_trackJamTargets.size();
+    dataStream << ( uint8_t )_trackJamTargets.size();
     dataStream << _highDensityTrackJam;
     dataStream << _pad4;
     dataStream << _jammingModeSequence;
@@ -204,7 +204,7 @@ int ElectronicEmissionBeamData::getMarshalledSize() const
    marshalSize = marshalSize + 1;  // _pad4
    marshalSize = marshalSize + 4;  // _jammingModeSequence
 
-   for(int idx=0; idx < _trackJamTargets.size(); idx++)
+   for(size_t idx=0; idx < _trackJamTargets.size(); idx++)
    {
         TrackJamTarget listElement = _trackJamTargets[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

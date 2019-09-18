@@ -4,6 +4,7 @@
 #include <utils/DataStream.h>
 #include <dis6/msLibMacro.h>
 #include <vector>
+#include <cstring>
 
 // length in bytes for the variable data. This should be a dynamically allocated array.
 #define STATIC_ARRAY_LENGTH 128
@@ -22,13 +23,8 @@ protected:
   /** ID of the variable datum */
   unsigned int _variableDatumID; 
 
-  /** length of the variable datums */
-  unsigned int _variableDatumLength;
-
   /** The variable datum data.*/
   std::vector<char> _variableDatums;
-  int _arrayLength;
-
 
  public:
     VariableDatum();
@@ -45,7 +41,7 @@ protected:
 
     char*  getVariableDatums();
     const char*  getVariableDatums() const;
-    void setVariableDatums(const char*    pX, const int length);
+    void setVariableDatums(const char* pX, const unsigned int length);
 
 
 virtual int getMarshalledSize() const;

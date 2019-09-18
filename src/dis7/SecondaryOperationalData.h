@@ -17,10 +17,10 @@ class EXPORT_MACRO SecondaryOperationalData
 {
 protected:
   /** additional operational characteristics of the IFF emitting system. Each 8-bit field will vary depending on the system type. */
-  unsigned char _operationalData1; 
+  uint8_t _operationalData1; 
 
   /** additional operational characteristics of the IFF emitting system. Each 8-bit field will vary depending on the system type. */
-  unsigned char _operationalData2; 
+  uint8_t _operationalData2; 
 
   /** the number of IFF Fundamental Parameter Data records that follow */
   unsigned short _numberOfIFFFundamentalParameterRecords; 
@@ -33,11 +33,11 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getOperationalData1() const; 
-    void setOperationalData1(unsigned char pX); 
+    uint8_t getOperationalData1() const; 
+    void setOperationalData1(uint8_t pX); 
 
-    unsigned char getOperationalData2() const; 
-    void setOperationalData2(unsigned char pX); 
+    uint8_t getOperationalData2() const; 
+    void setOperationalData2(uint8_t pX); 
 
     unsigned short getNumberOfIFFFundamentalParameterRecords() const; 
     void setNumberOfIFFFundamentalParameterRecords(unsigned short pX); 

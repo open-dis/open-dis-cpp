@@ -1,7 +1,7 @@
 
-#include <examples/Connection.h>                  // for reading packets from the socket
-#include <examples/EntityStatePduProcessor.h>     // for usage
-#include <examples/Utils.h>
+#include "examples/Connection.h"                  // for reading packets from the socket
+#include "examples/EntityStatePduProcessor.h"     // for usage
+#include "examples/Utils.h"
 
 #include <utils/IncomingMessage.h>                 // for library usage
 #include <dis6/EntityStatePdu.h>                  // for library usage
@@ -29,7 +29,7 @@ int main(int argc, char* argv[])
 
    Example::EntityStatePduProcessor processor;
 
-   const unsigned char es_pdu_type = 1;
+   const uint8_t es_pdu_type = 1;
    DIS::IncomingMessage incoming;
    incoming.AddProcessor( es_pdu_type , &processor );
    while( true )

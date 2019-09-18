@@ -40,22 +40,22 @@ void IOEffect::setRecordLength(unsigned short pX)
     _recordLength = pX;
 }
 
-unsigned char IOEffect::getIoStatus() const
+uint8_t IOEffect::getIoStatus() const
 {
     return _ioStatus;
 }
 
-void IOEffect::setIoStatus(unsigned char pX)
+void IOEffect::setIoStatus(uint8_t pX)
 {
     _ioStatus = pX;
 }
 
-unsigned char IOEffect::getIoLinkType() const
+uint8_t IOEffect::getIoLinkType() const
 {
     return _ioLinkType;
 }
 
-void IOEffect::setIoLinkType(unsigned char pX)
+void IOEffect::setIoLinkType(uint8_t pX)
 {
     _ioLinkType = pX;
 }
@@ -75,12 +75,12 @@ void IOEffect::setIoEffect(const EntityID &pX)
     _ioEffect = pX;
 }
 
-unsigned char IOEffect::getIoEffectDutyCycle() const
+uint8_t IOEffect::getIoEffectDutyCycle() const
 {
     return _ioEffectDutyCycle;
 }
 
-void IOEffect::setIoEffectDutyCycle(unsigned char pX)
+void IOEffect::setIoEffectDutyCycle(uint8_t pX)
 {
     _ioEffectDutyCycle = pX;
 }

@@ -26,7 +26,7 @@ namespace DIS
       /// Create a Pdu.
       /// @param id the value representing the "type" of the Pdu.  The value will be stored in the 3rd position of the buffer, as defined by the DIS specification.
       /// @return a dynamically allocated instance of a concrete Pdu.  The value will be 'NULL' if no support for creating the concrete Pdu was registered.
-      Pdu* CreatePacket(unsigned char id);
+      Pdu* CreatePacket(uint8_t id);
 
       /// Clean up the memory for the Pdu.
       /// @param pdu The packet to be deleted.
@@ -36,7 +36,7 @@ namespace DIS
       /// @param id The value identifying the type of the Pdu.
       /// @return 'false' if a packet id was already registered for the Pdu type.  'true' if support was added.
       template<class T>
-      bool RegisterPacket(unsigned char id)
+      bool RegisterPacket(uint8_t id)
       {
          FunctionMap::value_type candidate(id,&CreateImplementation<Pdu,T>);
          std::pair<FunctionMap::iterator,bool> result = _fMap.insert( candidate );
@@ -54,14 +54,14 @@ namespace DIS
       /// Check to know if the Pdu type is supported.
       /// @param id The value representing the Pdu type.
       /// @return 'true' if support for creating a Pdu was found, 'false' if not found.
-      bool IsRegistered(unsigned char id) const;
+      bool IsRegistered(uint8_t id) const;
 
    private:
       /// the function signature required for creating Pdu instances.
       typedef Pdu* (*CREATE_FUNC)();
 
       /// the type to contain mappings to functions used to create Pdu instances.
-      typedef std::map<unsigned char,CREATE_FUNC> FunctionMap;
+      typedef std::map<uint8_t,CREATE_FUNC> FunctionMap;
 
       /// instance of the storage mechanism for creating Pdu instances.
       FunctionMap _fMap;
