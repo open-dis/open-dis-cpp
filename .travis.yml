@@ -28,5 +28,11 @@ install:
 before_script:
   - ./premake5 gmake
 
-script:
-  - make config=release
+make_OpenDIS:
+  - make OpenDIS -j8 -std=c++11 config=release
+
+make_ExampleSender:
+  - make ExampleSender -j8 -std=c++11 config=release
+
+make_ExampleReceiver:
+  - make ExampleReceiver -j8 -std=c++11 config=release
