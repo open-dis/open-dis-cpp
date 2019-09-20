@@ -3,7 +3,7 @@
 
 #include <utils/DataStream.h>
 #include <dis6/msLibMacro.h>
-
+#include <cstdint>
 
 namespace DIS
 {
