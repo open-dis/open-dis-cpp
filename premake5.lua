@@ -38,6 +38,19 @@ project "OpenDIS"
     "src/utils/*.cpp"
   }
 
+project "OpenDIS7"
+  language "C++"
+  kind "SharedLib"
+  includedirs {
+    "src"
+  }
+  files {
+    "src/dis7/*.h",
+    "src/dis7/*.cpp",
+    "src/utils/*.h",
+    "src/utils/*.cpp"
+  }
+
 project "ExampleSender"
   language "C++"
   kind "ConsoleApp"
