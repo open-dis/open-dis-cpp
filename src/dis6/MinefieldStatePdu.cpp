@@ -271,14 +271,14 @@ int MinefieldStatePdu::getMarshalledSize() const
    marshalSize = marshalSize + 2;  // _appearance
    marshalSize = marshalSize + 2;  // _protocolMode
 
-   for(int idx=0; idx < _perimeterPoints.size(); idx++)
+   for(unsigned long idx=0; idx < _perimeterPoints.size(); idx++)
    {
         Point listElement = _perimeterPoints[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
     }
 
 
-   for(int idx=0; idx < _mineType.size(); idx++)
+   for(unsigned long idx=0; idx < _mineType.size(); idx++)
    {
         EntityType listElement = _mineType[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

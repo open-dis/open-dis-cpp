@@ -61,7 +61,7 @@ bool TwoByteChunk::operator ==(const TwoByteChunk& rhs) const
      bool ivarsEqual = true;
 
 
-     for(char idx = 0; idx < 2; idx++)
+     for(short idx = 0; idx < 2; idx++)
      {
           if(!(_otherParameters[idx] == rhs._otherParameters[idx]) ) ivarsEqual = false;
      }

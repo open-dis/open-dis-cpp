@@ -191,14 +191,14 @@ int SetDataReliablePdu::getMarshalledSize() const
    marshalSize = marshalSize + 4;  // _numberOfFixedDatumRecords
    marshalSize = marshalSize + 4;  // _numberOfVariableDatumRecords
 
-   for(int idx=0; idx < _fixedDatumRecords.size(); idx++)
+   for(unsigned long idx=0; idx < _fixedDatumRecords.size(); idx++)
    {
         FixedDatum listElement = _fixedDatumRecords[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
     }
 
 
-   for(int idx=0; idx < _variableDatumRecords.size(); idx++)
+   for(unsigned long idx=0; idx < _variableDatumRecords.size(); idx++)
    {
         VariableDatum listElement = _variableDatumRecords[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

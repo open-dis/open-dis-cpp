@@ -20,14 +20,14 @@ class EXPORT_MACRO VariableDatum
 {
 protected:
   /** ID of the variable datum */
-  unsigned int _variableDatumID; 
+  unsigned long _variableDatumID; 
 
   /** length of the variable datums */
-  unsigned int _variableDatumLength;
+  unsigned long _variableDatumLength;
 
   /** The variable datum data.*/
   std::vector<char> _variableDatums;
-  int _arrayLength;
+  unsigned long _arrayLength;
 
 
  public:
@@ -37,18 +37,18 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    unsigned int getVariableDatumID() const; 
-    void setVariableDatumID(unsigned int pX); 
+    unsigned long getVariableDatumID() const;
+    void setVariableDatumID(unsigned long pX);
 
-    unsigned int getVariableDatumLength() const; 
-    void setVariableDatumLength(unsigned int pX);
+    unsigned long getVariableDatumLength() const;
+    void setVariableDatumLength(unsigned long pX);
 
     char*  getVariableDatums();
     const char*  getVariableDatums() const;
-    void setVariableDatums(const char*    pX, const int length);
+    void setVariableDatums(const char* pX, const unsigned long length);
 
 
-virtual int getMarshalledSize() const;
+virtual unsigned long getMarshalledSize() const;
 
      bool operator  ==(const VariableDatum& rhs) const;
 };

@@ -105,7 +105,7 @@ void SignalPdu::unmarshal(DataStream& dataStream)
     dataStream >> _samples;
 
      _data.clear();
-     for(size_t idx = 0; idx < _dataLength; idx++)
+     for(short idx = 0; idx < _dataLength; idx++)
      {
         OneByteChunk x;
         x.unmarshal(dataStream);
@@ -145,7 +145,7 @@ int SignalPdu::getMarshalledSize() const
    marshalSize = marshalSize + 2;  // _dataLength
    marshalSize = marshalSize + 2;  // _samples
 
-   for(int idx=0; idx < _data.size(); idx++)
+   for(unsigned long idx=0; idx < _data.size(); idx++)
    {
         OneByteChunk listElement = _data[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

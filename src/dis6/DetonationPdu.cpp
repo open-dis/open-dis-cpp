@@ -235,7 +235,7 @@ int DetonationPdu::getMarshalledSize() const
    marshalSize = marshalSize + 1;  // _numberOfArticulationParameters
    marshalSize = marshalSize + 2;  // _pad
 
-   for(int idx=0; idx < _articulationParameters.size(); idx++)
+   for(unsigned long idx=0; idx < _articulationParameters.size(); idx++)
    {
         ArticulationParameter listElement = _articulationParameters[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

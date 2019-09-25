@@ -140,7 +140,7 @@ int MinefieldResponseNackPdu::getMarshalledSize() const
    marshalSize = marshalSize + 1;  // _requestID
    marshalSize = marshalSize + 1;  // _numberOfMissingPdus
 
-   for(int idx=0; idx < _missingPduSequenceNumbers.size(); idx++)
+   for(unsigned long idx=0; idx < _missingPduSequenceNumbers.size(); idx++)
    {
         EightByteChunk listElement = _missingPduSequenceNumbers[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

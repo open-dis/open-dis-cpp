@@ -149,7 +149,7 @@ int AcousticEmitterSystemData::getMarshalledSize() const
    marshalSize = marshalSize + _acousticEmitterSystem.getMarshalledSize();  // _acousticEmitterSystem
    marshalSize = marshalSize + _emitterLocation.getMarshalledSize();  // _emitterLocation
 
-   for(int idx=0; idx < _beamRecords.size(); idx++)
+   for(unsigned long idx=0; idx < _beamRecords.size(); idx++)
    {
         AcousticBeamData listElement = _beamRecords[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

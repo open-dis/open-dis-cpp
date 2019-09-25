@@ -18,22 +18,22 @@ VariableDatum::~VariableDatum()
 	//delete [] _variableDatums;
 }
 
-unsigned int VariableDatum::getVariableDatumID() const
+unsigned long VariableDatum::getVariableDatumID() const
 {
     return _variableDatumID;
 }
 
-void VariableDatum::setVariableDatumID(unsigned int pX)
+void VariableDatum::setVariableDatumID(unsigned long pX)
 {
     _variableDatumID = pX;
 }
 
-unsigned int VariableDatum::getVariableDatumLength() const
+unsigned long VariableDatum::getVariableDatumLength() const
 {
     return _variableDatumLength;
 }
 
-void VariableDatum::setVariableDatumLength(unsigned int pX)
+void VariableDatum::setVariableDatumLength(unsigned long pX)
 {
     _variableDatumLength = pX;
 }
@@ -48,35 +48,27 @@ const char* VariableDatum::getVariableDatums() const
     return _variableDatums.data();
 }
 
-void VariableDatum::setVariableDatums(const char* x, const int length)
+void VariableDatum::setVariableDatums(const char* x, const unsigned long length)
 {
-    if(length < 0) {
-        // *** One should really be using unsigned for size values! f.e. std::size_t
-        std::cout << " The VariableDatum pointer size parameter is negative. Punting." << std::endl;
-    }
+    // convert and store length as bits
+    _variableDatumLength = length * 8;
 
-    int byteLength = length; // why this copy?
-    _variableDatumLength = length * 8; // in bits
-
-	// Figure out padding
-    int chunks = byteLength / 8; // should be const, unsigned
-	int remainder = byteLength % 8;
-	if(remainder != 0)
+    // Figure out _arrayLength (bytes with padding (8 byte chunks))
+    unsigned long chunks = length / 8;
+    int remainder = length % 8;
+    if(remainder > 0)
 		chunks++;
     _arrayLength = chunks * 8;
 
-    int padding =  8 - remainder;
-
     // .resize() might (theoretically) throw. want to catch? : what to do? zombie datum?
-    // negative "length" would be a disaster : signed->unsigned->huge allocation
     if(_variableDatums.size() < length)
         _variableDatums.resize(length);
 
-    for(int i = 0; i < length; i++)
+    for(unsigned long i = 0; i < length; i++)
     {
         _variableDatums[i] = x[i];
     }
-    for(int i = length; i < _variableDatums.size(); i++)
+    for(unsigned long i = length; i < _variableDatums.size(); i++)
     {
         _variableDatums[i] = 0;
     }
@@ -87,7 +79,7 @@ void VariableDatum::marshal(DataStream& dataStream) const
     dataStream << _variableDatumID;
     dataStream << _variableDatumLength;
 
-    for(size_t idx = 0; idx < _arrayLength; idx++)
+    for(unsigned long idx = 0; idx < _arrayLength; idx++)
     {
         dataStream << _variableDatums[idx];
     }
@@ -98,7 +90,7 @@ void VariableDatum::unmarshal(DataStream& dataStream)
 {
     dataStream >> _variableDatumID;
     dataStream >> _variableDatumLength;
-	
+
     int byteLength = _variableDatumLength / 8;
 	int chunks = byteLength / 8;
 	if(byteLength % 8 > 0)
@@ -111,13 +103,13 @@ void VariableDatum::unmarshal(DataStream& dataStream)
     if(_variableDatums.size() < _arrayLength)
         _variableDatums.resize(_arrayLength);
 
-     for(size_t idx = 0; idx < _arrayLength; idx++)
+     for(unsigned long idx = 0; idx < _arrayLength; idx++)
      {
         dataStream >> _variableDatums[idx];
 		//std::cout << (int)_variableDatums[idx] << " ";
      }
 	 //std::cout << std::endl;
-     for(size_t idx = _arrayLength; idx < _variableDatums.size(); idx++)
+     for(unsigned long idx = _arrayLength; idx < _variableDatums.size(); idx++)
 	 {
 		 _variableDatums[idx] = 0;
 	 }
@@ -142,9 +134,9 @@ bool VariableDatum::operator ==(const VariableDatum& rhs) const
     return ivarsEqual;
 }
 
-int VariableDatum::getMarshalledSize() const
+unsigned long VariableDatum::getMarshalledSize() const
 {
-   int marshalSize = 0;
+   unsigned long marshalSize = 0;
 
    marshalSize = marshalSize + 4;  // _variableDatumID
    marshalSize = marshalSize + 4;  // _variableDatumLength

@@ -204,7 +204,7 @@ int ElectronicEmissionBeamData::getMarshalledSize() const
    marshalSize = marshalSize + 1;  // _pad4
    marshalSize = marshalSize + 4;  // _jammingModeSequence
 
-   for(int idx=0; idx < _trackJamTargets.size(); idx++)
+   for(unsigned long idx=0; idx < _trackJamTargets.size(); idx++)
    {
         TrackJamTarget listElement = _trackJamTargets[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

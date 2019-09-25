@@ -111,7 +111,7 @@ bool DeadReckoningParameter::operator ==(const DeadReckoningParameter& rhs) cons
 
      if( ! (_deadReckoningAlgorithm == rhs._deadReckoningAlgorithm) ) ivarsEqual = false;
 
-     for(char idx = 0; idx < 15; idx++)
+     for(unsigned char idx = 0; idx < 15; idx++)
      {
           if(!(_otherParameters[idx] == rhs._otherParameters[idx]) ) ivarsEqual = false;
      }

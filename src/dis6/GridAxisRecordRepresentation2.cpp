@@ -84,7 +84,7 @@ int GridAxisRecordRepresentation2::getMarshalledSize() const
    marshalSize = GridAxisRecord::getMarshalledSize();
    marshalSize = marshalSize + 2;  // _numberOfValues
 
-   for(int idx=0; idx < _dataValues.size(); idx++)
+   for(unsigned long idx=0; idx < _dataValues.size(); idx++)
    {
         FourByteChunk listElement = _dataValues[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

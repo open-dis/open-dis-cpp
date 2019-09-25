@@ -295,7 +295,7 @@ int GriddedDataPdu::getMarshalledSize() const
    marshalSize = marshalSize + 2;  // _padding1
    marshalSize = marshalSize + 1;  // _padding2
 
-   for(int idx=0; idx < _gridDataList.size(); idx++)
+   for(unsigned long idx=0; idx < _gridDataList.size(); idx++)
    {
         GridAxisRecord listElement = _gridDataList[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

@@ -376,14 +376,14 @@ int TransmitterPdu::getMarshalledSize() const
    marshalSize = marshalSize + 2;  // _padding2
    marshalSize = marshalSize + 1;  // _padding3
 
-   for(int idx=0; idx < _modulationParametersList.size(); idx++)
+   for(unsigned long idx=0; idx < _modulationParametersList.size(); idx++)
    {
         Vector3Float listElement = _modulationParametersList[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
     }
 
 
-   for(int idx=0; idx < _antennaPatternList.size(); idx++)
+   for(unsigned long idx=0; idx < _antennaPatternList.size(); idx++)
    {
         Vector3Float listElement = _antennaPatternList[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

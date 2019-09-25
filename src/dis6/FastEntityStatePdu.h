@@ -32,7 +32,7 @@ protected:
   unsigned char _forceId; 
 
   /** How many articulation parameters are in the variable length list */
-  char _numberOfArticulationParameters; 
+  unsigned char _numberOfArticulationParameters;
 
   /** Kind of entity */
   unsigned char _entityKind; 
@@ -154,7 +154,7 @@ protected:
     unsigned char getForceId() const; 
     void setForceId(unsigned char pX); 
 
-    char getNumberOfArticulationParameters() const; 
+    unsigned char getNumberOfArticulationParameters() const;
 
     unsigned char getEntityKind() const; 
     void setEntityKind(unsigned char pX); 

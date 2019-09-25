@@ -135,7 +135,7 @@ int IffAtcNavAidsLayer2Pdu::getMarshalledSize() const
    marshalSize = marshalSize + _beamData.getMarshalledSize();  // _beamData
    marshalSize = marshalSize + _secondaryOperationalData.getMarshalledSize();  // _secondaryOperationalData
 
-   for(int idx=0; idx < _fundamentalIffParameters.size(); idx++)
+   for(unsigned long idx=0; idx < _fundamentalIffParameters.size(); idx++)
    {
         FundamentalParameterDataIff listElement = _fundamentalIffParameters[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

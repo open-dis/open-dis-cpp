@@ -170,7 +170,7 @@ int EnvironmentalProcessPdu::getMarshalledSize() const
    marshalSize = marshalSize + 1;  // _numberOfEnvironmentRecords
    marshalSize = marshalSize + 2;  // _sequenceNumber
 
-   for(int idx=0; idx < _environmentRecords.size(); idx++)
+   for(unsigned long idx=0; idx < _environmentRecords.size(); idx++)
    {
         Environment listElement = _environmentRecords[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
