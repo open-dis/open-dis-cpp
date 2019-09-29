@@ -3,6 +3,8 @@
 
 #include <utils/DataStream.h>
 #include <dis7/msLibMacro.h>
+#include <dis7/EightByteChunk.h>
+#include <vector>
 
 
 namespace DIS
@@ -27,6 +29,9 @@ protected:
 
   /** padding to put the record on a 64 bit boundary */
   unsigned int _padding; 
+
+  // Variable Data
+  std::vector<EightByteChunk> _variableDatums;
 
 
  public:
