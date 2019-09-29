@@ -215,7 +215,7 @@ int LinearObjectStatePdu::getMarshalledSize() const
    marshalSize = marshalSize + _receivingID.getMarshalledSize();  // _receivingID
    marshalSize = marshalSize + _objectType.getMarshalledSize();  // _objectType
 
-   for(int idx=0; idx < _linearSegmentParameters.size(); idx++)
+   for(unsigned long idx=0; idx < _linearSegmentParameters.size(); idx++)
    {
         LinearSegmentParameter listElement = _linearSegmentParameters[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

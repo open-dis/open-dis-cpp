@@ -277,21 +277,21 @@ int UaPdu::getMarshalledSize() const
    marshalSize = marshalSize + 1;  // _numberOfAPAs
    marshalSize = marshalSize + 1;  // _numberOfUAEmitterSystems
 
-   for(int idx=0; idx < _shaftRPMs.size(); idx++)
+   for(unsigned long idx=0; idx < _shaftRPMs.size(); idx++)
    {
         Vector3Float listElement = _shaftRPMs[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
     }
 
 
-   for(int idx=0; idx < _apaData.size(); idx++)
+   for(unsigned long idx=0; idx < _apaData.size(); idx++)
    {
         Vector3Float listElement = _apaData[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
     }
 
 
-   for(int idx=0; idx < _emitterSystems.size(); idx++)
+   for(unsigned long idx=0; idx < _emitterSystems.size(); idx++)
    {
         Vector3Float listElement = _emitterSystems[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

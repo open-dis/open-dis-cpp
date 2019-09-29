@@ -155,7 +155,7 @@ int ResupplyOfferPdu::getMarshalledSize() const
    marshalSize = marshalSize + 1;  // _padding1
    marshalSize = marshalSize + 2;  // _padding2
 
-   for(int idx=0; idx < _supplies.size(); idx++)
+   for(unsigned long idx=0; idx < _supplies.size(); idx++)
    {
         SupplyQuantity listElement = _supplies[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

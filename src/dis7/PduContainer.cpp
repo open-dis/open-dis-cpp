@@ -13,7 +13,7 @@ PduContainer::~PduContainer()
     _pdus.clear();
 }
 
-int PduContainer::getNumberOfPdus() const
+unsigned int PduContainer::getNumberOfPdus() const
 {
    return _pdus.size();
 }
@@ -79,7 +79,7 @@ int PduContainer::getMarshalledSize() const
 
    marshalSize = marshalSize + 4;  // _numberOfPdus
 
-   for(int idx=0; idx < _pdus.size(); idx++)
+   for(unsigned long idx=0; idx < _pdus.size(); idx++)
    {
         Pdu listElement = _pdus[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

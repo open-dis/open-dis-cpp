@@ -175,7 +175,7 @@ int RecordQueryReliablePdu::getMarshalledSize() const
    marshalSize = marshalSize + 4;  // _time
    marshalSize = marshalSize + 4;  // _numberOfRecords
 
-   for(int idx=0; idx < _recordIDs.size(); idx++)
+   for(unsigned long idx=0; idx < _recordIDs.size(); idx++)
    {
         FourByteChunk listElement = _recordIDs[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
