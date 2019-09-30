@@ -53,7 +53,7 @@ void VariableDatum::setVariableDatums(const char* x, const unsigned int length)
     // convert and store length as bits
     _variableDatumLength = length * 8;
 
-    // Figure out _arrayLength (bytes with padding (8 byte chunks))
+    // Figure out _arrayLength (including padding to force whole 8 byte chunks)
     unsigned int chunks = length / 8;
     int remainder = length % 8;
     if(remainder > 0)
