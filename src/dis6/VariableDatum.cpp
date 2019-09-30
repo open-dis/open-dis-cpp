@@ -18,22 +18,22 @@ VariableDatum::~VariableDatum()
 	//delete [] _variableDatums;
 }
 
-unsigned long VariableDatum::getVariableDatumID() const
+unsigned int VariableDatum::getVariableDatumID() const
 {
     return _variableDatumID;
 }
 
-void VariableDatum::setVariableDatumID(unsigned long pX)
+void VariableDatum::setVariableDatumID(unsigned int pX)
 {
     _variableDatumID = pX;
 }
 
-unsigned long VariableDatum::getVariableDatumLength() const
+unsigned int VariableDatum::getVariableDatumLength() const
 {
     return _variableDatumLength;
 }
 
-void VariableDatum::setVariableDatumLength(unsigned long pX)
+void VariableDatum::setVariableDatumLength(unsigned int pX)
 {
     _variableDatumLength = pX;
 }
@@ -48,13 +48,13 @@ const char* VariableDatum::getVariableDatums() const
     return _variableDatums.data();
 }
 
-void VariableDatum::setVariableDatums(const char* x, const unsigned long length)
+void VariableDatum::setVariableDatums(const char* x, const unsigned int length)
 {
     // convert and store length as bits
     _variableDatumLength = length * 8;
 
     // Figure out _arrayLength (bytes with padding (8 byte chunks))
-    unsigned long chunks = length / 8;
+    unsigned int chunks = length / 8;
     int remainder = length % 8;
     if(remainder > 0)
 		chunks++;
@@ -64,7 +64,7 @@ void VariableDatum::setVariableDatums(const char* x, const unsigned long length)
     if(_variableDatums.size() < length)
         _variableDatums.resize(length);
 
-    for(unsigned long i = 0; i < length; i++)
+    for(unsigned int i = 0; i < length; i++)
     {
         _variableDatums[i] = x[i];
     }
@@ -79,7 +79,7 @@ void VariableDatum::marshal(DataStream& dataStream) const
     dataStream << _variableDatumID;
     dataStream << _variableDatumLength;
 
-    for(unsigned long idx = 0; idx < _arrayLength; idx++)
+    for(unsigned int idx = 0; idx < _arrayLength; idx++)
     {
         dataStream << _variableDatums[idx];
     }
@@ -103,7 +103,7 @@ void VariableDatum::unmarshal(DataStream& dataStream)
     if(_variableDatums.size() < _arrayLength)
         _variableDatums.resize(_arrayLength);
 
-     for(unsigned long idx = 0; idx < _arrayLength; idx++)
+     for(unsigned int idx = 0; idx < _arrayLength; idx++)
      {
         dataStream >> _variableDatums[idx];
 		//std::cout << (int)_variableDatums[idx] << " ";
@@ -134,9 +134,9 @@ bool VariableDatum::operator ==(const VariableDatum& rhs) const
     return ivarsEqual;
 }
 
-unsigned long VariableDatum::getMarshalledSize() const
+unsigned int VariableDatum::getMarshalledSize() const
 {
-   unsigned long marshalSize = 0;
+   unsigned int marshalSize = 0;
 
    marshalSize = marshalSize + 4;  // _variableDatumID
    marshalSize = marshalSize + 4;  // _variableDatumLength
