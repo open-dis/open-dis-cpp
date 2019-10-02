@@ -109,7 +109,7 @@ void VariableDatum::unmarshal(DataStream& dataStream)
 		//std::cout << (int)_variableDatums[idx] << " ";
      }
 	 //std::cout << std::endl;
-     for(unsigned long idx = _arrayLength; idx < _variableDatums.size(); idx++)
+     for(unsigned long long idx = _arrayLength; idx < _variableDatums.size(); idx++)
 	 {
 		 _variableDatums[idx] = 0;
 	 }

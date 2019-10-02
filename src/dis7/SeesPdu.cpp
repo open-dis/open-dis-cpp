@@ -196,14 +196,14 @@ int SeesPdu::getMarshalledSize() const
    marshalSize = marshalSize + 2;  // _numberOfPropulsionSystems
    marshalSize = marshalSize + 2;  // _numberOfVectoringNozzleSystems
 
-   for(unsigned long idx=0; idx < _propulsionSystemData.size(); idx++)
+   for(unsigned long long idx=0; idx < _propulsionSystemData.size(); idx++)
    {
         PropulsionSystemData listElement = _propulsionSystemData[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
     }
 
 
-   for(unsigned long idx=0; idx < _vectoringSystemData.size(); idx++)
+   for(unsigned long long idx=0; idx < _vectoringSystemData.size(); idx++)
    {
         VectoringNozzleSystem listElement = _vectoringSystemData[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

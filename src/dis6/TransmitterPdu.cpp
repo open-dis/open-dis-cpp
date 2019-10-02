@@ -121,12 +121,12 @@ unsigned short TransmitterPdu::getAntennaPatternCount() const
    return _antennaPatternList.size();
 }
 
-long TransmitterPdu::getFrequency() const
+unsigned long long TransmitterPdu::getFrequency() const
 {
     return _frequency;
 }
 
-void TransmitterPdu::setFrequency(long pX)
+void TransmitterPdu::setFrequency(unsigned long long pX)
 {
     _frequency = pX;
 }
@@ -376,14 +376,14 @@ int TransmitterPdu::getMarshalledSize() const
    marshalSize = marshalSize + 2;  // _padding2
    marshalSize = marshalSize + 1;  // _padding3
 
-   for(unsigned long idx=0; idx < _modulationParametersList.size(); idx++)
+   for(unsigned long long idx=0; idx < _modulationParametersList.size(); idx++)
    {
         Vector3Float listElement = _modulationParametersList[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
     }
 
 
-   for(unsigned long idx=0; idx < _antennaPatternList.size(); idx++)
+   for(unsigned long long idx=0; idx < _antennaPatternList.size(); idx++)
    {
         Vector3Float listElement = _antennaPatternList[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

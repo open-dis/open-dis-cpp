@@ -49,7 +49,7 @@ protected:
   unsigned short _antennaPatternCount; 
 
   /** frequency */
-  long _frequency; 
+  unsigned long long _frequency;
 
   /** transmit frequency Bandwidth */
   float _transmitFrequencyBandwidth; 
@@ -115,8 +115,8 @@ protected:
 
     unsigned short getAntennaPatternCount() const; 
 
-    long getFrequency() const; 
-    void setFrequency(long pX); 
+    unsigned long long getFrequency() const;
+    void setFrequency(unsigned long long pX);
 
     float getTransmitFrequencyBandwidth() const; 
     void setTransmitFrequencyBandwidth(float pX); 

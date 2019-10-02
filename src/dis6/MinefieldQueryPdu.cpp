@@ -236,14 +236,14 @@ int MinefieldQueryPdu::getMarshalledSize() const
    marshalSize = marshalSize + 4;  // _dataFilter
    marshalSize = marshalSize + _requestedMineType.getMarshalledSize();  // _requestedMineType
 
-   for(unsigned long idx=0; idx < _requestedPerimeterPoints.size(); idx++)
+   for(unsigned long long idx=0; idx < _requestedPerimeterPoints.size(); idx++)
    {
         Point listElement = _requestedPerimeterPoints[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
     }
 
 
-   for(unsigned long idx=0; idx < _sensorTypes.size(); idx++)
+   for(unsigned long long idx=0; idx < _sensorTypes.size(); idx++)
    {
         TwoByteChunk listElement = _sensorTypes[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

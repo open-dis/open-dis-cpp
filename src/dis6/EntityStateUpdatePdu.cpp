@@ -196,7 +196,7 @@ int EntityStateUpdatePdu::getMarshalledSize() const
    marshalSize = marshalSize + _entityOrientation.getMarshalledSize();  // _entityOrientation
    marshalSize = marshalSize + 4;  // _entityAppearance
 
-   for(unsigned long idx=0; idx < _articulationParameters.size(); idx++)
+   for(unsigned long long idx=0; idx < _articulationParameters.size(); idx++)
    {
         ArticulationParameter listElement = _articulationParameters[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

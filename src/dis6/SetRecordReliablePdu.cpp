@@ -145,7 +145,7 @@ int SetRecordReliablePdu::getMarshalledSize() const
    marshalSize = marshalSize + 1;  // _pad2
    marshalSize = marshalSize + 4;  // _numberOfRecordSets
 
-   for(unsigned long idx=0; idx < _recordSets.size(); idx++)
+   for(unsigned long long idx=0; idx < _recordSets.size(); idx++)
    {
         RecordSet listElement = _recordSets[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

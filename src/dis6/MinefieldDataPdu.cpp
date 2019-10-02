@@ -295,7 +295,7 @@ int MinefieldDataPdu::getMarshalledSize() const
    marshalSize = marshalSize + 4;  // _dataFilter
    marshalSize = marshalSize + _mineType.getMarshalledSize();  // _mineType
 
-   for(unsigned long idx=0; idx < _sensorTypes.size(); idx++)
+   for(unsigned long long idx=0; idx < _sensorTypes.size(); idx++)
    {
         TwoByteChunk listElement = _sensorTypes[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
@@ -303,7 +303,7 @@ int MinefieldDataPdu::getMarshalledSize() const
 
    marshalSize = marshalSize + 1;  // _pad3
 
-   for(unsigned long idx=0; idx < _mineLocation.size(); idx++)
+   for(unsigned long long idx=0; idx < _mineLocation.size(); idx++)
    {
         Vector3Float listElement = _mineLocation[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

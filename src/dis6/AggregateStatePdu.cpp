@@ -467,14 +467,14 @@ int AggregateStatePdu::getMarshalledSize() const
    marshalSize = marshalSize + 2;  // _numberOfSilentAggregateTypes
    marshalSize = marshalSize + 2;  // _numberOfSilentEntityTypes
 
-   for(unsigned long idx=0; idx < _aggregateIDList.size(); idx++)
+   for(unsigned long long idx=0; idx < _aggregateIDList.size(); idx++)
    {
         AggregateID listElement = _aggregateIDList[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
     }
 
 
-   for(unsigned long idx=0; idx < _entityIDList.size(); idx++)
+   for(unsigned long long idx=0; idx < _entityIDList.size(); idx++)
    {
         EntityID listElement = _entityIDList[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
@@ -482,14 +482,14 @@ int AggregateStatePdu::getMarshalledSize() const
 
    marshalSize = marshalSize + 1;  // _pad2
 
-   for(unsigned long idx=0; idx < _silentAggregateSystemList.size(); idx++)
+   for(unsigned long long idx=0; idx < _silentAggregateSystemList.size(); idx++)
    {
         EntityType listElement = _silentAggregateSystemList[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
     }
 
 
-   for(unsigned long idx=0; idx < _silentEntitySystemList.size(); idx++)
+   for(unsigned long long idx=0; idx < _silentEntitySystemList.size(); idx++)
    {
         EntityType listElement = _silentEntitySystemList[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
@@ -497,7 +497,7 @@ int AggregateStatePdu::getMarshalledSize() const
 
    marshalSize = marshalSize + 4;  // _numberOfVariableDatumRecords
 
-   for(unsigned long idx=0; idx < _variableDatumList.size(); idx++)
+   for(unsigned long long idx=0; idx < _variableDatumList.size(); idx++)
    {
         VariableDatum listElement = _variableDatumList[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

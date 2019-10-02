@@ -7,7 +7,7 @@
 
 namespace DIS
 {
-//  articulated parts for movable parts and a combination of moveable/attached parts of an entity. Section 6.2.93.2
+//  articulated parts for movable parts and a combination of moveable/attached parts of an entity. Section 6.2.94.2
 
 // Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
 //
@@ -28,8 +28,12 @@ protected:
   /** the type of parameter represented, 32 bit enumeration */
   unsigned int _parameterType; 
 
-  /** The definition of the 64 bits shall be determined based on the type of parameter specified in the Parameter Type field  */
-  long _parameterValue; 
+  /** This field shall specify the parameter value and shall be specified by a 32-bit
+floating point number.  */
+  float _parameterValue;
+
+  /** 32 bits of unused padding */
+  unsigned int _padding;
 
 
  public:
@@ -51,8 +55,8 @@ protected:
     unsigned int getParameterType() const; 
     void setParameterType(unsigned int pX); 
 
-    long getParameterValue() const; 
-    void setParameterValue(long pX); 
+    float getParameterValue() const;
+    void setParameterValue(float pX);
 
 
 virtual int getMarshalledSize() const;

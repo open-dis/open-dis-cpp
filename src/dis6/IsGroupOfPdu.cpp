@@ -165,7 +165,7 @@ int IsGroupOfPdu::getMarshalledSize() const
    marshalSize = marshalSize + 8;  // _latitude
    marshalSize = marshalSize + 8;  // _longitude
 
-   for(unsigned long idx=0; idx < _groupedEntityDescriptions.size(); idx++)
+   for(unsigned long long idx=0; idx < _groupedEntityDescriptions.size(); idx++)
    {
         VariableDatum listElement = _groupedEntityDescriptions[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

@@ -310,7 +310,7 @@ int DirectedEnergyFirePdu::getMarshalledSize() const
    marshalSize = marshalSize + 2;  // _padding3
    marshalSize = marshalSize + 2;  // _numberOfDERecords
 
-   for(unsigned long idx=0; idx < _dERecords.size(); idx++)
+   for(unsigned long long idx=0; idx < _dERecords.size(); idx++)
    {
         StandardVariableSpecification listElement = _dERecords[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

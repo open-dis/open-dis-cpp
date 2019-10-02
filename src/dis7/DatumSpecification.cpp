@@ -125,14 +125,14 @@ int DatumSpecification::getMarshalledSize() const
    marshalSize = marshalSize + 4;  // _numberOfFixedDatums
    marshalSize = marshalSize + 4;  // _numberOfVariableDatums
 
-   for(unsigned long idx=0; idx < _fixedDatumIDList.size(); idx++)
+   for(unsigned long long idx=0; idx < _fixedDatumIDList.size(); idx++)
    {
         FixedDatum listElement = _fixedDatumIDList[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
     }
 
 
-   for(unsigned long idx=0; idx < _variableDatumIDList.size(); idx++)
+   for(unsigned long long idx=0; idx < _variableDatumIDList.size(); idx++)
    {
         VariableDatum listElement = _variableDatumIDList[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

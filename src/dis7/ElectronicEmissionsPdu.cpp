@@ -226,7 +226,7 @@ int ElectronicEmissionsPdu::getMarshalledSize() const
    marshalSize = marshalSize + _emitterSystem.getMarshalledSize();  // _emitterSystem
    marshalSize = marshalSize + _location.getMarshalledSize();  // _location
 
-   for(unsigned long idx=0; idx < _systems.size(); idx++)
+   for(unsigned long long idx=0; idx < _systems.size(); idx++)
    {
         Vector3Float listElement = _systems[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

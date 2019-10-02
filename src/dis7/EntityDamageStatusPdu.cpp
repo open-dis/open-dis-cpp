@@ -135,7 +135,7 @@ int EntityDamageStatusPdu::getMarshalledSize() const
    marshalSize = marshalSize + 2;  // _padding2
    marshalSize = marshalSize + 2;  // _numberOfDamageDescription
 
-   for(unsigned long idx=0; idx < _damageDescriptionRecords.size(); idx++)
+   for(unsigned long long idx=0; idx < _damageDescriptionRecords.size(); idx++)
    {
         DirectedEnergyDamage listElement = _damageDescriptionRecords[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

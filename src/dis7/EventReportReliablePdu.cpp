@@ -161,14 +161,14 @@ int EventReportReliablePdu::getMarshalledSize() const
    marshalSize = marshalSize + 4;  // _numberOfFixedDatumRecords
    marshalSize = marshalSize + 4;  // _numberOfVariableDatumRecords
 
-   for(unsigned long idx=0; idx < _fixedDatumRecords.size(); idx++)
+   for(unsigned long long idx=0; idx < _fixedDatumRecords.size(); idx++)
    {
         FixedDatum listElement = _fixedDatumRecords[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
     }
 
 
-   for(unsigned long idx=0; idx < _variableDatumRecords.size(); idx++)
+   for(unsigned long long idx=0; idx < _variableDatumRecords.size(); idx++)
    {
         VariableDatum listElement = _variableDatumRecords[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

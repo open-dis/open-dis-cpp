@@ -170,14 +170,14 @@ int DirectedEnergyAreaAimpoint::getMarshalledSize() const
    marshalSize = marshalSize + 2;  // _beamAntennaPatternRecordCount
    marshalSize = marshalSize + 2;  // _directedEnergyTargetEnergyDepositionRecordCount
 
-   for(unsigned long idx=0; idx < _beamAntennaParameterList.size(); idx++)
+   for(unsigned long long idx=0; idx < _beamAntennaParameterList.size(); idx++)
    {
         BeamAntennaPattern listElement = _beamAntennaParameterList[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
     }
 
 
-   for(unsigned long idx=0; idx < _directedEnergyTargetEnergyDepositionRecordList.size(); idx++)
+   for(unsigned long long idx=0; idx < _directedEnergyTargetEnergyDepositionRecordList.size(); idx++)
    {
         DirectedEnergyTargetEnergyDeposition listElement = _directedEnergyTargetEnergyDepositionRecordList[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

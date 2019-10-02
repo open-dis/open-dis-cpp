@@ -190,7 +190,7 @@ int TransferControlRequestPdu::getMarshalledSize() const
    marshalSize = marshalSize + _transferEntityID.getMarshalledSize();  // _transferEntityID
    marshalSize = marshalSize + 1;  // _numberOfRecordSets
 
-   for(unsigned long idx=0; idx < _recordSets.size(); idx++)
+   for(unsigned long long idx=0; idx < _recordSets.size(); idx++)
    {
         RecordSet listElement = _recordSets[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
