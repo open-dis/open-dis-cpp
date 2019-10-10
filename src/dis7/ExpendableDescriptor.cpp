@@ -28,12 +28,12 @@ void ExpendableDescriptor::setExpendableType(const EntityType &pX)
     _expendableType = pX;
 }
 
-long ExpendableDescriptor::getPadding() const
+long long ExpendableDescriptor::getPadding() const
 {
     return _padding;
 }
 
-void ExpendableDescriptor::setPadding(long pX)
+void ExpendableDescriptor::setPadding(long long pX)
 {
     _padding = pX;
 }

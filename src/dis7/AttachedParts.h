@@ -7,7 +7,7 @@
 
 namespace DIS
 {
-// Removable parts that may be attached to an entity.  Section 6.2.93.3
+// Removable parts that may be attached to an entity.  Section 6.2.94.3
 
 // Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
 //
@@ -29,7 +29,7 @@ protected:
   unsigned int _parameterType; 
 
   /** The definition of the 64 bits shall be determined based on the type of parameter specified in the Parameter Type field  */
-  long _parameterValue; 
+  unsigned long long _attachedPartType;
 
 
  public:
@@ -51,8 +51,8 @@ protected:
     unsigned int getParameterType() const; 
     void setParameterType(unsigned int pX); 
 
-    long getParameterValue() const; 
-    void setParameterValue(long pX); 
+    unsigned long long getAttachedPartType() const;
+    void setAttachedPartType(unsigned long long pX);
 
 
 virtual int getMarshalledSize() const;

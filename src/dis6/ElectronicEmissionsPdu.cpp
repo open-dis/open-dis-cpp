@@ -156,7 +156,7 @@ int ElectronicEmissionsPdu::getMarshalledSize() const
    marshalSize = marshalSize + 1;  // _numberOfSystems
    marshalSize = marshalSize + 2;  // _paddingForEmissionsPdu
 
-   for(int idx=0; idx < _systems.size(); idx++)
+   for(unsigned long long idx=0; idx < _systems.size(); idx++)
    {
         ElectronicEmissionSystemData listElement = _systems[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

@@ -18,6 +18,7 @@
 #include <utils/Endian.h>           // for enum
 #include <dis6/msLibMacro.h>       // for library symbols
 #include <cstdlib>                // for size_t and NULL definition
+#include <cstring>                // for memcpy
 
 namespace DIS
 {
@@ -54,8 +55,8 @@ namespace DIS
       DataStream& operator <<(double c);
       DataStream& operator <<(int c);
       DataStream& operator <<(unsigned int c);
-      DataStream& operator <<(long c);
-      DataStream& operator <<(unsigned long c);
+      DataStream& operator <<(long long c);
+      DataStream& operator <<(unsigned long long c);
       DataStream& operator <<(unsigned short c);
       DataStream& operator <<(short c);
 
@@ -67,8 +68,8 @@ namespace DIS
       DataStream& operator >>(double& c);
       DataStream& operator >>(int& c);
       DataStream& operator >>(unsigned int& c);
-      DataStream& operator >>(long& c);
-      DataStream& operator >>(unsigned long& c);
+      DataStream& operator >>(long long& c);
+      DataStream& operator >>(unsigned long long& c);
       DataStream& operator >>(unsigned short& c);
       DataStream& operator >>(short& c);
 
@@ -116,7 +117,7 @@ namespace DIS
          char ch[sizeof(T)];
          DoRead( ch , sizeof(T) );
          DoFlip( ch , sizeof(T) );
-         t = *reinterpret_cast<T*>( ch );
+         memcpy(&t, ch, sizeof(t));
          IncrementPointer<T>( _read_pos );
       }
 

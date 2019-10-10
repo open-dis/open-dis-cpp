@@ -103,7 +103,7 @@ void FastEntityStatePdu::setForceId(unsigned char pX)
     _forceId = pX;
 }
 
-char FastEntityStatePdu::getNumberOfArticulationParameters() const
+unsigned char FastEntityStatePdu::getNumberOfArticulationParameters() const
 {
    return _articulationParameters.size();
 }
@@ -601,7 +601,7 @@ void FastEntityStatePdu::unmarshal(DataStream& dataStream)
     dataStream >> _capabilities;
 
      _articulationParameters.clear();
-     for(size_t idx = 0; idx < _numberOfArticulationParameters; idx++)
+     for(unsigned char idx = 0; idx < _numberOfArticulationParameters; idx++)
      {
         ArticulationParameter x;
         x.unmarshal(dataStream);
@@ -646,7 +646,7 @@ bool FastEntityStatePdu::operator ==(const FastEntityStatePdu& rhs) const
      if( ! (_entityAppearance == rhs._entityAppearance) ) ivarsEqual = false;
      if( ! (_deadReckoningAlgorithm == rhs._deadReckoningAlgorithm) ) ivarsEqual = false;
 
-     for(char idx = 0; idx < 15; idx++)
+     for(unsigned char idx = 0; idx < 15; idx++)
      {
           if(!(_otherParameters[idx] == rhs._otherParameters[idx]) ) ivarsEqual = false;
      }
@@ -658,7 +658,7 @@ bool FastEntityStatePdu::operator ==(const FastEntityStatePdu& rhs) const
      if( ! (_yAngularVelocity == rhs._yAngularVelocity) ) ivarsEqual = false;
      if( ! (_zAngularVelocity == rhs._zAngularVelocity) ) ivarsEqual = false;
 
-     for(char idx = 0; idx < 12; idx++)
+     for(unsigned char idx = 0; idx < 12; idx++)
      {
           if(!(_marking[idx] == rhs._marking[idx]) ) ivarsEqual = false;
      }
@@ -719,7 +719,7 @@ int FastEntityStatePdu::getMarshalledSize() const
    marshalSize = marshalSize + 12 * 1;  // _marking
    marshalSize = marshalSize + 4;  // _capabilities
 
-   for(int idx=0; idx < _articulationParameters.size(); idx++)
+   for(unsigned long long idx=0; idx < _articulationParameters.size(); idx++)
    {
         ArticulationParameter listElement = _articulationParameters[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

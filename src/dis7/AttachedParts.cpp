@@ -8,7 +8,7 @@ AttachedParts::AttachedParts():
    _detachedIndicator(0), 
    _partAttachedTo(0), 
    _parameterType(0), 
-   _parameterValue(0)
+   _attachedPartType(0)
 {
 }
 
@@ -56,14 +56,14 @@ void AttachedParts::setParameterType(unsigned int pX)
     _parameterType = pX;
 }
 
-long AttachedParts::getParameterValue() const
+unsigned long long AttachedParts::getAttachedPartType() const
 {
-    return _parameterValue;
+    return _attachedPartType;
 }
 
-void AttachedParts::setParameterValue(long pX)
+void AttachedParts::setAttachedPartType(unsigned long long pX)
 {
-    _parameterValue = pX;
+    _attachedPartType = pX;
 }
 
 void AttachedParts::marshal(DataStream& dataStream) const
@@ -72,7 +72,7 @@ void AttachedParts::marshal(DataStream& dataStream) const
     dataStream << _detachedIndicator;
     dataStream << _partAttachedTo;
     dataStream << _parameterType;
-    dataStream << _parameterValue;
+    dataStream << _attachedPartType;
 }
 
 void AttachedParts::unmarshal(DataStream& dataStream)
@@ -81,7 +81,7 @@ void AttachedParts::unmarshal(DataStream& dataStream)
     dataStream >> _detachedIndicator;
     dataStream >> _partAttachedTo;
     dataStream >> _parameterType;
-    dataStream >> _parameterValue;
+    dataStream >> _attachedPartType;
 }
 
 
@@ -93,7 +93,7 @@ bool AttachedParts::operator ==(const AttachedParts& rhs) const
      if( ! (_detachedIndicator == rhs._detachedIndicator) ) ivarsEqual = false;
      if( ! (_partAttachedTo == rhs._partAttachedTo) ) ivarsEqual = false;
      if( ! (_parameterType == rhs._parameterType) ) ivarsEqual = false;
-     if( ! (_parameterValue == rhs._parameterValue) ) ivarsEqual = false;
+     if( ! (_attachedPartType == rhs._attachedPartType) ) ivarsEqual = false;
 
     return ivarsEqual;
  }
@@ -106,7 +106,7 @@ int AttachedParts::getMarshalledSize() const
    marshalSize = marshalSize + 1;  // _detachedIndicator
    marshalSize = marshalSize + 2;  // _partAttachedTo
    marshalSize = marshalSize + 4;  // _parameterType
-   marshalSize = marshalSize + 8;  // _parameterValue
+   marshalSize = marshalSize + 8;  // _attachedPartType
     return marshalSize;
 }
 

@@ -21,7 +21,7 @@ protected:
   EntityType _expendableType; 
 
   /** Padding */
-  long _padding; 
+  long long _padding;
 
 
  public:
@@ -35,8 +35,8 @@ protected:
     const EntityType&  getExpendableType() const; 
     void setExpendableType(const EntityType    &pX);
 
-    long getPadding() const; 
-    void setPadding(long pX); 
+    long long getPadding() const;
+    void setPadding(long long pX);
 
 
 virtual int getMarshalledSize() const;

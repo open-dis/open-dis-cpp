@@ -47,27 +47,13 @@ void OneByteChunk::marshal(DataStream& dataStream) const
 
 void OneByteChunk::unmarshal(DataStream& dataStream)
 {
-
-     for(size_t idx = 0; idx < 1; idx++)
-     {
-        dataStream >> _otherParameters[idx];
-     }
-
+        dataStream >> _otherParameters[0];
 }
 
 
 bool OneByteChunk::operator ==(const OneByteChunk& rhs) const
  {
-     bool ivarsEqual = true;
-
-
-     for(char idx = 0; idx < 1; idx++)
-     {
-          if(!(_otherParameters[idx] == rhs._otherParameters[idx]) ) ivarsEqual = false;
-     }
-
-
-    return ivarsEqual;
+     return (_otherParameters[0] == rhs._otherParameters[0]);
  }
 
 int OneByteChunk::getMarshalledSize() const

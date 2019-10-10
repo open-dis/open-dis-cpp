@@ -84,7 +84,7 @@ bool EntityMarking::operator ==(const EntityMarking& rhs) const
 
      if( ! (_characterSet == rhs._characterSet) ) ivarsEqual = false;
 
-     for(char idx = 0; idx < 11; idx++)
+     for(unsigned char idx = 0; idx < 11; idx++)
      {
           if(!(_characters[idx] == rhs._characters[idx]) ) ivarsEqual = false;
      }

@@ -32,7 +32,7 @@ protected:
   unsigned char _forceId; 
 
   /** How many variable (nee articulation) parameters are in the variable length list */
-  char _numberOfVariableParameters; 
+  unsigned char _numberOfVariableParameters; 
 
   /** Kind of entity */
   unsigned char _entityKind; 

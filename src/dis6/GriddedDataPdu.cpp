@@ -127,12 +127,12 @@ void GriddedDataPdu::setOrientation(const Orientation &pX)
     _orientation = pX;
 }
 
-long GriddedDataPdu::getSampleTime() const
+unsigned long long GriddedDataPdu::getSampleTime() const
 {
     return _sampleTime;
 }
 
-void GriddedDataPdu::setSampleTime(long pX)
+void GriddedDataPdu::setSampleTime(unsigned long long pX)
 {
     _sampleTime = pX;
 }
@@ -295,7 +295,7 @@ int GriddedDataPdu::getMarshalledSize() const
    marshalSize = marshalSize + 2;  // _padding1
    marshalSize = marshalSize + 1;  // _padding2
 
-   for(int idx=0; idx < _gridDataList.size(); idx++)
+   for(unsigned long long idx=0; idx < _gridDataList.size(); idx++)
    {
         GridAxisRecord listElement = _gridDataList[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

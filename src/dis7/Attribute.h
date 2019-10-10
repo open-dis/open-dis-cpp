@@ -7,7 +7,7 @@
 
 namespace DIS
 {
-// Used to convey information for one or more attributes. Attributes conform to the standard variable record format of 6.2.82. Section 6.2.11
+// Used to convey information for one or more attributes. Attributes conform to the standard variable record format of 6.2.82. Section 6.2.10
 
 // Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
 //
@@ -18,9 +18,9 @@ class EXPORT_MACRO Attribute
 protected:
   unsigned int _recordType; 
 
-  unsigned char _recordLength; 
+  unsigned short _recordLength;
 
-  long _recordSpecificFields; 
+  long long _recordSpecificFields;
 
 
  public:
@@ -33,11 +33,11 @@ protected:
     unsigned int getRecordType() const; 
     void setRecordType(unsigned int pX); 
 
-    unsigned char getRecordLength() const; 
-    void setRecordLength(unsigned char pX); 
+    unsigned short getRecordLength() const;
+    void setRecordLength(unsigned short pX);
 
-    long getRecordSpecificFields() const; 
-    void setRecordSpecificFields(long pX); 
+    long long getRecordSpecificFields() const;
+    void setRecordSpecificFields(long long pX);
 
 
 virtual int getMarshalledSize() const;

@@ -19,7 +19,7 @@ class EXPORT_MACRO PduContainer
 {
 protected:
   /** Number of PDUs in the container list */
-  int _numberOfPdus; 
+  unsigned int _numberOfPdus; 
 
   /** record sets */
   std::vector<Pdu> _pdus; 
@@ -32,7 +32,7 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    int getNumberOfPdus() const; 
+    unsigned int getNumberOfPdus() const; 
 
     std::vector<Pdu>& getPdus(); 
     const std::vector<Pdu>& getPdus() const; 

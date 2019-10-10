@@ -155,7 +155,7 @@ int ServiceRequestPdu::getMarshalledSize() const
    marshalSize = marshalSize + 1;  // _numberOfSupplyTypes
    marshalSize = marshalSize + 2;  // _serviceRequestPadding
 
-   for(int idx=0; idx < _supplies.size(); idx++)
+   for(unsigned long long idx=0; idx < _supplies.size(); idx++)
    {
         SupplyQuantity listElement = _supplies[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

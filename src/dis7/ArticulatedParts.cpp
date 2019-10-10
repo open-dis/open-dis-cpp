@@ -8,7 +8,8 @@ ArticulatedParts::ArticulatedParts():
    _changeIndicator(0), 
    _partAttachedTo(0), 
    _parameterType(0), 
-   _parameterValue(0)
+   _parameterValue(0),
+   _padding(0)
 {
 }
 
@@ -56,12 +57,12 @@ void ArticulatedParts::setParameterType(unsigned int pX)
     _parameterType = pX;
 }
 
-long ArticulatedParts::getParameterValue() const
+float ArticulatedParts::getParameterValue() const
 {
     return _parameterValue;
 }
 
-void ArticulatedParts::setParameterValue(long pX)
+void ArticulatedParts::setParameterValue(float pX)
 {
     _parameterValue = pX;
 }
@@ -73,6 +74,7 @@ void ArticulatedParts::marshal(DataStream& dataStream) const
     dataStream << _partAttachedTo;
     dataStream << _parameterType;
     dataStream << _parameterValue;
+    dataStream << _padding;
 }
 
 void ArticulatedParts::unmarshal(DataStream& dataStream)
@@ -82,6 +84,7 @@ void ArticulatedParts::unmarshal(DataStream& dataStream)
     dataStream >> _partAttachedTo;
     dataStream >> _parameterType;
     dataStream >> _parameterValue;
+    dataStream >> _padding;
 }
 
 
@@ -106,7 +109,8 @@ int ArticulatedParts::getMarshalledSize() const
    marshalSize = marshalSize + 1;  // _changeIndicator
    marshalSize = marshalSize + 2;  // _partAttachedTo
    marshalSize = marshalSize + 4;  // _parameterType
-   marshalSize = marshalSize + 8;  // _parameterValue
+   marshalSize = marshalSize + 4;  // _parameterValue
+   marshalSize = marshalSize + 4;  // _padding
     return marshalSize;
 }
 

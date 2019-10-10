@@ -50,7 +50,7 @@ protected:
   Orientation _orientation; 
 
   /** valid time of the enviormental data sample, 64 bit unsigned int */
-  long _sampleTime; 
+  unsigned long long _sampleTime;
 
   /** total number of all data values for all pdus for an environmental sample */
   unsigned int _totalValues; 
@@ -104,8 +104,8 @@ protected:
     const Orientation&  getOrientation() const; 
     void setOrientation(const Orientation    &pX);
 
-    long getSampleTime() const; 
-    void setSampleTime(long pX); 
+    unsigned long long getSampleTime() const;
+    void setSampleTime(unsigned long long pX);
 
     unsigned int getTotalValues() const; 
     void setTotalValues(unsigned int pX); 

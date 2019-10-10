@@ -24,22 +24,22 @@ void Attribute::setRecordType(unsigned int pX)
     _recordType = pX;
 }
 
-unsigned char Attribute::getRecordLength() const
+unsigned short Attribute::getRecordLength() const
 {
     return _recordLength;
 }
 
-void Attribute::setRecordLength(unsigned char pX)
+void Attribute::setRecordLength(unsigned short pX)
 {
     _recordLength = pX;
 }
 
-long Attribute::getRecordSpecificFields() const
+long long Attribute::getRecordSpecificFields() const
 {
     return _recordSpecificFields;
 }
 
-void Attribute::setRecordSpecificFields(long pX)
+void Attribute::setRecordSpecificFields(long long pX)
 {
     _recordSpecificFields = pX;
 }

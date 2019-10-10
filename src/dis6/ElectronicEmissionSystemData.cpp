@@ -149,7 +149,7 @@ int ElectronicEmissionSystemData::getMarshalledSize() const
    marshalSize = marshalSize + _emitterSystem.getMarshalledSize();  // _emitterSystem
    marshalSize = marshalSize + _location.getMarshalledSize();  // _location
 
-   for(int idx=0; idx < _beamDataRecords.size(); idx++)
+   for(unsigned long long idx=0; idx < _beamDataRecords.size(); idx++)
    {
         ElectronicEmissionBeamData listElement = _beamDataRecords[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

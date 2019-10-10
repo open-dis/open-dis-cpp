@@ -260,7 +260,7 @@ int ArealObjectStatePdu::getMarshalledSize() const
    marshalSize = marshalSize + _requesterID.getMarshalledSize();  // _requesterID
    marshalSize = marshalSize + _receivingID.getMarshalledSize();  // _receivingID
 
-   for(int idx=0; idx < _objectLocation.size(); idx++)
+   for(unsigned long long idx=0; idx < _objectLocation.size(); idx++)
    {
         Vector3Double listElement = _objectLocation[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

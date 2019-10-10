@@ -198,13 +198,13 @@ DataStream& DataStream::operator <<(unsigned int d)
    return *this;
 }
 
-DataStream& DataStream::operator <<(long d)
+DataStream& DataStream::operator <<(long long d)
 {
    WriteAlgorithm( d );
    return *this;
 }
 
-DataStream& DataStream::operator <<(unsigned long d)
+DataStream& DataStream::operator <<(unsigned long long d)
 {
    WriteAlgorithm( d );
    return *this;
@@ -259,13 +259,13 @@ DataStream& DataStream::operator >>(unsigned int& d)
    return *this;
 }
 
-DataStream& DataStream::operator >>(long& d)
+DataStream& DataStream::operator >>(long long& d)
 {
    ReadAlgorithm( d );
    return *this;
 }
 
-DataStream& DataStream::operator >>(unsigned long& d)
+DataStream& DataStream::operator >>(unsigned long long& d)
 {
    ReadAlgorithm( d );
    return *this;

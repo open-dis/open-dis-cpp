@@ -235,7 +235,7 @@ int DetonationPdu::getMarshalledSize() const
    marshalSize = marshalSize + 1;  // _numberOfVariableParameters
    marshalSize = marshalSize + 2;  // _pad
 
-   for(int idx=0; idx < _variableParameters.size(); idx++)
+   for(unsigned long long idx=0; idx < _variableParameters.size(); idx++)
    {
         VariableParameter listElement = _variableParameters[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

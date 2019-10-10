@@ -161,14 +161,14 @@ int ActionRequestPdu::getMarshalledSize() const
    marshalSize = marshalSize + 4;  // _numberOfFixedDatumRecords
    marshalSize = marshalSize + 4;  // _numberOfVariableDatumRecords
 
-   for(int idx=0; idx < _fixedDatums.size(); idx++)
+   for(unsigned long long idx=0; idx < _fixedDatums.size(); idx++)
    {
         FixedDatum listElement = _fixedDatums[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
     }
 
 
-   for(int idx=0; idx < _variableDatums.size(); idx++)
+   for(unsigned long long idx=0; idx < _variableDatums.size(); idx++)
    {
         VariableDatum listElement = _variableDatums[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

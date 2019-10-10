@@ -75,7 +75,7 @@ bool AggregateMarking::operator ==(const AggregateMarking& rhs) const
 
      if( ! (_characterSet == rhs._characterSet) ) ivarsEqual = false;
 
-     for(char idx = 0; idx < 31; idx++)
+     for(unsigned char idx = 0; idx < 31; idx++)
      {
           if(!(_characters[idx] == rhs._characters[idx]) ) ivarsEqual = false;
      }

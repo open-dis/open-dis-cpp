@@ -196,7 +196,7 @@ int EntityStateUpdatePdu::getMarshalledSize() const
    marshalSize = marshalSize + _entityOrientation.getMarshalledSize();  // _entityOrientation
    marshalSize = marshalSize + 4;  // _entityAppearance
 
-   for(int idx=0; idx < _variableParameters.size(); idx++)
+   for(unsigned long long idx=0; idx < _variableParameters.size(); idx++)
    {
         VariableParameter listElement = _variableParameters[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();

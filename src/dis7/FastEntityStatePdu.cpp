@@ -647,7 +647,7 @@ bool FastEntityStatePdu::operator ==(const FastEntityStatePdu& rhs) const
      if( ! (_entityAppearance == rhs._entityAppearance) ) ivarsEqual = false;
      if( ! (_deadReckoningAlgorithm == rhs._deadReckoningAlgorithm) ) ivarsEqual = false;
 
-     for(char idx = 0; idx < 15; idx++)
+     for(unsigned char idx = 0; idx < 15; idx++)
      {
           if(!(_otherParameters[idx] == rhs._otherParameters[idx]) ) ivarsEqual = false;
      }
@@ -659,7 +659,7 @@ bool FastEntityStatePdu::operator ==(const FastEntityStatePdu& rhs) const
      if( ! (_yAngularVelocity == rhs._yAngularVelocity) ) ivarsEqual = false;
      if( ! (_zAngularVelocity == rhs._zAngularVelocity) ) ivarsEqual = false;
 
-     for(char idx = 0; idx < 12; idx++)
+     for(unsigned char idx = 0; idx < 12; idx++)
      {
           if(!(_marking[idx] == rhs._marking[idx]) ) ivarsEqual = false;
      }
@@ -720,7 +720,7 @@ int FastEntityStatePdu::getMarshalledSize() const
    marshalSize = marshalSize + 12 * 1;  // _marking
    marshalSize = marshalSize + 4;  // _capabilities
 
-   for(int idx=0; idx < _variableParameters.size(); idx++)
+   for(unsigned long long idx=0; idx < _variableParameters.size(); idx++)
    {
         VariableParameter listElement = _variableParameters[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
