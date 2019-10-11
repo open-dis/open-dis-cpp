@@ -2,7 +2,6 @@
 #include <utils/IPacketProcessor.h>
 #include <dis6/Pdu.h>
 #include <utils/DataStream.h>
-#include <utils/PDUType.h>
 #include <utils/PDUBank.h>
 #include <iostream>
 
@@ -16,7 +15,7 @@ using namespace DIS;
 const unsigned int PDU_TYPE_POSITION = 2;
 
 IncomingMessage::IncomingMessage()
-: _processors()
+: _processors(), _pduBanks()
 {
 }
 
@@ -36,14 +35,25 @@ void IncomingMessage::Process(const char* buf, unsigned int size, Endian e)
    while( ds.GetReadPos() < ds.size() )
    {  
       unsigned char pdu_type = ds[PDU_TYPE_POSITION];
-      SwitchOnType( pdu_type, ds );
+      SwitchOnType( static_cast<DIS::PDUType>(pdu_type), ds );
    }
 }
 
-void IncomingMessage::SwitchOnType(unsigned char pdu_type, DataStream& ds)
+void IncomingMessage::SwitchOnType(DIS::PDUType pdu_type, DataStream& ds)
 {
-   DIS::PDUType enumType = (DIS::PDUType)pdu_type;
-   Pdu *pdu = PduBank::GetStaticPDU(enumType);
+   Pdu *pdu = NULL;
+
+   PduBankContainer::iterator containerIter;
+
+   // first, check if any custom PDU bank registered
+   PduBankContainer::iterator pduBankIt = _pduBanks.find(pdu_type);
+   if (pduBankIt != _pduBanks.end())
+   {
+      pdu = pduBankIt->second->GetStaticPDU(pdu_type, ds);
+   } else
+   {
+      pdu = PduBank::GetStaticPDU(pdu_type);
+   }
 
    // if valid pdu point, and at least 1 processor
    if (pdu && (_processors.count(pdu_type) > 0))
@@ -100,6 +110,38 @@ bool IncomingMessage::RemoveProcessor(unsigned char id, const IPacketProcessor* 
    return false;
 }
 
+bool IncomingMessage::AddPduBank(unsigned char id, IPduBank* pduBank)
+{
+   PduBankContainer::value_type candidate(id,pduBank);
+   PduBankContainer::iterator containerIter;
+
+   // If this id doesn't already have this PDU bank (it shouldn't)
+   if (!FindPduBankContainer(id, pduBank, containerIter))
+   {
+       _pduBanks.insert( candidate );
+       return true;
+   }
+
+   return false;    
+}
+
+///\todo add proper support for erasing from a multimap.
+///\warning erases any PDU bank registered PDU type
+bool IncomingMessage::RemovePduBank(unsigned char id, const IPduBank* pduBank)
+{
+   PduBankContainer::iterator containerIter;
+
+   if (FindPduBankContainer(id, pduBank, containerIter))
+   {
+      // Erases only the single pair found in the interator
+      _pduBanks.erase( containerIter );
+      return true;
+   }
+
+   // The pair doesn't exist
+   return false;
+}
+
 IncomingMessage::PacketProcessorContainer& IncomingMessage::GetProcessors()
 {
    return _processors;
@@ -108,6 +150,16 @@ IncomingMessage::PacketProcessorContainer& IncomingMessage::GetProcessors()
 const IncomingMessage::PacketProcessorContainer& IncomingMessage::GetProcessors() const
 {
    return _processors;
+}
+
+IncomingMessage::PduBankContainer& IncomingMessage::GetPduBanks()
+{
+   return _pduBanks;
+}
+
+const IncomingMessage::PduBankContainer& IncomingMessage::GetPduBanks() const
+{
+   return _pduBanks;
 }
 
 
@@ -120,6 +172,28 @@ bool IncomingMessage::FindProccessorContainer(unsigned char id, const IPacketPro
    {
       // If this processor with a matching id has a the exact same processor, bail
       if ((iterPair.first)->second == pp)
+      {
+         containerIter = iterPair.first;
+         return true;
+      }
+
+      iterPair.first++;
+   }
+
+   // No matches were found in the loop
+   return false;
+}
+
+
+bool IncomingMessage::FindPduBankContainer(unsigned char pdu_type, const IPduBank* pduBank, PduBankContainer::iterator &containerIter)
+{  
+   PduBankIteratorPair iterPair = _pduBanks.equal_range(pdu_type);
+
+   // Check to make sure that the PDU bank we're trying to add is not already there
+   while (iterPair.first != iterPair.second)
+   {
+      // If this PDU bank with a matching id has a the exact same PDU bank, bail
+      if ((iterPair.first)->second == pduBank)
       {
          containerIter = iterPair.first;
          return true;
