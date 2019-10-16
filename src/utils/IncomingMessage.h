@@ -6,9 +6,11 @@
 #define _dcl_dis_incoming_message_
 
 #include <utils/IBufferProcessor.h>   // for base class
+#include <utils/IPduBank.h> 
 #include <map>                      // for member
 #include <utils/Endian.h>             // for internal type
 #include <dis6/msLibMacro.h>         // for library symbols
+#include <utils/PDUType.h>
 
 namespace DIS
 {
@@ -22,6 +24,9 @@ namespace DIS
    public:
       /// the container type for supporting processors.
       typedef std::multimap<unsigned char,IPacketProcessor*> PacketProcessorContainer;
+      
+      /// the container type for supporting PDU banks.
+      typedef std::multimap<unsigned char,IPduBank*> PduBankContainer;
 
       IncomingMessage();
       ~IncomingMessage();
@@ -36,18 +41,34 @@ namespace DIS
       /// @return 'true' if the pair of parameters were found in the container and removed.  'false' if the pair was not found.
       bool RemoveProcessor(unsigned char id, const IPacketProcessor* pp);
 
+      /// registers the PDU bank instance to provide the PDU object
+      /// @return 'true' if the pair of parameters were not found in the container and were addded.  'false' if the pair was found.
+      bool AddPduBank(unsigned char pdu_type, IPduBank* pduBank);
+
+      /// unregisters the PDU bank instance
+      /// @return 'true' if the pair of parameters were found in the container and removed.  'false' if the pair was not found.
+      bool RemovePduBank(unsigned char pdu_type, const IPduBank* pduBank);
+
       PacketProcessorContainer& GetProcessors();
       const PacketProcessorContainer& GetProcessors() const;
 
+      PduBankContainer& GetPduBanks();
+      const PduBankContainer& GetPduBanks() const;
+
    private:
       typedef std::pair<PacketProcessorContainer::iterator, PacketProcessorContainer::iterator> PacketProcessIteratorPair;
-
       PacketProcessorContainer _processors;
+      
+      typedef std::pair<PduBankContainer::iterator, PduBankContainer::iterator> PduBankIteratorPair;
+      PduBankContainer _pduBanks;
 
-      void SwitchOnType(unsigned char pdu_type, DataStream& ds);
+      void SwitchOnType(DIS::PDUType pdu_type, DataStream& ds);
 
       /// Searches the proccesor container multimap for a matching container and returns the iterator
       bool FindProccessorContainer(unsigned char id, const IPacketProcessor* pp, PacketProcessorContainer::iterator &containerIter);
+
+      /// Searches the PDU bank container multimap for a matching container and returns the iterator
+      bool FindPduBankContainer(unsigned char pdu_type, const IPduBank* pduBank, PduBankContainer::iterator &containerIter);
    };
 
 }
