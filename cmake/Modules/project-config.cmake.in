@@ -1,0 +1,49 @@
+# - Config file for the FooBar package
+# It defines the following variables
+#  SCRIMMAGE_INCLUDE_DIRS - include directories for FooBar
+#  SCRIMMAGE_LIBRARIES    - libraries to link against
+
+@PACKAGE_INIT@
+
+set_and_check(SCRIMMAGE_INCLUDE_DIR "@PACKAGE_TMP_INCLUDE_INSTALL_DIR@")
+set_and_check(SCRIMMAGE_PROTO_PATH "@PACKAGE_SCRIMMAGE_PROTO_PATH@")
+set_and_check(SCRIMMAGE_MSGS_PROTO_PATH "@PACKAGE_SCRIMMAGE_MSGS_PROTO_PATH@")
+set_and_check(SCRIMMAGE_SHARE_INSTALL_DIR "@PACKAGE_SHARE_INSTALL_DIR@")
+set_and_check(SCRIMMAGE_CMAKE_MODULES ${SCRIMMAGE_SHARE_INSTALL_DIR}/cmake/@PROJECT_NAME@)
+
+list(APPEND CMAKE_MODULE_PATH ${SCRIMMAGE_CMAKE_MODULES})
+
+set(SCRIMMAGE_INCLUDE_DIRS ${SCRIMMAGE_INCLUDE_DIR}
+  @TMP_MSGS_INCLUDE_DIR@
+  @TMP_PROTO_INCLUDE_DIR@)
+
+if(NOT TARGET scrimmage-core)
+  include("${CMAKE_CURRENT_LIST_DIR}/scrimmage-targets.cmake")
+endif()
+
+set(SCRIMMAGE_LIBRARIES "@PROJECT_LIBS@")
+set(SCRIMMAGE_VIEWER_LIB "scrimmage-viewer")
+set(SCRIMMAGE_PLUGINS "@PROJECT_PLUGINS@")
+
+###############################################################################
+# Include references to the important 3rd-party libraries and utilities that
+# scrimmage uses:
+###############################################################################
+
+# jsbsim
+set(SCRIMMAGE_JSBSIM_FOUND "@JSBSIM_FOUND@")
+set(SCRIMMAGE_JSBSIM_LIBRARIES "@JSBSIM_LIBRARIES@")
+set(SCRIMMAGE_JSBSIM_INCLUDE_DIR "@JSBSIM_INCLUDE_DIR@")
+
+# protobuf
+set(SCRIMMAGE_PROTOBUF_FOUND TRUE)
+set(SCRIMMAGE_PROTOBUF_PROTOC_EXECUTABLE "@PROTOBUF_PROTOC_EXECUTABLE@")
+set(SCRIMMAGE_PROTOBUF_LIBRARIES "@PROTOBUF_LIBRARIES@")
+set(SCRIMMAGE_PROTOBUF_INCLUDE "@PROTOBUF_INCLUDE@")
+
+# grpc
+set(SCRIMMAGE_GRPC_FOUND "@GRPC_FOUND@")
+set(SCRIMMAGE_GRPC_CPP_PLUGIN "@GRPC_CPP_PLUGIN@")
+set(SCRIMMAGE_GRPC_PYTHON_PLUGIN "@GRPC_PYTHON_PLUGIN@")
+set(SCRIMMAGE_GRPC_LIBRARIES "@GRPC_LIBRARIES@")
+set(SCRIMMAGE_GRPC_INCLUDE_DIRS "@GRPC_INCLUDE_DIRS@")
