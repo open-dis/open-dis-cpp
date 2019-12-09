@@ -184,10 +184,10 @@ install(FILES ${PROJECT_BINARY_DIR}/${CMAKE_FILES_DIRECTORY}/${PROJECT_NAME}-con
   DESTINATION ${CMAKE_CONFIG_DEST})
 
 # install export targets
-install(
-  EXPORT ${PROJECT_NAME}-targets
-  DESTINATION ${CMAKE_CONFIG_DEST}
-)
+# install(
+#   EXPORT ${PROJECT_NAME}-targets
+#   DESTINATION ${CMAKE_CONFIG_DEST}
+# )
 
 
 #############################################################################

@@ -19,7 +19,6 @@ foreach(inc_file ${INCS})
 endforeach()
 
 
-find_package(OpenDIS REQUIRED)
 include_directories(${OPENDIS_INCLUDE_DIR})
 include_directories(${SDL2_NET_INCLUDE_DIRS})
 include_directories(${SDL2_INCLUDE_DIRS})

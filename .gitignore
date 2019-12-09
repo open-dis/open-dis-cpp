@@ -7,3 +7,4 @@ Makefile
 *.suo
 obj/
 Build/
+/build/
