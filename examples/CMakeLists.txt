@@ -1,3 +1,8 @@
+# LICENSE
+# 
+# See main CMakeLists.txt file in main project directory
+#
+
 #--------------------------------------------------------
 # Library Creation
 #--------------------------------------------------------
@@ -39,6 +44,7 @@ add_executable(${LIBRARY_NAME_2}
 )
 
 
+# -Wall flag turned off due to numerous warnings
 target_compile_options(${LIBRARY_NAME}
   PRIVATE
 #    -Wall

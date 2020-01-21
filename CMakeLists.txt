@@ -1,3 +1,38 @@
+# LICENSE
+#
+# Copyright (C) 2020 by the Georgia Tech Research Institute (GTRI)
+#
+# These files were created for C++ OpenDIS based on the CMake build files for 
+#  SCRIMMAGE. These build files were adapted to OpenDIS by: 
+#
+# @author Tara Madden <tara.madden@gtri.gatech.edu>
+# @author Michael Nolan <michael.nolan@gtri.gatech.edu>
+#   on date:
+# @date 21 Jan 2020
+#
+# SCRIMMAGE --
+#
+#   SCRIMMAGE is free software: you can redistribute it and/or modify it under
+#   the terms of the GNU Lesser General Public License as published by the
+#   Free Software Foundation, either version 3 of the License, or (at your
+#   option) any later version.
+#
+#   SCRIMMAGE is distributed in the hope that it will be useful, but WITHOUT
+#   ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+#   FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
+#   License for more details.
+# 
+#   You should have received a copy of the GNU Lesser General Public License
+#   along with SCRIMMAGE.  If not, see <http://www.gnu.org/licenses/>.
+# 
+# @author Kevin DeMarco <kevin.demarco@gtri.gatech.edu>
+# @author Eric Squires <eric.squires@gtri.gatech.edu>
+# @date 31 July 2017
+# @version 0.1.0
+# @brief CMake build files for SCRIMMAGE
+# @section DESCRIPTION
+# CMake build files for SCRIMMAGE.
+
 ####################################################################
 # Standard Build Directives
 ####################################################################

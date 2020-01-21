@@ -1,3 +1,8 @@
+# LICENSE
+# 
+# See main CMakeLists.txt file in main project directory
+#
+
 #--------------------------------------------------------
 # Library Creation
 #--------------------------------------------------------
@@ -14,17 +19,14 @@ foreach(inc_file ${INCS})
   configure_file(${inc_file} ${BUILD_INC_DIR})
 endforeach()
 
-
 file(GLOB SRCS *.cpp)
-
-#include_directories(${SDL2_NET_INCLUDE_DIRS})
-#include_directories(${SDL2_INCLUDE_DIRS})
 
 add_library(${LIBRARY_NAME} OBJECT
   ${SRCS})
 
 set_property(TARGET ${LIBRARY_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
 
+# -Wall flag turned off due to numerous warnings
 target_compile_options(${LIBRARY_NAME}
   PRIVATE
 #    -Wall

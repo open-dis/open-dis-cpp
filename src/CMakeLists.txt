@@ -1,3 +1,8 @@
+# LICENSE
+# 
+# See main CMakeLists.txt file in main project directory
+#
+
 set(LIBRARY_NAME OpenDIS)
 set(LIB_MAJOR 0)
 set(LIB_MINOR 0)
@@ -9,23 +14,20 @@ add_subdirectory(dis6)
 #add_subdirectory(dis7) # premake script does not build this, and anyway it has build errors
 add_subdirectory(utils)
 
+# Do not include DIS 7 for now since it doesn't build
 add_library(${LIBRARY_NAME} SHARED
   $<TARGET_OBJECTS:OpenDIS6>
   # $<TARGET_OBJECTS:OpenDIS7>
   $<TARGET_OBJECTS:OpenDIS-utils>
 )
 
+# -Wall flag turned off due to numerous warnings
 target_compile_options(${LIBRARY_NAME}
   PRIVATE
 #    -Wall
     -std=c++14
     $<$<CXX_COMPILER_ID:Clang>:"-Wno-return-type-c-linkage">
 )
-
-#target_link_libraries(${LIBRARY_NAME}
-#  SDL2::Main
-#  SDL2::Net
-#)
 
 set(_soversion ${LIB_MAJOR}.${LIB_MINOR}.${LIB_RELEASE})
 
@@ -42,7 +44,6 @@ target_include_directories(${LIBRARY_NAME}
 )
 
 install(TARGETS ${LIBRARY_NAME}
-  # IMPORTANT: Add the library to the "export-set"
   RUNTIME DESTINATION bin
   LIBRARY DESTINATION lib/${PROJECT_NAME}
 )

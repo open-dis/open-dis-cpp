@@ -1,3 +1,8 @@
+# LICENSE
+# 
+# See main CMakeLists.txt file in main project directory
+#
+
 SET(LIBRARY_NAME OpenDIS-utils)
 #########################################
 # COPY INC FILES TO BUILD DIR
@@ -17,6 +22,7 @@ add_library(${LIBRARY_NAME} OBJECT
 
 set_property(TARGET ${LIBRARY_NAME} PROPERTY POSITION_INDEPENDENT_CODE ON)
 
+# -Wall flag turned off due to numerous warnings
 target_compile_options(${LIBRARY_NAME}
   PRIVATE
 #    -Wall
