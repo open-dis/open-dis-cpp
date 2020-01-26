@@ -43,3 +43,9 @@ file(GLOB EX_RECEIVER_SOURCES
 add_executable(ExampleReceiver ${EX_RECEIVER_SOURCES})
 target_link_libraries(ExampleReceiver ${LIB_FLAGS})
 target_link_libraries(ExampleReceiver OpenDIS6)
+
+install(TARGETS OpenDIS6 OpenDIS7 DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+install(TARGETS ExampleReceiver ExampleSender DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+install(DIRECTORY src/ DESTINATION ${CMAKE_INSTALL_PREFIX}/include
+        FILES_MATCHING PATTERN "*.h"
+)
