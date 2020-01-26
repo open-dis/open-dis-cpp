@@ -44,8 +44,20 @@ add_executable(ExampleReceiver ${EX_RECEIVER_SOURCES})
 target_link_libraries(ExampleReceiver ${LIB_FLAGS})
 target_link_libraries(ExampleReceiver OpenDIS6)
 
-install(TARGETS OpenDIS6 OpenDIS7 DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
-install(TARGETS ExampleReceiver ExampleSender DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
-install(DIRECTORY src/ DESTINATION ${CMAKE_INSTALL_PREFIX}/include
+install(TARGETS OpenDIS6 OpenDIS7 DESTINATION "lib")
+install(TARGETS ExampleReceiver ExampleSender DESTINATION "bin")
+install(DIRECTORY src/ DESTINATION "include"
         FILES_MATCHING PATTERN "*.h"
 )
+
+set(CPACK_GENERATOR "DEB" "RPM" "TXZ" "TGZ")
+set(CPACK_PACKAGE_VERSION 1.0.0)
+set(CPACK_PACKAGE_NAME "OpenDis")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "The open DIS cpp library")
+set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}.${CMAKE_SYSTEM_PROCESSOR}")
+set(CPACK_PACKAGE_RPM_DIR "${CMAKE_CURRENT_BINARY_DIR}/_CPack_Packages/Linux/RPM")
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Leif Gruenwoldt <leifer@gmail.com>")
+set(CPACK_PACKAGE_PACKAGER $ENV{USER})
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "The open DIS cpp library")
+
+include(CPack)
