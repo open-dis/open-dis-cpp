@@ -1,8 +1,8 @@
 #ifndef _example_timer_h_
 #define _example_timer_h_
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_timer.h>
+#include <SDL.h>
+#include <SDL_timer.h>
 
 namespace Example
 {

@@ -4,8 +4,8 @@
 #include <string>                        // for param
 #include <cstddef>                       // for size_t definition
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_net.h>
+#include <SDL.h>
+#include <SDL_net.h>
 
 
 namespace Example
