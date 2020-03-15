@@ -11,9 +11,10 @@ Initially generated with [xmlpg](https://github.com/open-dis/xmlpg).
   It can be downloaded and installed from http://cmake.org/
 
 * SDL2 and SDL2_net are required libraries to compile the examples.
-  These can usually be install via linux package managers.
+  These can usually be install via Linux package managers.
   More details, and instructions for Windows are included [below](#SDL2-and-SDL2_net-Install-Instructions).
-**NOTE:** Windows users will need to either add the DLL folders to their path, or copy the DLLs to the output directory (`Debug`).
+
+  **NOTE:** Windows users will need to either add the DLL folders to their path, or copy the DLLs to the output directory (`Debug`).
 
 ### Linux / GNU Makefiles
 
@@ -23,13 +24,41 @@ Initially generated with [xmlpg](https://github.com/open-dis/xmlpg).
   1. Optionally, `-DCMAKE_INSTALL_PREFIX=<custom-path-to-install>` to set a custom directory to install the bin, include, and lib output directories.
 1. Run `make` - this will output the libOpenDIS6.so, and libOpenDIS7.so libraries in the build directory along with the Example Applications.
 1. The below steps are optional
-  1. Run `make package` to build linux package files. Currently this will produce a RedHat RPM package, Debian DEB package, and 2 compressed tarball (XZ, GZ).
+  1. Run `make package` to build Linux package files. Currently this will produce a Red Hat RPM package, Debian DEB package, and 2 compressed tarball (XZ, GZ).
   1. Run `make install` to install bin, lib, and dir, into `CMAKE_INSTALL_PREFIX`
      WARNING: `CMAKE_INSTALL_PREFIX` default can to somewhere `/usr/local/`, if not specified with the `-D` flag as shown in Step 3.1.
      If you're unsure where to install, and want to keep your `/usr/local/` directory clean, run `cmake .. -DCMAKE_INSTALL_PREFIX=./install`.
      This will cause `make install` to create a local install directory, from which you can move files elsewhere at a later date.
 
+#### Windows with Visual Studio
+1. Open `CMake (cmake-gui)` via the the start menu.
+2. Enter the open-dis-cpp directory path into the Source and Build fields.
+3. Click the `+ Add Entry` button and enter the following details:
+  Name: `SDL_INC_DIR`
+  Type: `PATH`
+  Value: `<SDL2-install-folder>/include`
+  (if you follow the below [SDL2 Windows Install Instruction](#Windows-Install-Instructions) this will be `C:/SDL2/include`)
+3. Click the `+ Add Entry` button and enter the following details:
+  Name: `SDL_LIB_DIR`
+  Type: `PATH`
+  Value: `<SDL2-install-folder>/lib/x64` (64 bit) or `<SDL2-install-folder>/lib/x86` (32 bit)
+  (if you follow the below [SDL2 Windows Install Instruction](#Windows-Install-Instructions) this will be `C:/SDL2/lib/x64`)
+4. Click Configure and follow the prompts, selecting the correct generator (i.e. Visual Studio version).
+5. Click Generate
+6. Click Open Project - This should open the generates solution file in Visual Studio
+7. Build the Solution (`Ctrl + Shift + B`)
 
+These steps were tested with Visual Studio 16 2019 (Community Edition).
+Currently, only OpenDIS 6 and the Example Applications compile.
+The library and executable files are output to a `Debug` directory.
+
+To run the executables, either the value of the `SDL_LIB_DIR` variable should be added to your path,
+or `SDL2.dll` and `SDL2_net.dll` need to be copied to the `Debug` directory.
+
+### Cleaning CMake files
+
+To quickly clean up CMake output files, use `git clean -xdf`.
+**Note:** Use with care if you are actually developing open-dis-cpp, as `git clean` removes untracked files.
 
 ### Old Pre-make build instructions
 
@@ -60,7 +89,7 @@ Ubuntu: ```sudo apt-get install libsdl2-dev libsdl2-net-dev```
 
 If you're unable to install the correct packages, try [installing from source](#POSIX-Source-Installation)
 
-### Windows Instructions
+### Windows Install Instructions
 
 These are the installation steps that have been tested with open-dis-cpp, however there are other methods for installation.
 Experienced users should feel free to customise their install.
@@ -90,8 +119,11 @@ Experienced users should feel free to customise their install.
 #### (Core) SDL2
 Run the following commands:
 1. `wget http://libsdl.org/release/SDL2-2.0.12.tar.gz`
+
    Or, Download via your favourite web browser.
+
    **NOTE:** check the [download](https://www.libsdl.org/download-2.0.php) page for new releases
+
 2. `tar -xvf SDL2-2.0.9.tar.gz`
 3. `pushd SDL2-2.0.9/`
 4. `./configure --prefix=/usr && make && sudo make install`
@@ -99,8 +131,11 @@ Run the following commands:
 
 #### SDL2_net
 1. `wget https://www.libsdl.org/projects/SDL_net/release/SDL2_net-2.0.1.tar.gz`
+
    Or, Download via your favourite web browser.
+
    **NOTE:** check [https://www.libsdl.org/projects/SDL_net](project) page for new releases
+
 2. `tar -xvf SDL2_net-2.0.1.tar.gz`
 3. `pushd SDL2_net-2.0.1/`
 4. `./configure --prefix=/usr && make && sudo make install`
