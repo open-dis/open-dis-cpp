@@ -7,3 +7,10 @@ Makefile
 *.suo
 obj/
 Build/
+build/
+CMakeCache.txt
+*.dir/
+CMakeFiles
+cmake_install.cmake
+CPackConfig.cmake
+CPackSourceConfig.cmake
