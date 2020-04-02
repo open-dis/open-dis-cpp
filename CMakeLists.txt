@@ -3,8 +3,6 @@ project(OpenDIS)
 
 ## Libraries
 
-# Add src/ to the include directories
-include_directories(src)
 
 # create list of DIS6 source files
 file(GLOB DIS6_SOURCES
@@ -13,6 +11,8 @@ file(GLOB DIS6_SOURCES
 )
 # Define ExampleSender Executable
 add_library(OpenDIS6 SHARED ${DIS6_SOURCES})
+# Add src/ to the include directories to OpenDIS6
+target_include_directories(OpenDIS6 PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src> $<INSTALL_INTERFACE:> )
 # Add compile definition EXPORT_LIBRARY for DIS6 msLibMacro.h
 target_compile_definitions(OpenDIS6 PRIVATE EXPORT_LIBRARY)
 
@@ -23,6 +23,8 @@ file(GLOB DIS7_SOURCES
 )
 # Define ExampleSender Executable
 add_library(OpenDIS7 SHARED ${DIS7_SOURCES})
+# Add src/ to the include directories to OpenDIS6
+target_include_directories(OpenDIS7 PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src> $<INSTALL_INTERFACE:> )
 # Add compile definition EXPORT_LIBRARY for DIS7 msLibMacro.h
 target_compile_definitions(OpenDIS7 PRIVATE EXPORT_LIBRARY)
 
@@ -44,11 +46,19 @@ file(GLOB EX_SENDER_SOURCES
   "examples/Timer.cpp"
 )
 
+if(WIN32)
+       set(SDL_LIBS SDL2main SDL2 SDL2_net)
+else(WIN32)
+       set(SDL_LIBS SDL2 SDL2_net)
+endif(WIN32)
+
 # Define ExampleSender Executable
 add_executable(ExampleSender ${EX_SENDER_SOURCES})
 # Link OpenDIS into ExampleSender
 target_link_libraries(ExampleSender PRIVATE OpenDIS6)
-target_link_libraries(ExampleSender PRIVATE SDL2main SDL2 SDL2_net)
+target_link_libraries(ExampleSender PRIVATE ${SDL_LIBS})
+# add src to ExampleSender include directories
+target_include_directories(ExampleSender PRIVATE src)
 
 # create list of ExampleReceiver source files
 file(GLOB EX_RECEIVER_SOURCES
@@ -59,11 +69,13 @@ file(GLOB EX_RECEIVER_SOURCES
   "examples/EntityStatePduProcessor.cpp"
 )
 
-# Define ExampleReciever Executable
+# Define ExampleReceiver Executable
 add_executable(ExampleReceiver ${EX_RECEIVER_SOURCES})
 # Link OpenDIS into ExampleReceiver
 target_link_libraries(ExampleReceiver PRIVATE OpenDIS6)
-target_link_libraries(ExampleReceiver PRIVATE SDL2main SDL2 SDL2_net)
+target_link_libraries(ExampleReceiver PRIVATE ${SDL_LIBS})
+# add src to ExampleSender include directories
+target_include_directories(ExampleReceiver PRIVATE src)
 
 # Configuring SDL2
 #--------------------------------------------------------------------------------------
@@ -140,8 +152,13 @@ endif(SDL_LIB_DIR)
 
 #--------------------------------------------------------------------------------------
 
+# include GNUInstallDirs Module to get more generic directory handling
+include(GNUInstallDirs)
 # Configure install target (i.e. what files to install)
-install(TARGETS OpenDIS6 OpenDIS7 DESTINATION "lib")
+install(TARGETS OpenDIS6 EXPORT OpenDIS6Config DESTINATION "${LIBDIR}")
+install(EXPORT OpenDIS6Config DESTINATION "lib/cmake/OpenDIS6")
+install(TARGETS OpenDIS7 EXPORT OpenDIS7Config DESTINATION "${LIBDIR}")
+install(EXPORT OpenDIS7Config DESTINATION "lib/cmake/OpenDIS7")
 install(TARGETS ExampleReceiver ExampleSender DESTINATION "bin")
 install(DIRECTORY src/ DESTINATION "include"
         FILES_MATCHING PATTERN "*.h"
