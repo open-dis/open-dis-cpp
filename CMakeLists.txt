@@ -19,7 +19,7 @@ target_compile_definitions(OpenDIS6 PRIVATE EXPORT_LIBRARY)
 # create list of DIS7 source files
 file(GLOB DIS7_SOURCES
   "src/dis7/*.cpp"
-  "src/utils/*.cpp"
+  "src/utils/DataStream.cpp"
 )
 # Define ExampleSender Executable
 add_library(OpenDIS7 SHARED ${DIS7_SOURCES})
