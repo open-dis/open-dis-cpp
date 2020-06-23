@@ -1,5 +1,5 @@
-#include <examples/Connection.h>
-#include <examples/Logging.h>
+#include "Connection.h"
+#include "Logging.h"
 
 #include <sstream>
 #include <cstring>

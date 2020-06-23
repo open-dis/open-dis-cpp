@@ -1,8 +1,8 @@
 
 // specific for the example
-#include <examples/Connection.h>
-#include <examples/Utils.h>
-#include <examples/Timer.h>
+#include "Connection.h"
+#include "Utils.h"
+#include "Timer.h"
 
 // the DIS library usage
 #include <dis6/EntityStatePdu.h>

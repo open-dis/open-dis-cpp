@@ -1,8 +1,8 @@
 
-#include <examples/Timer.h>
-#include <iostream>
+#include "Timer.h"
 #include "Logging.h"
 
+#include <iostream>
 #include <sstream>
 
 #include <SDL.h>
