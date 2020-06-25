@@ -154,6 +154,9 @@ endif(SDL_LIB_DIR)
 
 # include GNUInstallDirs Module to get more generic directory handling
 include(GNUInstallDirs)
+IF(NOT DEFINED LIBDIR)
+  set(LIBDIR "lib")   # Was not defined on Travis CI
+ENDIF(NOT DEFINED LIBDIR)
 # Configure install target (i.e. what files to install)
 install(TARGETS OpenDIS6 EXPORT OpenDIS6Config DESTINATION "${LIBDIR}")
 install(EXPORT OpenDIS6Config DESTINATION "lib/cmake/OpenDIS6")
