@@ -1,9 +1,9 @@
-#include <dis6/ElectronicEmissionBeamData.h>
+#include <dis6/ElectromagneticEmissionBeamData.h>
 
 using namespace DIS;
 
 
-ElectronicEmissionBeamData::ElectronicEmissionBeamData():
+ElectromagneticEmissionBeamData::ElectromagneticEmissionBeamData():
    _beamDataLength(0), 
    _beamIDNumber(0), 
    _beamParameterIndex(0), 
@@ -16,117 +16,117 @@ ElectronicEmissionBeamData::ElectronicEmissionBeamData():
 {
 }
 
-ElectronicEmissionBeamData::~ElectronicEmissionBeamData()
+ElectromagneticEmissionBeamData::~ElectromagneticEmissionBeamData()
 {
     _trackJamTargets.clear();
 }
 
-unsigned char ElectronicEmissionBeamData::getBeamDataLength() const
+unsigned char ElectromagneticEmissionBeamData::getBeamDataLength() const
 {
     return _beamDataLength;
 }
 
-void ElectronicEmissionBeamData::setBeamDataLength(unsigned char pX)
+void ElectromagneticEmissionBeamData::setBeamDataLength(unsigned char pX)
 {
     _beamDataLength = pX;
 }
 
-unsigned char ElectronicEmissionBeamData::getBeamIDNumber() const
+unsigned char ElectromagneticEmissionBeamData::getBeamIDNumber() const
 {
     return _beamIDNumber;
 }
 
-void ElectronicEmissionBeamData::setBeamIDNumber(unsigned char pX)
+void ElectromagneticEmissionBeamData::setBeamIDNumber(unsigned char pX)
 {
     _beamIDNumber = pX;
 }
 
-unsigned short ElectronicEmissionBeamData::getBeamParameterIndex() const
+unsigned short ElectromagneticEmissionBeamData::getBeamParameterIndex() const
 {
     return _beamParameterIndex;
 }
 
-void ElectronicEmissionBeamData::setBeamParameterIndex(unsigned short pX)
+void ElectromagneticEmissionBeamData::setBeamParameterIndex(unsigned short pX)
 {
     _beamParameterIndex = pX;
 }
 
-FundamentalParameterData& ElectronicEmissionBeamData::getFundamentalParameterData() 
+FundamentalParameterData& ElectromagneticEmissionBeamData::getFundamentalParameterData() 
 {
     return _fundamentalParameterData;
 }
 
-const FundamentalParameterData& ElectronicEmissionBeamData::getFundamentalParameterData() const
+const FundamentalParameterData& ElectromagneticEmissionBeamData::getFundamentalParameterData() const
 {
     return _fundamentalParameterData;
 }
 
-void ElectronicEmissionBeamData::setFundamentalParameterData(const FundamentalParameterData &pX)
+void ElectromagneticEmissionBeamData::setFundamentalParameterData(const FundamentalParameterData &pX)
 {
     _fundamentalParameterData = pX;
 }
 
-unsigned char ElectronicEmissionBeamData::getBeamFunction() const
+unsigned char ElectromagneticEmissionBeamData::getBeamFunction() const
 {
     return _beamFunction;
 }
 
-void ElectronicEmissionBeamData::setBeamFunction(unsigned char pX)
+void ElectromagneticEmissionBeamData::setBeamFunction(unsigned char pX)
 {
     _beamFunction = pX;
 }
 
-unsigned char ElectronicEmissionBeamData::getNumberOfTrackJamTargets() const
+unsigned char ElectromagneticEmissionBeamData::getNumberOfTrackJamTargets() const
 {
    return _trackJamTargets.size();
 }
 
-unsigned char ElectronicEmissionBeamData::getHighDensityTrackJam() const
+unsigned char ElectromagneticEmissionBeamData::getHighDensityTrackJam() const
 {
     return _highDensityTrackJam;
 }
 
-void ElectronicEmissionBeamData::setHighDensityTrackJam(unsigned char pX)
+void ElectromagneticEmissionBeamData::setHighDensityTrackJam(unsigned char pX)
 {
     _highDensityTrackJam = pX;
 }
 
-unsigned char ElectronicEmissionBeamData::getPad4() const
+unsigned char ElectromagneticEmissionBeamData::getPad4() const
 {
     return _pad4;
 }
 
-void ElectronicEmissionBeamData::setPad4(unsigned char pX)
+void ElectromagneticEmissionBeamData::setPad4(unsigned char pX)
 {
     _pad4 = pX;
 }
 
-unsigned int ElectronicEmissionBeamData::getJammingModeSequence() const
+unsigned int ElectromagneticEmissionBeamData::getJammingModeSequence() const
 {
     return _jammingModeSequence;
 }
 
-void ElectronicEmissionBeamData::setJammingModeSequence(unsigned int pX)
+void ElectromagneticEmissionBeamData::setJammingModeSequence(unsigned int pX)
 {
     _jammingModeSequence = pX;
 }
 
-std::vector<TrackJamTarget>& ElectronicEmissionBeamData::getTrackJamTargets() 
+std::vector<TrackJamTarget>& ElectromagneticEmissionBeamData::getTrackJamTargets() 
 {
     return _trackJamTargets;
 }
 
-const std::vector<TrackJamTarget>& ElectronicEmissionBeamData::getTrackJamTargets() const
+const std::vector<TrackJamTarget>& ElectromagneticEmissionBeamData::getTrackJamTargets() const
 {
     return _trackJamTargets;
 }
 
-void ElectronicEmissionBeamData::setTrackJamTargets(const std::vector<TrackJamTarget>& pX)
+void ElectromagneticEmissionBeamData::setTrackJamTargets(const std::vector<TrackJamTarget>& pX)
 {
      _trackJamTargets = pX;
 }
 
-void ElectronicEmissionBeamData::marshal(DataStream& dataStream) const
+void ElectromagneticEmissionBeamData::marshal(DataStream& dataStream) const
 {
     dataStream << _beamDataLength;
     dataStream << _beamIDNumber;
@@ -146,7 +146,7 @@ void ElectronicEmissionBeamData::marshal(DataStream& dataStream) const
 
 }
 
-void ElectronicEmissionBeamData::unmarshal(DataStream& dataStream)
+void ElectromagneticEmissionBeamData::unmarshal(DataStream& dataStream)
 {
     dataStream >> _beamDataLength;
     dataStream >> _beamIDNumber;
@@ -168,7 +168,7 @@ void ElectronicEmissionBeamData::unmarshal(DataStream& dataStream)
 }
 
 
-bool ElectronicEmissionBeamData::operator ==(const ElectronicEmissionBeamData& rhs) const
+bool ElectromagneticEmissionBeamData::operator ==(const ElectromagneticEmissionBeamData& rhs) const
  {
      bool ivarsEqual = true;
 
@@ -190,7 +190,7 @@ bool ElectronicEmissionBeamData::operator ==(const ElectronicEmissionBeamData& r
     return ivarsEqual;
  }
 
-int ElectronicEmissionBeamData::getMarshalledSize() const
+int ElectromagneticEmissionBeamData::getMarshalledSize() const
 {
    int marshalSize = 0;
 

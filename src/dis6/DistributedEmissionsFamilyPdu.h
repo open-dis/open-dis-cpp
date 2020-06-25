@@ -8,7 +8,7 @@
 
 namespace DIS
 {
-// Section 5.3.7. Electronic Emissions. Abstract superclass for distirubted emissions PDU
+// Section 5.3.7. Electromagnetic Emissions. Abstract superclass for distirubted emissions PDU
 
 // Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
 //

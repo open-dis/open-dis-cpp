@@ -20,7 +20,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO ElectronicEmissionsPdu : public DistributedEmissionsFamilyPdu
+class EXPORT_MACRO ElectromagneticEmissionsPdu : public DistributedEmissionsFamilyPdu
 {
 protected:
   /** ID of the entity emitting */
@@ -50,13 +50,13 @@ protected:
   /** the location of the antenna beam source with respect to the emitting entity's coordinate system. This location shall be the origin of the emitter coordinate system that shall have the same orientation as the entity coordinate system. This field shall be represented by an Entity Coordinate Vector record see 6.2.95  */
   Vector3Float _location; 
 
-  /** Electronic emmissions systems THIS IS WRONG. It has the WRONG class type and will cause problems in any marshalling. */
+  /** Electromagnetic emmissions systems THIS IS WRONG. It has the WRONG class type and will cause problems in any marshalling. */
   std::vector<Vector3Float> _systems; 
 
 
  public:
-    ElectronicEmissionsPdu();
-    virtual ~ElectronicEmissionsPdu();
+    ElectromagneticEmissionsPdu();
+    virtual ~ElectromagneticEmissionsPdu();
 
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
@@ -98,7 +98,7 @@ protected:
 
 virtual int getMarshalledSize() const;
 
-     bool operator  ==(const ElectronicEmissionsPdu& rhs) const;
+     bool operator  ==(const ElectromagneticEmissionsPdu& rhs) const;
 };
 }
 

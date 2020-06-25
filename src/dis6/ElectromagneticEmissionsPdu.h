@@ -3,7 +3,7 @@
 
 #include <dis6/EntityID.h>
 #include <dis6/EventID.h>
-#include <dis6/ElectronicEmissionSystemData.h>
+#include <dis6/ElectromagneticEmissionSystemData.h>
 #include <vector>
 #include <dis6/DistributedEmissionsFamilyPdu.h>
 #include <utils/DataStream.h>
@@ -18,7 +18,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO ElectronicEmissionsPdu : public DistributedEmissionsFamilyPdu
+class EXPORT_MACRO ElectromagneticEmissionsPdu : public DistributedEmissionsFamilyPdu
 {
 protected:
   /** ID of the entity emitting */
@@ -36,13 +36,13 @@ protected:
   /** padding */
   unsigned short _paddingForEmissionsPdu; 
 
-  /** Electronic emmissions systems */
-  std::vector<ElectronicEmissionSystemData> _systems; 
+  /** Electromagnetic emmissions systems */
+  std::vector<ElectromagneticEmissionSystemData> _systems; 
 
 
  public:
-    ElectronicEmissionsPdu();
-    virtual ~ElectronicEmissionsPdu();
+    ElectromagneticEmissionsPdu();
+    virtual ~ElectromagneticEmissionsPdu();
 
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
@@ -63,14 +63,14 @@ protected:
     unsigned short getPaddingForEmissionsPdu() const; 
     void setPaddingForEmissionsPdu(unsigned short pX); 
 
-    std::vector<ElectronicEmissionSystemData>& getSystems(); 
-    const std::vector<ElectronicEmissionSystemData>& getSystems() const; 
-    void setSystems(const std::vector<ElectronicEmissionSystemData>&    pX);
+    std::vector<ElectromagneticEmissionSystemData>& getSystems(); 
+    const std::vector<ElectromagneticEmissionSystemData>& getSystems() const; 
+    void setSystems(const std::vector<ElectromagneticEmissionSystemData>&    pX);
 
 
 virtual int getMarshalledSize() const;
 
-     bool operator  ==(const ElectronicEmissionsPdu& rhs) const;
+     bool operator  ==(const ElectromagneticEmissionsPdu& rhs) const;
 };
 }
 
