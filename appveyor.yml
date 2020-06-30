@@ -1,0 +1,22 @@
+image:
+  - Visual Studio 2019
+
+install: 
+  - curl -o C:\SDL2.zip https://www.libsdl.org/release/SDL2-devel-2.0.12-VC.zip
+  - curl -o C:\SDL2_net.zip https://www.libsdl.org/projects/SDL_net/release/SDL2_net-devel-2.0.1-VC.zip
+  - 7z x C:\SDL2.zip -oC:\ -y
+  - move C:\SDL2-2.0.12 C:\SDL2
+  - 7z x C:\SDL2_net.zip -oC:\ -y  
+  - move C:\SDL2_net-2.0.1 C:\SDL2_net
+  - xcopy /s C:\SDL2_net\lib C:\SDL2\lib
+  - xcopy /s C:\SDL2_net\include C:\SDL2\include
+  - dir /s C:\SDL2
+
+platform: x64
+
+build:
+  project: OpenDIS.sln
+
+before_build:
+  - cmake -DSDL_LIB_DIR=C:\SDL2\lib\x64 -DSDL_INC_DIR=C:\SDL2\include .
+  - dir

@@ -1,7 +1,7 @@
 
-#include <examples/Connection.h>                  // for reading packets from the socket
-#include <examples/EntityStatePduProcessor.h>     // for usage
-#include <examples/Utils.h>
+#include "Connection.h"                  // for reading packets from the socket
+#include "EntityStatePduProcessor.h"     // for usage
+#include "Utils.h"
 
 #include <utils/IncomingMessage.h>                 // for library usage
 #include <dis6/EntityStatePdu.h>                  // for library usage

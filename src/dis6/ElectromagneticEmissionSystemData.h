@@ -3,7 +3,7 @@
 
 #include <dis6/EmitterSystem.h>
 #include <dis6/Vector3Float.h>
-#include <dis6/ElectronicEmissionBeamData.h>
+#include <dis6/ElectromagneticEmissionBeamData.h>
 #include <vector>
 #include <utils/DataStream.h>
 #include <dis6/msLibMacro.h>
@@ -17,7 +17,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO ElectronicEmissionSystemData
+class EXPORT_MACRO ElectromagneticEmissionSystemData
 {
 protected:
   /** This field shall specify the length of this emitter system�s data (including beam data and its track/jam information) in 32-bit words. The length shall include the System Data Length field.  */
@@ -36,12 +36,12 @@ protected:
   Vector3Float _location; 
 
   /** variable length list of beam data records */
-  std::vector<ElectronicEmissionBeamData> _beamDataRecords; 
+  std::vector<ElectromagneticEmissionBeamData> _beamDataRecords; 
 
 
  public:
-    ElectronicEmissionSystemData();
-    virtual ~ElectronicEmissionSystemData();
+    ElectromagneticEmissionSystemData();
+    virtual ~ElectromagneticEmissionSystemData();
 
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
@@ -62,14 +62,14 @@ protected:
     const Vector3Float&  getLocation() const; 
     void setLocation(const Vector3Float    &pX);
 
-    std::vector<ElectronicEmissionBeamData>& getBeamDataRecords(); 
-    const std::vector<ElectronicEmissionBeamData>& getBeamDataRecords() const; 
-    void setBeamDataRecords(const std::vector<ElectronicEmissionBeamData>&    pX);
+    std::vector<ElectromagneticEmissionBeamData>& getBeamDataRecords(); 
+    const std::vector<ElectromagneticEmissionBeamData>& getBeamDataRecords() const; 
+    void setBeamDataRecords(const std::vector<ElectromagneticEmissionBeamData>&    pX);
 
 
 virtual int getMarshalledSize() const;
 
-     bool operator  ==(const ElectronicEmissionSystemData& rhs) const;
+     bool operator  ==(const ElectromagneticEmissionSystemData& rhs) const;
 };
 }
 

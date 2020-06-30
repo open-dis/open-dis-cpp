@@ -20,6 +20,6 @@ before_script:
 
 script:
   - pushd build
-  - make install
+  - make -j install
   - make package
   - popd

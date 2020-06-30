@@ -1,9 +1,9 @@
-#include <dis6/ElectronicEmissionSystemData.h>
+#include <dis6/ElectromagneticEmissionSystemData.h>
 
 using namespace DIS;
 
 
-ElectronicEmissionSystemData::ElectronicEmissionSystemData():
+ElectromagneticEmissionSystemData::ElectromagneticEmissionSystemData():
    _systemDataLength(0), 
    _numberOfBeams(0), 
    _emissionsPadding2(0), 
@@ -12,82 +12,82 @@ ElectronicEmissionSystemData::ElectronicEmissionSystemData():
 {
 }
 
-ElectronicEmissionSystemData::~ElectronicEmissionSystemData()
+ElectromagneticEmissionSystemData::~ElectromagneticEmissionSystemData()
 {
     _beamDataRecords.clear();
 }
 
-unsigned char ElectronicEmissionSystemData::getSystemDataLength() const
+unsigned char ElectromagneticEmissionSystemData::getSystemDataLength() const
 {
     return _systemDataLength;
 }
 
-void ElectronicEmissionSystemData::setSystemDataLength(unsigned char pX)
+void ElectromagneticEmissionSystemData::setSystemDataLength(unsigned char pX)
 {
     _systemDataLength = pX;
 }
 
-unsigned char ElectronicEmissionSystemData::getNumberOfBeams() const
+unsigned char ElectromagneticEmissionSystemData::getNumberOfBeams() const
 {
    return _beamDataRecords.size();
 }
 
-unsigned short ElectronicEmissionSystemData::getEmissionsPadding2() const
+unsigned short ElectromagneticEmissionSystemData::getEmissionsPadding2() const
 {
     return _emissionsPadding2;
 }
 
-void ElectronicEmissionSystemData::setEmissionsPadding2(unsigned short pX)
+void ElectromagneticEmissionSystemData::setEmissionsPadding2(unsigned short pX)
 {
     _emissionsPadding2 = pX;
 }
 
-EmitterSystem& ElectronicEmissionSystemData::getEmitterSystem() 
+EmitterSystem& ElectromagneticEmissionSystemData::getEmitterSystem() 
 {
     return _emitterSystem;
 }
 
-const EmitterSystem& ElectronicEmissionSystemData::getEmitterSystem() const
+const EmitterSystem& ElectromagneticEmissionSystemData::getEmitterSystem() const
 {
     return _emitterSystem;
 }
 
-void ElectronicEmissionSystemData::setEmitterSystem(const EmitterSystem &pX)
+void ElectromagneticEmissionSystemData::setEmitterSystem(const EmitterSystem &pX)
 {
     _emitterSystem = pX;
 }
 
-Vector3Float& ElectronicEmissionSystemData::getLocation() 
+Vector3Float& ElectromagneticEmissionSystemData::getLocation() 
 {
     return _location;
 }
 
-const Vector3Float& ElectronicEmissionSystemData::getLocation() const
+const Vector3Float& ElectromagneticEmissionSystemData::getLocation() const
 {
     return _location;
 }
 
-void ElectronicEmissionSystemData::setLocation(const Vector3Float &pX)
+void ElectromagneticEmissionSystemData::setLocation(const Vector3Float &pX)
 {
     _location = pX;
 }
 
-std::vector<ElectronicEmissionBeamData>& ElectronicEmissionSystemData::getBeamDataRecords() 
+std::vector<ElectromagneticEmissionBeamData>& ElectromagneticEmissionSystemData::getBeamDataRecords() 
 {
     return _beamDataRecords;
 }
 
-const std::vector<ElectronicEmissionBeamData>& ElectronicEmissionSystemData::getBeamDataRecords() const
+const std::vector<ElectromagneticEmissionBeamData>& ElectromagneticEmissionSystemData::getBeamDataRecords() const
 {
     return _beamDataRecords;
 }
 
-void ElectronicEmissionSystemData::setBeamDataRecords(const std::vector<ElectronicEmissionBeamData>& pX)
+void ElectromagneticEmissionSystemData::setBeamDataRecords(const std::vector<ElectromagneticEmissionBeamData>& pX)
 {
      _beamDataRecords = pX;
 }
 
-void ElectronicEmissionSystemData::marshal(DataStream& dataStream) const
+void ElectromagneticEmissionSystemData::marshal(DataStream& dataStream) const
 {
     dataStream << _systemDataLength;
     dataStream << ( unsigned char )_beamDataRecords.size();
@@ -97,13 +97,13 @@ void ElectronicEmissionSystemData::marshal(DataStream& dataStream) const
 
      for(size_t idx = 0; idx < _beamDataRecords.size(); idx++)
      {
-        ElectronicEmissionBeamData x = _beamDataRecords[idx];
+        ElectromagneticEmissionBeamData x = _beamDataRecords[idx];
         x.marshal(dataStream);
      }
 
 }
 
-void ElectronicEmissionSystemData::unmarshal(DataStream& dataStream)
+void ElectromagneticEmissionSystemData::unmarshal(DataStream& dataStream)
 {
     dataStream >> _systemDataLength;
     dataStream >> _numberOfBeams;
@@ -114,14 +114,14 @@ void ElectronicEmissionSystemData::unmarshal(DataStream& dataStream)
      _beamDataRecords.clear();
      for(size_t idx = 0; idx < _numberOfBeams; idx++)
      {
-        ElectronicEmissionBeamData x;
+        ElectromagneticEmissionBeamData x;
         x.unmarshal(dataStream);
         _beamDataRecords.push_back(x);
      }
 }
 
 
-bool ElectronicEmissionSystemData::operator ==(const ElectronicEmissionSystemData& rhs) const
+bool ElectromagneticEmissionSystemData::operator ==(const ElectromagneticEmissionSystemData& rhs) const
  {
      bool ivarsEqual = true;
 
@@ -139,7 +139,7 @@ bool ElectronicEmissionSystemData::operator ==(const ElectronicEmissionSystemDat
     return ivarsEqual;
  }
 
-int ElectronicEmissionSystemData::getMarshalledSize() const
+int ElectromagneticEmissionSystemData::getMarshalledSize() const
 {
    int marshalSize = 0;
 
@@ -151,7 +151,7 @@ int ElectronicEmissionSystemData::getMarshalledSize() const
 
    for(unsigned long long idx=0; idx < _beamDataRecords.size(); idx++)
    {
-        ElectronicEmissionBeamData listElement = _beamDataRecords[idx];
+        ElectromagneticEmissionBeamData listElement = _beamDataRecords[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
     }
 
