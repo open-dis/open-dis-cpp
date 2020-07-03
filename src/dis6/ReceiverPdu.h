@@ -25,7 +25,7 @@ protected:
   unsigned short _padding1; 
 
   /** received power */
-  float _receivedPoser; 
+  float _receivedPower; 
 
   /** ID of transmitter */
   EntityID _transmitterEntityId; 
@@ -47,8 +47,8 @@ protected:
     unsigned short getPadding1() const; 
     void setPadding1(unsigned short pX); 
 
-    float getReceivedPoser() const; 
-    void setReceivedPoser(float pX); 
+    float getReceivedPower() const; 
+    void setReceivedPower(float pX); 
 
     EntityID& getTransmitterEntityId(); 
     const EntityID&  getTransmitterEntityId() const; 
