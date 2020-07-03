@@ -6,7 +6,7 @@ using namespace DIS;
 ReceiverPdu::ReceiverPdu() : RadioCommunicationsFamilyPdu(),
    _receiverState(0), 
    _padding1(0), 
-   _receivedPoser(0.0), 
+   _receivedPower(0.0), 
    _transmitterEntityId(), 
    _transmitterRadioId(0)
 {
@@ -37,14 +37,14 @@ void ReceiverPdu::setPadding1(unsigned short pX)
     _padding1 = pX;
 }
 
-float ReceiverPdu::getReceivedPoser() const
+float ReceiverPdu::getReceivedPower() const
 {
-    return _receivedPoser;
+    return _receivedPower;
 }
 
-void ReceiverPdu::setReceivedPoser(float pX)
+void ReceiverPdu::setReceivedPower(float pX)
 {
-    _receivedPoser = pX;
+    _receivedPower = pX;
 }
 
 EntityID& ReceiverPdu::getTransmitterEntityId() 
@@ -77,7 +77,7 @@ void ReceiverPdu::marshal(DataStream& dataStream) const
     RadioCommunicationsFamilyPdu::marshal(dataStream); // Marshal information in superclass first
     dataStream << _receiverState;
     dataStream << _padding1;
-    dataStream << _receivedPoser;
+    dataStream << _receivedPower;
     _transmitterEntityId.marshal(dataStream);
     dataStream << _transmitterRadioId;
 }
@@ -87,7 +87,7 @@ void ReceiverPdu::unmarshal(DataStream& dataStream)
     RadioCommunicationsFamilyPdu::unmarshal(dataStream); // unmarshal information in superclass first
     dataStream >> _receiverState;
     dataStream >> _padding1;
-    dataStream >> _receivedPoser;
+    dataStream >> _receivedPower;
     _transmitterEntityId.unmarshal(dataStream);
     dataStream >> _transmitterRadioId;
 }
@@ -101,7 +101,7 @@ bool ReceiverPdu::operator ==(const ReceiverPdu& rhs) const
 
      if( ! (_receiverState == rhs._receiverState) ) ivarsEqual = false;
      if( ! (_padding1 == rhs._padding1) ) ivarsEqual = false;
-     if( ! (_receivedPoser == rhs._receivedPoser) ) ivarsEqual = false;
+     if( ! (_receivedPower == rhs._receivedPower) ) ivarsEqual = false;
      if( ! (_transmitterEntityId == rhs._transmitterEntityId) ) ivarsEqual = false;
      if( ! (_transmitterRadioId == rhs._transmitterRadioId) ) ivarsEqual = false;
 
