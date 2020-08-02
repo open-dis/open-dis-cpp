@@ -20,7 +20,16 @@
 #include <dis6/EventReportPdu.h>
 #include <dis6/CommentPdu.h>
 #include <dis6/StopFreezePdu.h>
-
+#include <dis6/ElectromagneticEmissionsPdu.h>
+#include <dis6/DesignatorPdu.h>
+#include <dis6/TransmitterPdu.h>
+#include <dis6/SignalPdu.h>
+#include <dis6/ReceiverPdu.h>
+#include <dis6/IntercomSignalPdu.h>
+#include <dis6/IntercomControlPdu.h>
+#include <dis6/AggregateStatePdu.h>
+#include <dis6/IsGroupOfPdu.h>
+#include <dis6/TransferControlRequestPdu.h>
 
 using namespace DIS;
 
@@ -47,6 +56,16 @@ Pdu* PduBank::GetStaticPDU( DIS::PDUType pdu_type )
    static EventReportPdu      eventReportPdu;
    static CommentPdu          commentPdu;
    static StopFreezePdu       stopFreezePdu;
+   static ElectromagneticEmissionsPdu    electromagneticEmissionsPdu;
+   static DesignatorPdu       designatorPdu;
+   static TransmitterPdu      transmitterPdu;
+   static SignalPdu           signalPdu;
+   static ReceiverPdu         receiverPdu;
+   static IntercomSignalPdu   intercomSignalPdu;
+   static IntercomControlPdu  intercomControlPdu;
+   static AggregateStatePdu   aggregateStatePdu;
+   static IsGroupOfPdu        isGroupOfPdu;
+   static TransferControlRequestPdu      transferOwnershipPdu;
 
    switch(pdu_type)
    {
@@ -71,6 +90,16 @@ Pdu* PduBank::GetStaticPDU( DIS::PDUType pdu_type )
       case PDU_EVENT_REPORT:      return &eventReportPdu;      break; 
       case PDU_COMMENT:           return &commentPdu;          break; 
       case PDU_STOP_FREEZE:       return &stopFreezePdu;       break;
+      case PDU_ELECTRONIC_EMMISIONS:    return &electromagneticEmissionsPdu; break;
+      case PDU_DESIGNATOR:              return &designatorPdu;          break;
+      case PDU_TRANSMITTER:             return &transmitterPdu;         break;
+      case PDU_SIGNAL:            return &signalPdu;       break;
+      case PDU_RECEIVER:          return &receiverPdu;       break;
+      case PDU_INTERCOM_SIGNAL:   return &intercomSignalPdu;       break;
+      case PDU_INTERCOM_CONTROL:  return &intercomControlPdu;       break;
+      case PDU_AGGREGATE_STATE:   return &aggregateStatePdu;       break;
+      case PDU_ISGROUPOF:         return &isGroupOfPdu;       break;
+      case PDU_TRANSFER_OWNERSHIP:      return &transferOwnershipPdu;       break;
       default:                                                 break;
    }
    return NULL;
