@@ -5,6 +5,13 @@
 #include <dis6/DetonationPdu.h>
 #include <dis6/CreateEntityPdu.h>
 #include <dis6/RemoveEntityPdu.h>
+#include <dis6/StartResumePdu.h>
+#include <dis6/StopFreezePdu.h>
+#include <dis6/ElectromagneticEmissionsPdu.h>
+#include <dis6/TransmitterPdu.h>
+#include <dis6/SignalPdu.h>
+#include <dis6/ReceiverPdu.h>
+#include <dis6/TransferControlRequestPdu.h>
 #include <utils/Endian.h>
 #include <utils/PDUType.h>
 
@@ -70,6 +77,41 @@ Pdu * PduFactory::createPdu(const char* data)
 
 	case PDU_REMOVE_ENTITY:
 		pdu = new RemoveEntityPdu();
+		pdu->unmarshal(dataStream);
+		break;
+
+        case PDU_START_RESUME:
+		pdu = new StartResumePdu();
+		pdu->unmarshal(dataStream);
+		break;
+
+        case PDU_STOP_FREEZE:
+		pdu = new StopFreezePdu();
+		pdu->unmarshal(dataStream);
+		break;
+
+        case PDU_ELECTRONIC_EMMISIONS:
+		pdu = new ElectromagneticEmissionsPdu();
+		pdu->unmarshal(dataStream);
+		break;
+
+        case PDU_TRANSMITTER:
+		pdu = new TransmitterPdu();
+		pdu->unmarshal(dataStream);
+		break;
+
+        case PDU_SIGNAL:
+		pdu = new SignalPdu();
+		pdu->unmarshal(dataStream);
+		break;
+
+        case PDU_RECEIVER:
+		pdu = new ReceiverPdu();
+		pdu->unmarshal(dataStream);
+		break;
+
+        case PDU_TRANSFER_OWNERSHIP:
+		pdu = new TransferControlRequestPdu();
 		pdu->unmarshal(dataStream);
 		break;
 
