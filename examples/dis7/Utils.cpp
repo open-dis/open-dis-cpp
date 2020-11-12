@@ -6,7 +6,7 @@
 #include <unistd.h>
 #endif
 
-#include <dis6/Orientation.h>
+#include <dis7/EulerAngles.h>
 #include <dis7/Vector3Float.h>
 #include <dis7/Vector3Double.h>
 #include <SDL_timer.h>

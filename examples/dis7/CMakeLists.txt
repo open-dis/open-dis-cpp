@@ -1,12 +1,12 @@
-cmake_minimum_required(VERSION 3.2)
-project(OpenDIS-Examples)
+cmake_minimum_required(VERSION 3.14)
+project(OpenDIS-Example-dis7)
 
 ## Libraries
 
-find_package(OpenDIS7)
+# find_package(OpenDIS7)
 
 ## Example Programs
-include_directories(.)
+# include_directories(.)
 
 # if Windows add M_PI definition
 # - issues occurred during testing in Visual Studio
@@ -15,7 +15,7 @@ if (WIN32)
 endif (WIN32)
 
 # create list of ExampleSender source files
-file(GLOB EX_SENDER_SOURCES
+set(EX_SENDER_SOURCES
   "main.cpp"
   "Connection.cpp"
   "Utils.cpp"
@@ -29,12 +29,15 @@ else(WIN32)
 endif(WIN32)
 
 # Define ExampleSender Executable
-add_executable(ExampleSender ${EX_SENDER_SOURCES})
+add_executable(ExampleSender7 ${EX_SENDER_SOURCES})
 # Link OpenDIS into ExampleSender
-target_link_libraries(ExampleSender PRIVATE OpenDIS6)
-target_link_libraries(ExampleSender PRIVATE ${SDL_LIBS})
+target_link_libraries(ExampleSender7 PRIVATE opendis::dis7 ${SDL_LIBS})
+target_include_directories(ExampleSender7 PRIVATE
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+)
 # add src to ExampleSender include directories
-target_include_directories(ExampleSender PRIVATE src)
+target_include_directories(ExampleSender7 PRIVATE src)
 
 # create list of ExampleReceiver source files
 file(GLOB EX_RECEIVER_SOURCES
@@ -46,12 +49,14 @@ file(GLOB EX_RECEIVER_SOURCES
 )
 
 # Define ExampleReceiver Executable
-add_executable(ExampleReceiver ${EX_RECEIVER_SOURCES})
+add_executable(ExampleReceiver7 ${EX_RECEIVER_SOURCES})
 # Link OpenDIS into ExampleReceiver
-target_link_libraries(ExampleReceiver PRIVATE OpenDIS6)
-target_link_libraries(ExampleReceiver PRIVATE ${SDL_LIBS})
+target_link_libraries(ExampleReceiver7 PRIVATE opendis::dis7 ${SDL_LIBS})
 # add src to ExampleSender include directories
-target_include_directories(ExampleReceiver PRIVATE src)
+target_include_directories(ExampleReceiver7 PRIVATE
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+)
 
 # Configuring SDL2
 #--------------------------------------------------------------------------------------
@@ -62,8 +67,8 @@ if(SDL_INC_DIR)
   message("Using SDL2 include directory defined with -DSDL_INC_DIR")
   message("\tvalue: ${SDL_INC_DIR}")
   # Add SDL_INC_DIR to the include directories for both exampe apps
-  target_include_directories(ExampleSender PUBLIC ${SDL_INC_DIR})
-  target_include_directories(ExampleReceiver PUBLIC ${SDL_INC_DIR})
+  target_include_directories(ExampleSender7 PUBLIC ${SDL_INC_DIR})
+  target_include_directories(ExampleReceiver7 PUBLIC ${SDL_INC_DIR})
 else(SDL_INC_DIR)
   # Otherwise, try get SDL2 Compiler Flags from sdl2-config
   execute_process(
@@ -87,8 +92,8 @@ else(SDL_INC_DIR)
     else(WIN32)
       separate_arguments(SDL_CFLAGS WINDOWS_COMMAND "${SDL_CFLAGS}")
     endif(WIN32)
-    target_compile_options(ExampleSender PRIVATE "${SDL_CFLAGS}")
-    target_compile_options(ExampleReceiver PRIVATE "${SDL_CFLAGS}")
+    target_compile_options(ExampleSender7 PRIVATE "${SDL_CFLAGS}")
+    target_compile_options(ExampleReceiver7 PRIVATE "${SDL_CFLAGS}")
   endif(SDL_CERR)
 endif(SDL_INC_DIR)
 
@@ -96,8 +101,8 @@ endif(SDL_INC_DIR)
 if(SDL_LIB_DIR)
   message("Using SDL2 include directory defined with -DSDL_LIB_DIR")
   message("\tvalue: ${SDL_LIB_DIR}")
-  target_link_directories(ExampleSender PUBLIC ${SDL_LIB_DIR})
-  target_link_directories(ExampleReceiver PUBLIC ${SDL_LIB_DIR})
+  target_link_directories(ExampleSender7 PUBLIC ${SDL_LIB_DIR})
+  target_link_directories(ExampleReceiver7 PUBLIC ${SDL_LIB_DIR})
 else(SDL_LIB_DIR)
   # Otherwise, try get SDL2 Library Flags from sdl2-config
   execute_process(
@@ -121,8 +126,8 @@ else(SDL_LIB_DIR)
     else(WIN32)
       separate_arguments(SDL_LFLAGS WINDOWS_COMMAND "${SDL_LFLAGS}")
     endif(WIN32)
-    target_link_libraries(ExampleSender PRIVATE "${SDL_LFLAGS}")
-    target_link_libraries(ExampleReceiver PRIVATE "${SDL_LFLAGS}")
+    target_link_libraries(ExampleSender7 PRIVATE "${SDL_LFLAGS}")
+    target_link_libraries(ExampleReceiver7 PRIVATE "${SDL_LFLAGS}")
   endif(SDL_LERR)
 endif(SDL_LIB_DIR)
 

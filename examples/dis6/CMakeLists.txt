@@ -1,12 +1,12 @@
-cmake_minimum_required(VERSION 3.2)
-project(OpenDIS-Examples)
+cmake_minimum_required(VERSION 3.14)
+project(OpenDIS-Example-dis6)
 
 ## Libraries
 
-find_package(OpenDIS6)
+# find_package(OpenDIS6)
 
 ## Example Programs
-include_directories(.)
+# include_directories(.)
 
 # if Windows add M_PI definition
 # - issues occurred during testing in Visual Studio
@@ -15,7 +15,7 @@ if (WIN32)
 endif (WIN32)
 
 # create list of ExampleSender source files
-file(GLOB EX_SENDER_SOURCES
+set(EX_SENDER_SOURCES
   "main.cpp"
   "Connection.cpp"
   "Utils.cpp"
@@ -31,8 +31,11 @@ endif(WIN32)
 # Define ExampleSender Executable
 add_executable(ExampleSender ${EX_SENDER_SOURCES})
 # Link OpenDIS into ExampleSender
-target_link_libraries(ExampleSender PRIVATE OpenDIS6)
-target_link_libraries(ExampleSender PRIVATE ${SDL_LIBS})
+target_link_libraries(ExampleSender PRIVATE opendis::dis6 ${SDL_LIBS})
+target_include_directories(ExampleSender PRIVATE
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+)
 # add src to ExampleSender include directories
 target_include_directories(ExampleSender PRIVATE src)
 
@@ -48,10 +51,12 @@ file(GLOB EX_RECEIVER_SOURCES
 # Define ExampleReceiver Executable
 add_executable(ExampleReceiver ${EX_RECEIVER_SOURCES})
 # Link OpenDIS into ExampleReceiver
-target_link_libraries(ExampleReceiver PRIVATE OpenDIS6)
-target_link_libraries(ExampleReceiver PRIVATE ${SDL_LIBS})
+target_link_libraries(ExampleReceiver PRIVATE opendis::dis6 ${SDL_LIBS})
 # add src to ExampleSender include directories
-target_include_directories(ExampleReceiver PRIVATE src)
+target_include_directories(ExampleReceiver PRIVATE
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+)
 
 # Configuring SDL2
 #--------------------------------------------------------------------------------------

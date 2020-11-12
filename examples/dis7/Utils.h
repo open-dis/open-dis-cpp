@@ -9,7 +9,7 @@
 
 #include <dis7/Vector3Double.h>
 #include <dis7/Vector3Float.h>
-#include <dis6/Orientation.h>
+#include <dis7/EulerAngles.h>
 
 namespace Example
 {
@@ -55,7 +55,7 @@ namespace Example
       void operator ()(double dt);
 
       DIS::Vector3Double position;
-      DIS::Orientation orientation;
+      DIS::EulerAngles orientation;
       DIS::Vector3Float velocity;
 
    private:

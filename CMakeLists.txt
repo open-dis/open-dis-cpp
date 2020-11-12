@@ -1,5 +1,57 @@
 cmake_minimum_required(VERSION 3.14)
-project(OpenDIS)
+
+project(OpenDIS
+        VERSION 0.1.0
+        LANGUAGES CXX
+      )
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED on)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+
+option(WERROR "Add -Werror flag to build (turns warnings into errors)" ON)
+# Default options
+option(OpenDIS_ENABLE_EXAMPLES "Enable the examples for OpenDIS" ON)
+
+# Set CMake Install directories for OpenDIS
+set(OpenDIS_INSTALL_LIB_DIR lib CACHE PATH "Installation path for OpenDIS library files")
+set(OpenDIS_INSTALL_BIN_DIR bin CACHE PATH "Installation path for OpenDIS binary files")
+set(OpenDIS_INSTALL_INCLUDE_DIR include/ CACHE PATH "Installation path for header files")
+if(WIN32 AND NOT CYGWIN)
+  set(DEF_INSTALL_CMAKE_DIR CMake)
+else()
+  set(DEF_INSTALL_CMAKE_DIR lib/CMake/OpenDIS)
+endif()
+set(OpenDIS_INSTALL_CMAKE_DIR ${DEF_INSTALL_CMAKE_DIR} CACHE PATH "Installation path for OpenDIS CMake files")
+
+# configure optimization
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    set(OPTIMIZATION_FLAGS "-O0 -DDEBUG")
+    message("-- Configuring debug build")
+else()
+    set(OPTIMIZATION_FLAGS "-O3 -DNDEBUG")
+    message("-- Configuring release build")
+endif()
+
+set(DESIRED_WARNINGS "-Wall -Wextra -Wconversion -Wunreachable-code -Wuninitialized -pedantic-errors -Wold-style-cast -Wno-error=unused-variable -Wshadow -Wfloat-equal -Weffc++")
+if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+  set(DESIRED_WARNINGS "${DESIRED_WARNINGS} -Wmost")
+endif()
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OPTIMIZATION_FLAGS}")
+
+if (WERROR)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+endif()
+
+# Add libraries
+add_subdirectory(src)
+
+
+if (OpenDIS_ENABLE_EXAMPLES)
+  add_subdirectory("examples")
+endif (OpenDIS_ENABLE_EXAMPLES)
 
 
 ## Example Programs
@@ -7,9 +59,9 @@ project(OpenDIS)
 
 # if Windows add M_PI dfinition
 # - issues occurred during testing in Visual Studio
-if (WIN32)
-  add_definitions(/DM_PI=3.14159265358979323846)
-endif (WIN32)
+# if (WIN32)
+#   add_definitions(/DM_PI=3.14159265358979323846)
+# endif (WIN32)
 
 # # create list of ExampleSender source files
 # file(GLOB EX_SENDER_SOURCES
@@ -19,109 +71,7 @@ endif (WIN32)
 #   "examples/Timer.cpp"
 # )
 
-# if(WIN32)
-#        set(SDL_LIBS SDL2main SDL2 SDL2_net)
-# else(WIN32)
-#        set(SDL_LIBS SDL2 SDL2_net)
-# endif(WIN32)
 
-# # Define ExampleSender Executable
-# add_executable(ExampleSender ${EX_SENDER_SOURCES})
-# # Link OpenDIS into ExampleSender
-# target_link_libraries(ExampleSender PRIVATE OpenDIS6)
-# target_link_libraries(ExampleSender PRIVATE ${SDL_LIBS})
-# # add src to ExampleSender include directories
-# target_include_directories(ExampleSender PRIVATE src)
-
-# # create list of ExampleReceiver source files
-# file(GLOB EX_RECEIVER_SOURCES
-#   "examples/main_receive.cpp"
-#   "examples/Connection.cpp"
-#   "examples/Utils.cpp"
-#   "examples/Timer.cpp"
-#   "examples/EntityStatePduProcessor.cpp"
-# )
-
-# # Define ExampleReceiver Executable
-# add_executable(ExampleReceiver ${EX_RECEIVER_SOURCES})
-# # Link OpenDIS into ExampleReceiver
-# target_link_libraries(ExampleReceiver PRIVATE OpenDIS6)
-# target_link_libraries(ExampleReceiver PRIVATE ${SDL_LIBS})
-# # add src to ExampleSender include directories
-# target_include_directories(ExampleReceiver PRIVATE src)
-
-# Configuring SDL2
-#--------------------------------------------------------------------------------------
-
-# If SDL_INC_DIR declared (by user via -D flag)
-# if(SDL_INC_DIR)
-#   # Inform the user we will use the their specified SDL_INC_DIR
-#   message("Using SDL2 include directory defined with -DSDL_INC_DIR")
-#   message("\tvalue: ${SDL_INC_DIR}")
-#   # Add SDL_INC_DIR to the include directories for both exampe apps
-#   target_include_directories(ExampleSender PUBLIC ${SDL_INC_DIR})
-#   target_include_directories(ExampleReceiver PUBLIC ${SDL_INC_DIR})
-# else(SDL_INC_DIR)
-#   # Otherwise, try get SDL2 Compiler Flags from sdl2-config
-#   execute_process(
-#     COMMAND sdl2-config --cflags
-#     RESULT_VARIABLE SDL_CERR
-#     OUTPUT_VARIABLE SDL_CFLAGS
-#     OUTPUT_STRIP_TRAILING_WHITESPACE
-#   )
-#   # if sdl2-config errors
-#   if(SDL_CERR)
-#     # warn user that they may have to define the SDL2 include
-#     #  directory with the -DSDL_INC_DIR flag
-#     # Most linux systems will probably be fine
-#     message(WARNING "Unable to detect SDL2 include flags")
-#     message("You may need to specify the SDL include manually")
-#     message(" with -DSDL_INC_DIR=<SDL2 include path>")
-#   else(SDL_CERR)
-#     # otherwise split the output of sdl2-config and add to compiler flags to examples
-#     if(WIN32)
-#       separate_arguments(SDL_CFLAGS UNIX_COMMAND "${SDL_CFLAGS}")
-#     else(WIN32)
-#       separate_arguments(SDL_CFLAGS WINDOWS_COMMAND "${SDL_CFLAGS}")
-#     endif(WIN32)
-#     target_compile_options(ExampleSender PRIVATE "${SDL_CFLAGS}")
-#     target_compile_options(ExampleReceiver PRIVATE "${SDL_CFLAGS}")
-#   endif(SDL_CERR)
-# endif(SDL_INC_DIR)
-
-# # If SDL_LIB_DIR declared (by user via -D flag)
-# if(SDL_LIB_DIR)
-#   message("Using SDL2 include directory defined with -DSDL_LIB_DIR")
-#   message("\tvalue: ${SDL_LIB_DIR}")
-#   target_link_directories(ExampleSender PUBLIC ${SDL_LIB_DIR})
-#   target_link_directories(ExampleReceiver PUBLIC ${SDL_LIB_DIR})
-# else(SDL_LIB_DIR)
-#   # Otherwise, try get SDL2 Library Flags from sdl2-config
-#   execute_process(
-#     COMMAND sdl2-config --libs
-#     RESULT_VARIABLE SDL_LERR
-#     OUTPUT_VARIABLE SDL_LFLAGS
-#     OUTPUT_STRIP_TRAILING_WHITESPACE
-#   )
-#   # if sdl2-config errors
-#   if(SDL_LERR)
-#     # warn user that they may have to define the SDL2 include
-#     #  directory with the -DSDL_LIB_DIR flag
-#     # Most linux systems will probably be fine
-#     message(WARNING "Unable to detect SDL2 library flags using defaults")
-#     message("You may need to specify the SDL library manually with")
-#     message(" -DSDL_LIB_DIR=<SDL2 include path>, especially for Windows users")
-#   else(SDL_LERR)
-#     # otherwise split the output of sdl2-config and add to library flags to examples
-#     if(WIN32)
-#       separate_arguments(SDL_LFLAGS UNIX_COMMAND "${SDL_LFLAGS}")
-#     else(WIN32)
-#       separate_arguments(SDL_LFLAGS WINDOWS_COMMAND "${SDL_LFLAGS}")
-#     endif(WIN32)
-#     target_link_libraries(ExampleSender PRIVATE "${SDL_LFLAGS}")
-#     target_link_libraries(ExampleReceiver PRIVATE "${SDL_LFLAGS}")
-#   endif(SDL_LERR)
-# endif(SDL_LIB_DIR)
 
 # #--------------------------------------------------------------------------------------
 

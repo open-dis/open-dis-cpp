@@ -1,352 +1,41 @@
 # create list of DIS6 source files
-set( DIS6_SOURCES
-    dis6/AcknowledgePdu.cpp
-    dis6/AcknowledgeReliablePdu.cpp
-    dis6/AcousticBeamData.cpp
-    dis6/AcousticBeamFundamentalParameter.cpp
-    dis6/AcousticEmitter.cpp
-    dis6/AcousticEmitterSystem.cpp
-    dis6/AcousticEmitterSystemData.cpp
-    dis6/ActionRequestPdu.cpp
-    dis6/ActionRequestReliablePdu.cpp
-    dis6/ActionResponsePdu.cpp
-    dis6/ActionResponseReliablePdu.cpp
-    dis6/AggregateID.cpp
-    dis6/AggregateMarking.cpp
-    dis6/AggregateStatePdu.cpp
-    dis6/AggregateType.cpp
-    dis6/AngularVelocityVector.cpp
-    dis6/AntennaLocation.cpp
-    dis6/ApaData.cpp
-    dis6/ArealObjectStatePdu.cpp
-    dis6/ArticulationParameter.cpp
-    dis6/BeamAntennaPattern.cpp
-    dis6/BeamData.cpp
-    dis6/BurstDescriptor.cpp
-    dis6/ClockTime.cpp
-    dis6/CollisionElasticPdu.cpp
-    dis6/CollisionPdu.cpp
-    dis6/CommentPdu.cpp
-    dis6/CommentReliablePdu.cpp
-    dis6/CreateEntityPdu.cpp
-    dis6/CreateEntityReliablePdu.cpp
-    dis6/DataPdu.cpp
-    dis6/DataQueryPdu.cpp
-    dis6/DataQueryReliablePdu.cpp
-    dis6/DataReliablePdu.cpp
-    dis6/DeadReckoningParameter.cpp
-    dis6/DesignatorPdu.cpp
-    dis6/DetonationPdu.cpp
-    dis6/DistributedEmissionsFamilyPdu.cpp
-    dis6/EightByteChunk.cpp
-    dis6/ElectromagneticEmissionBeamData.cpp
-    dis6/ElectromagneticEmissionsPdu.cpp
-    dis6/ElectromagneticEmissionSystemData.cpp
-    dis6/EmitterSystem.cpp
-    dis6/EntityID.cpp
-    dis6/EntityInformationFamilyPdu.cpp
-    dis6/EntityManagementFamilyPdu.cpp
-    dis6/EntityStatePdu.cpp
-    dis6/EntityStateUpdatePdu.cpp
-    dis6/EntityType.cpp
-    dis6/EnvironmentalProcessPdu.cpp
-    dis6/Environment.cpp
-    dis6/EventID.cpp
-    dis6/EventReportPdu.cpp
-    dis6/EventReportReliablePdu.cpp
-    dis6/FastEntityStatePdu.cpp
-    dis6/FirePdu.cpp
-    dis6/FixedDatum.cpp
-    dis6/FourByteChunk.cpp
-    dis6/FundamentalParameterData.cpp
-    dis6/FundamentalParameterDataIff.cpp
-    dis6/GridAxisRecord.cpp
-    dis6/GridAxisRecordRepresentation0.cpp
-    dis6/GridAxisRecordRepresentation1.cpp
-    dis6/GridAxisRecordRepresentation2.cpp
-    dis6/GriddedDataPdu.cpp
-    dis6/IffAtcNavAidsLayer1Pdu.cpp
-    dis6/IffAtcNavAidsLayer2Pdu.cpp
-    dis6/IffFundamentalData.cpp
-    dis6/IntercomCommunicationsParameters.cpp
-    dis6/IntercomControlPdu.cpp
-    dis6/IntercomSignalPdu.cpp
-    dis6/IsGroupOfPdu.cpp
-    dis6/IsPartOfPdu.cpp
-    dis6/LayerHeader.cpp
-    dis6/LinearObjectStatePdu.cpp
-    dis6/LinearSegmentParameter.cpp
-    dis6/LogisticsFamilyPdu.cpp
-    dis6/LogisticsPdu.cpp
-    dis6/Marking.cpp
-    dis6/MinefieldDataPdu.cpp
-    dis6/MinefieldFamilyPdu.cpp
-    dis6/MinefieldPduFamily.cpp
-    dis6/MinefieldQueryPdu.cpp
-    dis6/MinefieldResponseNackPdu.cpp
-    dis6/MinefieldStatePdu.cpp
-    dis6/ModulationType.cpp
-    dis6/NamedLocation.cpp
-    dis6/ObjectType.cpp
-    dis6/OneByteChunk.cpp
-    dis6/Orientation.cpp
-    dis6/PduContainer.cpp
-    dis6/Pdu.cpp
-    dis6/Point.cpp
-    dis6/PointObjectStatePdu.cpp
-    dis6/PropulsionSystemData.cpp
-    dis6/RadioCommunicationsFamilyPdu.cpp
-    dis6/RadioEntityType.cpp
-    dis6/ReceiverPdu.cpp
-    dis6/RecordQueryReliablePdu.cpp
-    dis6/RecordSet.cpp
-    dis6/Relationship.cpp
-    dis6/RemoveEntityPdu.cpp
-    dis6/RemoveEntityReliablePdu.cpp
-    dis6/RepairCompletePdu.cpp
-    dis6/RepairResponsePdu.cpp
-    dis6/ResupplyCancelPdu.cpp
-    dis6/ResupplyOfferPdu.cpp
-    dis6/ResupplyReceivedPdu.cpp
-    dis6/SeesPdu.cpp
-    dis6/ServiceRequestPdu.cpp
-    dis6/SetDataPdu.cpp
-    dis6/SetDataReliablePdu.cpp
-    dis6/SetRecordReliablePdu.cpp
-    dis6/ShaftRPMs.cpp
-    dis6/SignalPdu.cpp
-    dis6/SimulationAddress.cpp
-    dis6/SimulationManagementFamilyPdu.cpp
-    dis6/SimulationManagementWithReliabilityFamilyPdu.cpp
-    dis6/SixByteChunk.cpp
-    dis6/SphericalHarmonicAntennaPattern.cpp
-    dis6/StartResumePdu.cpp
-    dis6/StartResumeReliablePdu.cpp
-    dis6/StopFreezePdu.cpp
-    dis6/StopFreezeReliablePdu.cpp
-    dis6/SupplyQuantity.cpp
-    dis6/SyntheticEnvironmentFamilyPdu.cpp
-    dis6/SystemID.cpp
-    dis6/TrackJamTarget.cpp
-    dis6/TransferControlRequestPdu.cpp
-    dis6/TransmitterPdu.cpp
-    dis6/TwoByteChunk.cpp
-    dis6/UaPdu.cpp
-    dis6/VariableDatum.cpp
-    dis6/Vector3Double.cpp
-    dis6/Vector3Float.cpp
-    dis6/VectoringNozzleSystemData.cpp
-    dis6/WarfareFamilyPdu.cpp
-)
 
-set(DIS6_UTIL_SRC
-    utils/Conversion.cpp
-    utils/IncomingMessage.cpp
-    utils/PacketFactory.cpp
-    utils/PDUBank.cpp
-    utils/PduFactory.cpp
-    utils/StreamUtils.cpp
-)
-set(DIS_UTIL_COMMON
-    utils/DataStream.cpp
-)
+
+
+# set(DIS_UTIL_COMMON
+#     utils/DataStream.cpp
+# )
 # Define ExampleSender Executable
 add_library(OpenDIS6 SHARED
-    ${DIS6_SOURCES}
-    ${DIS6_UTIL_SRC}
-    ${DIS_UTIL_COMMON}
+    # ${DIS6_UTIL_SRC}
+    # ${DIS_UTIL_COMMON}
 )
+
 # Add src/ to the include directories to OpenDIS6
 target_include_directories(OpenDIS6 PUBLIC
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
-  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/dis6>
 )
 # Add compile definition EXPORT_LIBRARY for DIS6 msLibMacro.h
 target_compile_definitions(OpenDIS6 PRIVATE EXPORT_LIBRARY)
 
-set(DIS7_SOURCES
-    dis7/AcknowledgePdu.cpp
-    dis7/AcknowledgeReliablePdu.cpp
-    dis7/AcousticEmitter.cpp
-    dis7/ActionRequestPdu.cpp
-    dis7/ActionRequestReliablePdu.cpp
-    dis7/ActionResponsePdu.cpp
-    dis7/ActionResponseReliablePdu.cpp
-    dis7/AggregateIdentifier.cpp
-    dis7/AggregateMarking.cpp
-    dis7/AggregateType.cpp
-    dis7/AngleDeception.cpp
-    dis7/AngularVelocityVector.cpp
-    dis7/AntennaLocation.cpp
-    dis7/ArealObjectStatePdu.cpp
-    dis7/ArticulatedParts.cpp
-    dis7/Association.cpp
-    dis7/AttachedParts.cpp
-    dis7/Attribute.cpp
-    dis7/AttributePdu.cpp
-    dis7/BeamAntennaPattern.cpp
-    dis7/BeamData.cpp
-    dis7/BeamStatus.cpp
-    dis7/BlankingSector.cpp
-    dis7/ChangeOptions.cpp
-    dis7/ClockTime.cpp
-    dis7/CollisionElasticPdu.cpp
-    dis7/CollisionPdu.cpp
-    dis7/CommentPdu.cpp
-    dis7/CommentReliablePdu.cpp
-    dis7/CommunicationsNodeID.cpp
-    dis7/CreateEntityPdu.cpp
-    dis7/CreateEntityReliablePdu.cpp
-    dis7/DataPdu.cpp
-    dis7/DataQueryDatumSpecification.cpp
-    dis7/DataQueryPdu.cpp
-    dis7/DataQueryReliablePdu.cpp
-    dis7/DataReliablePdu.cpp
-    dis7/DatumSpecification.cpp
-    dis7/DeadReckoningParameters.cpp
-    dis7/DesignatorPdu.cpp
-    dis7/DetonationPdu.cpp
-    dis7/DirectedEnergyAreaAimpoint.cpp
-    dis7/DirectedEnergyDamage.cpp
-    dis7/DirectedEnergyFirePdu.cpp
-    dis7/DirectedEnergyPrecisionAimpoint.cpp
-    dis7/DirectedEnergyTargetEnergyDeposition.cpp
-    dis7/DistributedEmissionsFamilyPdu.cpp
-    dis7/EEFundamentalParameterData.cpp
-    dis7/EightByteChunk.cpp
-    dis7/ElectromagneticEmissionsPdu.cpp
-    dis7/EmitterSystem.cpp
-    dis7/EngineFuel.cpp
-    dis7/EngineFuelReload.cpp
-    dis7/EntityAssociation.cpp
-    dis7/EntityDamageStatusPdu.cpp
-    dis7/EntityID.cpp
-    dis7/EntityInformationFamilyPdu.cpp
-    dis7/EntityManagementFamilyPdu.cpp
-    dis7/EntityMarking.cpp
-    dis7/EntityStatePdu.cpp
-    dis7/EntityStateUpdatePdu.cpp
-    dis7/EntityType.cpp
-    dis7/EntityTypeVP.cpp
-    dis7/Environment.cpp
-    dis7/EnvironmentGeneral.cpp
-    dis7/EnvironmentType.cpp
-    dis7/EulerAngles.cpp
-    dis7/EventIdentifier.cpp
-    dis7/EventIdentifierLiveEntity.cpp
-    dis7/EventReportPdu.cpp
-    dis7/EventReportReliablePdu.cpp
-    dis7/Expendable.cpp
-    dis7/ExpendableDescriptor.cpp
-    dis7/ExpendableReload.cpp
-    dis7/ExplosionDescriptor.cpp
-    dis7/FalseTargetsAttribute.cpp
-    dis7/FastEntityStatePdu.cpp
-    dis7/FirePdu.cpp
-    dis7/FixedDatum.cpp
-    dis7/FourByteChunk.cpp
-    dis7/FundamentalOperationalData.cpp
-    dis7/GridAxis.cpp
-    dis7/GroupIdentifier.cpp
-    dis7/IffDataSpecification.cpp
-    dis7/IFFFundamentalParameterData.cpp
-    dis7/IntercomCommunicationsParameters.cpp
-    dis7/IntercomIdentifier.cpp
-    dis7/IntercomSignalPdu.cpp
-    dis7/IOCommunicationsNode.cpp
-    dis7/IOEffect.cpp
-    dis7/IsPartOfPdu.cpp
-    dis7/JammingTechnique.cpp
-    dis7/LaunchedMunitionRecord.cpp
-    dis7/LayerHeader.cpp
-    dis7/LinearObjectStatePdu.cpp
-    dis7/LinearSegmentParameter.cpp
-    dis7/LiveEntityIdentifier.cpp
-    dis7/LiveEntityPdu.cpp
-    dis7/LiveSimulationAddress.cpp
-    dis7/LogisticsFamilyPdu.cpp
-    dis7/MineEntityIdentifier.cpp
-    dis7/MinefieldFamilyPdu.cpp
-    dis7/MinefieldIdentifier.cpp
-    dis7/MinefieldResponseNackPdu.cpp
-    dis7/MinefieldStatePdu.cpp
-    dis7/ModulationParameters.cpp
-    dis7/ModulationType.cpp
-    dis7/Munition.cpp
-    dis7/MunitionDescriptor.cpp
-    dis7/MunitionReload.cpp
-    dis7/NamedLocationIdentification.cpp
-    dis7/ObjectIdentifier.cpp
-    dis7/ObjectType.cpp
-    dis7/OneByteChunk.cpp
-    dis7/OwnershipStatus.cpp
-    dis7/PduContainer.cpp
-    dis7/Pdu.cpp
-    dis7/PduHeader.cpp
-    dis7/PduStatus.cpp
-    dis7/PduSuperclass.cpp
-    dis7/PointObjectStatePdu.cpp
-    dis7/PropulsionSystemData.cpp
-    dis7/RadioCommunicationsFamilyPdu.cpp
-    dis7/RadioIdentifier.cpp
-    dis7/RadioType.cpp
-    dis7/ReceiverPdu.cpp
-    dis7/RecordQueryReliablePdu.cpp
-    dis7/RecordQuerySpecification.cpp
-    dis7/RecordSpecification.cpp
-    dis7/RecordSpecificationElement.cpp
-    dis7/Relationship.cpp
-    dis7/RemoveEntityPdu.cpp
-    dis7/RemoveEntityReliablePdu.cpp
-    dis7/RepairCompletePdu.cpp
-    dis7/RepairResponsePdu.cpp
-    dis7/ResupplyOfferPdu.cpp
-    dis7/ResupplyReceivedPdu.cpp
-    dis7/SecondaryOperationalData.cpp
-    dis7/SeesPdu.cpp
-    dis7/Sensor.cpp
-    dis7/SeparationVP.cpp
-    dis7/ServiceRequestPdu.cpp
-    dis7/SetDataPdu.cpp
-    dis7/SetDataReliablePdu.cpp
-    dis7/SimulationAddress.cpp
-    dis7/SimulationIdentifier.cpp
-    dis7/SimulationManagementFamilyPdu.cpp
-    dis7/SimulationManagementPduHeader.cpp
-    dis7/SimulationManagementWithReliabilityFamilyPdu.cpp
-    dis7/StandardVariableSpecification.cpp
-    dis7/StartResumePdu.cpp
-    dis7/StartResumeReliablePdu.cpp
-    dis7/StopFreezePdu.cpp
-    dis7/StopFreezeReliablePdu.cpp
-    dis7/StorageFuel.cpp
-    dis7/StorageFuelReload.cpp
-    dis7/SupplyQuantity.cpp
-    dis7/SyntheticEnvironmentFamilyPdu.cpp
-    dis7/SystemIdentifier.cpp
-    dis7/TotalRecordSets.cpp
-    dis7/TrackJamData.cpp
-    dis7/TwoByteChunk.cpp
-    dis7/UAFundamentalParameter.cpp
-    dis7/UaPdu.cpp
-    dis7/UnattachedIdentifier.cpp
-    dis7/UnsignedDISInteger.cpp
-    dis7/VariableDatum.cpp
-    dis7/VariableParameter.cpp
-    dis7/VariableTransmitterParameters.cpp
-    dis7/Vector2Float.cpp
-    dis7/Vector3Double.cpp
-    dis7/Vector3Float.cpp
-    dis7/VectoringNozzleSystem.cpp
-    dis7/WarfareFamilyPdu.cpp
-)
+add_library(opendis::dis6 ALIAS OpenDIS6)
+
 
 # Define ExampleSender Executable
 add_library(OpenDIS7 SHARED ${DIS7_SOURCES} ${DIS_UTIL_COMMON})
+
 # Add src/ to the include directories to OpenDIS6
 target_include_directories(OpenDIS7 PUBLIC
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 # Add compile definition EXPORT_LIBRARY for DIS7 msLibMacro.h
 target_compile_definitions(OpenDIS7 PRIVATE EXPORT_LIBRARY)
+
+add_library(opendis::dis7 ALIAS OpenDIS7)
+
+# put these at the otherwise utils barfs because it has two targets
+add_subdirectory(utils)
+add_subdirectory(dis6)
+add_subdirectory(dis7)
