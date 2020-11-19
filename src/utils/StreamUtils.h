@@ -6,7 +6,7 @@
 #define _dis_stream_utils_h_
 
 #include <ostream>             // for parameter type
-#include <dis6/msLibMacro.h>       // for library symbols
+#include <common/msLibMacro.h>       // for library symbols
 
 namespace DIS
 {

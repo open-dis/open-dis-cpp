@@ -5,7 +5,7 @@
 #include <dis6/EntityID.h>
 #include <dis6/LogisticsFamilyPdu.h>
 #include <utils/DataStream.h>
-#include <dis6/msLibMacro.h>
+#include <common/msLibMacro.h>
 
 
 namespace DIS

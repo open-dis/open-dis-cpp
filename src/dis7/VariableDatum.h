@@ -2,7 +2,7 @@
 #define VARIABLEDATUM_H
 
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <common/msLibMacro.h>
 #include <dis7/EightByteChunk.h>
 #include <vector>
 

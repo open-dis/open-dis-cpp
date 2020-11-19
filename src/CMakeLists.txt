@@ -1,15 +1,20 @@
-# create list of DIS6 source files
 
+# Define the common interface library
+add_library(common_OpenDIS INTERFACE)
 
-
-# set(DIS_UTIL_COMMON
-#     utils/DataStream.cpp
-# )
-# Define ExampleSender Executable
-add_library(OpenDIS6 SHARED
-    # ${DIS6_UTIL_SRC}
-    # ${DIS_UTIL_COMMON}
+# Add src/ to the include directories to OpenDIS6
+target_include_directories(common_OpenDIS INTERFACE
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/common>
 )
+
+add_library(opendis::common ALIAS common_OpenDIS)
+
+# Define OpenDIS6 library
+add_library(OpenDIS6 SHARED 
+)
+
+target_link_libraries(OpenDIS6 opendis::common)
 
 # Add src/ to the include directories to OpenDIS6
 target_include_directories(OpenDIS6 PUBLIC
@@ -21,10 +26,10 @@ target_compile_definitions(OpenDIS6 PRIVATE EXPORT_LIBRARY)
 
 add_library(opendis::dis6 ALIAS OpenDIS6)
 
+# Define OpenDIS7 library
+add_library(OpenDIS7 SHARED)
 
-# Define ExampleSender Executable
-add_library(OpenDIS7 SHARED ${DIS7_SOURCES} ${DIS_UTIL_COMMON})
-
+target_link_libraries(OpenDIS7 opendis::common)
 # Add src/ to the include directories to OpenDIS6
 target_include_directories(OpenDIS7 PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>

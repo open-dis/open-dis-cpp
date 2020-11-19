@@ -1,6 +1,6 @@
 
 set(common_src
-  DataStream.cpp 
+  DataStream.cpp
 )
 
 target_sources(OpenDIS6

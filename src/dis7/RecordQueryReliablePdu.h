@@ -5,7 +5,7 @@
 #include <vector>
 #include <dis7/SimulationManagementWithReliabilityFamilyPdu.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <common/msLibMacro.h>
 
 
 namespace DIS

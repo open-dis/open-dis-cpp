@@ -3,7 +3,7 @@
 
 #include <dis6/Orientation.h>
 #include <utils/DataStream.h>
-#include <dis6/msLibMacro.h>
+#include <common/msLibMacro.h>
 
 
 namespace DIS

@@ -11,7 +11,7 @@
 #include <vector>
 #include <dis6/SyntheticEnvironmentFamilyPdu.h>
 #include <utils/DataStream.h>
-#include <dis6/msLibMacro.h>
+#include <common/msLibMacro.h>
 
 
 namespace DIS

@@ -13,7 +13,7 @@
 int main(int argc, char* argv[])
 {
    unsigned int port(62040);
-   std::string ip("127.0.0.1");
+   std::string ip("224.0.0.1");
    if( argc > 2 )
    {
       port = Example::ToType<unsigned int>( argv[1] );

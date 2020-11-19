@@ -6,7 +6,7 @@
 #include <dis7/EventIdentifier.h>
 #include <dis7/Vector3Double.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <common/msLibMacro.h>
 
 
 namespace DIS

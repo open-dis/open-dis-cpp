@@ -2,7 +2,7 @@
 #define RECORDSPECIFICATIONELEMENT_H
 
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <common/msLibMacro.h>
 
 
 namespace DIS

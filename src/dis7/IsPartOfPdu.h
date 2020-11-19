@@ -9,7 +9,7 @@
 #include <dis7/EntityType.h>
 #include <dis7/EntityManagementFamilyPdu.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <common/msLibMacro.h>
 
 
 namespace DIS

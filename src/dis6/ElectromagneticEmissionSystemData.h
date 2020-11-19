@@ -6,7 +6,7 @@
 #include <dis6/ElectromagneticEmissionBeamData.h>
 #include <vector>
 #include <utils/DataStream.h>
-#include <dis6/msLibMacro.h>
+#include <common/msLibMacro.h>
 
 
 namespace DIS

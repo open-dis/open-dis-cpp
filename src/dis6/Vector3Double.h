@@ -2,7 +2,7 @@
 #define VECTOR3DOUBLE_H
 
 #include <utils/DataStream.h>
-#include <dis6/msLibMacro.h>
+#include <common/msLibMacro.h>
 
 
 namespace DIS
