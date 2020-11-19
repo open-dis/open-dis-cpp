@@ -25,25 +25,27 @@ else()
 endif()
 set(OpenDIS_INSTALL_CMAKE_DIR ${DEF_INSTALL_CMAKE_DIR} CACHE PATH "Installation path for OpenDIS CMake files")
 
-# configure optimization
-if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-    set(OPTIMIZATION_FLAGS "-O0 -DDEBUG")
-    message("-- Configuring debug build")
-else()
-    set(OPTIMIZATION_FLAGS "-O3 -DNDEBUG")
-    message("-- Configuring release build")
-endif()
+if ( NOT MSVC)
+  # configure optimization
+  if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+      set(OPTIMIZATION_FLAGS "-O0 -DDEBUG")
+      message("-- Configuring debug build")
+  else()
+      set(OPTIMIZATION_FLAGS "-O3 -DNDEBUG")
+      message("-- Configuring release build")
+  endif()
 
-set(DESIRED_WARNINGS "-Wall -Wextra -Wconversion -Wunreachable-code -Wuninitialized -pedantic-errors -Wold-style-cast -Wno-error=unused-variable -Wshadow -Wfloat-equal -Weffc++")
-if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-  set(DESIRED_WARNINGS "${DESIRED_WARNINGS} -Wmost")
-endif()
+  set(DESIRED_WARNINGS "-Wall -Wextra -Wconversion -Wunreachable-code -Wuninitialized -pedantic-errors -Wold-style-cast -Wno-error=unused-variable -Wshadow -Wfloat-equal -Weffc++")
+  if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    set(DESIRED_WARNINGS "${DESIRED_WARNINGS} -Wmost")
+  endif()
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OPTIMIZATION_FLAGS}")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OPTIMIZATION_FLAGS}")
 
-if (WERROR)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
-endif()
+  if (WERROR)
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+  endif()
+endif( NOT MSVC)
 
 # Add libraries
 add_subdirectory(src)
