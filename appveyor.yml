@@ -18,5 +18,5 @@ build:
   project: OpenDIS.sln
 
 before_build:
-  - cmake -DSDL_LIB_DIR=C:\SDL2\lib\x64 -DSDL_INC_DIR=C:\SDL2\include .
+  - cmake -DSDL2_PATH=C:\SDL2\lib\x64 -DSDL2_INCLUDE_DIR=C:\SDL2\include -DSDL2_NET_PATH=C:\SDL2\lib\x64 -DSDL2_NET_INCLUDE_DIR=C:\SDL2\include .
   - dir
