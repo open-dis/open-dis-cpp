@@ -13,7 +13,7 @@ find_package(SDL2_net REQUIRED)
 # Define common library
 add_library(example_common SHARED)
 # Link OpenDIS into ExampleSender
-target_link_libraries(example_common PUBLIC SDL2::Main SDL2::Net)
+target_link_libraries(example_common PUBLIC ${SDL2_LIBRARIES} ${SDL_NET_LIBRARIES})
 target_include_directories(example_common PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/common>
   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
