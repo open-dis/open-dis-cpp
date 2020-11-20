@@ -8,8 +8,6 @@ install:
   - move C:\SDL2-2.0.12 C:\SDL2
   - 7z x C:\SDL2_net.zip -oC:\ -y  
   - move C:\SDL2_net-2.0.1 C:\SDL2_net
-  - xcopy /s C:\SDL2_net\lib C:\SDL2\lib
-  - xcopy /s C:\SDL2_net\include C:\SDL2\include
   - dir /s C:\SDL2
 
 platform: x64
@@ -18,5 +16,5 @@ build:
   project: OpenDIS.sln
 
 before_build:
-  - cmake -DSDL2_PATH=C:\SDL2\lib\x64 -DSDL2_INCLUDE_DIR=C:\SDL2\include -DSDL2_NET_PATH=C:\SDL2\lib\x64 -DSDL2_NET_INCLUDE_DIR=C:\SDL2\include .
+  - cmake -DSDL2_PATH=C:\SDL2\lib\x64 -DSDL2_INCLUDE_DIR=C:\SDL2\include -DSDL2_NET_PATH=C:\SDL2_net\lib\x64 -DSDL2_NET_INCLUDE_DIR=C:\SDL2_net\include .
   - dir
