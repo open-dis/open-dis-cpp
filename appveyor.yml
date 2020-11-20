@@ -9,6 +9,7 @@ install:
   - 7z x C:\SDL2_net.zip -oC:\ -y  
   - move C:\SDL2_net-2.0.1 C:\SDL2_net
   - dir /s C:\SDL2
+  - dir /s C:\SDL2_net
 
 platform: x64
 
