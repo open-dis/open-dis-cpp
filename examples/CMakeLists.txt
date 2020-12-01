@@ -10,8 +10,18 @@ endif (WIN32)
 find_package(SDL2 REQUIRED)
 find_package(SDL2_net REQUIRED)
 
-# Define common library
-add_library(example_common SHARED)
+option(examples_enable_shared "Enable shared libraries for the OpenDIS examples" OFF)
+
+if (examples_enable_shared)
+  if(WIN32)
+    set(WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
+  endif()
+  set(common_shared SHARED)
+else ()
+  set(common_shared STATIC)
+endif()
+# Define common library either shared or 
+add_library(example_common ${common_shared})
 # Link OpenDIS into ExampleSender
 target_link_libraries(example_common PUBLIC ${SDL2_LIBRARIES} ${SDL2_NET_LIBRARIES})
 target_include_directories(example_common PUBLIC
