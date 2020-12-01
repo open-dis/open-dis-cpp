@@ -322,7 +322,10 @@ if(SDL2MAIN_LIBRARY)
   FIND_PACKAGE_HANDLE_STANDARD_ARGS(SDL2main
                                     REQUIRED_VARS SDL2MAIN_LIBRARY SDL2_INCLUDE_DIR
                                     VERSION_VAR SDL2_VERSION_STRING
-                                    NAME_MISMATCHED)
+  # newer versions of CMake(3.17.5+) provide a NAME_MISMATCHED flag that suppresses a
+  # warning about the mismatched names, uncomment next line to hide warning
+                                    # NAME_MISMATCHED
+                                    )
 endif()
 
 
