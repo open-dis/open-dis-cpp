@@ -8,7 +8,7 @@ namespace DIS
 {
     /// houses instances for the set of known PDU classes to be returned
     /// when provided with the PDU type's identifier value.
-    class PduBank
+    class EXPORT_MACRO PduBank
     {
     public:
         /// finds the PDU instance corresponding to the identifier
