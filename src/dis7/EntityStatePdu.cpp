@@ -279,7 +279,7 @@ int EntityStatePdu::getMarshalledSize() const
    marshalSize = EntityInformationFamilyPdu::getMarshalledSize();
    marshalSize = marshalSize + _entityID.getMarshalledSize();  // _entityID
    marshalSize = marshalSize + 1;  // _forceId
-   marshalSize = marshalSize + _variableParameters.size();  // _numberOfVariableParameters
+   marshalSize = marshalSize + 1;  // _numberOfVariableParameters
    marshalSize = marshalSize + _entityType.getMarshalledSize();  // _entityType
    marshalSize = marshalSize + _alternativeEntityType.getMarshalledSize();  // _alternativeEntityType
    marshalSize = marshalSize + _entityLinearVelocity.getMarshalledSize();  // _entityLinearVelocity
