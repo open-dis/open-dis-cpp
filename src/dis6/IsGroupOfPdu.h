@@ -6,7 +6,7 @@
 #include <vector>
 #include <dis6/EntityManagementFamilyPdu.h>
 #include <utils/DataStream.h>
-#include <dis6/msLibMacro.h>
+#include <common/msLibMacro.h>
 
 
 namespace DIS

@@ -9,7 +9,7 @@
 #include <utils/IPduBank.h> 
 #include <map>                      // for member
 #include <utils/Endian.h>             // for internal type
-#include <dis6/msLibMacro.h>         // for library symbols
+#include <common/msLibMacro.h>         // for library symbols
 #include <utils/PDUType.h>
 
 namespace DIS

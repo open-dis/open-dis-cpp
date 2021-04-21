@@ -14,8 +14,7 @@ namespace Example
    const unsigned int MTU_SIZE = 1500;
 
    /// makes a multicast connection to support DIS networks.
-   /// requires the HawkNL socket library.
-   /// http://www.hawksoft.com/hawknl/
+
    class Connection
    {
    public:

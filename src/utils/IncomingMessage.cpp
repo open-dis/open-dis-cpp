@@ -1,11 +1,11 @@
 #include <utils/IncomingMessage.h>
 #include <utils/IPacketProcessor.h>
-#include <dis6/Pdu.h>
+// #include <dis6/Pdu.h>
 #include <utils/DataStream.h>
 #include <utils/PDUBank.h>
 #include <iostream>
 
-#include <dis6/EntityStatePdu.h>
+// #include <dis6/EntityStatePdu.h>
 
 #include <iostream>
 

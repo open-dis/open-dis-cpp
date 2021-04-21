@@ -2,7 +2,7 @@
 #define VARIABLEDATUM_H
 
 #include <utils/DataStream.h>
-#include <dis6/msLibMacro.h>
+#include <common/msLibMacro.h>
 #include <vector>
 
 // length in bytes for the variable data. This should be a dynamically allocated array.

@@ -4,7 +4,7 @@
 #include <dis7/Vector3Double.h>
 #include <dis7/Vector3Float.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <common/msLibMacro.h>
 
 
 namespace DIS

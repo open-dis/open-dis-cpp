@@ -1,174 +1,97 @@
-cmake_minimum_required(VERSION 3.2)
-project(OpenDIS)
+cmake_minimum_required(VERSION 3.14)
 
-## Libraries
-
-
-# create list of DIS6 source files
-file(GLOB DIS6_SOURCES
-  "src/dis6/*.cpp"
-  "src/utils/*.cpp"
-)
-# Define ExampleSender Executable
-add_library(OpenDIS6 SHARED ${DIS6_SOURCES})
-# Add src/ to the include directories to OpenDIS6
-target_include_directories(OpenDIS6 PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src> $<INSTALL_INTERFACE:> )
-# Add compile definition EXPORT_LIBRARY for DIS6 msLibMacro.h
-target_compile_definitions(OpenDIS6 PRIVATE EXPORT_LIBRARY)
-
-# create list of DIS7 source files
-file(GLOB DIS7_SOURCES
-  "src/dis7/*.cpp"
-  "src/utils/DataStream.cpp"
-)
-# Define ExampleSender Executable
-add_library(OpenDIS7 SHARED ${DIS7_SOURCES})
-# Add src/ to the include directories to OpenDIS6
-target_include_directories(OpenDIS7 PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src> $<INSTALL_INTERFACE:> )
-# Add compile definition EXPORT_LIBRARY for DIS7 msLibMacro.h
-target_compile_definitions(OpenDIS7 PRIVATE EXPORT_LIBRARY)
-
-
-## Example Programs
-include_directories(.)
-
-# if Windows add M_PI definition
-# - issues occurred during testing in Visual Studio
-if (WIN32)
-  add_definitions(/DM_PI=3.14159265358979323846)
-endif (WIN32)
-
-# create list of ExampleSender source files
-file(GLOB EX_SENDER_SOURCES
-  "examples/main.cpp"
-  "examples/Connection.cpp"
-  "examples/Utils.cpp"
-  "examples/Timer.cpp"
+project(OpenDIS
+        VERSION 0.1.0
+        LANGUAGES CXX
 )
 
-if(WIN32)
-       set(SDL_LIBS SDL2main SDL2 SDL2_net)
-else(WIN32)
-       set(SDL_LIBS SDL2 SDL2_net)
-endif(WIN32)
+# add module path for finding packages
+set(OpenDIS_cmake_dir "${OpenDIS_SOURCE_DIR}/cmake")
+list(INSERT CMAKE_MODULE_PATH 0 "${OpenDIS_cmake_dir}")
+      
+set(CMAKE_CXX_STANDARD_REQUIRED on)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# Define ExampleSender Executable
-add_executable(ExampleSender ${EX_SENDER_SOURCES})
-# Link OpenDIS into ExampleSender
-target_link_libraries(ExampleSender PRIVATE OpenDIS6)
-target_link_libraries(ExampleSender PRIVATE ${SDL_LIBS})
-# add src to ExampleSender include directories
-target_include_directories(ExampleSender PRIVATE src)
+option(WERROR "Add -Werror flag to build (turns warnings into errors)" ON)
+# Default options
+option(OpenDIS_ENABLE_EXAMPLES "Enable the examples for OpenDIS" ON)
+set(OpenDIS_INSTALL_EXAMPLES OFF CACHE BOOL "Install the examples if they are built")
 
-# create list of ExampleReceiver source files
-file(GLOB EX_RECEIVER_SOURCES
-  "examples/main_receive.cpp"
-  "examples/Connection.cpp"
-  "examples/Utils.cpp"
-  "examples/Timer.cpp"
-  "examples/EntityStatePduProcessor.cpp"
-)
+if ((NOT OpenDIS_ENABLE_EXAMPLES) AND (OpenDIS_INSTALL_EXAMPLES) )
+  message("don't install the examples unless you built them")
+  unset(OpenDIS_INSTALL_EXAMPLES CACHE )
+  set(OpenDIS_INSTALL_EXAMPLES OFF CACHE BOOL "Install the examples if they are built")
+endif()
 
-# Define ExampleReceiver Executable
-add_executable(ExampleReceiver ${EX_RECEIVER_SOURCES})
-# Link OpenDIS into ExampleReceiver
-target_link_libraries(ExampleReceiver PRIVATE OpenDIS6)
-target_link_libraries(ExampleReceiver PRIVATE ${SDL_LIBS})
-# add src to ExampleSender include directories
-target_include_directories(ExampleReceiver PRIVATE src)
+# set the default standard to 98
+set(OpenDIS_CXX_STANDARD CACHE STRING "98")
 
-# Configuring SDL2
-#--------------------------------------------------------------------------------------
+set(CMAKE_CXX_STANDARD ${OpenDIS_CXX_STANDARD})
+# Set CMake Install directories for OpenDIS
+set(OpenDIS_INSTALL_LIB_DIR lib CACHE PATH "Installation path for OpenDIS library files")
+set(OpenDIS_INSTALL_BIN_DIR bin CACHE PATH "Installation path for OpenDIS binary files")
+set(OpenDIS_INSTALL_INCLUDE_DIR include/ CACHE PATH "Installation path for header files")
+if(WIN32 AND NOT CYGWIN)
+  set(DEF_INSTALL_CMAKE_DIR CMake)
+else()
+  set(DEF_INSTALL_CMAKE_DIR lib/CMake/OpenDIS)
+endif()
+set(OpenDIS_INSTALL_CMAKE_DIR ${DEF_INSTALL_CMAKE_DIR} CACHE PATH "Installation path for OpenDIS CMake files")
 
-# If SDL_INC_DIR declared (by user via -D flag)
-if(SDL_INC_DIR)
-  # Inform the user we will use the their specified SDL_INC_DIR
-  message("Using SDL2 include directory defined with -DSDL_INC_DIR")
-  message("\tvalue: ${SDL_INC_DIR}")
-  # Add SDL_INC_DIR to the include directories for both exampe apps
-  target_include_directories(ExampleSender PUBLIC ${SDL_INC_DIR})
-  target_include_directories(ExampleReceiver PUBLIC ${SDL_INC_DIR})
-else(SDL_INC_DIR)
-  # Otherwise, try get SDL2 Compiler Flags from sdl2-config
-  execute_process(
-    COMMAND sdl2-config --cflags
-    RESULT_VARIABLE SDL_CERR
-    OUTPUT_VARIABLE SDL_CFLAGS
-    OUTPUT_STRIP_TRAILING_WHITESPACE
-  )
-  # if sdl2-config errors
-  if(SDL_CERR)
-    # warn user that they may have to define the SDL2 include
-    #  directory with the -DSDL_INC_DIR flag
-    # Most linux systems will probably be fine
-    message(WARNING "Unable to detect SDL2 include flags")
-    message("You may need to specify the SDL include manually")
-    message(" with -DSDL_INC_DIR=<SDL2 include path>")
-  else(SDL_CERR)
-    # otherwise split the output of sdl2-config and add to compiler flags to examples
-    if(WIN32)
-      separate_arguments(SDL_CFLAGS UNIX_COMMAND "${SDL_CFLAGS}")
-    else(WIN32)
-      separate_arguments(SDL_CFLAGS WINDOWS_COMMAND "${SDL_CFLAGS}")
-    endif(WIN32)
-    target_compile_options(ExampleSender PRIVATE "${SDL_CFLAGS}")
-    target_compile_options(ExampleReceiver PRIVATE "${SDL_CFLAGS}")
-  endif(SDL_CERR)
-endif(SDL_INC_DIR)
+if ( NOT MSVC)
+  # configure optimization
+  if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+      set(OPTIMIZATION_FLAGS "-O0 -DDEBUG")
+      message("-- Configuring debug build")
+  else()
+      set(OPTIMIZATION_FLAGS "-O3 -DNDEBUG")
+      message("-- Configuring release build")
+  endif()
 
-# If SDL_LIB_DIR declared (by user via -D flag)
-if(SDL_LIB_DIR)
-  message("Using SDL2 include directory defined with -DSDL_LIB_DIR")
-  message("\tvalue: ${SDL_LIB_DIR}")
-  target_link_directories(ExampleSender PUBLIC ${SDL_LIB_DIR})
-  target_link_directories(ExampleReceiver PUBLIC ${SDL_LIB_DIR})
-else(SDL_LIB_DIR)
-  # Otherwise, try get SDL2 Library Flags from sdl2-config
-  execute_process(
-    COMMAND sdl2-config --libs
-    RESULT_VARIABLE SDL_LERR
-    OUTPUT_VARIABLE SDL_LFLAGS
-    OUTPUT_STRIP_TRAILING_WHITESPACE
-  )
-  # if sdl2-config errors
-  if(SDL_LERR)
-    # warn user that they may have to define the SDL2 include
-    #  directory with the -DSDL_LIB_DIR flag
-    # Most linux systems will probably be fine
-    message(WARNING "Unable to detect SDL2 library flags using defaults")
-    message("You may need to specify the SDL library manually with")
-    message(" -DSDL_LIB_DIR=<SDL2 include path>, especially for Windows users")
-  else(SDL_LERR)
-    # otherwise split the output of sdl2-config and add to library flags to examples
-    if(WIN32)
-      separate_arguments(SDL_LFLAGS UNIX_COMMAND "${SDL_LFLAGS}")
-    else(WIN32)
-      separate_arguments(SDL_LFLAGS WINDOWS_COMMAND "${SDL_LFLAGS}")
-    endif(WIN32)
-    target_link_libraries(ExampleSender PRIVATE "${SDL_LFLAGS}")
-    target_link_libraries(ExampleReceiver PRIVATE "${SDL_LFLAGS}")
-  endif(SDL_LERR)
-endif(SDL_LIB_DIR)
+  set(DESIRED_WARNINGS "-Wall -Wextra -Wconversion -Wunreachable-code -Wuninitialized -pedantic-errors -Wold-style-cast -Wno-error=unused-variable -Wshadow -Wfloat-equal -Weffc++")
+  if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    set(DESIRED_WARNINGS "${DESIRED_WARNINGS} -Wmost")
+  endif()
+
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OPTIMIZATION_FLAGS}")
+
+  if (WERROR)
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+  endif()
+endif( NOT MSVC)
+
+# Add libraries
+add_subdirectory(src)
+
+
+if (OpenDIS_ENABLE_EXAMPLES)
+  add_subdirectory("examples")
+endif (OpenDIS_ENABLE_EXAMPLES)
+
 
 #--------------------------------------------------------------------------------------
 
 # include GNUInstallDirs Module to get more generic directory handling
 include(GNUInstallDirs)
-IF(NOT DEFINED LIBDIR)
-  set(LIBDIR "lib")   # Was not defined on Travis CI
-ENDIF(NOT DEFINED LIBDIR)
 # Configure install target (i.e. what files to install)
-install(TARGETS OpenDIS6 EXPORT OpenDIS6Config DESTINATION "${LIBDIR}")
-install(EXPORT OpenDIS6Config DESTINATION "lib/cmake/OpenDIS6")
-install(TARGETS OpenDIS7 EXPORT OpenDIS7Config DESTINATION "${LIBDIR}")
-install(EXPORT OpenDIS7Config DESTINATION "lib/cmake/OpenDIS7")
-install(TARGETS ExampleReceiver ExampleSender DESTINATION "bin")
+install(TARGETS common_OpenDIS OpenDIS6 EXPORT OpenDIS6Config DESTINATION "${OpenDIS_INSTALL_LIB_DIR}")
+install(EXPORT OpenDIS6Config DESTINATION "${OpenDIS_INSTALL_LIB_DIR}/cmake/OpenDIS6")
+install(TARGETS common_OpenDIS OpenDIS7 EXPORT OpenDIS7Config DESTINATION "${OpenDIS_INSTALL_LIB_DIR}")
+install(EXPORT OpenDIS7Config DESTINATION "${OpenDIS_INSTALL_LIB_DIR}/cmake/OpenDIS7")
+
+if (OpenDIS_INSTALL_EXAMPLES)
+  install(TARGETS ExampleReceiver ExampleSender DESTINATION "${OpenDIS_INSTALL_BIN_DIR}")
+endif()
+
 install(DIRECTORY src/ DESTINATION "include"
         FILES_MATCHING PATTERN "*.h"
 )
 
 # configure package target (i.e. Package Types, and meta data)
-set(CPACK_GENERATOR "DEB" "RPM" "TXZ" "TGZ")
+set(OpenDIS_CPACK_GENERATOR "DEB" CACHE STRING "Package type to output. ( DEB, RPM, TGZ, etc. See CPack Manual for all options) ")
+set_property(CACHE OpenDIS_CPACK_GENERATOR PROPERTY STRINGS DEB RPM TXZ TGZ)
+
+set(CPACK_GENERATOR ${OpenDIS_CPACK_GENERATOR})
 set(CPACK_PACKAGE_VERSION 1.0.0)
 set(CPACK_PACKAGE_NAME "OpenDis")
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "The open DIS cpp library")

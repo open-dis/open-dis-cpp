@@ -9,7 +9,7 @@
 #include <vector>
 #include <dis7/EntityInformationFamilyPdu.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <common/msLibMacro.h>
 
 
 namespace DIS
