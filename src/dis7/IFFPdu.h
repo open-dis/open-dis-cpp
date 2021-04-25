@@ -1,5 +1,4 @@
-#ifndef IFFPDU_H
-#define IFFPDU_H
+#pragma once
 
 #include <dis7/EntityID.h>
 #include <dis7/EventIdentifier.h>
@@ -112,4 +111,3 @@ virtual int getMarshalledSize() const;
 };
 }
 
-#endif

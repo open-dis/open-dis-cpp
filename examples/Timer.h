@@ -1,5 +1,4 @@
-#ifndef _example_timer_h_
-#define _example_timer_h_
+#pragma once
 
 #include <SDL.h>
 #include <SDL_timer.h>
@@ -21,4 +20,3 @@ namespace Example
    };
 }
 
-#endif  // _example_timer_h_

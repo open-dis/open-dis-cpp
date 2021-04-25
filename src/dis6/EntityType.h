@@ -1,5 +1,4 @@
-#ifndef ENTITYTYPE_H
-#define ENTITYTYPE_H
+#pragma once
 
 #include <utils/DataStream.h>
 #include <dis6/msLibMacro.h>
@@ -72,7 +71,6 @@ virtual int getMarshalledSize() const;
 };
 }
 
-#endif
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
