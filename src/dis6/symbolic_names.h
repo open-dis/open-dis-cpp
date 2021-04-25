@@ -1,5 +1,4 @@
-#ifndef SYMBOLIC_NAMES_H_INCLUDED
-#define SYMBOLIC_NAMES_H_INCLUDED
+#pragma once_INCLUDED
 
 #include <dis6/EntityID.h>
 
@@ -93,4 +92,3 @@ const DIS::EntityID TARGET_ID_UNKNOWN(NO_SITE, NO_APPLIC, NO_ENTITY);
 */
 }
 
-#endif // SYMBOLIC_NAMES_H_INCLUDED

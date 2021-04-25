@@ -1,5 +1,4 @@
-#ifndef STORAGEFUELRELOAD_H
-#define STORAGEFUELRELOAD_H
+#pragma once
 
 #include <utils/DataStream.h>
 #include <dis7/msLibMacro.h>
@@ -79,7 +78,6 @@ virtual int getMarshalledSize() const;
 };
 }
 
-#endif
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions

@@ -1,5 +1,4 @@
-#ifndef _example_entity_state_pdu_processor_h_
-#define _example_entity_state_pdu_processor_h_
+#pragma once
 
 #include <dis6/EntityStatePdu.h>                  // for typedef
 #include <utils/IPacketProcessor.h>                // for base class
@@ -15,4 +14,3 @@ namespace Example
    };
 }
 
-#endif  // _example_entity_state_pdu_processor_h_

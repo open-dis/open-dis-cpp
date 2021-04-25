@@ -1,5 +1,4 @@
-#ifndef MINEFIELDPDUFAMILY_H
-#define MINEFIELDPDUFAMILY_H
+#pragma once
 
 #include <dis6/Pdu.h>
 #include <utils/DataStream.h>
@@ -34,4 +33,3 @@ virtual int getMarshalledSize() const;
 };
 }
 
-#endif

@@ -1,5 +1,4 @@
-#ifndef LINEARSEGMENTPARAMETER_H
-#define LINEARSEGMENTPARAMETER_H
+#pragma once
 
 #include <dis6/SixByteChunk.h>
 #include <dis6/Vector3Double.h>
@@ -91,7 +90,6 @@ virtual int getMarshalledSize() const;
 };
 }
 
-#endif
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions

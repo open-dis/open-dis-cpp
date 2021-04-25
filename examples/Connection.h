@@ -1,5 +1,4 @@
-#ifndef _example_dis_connection_h_
-#define _example_dis_connection_h_
+#pragma once
 
 #include <string>                        // for param
 #include <cstddef>                       // for size_t definition
@@ -38,4 +37,3 @@ namespace Example
    };
 }
 
-#endif  // _example_dis_connection_h_

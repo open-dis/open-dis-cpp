@@ -1,5 +1,4 @@
-#ifndef _example_utils_h_
-#define _example_utils_h_
+#pragma once
 
 #include <string>
 #include <sstream>
@@ -148,4 +147,3 @@ namespace Example
    }
 }
 
-#endif  // _example_utils_h_

@@ -1,5 +1,4 @@
-#ifndef _PDU_BANK_H_
-#define _PDU_BANK_H_
+#pragma once_
 
 #include <dis6/Pdu.h>
 #include <utils/PDUType.h>
@@ -19,5 +18,4 @@ namespace DIS
     };   
 }
 
-#endif // _PDU_BANK_H_
 

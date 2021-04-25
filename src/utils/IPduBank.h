@@ -1,5 +1,4 @@
-#ifndef _IPDU_BANK_H_
-#define _IPDU_BANK_H_
+#pragma once_
 
 #include <dis6/Pdu.h>
 #include <utils/DataStream.h>
@@ -20,5 +19,4 @@ namespace DIS
     };   
 }
 
-#endif // _IPDU_BANK_H_
 
