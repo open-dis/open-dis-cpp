@@ -157,7 +157,7 @@ void DataStream::DoRead(char* ch, size_t bufsize)
 {
    for(unsigned int i=0; i<bufsize; i++)
    {
-      ch[i] = _buffer.at([_read_pos+i);
+      ch[i] = _buffer.at(_read_pos+i);
    }
 }
 
