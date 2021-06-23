@@ -1,6 +1,5 @@
 #pragma once
 
-#include <dis7/ChangeOptions.h>
 #include <utils/DataStream.h>
 #include <dis7/msLibMacro.h>
 
@@ -26,7 +25,7 @@ protected:
   unsigned short _systemMode; 
 
   /** status of this PDU, see section 6.2.15 */
-  ChangeOptions _changeOptions; 
+  unsigned char _changeOptions;
 
 
  public:
@@ -45,9 +44,8 @@ protected:
     unsigned short getSystemMode() const; 
     void setSystemMode(unsigned short pX); 
 
-    ChangeOptions& getChangeOptions(); 
-    const ChangeOptions&  getChangeOptions() const; 
-    void setChangeOptions(const ChangeOptions    &pX);
+    unsigned char getChangeOptions() const;
+    void setChangeOptions(unsigned char pX);
 
 
 virtual int getMarshalledSize() const;
