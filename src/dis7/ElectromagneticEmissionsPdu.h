@@ -1,5 +1,8 @@
 #pragma once
 
+#include <dis7/EEFundamentalParameterData.h>
+#include <dis7/EEBeamData.h>
+#include <dis7/EmissionSystem.h>
 #include <dis7/EntityID.h>
 #include <dis7/EventIdentifier.h>
 #include <dis7/EmitterSystem.h>
@@ -40,19 +43,8 @@ protected:
   /**  this field shall specify the length of this emitter system's data in 32-bit words. */
   unsigned char _systemDataLength; 
 
-  /** the number of beams being described in the current PDU for the emitter system being described.  */
-  unsigned char _numberOfBeams; 
-
-  /**  information about a particular emitter system and shall be represented by an Emitter System record (see 6.2.23). */
-  EmitterSystem _emitterSystem; 
-
-  /** the location of the antenna beam source with respect to the emitting entity's coordinate system. This location shall be the origin of the emitter coordinate system that shall have the same orientation as the entity coordinate system. This field shall be represented by an Entity Coordinate Vector record see 6.2.95  */
-  Vector3Float _location; 
-
-  /** Electromagnetic emmissions systems THIS IS WRONG. It has the WRONG class type and will cause problems in any marshalling. */
-  std::vector<Vector3Float> _systems; 
-
-
+  std::vector<EmissionSystem> _systems;
+  
  public:
     ElectromagneticEmissionsPdu();
     virtual ~ElectromagneticEmissionsPdu();
@@ -79,20 +71,9 @@ protected:
     unsigned char getSystemDataLength() const; 
     void setSystemDataLength(unsigned char pX); 
 
-    unsigned char getNumberOfBeams() const; 
-    void setNumberOfBeams(unsigned char pX); 
-
-    EmitterSystem& getEmitterSystem(); 
-    const EmitterSystem&  getEmitterSystem() const; 
-    void setEmitterSystem(const EmitterSystem    &pX);
-
-    Vector3Float& getLocation(); 
-    const Vector3Float&  getLocation() const; 
-    void setLocation(const Vector3Float    &pX);
-
-    std::vector<Vector3Float>& getSystems(); 
-    const std::vector<Vector3Float>& getSystems() const; 
-    void setSystems(const std::vector<Vector3Float>&    pX);
+    std::vector<EmissionSystem>& getSystems();
+    const std::vector<EmissionSystem>& getSystems() const;
+    void setSystems(const std::vector<EmissionSystem>& pX);
 
 
 virtual int getMarshalledSize() const;
