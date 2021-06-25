@@ -48,6 +48,10 @@ protected:
     const Vector3Float&  getLocation() const; 
     void setLocation(const Vector3Float    &pX);
 
+    std::vector<EEBeamData>& getBeams();
+    const std::vector<EEBeamData>& getBeams() const;
+    void setBeams(const std::vector<EEBeamData>& pX);
+
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 

@@ -50,6 +50,21 @@ void EmissionSystem::setLocation(const Vector3Float &pX)
     _location = pX;
 }
 
+std::vector<EEBeamData>& DIS::EmissionSystem::getBeams()
+{
+    return _beams;
+}
+
+const std::vector<EEBeamData>& DIS::EmissionSystem::getBeams() const
+{
+    return _beams;
+}
+
+void DIS::EmissionSystem::setBeams(const std::vector<EEBeamData>& pX)
+{
+    _beams = pX;
+}
+
 void EmissionSystem::marshal(DataStream& dataStream) const
 {
     dataStream << ( unsigned char )_beams.size();;
