@@ -74,6 +74,21 @@ void ElectromagneticEmissionsPdu::setPaddingForEmissionsPdu(unsigned short pX)
     _paddingForEmissionsPdu = pX;
 }
 
+std::vector<ElectromagneticEmissionSystemData>& ElectromagneticEmissionsPdu::getSystems()
+{
+    return _systems;
+}
+
+const std::vector<ElectromagneticEmissionSystemData>& ElectromagneticEmissionsPdu::getSystems() const
+{
+    return _systems;
+}
+
+void ElectromagneticEmissionsPdu::setSystems(const std::vector<ElectromagneticEmissionSystemData>& pX)
+{
+    _systems = pX;
+}
+
 void ElectromagneticEmissionsPdu::marshal(DataStream& dataStream) const
 {
     DistributedEmissionsFamilyPdu::marshal(dataStream); // Marshal information in superclass first
