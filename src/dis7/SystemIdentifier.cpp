@@ -7,7 +7,7 @@ SystemIdentifier::SystemIdentifier():
    _systemType(0), 
    _systemName(0), 
    _systemMode(0), 
-   _changeOptions()
+   _changeOptions(0)
 {
 }
 
@@ -45,17 +45,12 @@ void SystemIdentifier::setSystemMode(unsigned short pX)
     _systemMode = pX;
 }
 
-ChangeOptions& SystemIdentifier::getChangeOptions() 
+unsigned char SystemIdentifier::getChangeOptions() const
 {
     return _changeOptions;
 }
 
-const ChangeOptions& SystemIdentifier::getChangeOptions() const
-{
-    return _changeOptions;
-}
-
-void SystemIdentifier::setChangeOptions(const ChangeOptions &pX)
+void SystemIdentifier::setChangeOptions(unsigned char pX)
 {
     _changeOptions = pX;
 }
@@ -65,7 +60,7 @@ void SystemIdentifier::marshal(DataStream& dataStream) const
     dataStream << _systemType;
     dataStream << _systemName;
     dataStream << _systemMode;
-    _changeOptions.marshal(dataStream);
+    dataStream << _changeOptions;
 }
 
 void SystemIdentifier::unmarshal(DataStream& dataStream)
@@ -73,7 +68,7 @@ void SystemIdentifier::unmarshal(DataStream& dataStream)
     dataStream >> _systemType;
     dataStream >> _systemName;
     dataStream >> _systemMode;
-    _changeOptions.unmarshal(dataStream);
+    dataStream >> _changeOptions;
 }
 
 
@@ -95,8 +90,8 @@ int SystemIdentifier::getMarshalledSize() const
 
    marshalSize = marshalSize + 2;  // _systemType
    marshalSize = marshalSize + 2;  // _systemName
-   marshalSize = marshalSize + 2;  // _systemMode
-   marshalSize = marshalSize + _changeOptions.getMarshalledSize();  // _changeOptions
+   marshalSize = marshalSize + 1;  // _systemMode
+   marshalSize = marshalSize + 1;  // _changeOptions
     return marshalSize;
 }
 
