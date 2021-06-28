@@ -8,11 +8,7 @@ ElectromagneticEmissionsPdu::ElectromagneticEmissionsPdu() : DistributedEmission
    _eventID(), 
    _stateUpdateIndicator(0), 
    _numberOfSystems(0), 
-   _paddingForEmissionsPdu(0), 
-   _systemDataLength(0), 
-   _numberOfBeams(0), 
-   _emitterSystem(), 
-   _location()
+   _paddingForEmissionsPdu(0)
 {
     setPduType( 23 );
     setPaddingForEmissionsPdu( 0 );
@@ -78,69 +74,19 @@ void ElectromagneticEmissionsPdu::setPaddingForEmissionsPdu(unsigned short pX)
     _paddingForEmissionsPdu = pX;
 }
 
-unsigned char ElectromagneticEmissionsPdu::getSystemDataLength() const
-{
-    return _systemDataLength;
-}
-
-void ElectromagneticEmissionsPdu::setSystemDataLength(unsigned char pX)
-{
-    _systemDataLength = pX;
-}
-
-unsigned char ElectromagneticEmissionsPdu::getNumberOfBeams() const
-{
-    return _numberOfBeams;
-}
-
-void ElectromagneticEmissionsPdu::setNumberOfBeams(unsigned char pX)
-{
-    _numberOfBeams = pX;
-}
-
-EmitterSystem& ElectromagneticEmissionsPdu::getEmitterSystem() 
-{
-    return _emitterSystem;
-}
-
-const EmitterSystem& ElectromagneticEmissionsPdu::getEmitterSystem() const
-{
-    return _emitterSystem;
-}
-
-void ElectromagneticEmissionsPdu::setEmitterSystem(const EmitterSystem &pX)
-{
-    _emitterSystem = pX;
-}
-
-Vector3Float& ElectromagneticEmissionsPdu::getLocation() 
-{
-    return _location;
-}
-
-const Vector3Float& ElectromagneticEmissionsPdu::getLocation() const
-{
-    return _location;
-}
-
-void ElectromagneticEmissionsPdu::setLocation(const Vector3Float &pX)
-{
-    _location = pX;
-}
-
-std::vector<Vector3Float>& ElectromagneticEmissionsPdu::getSystems() 
+std::vector<ElectromagneticEmissionSystemData>& ElectromagneticEmissionsPdu::getSystems()
 {
     return _systems;
 }
 
-const std::vector<Vector3Float>& ElectromagneticEmissionsPdu::getSystems() const
+const std::vector<ElectromagneticEmissionSystemData>& ElectromagneticEmissionsPdu::getSystems() const
 {
     return _systems;
 }
 
-void ElectromagneticEmissionsPdu::setSystems(const std::vector<Vector3Float>& pX)
+void ElectromagneticEmissionsPdu::setSystems(const std::vector<ElectromagneticEmissionSystemData>& pX)
 {
-     _systems = pX;
+    _systems = pX;
 }
 
 void ElectromagneticEmissionsPdu::marshal(DataStream& dataStream) const
@@ -151,16 +97,12 @@ void ElectromagneticEmissionsPdu::marshal(DataStream& dataStream) const
     dataStream << _stateUpdateIndicator;
     dataStream << ( unsigned char )_systems.size();
     dataStream << _paddingForEmissionsPdu;
-    dataStream << _systemDataLength;
-    dataStream << _numberOfBeams;
-    _emitterSystem.marshal(dataStream);
-    _location.marshal(dataStream);
 
-     for(size_t idx = 0; idx < _systems.size(); idx++)
-     {
-        Vector3Float x = _systems[idx];
+    for(size_t idx = 0; idx < _systems.size(); idx++)
+    {
+        ElectromagneticEmissionSystemData x = _systems[idx];
         x.marshal(dataStream);
-     }
+    }
 
 }
 
@@ -172,63 +114,50 @@ void ElectromagneticEmissionsPdu::unmarshal(DataStream& dataStream)
     dataStream >> _stateUpdateIndicator;
     dataStream >> _numberOfSystems;
     dataStream >> _paddingForEmissionsPdu;
-    dataStream >> _systemDataLength;
-    dataStream >> _numberOfBeams;
-    _emitterSystem.unmarshal(dataStream);
-    _location.unmarshal(dataStream);
 
-     _systems.clear();
-     for(size_t idx = 0; idx < _numberOfSystems; idx++)
-     {
-        Vector3Float x;
+    _systems.clear();
+    for(size_t idx = 0; idx < _numberOfSystems; idx++)
+    {
+        ElectromagneticEmissionSystemData x;
         x.unmarshal(dataStream);
         _systems.push_back(x);
-     }
+    }
 }
 
 
 bool ElectromagneticEmissionsPdu::operator ==(const ElectromagneticEmissionsPdu& rhs) const
  {
-     bool ivarsEqual = true;
+    bool ivarsEqual = true;
 
-     ivarsEqual = DistributedEmissionsFamilyPdu::operator==(rhs);
+    ivarsEqual = DistributedEmissionsFamilyPdu::operator==(rhs);
 
-     if( ! (_emittingEntityID == rhs._emittingEntityID) ) ivarsEqual = false;
-     if( ! (_eventID == rhs._eventID) ) ivarsEqual = false;
-     if( ! (_stateUpdateIndicator == rhs._stateUpdateIndicator) ) ivarsEqual = false;
-     if( ! (_paddingForEmissionsPdu == rhs._paddingForEmissionsPdu) ) ivarsEqual = false;
-     if( ! (_systemDataLength == rhs._systemDataLength) ) ivarsEqual = false;
-     if( ! (_numberOfBeams == rhs._numberOfBeams) ) ivarsEqual = false;
-     if( ! (_emitterSystem == rhs._emitterSystem) ) ivarsEqual = false;
-     if( ! (_location == rhs._location) ) ivarsEqual = false;
+    if( ! (_emittingEntityID == rhs._emittingEntityID) ) ivarsEqual = false;
+    if( ! (_eventID == rhs._eventID) ) ivarsEqual = false;
+    if( ! (_stateUpdateIndicator == rhs._stateUpdateIndicator) ) ivarsEqual = false;
+    if( ! (_paddingForEmissionsPdu == rhs._paddingForEmissionsPdu) ) ivarsEqual = false;    
 
-     for(size_t idx = 0; idx < _systems.size(); idx++)
-     {
+    for(size_t idx = 0; idx < _systems.size(); idx++)
+    {
         if( ! ( _systems[idx] == rhs._systems[idx]) ) ivarsEqual = false;
-     }
-
+    }
 
     return ivarsEqual;
  }
 
 int ElectromagneticEmissionsPdu::getMarshalledSize() const
 {
-   int marshalSize = 0;
+    int marshalSize = 0;
 
-   marshalSize = DistributedEmissionsFamilyPdu::getMarshalledSize();
-   marshalSize = marshalSize + _emittingEntityID.getMarshalledSize();  // _emittingEntityID
-   marshalSize = marshalSize + _eventID.getMarshalledSize();  // _eventID
-   marshalSize = marshalSize + 1;  // _stateUpdateIndicator
-   marshalSize = marshalSize + 1;  // _numberOfSystems
-   marshalSize = marshalSize + 2;  // _paddingForEmissionsPdu
-   marshalSize = marshalSize + 1;  // _systemDataLength
-   marshalSize = marshalSize + 1;  // _numberOfBeams
-   marshalSize = marshalSize + _emitterSystem.getMarshalledSize();  // _emitterSystem
-   marshalSize = marshalSize + _location.getMarshalledSize();  // _location
+    marshalSize = DistributedEmissionsFamilyPdu::getMarshalledSize();
+    marshalSize = marshalSize + _emittingEntityID.getMarshalledSize();  // _emittingEntityID
+    marshalSize = marshalSize + _eventID.getMarshalledSize();  // _eventID
+    marshalSize = marshalSize + 1;  // _stateUpdateIndicator
+    marshalSize = marshalSize + 1;  // _numberOfSystems
+    marshalSize = marshalSize + 2;  // _paddingForEmissionsPdu    
 
-   for(unsigned long long idx=0; idx < _systems.size(); idx++)
-   {
-        Vector3Float listElement = _systems[idx];
+    for(unsigned long long idx=0; idx < _systems.size(); idx++)
+    {
+        ElectromagneticEmissionSystemData listElement = _systems[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
     }
 
