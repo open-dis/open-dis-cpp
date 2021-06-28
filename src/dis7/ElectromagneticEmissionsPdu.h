@@ -1,11 +1,8 @@
 #pragma once
 
-#include <dis7/EEFundamentalParameterData.h>
-#include <dis7/EEBeamData.h>
-#include <dis7/EmissionSystem.h>
+#include <dis7/ElectromagneticEmissionSystemData.h>
 #include <dis7/EntityID.h>
 #include <dis7/EventIdentifier.h>
-#include <dis7/EmitterSystem.h>
 #include <dis7/Vector3Float.h>
 #include <dis7/Vector3Float.h>
 #include <vector>
@@ -38,12 +35,9 @@ protected:
   unsigned char _numberOfSystems; 
 
   /** padding */
-  unsigned short _paddingForEmissionsPdu; 
+  unsigned short _paddingForEmissionsPdu;
 
-  /**  this field shall specify the length of this emitter system's data in 32-bit words. */
-  unsigned char _systemDataLength; 
-
-  std::vector<EmissionSystem> _systems;
+  std::vector<ElectromagneticEmissionSystemData> _systems;
   
  public:
     ElectromagneticEmissionsPdu();
@@ -68,12 +62,9 @@ protected:
     unsigned short getPaddingForEmissionsPdu() const; 
     void setPaddingForEmissionsPdu(unsigned short pX); 
 
-    unsigned char getSystemDataLength() const; 
-    void setSystemDataLength(unsigned char pX); 
-
-    std::vector<EmissionSystem>& getSystems();
-    const std::vector<EmissionSystem>& getSystems() const;
-    void setSystems(const std::vector<EmissionSystem>& pX);
+    std::vector<ElectromagneticEmissionSystemData>& getSystems();
+    const std::vector<ElectromagneticEmissionSystemData>& getSystems() const;
+    void setSystems(const std::vector<ElectromagneticEmissionSystemData>& pX);
 
 
 virtual int getMarshalledSize() const;

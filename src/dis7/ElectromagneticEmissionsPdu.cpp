@@ -8,8 +8,7 @@ ElectromagneticEmissionsPdu::ElectromagneticEmissionsPdu() : DistributedEmission
    _eventID(), 
    _stateUpdateIndicator(0), 
    _numberOfSystems(0), 
-   _paddingForEmissionsPdu(0), 
-   _systemDataLength(0)
+   _paddingForEmissionsPdu(0)
 {
     setPduType( 23 );
     setPaddingForEmissionsPdu( 0 );
@@ -75,16 +74,6 @@ void ElectromagneticEmissionsPdu::setPaddingForEmissionsPdu(unsigned short pX)
     _paddingForEmissionsPdu = pX;
 }
 
-unsigned char ElectromagneticEmissionsPdu::getSystemDataLength() const
-{
-    return _systemDataLength;
-}
-
-void ElectromagneticEmissionsPdu::setSystemDataLength(unsigned char pX)
-{
-    _systemDataLength = pX;
-}
-
 void ElectromagneticEmissionsPdu::marshal(DataStream& dataStream) const
 {
     DistributedEmissionsFamilyPdu::marshal(dataStream); // Marshal information in superclass first
@@ -93,11 +82,10 @@ void ElectromagneticEmissionsPdu::marshal(DataStream& dataStream) const
     dataStream << _stateUpdateIndicator;
     dataStream << ( unsigned char )_systems.size();
     dataStream << _paddingForEmissionsPdu;
-    dataStream << _systemDataLength;
 
     for(size_t idx = 0; idx < _systems.size(); idx++)
     {
-        EmissionSystem x = _systems[idx];
+        ElectromagneticEmissionSystemData x = _systems[idx];
         x.marshal(dataStream);
     }
 
@@ -111,12 +99,11 @@ void ElectromagneticEmissionsPdu::unmarshal(DataStream& dataStream)
     dataStream >> _stateUpdateIndicator;
     dataStream >> _numberOfSystems;
     dataStream >> _paddingForEmissionsPdu;
-    dataStream >> _systemDataLength;
 
     _systems.clear();
     for(size_t idx = 0; idx < _numberOfSystems; idx++)
     {
-        EmissionSystem x;
+        ElectromagneticEmissionSystemData x;
         x.unmarshal(dataStream);
         _systems.push_back(x);
     }
@@ -132,8 +119,7 @@ bool ElectromagneticEmissionsPdu::operator ==(const ElectromagneticEmissionsPdu&
     if( ! (_emittingEntityID == rhs._emittingEntityID) ) ivarsEqual = false;
     if( ! (_eventID == rhs._eventID) ) ivarsEqual = false;
     if( ! (_stateUpdateIndicator == rhs._stateUpdateIndicator) ) ivarsEqual = false;
-    if( ! (_paddingForEmissionsPdu == rhs._paddingForEmissionsPdu) ) ivarsEqual = false;
-    if( ! (_systemDataLength == rhs._systemDataLength) ) ivarsEqual = false;
+    if( ! (_paddingForEmissionsPdu == rhs._paddingForEmissionsPdu) ) ivarsEqual = false;    
 
     for(size_t idx = 0; idx < _systems.size(); idx++)
     {
@@ -152,12 +138,11 @@ int ElectromagneticEmissionsPdu::getMarshalledSize() const
     marshalSize = marshalSize + _eventID.getMarshalledSize();  // _eventID
     marshalSize = marshalSize + 1;  // _stateUpdateIndicator
     marshalSize = marshalSize + 1;  // _numberOfSystems
-    marshalSize = marshalSize + 2;  // _paddingForEmissionsPdu
-    marshalSize = marshalSize + 1;  // _systemDataLength
+    marshalSize = marshalSize + 2;  // _paddingForEmissionsPdu    
 
     for(unsigned long long idx=0; idx < _systems.size(); idx++)
     {
-        EmissionSystem listElement = _systems[idx];
+        ElectromagneticEmissionSystemData listElement = _systems[idx];
         marshalSize = marshalSize + listElement.getMarshalledSize();
     }
 

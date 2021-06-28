@@ -17,7 +17,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO EEBeamData
+class EXPORT_MACRO ElectromagneticEmissionBeamData
 {
 protected:
   /** This field shall specify the length of this beams data in 32 bit words */
@@ -53,8 +53,8 @@ protected:
   std::vector<TrackJamData> _trackJamTargets; 
 
  public:
-    EEBeamData();
-    virtual ~EEBeamData();
+     ElectromagneticEmissionBeamData();
+    virtual ~ElectromagneticEmissionBeamData();
 
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
@@ -98,7 +98,7 @@ protected:
 
 virtual int getMarshalledSize() const;
 
-     bool operator  ==(const EEBeamData& rhs) const;
+     bool operator  ==(const ElectromagneticEmissionBeamData& rhs) const;
 };
 }
 

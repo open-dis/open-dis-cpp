@@ -1,6 +1,6 @@
 #pragma once
 
-#include <dis7/EEBeamData.h>
+#include <dis7/ElectromagneticEmissionBeamData.h>
 #include <utils/DataStream.h>
 #include <dis7/msLibMacro.h>
 #include <dis7/EmitterSystem.h>
@@ -19,11 +19,17 @@ namespace DIS
 //
 // @author semihkurt
 
-class EXPORT_MACRO EmissionSystem
+class EXPORT_MACRO ElectromagneticEmissionSystemData
 {
 protected:
+  /**  this field shall specify the length of this emitter system's data in 32-bit words. */
+  unsigned char _systemDataLength;
+
   /** the number of beams being described in the current PDU for the emitter system being described.  */
-  unsigned char _numberOfBeams; 
+  unsigned char _numberOfBeams;
+
+  /* padding. */
+  unsigned short _emissionsPadding2;
 
  /**  information about a particular emitter system and shall be represented by an Emitter System record (see 6.2.23). */
   EmitterSystem _emitterSystem; 
@@ -32,13 +38,19 @@ protected:
   Vector3Float _location; 
 
   /** Electromagnetic emmissions systems */
-  std::vector<EEBeamData> _beams;
+  std::vector<ElectromagneticEmissionBeamData> _beamDataRecords;
 
  public:
-    EmissionSystem();
-    virtual ~EmissionSystem();
+     ElectromagneticEmissionSystemData();
+    virtual ~ElectromagneticEmissionSystemData();
+
+    unsigned char getSystemDataLength() const;
+    void setSystemDataLength(unsigned char pX);
 
     unsigned char getNumberOfBeams() const; 
+
+    unsigned short getEmissionsPadding2() const;
+    void setEmissionsPadding2(unsigned short pX);
 
     EmitterSystem& getEmitterSystem(); 
     const EmitterSystem&  getEmitterSystem() const; 
@@ -48,16 +60,16 @@ protected:
     const Vector3Float&  getLocation() const; 
     void setLocation(const Vector3Float    &pX);
 
-    std::vector<EEBeamData>& getBeams();
-    const std::vector<EEBeamData>& getBeams() const;
-    void setBeams(const std::vector<EEBeamData>& pX);
+    std::vector<ElectromagneticEmissionBeamData>& getBeamDataRecords();
+    const std::vector<ElectromagneticEmissionBeamData>& getBeamDataRecords() const;
+    void setBeamDataRecords(const std::vector<ElectromagneticEmissionBeamData>& pX);
 
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
 virtual int getMarshalledSize() const;
 
-     bool operator  ==(const EmissionSystem& rhs) const;
+     bool operator  ==(const ElectromagneticEmissionSystemData& rhs) const;
 };
 }
 
