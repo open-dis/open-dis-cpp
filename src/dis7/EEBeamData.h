@@ -72,6 +72,10 @@ protected:
     const EEFundamentalParameterData&  getFundamentalParameterData() const; 
     void setFundamentalParameterData(const EEFundamentalParameterData    &pX);
 
+	BeamData& getBeamData();
+	const BeamData&  getBeamData() const;
+	void setBeamData(const BeamData    &pX);
+
     unsigned char getBeamFunction() const; 
     void setBeamFunction(unsigned char pX); 
 

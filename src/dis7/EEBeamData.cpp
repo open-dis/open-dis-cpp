@@ -7,7 +7,8 @@ EEBeamData::EEBeamData():
    _beamDataLength(0), 
    _beamIDNumber(0), 
    _beamParameterIndex(0), 
-   _fundamentalParameterData(), 
+   _fundamentalParameterData(),
+   _beamData(),
    _beamFunction(0), 
    _numberOfTrackJamTargets(0), 
    _highDensityTrackJam(0), 
@@ -64,6 +65,21 @@ const EEFundamentalParameterData& EEBeamData::getFundamentalParameterData() cons
 void EEBeamData::setFundamentalParameterData(const EEFundamentalParameterData &pX)
 {
     _fundamentalParameterData = pX;
+}
+
+BeamData & DIS::EEBeamData::getBeamData()
+{
+	return _beamData;
+}
+
+const BeamData & DIS::EEBeamData::getBeamData() const
+{
+	return _beamData;
+}
+
+void DIS::EEBeamData::setBeamData(const BeamData & pX)
+{
+	_beamData = pX;
 }
 
 unsigned char EEBeamData::getBeamFunction() const
@@ -137,6 +153,7 @@ void EEBeamData::marshal(DataStream& dataStream) const
     dataStream << _beamIDNumber;
     dataStream << _beamParameterIndex;
     _fundamentalParameterData.marshal(dataStream);
+	_beamData.marshal(dataStream);
     dataStream << _beamFunction;
     dataStream << ( unsigned char )_trackJamTargets.size();
     dataStream << _highDensityTrackJam;
@@ -157,6 +174,7 @@ void EEBeamData::unmarshal(DataStream& dataStream)
     dataStream >> _beamIDNumber;
     dataStream >> _beamParameterIndex;
     _fundamentalParameterData.unmarshal(dataStream);
+	_beamData.unmarshal(dataStream);
     dataStream >> _beamFunction;
     dataStream >> _numberOfTrackJamTargets;
     dataStream >> _highDensityTrackJam;
@@ -180,6 +198,7 @@ bool EEBeamData::operator ==(const EEBeamData& rhs) const
     if( ! (_beamIDNumber == rhs._beamIDNumber) ) ivarsEqual = false;
     if( ! (_beamParameterIndex == rhs._beamParameterIndex) ) ivarsEqual = false;
     if( ! (_fundamentalParameterData == rhs._fundamentalParameterData) ) ivarsEqual = false;
+	if (! (_beamData == rhs._beamData)) ivarsEqual = false;
     if( ! (_beamFunction == rhs._beamFunction) ) ivarsEqual = false;
     if( ! (_highDensityTrackJam == rhs._highDensityTrackJam) ) ivarsEqual = false;
     if( ! (_beamStatus == rhs._beamStatus) ) ivarsEqual = false;
@@ -201,6 +220,7 @@ int EEBeamData::getMarshalledSize() const
    marshalSize = marshalSize + 1;  // _beamIDNumber
    marshalSize = marshalSize + 2;  // _beamParameterIndex
    marshalSize = marshalSize + _fundamentalParameterData.getMarshalledSize();  // _fundamentalParameterData
+   marshalSize = marshalSize + _beamData.getMarshalledSize();  // _beamData
    marshalSize = marshalSize + 1;  // _beamFunction
    marshalSize = marshalSize + 1;  // _numberOfTrackJamTargets
    marshalSize = marshalSize + 1;  // _highDensityTrackJam
