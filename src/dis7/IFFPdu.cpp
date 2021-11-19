@@ -198,7 +198,6 @@ void IFFPdu::marshal(DataStream& dataStream) const
     _beamData.marshal(dataStream);
     _secondaryOperationalData.marshal(dataStream);
     dataStream << ( unsigned char )_iffParameters.size();
-
     for(size_t idx = 0; idx < _iffParameters.size(); idx++)
     {
         IFFFundamentalParameterData x = _iffParameters[idx];
@@ -213,7 +212,6 @@ void IFFPdu::unmarshal(DataStream& dataStream)
     _emittingEntityID.unmarshal(dataStream);
     _eventID.unmarshal(dataStream);
     _relativeAntennaLocation.unmarshal(dataStream);
-    dataStream >> _numberOfIFFParameters;
     _systemID.unmarshal(dataStream);
     dataStream >> _systemDesignator;
     dataStream >> _systemSpecificData;
@@ -221,7 +219,7 @@ void IFFPdu::unmarshal(DataStream& dataStream)
     _layerHeader.unmarshal(dataStream);
     _beamData.unmarshal(dataStream);
     _secondaryOperationalData.unmarshal(dataStream);
-
+    _numberOfIFFParameters = _secondaryOperationalData.getNumberOfIFFFundamentalParameterRecords();
     _iffParameters.clear();
     for(size_t idx = 0; idx < _numberOfIFFParameters; idx++)
     {
