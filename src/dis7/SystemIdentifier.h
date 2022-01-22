@@ -22,7 +22,7 @@ protected:
   unsigned short _systemName; 
 
   /** mode of operation for the system, an enumeration */
-  unsigned short _systemMode; 
+  unsigned char _systemMode; 
 
   /** status of this PDU, see section 6.2.15 */
   unsigned char _changeOptions;
@@ -41,8 +41,8 @@ protected:
     unsigned short getSystemName() const; 
     void setSystemName(unsigned short pX); 
 
-    unsigned short getSystemMode() const; 
-    void setSystemMode(unsigned short pX); 
+    unsigned char getSystemMode() const; 
+    void setSystemMode(unsigned char pX); 
 
     unsigned char getChangeOptions() const;
     void setChangeOptions(unsigned char pX);

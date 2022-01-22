@@ -35,12 +35,12 @@ void SystemIdentifier::setSystemName(unsigned short pX)
     _systemName = pX;
 }
 
-unsigned short SystemIdentifier::getSystemMode() const
+unsigned char SystemIdentifier::getSystemMode() const
 {
     return _systemMode;
 }
 
-void SystemIdentifier::setSystemMode(unsigned short pX)
+void SystemIdentifier::setSystemMode(unsigned char pX)
 {
     _systemMode = pX;
 }
