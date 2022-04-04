@@ -93,7 +93,7 @@ int AcousticBeamData::getMarshalledSize() const
 {
    int marshalSize = 0;
 
-   marshalSize = marshalSize + 2;  // _beamDataLength
+   marshalSize = marshalSize + 1;  // _beamDataLength
    marshalSize = marshalSize + 1;  // _beamIDNumber
    marshalSize = marshalSize + 2;  // _pad2
    marshalSize = marshalSize + _fundamentalDataParameters.getMarshalledSize();  // _fundamentalDataParameters
