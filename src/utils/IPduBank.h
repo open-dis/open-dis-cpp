@@ -1,4 +1,4 @@
-#pragma once_
+#pragma once
 
 #include <dis6/Pdu.h>
 #include <utils/DataStream.h>
