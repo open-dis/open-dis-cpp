@@ -1,4 +1,4 @@
-#pragma once_INCLUDED
+#pragma once
 
 #include <dis6/EntityID.h>
 
