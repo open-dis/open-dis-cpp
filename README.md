@@ -2,7 +2,7 @@
 A C++ implementation of the Distributed Interactive Simulation (DIS) protocol.
 Initially generated with [xmlpg](https://github.com/open-dis/xmlpg).
 
-[![Travis (Linux) Build Status](https://travis-ci.org/open-dis/open-dis-cpp.svg?branch=master)](https://travis-ci.org/open-dis/open-dis-cpp)
+[![Travis (Linux) Build Status](https://app.travis-ci.com/open-dis/open-dis-cpp.svg?branch=master)](https://app.travis-ci.com/open-dis/open-dis-cpp)
 [![Build status](https://ci.appveyor.com/api/projects/status/nt6t12a654j91osg?svg=true)](https://ci.appveyor.com/project/leif81/open-dis-cpp)
 [![CodeDocs status](https://codedocs.xyz/open-dis/open-dis-cpp.svg)](https://codedocs.xyz/open-dis/open-dis-cpp/)
 
