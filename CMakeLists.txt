@@ -15,9 +15,6 @@ target_include_directories(OpenDIS6
   PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
          $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
-# Add compile definition EXPORT_LIBRARY for DIS6 msLibMacro.h
-target_compile_definitions(OpenDIS6 PRIVATE EXPORT_LIBRARY)
-
 # Define OpenDIS7 Library
 add_library(OpenDIS7 "")
 
@@ -26,8 +23,12 @@ target_include_directories(OpenDIS7
   PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
          $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
-# Add compile definition EXPORT_LIBRARY for DIS7 msLibMacro.h
-target_compile_definitions(OpenDIS7 PRIVATE EXPORT_LIBRARY)
+# Add compile definition EXPORT_LIBRARY for shared libs
+if(BUILD_SHARED_LIBS)
+  target_compile_definitions(OpenDIS6 PRIVATE EXPORT_LIBRARY)
+  target_compile_definitions(OpenDIS7 PRIVATE EXPORT_LIBRARY)
+endif()
+
 
 # Add source directories
 add_subdirectory(src)
