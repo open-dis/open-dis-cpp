@@ -17,6 +17,20 @@ Initially generated with [xmlpg](https://github.com/open-dis/xmlpg).
 
   **NOTE:** Windows users will need to either add the DLL folders to their path, or copy the DLLs to the output directory (`Debug`).
 
+### OpenDIS Build Options
+
+The OpenDIS build system accepts several build options to control compilation. The following options are available:
+
+* **BUILD_SHARED_LIBS** - Boolean value to specify whether to build OpenDIS libraries as shared (ON/TRUE) or static (OFF/FALSE). Default is OFF.
+* **BUILD_EXAMPLES** - Boolean value to specify whether to build example sender/receiver applications. Default is OFF.
+
+Example application build options. Only valid if **BUILD_EXAMPLES** is enabled.
+
+* **SDL2_PATH** - Installation path of SDL2
+* **SDL2_NET_PATH** - Installation path of SDL2_net
+
+These options are passed to cmake as arguments. Example: `cmake -DBUILD_SHARED_LIBS=ON -DBUILD_EXAMPLES=ON ..`
+
 ### Linux / GNU Makefiles
 
 1. Run `mkdir build`
@@ -35,15 +49,19 @@ Initially generated with [xmlpg](https://github.com/open-dis/xmlpg).
 1. Open `CMake (cmake-gui)` via the the start menu.
 2. Enter the open-dis-cpp directory path into the Source and Build fields.
 3. Click the `+ Add Entry` button and enter the following details:
-  Name: `SDL_INC_DIR`
+  Name: `SDL2_PATH`
   Type: `PATH`
-  Value: `<SDL2-install-folder>/include`
-  (if you follow the below [SDL2 Windows Install Instruction](#Windows-Install-Instructions) this will be `C:/SDL2/include`)
+  Value: `<SDL2-install-folder>`
+  (if you follow the below [SDL2 Windows Install Instruction](#Windows-Install-Instructions) this will be `C:/SDL2`)
 3. Click the `+ Add Entry` button and enter the following details:
-  Name: `SDL_LIB_DIR`
+  Name: `SDL2_NET_PATH`
   Type: `PATH`
-  Value: `<SDL2-install-folder>/lib/x64` (64 bit) or `<SDL2-install-folder>/lib/x86` (32 bit)
-  (if you follow the below [SDL2 Windows Install Instruction](#Windows-Install-Instructions) this will be `C:/SDL2/lib/x64`)
+  Value: `<SDL2-install-folder>`
+  (if you follow the below [SDL2 Windows Install Instruction](#Windows-Install-Instructions) this will be `C:/SDL2`)
+3. Click the `+ Add Entry` button and enter the following details:
+  Name: `CMAKE_LIBRARY_ARCHITECTURE`
+  Type: `STRING`
+  Value: `x64` (64 bit) or `x86` (32 bit)
 4. Click Configure and follow the prompts, selecting the correct generator (i.e. Visual Studio version).
 5. Click Generate
 6. Click Open Project - This should open the generates solution file in Visual Studio
@@ -53,7 +71,7 @@ These steps were tested with Visual Studio 16 2019 (Community Edition).
 Currently, only OpenDIS 6 and the Example Applications compile.
 The library and executable files are output to a `Debug` directory.
 
-To run the executables, either the value of the `SDL_LIB_DIR` variable should be added to your path,
+To run the executables, either the value of the `SDL2_PATH/lib/CMAKE_LIBRARY_ARCHITECUTRE` should be added to your path,
 or `SDL2.dll` and `SDL2_net.dll` need to be copied to the `Debug` directory.
 
 ### Cleaning CMake files
