@@ -21,7 +21,7 @@ Initially generated with [xmlpg](https://github.com/open-dis/xmlpg).
 
 The OpenDIS build system accepts several build options to control compilation. The following options are available:
 
-* **BUILD_SHARED_LIBS** - Boolean value to specify whether to build OpenDIS libraries as shared (ON/TRUE) or static (OFF/FALSE). Default is ON.
+* **BUILD_SHARED_LIBS** - Boolean value to specify whether to build OpenDIS libraries as shared (ON/TRUE) or static (OFF/FALSE). Default is OFF.
 * **BUILD_EXAMPLES** - Boolean value to specify whether to build example sender/receiver applications. Default is OFF.
 
 Example application build options. Only valid if **BUILD_EXAMPLES** is enabled.

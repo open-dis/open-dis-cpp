@@ -6,7 +6,7 @@
 namespace DIS
 {
    /// the order of bytes that are on the left
-   enum EXPORT_MACRO Endian
+   EXPORT_MACRO enum Endian
    {
       LITTLE=1,
       BIG=0,
