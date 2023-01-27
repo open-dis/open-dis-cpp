@@ -36,10 +36,12 @@ set(utils7_src
 # definition. If cmake_minimum_required is ever changed to
 # be >= 16, these 2 lines can be removed.
 list(TRANSFORM utils_src PREPEND "${CMAKE_CURRENT_LIST_DIR}/")
+list(TRANSFORM utils7_src PREPEND "${CMAKE_CURRENT_LIST_DIR}/")
 
 target_compile_definitions(OpenDIS7 PUBLIC DIS7)
 
 target_sources(OpenDIS6 PRIVATE ${utils_src})
+target_sources(OpenDIS7 PRIVATE ${utils7_src})
 
 install(FILES ${utils_hdr}
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/utils)
