@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.2)
 project(OpenDIS VERSION 1.0.0)
 
 # Build options
+option(BUILD_SHARED_LIBS "build shared libraries" ON)
 option(BUILD_EXAMPLES "build example sender/receiver applications" OFF)
 
 # include GNUInstallDirs Module to get more generic directory handling
@@ -24,11 +25,10 @@ target_include_directories(OpenDIS7
          $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
 # Add compile definition EXPORT_LIBRARY for shared libs
-if(BUILD_SHARED_LIBS)
-  target_compile_definitions(OpenDIS6 PRIVATE EXPORT_LIBRARY)
-  target_compile_definitions(OpenDIS7 PRIVATE EXPORT_LIBRARY)
+if(NOT BUILD_SHARED_LIBS)
+  target_compile_definitions(OpenDIS6 PRIVATE OpenDIS6_STATIC_DEFINE)
+  target_compile_definitions(OpenDIS7 PRIVATE OpenDIS7_STATIC_DEFINE)
 endif()
-
 
 # Add source directories
 add_subdirectory(src)
