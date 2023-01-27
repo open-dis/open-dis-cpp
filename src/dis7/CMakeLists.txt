@@ -109,7 +109,6 @@ set(dis7_hdr
   MinefieldStatePdu.h
   ModulationParameters.h
   ModulationType.h
-  msLibMacro.h
   MunitionDescriptor.h
   Munition.h
   MunitionReload.h
@@ -364,6 +363,14 @@ set(dis7_src
 # definition. If cmake_minimum_required is ever changed to
 # be >= 16, this line can be removed.
 list(TRANSFORM dis7_src PREPEND "${CMAKE_CURRENT_LIST_DIR}/")
+
+# Generate export header for shared lib
+include(GenerateExportHeader)
+generate_export_header(OpenDIS7
+                       EXPORT_MACRO_NAME EXPORT_MACRO
+                       EXPORT_FILE_NAME ${CMAKE_CURRENT_BINARY_DIR}/msLibMacro.h)
+
+list(APPEND dis7_hdr ${CMAKE_CURRENT_BINARY_DIR}/msLibMacro.h)
 
 target_sources(OpenDIS7 PRIVATE ${dis7_src})
 

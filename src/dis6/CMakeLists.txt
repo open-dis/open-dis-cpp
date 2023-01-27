@@ -86,7 +86,6 @@ set(dis6_hdr
   MinefieldResponseNackPdu.h
   MinefieldStatePdu.h
   ModulationType.h
-  msLibMacro.h
   NamedLocation.h
   ObjectType.h
   OneByteChunk.h
@@ -287,6 +286,14 @@ set(dis6_src
 # definition. If cmake_minimum_required is ever changed to
 # be >= 16, this line can be removed.
 list(TRANSFORM dis6_src PREPEND "${CMAKE_CURRENT_LIST_DIR}/")
+
+# Generate export header for shared lib
+include(GenerateExportHeader)
+generate_export_header(OpenDIS6
+                       EXPORT_MACRO_NAME EXPORT_MACRO
+                       EXPORT_FILE_NAME ${CMAKE_CURRENT_BINARY_DIR}/msLibMacro.h)
+
+list(APPEND dis6_hdr ${CMAKE_CURRENT_BINARY_DIR}/msLibMacro.h)
 
 target_sources(OpenDIS6 PRIVATE ${dis6_src})
 
