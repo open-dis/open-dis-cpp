@@ -5,7 +5,7 @@
 #include <vector>
 #include <dis6/SimulationManagementFamilyPdu.h>
 #include <utils/DataStream.h>
-#include <dis6/msLibMacro.h>
+#include <dis6/opendis6_export.h>
 
 
 namespace DIS
@@ -16,7 +16,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO ActionRequestPdu : public SimulationManagementFamilyPdu
+class OPENDIS6_EXPORT ActionRequestPdu : public SimulationManagementFamilyPdu
 {
 protected:
   /** Request ID that is unique */

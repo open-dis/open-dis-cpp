@@ -9,7 +9,7 @@
 #include <vector>
 #include <dis7/MinefieldFamilyPdu.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -20,7 +20,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO MinefieldStatePdu : public MinefieldFamilyPdu
+class OPENDIS7_EXPORT MinefieldStatePdu : public MinefieldFamilyPdu
 {
 protected:
   /** Minefield ID */

@@ -3,7 +3,7 @@
 #include <dis7/SimulationAddress.h>
 #include <dis7/EntityInformationFamilyPdu.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -14,7 +14,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO AttributePdu : public EntityInformationFamilyPdu
+class OPENDIS7_EXPORT AttributePdu : public EntityInformationFamilyPdu
 {
 protected:
   /** This field shall identify the simulation issuing the Attribute PDU. It shall be represented by a Simulation Address record (see 6.2.79). */

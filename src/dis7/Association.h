@@ -3,7 +3,7 @@
 #include <dis7/EntityID.h>
 #include <dis7/Vector3Double.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -14,7 +14,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO Association
+class OPENDIS7_EXPORT Association
 {
 protected:
   unsigned char _associationType; 

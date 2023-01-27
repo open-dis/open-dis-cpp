@@ -7,7 +7,7 @@
 #include <dis7/Vector3Float.h>
 #include <dis7/WarfareFamilyPdu.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -18,7 +18,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO FirePdu : public WarfareFamilyPdu
+class OPENDIS7_EXPORT FirePdu : public WarfareFamilyPdu
 {
 protected:
   /** This field shall specify the entity identification of the fired munition or expendable. This field shall be represented by an Entity Identifier record (see 6.2.28). */

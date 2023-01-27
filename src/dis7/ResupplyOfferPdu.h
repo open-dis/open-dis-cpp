@@ -6,7 +6,7 @@
 #include <vector>
 #include <dis7/LogisticsFamilyPdu.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -17,7 +17,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO ResupplyOfferPdu : public LogisticsFamilyPdu
+class OPENDIS7_EXPORT ResupplyOfferPdu : public LogisticsFamilyPdu
 {
 protected:
   /** Field identifies the Entity and respective Entity Record ID that is receiving service (see 6.2.28), Section 7.4.3 */

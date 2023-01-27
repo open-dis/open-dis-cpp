@@ -2,7 +2,7 @@
 
 #include <dis7/ElectromagneticEmissionBeamData.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 #include <dis7/EmitterSystem.h>
 #include <dis7/Vector3Float.h>
 
@@ -19,7 +19,7 @@ namespace DIS
 //
 // @author semihkurt
 
-class EXPORT_MACRO ElectromagneticEmissionSystemData
+class OPENDIS7_EXPORT ElectromagneticEmissionSystemData
 {
 protected:
   /**  this field shall specify the length of this emitter system's data in 32-bit words. */

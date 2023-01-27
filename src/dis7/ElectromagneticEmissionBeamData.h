@@ -6,7 +6,7 @@
 #include <dis7/BeamData.h>
 #include <vector>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -17,7 +17,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO ElectromagneticEmissionBeamData
+class OPENDIS7_EXPORT ElectromagneticEmissionBeamData
 {
 protected:
   /** This field shall specify the length of this beams data in 32 bit words */

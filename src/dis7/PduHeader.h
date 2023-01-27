@@ -1,7 +1,7 @@
 #pragma once
 
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -12,7 +12,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO PduHeader
+class OPENDIS7_EXPORT PduHeader
 {
 protected:
   /** The version of the protocol. 5=DIS-1995, 6=DIS-1998, 7=DIS-2009. */

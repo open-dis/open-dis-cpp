@@ -1,7 +1,7 @@
 #pragma once
 
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -12,7 +12,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO Relationship
+class OPENDIS7_EXPORT Relationship
 {
 protected:
   /** the nature or purpose for joining of the part entity to the host entity and shall be represented by a 16-bit enumeration */

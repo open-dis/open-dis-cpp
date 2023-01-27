@@ -6,7 +6,7 @@
 #include <vector>
 #include <dis6/SyntheticEnvironmentFamilyPdu.h>
 #include <utils/DataStream.h>
-#include <dis6/msLibMacro.h>
+#include <dis6/opendis6_export.h>
 
 
 namespace DIS
@@ -17,7 +17,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO EnvironmentalProcessPdu : public SyntheticEnvironmentFamilyPdu
+class OPENDIS6_EXPORT EnvironmentalProcessPdu : public SyntheticEnvironmentFamilyPdu
 {
 protected:
   /** Environmental process ID */

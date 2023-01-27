@@ -1,7 +1,7 @@
 #pragma once
 
 #include <utils/DataStream.h>
-#include <dis6/msLibMacro.h>
+#include <dis6/opendis6_export.h>
 #include <vector>
 
 // length in bytes for the variable data. This should be a dynamically allocated array.
@@ -15,7 +15,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO VariableDatum
+class OPENDIS6_EXPORT VariableDatum
 {
 protected:
   /** ID of the variable datum */

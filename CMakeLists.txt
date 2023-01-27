@@ -4,6 +4,7 @@ project(OpenDIS VERSION 1.0.0)
 # Build options
 option(BUILD_SHARED_LIBS "build shared libraries" ON)
 option(BUILD_EXAMPLES "build example sender/receiver applications" OFF)
+option(BUILD_TESTS "build unit tests" OFF)
 
 # include GNUInstallDirs Module to get more generic directory handling
 include(GNUInstallDirs)
@@ -14,6 +15,7 @@ add_library(OpenDIS6 "")
 # Add src/ to the include directories to OpenDIS6
 target_include_directories(OpenDIS6
   PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
+         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src>
          $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
 # Define OpenDIS7 Library
@@ -22,6 +24,7 @@ add_library(OpenDIS7 "")
 # Add src/ to the include directories to OpenDIS6
 target_include_directories(OpenDIS7
   PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
+         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src>
          $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
 # Add compile definition EXPORT_LIBRARY for shared libs
@@ -36,6 +39,12 @@ add_subdirectory(src)
 # Build example applications
 if(BUILD_EXAMPLES)
   add_subdirectory(examples)
+endif()
+
+# Build tests
+if(BUILD_TESTS)
+  enable_testing()
+  add_subdirectory(test)
 endif()
 
 # Configure install target (i.e. what files to install)

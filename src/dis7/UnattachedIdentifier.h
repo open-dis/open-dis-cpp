@@ -2,7 +2,7 @@
 
 #include <dis7/SimulationAddress.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -13,7 +13,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO UnattachedIdentifier
+class OPENDIS7_EXPORT UnattachedIdentifier
 {
 protected:
   /** See 6.2.79 */

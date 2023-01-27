@@ -2,7 +2,7 @@
 
 #include <dis7/PduSuperclass.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -13,7 +13,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO Pdu : public PduSuperclass
+class OPENDIS7_EXPORT Pdu : public PduSuperclass
 {
 protected:
   /** PDU Status Record. Described in 6.2.67. This field is not present in earlier DIS versions  */

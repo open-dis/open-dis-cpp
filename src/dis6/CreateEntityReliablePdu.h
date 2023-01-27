@@ -2,7 +2,7 @@
 
 #include <dis6/SimulationManagementWithReliabilityFamilyPdu.h>
 #include <utils/DataStream.h>
-#include <dis6/msLibMacro.h>
+#include <dis6/opendis6_export.h>
 
 
 namespace DIS
@@ -13,7 +13,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO CreateEntityReliablePdu : public SimulationManagementWithReliabilityFamilyPdu
+class OPENDIS6_EXPORT CreateEntityReliablePdu : public SimulationManagementWithReliabilityFamilyPdu
 {
 protected:
   /** level of reliability service used for this transaction */

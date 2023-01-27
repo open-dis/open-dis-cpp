@@ -6,7 +6,7 @@
 #include <vector>
 #include <dis7/LogisticsFamilyPdu.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -17,7 +17,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO ServiceRequestPdu : public LogisticsFamilyPdu
+class OPENDIS7_EXPORT ServiceRequestPdu : public LogisticsFamilyPdu
 {
 protected:
   /** Entity that is requesting service (see 6.2.28), Section 7.4.2 */

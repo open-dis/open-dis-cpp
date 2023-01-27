@@ -2,7 +2,7 @@
 
 #include <dis6/AcousticBeamFundamentalParameter.h>
 #include <utils/DataStream.h>
-#include <dis6/msLibMacro.h>
+#include <dis6/opendis6_export.h>
 
 
 namespace DIS
@@ -13,7 +13,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO AcousticBeamData
+class OPENDIS6_EXPORT AcousticBeamData
 {
 protected:
   /** beam data length */

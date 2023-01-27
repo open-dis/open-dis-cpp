@@ -6,7 +6,7 @@
 #include <vector>
 #include <dis6/MinefieldFamilyPdu.h>
 #include <utils/DataStream.h>
-#include <dis6/msLibMacro.h>
+#include <dis6/opendis6_export.h>
 
 
 namespace DIS
@@ -17,7 +17,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO MinefieldResponseNackPdu : public MinefieldFamilyPdu
+class OPENDIS6_EXPORT MinefieldResponseNackPdu : public MinefieldFamilyPdu
 {
 protected:
   /** Minefield ID */

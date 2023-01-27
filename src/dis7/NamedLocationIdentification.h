@@ -1,7 +1,7 @@
 #pragma once
 
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -12,7 +12,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO NamedLocationIdentification
+class OPENDIS7_EXPORT NamedLocationIdentification
 {
 protected:
   /** the station name within the host at which the part entity is located. If the part entity is On Station, this field shall specify the representation of the part’s location data fields. This field shall be specified by a 16-bit enumeration  */

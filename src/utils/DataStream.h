@@ -16,7 +16,11 @@
 #include <string>                 // for typedef, member
 #include <vector>                 // for typedef, member
 #include <utils/Endian.h>           // for enum
-#include <dis6/msLibMacro.h>       // for library symbols
+#ifdef DIS7
+#include <dis7/opendis7_export.h>       // for library symbols
+#else
+#include <dis6/opendis6_export.h>       // for library symbols
+#endif
 #include <cstdlib>                // for size_t and NULL definition
 #include <cstring>                // for memcpy
 
@@ -25,7 +29,11 @@ namespace DIS
    /// a class to support managing a network buffer.
    /// the clients are responsible for managing the char buffer memory.
    /// this class explicitly defines operators for expected types.
-   class EXPORT_MACRO DataStream
+#ifdef DIS7
+   class OPENDIS7_EXPORT DataStream
+#else
+   class OPENDIS6_EXPORT DataStream
+#endif
    {
    public:
       /// Setup the internal buffer's Endian type.
@@ -147,7 +155,7 @@ namespace DIS
 }
 
 #if _MSC_VER
-#pragma warning( pop ) 
+#pragma warning( pop )
 #endif
 
 #endif  // _dcl_dis_data_stream_h_

@@ -3,7 +3,7 @@
 #include <dis7/RecordSpecificationElement.h>
 #include <vector>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -14,7 +14,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO RecordSpecification
+class OPENDIS7_EXPORT RecordSpecification
 {
 protected:
   /** The number of record sets */

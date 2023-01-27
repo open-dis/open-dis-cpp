@@ -3,7 +3,7 @@
 #include <dis7/ClockTime.h>
 #include <dis7/SimulationManagementWithReliabilityFamilyPdu.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -14,7 +14,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO StopFreezeReliablePdu : public SimulationManagementWithReliabilityFamilyPdu
+class OPENDIS7_EXPORT StopFreezeReliablePdu : public SimulationManagementWithReliabilityFamilyPdu
 {
 protected:
   /** time in real world for this operation to happen */

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -12,7 +12,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO SecondaryOperationalData
+class OPENDIS7_EXPORT SecondaryOperationalData
 {
 protected:
   /** additional operational characteristics of the IFF emitting system. Each 8-bit field will vary depending on the system type. */

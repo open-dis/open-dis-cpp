@@ -5,7 +5,7 @@
 #define _dcl_dis_packet_factory_h_
 
 #include <map>                      // for member
-#include <dis6/msLibMacro.h>         // for library symbols
+#include <dis6/opendis6_export.h>         // for library symbols
 
 namespace DIS
 {
@@ -19,7 +19,7 @@ namespace DIS
    }
 
    /// responsible for mapping an ID value to a Pdu type.
-   class EXPORT_MACRO PacketFactory
+   class OPENDIS6_EXPORT PacketFactory
    {
    public:
 

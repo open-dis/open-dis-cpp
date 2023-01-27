@@ -26,7 +26,7 @@ set(utils_src
   StreamUtils.cpp
 )
 
-# DIS7-only source files
+# DIS7 source files
 set(utils7_src
   DataStream.cpp
 )
@@ -37,6 +37,8 @@ set(utils7_src
 # be >= 16, these 2 lines can be removed.
 list(TRANSFORM utils_src PREPEND "${CMAKE_CURRENT_LIST_DIR}/")
 list(TRANSFORM utils7_src PREPEND "${CMAKE_CURRENT_LIST_DIR}/")
+
+target_compile_definitions(OpenDIS7 PUBLIC DIS7)
 
 target_sources(OpenDIS6 PRIVATE ${utils_src})
 target_sources(OpenDIS7 PRIVATE ${utils7_src})

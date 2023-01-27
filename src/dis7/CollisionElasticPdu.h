@@ -8,7 +8,7 @@
 #include <dis7/Vector3Float.h>
 #include <dis7/EntityInformationFamilyPdu.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -19,7 +19,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO CollisionElasticPdu : public EntityInformationFamilyPdu
+class OPENDIS7_EXPORT CollisionElasticPdu : public EntityInformationFamilyPdu
 {
 protected:
   /** This field shall identify the entity that is issuing the PDU and shall be represented by an Entity Identifier record (see 6.2.28) */

@@ -2,7 +2,7 @@
 
 #include <dis7/EntityID.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -13,7 +13,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO TrackJamData
+class OPENDIS7_EXPORT TrackJamData
 {
 protected:
   /** the entity tracked or illumated, or an emitter beam targeted with jamming */
