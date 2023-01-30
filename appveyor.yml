@@ -25,4 +25,7 @@ test_script:
   - ctest -C Debug
 
 on_finish:
+  - ps: ls
+  - ps: ls test
+  - ps: ls test/Debug
   - ps: (new-object net.webclient).UploadFile("https://ci.appveyor.com/api/testresults/junit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\test\Debug\UnitTestSuite-results.xml))
