@@ -4,7 +4,7 @@ project(OpenDIS VERSION 1.0.0)
 # Build options
 option(BUILD_SHARED_LIBS "build shared libraries" ON)
 option(BUILD_EXAMPLES "build example sender/receiver applications" OFF)
-#option(BUILD_TESTS "build unit tests" OFF)
+option(BUILD_TESTS "build unit tests" OFF)
 
 # include GNUInstallDirs Module to get more generic directory handling
 include(GNUInstallDirs)
@@ -42,10 +42,10 @@ if(BUILD_EXAMPLES)
 endif()
 
 # Build tests
-#if(BUILD_TESTS)
-#  enable_testing()
-#  add_subdirectory(test)
-#endif()
+if(BUILD_TESTS)
+  enable_testing()
+  add_subdirectory(test)
+endif()
 
 # Configure install target (i.e. what files to install)
 install(TARGETS OpenDIS6 EXPORT OpenDIS6Config DESTINATION "${CMAKE_INSTALL_LIBDIR}")

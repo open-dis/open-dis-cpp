@@ -18,5 +18,12 @@ build:
   project: OpenDIS.sln
 
 before_build:
-  - cmake -DSDL2_PATH=C:\SDL2 -DSDL2_NET_PATH=C:\SDL2 -DCMAKE_LIBRARY_ARCHITECTURE=x64 -DBUILD_SHARED_LIBS=ON -DBUILD_EXAMPLES=ON .
+  - cmake -DSDL2_PATH=C:\SDL2 -DSDL2_NET_PATH=C:\SDL2 -DCMAKE_LIBRARY_ARCHITECTURE=x64 -DBUILD_SHARED_LIBS=OFF -DBUILD_EXAMPLES=ON -DBUILD_TESTS=ON .
   - dir
+
+test_script:
+  - ctest
+
+on_finish:
+  - sh: |
+      find "$APPVEYOR_BUILD_FOLDER" -type f -name 'UnitTestSuite-results.xml' -print0 | xargs -0 -I '{}' curl -F 'file=@{}' "https://ci.appveyor.com/api/testresults/junit/$APPVEYOR_JOB_ID"

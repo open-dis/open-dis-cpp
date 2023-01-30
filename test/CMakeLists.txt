@@ -15,4 +15,4 @@ target_link_libraries(UnitTestSuite OpenDIS6)
 target_include_directories(UnitTestSuite PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
 add_test(NAME UnitTestSuite
-         COMMAND UnitTestSuite)
+         COMMAND UnitTestSuite -r junit -o UnitTestSuite-results.xml)
