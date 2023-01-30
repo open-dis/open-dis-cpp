@@ -22,7 +22,7 @@ before_build:
   - dir
 
 test_script:
-  - ctest
+  - ctest -C Release
 
 on_finish:
   - sh: |
