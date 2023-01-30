@@ -23,6 +23,7 @@ The OpenDIS build system accepts several build options to control compilation. T
 
 * **BUILD_SHARED_LIBS** - Boolean value to specify whether to build OpenDIS libraries as shared (ON/TRUE) or static (OFF/FALSE). Default is ON.
 * **BUILD_EXAMPLES** - Boolean value to specify whether to build example sender/receiver applications. Default is OFF.
+* **BUILD_TESTS** - Boolean value to specify whether to build unit tests. Default is OFF.
 
 Example application build options. Only valid if **BUILD_EXAMPLES** is enabled.
 
