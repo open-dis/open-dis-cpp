@@ -5,7 +5,7 @@
 #include <vector>
 #include <dis7/WarfareFamilyPdu.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -16,7 +16,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO EntityDamageStatusPdu : public WarfareFamilyPdu
+class OPENDIS7_EXPORT EntityDamageStatusPdu : public WarfareFamilyPdu
 {
 protected:
   /** Field shall identify the damaged entity (see 6.2.28), Section 7.3.4 COMPLETE */

@@ -2,7 +2,7 @@
 
 #include <dis7/PduSuperclass.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -13,7 +13,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO LiveEntityPdu : public PduSuperclass
+class OPENDIS7_EXPORT LiveEntityPdu : public PduSuperclass
 {
 protected:
   /** Subprotocol used to decode the PDU. Section 13 of EBV. */

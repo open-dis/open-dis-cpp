@@ -4,7 +4,7 @@
 #include <dis6/EntityID.h>
 #include <dis6/Pdu.h>
 #include <utils/DataStream.h>
-#include <dis6/msLibMacro.h>
+#include <dis6/opendis6_export.h>
 
 
 namespace DIS
@@ -15,7 +15,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO SimulationManagementFamilyPdu : public Pdu
+class OPENDIS6_EXPORT SimulationManagementFamilyPdu : public Pdu
 {
 protected:
   /** Entity that is sending message */

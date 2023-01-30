@@ -6,7 +6,7 @@
 #define _dis_stream_utils_h_
 
 #include <ostream>             // for parameter type
-#include <dis6/msLibMacro.h>       // for library symbols
+#include <dis6/opendis6_export.h>       // for library symbols
 
 namespace DIS
 {
@@ -16,9 +16,9 @@ namespace DIS
    class EntityType;
 }
 
-EXPORT_MACRO std::ostream& operator <<(std::ostream& lhs, const DIS::EntityType& rhs);
-EXPORT_MACRO std::ostream& operator <<(std::ostream& lhs, const DIS::EntityID& rhs);
-EXPORT_MACRO std::ostream& operator <<(std::ostream& lhs, const DIS::EntityStatePdu& rhs);
-EXPORT_MACRO std::ostream& operator <<(std::ostream& lhs, const DIS::DetonationPdu& rhs);
+OPENDIS6_EXPORT std::ostream& operator <<(std::ostream& lhs, const DIS::EntityType& rhs);
+OPENDIS6_EXPORT std::ostream& operator <<(std::ostream& lhs, const DIS::EntityID& rhs);
+OPENDIS6_EXPORT std::ostream& operator <<(std::ostream& lhs, const DIS::EntityStatePdu& rhs);
+OPENDIS6_EXPORT std::ostream& operator <<(std::ostream& lhs, const DIS::DetonationPdu& rhs);
 
 #endif // _dis_stream_utils_h_

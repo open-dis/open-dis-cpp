@@ -1,7 +1,7 @@
 #pragma once
 
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -12,7 +12,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO ModulationType
+class OPENDIS7_EXPORT ModulationType
 {
 protected:
   /** This field shall indicate the spread spectrum technique or combination of spread spectrum techniques in use. Bt field. */

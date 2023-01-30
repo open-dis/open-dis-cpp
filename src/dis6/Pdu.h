@@ -1,7 +1,7 @@
 #pragma once
 
 #include <utils/DataStream.h>
-#include <dis6/msLibMacro.h>
+#include <dis6/opendis6_export.h>
 
 
 namespace DIS
@@ -12,7 +12,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO Pdu
+class OPENDIS6_EXPORT Pdu
 {
 protected:
   /** The version of the protocol. 5=DIS-1995, 6=DIS-1998. */

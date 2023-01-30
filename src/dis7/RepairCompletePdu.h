@@ -4,7 +4,7 @@
 #include <dis7/EntityID.h>
 #include <dis7/LogisticsFamilyPdu.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -15,7 +15,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO RepairCompletePdu : public LogisticsFamilyPdu
+class OPENDIS7_EXPORT RepairCompletePdu : public LogisticsFamilyPdu
 {
 protected:
   /** Entity that is receiving service.  See 6.2.28 */

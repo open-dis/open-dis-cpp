@@ -1,128 +1,55 @@
 cmake_minimum_required(VERSION 3.2)
-project(OpenDIS-Examples)
+project(OpenDIS-Examples VERSION 1.0.0)
 
-## Libraries
+# include GNUInstallDirs Module to get more generic directory handling
+include(GNUInstallDirs)
 
-find_package(OpenDIS6)
+# set cmake module path
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
-## Example Programs
-include_directories(.)
+# Require the OpenDIS6 target
+if(NOT TARGET OpenDIS6)
+  find_package(OpenDIS6 REQUIRED)
+endif()
+
+# SDL2 is required to build the examples
+find_package(SDL2 REQUIRED)
+find_package(SDL2_net REQUIRED)
+
+# create list of ExampleSender source files
+set(examplesender_src
+  main.cpp
+  Connection.cpp
+  Utils.cpp
+  Timer.cpp
+)
+
+# Define ExampleSender Executable
+add_executable(ExampleSender ${examplesender_src})
+
+# Link OpenDIS into ExampleSender
+target_link_libraries(ExampleSender PRIVATE OpenDIS6 SDL2::Main SDL2::Net)
+
+# create list of ExampleReceiver source files
+set(examplereceiver_src
+  main_receive.cpp
+  Connection.cpp
+  Utils.cpp
+  Timer.cpp
+  EntityStatePduProcessor.cpp
+)
+
+# Define ExampleReceiver Executable
+add_executable(ExampleReceiver ${examplereceiver_src})
+
+# Link OpenDIS into ExampleReceiver
+target_link_libraries(ExampleReceiver PRIVATE OpenDIS6 SDL2::Main SDL2::Net)
 
 # if Windows add M_PI definition
 # - issues occurred during testing in Visual Studio
 if (WIN32)
-  add_definitions(/DM_PI=3.14159265358979323846)
+  target_compile_definitions(ExampleSender PRIVATE M_PI=3.14159265358979323846)
+  target_compile_definitions(ExampleReceiver PRIVATE M_PI=3.14159265358979323846)
 endif (WIN32)
 
-# create list of ExampleSender source files
-file(GLOB EX_SENDER_SOURCES
-  "main.cpp"
-  "Connection.cpp"
-  "Utils.cpp"
-  "Timer.cpp"
-)
-
-if(WIN32)
-       set(SDL_LIBS SDL2main SDL2 SDL2_net)
-else(WIN32)
-       set(SDL_LIBS SDL2 SDL2_net)
-endif(WIN32)
-
-# Define ExampleSender Executable
-add_executable(ExampleSender ${EX_SENDER_SOURCES})
-# Link OpenDIS into ExampleSender
-target_link_libraries(ExampleSender PRIVATE OpenDIS6)
-target_link_libraries(ExampleSender PRIVATE ${SDL_LIBS})
-# add src to ExampleSender include directories
-target_include_directories(ExampleSender PRIVATE src)
-
-# create list of ExampleReceiver source files
-file(GLOB EX_RECEIVER_SOURCES
-  "main_receive.cpp"
-  "Connection.cpp"
-  "Utils.cpp"
-  "Timer.cpp"
-  "EntityStatePduProcessor.cpp"
-)
-
-# Define ExampleReceiver Executable
-add_executable(ExampleReceiver ${EX_RECEIVER_SOURCES})
-# Link OpenDIS into ExampleReceiver
-target_link_libraries(ExampleReceiver PRIVATE OpenDIS6)
-target_link_libraries(ExampleReceiver PRIVATE ${SDL_LIBS})
-# add src to ExampleSender include directories
-target_include_directories(ExampleReceiver PRIVATE src)
-
-# Configuring SDL2
-#--------------------------------------------------------------------------------------
-
-# If SDL_INC_DIR declared (by user via -D flag)
-if(SDL_INC_DIR)
-  # Inform the user we will use the their specified SDL_INC_DIR
-  message("Using SDL2 include directory defined with -DSDL_INC_DIR")
-  message("\tvalue: ${SDL_INC_DIR}")
-  # Add SDL_INC_DIR to the include directories for both exampe apps
-  target_include_directories(ExampleSender PUBLIC ${SDL_INC_DIR})
-  target_include_directories(ExampleReceiver PUBLIC ${SDL_INC_DIR})
-else(SDL_INC_DIR)
-  # Otherwise, try get SDL2 Compiler Flags from sdl2-config
-  execute_process(
-    COMMAND sdl2-config --cflags
-    RESULT_VARIABLE SDL_CERR
-    OUTPUT_VARIABLE SDL_CFLAGS
-    OUTPUT_STRIP_TRAILING_WHITESPACE
-  )
-  # if sdl2-config errors
-  if(SDL_CERR)
-    # warn user that they may have to define the SDL2 include
-    #  directory with the -DSDL_INC_DIR flag
-    # Most linux systems will probably be fine
-    message(WARNING "Unable to detect SDL2 include flags")
-    message("You may need to specify the SDL include manually")
-    message(" with -DSDL_INC_DIR=<SDL2 include path>")
-  else(SDL_CERR)
-    # otherwise split the output of sdl2-config and add to compiler flags to examples
-    if(WIN32)
-      separate_arguments(SDL_CFLAGS UNIX_COMMAND "${SDL_CFLAGS}")
-    else(WIN32)
-      separate_arguments(SDL_CFLAGS WINDOWS_COMMAND "${SDL_CFLAGS}")
-    endif(WIN32)
-    target_compile_options(ExampleSender PRIVATE "${SDL_CFLAGS}")
-    target_compile_options(ExampleReceiver PRIVATE "${SDL_CFLAGS}")
-  endif(SDL_CERR)
-endif(SDL_INC_DIR)
-
-# If SDL_LIB_DIR declared (by user via -D flag)
-if(SDL_LIB_DIR)
-  message("Using SDL2 include directory defined with -DSDL_LIB_DIR")
-  message("\tvalue: ${SDL_LIB_DIR}")
-  target_link_directories(ExampleSender PUBLIC ${SDL_LIB_DIR})
-  target_link_directories(ExampleReceiver PUBLIC ${SDL_LIB_DIR})
-else(SDL_LIB_DIR)
-  # Otherwise, try get SDL2 Library Flags from sdl2-config
-  execute_process(
-    COMMAND sdl2-config --libs
-    RESULT_VARIABLE SDL_LERR
-    OUTPUT_VARIABLE SDL_LFLAGS
-    OUTPUT_STRIP_TRAILING_WHITESPACE
-  )
-  # if sdl2-config errors
-  if(SDL_LERR)
-    # warn user that they may have to define the SDL2 include
-    #  directory with the -DSDL_LIB_DIR flag
-    # Most linux systems will probably be fine
-    message(WARNING "Unable to detect SDL2 library flags using defaults")
-    message("You may need to specify the SDL library manually with")
-    message(" -DSDL_LIB_DIR=<SDL2 include path>, especially for Windows users")
-  else(SDL_LERR)
-    # otherwise split the output of sdl2-config and add to library flags to examples
-    if(WIN32)
-      separate_arguments(SDL_LFLAGS UNIX_COMMAND "${SDL_LFLAGS}")
-    else(WIN32)
-      separate_arguments(SDL_LFLAGS WINDOWS_COMMAND "${SDL_LFLAGS}")
-    endif(WIN32)
-    target_link_libraries(ExampleSender PRIVATE "${SDL_LFLAGS}")
-    target_link_libraries(ExampleReceiver PRIVATE "${SDL_LFLAGS}")
-  endif(SDL_LERR)
-endif(SDL_LIB_DIR)
-
+install(TARGETS ExampleSender ExampleReceiver DESTINATION ${CMAKE_INSTALL_BINDIR})

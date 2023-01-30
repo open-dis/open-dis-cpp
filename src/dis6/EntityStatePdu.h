@@ -12,7 +12,7 @@
 #include <vector>
 #include <dis6/EntityInformationFamilyPdu.h>
 #include <utils/DataStream.h>
-#include <dis6/msLibMacro.h>
+#include <dis6/opendis6_export.h>
 
 
 namespace DIS
@@ -23,7 +23,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO EntityStatePdu : public EntityInformationFamilyPdu
+class OPENDIS6_EXPORT EntityStatePdu : public EntityInformationFamilyPdu
 {
 protected:
   /** Unique ID for an entity that is tied to this state information */

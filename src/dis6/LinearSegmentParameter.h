@@ -4,7 +4,7 @@
 #include <dis6/Vector3Double.h>
 #include <dis6/Orientation.h>
 #include <utils/DataStream.h>
-#include <dis6/msLibMacro.h>
+#include <dis6/opendis6_export.h>
 
 
 namespace DIS
@@ -15,7 +15,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO LinearSegmentParameter
+class OPENDIS6_EXPORT LinearSegmentParameter
 {
 protected:
   /** number of segments */

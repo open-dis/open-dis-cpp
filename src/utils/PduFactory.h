@@ -1,6 +1,6 @@
 #pragma once
 
-#include <dis6/msLibMacro.h>         // for library symbols
+#include <dis6/opendis6_export.h>         // for library symbols
 #include <dis6/Pdu.h>
 
 namespace DIS
@@ -15,7 +15,7 @@ namespace DIS
 	* @author DMcG
 	*/
 
-class EXPORT_MACRO PduFactory
+class OPENDIS6_EXPORT PduFactory
 {
 public:
 	PduFactory(void);

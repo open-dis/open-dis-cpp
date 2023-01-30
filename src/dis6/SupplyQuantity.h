@@ -2,7 +2,7 @@
 
 #include <dis6/EntityType.h>
 #include <utils/DataStream.h>
-#include <dis6/msLibMacro.h>
+#include <dis6/opendis6_export.h>
 
 
 namespace DIS
@@ -13,7 +13,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO SupplyQuantity
+class OPENDIS6_EXPORT SupplyQuantity
 {
 protected:
   /** Type of supply */

@@ -5,7 +5,7 @@
 #ifndef _dcl_dis_masks_h_
 #define _dcl_dis_masks_h_
 
-#include <dis6/msLibMacro.h>       // for library symbols
+#include <dis6/opendis6_export.h>       // for library symbols
 
 namespace DIS
 {

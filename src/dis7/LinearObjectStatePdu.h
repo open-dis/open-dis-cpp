@@ -9,7 +9,7 @@
 #include <vector>
 #include <dis7/SyntheticEnvironmentFamilyPdu.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -20,7 +20,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO LinearObjectStatePdu : public SyntheticEnvironmentFamilyPdu
+class OPENDIS7_EXPORT LinearObjectStatePdu : public SyntheticEnvironmentFamilyPdu
 {
 protected:
   /** Object in synthetic environment */

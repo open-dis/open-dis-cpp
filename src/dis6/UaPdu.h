@@ -8,7 +8,7 @@
 #include <vector>
 #include <dis6/DistributedEmissionsFamilyPdu.h>
 #include <utils/DataStream.h>
-#include <dis6/msLibMacro.h>
+#include <dis6/opendis6_export.h>
 
 
 namespace DIS
@@ -19,7 +19,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO UaPdu : public DistributedEmissionsFamilyPdu
+class OPENDIS6_EXPORT UaPdu : public DistributedEmissionsFamilyPdu
 {
 protected:
   /** ID of the entity that is the source of the emission */

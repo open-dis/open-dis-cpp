@@ -12,7 +12,7 @@
 #include <dis7/DistributedEmissionsFamilyPdu.h>
 #include <vector>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -24,7 +24,7 @@ namespace DIS
 
 // @author semihkurt , 09/04/2021
 
-class EXPORT_MACRO IFFPdu : public DistributedEmissionsFamilyPdu
+class OPENDIS7_EXPORT IFFPdu : public DistributedEmissionsFamilyPdu
 {
 protected:
   /** ID of the entity emitting */

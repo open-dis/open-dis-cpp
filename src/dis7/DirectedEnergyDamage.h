@@ -3,7 +3,7 @@
 #include <dis7/Vector3Float.h>
 #include <dis7/EventIdentifier.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -14,7 +14,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO DirectedEnergyDamage
+class OPENDIS7_EXPORT DirectedEnergyDamage
 {
 protected:
   /** DE Record Type. */

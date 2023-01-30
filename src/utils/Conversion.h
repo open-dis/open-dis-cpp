@@ -6,12 +6,12 @@
 #ifndef _dcl_dis_conversion_h_
 #define _dcl_dis_conversion_h_
 
-#include <dis6/msLibMacro.h>       // for library symbols
+#include <dis6/opendis6_export.h>       // for library symbols
 
 namespace DIS
 {
    /// a name-scope for conversion functions.
-   struct EXPORT_MACRO Convert
+   struct OPENDIS6_EXPORT Convert
    {
       /// the number of bits used to store the type metric value
       /// within the Articulation Parameter's parameter type value.

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 #include <dis7/EightByteChunk.h>
 #include <vector>
 
@@ -14,7 +14,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO VariableDatum
+class OPENDIS7_EXPORT VariableDatum
 {
 protected:
   /** Type of variable datum to be transmitted. 32 bit enumeration defined in EBV */

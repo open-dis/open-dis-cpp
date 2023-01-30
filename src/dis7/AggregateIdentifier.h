@@ -2,7 +2,7 @@
 
 #include <dis7/SimulationAddress.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -13,7 +13,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO AggregateIdentifier
+class OPENDIS7_EXPORT AggregateIdentifier
 {
 protected:
   /** Simulation address, ie site and application, the first two fields of the entity ID */

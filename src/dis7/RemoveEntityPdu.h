@@ -4,7 +4,7 @@
 #include <dis7/EntityID.h>
 #include <dis7/SimulationManagementFamilyPdu.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -15,7 +15,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO RemoveEntityPdu : public SimulationManagementFamilyPdu
+class OPENDIS7_EXPORT RemoveEntityPdu : public SimulationManagementFamilyPdu
 {
 protected:
   /** Identifier for originating entity(or simulation) */

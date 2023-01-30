@@ -9,7 +9,7 @@
 #include <dis6/SimulationAddress.h>
 #include <dis6/SyntheticEnvironmentFamilyPdu.h>
 #include <utils/DataStream.h>
-#include <dis6/msLibMacro.h>
+#include <dis6/opendis6_export.h>
 
 
 namespace DIS
@@ -20,7 +20,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO PointObjectStatePdu : public SyntheticEnvironmentFamilyPdu
+class OPENDIS6_EXPORT PointObjectStatePdu : public SyntheticEnvironmentFamilyPdu
 {
 protected:
   /** Object in synthetic environment */

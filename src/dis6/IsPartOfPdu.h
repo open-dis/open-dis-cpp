@@ -8,7 +8,7 @@
 #include <dis6/EntityType.h>
 #include <dis6/EntityManagementFamilyPdu.h>
 #include <utils/DataStream.h>
-#include <dis6/msLibMacro.h>
+#include <dis6/opendis6_export.h>
 
 
 namespace DIS
@@ -19,7 +19,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO IsPartOfPdu : public EntityManagementFamilyPdu
+class OPENDIS6_EXPORT IsPartOfPdu : public EntityManagementFamilyPdu
 {
 protected:
   /** ID of entity originating PDU */

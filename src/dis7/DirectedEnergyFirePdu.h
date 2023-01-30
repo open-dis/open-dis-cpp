@@ -7,7 +7,7 @@
 #include <vector>
 #include <dis7/WarfareFamilyPdu.h>
 #include <utils/DataStream.h>
-#include <dis7/msLibMacro.h>
+#include <dis7/opendis7_export.h>
 
 
 namespace DIS
@@ -18,7 +18,7 @@ namespace DIS
 //
 // @author DMcG, jkg
 
-class EXPORT_MACRO DirectedEnergyFirePdu : public WarfareFamilyPdu
+class OPENDIS7_EXPORT DirectedEnergyFirePdu : public WarfareFamilyPdu
 {
 protected:
   /** Field shall identify the munition type enumeration for the DE weapon beam, Section 7.3.4  */
