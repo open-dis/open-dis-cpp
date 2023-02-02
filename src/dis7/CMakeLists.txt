@@ -367,10 +367,10 @@ set(dis7_src
 list(TRANSFORM dis7_src PREPEND "${CMAKE_CURRENT_LIST_DIR}/")
 
 include(GenerateExportHeader)
-generate_export_header(OpenDIS7)
+generate_export_header(DIS7 BASE_NAME opendis7 EXPORT_MACRO_NAME OPENDIS7_EXPORT)
 list(APPEND dis7_hdr "${CMAKE_CURRENT_BINARY_DIR}/opendis7_export.h")
 
-target_sources(OpenDIS7 PRIVATE ${dis7_src})
+target_sources(DIS7 PRIVATE ${dis7_src})
 
 install(FILES ${dis7_hdr}
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/dis7)

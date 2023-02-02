@@ -9,32 +9,35 @@ option(BUILD_TESTS "build unit tests" OFF)
 # include GNUInstallDirs Module to get more generic directory handling
 include(GNUInstallDirs)
 
-# Define OpenDIS6 Library
-add_library(OpenDIS6 "")
+# Define DIS6 Library
+add_library(DIS6 "")
+add_library(OpenDIS6 ALIAS DIS6)
 
-# Add src/ to the include directories to OpenDIS6
-target_include_directories(OpenDIS6
+# Add src/ to the include directories to DIS6
+target_include_directories(DIS6
   PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
          $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src>
          $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
-# Define OpenDIS7 Library
-add_library(OpenDIS7 "")
+# Define DIS7 Library
+add_library(DIS7 "")
+add_library(OpenDIS7 ALIAS DIS7)
 
-# Add src/ to the include directories to OpenDIS6
-target_include_directories(OpenDIS7
+# Add src/ to the include directories to DIS6
+target_include_directories(DIS7
   PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
          $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src>
          $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
-# Add compile definition EXPORT_LIBRARY for shared libs
+# Add compile definitions static libs
 if(NOT BUILD_SHARED_LIBS)
-  target_compile_definitions(OpenDIS6 PRIVATE OpenDIS6_STATIC_DEFINE)
-  target_compile_definitions(OpenDIS7 PRIVATE OpenDIS7_STATIC_DEFINE)
+  target_compile_definitions(DIS6 PRIVATE DIS6)
+  target_compile_definitions(DIS7 PRIVATE DIS7)
 endif()
 
 # Add source directories
 add_subdirectory(src)
+add_subdirectory(cmake)
 
 # Build example applications
 if(BUILD_EXAMPLES)
@@ -48,10 +51,10 @@ if(BUILD_TESTS)
 endif()
 
 # Configure install target (i.e. what files to install)
-install(TARGETS OpenDIS6 EXPORT OpenDIS6Config DESTINATION "${CMAKE_INSTALL_LIBDIR}")
-install(EXPORT OpenDIS6Config DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/OpenDIS6")
-install(TARGETS OpenDIS7 EXPORT OpenDIS7Config DESTINATION "${CMAKE_INSTALL_LIBDIR}")
-install(EXPORT OpenDIS7Config DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/OpenDIS7")
+install(TARGETS DIS6 DIS7 EXPORT OpenDISTargets DESTINATION "${CMAKE_INSTALL_LIBDIR}")
+install(EXPORT OpenDISTargets
+        NAMESPACE OpenDIS::
+        DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/OpenDIS")
 
 # configure package target (i.e. Package Types, and meta data)
 set(CPACK_GENERATOR "DEB" "RPM" "TXZ" "TGZ")

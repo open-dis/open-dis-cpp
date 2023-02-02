@@ -290,10 +290,10 @@ set(dis6_src
 list(TRANSFORM dis6_src PREPEND "${CMAKE_CURRENT_LIST_DIR}/")
 
 include(GenerateExportHeader)
-generate_export_header(OpenDIS6)
+generate_export_header(DIS6 BASE_NAME opendis6 EXPORT_MACRO_NAME OPENDIS6_EXPORT)
 list(APPEND dis6_hdr "${CMAKE_CURRENT_BINARY_DIR}/opendis6_export.h")
 
-target_sources(OpenDIS6 PRIVATE ${dis6_src})
+target_sources(DIS6 PRIVATE ${dis6_src})
 
 install(FILES ${dis6_hdr}
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/dis6)
