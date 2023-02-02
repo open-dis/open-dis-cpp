@@ -1,4 +1,4 @@
-#include <utils/DataStream.h>
+#include <dis7/utils/DataStream.h>
 
 #include <iostream>   // for debug output
 
@@ -174,25 +174,25 @@ DataStream& DataStream::operator <<(unsigned char c)
    return *this;
 }
 
-DataStream& DataStream::operator <<(float f) 
+DataStream& DataStream::operator <<(float f)
 {
    WriteAlgorithm( f );
    return *this;
 }
 
-DataStream& DataStream::operator <<(double d) 
+DataStream& DataStream::operator <<(double d)
 {
    WriteAlgorithm( d );
    return *this;
 }
 
-DataStream& DataStream::operator <<(int d) 
+DataStream& DataStream::operator <<(int d)
 {
    WriteAlgorithm( d );
    return *this;
 }
 
-DataStream& DataStream::operator <<(unsigned int d) 
+DataStream& DataStream::operator <<(unsigned int d)
 {
    WriteAlgorithm( d );
    return *this;

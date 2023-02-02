@@ -7,7 +7,7 @@
 #include <dis6/TwoByteChunk.h>
 #include <vector>
 #include <dis6/MinefieldFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <dis6/utils/DataStream.h>
 #include <dis6/opendis6_export.h>
 
 

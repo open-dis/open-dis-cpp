@@ -6,7 +6,7 @@
 #include <dis6/SystemID.h>
 #include <dis6/IffFundamentalData.h>
 #include <dis6/DistributedEmissionsFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <dis6/utils/DataStream.h>
 #include <dis6/opendis6_export.h>
 
 

@@ -3,7 +3,7 @@
 #include <dis6/ClockTime.h>
 #include <dis6/ClockTime.h>
 #include <dis6/SimulationManagementFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <dis6/utils/DataStream.h>
 #include <dis6/opendis6_export.h>
 
 

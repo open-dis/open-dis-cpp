@@ -1,5 +1,5 @@
-#include <utils/Conversion.h>
-#include <utils/Masks.h>
+#include <dis6/utils/Conversion.h>
+#include <dis6/utils/Masks.h>
 
 using namespace DIS;
 

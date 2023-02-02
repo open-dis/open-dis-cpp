@@ -1,20 +1,21 @@
 #pragma once
 
 #include <dis6/Pdu.h>
-#include <utils/PDUType.h>
+#include <dis6/utils/DataStream.h>
 
 namespace DIS
 {
     /// houses instances for the set of known PDU classes to be returned
     /// when provided with the PDU type's identifier value.
-    class OPENDIS6_EXPORT PduBank
+    class IPduBank
     {
     public:
+        ~IPduBank(){}
+
         /// finds the PDU instance corresponding to the identifier
         /// @param pdu_type the 8-bit PDU type identifier
         /// @return NULL when the pdu_type is unknown.
-        ///\todo make this parameter just 'unsigned char' since that will be easier to generate.
-        static Pdu* GetStaticPDU( DIS::PDUType pdu_type );  
+        virtual Pdu* GetStaticPDU( unsigned char pdu_type, DataStream& ds ) = 0;  
     };   
 }
 

@@ -3,7 +3,7 @@
 #include <dis6/EntityID.h>
 #include <dis6/EntityID.h>
 #include <dis6/LogisticsFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <dis6/utils/DataStream.h>
 #include <dis6/opendis6_export.h>
 
 

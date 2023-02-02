@@ -9,7 +9,7 @@
 #include <dis6/ArticulationParameter.h>
 #include <vector>
 #include <dis6/WarfareFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <dis6/utils/DataStream.h>
 #include <dis6/opendis6_export.h>
 
 
