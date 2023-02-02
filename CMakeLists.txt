@@ -6,6 +6,11 @@ option(BUILD_SHARED_LIBS "build shared libraries" ON)
 option(BUILD_EXAMPLES "build example sender/receiver applications" OFF)
 option(BUILD_TESTS "build unit tests" OFF)
 
+# Enforce a C++11 compliant compiler
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 # include GNUInstallDirs Module to get more generic directory handling
 include(GNUInstallDirs)
 
