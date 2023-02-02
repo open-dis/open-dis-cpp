@@ -1,10 +1,10 @@
 #include "PduUtils.h"
 
-#include <DIS/EntityStatePdu.h>
-#include <DIS/DetonationPdu.h>
-#include <DIS/CollisionPdu.h>
+#include <dis6/EntityStatePdu.h>
+#include <dis6/DetonationPdu.h>
+#include <dis6/CollisionPdu.h>
 
-#include <DIS/Conversion.h>
+#include <utils/Conversion.h>
 
 void TestDIS::InitPDU(DIS::DetonationPdu& pdu)
 {
@@ -50,6 +50,7 @@ void TestDIS::InitPDU(DIS::DetonationPdu& pdu)
    pdu.setTargetEntityID( enemy );
    pdu.setTimestamp( 2 );
    pdu.setVelocity( vel );
+   pdu.setLength(pdu.getMarshalledSize());
 }
 
 void TestDIS::InitPDU(DIS::EntityStatePdu& pdu)
@@ -73,6 +74,7 @@ void TestDIS::InitPDU(DIS::EntityStatePdu& pdu)
    //pdu.setArticulationParameters( art_params );
    pdu.setCapabilities( 3 );
    pdu.setDeadReckoningParameters( drparam );
+   pdu.setLength(pdu.getMarshalledSize());
 }
 
 void TestDIS::InitPDU(DIS::CollisionPdu& pdu)
@@ -94,6 +96,8 @@ void TestDIS::InitPDU(DIS::CollisionPdu& pdu)
    pdu.setVelocity( vec3f );
    pdu.setMass( 3.f );
    pdu.setLocation( vec3f );
+
+   pdu.setLength(pdu.getMarshalledSize());
 }
 
 void TestDIS::InitVec3f(DIS::Vector3Float& vec3f)

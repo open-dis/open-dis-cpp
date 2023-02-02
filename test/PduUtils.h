@@ -6,8 +6,8 @@
 #define _dis_pdu_utils_h_
 
 #include <vector>
-#include <DIS/ArticulationParameter.h>
-#include <DIS/DeadReckoningParameter.h>
+#include <dis6/ArticulationParameter.h>
+#include <dis6/DeadReckoningParameter.h>
 
 namespace DIS
 {
