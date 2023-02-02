@@ -15,7 +15,7 @@ set(utils_src
 # be >= 16, these 2 lines can be removed.
 list(TRANSFORM utils_src PREPEND "${CMAKE_CURRENT_LIST_DIR}/")
 
-target_sources(DIS7 PRIVATE ${utils_src})
+target_sources(OpenDIS7 PRIVATE ${utils_src})
 
 install(FILES ${utils_hdr}
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/dis7/utils)

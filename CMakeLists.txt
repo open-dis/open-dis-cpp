@@ -9,31 +9,23 @@ option(BUILD_TESTS "build unit tests" OFF)
 # include GNUInstallDirs Module to get more generic directory handling
 include(GNUInstallDirs)
 
-# Define DIS6 Library
-add_library(DIS6 "")
-add_library(OpenDIS6 ALIAS DIS6)
+# Define OpenDIS6 Library
+add_library(OpenDIS6 "")
 
-# Add src/ to the include directories to DIS6
-target_include_directories(DIS6
+# Add src/ to the include directories to OpenDIS6
+target_include_directories(OpenDIS6
   PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
          $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src>
          $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
-# Define DIS7 Library
-add_library(DIS7 "")
-add_library(OpenDIS7 ALIAS DIS7)
+# Define OpenDIS7 Library
+add_library(OpenDIS7 "")
 
-# Add src/ to the include directories to DIS6
-target_include_directories(DIS7
+# Add src/ to the include directories to DIS7
+target_include_directories(OpenDIS7
   PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
          $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src>
          $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
-
-# Add compile definitions static libs
-if(NOT BUILD_SHARED_LIBS)
-  target_compile_definitions(DIS6 PRIVATE DIS6)
-  target_compile_definitions(DIS7 PRIVATE DIS7)
-endif()
 
 # Add source directories
 add_subdirectory(src)
@@ -51,7 +43,7 @@ if(BUILD_TESTS)
 endif()
 
 # Configure install target (i.e. what files to install)
-install(TARGETS DIS6 DIS7 EXPORT OpenDISTargets DESTINATION "${CMAKE_INSTALL_LIBDIR}")
+install(TARGETS OpenDIS6 OpenDIS7 EXPORT OpenDISTargets DESTINATION "${CMAKE_INSTALL_LIBDIR}")
 install(EXPORT OpenDISTargets
         NAMESPACE OpenDIS::
         DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/OpenDIS")
