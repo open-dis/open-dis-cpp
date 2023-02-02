@@ -1,7 +1,7 @@
 #include "catch.hpp"
 
 #include "dis6/EntityStatePdu.h"
-#include "utils/DataStream.h"
+#include "dis6/utils/DataStream.h"
 
 template <typename T>
 void TestData(DIS::Endian e, T t0, T t1, T t2) {

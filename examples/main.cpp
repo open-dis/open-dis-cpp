@@ -11,7 +11,7 @@
 #include <dis6/Vector3Double.h>
 #include <dis6/BurstDescriptor.h>
 
-#include <utils/Conversion.h>
+#include <dis6/utils/Conversion.h>
 
 #include <iostream>
 

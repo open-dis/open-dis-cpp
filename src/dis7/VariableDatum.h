@@ -1,6 +1,6 @@
 #pragma once
 
-#include <utils/DataStream.h>
+#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
 #include <dis7/EightByteChunk.h>
 #include <vector>

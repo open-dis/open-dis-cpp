@@ -7,7 +7,7 @@
 #include <dis7/NamedLocationIdentification.h>
 #include <dis7/EntityType.h>
 #include <dis7/EntityManagementFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
 
 

@@ -3,7 +3,7 @@
 #include <dis7/UnsignedDISInteger.h>
 #include <dis7/UnsignedDISInteger.h>
 #include <vector>
-#include <utils/DataStream.h>
+#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
 
 

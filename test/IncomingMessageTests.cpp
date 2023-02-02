@@ -4,10 +4,10 @@
 #include "dis6/CollisionPdu.h"
 #include "dis6/DetonationPdu.h"
 #include "dis6/EntityStatePdu.h"
-#include "utils/DataStream.h"
-#include "utils/IPacketProcessor.h"
-#include "utils/IncomingMessage.h"
-#include "utils/PDUType.h"
+#include "dis6/utils/DataStream.h"
+#include "dis6/utils/IPacketProcessor.h"
+#include "dis6/utils/IncomingMessage.h"
+#include "dis6/utils/PDUType.h"
 
 using namespace DIS;
 

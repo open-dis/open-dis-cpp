@@ -3,8 +3,8 @@
 #include "PduUtils.h"
 #include "dis6/DetonationPdu.h"
 #include "dis6/EntityStatePdu.h"
-#include "utils/DataStream.h"
-#include "utils/StreamUtils.h"
+#include "dis6/utils/DataStream.h"
+#include "dis6/utils/StreamUtils.h"
 
 template <typename PduT, unsigned int clones, typename PduT2>
 void CheckSerialization(const PduT& src1, const PduT2& src2) {

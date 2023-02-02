@@ -5,7 +5,7 @@
 #include <dis7/VectoringNozzleSystem.h>
 #include <vector>
 #include <dis7/DistributedEmissionsFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
 
 
