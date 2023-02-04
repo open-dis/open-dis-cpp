@@ -6,6 +6,11 @@ option(BUILD_SHARED_LIBS "build shared libraries" ON)
 option(BUILD_EXAMPLES "build example sender/receiver applications" OFF)
 option(BUILD_TESTS "build unit tests" OFF)
 
+# Enforce a C++11 compliant compiler
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 # include GNUInstallDirs Module to get more generic directory handling
 include(GNUInstallDirs)
 
@@ -21,20 +26,15 @@ target_include_directories(OpenDIS6
 # Define OpenDIS7 Library
 add_library(OpenDIS7 "")
 
-# Add src/ to the include directories to OpenDIS6
+# Add src/ to the include directories to DIS7
 target_include_directories(OpenDIS7
   PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
          $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src>
          $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
-# Add compile definition EXPORT_LIBRARY for shared libs
-if(NOT BUILD_SHARED_LIBS)
-  target_compile_definitions(OpenDIS6 PRIVATE OpenDIS6_STATIC_DEFINE)
-  target_compile_definitions(OpenDIS7 PRIVATE OpenDIS7_STATIC_DEFINE)
-endif()
-
 # Add source directories
 add_subdirectory(src)
+add_subdirectory(cmake)
 
 # Build example applications
 if(BUILD_EXAMPLES)
@@ -48,10 +48,10 @@ if(BUILD_TESTS)
 endif()
 
 # Configure install target (i.e. what files to install)
-install(TARGETS OpenDIS6 EXPORT OpenDIS6Config DESTINATION "${CMAKE_INSTALL_LIBDIR}")
-install(EXPORT OpenDIS6Config DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/OpenDIS6")
-install(TARGETS OpenDIS7 EXPORT OpenDIS7Config DESTINATION "${CMAKE_INSTALL_LIBDIR}")
-install(EXPORT OpenDIS7Config DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/OpenDIS7")
+install(TARGETS OpenDIS6 OpenDIS7 EXPORT OpenDISTargets DESTINATION "${CMAKE_INSTALL_LIBDIR}")
+install(EXPORT OpenDISTargets
+        NAMESPACE OpenDIS::
+        DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/OpenDIS")
 
 # configure package target (i.e. Package Types, and meta data)
 set(CPACK_GENERATOR "DEB" "RPM" "TXZ" "TGZ")

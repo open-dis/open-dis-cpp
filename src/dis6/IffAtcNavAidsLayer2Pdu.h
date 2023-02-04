@@ -6,7 +6,7 @@
 #include <dis6/FundamentalParameterDataIff.h>
 #include <vector>
 #include <dis6/IffAtcNavAidsLayer1Pdu.h>
-#include <utils/DataStream.h>
+#include <dis6/utils/DataStream.h>
 #include <dis6/opendis6_export.h>
 
 

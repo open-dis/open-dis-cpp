@@ -8,7 +8,7 @@
 #include <dis7/LinearSegmentParameter.h>
 #include <vector>
 #include <dis7/SyntheticEnvironmentFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
 
 

@@ -1,8 +1,8 @@
-#include <utils/IncomingMessage.h>
-#include <utils/IPacketProcessor.h>
+#include <dis6/utils/IncomingMessage.h>
+#include <dis6/utils/IPacketProcessor.h>
 #include <dis6/Pdu.h>
-#include <utils/DataStream.h>
-#include <utils/PDUBank.h>
+#include <dis6/utils/DataStream.h>
+#include <dis6/utils/PDUBank.h>
 #include <iostream>
 
 #include <dis6/EntityStatePdu.h>

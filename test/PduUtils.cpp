@@ -4,7 +4,7 @@
 #include <dis6/DetonationPdu.h>
 #include <dis6/CollisionPdu.h>
 
-#include <utils/Conversion.h>
+#include <dis6/utils/Conversion.h>
 
 void TestDIS::InitPDU(DIS::DetonationPdu& pdu)
 {

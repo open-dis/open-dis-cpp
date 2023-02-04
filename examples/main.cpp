@@ -7,11 +7,11 @@
 // the DIS library usage
 #include <dis6/EntityStatePdu.h>
 #include <dis6/DetonationPdu.h>
-#include <utils/DataStream.h>
+#include <dis6/utils/DataStream.h>
 #include <dis6/Vector3Double.h>
 #include <dis6/BurstDescriptor.h>
 
-#include <utils/Conversion.h>
+#include <dis6/utils/Conversion.h>
 
 #include <iostream>
 

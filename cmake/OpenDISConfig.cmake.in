@@ -1,0 +1,12 @@
+@PACKAGE_INIT@
+
+include(${CMAKE_CURRENT_LIST_DIR}/OpenDISTargets.cmake)
+
+## Add target aliases
+add_library(OpenDIS::DIS6 ALIAS OpenDIS::OpenDIS6)
+add_library(OpenDIS::DIS7 ALIAS OpenDIS::OpenDIS7)
+
+## These are deprecated target names. All new references to the targets
+## should utilize the new namespace wrapped version
+add_library(OpenDIS6 ALIAS OpenDIS::OpenDIS6)
+add_library(OpenDIS7 ALIAS OpenDIS::OpenDIS7)

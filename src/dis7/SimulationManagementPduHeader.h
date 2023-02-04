@@ -3,7 +3,7 @@
 #include <dis7/PduHeader.h>
 #include <dis7/EntityID.h>
 #include <dis7/EntityID.h>
-#include <utils/DataStream.h>
+#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
 
 

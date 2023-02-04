@@ -1,3 +1,5 @@
+add_subdirectory(utils)
+
 # Create list of all headers
 set(dis6_hdr
   AcknowledgePdu.h

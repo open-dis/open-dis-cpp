@@ -6,7 +6,7 @@
 #include <dis7/StandardVariableSpecification.h>
 #include <vector>
 #include <dis7/WarfareFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
 
 

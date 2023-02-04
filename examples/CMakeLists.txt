@@ -9,7 +9,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 # Require the OpenDIS6 target
 if(NOT TARGET OpenDIS6)
-  find_package(OpenDIS6 REQUIRED)
+  find_package(OpenDIS REQUIRED)
 endif()
 
 # SDL2 is required to build the examples

@@ -8,7 +8,7 @@
 #include <dis6/SimulationAddress.h>
 #include <dis6/SimulationAddress.h>
 #include <dis6/SyntheticEnvironmentFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <dis6/utils/DataStream.h>
 #include <dis6/opendis6_export.h>
 
 

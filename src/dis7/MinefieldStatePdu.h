@@ -8,7 +8,7 @@
 #include <dis7/EntityType.h>
 #include <vector>
 #include <dis7/MinefieldFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
 
 

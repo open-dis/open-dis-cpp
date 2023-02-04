@@ -5,7 +5,7 @@
 #include <dis7/JammingTechnique.h>
 #include <dis7/BeamData.h>
 #include <vector>
-#include <utils/DataStream.h>
+#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
 
 

@@ -3,7 +3,7 @@
 #include "EntityStatePduProcessor.h"     // for usage
 #include "Utils.h"
 
-#include <utils/IncomingMessage.h>                 // for library usage
+#include <dis6/utils/IncomingMessage.h>                 // for library usage
 #include <dis6/EntityStatePdu.h>                  // for library usage
 
 #include <cstring>                       // for strlen

@@ -1,4 +1,4 @@
-#include <utils/PacketFactory.h>
+#include <dis6/utils/PacketFactory.h>
 #include <dis6/Pdu.h>
 #include <cstdlib>
 

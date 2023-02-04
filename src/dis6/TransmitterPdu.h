@@ -8,7 +8,7 @@
 #include <dis6/Vector3Float.h>
 #include <vector>
 #include <dis6/RadioCommunicationsFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <dis6/utils/DataStream.h>
 #include <dis6/opendis6_export.h>
 
 

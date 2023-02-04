@@ -6,7 +6,7 @@
 #include <dis7/VariableDatum.h>
 #include <vector>
 #include <dis7/SimulationManagementFamilyPdu.h>
-#include <utils/DataStream.h>
+#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
 
 

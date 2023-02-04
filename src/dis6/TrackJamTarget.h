@@ -1,7 +1,7 @@
 #pragma once
 
 #include <dis6/EntityID.h>
-#include <utils/DataStream.h>
+#include <dis6/utils/DataStream.h>
 #include <dis6/opendis6_export.h>
 
 
