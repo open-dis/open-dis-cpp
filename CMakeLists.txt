@@ -48,7 +48,11 @@ if(BUILD_TESTS)
 endif()
 
 # Configure install target (i.e. what files to install)
-install(TARGETS OpenDIS6 OpenDIS7 EXPORT OpenDISTargets DESTINATION "${CMAKE_INSTALL_LIBDIR}")
+install(TARGETS OpenDIS6 OpenDIS7
+        EXPORT OpenDISTargets
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(EXPORT OpenDISTargets
         NAMESPACE OpenDIS::
         DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/OpenDIS")
