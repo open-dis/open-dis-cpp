@@ -2,87 +2,50 @@
 
 using namespace DIS;
 
+OneByteChunk::OneByteChunk() { _otherParameters = 0; }
 
-OneByteChunk::OneByteChunk()
-{
-     // Initialize fixed length array
-     for(int lengthotherParameters= 0; lengthotherParameters < 1; lengthotherParameters++)
-     {
-         _otherParameters[lengthotherParameters] = 0;
-     }
+OneByteChunk::~OneByteChunk() {}
 
+char *OneByteChunk::getOtherParameters() { return &_otherParameters; }
+
+const char *OneByteChunk::getOtherParameters() const {
+  return &_otherParameters;
 }
 
-OneByteChunk::~OneByteChunk()
-{
+void OneByteChunk::setOtherParameters(const char *x) {
+  _otherParameters = x[0];
 }
 
-char* OneByteChunk::getOtherParameters() 
-{
-    return _otherParameters;
+void OneByteChunk::marshal(DataStream &dataStream) const {
+  dataStream << _otherParameters;
 }
 
-const char* OneByteChunk::getOtherParameters() const
-{
-    return _otherParameters;
+void OneByteChunk::unmarshal(DataStream &dataStream) {
+  dataStream >> _otherParameters;
 }
 
-void OneByteChunk::setOtherParameters(const char* x)
-{
-   for(int i = 0; i < 1; i++)
-   {
-        _otherParameters[i] = x[i];
-   }
+bool OneByteChunk::operator==(const OneByteChunk &rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_otherParameters == rhs._otherParameters[idx])) {
+    ivarsEqual = false;
+  }
+
+  return ivarsEqual;
 }
 
-void OneByteChunk::marshal(DataStream& dataStream) const
-{
+int OneByteChunk::getMarshalledSize() const {
+  int marshalSize = 0;
 
-     for(size_t idx = 0; idx < 1; idx++)
-     {
-        dataStream << _otherParameters[idx];
-     }
-
-}
-
-void OneByteChunk::unmarshal(DataStream& dataStream)
-{
-
-     for(size_t idx = 0; idx < 1; idx++)
-     {
-        dataStream >> _otherParameters[idx];
-     }
-
-}
-
-
-bool OneByteChunk::operator ==(const OneByteChunk& rhs) const
- {
-     bool ivarsEqual = true;
-
-
-     for(unsigned char idx = 0; idx < 1; idx++)
-     {
-          if(!(_otherParameters[idx] == rhs._otherParameters[idx]) ) ivarsEqual = false;
-     }
-
-
-    return ivarsEqual;
- }
-
-int OneByteChunk::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 1 * 1;  // _otherParameters
-    return marshalSize;
+  marshalSize = marshalSize + 1 * 1; // _otherParameters
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -95,7 +58,7 @@ int OneByteChunk::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
