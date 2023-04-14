@@ -1,79 +1,77 @@
 #pragma once
 
-#include <dis6/OneByteChunk.h>
-#include <vector>
 #include <dis6/RadioCommunicationsFamilyPdu.h>
-#include <dis6/utils/DataStream.h>
 #include <dis6/opendis6_export.h>
+#include <dis6/utils/DataStream.h>
+#include <vector>
 
+namespace DIS {
+// Section 5.3.8.2. Detailed information about a radio transmitter. This PDU
+// requires        manually written code to complete. The encodingScheme field
+// can be used in multiple        ways, which requires hand-written code to
+// finish. UNFINISHED
 
-namespace DIS
-{
-// Section 5.3.8.2. Detailed information about a radio transmitter. This PDU requires        manually written code to complete. The encodingScheme field can be used in multiple        ways, which requires hand-written code to finish. UNFINISHED
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT SignalPdu : public RadioCommunicationsFamilyPdu
-{
+class OPENDIS6_EXPORT SignalPdu : public RadioCommunicationsFamilyPdu {
 protected:
   /** encoding scheme used, and enumeration */
-  unsigned short _encodingScheme; 
+  unsigned short _encodingScheme;
 
   /** tdl type */
-  unsigned short _tdlType; 
+  unsigned short _tdlType;
 
   /** sample rate */
-  unsigned int _sampleRate; 
+  unsigned int _sampleRate;
 
   /** length od data */
-  short _dataLength; 
+  short _dataLength;
 
   /** number of samples */
-  short _samples; 
+  short _samples;
 
   /** list of eight bit values */
-  std::vector<OneByteChunk> _data; 
+  std::vector<uint8_t> _data;
 
+public:
+  SignalPdu();
+  virtual ~SignalPdu();
 
- public:
-    SignalPdu();
-    virtual ~SignalPdu();
+  virtual void marshal(DataStream &dataStream) const;
+  virtual void unmarshal(DataStream &dataStream);
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  unsigned short getEncodingScheme() const;
+  void setEncodingScheme(unsigned short pX);
 
-    unsigned short getEncodingScheme() const; 
-    void setEncodingScheme(unsigned short pX); 
+  unsigned short getTdlType() const;
+  void setTdlType(unsigned short pX);
 
-    unsigned short getTdlType() const; 
-    void setTdlType(unsigned short pX); 
+  unsigned int getSampleRate() const;
+  void setSampleRate(unsigned int pX);
 
-    unsigned int getSampleRate() const; 
-    void setSampleRate(unsigned int pX); 
+  short getDataLength() const;
 
-    short getDataLength() const; 
+  short getSamples() const;
+  void setSamples(short pX);
 
-    short getSamples() const; 
-    void setSamples(short pX); 
+  std::vector<uint8_t> getData();
+  const std::vector<uint8_t> getData() const;
+  void setData(const std::vector<uint8_t> pX);
 
-    std::vector<OneByteChunk>& getData(); 
-    const std::vector<OneByteChunk>& getData() const; 
-    void setData(const std::vector<OneByteChunk>&    pX);
+  virtual int getMarshalledSize() const;
 
-
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const SignalPdu& rhs) const;
+  bool operator==(const SignalPdu &rhs) const;
 };
-}
+} // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -86,7 +84,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

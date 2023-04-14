@@ -2,89 +2,75 @@
 
 using namespace DIS;
 
+IntercomCommunicationsParameters::IntercomCommunicationsParameters()
+    : _recordType(0), _recordLength(0), _recordSpecificField(0) {}
 
-IntercomCommunicationsParameters::IntercomCommunicationsParameters():
-   _recordType(0), 
-   _recordLength(0), 
-   _recordSpecificField(0)
-{
+IntercomCommunicationsParameters::~IntercomCommunicationsParameters() {}
+
+unsigned short IntercomCommunicationsParameters::getRecordType() const {
+  return _recordType;
 }
 
-IntercomCommunicationsParameters::~IntercomCommunicationsParameters()
-{
+void IntercomCommunicationsParameters::setRecordType(unsigned short pX) {
+  _recordType = pX;
 }
 
-unsigned short IntercomCommunicationsParameters::getRecordType() const
-{
-    return _recordType;
+unsigned short IntercomCommunicationsParameters::getRecordLength() const {
+  return _recordLength;
 }
 
-void IntercomCommunicationsParameters::setRecordType(unsigned short pX)
-{
-    _recordType = pX;
+void IntercomCommunicationsParameters::setRecordLength(unsigned short pX) {
+  _recordLength = pX;
 }
 
-unsigned short IntercomCommunicationsParameters::getRecordLength() const
-{
-    return _recordLength;
+unsigned int IntercomCommunicationsParameters::getRecordSpecificField() const {
+  return _recordSpecificField;
 }
 
-void IntercomCommunicationsParameters::setRecordLength(unsigned short pX)
-{
-    _recordLength = pX;
+void IntercomCommunicationsParameters::setRecordSpecificField(unsigned int pX) {
+  _recordSpecificField = pX;
 }
 
-unsigned int IntercomCommunicationsParameters::getRecordSpecificField() const
-{
-    return _recordSpecificField;
+void IntercomCommunicationsParameters::marshal(DataStream &dataStream) const {
+  dataStream << _recordType;
+  dataStream << _recordLength;
+  dataStream << _recordSpecificField;
 }
 
-void IntercomCommunicationsParameters::setRecordSpecificField(unsigned int pX)
-{
-    _recordSpecificField = pX;
+void IntercomCommunicationsParameters::unmarshal(DataStream &dataStream) {
+  dataStream >> _recordType;
+  dataStream >> _recordLength;
+  dataStream >> _recordSpecificField;
 }
 
-void IntercomCommunicationsParameters::marshal(DataStream& dataStream) const
-{
-    dataStream << _recordType;
-    dataStream << _recordLength;
-    dataStream << _recordSpecificField;
+bool IntercomCommunicationsParameters::operator==(
+    const IntercomCommunicationsParameters &rhs) const {
+  auto ivarsEqual = true;
+
+  if (!(_recordType == rhs._recordType))
+    ivarsEqual = false;
+  if (!(_recordLength == rhs._recordLength))
+    ivarsEqual = false;
+  if (!(_recordSpecificField == rhs._recordSpecificField))
+    ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void IntercomCommunicationsParameters::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _recordType;
-    dataStream >> _recordLength;
-    dataStream >> _recordSpecificField;
-}
+int IntercomCommunicationsParameters::getMarshalledSize() const {
+  auto marshalSize = 0;
 
-
-bool IntercomCommunicationsParameters::operator ==(const IntercomCommunicationsParameters& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_recordType == rhs._recordType) ) ivarsEqual = false;
-     if( ! (_recordLength == rhs._recordLength) ) ivarsEqual = false;
-     if( ! (_recordSpecificField == rhs._recordSpecificField) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int IntercomCommunicationsParameters::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 2;  // _recordType
-   marshalSize = marshalSize + 2;  // _recordLength
-   marshalSize = marshalSize + 4;  // _recordSpecificField
-    return marshalSize;
+  marshalSize = marshalSize + 2; // _recordType
+  marshalSize = marshalSize + 2; // _recordLength
+  marshalSize = marshalSize + 4; // _recordSpecificField
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -97,7 +83,7 @@ int IntercomCommunicationsParameters::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
