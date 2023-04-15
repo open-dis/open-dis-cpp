@@ -1,4 +1,4 @@
-#include <dis6/SignalPdu.h>
+#include "dis6/SignalPdu.h"
 
 using namespace DIS;
 
@@ -42,7 +42,9 @@ void SignalPdu::marshal(DataStream &dataStream) const {
   dataStream << _sampleRate;
   dataStream << (short)_data.size();
   dataStream << _samples;
-  dataStream << _data;
+  for (auto byte : _data) {
+    dataStream << byte;
+  }
 }
 
 void SignalPdu::unmarshal(DataStream &dataStream) {
@@ -55,9 +57,9 @@ void SignalPdu::unmarshal(DataStream &dataStream) {
   dataStream >> _samples;
 
   _data.clear();
-  for (unsigned short idx = 0; idx < _dataLength; idx++) {
+  for (auto idx = 0; idx < _dataLength; ++idx) {
     uint8_t x;
-    x.unmarshal(dataStream);
+    dataStream >> x;
     _data.push_back(x);
   }
 }
@@ -65,18 +67,10 @@ void SignalPdu::unmarshal(DataStream &dataStream) {
 bool SignalPdu::operator==(const SignalPdu &rhs) const {
   auto ivarsEqual = true;
 
-  ivarsEqual = RadioCommunicationsFamilyPdu::operator==(rhs);
-
-  if (!(_encodingScheme == rhs._encodingScheme))
-    ivarsEqual = false;
-  if (!(_tdlType == rhs._tdlType))
-    ivarsEqual = false;
-  if (!(_sampleRate == rhs._sampleRate))
-    ivarsEqual = false;
-  if (!(_samples == rhs._samples))
-    ivarsEqual = false;
-
-  ivarsEqual = (_data == rhs._data);
+  ivarsEqual = RadioCommunicationsFamilyPdu::operator==(rhs) &&
+               _encodingScheme == rhs._encodingScheme &&
+               _tdlType == rhs._tdlType && _sampleRate == rhs._sampleRate &&
+               _samples == rhs._samples && _data == rhs._data;
 
   return ivarsEqual;
 }

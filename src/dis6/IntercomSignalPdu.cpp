@@ -64,9 +64,8 @@ void IntercomSignalPdu::marshal(DataStream &dataStream) const {
   dataStream << (unsigned short)_data.size();
   dataStream << _samples;
 
-  for (size_t idx = 0; idx < _data.size(); idx++) {
-    uint8_t x = _data[idx];
-    x.marshal(dataStream);
+  for (auto &byte : _data) {
+    dataStream << byte;
   }
 }
 
@@ -82,9 +81,9 @@ void IntercomSignalPdu::unmarshal(DataStream &dataStream) {
   dataStream >> _samples;
 
   _data.clear();
-  for (size_t idx = 0; idx < _dataLength; idx++) {
+  for (auto idx = 0; idx < _dataLength; idx++) {
     uint8_t x;
-    x.unmarshal(dataStream);
+    dataStream >> x;
     _data.push_back(x);
   }
 }
@@ -123,11 +122,7 @@ int IntercomSignalPdu::getMarshalledSize() const {
   marshalSize += 4;                             // _sampleRate
   marshalSize += 2;                             // _dataLength
   marshalSize += 2;                             // _samples
-
-  for (unsigned long long idx = 0; idx < _data.size(); idx++) {
-    uint8_t listElement = _data[idx];
-    marshalSize = marshalSize + listElement.getMarshalledSize();
-  }
+  marshalSize += _data.size();
 
   return marshalSize;
 }

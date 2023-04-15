@@ -32,9 +32,8 @@ void GridAxisRecordRepresentation0::marshal(DataStream &dataStream) const {
       dataStream); // Marshal information in superclass first
   dataStream << (unsigned short)_dataValues.size();
 
-  for (size_t idx = 0; idx < _dataValues.size(); idx++) {
-    uint8_t x = _dataValues[idx];
-    x.marshal(dataStream);
+  for (auto &byte : _dataValues) {
+    dataStream << byte;
   }
 }
 
@@ -44,9 +43,9 @@ void GridAxisRecordRepresentation0::unmarshal(DataStream &dataStream) {
   dataStream >> _numberOfBytes;
 
   _dataValues.clear();
-  for (size_t idx = 0; idx < _numberOfBytes; idx++) {
+  for (auto idx = 0; idx < _numberOfBytes; ++idx) {
     uint8_t x;
-    x.unmarshal(dataStream);
+    dataStream >> x;
     _dataValues.push_back(x);
   }
 }
@@ -55,9 +54,8 @@ bool GridAxisRecordRepresentation0::operator==(
     const GridAxisRecordRepresentation0 &rhs) const {
   auto ivarsEqual = true;
 
-  ivarsEqual = GridAxisRecord::operator==(rhs);
-
-  ivarsEqual = (_data == rhs._data);
+  ivarsEqual =
+      GridAxisRecord::operator==(rhs) && _dataValues == rhs._dataValues;
 
   return ivarsEqual;
 }
@@ -67,11 +65,7 @@ int GridAxisRecordRepresentation0::getMarshalledSize() const {
 
   marshalSize = GridAxisRecord::getMarshalledSize();
   marshalSize += 2; // _numberOfBytes
-
-  for (unsigned long long idx = 0; idx < _dataValues.size(); idx++) {
-    uint8_t listElement = _dataValues[idx];
-    marshalSize = marshalSize + listElement.getMarshalledSize();
-  }
+  marshalSize += _dataValues.size();
 
   return marshalSize;
 }

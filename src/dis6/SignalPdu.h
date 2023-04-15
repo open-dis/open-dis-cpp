@@ -57,9 +57,9 @@ public:
   short getSamples() const;
   void setSamples(short pX);
 
-  std::vector<uint8_t> getData();
-  const std::vector<uint8_t> getData() const;
-  void setData(const std::vector<uint8_t> pX);
+  std::vector<uint8_t> &getData();
+  const std::vector<uint8_t> &getData() const;
+  void setData(const std::vector<uint8_t> &pX);
 
   virtual int getMarshalledSize() const;
 
