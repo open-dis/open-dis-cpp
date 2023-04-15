@@ -117,7 +117,6 @@ set(dis7_hdr
   NamedLocationIdentification.h
   ObjectIdentifier.h
   ObjectType.h
-  OneByteChunk.h
   OwnershipStatus.h
   PduContainer.h
   Pdu.h
@@ -297,7 +296,6 @@ set(dis7_src
   NamedLocationIdentification.cpp
   ObjectIdentifier.cpp
   ObjectType.cpp
-  OneByteChunk.cpp
   OwnershipStatus.cpp
   PduContainer.cpp
   Pdu.cpp
