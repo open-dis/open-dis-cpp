@@ -2,102 +2,79 @@
 
 using namespace DIS;
 
+GridAxisRecordRepresentation0::GridAxisRecordRepresentation0()
+    : GridAxisRecord(), _numberOfBytes(0) {}
 
-GridAxisRecordRepresentation0::GridAxisRecordRepresentation0() : GridAxisRecord(),
-   _numberOfBytes(0)
-{
+GridAxisRecordRepresentation0::~GridAxisRecordRepresentation0() {
+  _dataValues.clear();
 }
 
-GridAxisRecordRepresentation0::~GridAxisRecordRepresentation0()
-{
-    _dataValues.clear();
+unsigned short GridAxisRecordRepresentation0::getNumberOfBytes() const {
+  return _dataValues.size();
 }
 
-unsigned short GridAxisRecordRepresentation0::getNumberOfBytes() const
-{
-   return _dataValues.size();
+std::vector<uint8_t> &GridAxisRecordRepresentation0::getDataValues() {
+  return _dataValues;
 }
 
-std::vector<OneByteChunk>& GridAxisRecordRepresentation0::getDataValues() 
-{
-    return _dataValues;
+const std::vector<uint8_t> &
+GridAxisRecordRepresentation0::getDataValues() const {
+  return _dataValues;
 }
 
-const std::vector<OneByteChunk>& GridAxisRecordRepresentation0::getDataValues() const
-{
-    return _dataValues;
+void GridAxisRecordRepresentation0::setDataValues(
+    const std::vector<uint8_t> &pX) {
+  _dataValues = pX;
 }
 
-void GridAxisRecordRepresentation0::setDataValues(const std::vector<OneByteChunk>& pX)
-{
-     _dataValues = pX;
+void GridAxisRecordRepresentation0::marshal(DataStream &dataStream) const {
+  GridAxisRecord::marshal(
+      dataStream); // Marshal information in superclass first
+  dataStream << (unsigned short)_dataValues.size();
+
+  for (auto &byte : _dataValues) {
+    dataStream << byte;
+  }
 }
 
-void GridAxisRecordRepresentation0::marshal(DataStream& dataStream) const
-{
-    GridAxisRecord::marshal(dataStream); // Marshal information in superclass first
-    dataStream << ( unsigned short )_dataValues.size();
+void GridAxisRecordRepresentation0::unmarshal(DataStream &dataStream) {
+  GridAxisRecord::unmarshal(
+      dataStream); // unmarshal information in superclass first
+  dataStream >> _numberOfBytes;
 
-     for(size_t idx = 0; idx < _dataValues.size(); idx++)
-     {
-        OneByteChunk x = _dataValues[idx];
-        x.marshal(dataStream);
-     }
-
+  _dataValues.clear();
+  for (auto idx = 0; idx < _numberOfBytes; ++idx) {
+    uint8_t x;
+    dataStream >> x;
+    _dataValues.push_back(x);
+  }
 }
 
-void GridAxisRecordRepresentation0::unmarshal(DataStream& dataStream)
-{
-    GridAxisRecord::unmarshal(dataStream); // unmarshal information in superclass first
-    dataStream >> _numberOfBytes;
+bool GridAxisRecordRepresentation0::operator==(
+    const GridAxisRecordRepresentation0 &rhs) const {
+  auto ivarsEqual = true;
 
-     _dataValues.clear();
-     for(size_t idx = 0; idx < _numberOfBytes; idx++)
-     {
-        OneByteChunk x;
-        x.unmarshal(dataStream);
-        _dataValues.push_back(x);
-     }
+  ivarsEqual =
+      GridAxisRecord::operator==(rhs) && _dataValues == rhs._dataValues;
+
+  return ivarsEqual;
 }
 
+int GridAxisRecordRepresentation0::getMarshalledSize() const {
+  auto marshalSize = 0;
 
-bool GridAxisRecordRepresentation0::operator ==(const GridAxisRecordRepresentation0& rhs) const
- {
-     bool ivarsEqual = true;
+  marshalSize = GridAxisRecord::getMarshalledSize();
+  marshalSize += 2; // _numberOfBytes
+  marshalSize += _dataValues.size();
 
-     ivarsEqual = GridAxisRecord::operator==(rhs);
-
-
-     for(size_t idx = 0; idx < _dataValues.size(); idx++)
-     {
-        if( ! ( _dataValues[idx] == rhs._dataValues[idx]) ) ivarsEqual = false;
-     }
-
-
-    return ivarsEqual;
- }
-
-int GridAxisRecordRepresentation0::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = GridAxisRecord::getMarshalledSize();
-   marshalSize = marshalSize + 2;  // _numberOfBytes
-
-   for(unsigned long long idx=0; idx < _dataValues.size(); idx++)
-   {
-        OneByteChunk listElement = _dataValues[idx];
-        marshalSize = marshalSize + listElement.getMarshalledSize();
-    }
-
-    return marshalSize;
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -110,7 +87,7 @@ int GridAxisRecordRepresentation0::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

@@ -1,93 +1,89 @@
 #pragma once
 
-#include <dis6/EntityID.h>
-#include <dis6/OneByteChunk.h>
+#include "dis6/EntityID.h"
+#include "dis6/RadioCommunicationsFamilyPdu.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
+#include <cstdint>
 #include <vector>
-#include <dis6/RadioCommunicationsFamilyPdu.h>
-#include <dis6/utils/DataStream.h>
-#include <dis6/opendis6_export.h>
 
-
-namespace DIS
-{
+namespace DIS {
 // Section 5.3.8.4. Actual transmission of intercome voice data. COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT IntercomSignalPdu : public RadioCommunicationsFamilyPdu
-{
+class OPENDIS6_EXPORT IntercomSignalPdu : public RadioCommunicationsFamilyPdu {
 protected:
   /** entity ID */
-  EntityID _entityID; 
+  EntityID _entityID;
 
   /** ID of communications device */
-  unsigned short _communicationsDeviceID; 
+  unsigned short _communicationsDeviceID;
 
   /** encoding scheme */
-  unsigned short _encodingScheme; 
+  unsigned short _encodingScheme;
 
   /** tactical data link type */
-  unsigned short _tdlType; 
+  unsigned short _tdlType;
 
   /** sample rate */
-  unsigned int _sampleRate; 
+  unsigned int _sampleRate;
 
   /** data length */
-  unsigned short _dataLength; 
+  unsigned short _dataLength;
 
   /** samples */
-  unsigned short _samples; 
+  unsigned short _samples;
 
   /** data bytes */
-  std::vector<OneByteChunk> _data; 
+  std::vector<uint8_t> _data;
 
+public:
+  IntercomSignalPdu();
+  virtual ~IntercomSignalPdu();
 
- public:
-    IntercomSignalPdu();
-    virtual ~IntercomSignalPdu();
+  virtual void marshal(DataStream &dataStream) const;
+  virtual void unmarshal(DataStream &dataStream);
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  EntityID &getEntityID();
+  const EntityID &getEntityID() const;
+  void setEntityID(const EntityID &pX);
 
-    EntityID& getEntityID(); 
-    const EntityID&  getEntityID() const; 
-    void setEntityID(const EntityID    &pX);
+  unsigned short getCommunicationsDeviceID() const;
+  void setCommunicationsDeviceID(unsigned short pX);
 
-    unsigned short getCommunicationsDeviceID() const; 
-    void setCommunicationsDeviceID(unsigned short pX); 
+  unsigned short getEncodingScheme() const;
+  void setEncodingScheme(unsigned short pX);
 
-    unsigned short getEncodingScheme() const; 
-    void setEncodingScheme(unsigned short pX); 
+  unsigned short getTdlType() const;
+  void setTdlType(unsigned short pX);
 
-    unsigned short getTdlType() const; 
-    void setTdlType(unsigned short pX); 
+  unsigned int getSampleRate() const;
+  void setSampleRate(unsigned int pX);
 
-    unsigned int getSampleRate() const; 
-    void setSampleRate(unsigned int pX); 
+  unsigned short getDataLength() const;
 
-    unsigned short getDataLength() const; 
+  unsigned short getSamples() const;
+  void setSamples(unsigned short pX);
 
-    unsigned short getSamples() const; 
-    void setSamples(unsigned short pX); 
+  std::vector<uint8_t> &getData();
+  const std::vector<uint8_t> &getData() const;
+  void setData(const std::vector<uint8_t> &pX);
 
-    std::vector<OneByteChunk>& getData(); 
-    const std::vector<OneByteChunk>& getData() const; 
-    void setData(const std::vector<OneByteChunk>&    pX);
+  virtual int getMarshalledSize() const;
 
-
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const IntercomSignalPdu& rhs) const;
+  bool operator==(const IntercomSignalPdu &rhs) const;
 };
-}
+} // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -100,7 +96,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

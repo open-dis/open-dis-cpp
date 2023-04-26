@@ -90,7 +90,6 @@ set(dis6_hdr
   ModulationType.h
   NamedLocation.h
   ObjectType.h
-  OneByteChunk.h
   Orientation.h
   PduContainer.h
   Pdu.h
@@ -232,7 +231,6 @@ set(dis6_src
   ModulationType.cpp
   NamedLocation.cpp
   ObjectType.cpp
-  OneByteChunk.cpp
   Orientation.cpp
   PduContainer.cpp
   Pdu.cpp
