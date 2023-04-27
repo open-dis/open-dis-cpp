@@ -1,75 +1,55 @@
-#include <dis6/GridAxisRecord.h>
+#include "dis6/GridAxisRecord.h"
 
 using namespace DIS;
 
+GridAxisRecord::GridAxisRecord() : _sampleType(0), _dataRepresentation(0) {}
 
-GridAxisRecord::GridAxisRecord():
-   _sampleType(0), 
-   _dataRepresentation(0)
-{
+GridAxisRecord::~GridAxisRecord() {}
+
+uint16_t GridAxisRecord::getSampleType() const { return _sampleType; }
+
+void GridAxisRecord::setSampleType(uint16_t pX) { _sampleType = pX; }
+
+uint16_t GridAxisRecord::getDataRepresentation() const {
+  return _dataRepresentation;
 }
 
-GridAxisRecord::~GridAxisRecord()
-{
+void GridAxisRecord::setDataRepresentation(uint16_t pX) {
+  _dataRepresentation = pX;
 }
 
-unsigned short GridAxisRecord::getSampleType() const
-{
-    return _sampleType;
+void GridAxisRecord::marshal(DataStream& dataStream) const {
+  dataStream << _sampleType;
+  dataStream << _dataRepresentation;
 }
 
-void GridAxisRecord::setSampleType(unsigned short pX)
-{
-    _sampleType = pX;
+void GridAxisRecord::unmarshal(DataStream& dataStream) {
+  dataStream >> _sampleType;
+  dataStream >> _dataRepresentation;
 }
 
-unsigned short GridAxisRecord::getDataRepresentation() const
-{
-    return _dataRepresentation;
+bool GridAxisRecord::operator==(const GridAxisRecord& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_sampleType == rhs._sampleType)) ivarsEqual = false;
+  if (!(_dataRepresentation == rhs._dataRepresentation)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void GridAxisRecord::setDataRepresentation(unsigned short pX)
-{
-    _dataRepresentation = pX;
-}
+int GridAxisRecord::getMarshalledSize() const {
+  int marshalSize = 0;
 
-void GridAxisRecord::marshal(DataStream& dataStream) const
-{
-    dataStream << _sampleType;
-    dataStream << _dataRepresentation;
-}
-
-void GridAxisRecord::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _sampleType;
-    dataStream >> _dataRepresentation;
-}
-
-
-bool GridAxisRecord::operator ==(const GridAxisRecord& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_sampleType == rhs._sampleType) ) ivarsEqual = false;
-     if( ! (_dataRepresentation == rhs._dataRepresentation) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int GridAxisRecord::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 2;  // _sampleType
-   marshalSize = marshalSize + 2;  // _dataRepresentation
-    return marshalSize;
+  marshalSize = marshalSize + 2;  // _sampleType
+  marshalSize = marshalSize + 2;  // _dataRepresentation
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -82,7 +62,7 @@ int GridAxisRecord::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

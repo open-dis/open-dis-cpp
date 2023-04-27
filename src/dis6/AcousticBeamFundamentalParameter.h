@@ -1,76 +1,72 @@
 #pragma once
 
-#include <dis6/utils/DataStream.h>
-#include <dis6/opendis6_export.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
-
-namespace DIS
-{
+namespace DIS {
 // Used in UaPdu
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT AcousticBeamFundamentalParameter
-{
-protected:
+class OPENDIS6_EXPORT AcousticBeamFundamentalParameter {
+ protected:
   /** parameter index */
-  unsigned short _activeEmissionParameterIndex; 
+  uint16_t _activeEmissionParameterIndex;
 
   /** scan pattern */
-  unsigned short _scanPattern; 
+  uint16_t _scanPattern;
 
   /** beam center azimuth */
-  float _beamCenterAzimuth; 
+  float _beamCenterAzimuth;
 
   /** azimuthal beamwidth */
-  float _azimuthalBeamwidth; 
+  float _azimuthalBeamwidth;
 
   /** beam center */
-  float _beamCenterDE; 
+  float _beamCenterDE;
 
   /** DE beamwidth (vertical beamwidth) */
-  float _deBeamwidth; 
-
+  float _deBeamwidth;
 
  public:
-    AcousticBeamFundamentalParameter();
-    virtual ~AcousticBeamFundamentalParameter();
+  AcousticBeamFundamentalParameter();
+  virtual ~AcousticBeamFundamentalParameter();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned short getActiveEmissionParameterIndex() const; 
-    void setActiveEmissionParameterIndex(unsigned short pX); 
+  uint16_t getActiveEmissionParameterIndex() const;
+  void setActiveEmissionParameterIndex(uint16_t pX);
 
-    unsigned short getScanPattern() const; 
-    void setScanPattern(unsigned short pX); 
+  uint16_t getScanPattern() const;
+  void setScanPattern(uint16_t pX);
 
-    float getBeamCenterAzimuth() const; 
-    void setBeamCenterAzimuth(float pX); 
+  float getBeamCenterAzimuth() const;
+  void setBeamCenterAzimuth(float pX);
 
-    float getAzimuthalBeamwidth() const; 
-    void setAzimuthalBeamwidth(float pX); 
+  float getAzimuthalBeamwidth() const;
+  void setAzimuthalBeamwidth(float pX);
 
-    float getBeamCenterDE() const; 
-    void setBeamCenterDE(float pX); 
+  float getBeamCenterDE() const;
+  void setBeamCenterDE(float pX);
 
-    float getDeBeamwidth() const; 
-    void setDeBeamwidth(float pX); 
+  float getDeBeamwidth() const;
+  void setDeBeamwidth(float pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const AcousticBeamFundamentalParameter& rhs) const;
+  bool operator==(const AcousticBeamFundamentalParameter& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -83,7 +79,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

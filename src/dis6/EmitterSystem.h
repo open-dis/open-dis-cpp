@@ -1,58 +1,55 @@
 #pragma once
 
-#include <dis6/utils/DataStream.h>
-#include <dis6/opendis6_export.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
+namespace DIS {
+// Section 5.2.11. This field shall specify information about a particular
+// emitter system
 
-namespace DIS
-{
-// Section 5.2.11. This field shall specify information about a particular emitter system
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT EmitterSystem
-{
-protected:
+class OPENDIS6_EXPORT EmitterSystem {
+ protected:
   /** Name of the emitter, 16 bit enumeration */
-  unsigned short _emitterName; 
+  uint16_t _emitterName;
 
   /** function of the emitter, 8 bit enumeration */
-  unsigned char _function; 
+  uint8_t _function;
 
   /** emitter ID, 8 bit enumeration */
-  unsigned char _emitterIdNumber; 
-
+  uint8_t _emitterIdNumber;
 
  public:
-    EmitterSystem();
-    virtual ~EmitterSystem();
+  EmitterSystem();
+  virtual ~EmitterSystem();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned short getEmitterName() const; 
-    void setEmitterName(unsigned short pX); 
+  uint16_t getEmitterName() const;
+  void setEmitterName(uint16_t pX);
 
-    unsigned char getFunction() const; 
-    void setFunction(unsigned char pX); 
+  uint8_t getFunction() const;
+  void setFunction(uint8_t pX);
 
-    unsigned char getEmitterIdNumber() const; 
-    void setEmitterIdNumber(unsigned char pX); 
+  uint8_t getEmitterIdNumber() const;
+  void setEmitterIdNumber(uint8_t pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const EmitterSystem& rhs) const;
+  bool operator==(const EmitterSystem& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -65,7 +62,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

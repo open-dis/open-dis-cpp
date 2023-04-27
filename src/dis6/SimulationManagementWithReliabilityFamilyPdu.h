@@ -1,57 +1,54 @@
 #pragma once
 
-#include <dis6/EntityID.h>
-#include <dis6/EntityID.h>
-#include <dis6/Pdu.h>
-#include <dis6/utils/DataStream.h>
-#include <dis6/opendis6_export.h>
+#include "dis6/EntityID.h"
+#include "dis6/Pdu.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
-
-namespace DIS
-{
+namespace DIS {
 // Section 5.3.12: Abstract superclass for reliable simulation management PDUs
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT SimulationManagementWithReliabilityFamilyPdu : public Pdu
-{
-protected:
+class OPENDIS6_EXPORT SimulationManagementWithReliabilityFamilyPdu
+    : public Pdu {
+ protected:
   /** Object originatig the request */
-  EntityID _originatingEntityID; 
+  EntityID _originatingEntityID;
 
   /** Object with which this point object is associated */
-  EntityID _receivingEntityID; 
-
+  EntityID _receivingEntityID;
 
  public:
-    SimulationManagementWithReliabilityFamilyPdu();
-    virtual ~SimulationManagementWithReliabilityFamilyPdu();
+  SimulationManagementWithReliabilityFamilyPdu();
+  virtual ~SimulationManagementWithReliabilityFamilyPdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getOriginatingEntityID(); 
-    const EntityID&  getOriginatingEntityID() const; 
-    void setOriginatingEntityID(const EntityID    &pX);
+  EntityID& getOriginatingEntityID();
+  const EntityID& getOriginatingEntityID() const;
+  void setOriginatingEntityID(const EntityID& pX);
 
-    EntityID& getReceivingEntityID(); 
-    const EntityID&  getReceivingEntityID() const; 
-    void setReceivingEntityID(const EntityID    &pX);
+  EntityID& getReceivingEntityID();
+  const EntityID& getReceivingEntityID() const;
+  void setReceivingEntityID(const EntityID& pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const SimulationManagementWithReliabilityFamilyPdu& rhs) const;
+  bool operator==(
+      const SimulationManagementWithReliabilityFamilyPdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -64,7 +61,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

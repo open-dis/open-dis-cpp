@@ -1,76 +1,72 @@
 #pragma once
 
-#include <dis6/utils/DataStream.h>
-#include <dis6/opendis6_export.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
-
-namespace DIS
-{
+namespace DIS {
 // Record sets, used in transfer control request PDU
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT RecordSet
-{
-protected:
+class OPENDIS6_EXPORT RecordSet {
+ protected:
   /** record ID */
-  unsigned int _recordID; 
+  uint32_t _recordID;
 
   /** record set serial number */
-  unsigned int _recordSetSerialNumber; 
+  uint32_t _recordSetSerialNumber;
 
   /** record length */
-  unsigned short _recordLength; 
+  uint16_t _recordLength;
 
   /** record count */
-  unsigned short _recordCount; 
+  uint16_t _recordCount;
 
   /** ^^^This is wrong--variable sized data records */
-  unsigned short _recordValues; 
+  uint16_t _recordValues;
 
   /** ^^^This is wrong--variable sized padding */
-  unsigned char _pad4; 
-
+  uint8_t _pad4;
 
  public:
-    RecordSet();
-    virtual ~RecordSet();
+  RecordSet();
+  virtual ~RecordSet();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned int getRecordID() const; 
-    void setRecordID(unsigned int pX); 
+  uint32_t getRecordID() const;
+  void setRecordID(uint32_t pX);
 
-    unsigned int getRecordSetSerialNumber() const; 
-    void setRecordSetSerialNumber(unsigned int pX); 
+  uint32_t getRecordSetSerialNumber() const;
+  void setRecordSetSerialNumber(uint32_t pX);
 
-    unsigned short getRecordLength() const; 
-    void setRecordLength(unsigned short pX); 
+  uint16_t getRecordLength() const;
+  void setRecordLength(uint16_t pX);
 
-    unsigned short getRecordCount() const; 
-    void setRecordCount(unsigned short pX); 
+  uint16_t getRecordCount() const;
+  void setRecordCount(uint16_t pX);
 
-    unsigned short getRecordValues() const; 
-    void setRecordValues(unsigned short pX); 
+  uint16_t getRecordValues() const;
+  void setRecordValues(uint16_t pX);
 
-    unsigned char getPad4() const; 
-    void setPad4(unsigned char pX); 
+  uint8_t getPad4() const;
+  void setPad4(uint8_t pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const RecordSet& rhs) const;
+  bool operator==(const RecordSet& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -83,7 +79,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

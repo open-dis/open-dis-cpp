@@ -1,90 +1,73 @@
-#include <dis7/EventIdentifierLiveEntity.h>
+#include "dis7/EventIdentifierLiveEntity.h"
 
 using namespace DIS;
 
+EventIdentifierLiveEntity::EventIdentifierLiveEntity()
+    : _siteNumber(0), _applicationNumber(0), _eventNumber(0) {}
 
-EventIdentifierLiveEntity::EventIdentifierLiveEntity():
-   _siteNumber(0), 
-   _applicationNumber(0), 
-   _eventNumber(0)
-{
+EventIdentifierLiveEntity::~EventIdentifierLiveEntity() {}
+
+uint8_t EventIdentifierLiveEntity::getSiteNumber() const {
+  return _siteNumber;
 }
 
-EventIdentifierLiveEntity::~EventIdentifierLiveEntity()
-{
+void EventIdentifierLiveEntity::setSiteNumber(uint8_t pX) {
+  _siteNumber = pX;
 }
 
-unsigned char EventIdentifierLiveEntity::getSiteNumber() const
-{
-    return _siteNumber;
+uint8_t EventIdentifierLiveEntity::getApplicationNumber() const {
+  return _applicationNumber;
 }
 
-void EventIdentifierLiveEntity::setSiteNumber(unsigned char pX)
-{
-    _siteNumber = pX;
+void EventIdentifierLiveEntity::setApplicationNumber(uint8_t pX) {
+  _applicationNumber = pX;
 }
 
-unsigned char EventIdentifierLiveEntity::getApplicationNumber() const
-{
-    return _applicationNumber;
+uint16_t EventIdentifierLiveEntity::getEventNumber() const {
+  return _eventNumber;
 }
 
-void EventIdentifierLiveEntity::setApplicationNumber(unsigned char pX)
-{
-    _applicationNumber = pX;
+void EventIdentifierLiveEntity::setEventNumber(uint16_t pX) {
+  _eventNumber = pX;
 }
 
-unsigned short EventIdentifierLiveEntity::getEventNumber() const
-{
-    return _eventNumber;
+void EventIdentifierLiveEntity::marshal(DataStream& dataStream) const {
+  dataStream << _siteNumber;
+  dataStream << _applicationNumber;
+  dataStream << _eventNumber;
 }
 
-void EventIdentifierLiveEntity::setEventNumber(unsigned short pX)
-{
-    _eventNumber = pX;
+void EventIdentifierLiveEntity::unmarshal(DataStream& dataStream) {
+  dataStream >> _siteNumber;
+  dataStream >> _applicationNumber;
+  dataStream >> _eventNumber;
 }
 
-void EventIdentifierLiveEntity::marshal(DataStream& dataStream) const
-{
-    dataStream << _siteNumber;
-    dataStream << _applicationNumber;
-    dataStream << _eventNumber;
+bool EventIdentifierLiveEntity::operator==(
+    const EventIdentifierLiveEntity& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_siteNumber == rhs._siteNumber)) ivarsEqual = false;
+  if (!(_applicationNumber == rhs._applicationNumber)) ivarsEqual = false;
+  if (!(_eventNumber == rhs._eventNumber)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void EventIdentifierLiveEntity::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _siteNumber;
-    dataStream >> _applicationNumber;
-    dataStream >> _eventNumber;
-}
+int EventIdentifierLiveEntity::getMarshalledSize() const {
+  int marshalSize = 0;
 
-
-bool EventIdentifierLiveEntity::operator ==(const EventIdentifierLiveEntity& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_siteNumber == rhs._siteNumber) ) ivarsEqual = false;
-     if( ! (_applicationNumber == rhs._applicationNumber) ) ivarsEqual = false;
-     if( ! (_eventNumber == rhs._eventNumber) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int EventIdentifierLiveEntity::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 1;  // _siteNumber
-   marshalSize = marshalSize + 1;  // _applicationNumber
-   marshalSize = marshalSize + 2;  // _eventNumber
-    return marshalSize;
+  marshalSize = marshalSize + 1;  // _siteNumber
+  marshalSize = marshalSize + 1;  // _applicationNumber
+  marshalSize = marshalSize + 2;  // _eventNumber
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -97,7 +80,7 @@ int EventIdentifierLiveEntity::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

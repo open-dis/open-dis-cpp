@@ -1,53 +1,50 @@
 #pragma once
 
-#include <dis7/PduSuperclass.h>
-#include <dis7/utils/DataStream.h>
-#include <dis7/opendis7_export.h>
+#include "dis7/PduSuperclass.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
+namespace DIS {
+// The live entity PDUs have a header with some different field names, but the
+// same length. Section 9.3.2
 
-namespace DIS
-{
-// The live entity PDUs have a header with some different field names, but the same length. Section 9.3.2
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT LiveEntityPdu : public PduSuperclass
-{
-protected:
+class OPENDIS7_EXPORT LiveEntityPdu : public PduSuperclass {
+ protected:
   /** Subprotocol used to decode the PDU. Section 13 of EBV. */
-  unsigned short _subprotocolNumber; 
+  uint16_t _subprotocolNumber;
 
   /** zero-filled array of padding */
-  unsigned char _padding; 
-
+  uint8_t _padding;
 
  public:
-    LiveEntityPdu();
-    virtual ~LiveEntityPdu();
+  LiveEntityPdu();
+  virtual ~LiveEntityPdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned short getSubprotocolNumber() const; 
-    void setSubprotocolNumber(unsigned short pX); 
+  uint16_t getSubprotocolNumber() const;
+  void setSubprotocolNumber(uint16_t pX);
 
-    unsigned char getPadding() const; 
-    void setPadding(unsigned char pX); 
+  uint8_t getPadding() const;
+  void setPadding(uint8_t pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const LiveEntityPdu& rhs) const;
+  bool operator==(const LiveEntityPdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -60,7 +57,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

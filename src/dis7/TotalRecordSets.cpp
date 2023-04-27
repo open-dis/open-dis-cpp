@@ -1,75 +1,55 @@
-#include <dis7/TotalRecordSets.h>
+#include "dis7/TotalRecordSets.h"
 
 using namespace DIS;
 
+TotalRecordSets::TotalRecordSets() : _totalRecordSets(0), _padding(0) {}
 
-TotalRecordSets::TotalRecordSets():
-   _totalRecordSets(0), 
-   _padding(0)
-{
+TotalRecordSets::~TotalRecordSets() {}
+
+uint16_t TotalRecordSets::getTotalRecordSets() const {
+  return _totalRecordSets;
 }
 
-TotalRecordSets::~TotalRecordSets()
-{
+void TotalRecordSets::setTotalRecordSets(uint16_t pX) {
+  _totalRecordSets = pX;
 }
 
-unsigned short TotalRecordSets::getTotalRecordSets() const
-{
-    return _totalRecordSets;
+uint16_t TotalRecordSets::getPadding() const { return _padding; }
+
+void TotalRecordSets::setPadding(uint16_t pX) { _padding = pX; }
+
+void TotalRecordSets::marshal(DataStream& dataStream) const {
+  dataStream << _totalRecordSets;
+  dataStream << _padding;
 }
 
-void TotalRecordSets::setTotalRecordSets(unsigned short pX)
-{
-    _totalRecordSets = pX;
+void TotalRecordSets::unmarshal(DataStream& dataStream) {
+  dataStream >> _totalRecordSets;
+  dataStream >> _padding;
 }
 
-unsigned short TotalRecordSets::getPadding() const
-{
-    return _padding;
+bool TotalRecordSets::operator==(const TotalRecordSets& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_totalRecordSets == rhs._totalRecordSets)) ivarsEqual = false;
+  if (!(_padding == rhs._padding)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void TotalRecordSets::setPadding(unsigned short pX)
-{
-    _padding = pX;
-}
+int TotalRecordSets::getMarshalledSize() const {
+  int marshalSize = 0;
 
-void TotalRecordSets::marshal(DataStream& dataStream) const
-{
-    dataStream << _totalRecordSets;
-    dataStream << _padding;
-}
-
-void TotalRecordSets::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _totalRecordSets;
-    dataStream >> _padding;
-}
-
-
-bool TotalRecordSets::operator ==(const TotalRecordSets& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_totalRecordSets == rhs._totalRecordSets) ) ivarsEqual = false;
-     if( ! (_padding == rhs._padding) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int TotalRecordSets::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 2;  // _totalRecordSets
-   marshalSize = marshalSize + 2;  // _padding
-    return marshalSize;
+  marshalSize = marshalSize + 2;  // _totalRecordSets
+  marshalSize = marshalSize + 2;  // _padding
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -82,7 +62,7 @@ int TotalRecordSets::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

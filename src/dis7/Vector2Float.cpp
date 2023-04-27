@@ -1,75 +1,51 @@
-#include <dis7/Vector2Float.h>
+#include "dis7/Vector2Float.h"
 
 using namespace DIS;
 
+Vector2Float::Vector2Float() : _x(0.0), _y(0.0) {}
 
-Vector2Float::Vector2Float():
-   _x(0.0), 
-   _y(0.0)
-{
+Vector2Float::~Vector2Float() {}
+
+float Vector2Float::getX() const { return _x; }
+
+void Vector2Float::setX(float pX) { _x = pX; }
+
+float Vector2Float::getY() const { return _y; }
+
+void Vector2Float::setY(float pX) { _y = pX; }
+
+void Vector2Float::marshal(DataStream& dataStream) const {
+  dataStream << _x;
+  dataStream << _y;
 }
 
-Vector2Float::~Vector2Float()
-{
+void Vector2Float::unmarshal(DataStream& dataStream) {
+  dataStream >> _x;
+  dataStream >> _y;
 }
 
-float Vector2Float::getX() const
-{
-    return _x;
+bool Vector2Float::operator==(const Vector2Float& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_x == rhs._x)) ivarsEqual = false;
+  if (!(_y == rhs._y)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void Vector2Float::setX(float pX)
-{
-    _x = pX;
-}
+int Vector2Float::getMarshalledSize() const {
+  int marshalSize = 0;
 
-float Vector2Float::getY() const
-{
-    return _y;
-}
-
-void Vector2Float::setY(float pX)
-{
-    _y = pX;
-}
-
-void Vector2Float::marshal(DataStream& dataStream) const
-{
-    dataStream << _x;
-    dataStream << _y;
-}
-
-void Vector2Float::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _x;
-    dataStream >> _y;
-}
-
-
-bool Vector2Float::operator ==(const Vector2Float& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_x == rhs._x) ) ivarsEqual = false;
-     if( ! (_y == rhs._y) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int Vector2Float::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 4;  // _x
-   marshalSize = marshalSize + 4;  // _y
-    return marshalSize;
+  marshalSize = marshalSize + 4;  // _x
+  marshalSize = marshalSize + 4;  // _y
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -82,7 +58,7 @@ int Vector2Float::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

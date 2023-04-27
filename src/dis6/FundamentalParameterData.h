@@ -1,100 +1,103 @@
 #pragma once
 
-#include <dis6/utils/DataStream.h>
-#include <dis6/opendis6_export.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
+namespace DIS {
+// Section 5.2.22. Contains electromagnetic emmision regineratin parameters that
+// are        variable throughout a scenario dependent on the actions of the
+// participants in the simulation. Also provides basic parametric data that may
+// be used to support low-fidelity simulations.
 
-namespace DIS
-{
-// Section 5.2.22. Contains electromagnetic emmision regineratin parameters that are        variable throughout a scenario dependent on the actions of the participants in the simulation. Also provides basic parametric data that may be used to support low-fidelity simulations.
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT FundamentalParameterData
-{
-protected:
+class OPENDIS6_EXPORT FundamentalParameterData {
+ protected:
   /** center frequency of the emission in hertz. */
-  float _frequency; 
+  float _frequency;
 
   /** Bandwidth of the frequencies corresponding to the fequency field. */
-  float _frequencyRange; 
+  float _frequencyRange;
 
-  /** Effective radiated power for the emission in DdBm. For a      radar noise jammer, indicates the peak of the transmitted power. */
-  float _effectiveRadiatedPower; 
+  /** Effective radiated power for the emission in DdBm. For a      radar noise
+   * jammer, indicates the peak of the transmitted power. */
+  float _effectiveRadiatedPower;
 
   /** Average repetition frequency of the emission in hertz. */
-  float _pulseRepetitionFrequency; 
+  float _pulseRepetitionFrequency;
 
   /** Average pulse width  of the emission in microseconds. */
-  float _pulseWidth; 
+  float _pulseWidth;
 
-  /** Specifies the beam azimuth an elevation centers and corresponding half-angles     to describe the scan volume */
-  float _beamAzimuthCenter; 
+  /** Specifies the beam azimuth an elevation centers and corresponding
+   * half-angles     to describe the scan volume */
+  float _beamAzimuthCenter;
 
   /** Specifies the beam azimuth sweep to determine scan volume */
-  float _beamAzimuthSweep; 
+  float _beamAzimuthSweep;
 
   /** Specifies the beam elevation center to determine scan volume */
-  float _beamElevationCenter; 
+  float _beamElevationCenter;
 
   /** Specifies the beam elevation sweep to determine scan volume */
-  float _beamElevationSweep; 
+  float _beamElevationSweep;
 
-  /** allows receiver to synchronize its regenerated scan pattern to     that of the emmitter. Specifies the percentage of time a scan is through its pattern from its origion. */
-  float _beamSweepSync; 
-
+  /** allows receiver to synchronize its regenerated scan pattern to     that of
+   * the emmitter. Specifies the percentage of time a scan is through its
+   * pattern from its origion. */
+  float _beamSweepSync;
 
  public:
-    FundamentalParameterData();
-    virtual ~FundamentalParameterData();
+  FundamentalParameterData();
+  virtual ~FundamentalParameterData();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    float getFrequency() const; 
-    void setFrequency(float pX); 
+  float getFrequency() const;
+  void setFrequency(float pX);
 
-    float getFrequencyRange() const; 
-    void setFrequencyRange(float pX); 
+  float getFrequencyRange() const;
+  void setFrequencyRange(float pX);
 
-    float getEffectiveRadiatedPower() const; 
-    void setEffectiveRadiatedPower(float pX); 
+  float getEffectiveRadiatedPower() const;
+  void setEffectiveRadiatedPower(float pX);
 
-    float getPulseRepetitionFrequency() const; 
-    void setPulseRepetitionFrequency(float pX); 
+  float getPulseRepetitionFrequency() const;
+  void setPulseRepetitionFrequency(float pX);
 
-    float getPulseWidth() const; 
-    void setPulseWidth(float pX); 
+  float getPulseWidth() const;
+  void setPulseWidth(float pX);
 
-    float getBeamAzimuthCenter() const; 
-    void setBeamAzimuthCenter(float pX); 
+  float getBeamAzimuthCenter() const;
+  void setBeamAzimuthCenter(float pX);
 
-    float getBeamAzimuthSweep() const; 
-    void setBeamAzimuthSweep(float pX); 
+  float getBeamAzimuthSweep() const;
+  void setBeamAzimuthSweep(float pX);
 
-    float getBeamElevationCenter() const; 
-    void setBeamElevationCenter(float pX); 
+  float getBeamElevationCenter() const;
+  void setBeamElevationCenter(float pX);
 
-    float getBeamElevationSweep() const; 
-    void setBeamElevationSweep(float pX); 
+  float getBeamElevationSweep() const;
+  void setBeamElevationSweep(float pX);
 
-    float getBeamSweepSync() const; 
-    void setBeamSweepSync(float pX); 
+  float getBeamSweepSync() const;
+  void setBeamSweepSync(float pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const FundamentalParameterData& rhs) const;
+  bool operator==(const FundamentalParameterData& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -107,7 +110,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

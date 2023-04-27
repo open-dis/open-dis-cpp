@@ -1,97 +1,95 @@
 #pragma once
 
-#include <dis6/EntityID.h>
-#include <dis6/EntityID.h>
-#include <dis6/EntityID.h>
-#include <dis6/RecordSet.h>
 #include <vector>
-#include <dis6/EntityManagementFamilyPdu.h>
-#include <dis6/utils/DataStream.h>
-#include <dis6/opendis6_export.h>
 
+#include "dis6/EntityID.h"
+#include "dis6/EntityManagementFamilyPdu.h"
+#include "dis6/RecordSet.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
-namespace DIS
-{
-// Section 5.3.9.3 Information initiating the dyanic allocation and control of simulation entities         between two simulation applications. Requires manual cleanup. The padding between record sets is variable. UNFINISHED
+namespace DIS {
+// Section 5.3.9.3 Information initiating the dyanic allocation and control of
+// simulation entities         between two simulation applications. Requires
+// manual cleanup. The padding between record sets is variable. UNFINISHED
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT TransferControlRequestPdu : public EntityManagementFamilyPdu
-{
-protected:
+class OPENDIS6_EXPORT TransferControlRequestPdu
+    : public EntityManagementFamilyPdu {
+ protected:
   /** ID of entity originating request */
-  EntityID _orginatingEntityID; 
+  EntityID _orginatingEntityID;
 
   /** ID of entity receiving request */
-  EntityID _recevingEntityID; 
+  EntityID _recevingEntityID;
 
   /** ID ofrequest */
-  unsigned int _requestID; 
+  uint32_t _requestID;
 
   /** required level of reliabliity service. */
-  unsigned char _requiredReliabilityService; 
+  uint8_t _requiredReliabilityService;
 
   /** type of transfer desired */
-  unsigned char _tranferType; 
+  uint8_t _tranferType;
 
   /** The entity for which control is being requested to transfer */
-  EntityID _transferEntityID; 
+  EntityID _transferEntityID;
 
   /** number of record sets to transfer */
-  unsigned char _numberOfRecordSets; 
+  uint8_t _numberOfRecordSets;
 
   /** ^^^This is wrong--the RecordSet class needs more work */
-  std::vector<RecordSet> _recordSets; 
-
+  std::vector<RecordSet> _recordSets;
 
  public:
-    TransferControlRequestPdu();
-    virtual ~TransferControlRequestPdu();
+  TransferControlRequestPdu();
+  virtual ~TransferControlRequestPdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getOrginatingEntityID(); 
-    const EntityID&  getOrginatingEntityID() const; 
-    void setOrginatingEntityID(const EntityID    &pX);
+  EntityID& getOrginatingEntityID();
+  const EntityID& getOrginatingEntityID() const;
+  void setOrginatingEntityID(const EntityID& pX);
 
-    EntityID& getRecevingEntityID(); 
-    const EntityID&  getRecevingEntityID() const; 
-    void setRecevingEntityID(const EntityID    &pX);
+  EntityID& getRecevingEntityID();
+  const EntityID& getRecevingEntityID() const;
+  void setRecevingEntityID(const EntityID& pX);
 
-    unsigned int getRequestID() const; 
-    void setRequestID(unsigned int pX); 
+  uint32_t getRequestID() const;
+  void setRequestID(uint32_t pX);
 
-    unsigned char getRequiredReliabilityService() const; 
-    void setRequiredReliabilityService(unsigned char pX); 
+  uint8_t getRequiredReliabilityService() const;
+  void setRequiredReliabilityService(uint8_t pX);
 
-    unsigned char getTranferType() const; 
-    void setTranferType(unsigned char pX); 
+  uint8_t getTranferType() const;
+  void setTranferType(uint8_t pX);
 
-    EntityID& getTransferEntityID(); 
-    const EntityID&  getTransferEntityID() const; 
-    void setTransferEntityID(const EntityID    &pX);
+  EntityID& getTransferEntityID();
+  const EntityID& getTransferEntityID() const;
+  void setTransferEntityID(const EntityID& pX);
 
-    unsigned char getNumberOfRecordSets() const; 
+  uint8_t getNumberOfRecordSets() const;
 
-    std::vector<RecordSet>& getRecordSets(); 
-    const std::vector<RecordSet>& getRecordSets() const; 
-    void setRecordSets(const std::vector<RecordSet>&    pX);
+  std::vector<RecordSet>& getRecordSets();
+  const std::vector<RecordSet>& getRecordSets() const;
+  void setRecordSets(const std::vector<RecordSet>& pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const TransferControlRequestPdu& rhs) const;
+  bool operator==(const TransferControlRequestPdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -104,7 +102,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

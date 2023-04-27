@@ -1,80 +1,69 @@
-#include <dis7/LiveEntityIdentifier.h>
+#include "dis7/LiveEntityIdentifier.h"
 
 using namespace DIS;
 
+LiveEntityIdentifier::LiveEntityIdentifier()
+    : _liveSimulationAddress(), _entityNumber(0) {}
 
-LiveEntityIdentifier::LiveEntityIdentifier():
-   _liveSimulationAddress(), 
-   _entityNumber(0)
-{
+LiveEntityIdentifier::~LiveEntityIdentifier() {}
+
+LiveSimulationAddress& LiveEntityIdentifier::getLiveSimulationAddress() {
+  return _liveSimulationAddress;
 }
 
-LiveEntityIdentifier::~LiveEntityIdentifier()
-{
+const LiveSimulationAddress& LiveEntityIdentifier::getLiveSimulationAddress()
+    const {
+  return _liveSimulationAddress;
 }
 
-LiveSimulationAddress& LiveEntityIdentifier::getLiveSimulationAddress() 
-{
-    return _liveSimulationAddress;
+void LiveEntityIdentifier::setLiveSimulationAddress(
+    const LiveSimulationAddress& pX) {
+  _liveSimulationAddress = pX;
 }
 
-const LiveSimulationAddress& LiveEntityIdentifier::getLiveSimulationAddress() const
-{
-    return _liveSimulationAddress;
+uint16_t LiveEntityIdentifier::getEntityNumber() const {
+  return _entityNumber;
 }
 
-void LiveEntityIdentifier::setLiveSimulationAddress(const LiveSimulationAddress &pX)
-{
-    _liveSimulationAddress = pX;
+void LiveEntityIdentifier::setEntityNumber(uint16_t pX) {
+  _entityNumber = pX;
 }
 
-unsigned short LiveEntityIdentifier::getEntityNumber() const
-{
-    return _entityNumber;
+void LiveEntityIdentifier::marshal(DataStream& dataStream) const {
+  _liveSimulationAddress.marshal(dataStream);
+  dataStream << _entityNumber;
 }
 
-void LiveEntityIdentifier::setEntityNumber(unsigned short pX)
-{
-    _entityNumber = pX;
+void LiveEntityIdentifier::unmarshal(DataStream& dataStream) {
+  _liveSimulationAddress.unmarshal(dataStream);
+  dataStream >> _entityNumber;
 }
 
-void LiveEntityIdentifier::marshal(DataStream& dataStream) const
-{
-    _liveSimulationAddress.marshal(dataStream);
-    dataStream << _entityNumber;
+bool LiveEntityIdentifier::operator==(const LiveEntityIdentifier& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_liveSimulationAddress == rhs._liveSimulationAddress))
+    ivarsEqual = false;
+  if (!(_entityNumber == rhs._entityNumber)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void LiveEntityIdentifier::unmarshal(DataStream& dataStream)
-{
-    _liveSimulationAddress.unmarshal(dataStream);
-    dataStream >> _entityNumber;
-}
+int LiveEntityIdentifier::getMarshalledSize() const {
+  int marshalSize = 0;
 
-
-bool LiveEntityIdentifier::operator ==(const LiveEntityIdentifier& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_liveSimulationAddress == rhs._liveSimulationAddress) ) ivarsEqual = false;
-     if( ! (_entityNumber == rhs._entityNumber) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int LiveEntityIdentifier::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + _liveSimulationAddress.getMarshalledSize();  // _liveSimulationAddress
-   marshalSize = marshalSize + 2;  // _entityNumber
-    return marshalSize;
+  marshalSize =
+      marshalSize +
+      _liveSimulationAddress.getMarshalledSize();  // _liveSimulationAddress
+  marshalSize = marshalSize + 2;                   // _entityNumber
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -87,7 +76,7 @@ int LiveEntityIdentifier::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

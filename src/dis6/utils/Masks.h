@@ -5,14 +5,15 @@
 #ifndef _dcl_dis_masks_h_
 #define _dcl_dis_masks_h_
 
-#include <dis6/opendis6_export.h>       // for library symbols
+#include <cstdint>
 
-namespace DIS
-{
-   /// the mask that will leave only the typemetric
-   /// from an integer representing the Articulation Parameter's parameter type.
-   /// this mask is based on the IEEE Std 1278.1-1995
-   const unsigned int ARTICULATION_PARAMETER_TYPE_METRIC_MASK = 0x001F;
-}
+#include <dis6/opendis6_export.h>  // for library symbols
 
-#endif // _dcl_dis_masks_h_
+namespace DIS {
+/// the mask that will leave only the typemetric
+/// from an integer representing the Articulation Parameter's parameter type.
+/// this mask is based on the IEEE Std 1278.1-1995
+const uint32_t ARTICULATION_PARAMETER_TYPE_METRIC_MASK = 0x001F;
+}  // namespace DIS
+
+#endif  // _dcl_dis_masks_h_

@@ -1,66 +1,62 @@
 #pragma once
 
-#include <dis7/EntityType.h>
-#include <dis7/utils/DataStream.h>
-#include <dis7/opendis7_export.h>
+#include "dis7/EntityType.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
-
-namespace DIS
-{
+namespace DIS {
 // Explosion of a non-munition. Section 6.2.20.3
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT ExplosionDescriptor
-{
-protected:
+class OPENDIS7_EXPORT ExplosionDescriptor {
+ protected:
   /** Type of the object that exploded. See 6.2.30 */
-  EntityType _explodingObject; 
+  EntityType _explodingObject;
 
   /** Material that exploded. Can be grain dust, tnt, gasoline, etc. */
-  unsigned short _explosiveMaterial; 
+  uint16_t _explosiveMaterial;
 
   /** padding */
-  unsigned short _padding; 
+  uint16_t _padding;
 
   /** Force of explosion, in equivalent KG of TNT */
-  float _explosiveForce; 
-
+  float _explosiveForce;
 
  public:
-    ExplosionDescriptor();
-    virtual ~ExplosionDescriptor();
+  ExplosionDescriptor();
+  virtual ~ExplosionDescriptor();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EntityType& getExplodingObject(); 
-    const EntityType&  getExplodingObject() const; 
-    void setExplodingObject(const EntityType    &pX);
+  EntityType& getExplodingObject();
+  const EntityType& getExplodingObject() const;
+  void setExplodingObject(const EntityType& pX);
 
-    unsigned short getExplosiveMaterial() const; 
-    void setExplosiveMaterial(unsigned short pX); 
+  uint16_t getExplosiveMaterial() const;
+  void setExplosiveMaterial(uint16_t pX);
 
-    unsigned short getPadding() const; 
-    void setPadding(unsigned short pX); 
+  uint16_t getPadding() const;
+  void setPadding(uint16_t pX);
 
-    float getExplosiveForce() const; 
-    void setExplosiveForce(float pX); 
+  float getExplosiveForce() const;
+  void setExplosiveForce(float pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const ExplosionDescriptor& rhs) const;
+  bool operator==(const ExplosionDescriptor& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -73,7 +69,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

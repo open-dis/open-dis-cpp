@@ -1,52 +1,45 @@
-#include <dis6/DistributedEmissionsFamilyPdu.h>
+#include "dis6/DistributedEmissionsFamilyPdu.h"
 
 using namespace DIS;
 
-
-DistributedEmissionsFamilyPdu::DistributedEmissionsFamilyPdu() : Pdu()
+DistributedEmissionsFamilyPdu::DistributedEmissionsFamilyPdu()
+    : Pdu()
 
 {
-    setProtocolFamily( 6 );
+  setProtocolFamily(6);
 }
 
-DistributedEmissionsFamilyPdu::~DistributedEmissionsFamilyPdu()
-{
+DistributedEmissionsFamilyPdu::~DistributedEmissionsFamilyPdu() {}
+
+void DistributedEmissionsFamilyPdu::marshal(DataStream& dataStream) const {
+  Pdu::marshal(dataStream);  // Marshal information in superclass first
 }
 
-void DistributedEmissionsFamilyPdu::marshal(DataStream& dataStream) const
-{
-    Pdu::marshal(dataStream); // Marshal information in superclass first
+void DistributedEmissionsFamilyPdu::unmarshal(DataStream& dataStream) {
+  Pdu::unmarshal(dataStream);  // unmarshal information in superclass first
 }
 
-void DistributedEmissionsFamilyPdu::unmarshal(DataStream& dataStream)
-{
-    Pdu::unmarshal(dataStream); // unmarshal information in superclass first
+bool DistributedEmissionsFamilyPdu::operator==(
+    const DistributedEmissionsFamilyPdu& rhs) const {
+  bool ivarsEqual = true;
+
+  ivarsEqual = Pdu::operator==(rhs);
+
+  return ivarsEqual;
 }
 
+int DistributedEmissionsFamilyPdu::getMarshalledSize() const {
+  int marshalSize = 0;
 
-bool DistributedEmissionsFamilyPdu::operator ==(const DistributedEmissionsFamilyPdu& rhs) const
- {
-     bool ivarsEqual = true;
-
-     ivarsEqual = Pdu::operator==(rhs);
-
-
-    return ivarsEqual;
- }
-
-int DistributedEmissionsFamilyPdu::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = Pdu::getMarshalledSize();
-    return marshalSize;
+  marshalSize = Pdu::getMarshalledSize();
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -59,7 +52,7 @@ int DistributedEmissionsFamilyPdu::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

@@ -5,20 +5,24 @@
 #ifndef _dis_stream_utils_h_
 #define _dis_stream_utils_h_
 
-#include <ostream>             // for parameter type
-#include <dis6/opendis6_export.h>       // for library symbols
+#include <ostream>  // for parameter type
 
-namespace DIS
-{
-   class EntityStatePdu;
-   class EntityID;
-   class DetonationPdu;
-   class EntityType;
-}
+#include <dis6/opendis6_export.h>  // for library symbols
 
-OPENDIS6_EXPORT std::ostream& operator <<(std::ostream& lhs, const DIS::EntityType& rhs);
-OPENDIS6_EXPORT std::ostream& operator <<(std::ostream& lhs, const DIS::EntityID& rhs);
-OPENDIS6_EXPORT std::ostream& operator <<(std::ostream& lhs, const DIS::EntityStatePdu& rhs);
-OPENDIS6_EXPORT std::ostream& operator <<(std::ostream& lhs, const DIS::DetonationPdu& rhs);
+namespace DIS {
+class EntityStatePdu;
+class EntityID;
+class DetonationPdu;
+class EntityType;
+}  // namespace DIS
 
-#endif // _dis_stream_utils_h_
+OPENDIS6_EXPORT std::ostream& operator<<(std::ostream& lhs,
+                                         const DIS::EntityType& rhs);
+OPENDIS6_EXPORT std::ostream& operator<<(std::ostream& lhs,
+                                         const DIS::EntityID& rhs);
+OPENDIS6_EXPORT std::ostream& operator<<(std::ostream& lhs,
+                                         const DIS::EntityStatePdu& rhs);
+OPENDIS6_EXPORT std::ostream& operator<<(std::ostream& lhs,
+                                         const DIS::DetonationPdu& rhs);
+
+#endif  // _dis_stream_utils_h_

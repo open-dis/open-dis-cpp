@@ -1,72 +1,70 @@
 #pragma once
 
-#include <dis6/EntityType.h>
-#include <dis6/utils/DataStream.h>
-#include <dis6/opendis6_export.h>
+#include "dis6/EntityType.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
+namespace DIS {
+// Section 5.2.7. Specifies the type of muntion fired, the type of warhead, the
+// type of fuse, the number of rounds fired, and the rate at which the roudns
+// are fired in         rounds per minute.
 
-namespace DIS
-{
-// Section 5.2.7. Specifies the type of muntion fired, the type of warhead, the         type of fuse, the number of rounds fired, and the rate at which the roudns are fired in         rounds per minute.
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT BurstDescriptor
-{
-protected:
+class OPENDIS6_EXPORT BurstDescriptor {
+ protected:
   /** What munition was used in the burst */
-  EntityType _munition; 
+  EntityType _munition;
 
   /** type of warhead */
-  unsigned short _warhead; 
+  uint16_t _warhead;
 
   /** type of fuse used */
-  unsigned short _fuse; 
+  uint16_t _fuse;
 
   /** how many of the munition were fired */
-  unsigned short _quantity; 
+  uint16_t _quantity;
 
   /** rate at which the munition was fired */
-  unsigned short _rate; 
-
+  uint16_t _rate;
 
  public:
-    BurstDescriptor();
-    virtual ~BurstDescriptor();
+  BurstDescriptor();
+  virtual ~BurstDescriptor();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EntityType& getMunition(); 
-    const EntityType&  getMunition() const; 
-    void setMunition(const EntityType    &pX);
+  EntityType& getMunition();
+  const EntityType& getMunition() const;
+  void setMunition(const EntityType& pX);
 
-    unsigned short getWarhead() const; 
-    void setWarhead(unsigned short pX); 
+  uint16_t getWarhead() const;
+  void setWarhead(uint16_t pX);
 
-    unsigned short getFuse() const; 
-    void setFuse(unsigned short pX); 
+  uint16_t getFuse() const;
+  void setFuse(uint16_t pX);
 
-    unsigned short getQuantity() const; 
-    void setQuantity(unsigned short pX); 
+  uint16_t getQuantity() const;
+  void setQuantity(uint16_t pX);
 
-    unsigned short getRate() const; 
-    void setRate(unsigned short pX); 
+  uint16_t getRate() const;
+  void setRate(uint16_t pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const BurstDescriptor& rhs) const;
+  bool operator==(const BurstDescriptor& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -79,7 +77,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

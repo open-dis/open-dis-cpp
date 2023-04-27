@@ -1,110 +1,91 @@
-#include <dis6/AcousticBeamData.h>
+#include "dis6/AcousticBeamData.h"
 
 using namespace DIS;
 
+AcousticBeamData::AcousticBeamData()
+    : _beamDataLength(0),
+      _beamIDNumber(0),
+      _pad2(0),
+      _fundamentalDataParameters() {}
 
-AcousticBeamData::AcousticBeamData():
-   _beamDataLength(0), 
-   _beamIDNumber(0), 
-   _pad2(0), 
-   _fundamentalDataParameters()
-{
+AcousticBeamData::~AcousticBeamData() {}
+
+uint16_t AcousticBeamData::getBeamDataLength() const {
+  return _beamDataLength;
 }
 
-AcousticBeamData::~AcousticBeamData()
-{
+void AcousticBeamData::setBeamDataLength(uint16_t pX) {
+  _beamDataLength = pX;
 }
 
-unsigned short AcousticBeamData::getBeamDataLength() const
-{
-    return _beamDataLength;
+uint8_t AcousticBeamData::getBeamIDNumber() const {
+  return _beamIDNumber;
 }
 
-void AcousticBeamData::setBeamDataLength(unsigned short pX)
-{
-    _beamDataLength = pX;
+void AcousticBeamData::setBeamIDNumber(uint8_t pX) { _beamIDNumber = pX; }
+
+uint16_t AcousticBeamData::getPad2() const { return _pad2; }
+
+void AcousticBeamData::setPad2(uint16_t pX) { _pad2 = pX; }
+
+AcousticBeamFundamentalParameter&
+AcousticBeamData::getFundamentalDataParameters() {
+  return _fundamentalDataParameters;
 }
 
-unsigned char AcousticBeamData::getBeamIDNumber() const
-{
-    return _beamIDNumber;
+const AcousticBeamFundamentalParameter&
+AcousticBeamData::getFundamentalDataParameters() const {
+  return _fundamentalDataParameters;
 }
 
-void AcousticBeamData::setBeamIDNumber(unsigned char pX)
-{
-    _beamIDNumber = pX;
+void AcousticBeamData::setFundamentalDataParameters(
+    const AcousticBeamFundamentalParameter& pX) {
+  _fundamentalDataParameters = pX;
 }
 
-unsigned short AcousticBeamData::getPad2() const
-{
-    return _pad2;
+void AcousticBeamData::marshal(DataStream& dataStream) const {
+  dataStream << _beamDataLength;
+  dataStream << _beamIDNumber;
+  dataStream << _pad2;
+  _fundamentalDataParameters.marshal(dataStream);
 }
 
-void AcousticBeamData::setPad2(unsigned short pX)
-{
-    _pad2 = pX;
+void AcousticBeamData::unmarshal(DataStream& dataStream) {
+  dataStream >> _beamDataLength;
+  dataStream >> _beamIDNumber;
+  dataStream >> _pad2;
+  _fundamentalDataParameters.unmarshal(dataStream);
 }
 
-AcousticBeamFundamentalParameter& AcousticBeamData::getFundamentalDataParameters() 
-{
-    return _fundamentalDataParameters;
+bool AcousticBeamData::operator==(const AcousticBeamData& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_beamDataLength == rhs._beamDataLength)) ivarsEqual = false;
+  if (!(_beamIDNumber == rhs._beamIDNumber)) ivarsEqual = false;
+  if (!(_pad2 == rhs._pad2)) ivarsEqual = false;
+  if (!(_fundamentalDataParameters == rhs._fundamentalDataParameters))
+    ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-const AcousticBeamFundamentalParameter& AcousticBeamData::getFundamentalDataParameters() const
-{
-    return _fundamentalDataParameters;
-}
+int AcousticBeamData::getMarshalledSize() const {
+  int marshalSize = 0;
 
-void AcousticBeamData::setFundamentalDataParameters(const AcousticBeamFundamentalParameter &pX)
-{
-    _fundamentalDataParameters = pX;
-}
-
-void AcousticBeamData::marshal(DataStream& dataStream) const
-{
-    dataStream << _beamDataLength;
-    dataStream << _beamIDNumber;
-    dataStream << _pad2;
-    _fundamentalDataParameters.marshal(dataStream);
-}
-
-void AcousticBeamData::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _beamDataLength;
-    dataStream >> _beamIDNumber;
-    dataStream >> _pad2;
-    _fundamentalDataParameters.unmarshal(dataStream);
-}
-
-
-bool AcousticBeamData::operator ==(const AcousticBeamData& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_beamDataLength == rhs._beamDataLength) ) ivarsEqual = false;
-     if( ! (_beamIDNumber == rhs._beamIDNumber) ) ivarsEqual = false;
-     if( ! (_pad2 == rhs._pad2) ) ivarsEqual = false;
-     if( ! (_fundamentalDataParameters == rhs._fundamentalDataParameters) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int AcousticBeamData::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 2;  // _beamDataLength
-   marshalSize = marshalSize + 1;  // _beamIDNumber
-   marshalSize = marshalSize + 2;  // _pad2
-   marshalSize = marshalSize + _fundamentalDataParameters.getMarshalledSize();  // _fundamentalDataParameters
-    return marshalSize;
+  marshalSize = marshalSize + 2;  // _beamDataLength
+  marshalSize = marshalSize + 1;  // _beamIDNumber
+  marshalSize = marshalSize + 2;  // _pad2
+  marshalSize =
+      marshalSize + _fundamentalDataParameters
+                        .getMarshalledSize();  // _fundamentalDataParameters
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -117,7 +98,7 @@ int AcousticBeamData::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

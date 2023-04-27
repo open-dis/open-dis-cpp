@@ -1,81 +1,78 @@
 #pragma once
 
-#include <dis6/utils/DataStream.h>
-#include <dis6/opendis6_export.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
+namespace DIS {
+// Section 5.2.38. Identifies the type of aggregate including kind of entity,
+// domain (surface, subsurface, air, etc) country, category, etc.
 
-namespace DIS
-{
-// Section 5.2.38. Identifies the type of aggregate including kind of entity, domain (surface, subsurface, air, etc) country, category, etc.
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT AggregateType
-{
-protected:
+class OPENDIS6_EXPORT AggregateType {
+ protected:
   /** Kind of entity */
-  unsigned char _aggregateKind; 
+  uint8_t _aggregateKind;
 
   /** Domain of entity (air, surface, subsurface, space, etc) */
-  unsigned char _domain; 
+  uint8_t _domain;
 
   /** country to which the design of the entity is attributed */
-  unsigned short _country; 
+  uint16_t _country;
 
   /** category of entity */
-  unsigned char _category; 
+  uint8_t _category;
 
   /** subcategory of entity */
-  unsigned char _subcategory; 
+  uint8_t _subcategory;
 
   /** specific info based on subcategory field */
-  unsigned char _specific; 
+  uint8_t _specific;
 
-  unsigned char _extra; 
-
+  uint8_t _extra;
 
  public:
-    AggregateType();
-    virtual ~AggregateType();
+  AggregateType();
+  virtual ~AggregateType();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getAggregateKind() const; 
-    void setAggregateKind(unsigned char pX); 
+  uint8_t getAggregateKind() const;
+  void setAggregateKind(uint8_t pX);
 
-    unsigned char getDomain() const; 
-    void setDomain(unsigned char pX); 
+  uint8_t getDomain() const;
+  void setDomain(uint8_t pX);
 
-    unsigned short getCountry() const; 
-    void setCountry(unsigned short pX); 
+  uint16_t getCountry() const;
+  void setCountry(uint16_t pX);
 
-    unsigned char getCategory() const; 
-    void setCategory(unsigned char pX); 
+  uint8_t getCategory() const;
+  void setCategory(uint8_t pX);
 
-    unsigned char getSubcategory() const; 
-    void setSubcategory(unsigned char pX); 
+  uint8_t getSubcategory() const;
+  void setSubcategory(uint8_t pX);
 
-    unsigned char getSpecific() const; 
-    void setSpecific(unsigned char pX); 
+  uint8_t getSpecific() const;
+  void setSpecific(uint8_t pX);
 
-    unsigned char getExtra() const; 
-    void setExtra(unsigned char pX); 
+  uint8_t getExtra() const;
+  void setExtra(uint8_t pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const AggregateType& rhs) const;
+  bool operator==(const AggregateType& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -88,7 +85,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

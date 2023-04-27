@@ -1,0 +1,39 @@
+---
+# Configure clang-tidy for this project.
+
+# Disabled:
+#  -clang-analyzer-cplusplus due to errors with the stl
+#  -google-readability-namespace-comments due to c++17 one line multinamespace
+#  -bugprone-suspicius-include does not support clang-tidy build styles
+#  -bugprone-easily-swappable-parameters often disallows simple functions
+#  -readability-function-cognitive-complexity disallows large functions
+#  -readability-identifier-length allows short variable names
+# To be corrected:
+Checks: '-*, bugprone-*, clang-*, google-readability-*, misc-*, modernize-*, readability-*, performance-*, -clang-analyzer-cplusplus*, -google-readability-namespace-comments, -bugprone-easily-swappable-parameters, -bugprone-suspicious-include, -readability-function-cognitive-complexity, -readability-identifier-length, -modernize-use-trailing-return-type'
+# Most warnings should be errors
+WarningsAsErrors: 'bugprone-*, clang-*, google-*, misc-*, modernize-*, readability-*, performance-*'
+# Overall format style, Google Style Guide w/ extra restrictions
+FormatStyle:      file
+CheckOptions:
+  - { key: readability-identifier-naming.ClassCase,                value: CamelCase  }
+  - { key: readability-identifier-naming.StructCase,               value: CamelCase  }
+  - { key: readability-identifier-naming.TemplateParameterCase,    value: CamelCase  }
+  - { key: readability-identifier-naming.FunctionCase,             value: CamelCase  }
+  - { key: readability-identifier-naming.NamespaceCase,            value: lower_case }
+  - { key: readability-identifier-naming.VariableCase,             value: lower_case }
+  - { key: readability-identifier-naming.LocalConstantCase,        value: lower_case }
+  - { key: readability-identifier-naming.LocalConstantCase,        value: lower_case }
+  - { key: readability-identifier-naming.GlobalVariableCase,       value: lower_case }
+  - { key: readability-identifier-naming.GlobalVariableSuffix,     value: _          }
+  - { key: readability-identifier-naming.GlobalConstantCase,       value: CamelCase  }
+  - { key: readability-identifier-naming.GlobalConstantPrefix,     value: k          }
+  - { key: readability-identifier-naming.PrivateMemberSuffix,      value: _          }
+  - { key: readability-identifier-naming.ProtectedMemberSuffix,    value: _          }
+  - { key: readability-identifier-naming.ConstexprVariableCase,    value: CamelCase  }
+  - { key: readability-identifier-naming.ConstexprVariablePrefix,  value: k          }
+  - { key: readability-identifier-naming.EnumConstantCase,         value: UPPER_CASE }
+  - { key: readability-identifier-naming.MemberConstantCase,       value: CamelCase  }
+  - { key: readability-identifier-naming.MemberConstantPrefix,     value: k          }
+  - { key: readability-identifier-naming.StaticConstantCase,       value: CamelCase  }
+  - { key: readability-identifier-naming.StaticConstantPrefix,     value: k          }
+  - { key: readability-function-cognitive-complexity.Threshold,    value: 35         }

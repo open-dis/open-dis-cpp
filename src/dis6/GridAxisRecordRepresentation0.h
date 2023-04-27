@@ -1,10 +1,11 @@
 #pragma once
 
+#include <cstdint>
+#include <vector>
+
 #include "dis6/GridAxisRecord.h"
 #include "dis6/opendis6_export.h"
 #include "dis6/utils/DataStream.h"
-#include <cstdint>
-#include <vector>
 
 namespace DIS {
 // 5.2.44: Grid data record, representation 0
@@ -15,32 +16,32 @@ namespace DIS {
 // @author DMcG, jkg
 
 class OPENDIS6_EXPORT GridAxisRecordRepresentation0 : public GridAxisRecord {
-protected:
+ protected:
   /** number of bytes of environmental state data */
-  unsigned short _numberOfBytes;
+  uint16_t _numberOfBytes;
 
   /** variable length list of data parameters ^^^this is wrong--need padding as
    * well */
   std::vector<uint8_t> _dataValues;
 
-public:
+ public:
   GridAxisRecordRepresentation0();
   virtual ~GridAxisRecordRepresentation0();
 
-  virtual void marshal(DataStream &dataStream) const;
-  virtual void unmarshal(DataStream &dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getNumberOfBytes() const;
+  uint16_t getNumberOfBytes() const;
 
-  std::vector<uint8_t> &getDataValues();
-  const std::vector<uint8_t> &getDataValues() const;
-  void setDataValues(const std::vector<uint8_t> &pX);
+  std::vector<uint8_t>& getDataValues();
+  const std::vector<uint8_t>& getDataValues() const;
+  void setDataValues(const std::vector<uint8_t>& pX);
 
   virtual int getMarshalledSize() const;
 
-  bool operator==(const GridAxisRecordRepresentation0 &rhs) const;
+  bool operator==(const GridAxisRecordRepresentation0& rhs) const;
 };
-} // namespace DIS
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

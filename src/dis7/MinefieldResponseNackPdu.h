@@ -1,77 +1,74 @@
 #pragma once
 
-#include <dis7/EntityID.h>
-#include <dis7/EntityID.h>
-#include <dis7/EightByteChunk.h>
 #include <vector>
-#include <dis7/MinefieldFamilyPdu.h>
-#include <dis7/utils/DataStream.h>
-#include <dis7/opendis7_export.h>
 
+#include "dis7/EightByteChunk.h"
+#include "dis7/EntityID.h"
+#include "dis7/MinefieldFamilyPdu.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
-namespace DIS
-{
-// proivde the means to request a retransmit of a minefield data pdu. Section 7.9.5 COMPLETE
+namespace DIS {
+// proivde the means to request a retransmit of a minefield data pdu.
+// Section 7.9.5 COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT MinefieldResponseNackPdu : public MinefieldFamilyPdu
-{
-protected:
+class OPENDIS7_EXPORT MinefieldResponseNackPdu : public MinefieldFamilyPdu {
+ protected:
   /** Minefield ID */
-  EntityID _minefieldID; 
+  EntityID _minefieldID;
 
   /** entity ID making the request */
-  EntityID _requestingEntityID; 
+  EntityID _requestingEntityID;
 
   /** request ID */
-  unsigned char _requestID; 
+  uint8_t _requestID;
 
   /** how many pdus were missing */
-  unsigned char _numberOfMissingPdus; 
+  uint8_t _numberOfMissingPdus;
 
   /** PDU sequence numbers that were missing */
-  std::vector<EightByteChunk> _missingPduSequenceNumbers; 
-
+  std::vector<EightByteChunk> _missingPduSequenceNumbers;
 
  public:
-    MinefieldResponseNackPdu();
-    virtual ~MinefieldResponseNackPdu();
+  MinefieldResponseNackPdu();
+  virtual ~MinefieldResponseNackPdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getMinefieldID(); 
-    const EntityID&  getMinefieldID() const; 
-    void setMinefieldID(const EntityID    &pX);
+  EntityID& getMinefieldID();
+  const EntityID& getMinefieldID() const;
+  void setMinefieldID(const EntityID& pX);
 
-    EntityID& getRequestingEntityID(); 
-    const EntityID&  getRequestingEntityID() const; 
-    void setRequestingEntityID(const EntityID    &pX);
+  EntityID& getRequestingEntityID();
+  const EntityID& getRequestingEntityID() const;
+  void setRequestingEntityID(const EntityID& pX);
 
-    unsigned char getRequestID() const; 
-    void setRequestID(unsigned char pX); 
+  uint8_t getRequestID() const;
+  void setRequestID(uint8_t pX);
 
-    unsigned char getNumberOfMissingPdus() const; 
+  uint8_t getNumberOfMissingPdus() const;
 
-    std::vector<EightByteChunk>& getMissingPduSequenceNumbers(); 
-    const std::vector<EightByteChunk>& getMissingPduSequenceNumbers() const; 
-    void setMissingPduSequenceNumbers(const std::vector<EightByteChunk>&    pX);
+  std::vector<EightByteChunk>& getMissingPduSequenceNumbers();
+  const std::vector<EightByteChunk>& getMissingPduSequenceNumbers() const;
+  void setMissingPduSequenceNumbers(const std::vector<EightByteChunk>& pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const MinefieldResponseNackPdu& rhs) const;
+  bool operator==(const MinefieldResponseNackPdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -84,7 +81,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

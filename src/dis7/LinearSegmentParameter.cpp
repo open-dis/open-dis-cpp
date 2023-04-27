@@ -1,205 +1,178 @@
-#include <dis7/LinearSegmentParameter.h>
+#include "dis7/LinearSegmentParameter.h"
 
 using namespace DIS;
 
+LinearSegmentParameter::LinearSegmentParameter()
+    : _segmentNumber(0),
+      _segmentModification(0),
+      _generalSegmentAppearance(0),
+      _specificSegmentAppearance(0),
+      _segmentLocation(),
+      _segmentOrientation(),
+      _segmentLength(0),
+      _segmentWidth(0),
+      _segmentHeight(0),
+      _segmentDepth(0) {}
 
-LinearSegmentParameter::LinearSegmentParameter():
-   _segmentNumber(0), 
-   _segmentModification(0), 
-   _generalSegmentAppearance(0), 
-   _specificSegmentAppearance(0), 
-   _segmentLocation(), 
-   _segmentOrientation(), 
-   _segmentLength(0), 
-   _segmentWidth(0), 
-   _segmentHeight(0), 
-   _segmentDepth(0)
-{
+LinearSegmentParameter::~LinearSegmentParameter() {}
+
+uint8_t LinearSegmentParameter::getSegmentNumber() const {
+  return _segmentNumber;
 }
 
-LinearSegmentParameter::~LinearSegmentParameter()
-{
+void LinearSegmentParameter::setSegmentNumber(uint8_t pX) {
+  _segmentNumber = pX;
 }
 
-unsigned char LinearSegmentParameter::getSegmentNumber() const
-{
-    return _segmentNumber;
+uint8_t LinearSegmentParameter::getSegmentModification() const {
+  return _segmentModification;
 }
 
-void LinearSegmentParameter::setSegmentNumber(unsigned char pX)
-{
-    _segmentNumber = pX;
+void LinearSegmentParameter::setSegmentModification(uint8_t pX) {
+  _segmentModification = pX;
 }
 
-unsigned char LinearSegmentParameter::getSegmentModification() const
-{
-    return _segmentModification;
+uint16_t LinearSegmentParameter::getGeneralSegmentAppearance() const {
+  return _generalSegmentAppearance;
 }
 
-void LinearSegmentParameter::setSegmentModification(unsigned char pX)
-{
-    _segmentModification = pX;
+void LinearSegmentParameter::setGeneralSegmentAppearance(uint16_t pX) {
+  _generalSegmentAppearance = pX;
 }
 
-unsigned short LinearSegmentParameter::getGeneralSegmentAppearance() const
-{
-    return _generalSegmentAppearance;
+uint16_t LinearSegmentParameter::getSpecificSegmentAppearance() const {
+  return _specificSegmentAppearance;
 }
 
-void LinearSegmentParameter::setGeneralSegmentAppearance(unsigned short pX)
-{
-    _generalSegmentAppearance = pX;
+void LinearSegmentParameter::setSpecificSegmentAppearance(uint16_t pX) {
+  _specificSegmentAppearance = pX;
 }
 
-unsigned short LinearSegmentParameter::getSpecificSegmentAppearance() const
-{
-    return _specificSegmentAppearance;
+Vector3Double& LinearSegmentParameter::getSegmentLocation() {
+  return _segmentLocation;
 }
 
-void LinearSegmentParameter::setSpecificSegmentAppearance(unsigned short pX)
-{
-    _specificSegmentAppearance = pX;
+const Vector3Double& LinearSegmentParameter::getSegmentLocation() const {
+  return _segmentLocation;
 }
 
-Vector3Double& LinearSegmentParameter::getSegmentLocation() 
-{
-    return _segmentLocation;
+void LinearSegmentParameter::setSegmentLocation(const Vector3Double& pX) {
+  _segmentLocation = pX;
 }
 
-const Vector3Double& LinearSegmentParameter::getSegmentLocation() const
-{
-    return _segmentLocation;
+EulerAngles& LinearSegmentParameter::getSegmentOrientation() {
+  return _segmentOrientation;
 }
 
-void LinearSegmentParameter::setSegmentLocation(const Vector3Double &pX)
-{
-    _segmentLocation = pX;
+const EulerAngles& LinearSegmentParameter::getSegmentOrientation() const {
+  return _segmentOrientation;
 }
 
-EulerAngles& LinearSegmentParameter::getSegmentOrientation() 
-{
-    return _segmentOrientation;
+void LinearSegmentParameter::setSegmentOrientation(const EulerAngles& pX) {
+  _segmentOrientation = pX;
 }
 
-const EulerAngles& LinearSegmentParameter::getSegmentOrientation() const
-{
-    return _segmentOrientation;
+uint16_t LinearSegmentParameter::getSegmentLength() const {
+  return _segmentLength;
 }
 
-void LinearSegmentParameter::setSegmentOrientation(const EulerAngles &pX)
-{
-    _segmentOrientation = pX;
+void LinearSegmentParameter::setSegmentLength(uint16_t pX) {
+  _segmentLength = pX;
 }
 
-unsigned short LinearSegmentParameter::getSegmentLength() const
-{
-    return _segmentLength;
+uint16_t LinearSegmentParameter::getSegmentWidth() const {
+  return _segmentWidth;
 }
 
-void LinearSegmentParameter::setSegmentLength(unsigned short pX)
-{
-    _segmentLength = pX;
+void LinearSegmentParameter::setSegmentWidth(uint16_t pX) {
+  _segmentWidth = pX;
 }
 
-unsigned short LinearSegmentParameter::getSegmentWidth() const
-{
-    return _segmentWidth;
+uint16_t LinearSegmentParameter::getSegmentHeight() const {
+  return _segmentHeight;
 }
 
-void LinearSegmentParameter::setSegmentWidth(unsigned short pX)
-{
-    _segmentWidth = pX;
+void LinearSegmentParameter::setSegmentHeight(uint16_t pX) {
+  _segmentHeight = pX;
 }
 
-unsigned short LinearSegmentParameter::getSegmentHeight() const
-{
-    return _segmentHeight;
+uint16_t LinearSegmentParameter::getSegmentDepth() const {
+  return _segmentDepth;
 }
 
-void LinearSegmentParameter::setSegmentHeight(unsigned short pX)
-{
-    _segmentHeight = pX;
+void LinearSegmentParameter::setSegmentDepth(uint16_t pX) {
+  _segmentDepth = pX;
 }
 
-unsigned short LinearSegmentParameter::getSegmentDepth() const
-{
-    return _segmentDepth;
+void LinearSegmentParameter::marshal(DataStream& dataStream) const {
+  dataStream << _segmentNumber;
+  dataStream << _segmentModification;
+  dataStream << _generalSegmentAppearance;
+  dataStream << _specificSegmentAppearance;
+  _segmentLocation.marshal(dataStream);
+  _segmentOrientation.marshal(dataStream);
+  dataStream << _segmentLength;
+  dataStream << _segmentWidth;
+  dataStream << _segmentHeight;
+  dataStream << _segmentDepth;
 }
 
-void LinearSegmentParameter::setSegmentDepth(unsigned short pX)
-{
-    _segmentDepth = pX;
+void LinearSegmentParameter::unmarshal(DataStream& dataStream) {
+  dataStream >> _segmentNumber;
+  dataStream >> _segmentModification;
+  dataStream >> _generalSegmentAppearance;
+  dataStream >> _specificSegmentAppearance;
+  _segmentLocation.unmarshal(dataStream);
+  _segmentOrientation.unmarshal(dataStream);
+  dataStream >> _segmentLength;
+  dataStream >> _segmentWidth;
+  dataStream >> _segmentHeight;
+  dataStream >> _segmentDepth;
 }
 
-void LinearSegmentParameter::marshal(DataStream& dataStream) const
-{
-    dataStream << _segmentNumber;
-    dataStream << _segmentModification;
-    dataStream << _generalSegmentAppearance;
-    dataStream << _specificSegmentAppearance;
-    _segmentLocation.marshal(dataStream);
-    _segmentOrientation.marshal(dataStream);
-    dataStream << _segmentLength;
-    dataStream << _segmentWidth;
-    dataStream << _segmentHeight;
-    dataStream << _segmentDepth;
+bool LinearSegmentParameter::operator==(
+    const LinearSegmentParameter& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_segmentNumber == rhs._segmentNumber)) ivarsEqual = false;
+  if (!(_segmentModification == rhs._segmentModification)) ivarsEqual = false;
+  if (!(_generalSegmentAppearance == rhs._generalSegmentAppearance))
+    ivarsEqual = false;
+  if (!(_specificSegmentAppearance == rhs._specificSegmentAppearance))
+    ivarsEqual = false;
+  if (!(_segmentLocation == rhs._segmentLocation)) ivarsEqual = false;
+  if (!(_segmentOrientation == rhs._segmentOrientation)) ivarsEqual = false;
+  if (!(_segmentLength == rhs._segmentLength)) ivarsEqual = false;
+  if (!(_segmentWidth == rhs._segmentWidth)) ivarsEqual = false;
+  if (!(_segmentHeight == rhs._segmentHeight)) ivarsEqual = false;
+  if (!(_segmentDepth == rhs._segmentDepth)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void LinearSegmentParameter::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _segmentNumber;
-    dataStream >> _segmentModification;
-    dataStream >> _generalSegmentAppearance;
-    dataStream >> _specificSegmentAppearance;
-    _segmentLocation.unmarshal(dataStream);
-    _segmentOrientation.unmarshal(dataStream);
-    dataStream >> _segmentLength;
-    dataStream >> _segmentWidth;
-    dataStream >> _segmentHeight;
-    dataStream >> _segmentDepth;
-}
+int LinearSegmentParameter::getMarshalledSize() const {
+  int marshalSize = 0;
 
-
-bool LinearSegmentParameter::operator ==(const LinearSegmentParameter& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_segmentNumber == rhs._segmentNumber) ) ivarsEqual = false;
-     if( ! (_segmentModification == rhs._segmentModification) ) ivarsEqual = false;
-     if( ! (_generalSegmentAppearance == rhs._generalSegmentAppearance) ) ivarsEqual = false;
-     if( ! (_specificSegmentAppearance == rhs._specificSegmentAppearance) ) ivarsEqual = false;
-     if( ! (_segmentLocation == rhs._segmentLocation) ) ivarsEqual = false;
-     if( ! (_segmentOrientation == rhs._segmentOrientation) ) ivarsEqual = false;
-     if( ! (_segmentLength == rhs._segmentLength) ) ivarsEqual = false;
-     if( ! (_segmentWidth == rhs._segmentWidth) ) ivarsEqual = false;
-     if( ! (_segmentHeight == rhs._segmentHeight) ) ivarsEqual = false;
-     if( ! (_segmentDepth == rhs._segmentDepth) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int LinearSegmentParameter::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 1;  // _segmentNumber
-   marshalSize = marshalSize + 1;  // _segmentModification
-   marshalSize = marshalSize + 2;  // _generalSegmentAppearance
-   marshalSize = marshalSize + 2;  // _specificSegmentAppearance
-   marshalSize = marshalSize + _segmentLocation.getMarshalledSize();  // _segmentLocation
-   marshalSize = marshalSize + _segmentOrientation.getMarshalledSize();  // _segmentOrientation
-   marshalSize = marshalSize + 2;  // _segmentLength
-   marshalSize = marshalSize + 2;  // _segmentWidth
-   marshalSize = marshalSize + 2;  // _segmentHeight
-   marshalSize = marshalSize + 2;  // _segmentDepth
-    return marshalSize;
+  marshalSize = marshalSize + 1;  // _segmentNumber
+  marshalSize = marshalSize + 1;  // _segmentModification
+  marshalSize = marshalSize + 2;  // _generalSegmentAppearance
+  marshalSize = marshalSize + 2;  // _specificSegmentAppearance
+  marshalSize =
+      marshalSize + _segmentLocation.getMarshalledSize();  // _segmentLocation
+  marshalSize = marshalSize +
+                _segmentOrientation.getMarshalledSize();  // _segmentOrientation
+  marshalSize = marshalSize + 2;                          // _segmentLength
+  marshalSize = marshalSize + 2;                          // _segmentWidth
+  marshalSize = marshalSize + 2;                          // _segmentHeight
+  marshalSize = marshalSize + 2;                          // _segmentDepth
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -212,7 +185,7 @@ int LinearSegmentParameter::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

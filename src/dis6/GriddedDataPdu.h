@@ -1,139 +1,139 @@
 #pragma once
 
-#include <dis6/EntityID.h>
-#include <dis6/EntityType.h>
-#include <dis6/Orientation.h>
-#include <dis6/GridAxisRecord.h>
 #include <vector>
-#include <dis6/SyntheticEnvironmentFamilyPdu.h>
-#include <dis6/utils/DataStream.h>
-#include <dis6/opendis6_export.h>
 
+#include "dis6/EntityID.h"
+#include "dis6/EntityType.h"
+#include "dis6/GridAxisRecord.h"
+#include "dis6/Orientation.h"
+#include "dis6/SyntheticEnvironmentFamilyPdu.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
-namespace DIS
-{
-// Section 5.3.11.2: Information about globat, spatially varying enviornmental effects. This requires manual cleanup; the grid axis        records are variable sized. UNFINISHED
+namespace DIS {
+// Section 5.3.11.2: Information about globat, spatially varying enviornmental
+// effects. This requires manual cleanup; the grid axis        records are
+// variable sized. UNFINISHED
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT GriddedDataPdu : public SyntheticEnvironmentFamilyPdu
-{
-protected:
+class OPENDIS6_EXPORT GriddedDataPdu : public SyntheticEnvironmentFamilyPdu {
+ protected:
   /** environmental simulation application ID */
-  EntityID _environmentalSimulationApplicationID; 
+  EntityID _environmentalSimulationApplicationID;
 
   /** unique identifier for each piece of enviornmental data */
-  unsigned short _fieldNumber; 
+  uint16_t _fieldNumber;
 
   /** sequence number for the total set of PDUS used to transmit the data */
-  unsigned short _pduNumber; 
+  uint16_t _pduNumber;
 
   /** Total number of PDUS used to transmit the data */
-  unsigned short _pduTotal; 
+  uint16_t _pduTotal;
 
   /** coordinate system of the grid */
-  unsigned short _coordinateSystem; 
+  uint16_t _coordinateSystem;
 
   /** number of grid axes for the environmental data */
-  unsigned char _numberOfGridAxes; 
+  uint8_t _numberOfGridAxes;
 
   /** are domain grid axes identidal to those of the priveious domain update? */
-  unsigned char _constantGrid; 
+  uint8_t _constantGrid;
 
   /** type of environment */
-  EntityType _environmentType; 
+  EntityType _environmentType;
 
   /** orientation of the data grid */
-  Orientation _orientation; 
+  Orientation _orientation;
 
-  /** valid time of the enviormental data sample, 64 bit unsigned int */
-  unsigned long long _sampleTime;
+  /** valid time of the enviormental data sample, 64 bit uint32_t */
+  uint64_t _sampleTime;
 
-  /** total number of all data values for all pdus for an environmental sample */
-  unsigned int _totalValues; 
+  /** total number of all data values for all pdus for an environmental sample
+   */
+  uint32_t _totalValues;
 
   /** total number of data values at each grid point. */
-  unsigned char _vectorDimension; 
+  uint8_t _vectorDimension;
 
   /** padding */
-  unsigned short _padding1; 
+  uint16_t _padding1;
 
   /** padding */
-  unsigned char _padding2; 
+  uint8_t _padding2;
 
   /** Grid data ^^^This is wrong */
-  std::vector<GridAxisRecord> _gridDataList; 
-
+  std::vector<GridAxisRecord> _gridDataList;
 
  public:
-    GriddedDataPdu();
-    virtual ~GriddedDataPdu();
+  GriddedDataPdu();
+  virtual ~GriddedDataPdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getEnvironmentalSimulationApplicationID(); 
-    const EntityID&  getEnvironmentalSimulationApplicationID() const; 
-    void setEnvironmentalSimulationApplicationID(const EntityID    &pX);
+  EntityID& getEnvironmentalSimulationApplicationID();
+  const EntityID& getEnvironmentalSimulationApplicationID() const;
+  void setEnvironmentalSimulationApplicationID(const EntityID& pX);
 
-    unsigned short getFieldNumber() const; 
-    void setFieldNumber(unsigned short pX); 
+  uint16_t getFieldNumber() const;
+  void setFieldNumber(uint16_t pX);
 
-    unsigned short getPduNumber() const; 
-    void setPduNumber(unsigned short pX); 
+  uint16_t getPduNumber() const;
+  void setPduNumber(uint16_t pX);
 
-    unsigned short getPduTotal() const; 
-    void setPduTotal(unsigned short pX); 
+  uint16_t getPduTotal() const;
+  void setPduTotal(uint16_t pX);
 
-    unsigned short getCoordinateSystem() const; 
-    void setCoordinateSystem(unsigned short pX); 
+  uint16_t getCoordinateSystem() const;
+  void setCoordinateSystem(uint16_t pX);
 
-    unsigned char getNumberOfGridAxes() const; 
+  uint8_t getNumberOfGridAxes() const;
 
-    unsigned char getConstantGrid() const; 
-    void setConstantGrid(unsigned char pX); 
+  uint8_t getConstantGrid() const;
+  void setConstantGrid(uint8_t pX);
 
-    EntityType& getEnvironmentType(); 
-    const EntityType&  getEnvironmentType() const; 
-    void setEnvironmentType(const EntityType    &pX);
+  EntityType& getEnvironmentType();
+  const EntityType& getEnvironmentType() const;
+  void setEnvironmentType(const EntityType& pX);
 
-    Orientation& getOrientation(); 
-    const Orientation&  getOrientation() const; 
-    void setOrientation(const Orientation    &pX);
+  Orientation& getOrientation();
+  const Orientation& getOrientation() const;
+  void setOrientation(const Orientation& pX);
 
-    unsigned long long getSampleTime() const;
-    void setSampleTime(unsigned long long pX);
+  uint64_t getSampleTime() const;
+  void setSampleTime(uint64_t pX);
 
-    unsigned int getTotalValues() const; 
-    void setTotalValues(unsigned int pX); 
+  uint32_t getTotalValues() const;
+  void setTotalValues(uint32_t pX);
 
-    unsigned char getVectorDimension() const; 
-    void setVectorDimension(unsigned char pX); 
+  uint8_t getVectorDimension() const;
+  void setVectorDimension(uint8_t pX);
 
-    unsigned short getPadding1() const; 
-    void setPadding1(unsigned short pX); 
+  uint16_t getPadding1() const;
+  void setPadding1(uint16_t pX);
 
-    unsigned char getPadding2() const; 
-    void setPadding2(unsigned char pX); 
+  uint8_t getPadding2() const;
+  void setPadding2(uint8_t pX);
 
-    std::vector<GridAxisRecord>& getGridDataList(); 
-    const std::vector<GridAxisRecord>& getGridDataList() const; 
-    void setGridDataList(const std::vector<GridAxisRecord>&    pX);
+  std::vector<GridAxisRecord>& getGridDataList();
+  const std::vector<GridAxisRecord>& getGridDataList() const;
+  void setGridDataList(const std::vector<GridAxisRecord>& pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const GriddedDataPdu& rhs) const;
+  bool operator==(const GriddedDataPdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -146,7 +146,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

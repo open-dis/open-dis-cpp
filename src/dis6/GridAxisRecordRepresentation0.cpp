@@ -1,4 +1,4 @@
-#include <dis6/GridAxisRecordRepresentation0.h>
+#include "dis6/GridAxisRecordRepresentation0.h"
 
 using namespace DIS;
 
@@ -9,37 +9,37 @@ GridAxisRecordRepresentation0::~GridAxisRecordRepresentation0() {
   _dataValues.clear();
 }
 
-unsigned short GridAxisRecordRepresentation0::getNumberOfBytes() const {
+uint16_t GridAxisRecordRepresentation0::getNumberOfBytes() const {
   return _dataValues.size();
 }
 
-std::vector<uint8_t> &GridAxisRecordRepresentation0::getDataValues() {
+std::vector<uint8_t>& GridAxisRecordRepresentation0::getDataValues() {
   return _dataValues;
 }
 
-const std::vector<uint8_t> &
-GridAxisRecordRepresentation0::getDataValues() const {
+const std::vector<uint8_t>& GridAxisRecordRepresentation0::getDataValues()
+    const {
   return _dataValues;
 }
 
 void GridAxisRecordRepresentation0::setDataValues(
-    const std::vector<uint8_t> &pX) {
+    const std::vector<uint8_t>& pX) {
   _dataValues = pX;
 }
 
-void GridAxisRecordRepresentation0::marshal(DataStream &dataStream) const {
+void GridAxisRecordRepresentation0::marshal(DataStream& dataStream) const {
   GridAxisRecord::marshal(
-      dataStream); // Marshal information in superclass first
-  dataStream << (unsigned short)_dataValues.size();
+      dataStream);  // Marshal information in superclass first
+  dataStream << (uint16_t)_dataValues.size();
 
-  for (auto &byte : _dataValues) {
+  for (auto& byte : _dataValues) {
     dataStream << byte;
   }
 }
 
-void GridAxisRecordRepresentation0::unmarshal(DataStream &dataStream) {
+void GridAxisRecordRepresentation0::unmarshal(DataStream& dataStream) {
   GridAxisRecord::unmarshal(
-      dataStream); // unmarshal information in superclass first
+      dataStream);  // unmarshal information in superclass first
   dataStream >> _numberOfBytes;
 
   _dataValues.clear();
@@ -51,7 +51,7 @@ void GridAxisRecordRepresentation0::unmarshal(DataStream &dataStream) {
 }
 
 bool GridAxisRecordRepresentation0::operator==(
-    const GridAxisRecordRepresentation0 &rhs) const {
+    const GridAxisRecordRepresentation0& rhs) const {
   auto ivarsEqual = true;
 
   ivarsEqual =
@@ -64,7 +64,7 @@ int GridAxisRecordRepresentation0::getMarshalledSize() const {
   auto marshalSize = 0;
 
   marshalSize = GridAxisRecord::getMarshalledSize();
-  marshalSize += 2; // _numberOfBytes
+  marshalSize += 2;  // _numberOfBytes
   marshalSize += _dataValues.size();
 
   return marshalSize;

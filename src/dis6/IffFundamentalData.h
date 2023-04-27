@@ -1,100 +1,96 @@
 #pragma once
 
-#include <dis6/utils/DataStream.h>
-#include <dis6/opendis6_export.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
-
-namespace DIS
-{
+namespace DIS {
 // 5.2.42. Basic operational data ofr IFF ATC NAVAIDS
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT IffFundamentalData
-{
-protected:
+class OPENDIS6_EXPORT IffFundamentalData {
+ protected:
   /** system status */
-  unsigned char _systemStatus; 
+  uint8_t _systemStatus;
 
   /** Alternate parameter 4 */
-  unsigned char _alternateParameter4; 
+  uint8_t _alternateParameter4;
 
   /** eight boolean fields */
-  unsigned char _informationLayers; 
+  uint8_t _informationLayers;
 
   /** enumeration */
-  unsigned char _modifier; 
+  uint8_t _modifier;
 
   /** parameter, enumeration */
-  unsigned short _parameter1; 
+  uint16_t _parameter1;
 
   /** parameter, enumeration */
-  unsigned short _parameter2; 
+  uint16_t _parameter2;
 
   /** parameter, enumeration */
-  unsigned short _parameter3; 
+  uint16_t _parameter3;
 
   /** parameter, enumeration */
-  unsigned short _parameter4; 
+  uint16_t _parameter4;
 
   /** parameter, enumeration */
-  unsigned short _parameter5; 
+  uint16_t _parameter5;
 
   /** parameter, enumeration */
-  unsigned short _parameter6; 
-
+  uint16_t _parameter6;
 
  public:
-    IffFundamentalData();
-    virtual ~IffFundamentalData();
+  IffFundamentalData();
+  virtual ~IffFundamentalData();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getSystemStatus() const; 
-    void setSystemStatus(unsigned char pX); 
+  uint8_t getSystemStatus() const;
+  void setSystemStatus(uint8_t pX);
 
-    unsigned char getAlternateParameter4() const; 
-    void setAlternateParameter4(unsigned char pX); 
+  uint8_t getAlternateParameter4() const;
+  void setAlternateParameter4(uint8_t pX);
 
-    unsigned char getInformationLayers() const; 
-    void setInformationLayers(unsigned char pX); 
+  uint8_t getInformationLayers() const;
+  void setInformationLayers(uint8_t pX);
 
-    unsigned char getModifier() const; 
-    void setModifier(unsigned char pX); 
+  uint8_t getModifier() const;
+  void setModifier(uint8_t pX);
 
-    unsigned short getParameter1() const; 
-    void setParameter1(unsigned short pX); 
+  uint16_t getParameter1() const;
+  void setParameter1(uint16_t pX);
 
-    unsigned short getParameter2() const; 
-    void setParameter2(unsigned short pX); 
+  uint16_t getParameter2() const;
+  void setParameter2(uint16_t pX);
 
-    unsigned short getParameter3() const; 
-    void setParameter3(unsigned short pX); 
+  uint16_t getParameter3() const;
+  void setParameter3(uint16_t pX);
 
-    unsigned short getParameter4() const; 
-    void setParameter4(unsigned short pX); 
+  uint16_t getParameter4() const;
+  void setParameter4(uint16_t pX);
 
-    unsigned short getParameter5() const; 
-    void setParameter5(unsigned short pX); 
+  uint16_t getParameter5() const;
+  void setParameter5(uint16_t pX);
 
-    unsigned short getParameter6() const; 
-    void setParameter6(unsigned short pX); 
+  uint16_t getParameter6() const;
+  void setParameter6(uint16_t pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const IffFundamentalData& rhs) const;
+  bool operator==(const IffFundamentalData& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -107,7 +103,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

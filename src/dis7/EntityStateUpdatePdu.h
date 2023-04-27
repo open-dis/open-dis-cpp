@@ -1,99 +1,108 @@
 #pragma once
 
-#include <dis7/EntityID.h>
-#include <dis7/Vector3Float.h>
-#include <dis7/Vector3Double.h>
-#include <dis7/EulerAngles.h>
-#include <dis7/VariableParameter.h>
 #include <vector>
-#include <dis7/EntityInformationFamilyPdu.h>
-#include <dis7/utils/DataStream.h>
-#include <dis7/opendis7_export.h>
 
+#include "dis7/EntityID.h"
+#include "dis7/EntityInformationFamilyPdu.h"
+#include "dis7/EulerAngles.h"
+#include "dis7/VariableParameter.h"
+#include "dis7/Vector3Double.h"
+#include "dis7/Vector3Float.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
-namespace DIS
-{
-// Nonstatic information about a particular entity may be communicated by issuing an Entity State Update PDU. Section 7.2.5. COMPLETE
+namespace DIS {
+// Nonstatic information about a particular entity may be communicated by
+// issuing an Entity State Update PDU. Section 7.2.5. COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT EntityStateUpdatePdu : public EntityInformationFamilyPdu
-{
-protected:
-  /** This field shall identify the entity issuing the PDU, and shall be represented by an Entity Identifier record (see 6.2.28). */
-  EntityID _entityID; 
+class OPENDIS7_EXPORT EntityStateUpdatePdu : public EntityInformationFamilyPdu {
+ protected:
+  /** This field shall identify the entity issuing the PDU, and shall be
+   * represented by an Entity Identifier record (see 6.2.28). */
+  EntityID _entityID;
 
   /** Padding */
-  char _padding1; 
+  char _padding1;
 
-  /** This field shall specify the number of variable parameters present. This field shall be represented by an 8-bit unsigned integer (see Annex I). */
-  unsigned char _numberOfVariableParameters; 
+  /** This field shall specify the number of variable parameters present. This
+   * field shall be represented by an 8-bit uint32_teger (see Annex I). */
+  uint8_t _numberOfVariableParameters;
 
-  /** This field shall specify an entity’s linear velocity. The coordinate system for an entity’s linear velocity depends on the dead reckoning algorithm used. This field shall be represented by a Linear Velocity Vector record [see 6.2.95 item c)]). */
-  Vector3Float _entityLinearVelocity; 
+  /** This field shall specify an entity’s linear velocity. The coordinate
+   * system for an entity’s linear velocity depends on the dead reckoning
+   * algorithm used. This field shall be represented by a Linear Velocity Vector
+   * record [see 6.2.95 item c)]). */
+  Vector3Float _entityLinearVelocity;
 
-  /** This field shall specify an entity’s physical location in the simulated world and shall be represented by a World Coordinates record (see 6.2.97). */
-  Vector3Double _entityLocation; 
+  /** This field shall specify an entity’s physical location in the simulated
+   * world and shall be represented by a World Coordinates record (see 6.2.97).
+   */
+  Vector3Double _entityLocation;
 
-  /** This field shall specify an entity’s orientation and shall be represented by an Euler Angles record (see 6.2.33). */
-  EulerAngles _entityOrientation; 
+  /** This field shall specify an entity’s orientation and shall be represented
+   * by an Euler Angles record (see 6.2.33). */
+  EulerAngles _entityOrientation;
 
-  /** This field shall specify the dynamic changes to the entity’s appearance attributes. This field shall be represented by an Entity Appearance record (see 6.2.26). */
-  unsigned int _entityAppearance; 
+  /** This field shall specify the dynamic changes to the entity’s appearance
+   * attributes. This field shall be represented by an Entity Appearance record
+   * (see 6.2.26). */
+  uint32_t _entityAppearance;
 
-  /** This field shall specify the parameter values for each Variable Parameter record that is included (see 6.2.93 and Annex I). */
-  std::vector<VariableParameter> _variableParameters; 
-
+  /** This field shall specify the parameter values for each Variable Parameter
+   * record that is included (see 6.2.93 and Annex I). */
+  std::vector<VariableParameter> _variableParameters;
 
  public:
-    EntityStateUpdatePdu();
-    virtual ~EntityStateUpdatePdu();
+  EntityStateUpdatePdu();
+  virtual ~EntityStateUpdatePdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getEntityID(); 
-    const EntityID&  getEntityID() const; 
-    void setEntityID(const EntityID    &pX);
+  EntityID& getEntityID();
+  const EntityID& getEntityID() const;
+  void setEntityID(const EntityID& pX);
 
-    char getPadding1() const; 
-    void setPadding1(char pX); 
+  char getPadding1() const;
+  void setPadding1(char pX);
 
-    unsigned char getNumberOfVariableParameters() const; 
+  uint8_t getNumberOfVariableParameters() const;
 
-    Vector3Float& getEntityLinearVelocity(); 
-    const Vector3Float&  getEntityLinearVelocity() const; 
-    void setEntityLinearVelocity(const Vector3Float    &pX);
+  Vector3Float& getEntityLinearVelocity();
+  const Vector3Float& getEntityLinearVelocity() const;
+  void setEntityLinearVelocity(const Vector3Float& pX);
 
-    Vector3Double& getEntityLocation(); 
-    const Vector3Double&  getEntityLocation() const; 
-    void setEntityLocation(const Vector3Double    &pX);
+  Vector3Double& getEntityLocation();
+  const Vector3Double& getEntityLocation() const;
+  void setEntityLocation(const Vector3Double& pX);
 
-    EulerAngles& getEntityOrientation(); 
-    const EulerAngles&  getEntityOrientation() const; 
-    void setEntityOrientation(const EulerAngles    &pX);
+  EulerAngles& getEntityOrientation();
+  const EulerAngles& getEntityOrientation() const;
+  void setEntityOrientation(const EulerAngles& pX);
 
-    unsigned int getEntityAppearance() const; 
-    void setEntityAppearance(unsigned int pX); 
+  uint32_t getEntityAppearance() const;
+  void setEntityAppearance(uint32_t pX);
 
-    std::vector<VariableParameter>& getVariableParameters(); 
-    const std::vector<VariableParameter>& getVariableParameters() const; 
-    void setVariableParameters(const std::vector<VariableParameter>&    pX);
+  std::vector<VariableParameter>& getVariableParameters();
+  const std::vector<VariableParameter>& getVariableParameters() const;
+  void setVariableParameters(const std::vector<VariableParameter>& pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const EntityStateUpdatePdu& rhs) const;
+  bool operator==(const EntityStateUpdatePdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -106,7 +115,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

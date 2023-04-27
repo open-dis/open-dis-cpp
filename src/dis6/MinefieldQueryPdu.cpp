@@ -1,262 +1,213 @@
-#include <dis6/MinefieldQueryPdu.h>
+#include "dis6/MinefieldQueryPdu.h"
 
 using namespace DIS;
 
-
-MinefieldQueryPdu::MinefieldQueryPdu() : MinefieldFamilyPdu(),
-   _minefieldID(), 
-   _requestingEntityID(), 
-   _requestID(0), 
-   _numberOfPerimeterPoints(0), 
-   _pad2(0), 
-   _numberOfSensorTypes(0), 
-   _dataFilter(0), 
-   _requestedMineType()
-{
-    setPduType( 38 );
+MinefieldQueryPdu::MinefieldQueryPdu()
+    : MinefieldFamilyPdu(),
+      _minefieldID(),
+      _requestingEntityID(),
+      _requestID(0),
+      _numberOfPerimeterPoints(0),
+      _pad2(0),
+      _numberOfSensorTypes(0),
+      _dataFilter(0),
+      _requestedMineType() {
+  setPduType(38);
 }
 
-MinefieldQueryPdu::~MinefieldQueryPdu()
-{
-    _requestedPerimeterPoints.clear();
-    _sensorTypes.clear();
+MinefieldQueryPdu::~MinefieldQueryPdu() {
+  _requestedPerimeterPoints.clear();
+  _sensorTypes.clear();
 }
 
-EntityID& MinefieldQueryPdu::getMinefieldID() 
-{
-    return _minefieldID;
+EntityID& MinefieldQueryPdu::getMinefieldID() { return _minefieldID; }
+
+const EntityID& MinefieldQueryPdu::getMinefieldID() const {
+  return _minefieldID;
 }
 
-const EntityID& MinefieldQueryPdu::getMinefieldID() const
-{
-    return _minefieldID;
+void MinefieldQueryPdu::setMinefieldID(const EntityID& pX) {
+  _minefieldID = pX;
 }
 
-void MinefieldQueryPdu::setMinefieldID(const EntityID &pX)
-{
-    _minefieldID = pX;
+EntityID& MinefieldQueryPdu::getRequestingEntityID() {
+  return _requestingEntityID;
 }
 
-EntityID& MinefieldQueryPdu::getRequestingEntityID() 
-{
-    return _requestingEntityID;
+const EntityID& MinefieldQueryPdu::getRequestingEntityID() const {
+  return _requestingEntityID;
 }
 
-const EntityID& MinefieldQueryPdu::getRequestingEntityID() const
-{
-    return _requestingEntityID;
+void MinefieldQueryPdu::setRequestingEntityID(const EntityID& pX) {
+  _requestingEntityID = pX;
 }
 
-void MinefieldQueryPdu::setRequestingEntityID(const EntityID &pX)
-{
-    _requestingEntityID = pX;
+uint8_t MinefieldQueryPdu::getRequestID() const { return _requestID; }
+
+void MinefieldQueryPdu::setRequestID(uint8_t pX) { _requestID = pX; }
+
+uint8_t MinefieldQueryPdu::getNumberOfPerimeterPoints() const {
+  return _requestedPerimeterPoints.size();
 }
 
-unsigned char MinefieldQueryPdu::getRequestID() const
-{
-    return _requestID;
+uint8_t MinefieldQueryPdu::getPad2() const { return _pad2; }
+
+void MinefieldQueryPdu::setPad2(uint8_t pX) { _pad2 = pX; }
+
+uint8_t MinefieldQueryPdu::getNumberOfSensorTypes() const {
+  return _sensorTypes.size();
 }
 
-void MinefieldQueryPdu::setRequestID(unsigned char pX)
-{
-    _requestID = pX;
+uint32_t MinefieldQueryPdu::getDataFilter() const { return _dataFilter; }
+
+void MinefieldQueryPdu::setDataFilter(uint32_t pX) { _dataFilter = pX; }
+
+EntityType& MinefieldQueryPdu::getRequestedMineType() {
+  return _requestedMineType;
 }
 
-unsigned char MinefieldQueryPdu::getNumberOfPerimeterPoints() const
-{
-   return _requestedPerimeterPoints.size();
+const EntityType& MinefieldQueryPdu::getRequestedMineType() const {
+  return _requestedMineType;
 }
 
-unsigned char MinefieldQueryPdu::getPad2() const
-{
-    return _pad2;
+void MinefieldQueryPdu::setRequestedMineType(const EntityType& pX) {
+  _requestedMineType = pX;
 }
 
-void MinefieldQueryPdu::setPad2(unsigned char pX)
-{
-    _pad2 = pX;
+std::vector<Point>& MinefieldQueryPdu::getRequestedPerimeterPoints() {
+  return _requestedPerimeterPoints;
 }
 
-unsigned char MinefieldQueryPdu::getNumberOfSensorTypes() const
-{
-   return _sensorTypes.size();
+const std::vector<Point>& MinefieldQueryPdu::getRequestedPerimeterPoints()
+    const {
+  return _requestedPerimeterPoints;
 }
 
-unsigned int MinefieldQueryPdu::getDataFilter() const
-{
-    return _dataFilter;
+void MinefieldQueryPdu::setRequestedPerimeterPoints(
+    const std::vector<Point>& pX) {
+  _requestedPerimeterPoints = pX;
 }
 
-void MinefieldQueryPdu::setDataFilter(unsigned int pX)
-{
-    _dataFilter = pX;
+std::vector<TwoByteChunk>& MinefieldQueryPdu::getSensorTypes() {
+  return _sensorTypes;
 }
 
-EntityType& MinefieldQueryPdu::getRequestedMineType() 
-{
-    return _requestedMineType;
+const std::vector<TwoByteChunk>& MinefieldQueryPdu::getSensorTypes() const {
+  return _sensorTypes;
 }
 
-const EntityType& MinefieldQueryPdu::getRequestedMineType() const
-{
-    return _requestedMineType;
+void MinefieldQueryPdu::setSensorTypes(const std::vector<TwoByteChunk>& pX) {
+  _sensorTypes = pX;
 }
 
-void MinefieldQueryPdu::setRequestedMineType(const EntityType &pX)
-{
-    _requestedMineType = pX;
+void MinefieldQueryPdu::marshal(DataStream& dataStream) const {
+  MinefieldFamilyPdu::marshal(
+      dataStream);  // Marshal information in superclass first
+  _minefieldID.marshal(dataStream);
+  _requestingEntityID.marshal(dataStream);
+  dataStream << _requestID;
+  dataStream << (uint8_t)_requestedPerimeterPoints.size();
+  dataStream << _pad2;
+  dataStream << (uint8_t)_sensorTypes.size();
+  dataStream << _dataFilter;
+  _requestedMineType.marshal(dataStream);
+
+  for (size_t idx = 0; idx < _requestedPerimeterPoints.size(); idx++) {
+    Point x = _requestedPerimeterPoints[idx];
+    x.marshal(dataStream);
+  }
+
+  for (size_t idx = 0; idx < _sensorTypes.size(); idx++) {
+    TwoByteChunk x = _sensorTypes[idx];
+    x.marshal(dataStream);
+  }
 }
 
-std::vector<Point>& MinefieldQueryPdu::getRequestedPerimeterPoints() 
-{
-    return _requestedPerimeterPoints;
+void MinefieldQueryPdu::unmarshal(DataStream& dataStream) {
+  MinefieldFamilyPdu::unmarshal(
+      dataStream);  // unmarshal information in superclass first
+  _minefieldID.unmarshal(dataStream);
+  _requestingEntityID.unmarshal(dataStream);
+  dataStream >> _requestID;
+  dataStream >> _numberOfPerimeterPoints;
+  dataStream >> _pad2;
+  dataStream >> _numberOfSensorTypes;
+  dataStream >> _dataFilter;
+  _requestedMineType.unmarshal(dataStream);
+
+  _requestedPerimeterPoints.clear();
+  for (size_t idx = 0; idx < _numberOfPerimeterPoints; idx++) {
+    Point x;
+    x.unmarshal(dataStream);
+    _requestedPerimeterPoints.push_back(x);
+  }
+
+  _sensorTypes.clear();
+  for (size_t idx = 0; idx < _numberOfSensorTypes; idx++) {
+    TwoByteChunk x;
+    x.unmarshal(dataStream);
+    _sensorTypes.push_back(x);
+  }
 }
 
-const std::vector<Point>& MinefieldQueryPdu::getRequestedPerimeterPoints() const
-{
-    return _requestedPerimeterPoints;
+bool MinefieldQueryPdu::operator==(const MinefieldQueryPdu& rhs) const {
+  bool ivarsEqual = true;
+
+  ivarsEqual = MinefieldFamilyPdu::operator==(rhs);
+
+  if (!(_minefieldID == rhs._minefieldID)) ivarsEqual = false;
+  if (!(_requestingEntityID == rhs._requestingEntityID)) ivarsEqual = false;
+  if (!(_requestID == rhs._requestID)) ivarsEqual = false;
+  if (!(_pad2 == rhs._pad2)) ivarsEqual = false;
+  if (!(_dataFilter == rhs._dataFilter)) ivarsEqual = false;
+  if (!(_requestedMineType == rhs._requestedMineType)) ivarsEqual = false;
+
+  for (size_t idx = 0; idx < _requestedPerimeterPoints.size(); idx++) {
+    if (!(_requestedPerimeterPoints[idx] == rhs._requestedPerimeterPoints[idx]))
+      ivarsEqual = false;
+  }
+
+  for (size_t idx = 0; idx < _sensorTypes.size(); idx++) {
+    if (!(_sensorTypes[idx] == rhs._sensorTypes[idx])) ivarsEqual = false;
+  }
+
+  return ivarsEqual;
 }
 
-void MinefieldQueryPdu::setRequestedPerimeterPoints(const std::vector<Point>& pX)
-{
-     _requestedPerimeterPoints = pX;
-}
+int MinefieldQueryPdu::getMarshalledSize() const {
+  int marshalSize = 0;
 
-std::vector<TwoByteChunk>& MinefieldQueryPdu::getSensorTypes() 
-{
-    return _sensorTypes;
-}
+  marshalSize = MinefieldFamilyPdu::getMarshalledSize();
+  marshalSize = marshalSize + _minefieldID.getMarshalledSize();  // _minefieldID
+  marshalSize = marshalSize +
+                _requestingEntityID.getMarshalledSize();  // _requestingEntityID
+  marshalSize = marshalSize + 1;                          // _requestID
+  marshalSize = marshalSize + 1;  // _numberOfPerimeterPoints
+  marshalSize = marshalSize + 1;  // _pad2
+  marshalSize = marshalSize + 1;  // _numberOfSensorTypes
+  marshalSize = marshalSize + 4;  // _dataFilter
+  marshalSize = marshalSize +
+                _requestedMineType.getMarshalledSize();  // _requestedMineType
 
-const std::vector<TwoByteChunk>& MinefieldQueryPdu::getSensorTypes() const
-{
-    return _sensorTypes;
-}
+  for (uint64_t idx = 0; idx < _requestedPerimeterPoints.size();
+       idx++) {
+    Point listElement = _requestedPerimeterPoints[idx];
+    marshalSize = marshalSize + listElement.getMarshalledSize();
+  }
 
-void MinefieldQueryPdu::setSensorTypes(const std::vector<TwoByteChunk>& pX)
-{
-     _sensorTypes = pX;
-}
+  for (uint64_t idx = 0; idx < _sensorTypes.size(); idx++) {
+    TwoByteChunk listElement = _sensorTypes[idx];
+    marshalSize = marshalSize + listElement.getMarshalledSize();
+  }
 
-void MinefieldQueryPdu::marshal(DataStream& dataStream) const
-{
-    MinefieldFamilyPdu::marshal(dataStream); // Marshal information in superclass first
-    _minefieldID.marshal(dataStream);
-    _requestingEntityID.marshal(dataStream);
-    dataStream << _requestID;
-    dataStream << ( unsigned char )_requestedPerimeterPoints.size();
-    dataStream << _pad2;
-    dataStream << ( unsigned char )_sensorTypes.size();
-    dataStream << _dataFilter;
-    _requestedMineType.marshal(dataStream);
-
-     for(size_t idx = 0; idx < _requestedPerimeterPoints.size(); idx++)
-     {
-        Point x = _requestedPerimeterPoints[idx];
-        x.marshal(dataStream);
-     }
-
-
-     for(size_t idx = 0; idx < _sensorTypes.size(); idx++)
-     {
-        TwoByteChunk x = _sensorTypes[idx];
-        x.marshal(dataStream);
-     }
-
-}
-
-void MinefieldQueryPdu::unmarshal(DataStream& dataStream)
-{
-    MinefieldFamilyPdu::unmarshal(dataStream); // unmarshal information in superclass first
-    _minefieldID.unmarshal(dataStream);
-    _requestingEntityID.unmarshal(dataStream);
-    dataStream >> _requestID;
-    dataStream >> _numberOfPerimeterPoints;
-    dataStream >> _pad2;
-    dataStream >> _numberOfSensorTypes;
-    dataStream >> _dataFilter;
-    _requestedMineType.unmarshal(dataStream);
-
-     _requestedPerimeterPoints.clear();
-     for(size_t idx = 0; idx < _numberOfPerimeterPoints; idx++)
-     {
-        Point x;
-        x.unmarshal(dataStream);
-        _requestedPerimeterPoints.push_back(x);
-     }
-
-     _sensorTypes.clear();
-     for(size_t idx = 0; idx < _numberOfSensorTypes; idx++)
-     {
-        TwoByteChunk x;
-        x.unmarshal(dataStream);
-        _sensorTypes.push_back(x);
-     }
-}
-
-
-bool MinefieldQueryPdu::operator ==(const MinefieldQueryPdu& rhs) const
- {
-     bool ivarsEqual = true;
-
-     ivarsEqual = MinefieldFamilyPdu::operator==(rhs);
-
-     if( ! (_minefieldID == rhs._minefieldID) ) ivarsEqual = false;
-     if( ! (_requestingEntityID == rhs._requestingEntityID) ) ivarsEqual = false;
-     if( ! (_requestID == rhs._requestID) ) ivarsEqual = false;
-     if( ! (_pad2 == rhs._pad2) ) ivarsEqual = false;
-     if( ! (_dataFilter == rhs._dataFilter) ) ivarsEqual = false;
-     if( ! (_requestedMineType == rhs._requestedMineType) ) ivarsEqual = false;
-
-     for(size_t idx = 0; idx < _requestedPerimeterPoints.size(); idx++)
-     {
-        if( ! ( _requestedPerimeterPoints[idx] == rhs._requestedPerimeterPoints[idx]) ) ivarsEqual = false;
-     }
-
-
-     for(size_t idx = 0; idx < _sensorTypes.size(); idx++)
-     {
-        if( ! ( _sensorTypes[idx] == rhs._sensorTypes[idx]) ) ivarsEqual = false;
-     }
-
-
-    return ivarsEqual;
- }
-
-int MinefieldQueryPdu::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = MinefieldFamilyPdu::getMarshalledSize();
-   marshalSize = marshalSize + _minefieldID.getMarshalledSize();  // _minefieldID
-   marshalSize = marshalSize + _requestingEntityID.getMarshalledSize();  // _requestingEntityID
-   marshalSize = marshalSize + 1;  // _requestID
-   marshalSize = marshalSize + 1;  // _numberOfPerimeterPoints
-   marshalSize = marshalSize + 1;  // _pad2
-   marshalSize = marshalSize + 1;  // _numberOfSensorTypes
-   marshalSize = marshalSize + 4;  // _dataFilter
-   marshalSize = marshalSize + _requestedMineType.getMarshalledSize();  // _requestedMineType
-
-   for(unsigned long long idx=0; idx < _requestedPerimeterPoints.size(); idx++)
-   {
-        Point listElement = _requestedPerimeterPoints[idx];
-        marshalSize = marshalSize + listElement.getMarshalledSize();
-    }
-
-
-   for(unsigned long long idx=0; idx < _sensorTypes.size(); idx++)
-   {
-        TwoByteChunk listElement = _sensorTypes[idx];
-        marshalSize = marshalSize + listElement.getMarshalledSize();
-    }
-
-    return marshalSize;
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -269,7 +220,7 @@ int MinefieldQueryPdu::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

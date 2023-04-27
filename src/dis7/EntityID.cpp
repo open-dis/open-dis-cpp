@@ -1,80 +1,60 @@
-#include <dis7/EntityID.h>
+#include "dis7/EntityID.h"
 
 using namespace DIS;
 
+EntityID::EntityID() : _simulationAddress(), _entityNumber(0) {}
 
-EntityID::EntityID():
-   _simulationAddress(), 
-   _entityNumber(0)
-{
+EntityID::~EntityID() {}
+
+SimulationAddress& EntityID::getSimulationAddress() {
+  return _simulationAddress;
 }
 
-EntityID::~EntityID()
-{
+const SimulationAddress& EntityID::getSimulationAddress() const {
+  return _simulationAddress;
 }
 
-SimulationAddress& EntityID::getSimulationAddress() 
-{
-    return _simulationAddress;
+void EntityID::setSimulationAddress(const SimulationAddress& pX) {
+  _simulationAddress = pX;
 }
 
-const SimulationAddress& EntityID::getSimulationAddress() const
-{
-    return _simulationAddress;
+uint16_t EntityID::getEntityNumber() const { return _entityNumber; }
+
+void EntityID::setEntityNumber(uint16_t pX) { _entityNumber = pX; }
+
+void EntityID::marshal(DataStream& dataStream) const {
+  _simulationAddress.marshal(dataStream);
+  dataStream << _entityNumber;
 }
 
-void EntityID::setSimulationAddress(const SimulationAddress &pX)
-{
-    _simulationAddress = pX;
+void EntityID::unmarshal(DataStream& dataStream) {
+  _simulationAddress.unmarshal(dataStream);
+  dataStream >> _entityNumber;
 }
 
-unsigned short EntityID::getEntityNumber() const
-{
-    return _entityNumber;
+bool EntityID::operator==(const EntityID& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_simulationAddress == rhs._simulationAddress)) ivarsEqual = false;
+  if (!(_entityNumber == rhs._entityNumber)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void EntityID::setEntityNumber(unsigned short pX)
-{
-    _entityNumber = pX;
-}
+int EntityID::getMarshalledSize() const {
+  int marshalSize = 0;
 
-void EntityID::marshal(DataStream& dataStream) const
-{
-    _simulationAddress.marshal(dataStream);
-    dataStream << _entityNumber;
-}
-
-void EntityID::unmarshal(DataStream& dataStream)
-{
-    _simulationAddress.unmarshal(dataStream);
-    dataStream >> _entityNumber;
-}
-
-
-bool EntityID::operator ==(const EntityID& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_simulationAddress == rhs._simulationAddress) ) ivarsEqual = false;
-     if( ! (_entityNumber == rhs._entityNumber) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int EntityID::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + _simulationAddress.getMarshalledSize();  // _simulationAddress
-   marshalSize = marshalSize + 2;  // _entityNumber
-    return marshalSize;
+  marshalSize = marshalSize +
+                _simulationAddress.getMarshalledSize();  // _simulationAddress
+  marshalSize = marshalSize + 2;                         // _entityNumber
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -87,7 +67,7 @@ int EntityID::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

@@ -1,80 +1,60 @@
-#include <dis7/GroupIdentifier.h>
+#include "dis7/GroupIdentifier.h"
 
 using namespace DIS;
 
+GroupIdentifier::GroupIdentifier() : _simulationAddress(), _groupNumber(0) {}
 
-GroupIdentifier::GroupIdentifier():
-   _simulationAddress(), 
-   _groupNumber(0)
-{
+GroupIdentifier::~GroupIdentifier() {}
+
+EntityType& GroupIdentifier::getSimulationAddress() {
+  return _simulationAddress;
 }
 
-GroupIdentifier::~GroupIdentifier()
-{
+const EntityType& GroupIdentifier::getSimulationAddress() const {
+  return _simulationAddress;
 }
 
-EntityType& GroupIdentifier::getSimulationAddress() 
-{
-    return _simulationAddress;
+void GroupIdentifier::setSimulationAddress(const EntityType& pX) {
+  _simulationAddress = pX;
 }
 
-const EntityType& GroupIdentifier::getSimulationAddress() const
-{
-    return _simulationAddress;
+uint16_t GroupIdentifier::getGroupNumber() const { return _groupNumber; }
+
+void GroupIdentifier::setGroupNumber(uint16_t pX) { _groupNumber = pX; }
+
+void GroupIdentifier::marshal(DataStream& dataStream) const {
+  _simulationAddress.marshal(dataStream);
+  dataStream << _groupNumber;
 }
 
-void GroupIdentifier::setSimulationAddress(const EntityType &pX)
-{
-    _simulationAddress = pX;
+void GroupIdentifier::unmarshal(DataStream& dataStream) {
+  _simulationAddress.unmarshal(dataStream);
+  dataStream >> _groupNumber;
 }
 
-unsigned short GroupIdentifier::getGroupNumber() const
-{
-    return _groupNumber;
+bool GroupIdentifier::operator==(const GroupIdentifier& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_simulationAddress == rhs._simulationAddress)) ivarsEqual = false;
+  if (!(_groupNumber == rhs._groupNumber)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void GroupIdentifier::setGroupNumber(unsigned short pX)
-{
-    _groupNumber = pX;
-}
+int GroupIdentifier::getMarshalledSize() const {
+  int marshalSize = 0;
 
-void GroupIdentifier::marshal(DataStream& dataStream) const
-{
-    _simulationAddress.marshal(dataStream);
-    dataStream << _groupNumber;
-}
-
-void GroupIdentifier::unmarshal(DataStream& dataStream)
-{
-    _simulationAddress.unmarshal(dataStream);
-    dataStream >> _groupNumber;
-}
-
-
-bool GroupIdentifier::operator ==(const GroupIdentifier& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_simulationAddress == rhs._simulationAddress) ) ivarsEqual = false;
-     if( ! (_groupNumber == rhs._groupNumber) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int GroupIdentifier::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + _simulationAddress.getMarshalledSize();  // _simulationAddress
-   marshalSize = marshalSize + 2;  // _groupNumber
-    return marshalSize;
+  marshalSize = marshalSize +
+                _simulationAddress.getMarshalledSize();  // _simulationAddress
+  marshalSize = marshalSize + 2;                         // _groupNumber
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -87,7 +67,7 @@ int GroupIdentifier::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

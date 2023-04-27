@@ -1,187 +1,147 @@
-#include <dis7/DataQueryPdu.h>
+#include "dis7/DataQueryPdu.h"
 
 using namespace DIS;
 
-
-DataQueryPdu::DataQueryPdu() : SimulationManagementFamilyPdu(),
-   _requestID(0), 
-   _timeInterval(0), 
-   _numberOfFixedDatumRecords(0), 
-   _numberOfVariableDatumRecords(0)
-{
-    setPduType( 18 );
+DataQueryPdu::DataQueryPdu()
+    : SimulationManagementFamilyPdu(),
+      _requestID(0),
+      _timeInterval(0),
+      _numberOfFixedDatumRecords(0),
+      _numberOfVariableDatumRecords(0) {
+  setPduType(18);
 }
 
-DataQueryPdu::~DataQueryPdu()
-{
-    _fixedDatums.clear();
-    _variableDatums.clear();
+DataQueryPdu::~DataQueryPdu() {
+  _fixedDatums.clear();
+  _variableDatums.clear();
 }
 
-unsigned int DataQueryPdu::getRequestID() const
-{
-    return _requestID;
+uint32_t DataQueryPdu::getRequestID() const { return _requestID; }
+
+void DataQueryPdu::setRequestID(uint32_t pX) { _requestID = pX; }
+
+uint32_t DataQueryPdu::getTimeInterval() const { return _timeInterval; }
+
+void DataQueryPdu::setTimeInterval(uint32_t pX) { _timeInterval = pX; }
+
+uint32_t DataQueryPdu::getNumberOfFixedDatumRecords() const {
+  return _fixedDatums.size();
 }
 
-void DataQueryPdu::setRequestID(unsigned int pX)
-{
-    _requestID = pX;
+uint32_t DataQueryPdu::getNumberOfVariableDatumRecords() const {
+  return _variableDatums.size();
 }
 
-unsigned int DataQueryPdu::getTimeInterval() const
-{
-    return _timeInterval;
+std::vector<FixedDatum>& DataQueryPdu::getFixedDatums() { return _fixedDatums; }
+
+const std::vector<FixedDatum>& DataQueryPdu::getFixedDatums() const {
+  return _fixedDatums;
 }
 
-void DataQueryPdu::setTimeInterval(unsigned int pX)
-{
-    _timeInterval = pX;
+void DataQueryPdu::setFixedDatums(const std::vector<FixedDatum>& pX) {
+  _fixedDatums = pX;
 }
 
-unsigned int DataQueryPdu::getNumberOfFixedDatumRecords() const
-{
-   return _fixedDatums.size();
+std::vector<VariableDatum>& DataQueryPdu::getVariableDatums() {
+  return _variableDatums;
 }
 
-unsigned int DataQueryPdu::getNumberOfVariableDatumRecords() const
-{
-   return _variableDatums.size();
+const std::vector<VariableDatum>& DataQueryPdu::getVariableDatums() const {
+  return _variableDatums;
 }
 
-std::vector<FixedDatum>& DataQueryPdu::getFixedDatums() 
-{
-    return _fixedDatums;
+void DataQueryPdu::setVariableDatums(const std::vector<VariableDatum>& pX) {
+  _variableDatums = pX;
 }
 
-const std::vector<FixedDatum>& DataQueryPdu::getFixedDatums() const
-{
-    return _fixedDatums;
+void DataQueryPdu::marshal(DataStream& dataStream) const {
+  SimulationManagementFamilyPdu::marshal(
+      dataStream);  // Marshal information in superclass first
+  dataStream << _requestID;
+  dataStream << _timeInterval;
+  dataStream << (uint32_t)_fixedDatums.size();
+  dataStream << (uint32_t)_variableDatums.size();
+
+  for (size_t idx = 0; idx < _fixedDatums.size(); idx++) {
+    FixedDatum x = _fixedDatums[idx];
+    x.marshal(dataStream);
+  }
+
+  for (size_t idx = 0; idx < _variableDatums.size(); idx++) {
+    VariableDatum x = _variableDatums[idx];
+    x.marshal(dataStream);
+  }
 }
 
-void DataQueryPdu::setFixedDatums(const std::vector<FixedDatum>& pX)
-{
-     _fixedDatums = pX;
+void DataQueryPdu::unmarshal(DataStream& dataStream) {
+  SimulationManagementFamilyPdu::unmarshal(
+      dataStream);  // unmarshal information in superclass first
+  dataStream >> _requestID;
+  dataStream >> _timeInterval;
+  dataStream >> _numberOfFixedDatumRecords;
+  dataStream >> _numberOfVariableDatumRecords;
+
+  _fixedDatums.clear();
+  for (size_t idx = 0; idx < _numberOfFixedDatumRecords; idx++) {
+    FixedDatum x;
+    x.unmarshal(dataStream);
+    _fixedDatums.push_back(x);
+  }
+
+  _variableDatums.clear();
+  for (size_t idx = 0; idx < _numberOfVariableDatumRecords; idx++) {
+    VariableDatum x;
+    x.unmarshal(dataStream);
+    _variableDatums.push_back(x);
+  }
 }
 
-std::vector<VariableDatum>& DataQueryPdu::getVariableDatums() 
-{
-    return _variableDatums;
+bool DataQueryPdu::operator==(const DataQueryPdu& rhs) const {
+  bool ivarsEqual = true;
+
+  ivarsEqual = SimulationManagementFamilyPdu::operator==(rhs);
+
+  if (!(_requestID == rhs._requestID)) ivarsEqual = false;
+  if (!(_timeInterval == rhs._timeInterval)) ivarsEqual = false;
+
+  for (size_t idx = 0; idx < _fixedDatums.size(); idx++) {
+    if (!(_fixedDatums[idx] == rhs._fixedDatums[idx])) ivarsEqual = false;
+  }
+
+  for (size_t idx = 0; idx < _variableDatums.size(); idx++) {
+    if (!(_variableDatums[idx] == rhs._variableDatums[idx])) ivarsEqual = false;
+  }
+
+  return ivarsEqual;
 }
 
-const std::vector<VariableDatum>& DataQueryPdu::getVariableDatums() const
-{
-    return _variableDatums;
-}
+int DataQueryPdu::getMarshalledSize() const {
+  int marshalSize = 0;
 
-void DataQueryPdu::setVariableDatums(const std::vector<VariableDatum>& pX)
-{
-     _variableDatums = pX;
-}
+  marshalSize = SimulationManagementFamilyPdu::getMarshalledSize();
+  marshalSize = marshalSize + 4;  // _requestID
+  marshalSize = marshalSize + 4;  // _timeInterval
+  marshalSize = marshalSize + 4;  // _numberOfFixedDatumRecords
+  marshalSize = marshalSize + 4;  // _numberOfVariableDatumRecords
 
-void DataQueryPdu::marshal(DataStream& dataStream) const
-{
-    SimulationManagementFamilyPdu::marshal(dataStream); // Marshal information in superclass first
-    dataStream << _requestID;
-    dataStream << _timeInterval;
-    dataStream << ( unsigned int )_fixedDatums.size();
-    dataStream << ( unsigned int )_variableDatums.size();
+  for (uint64_t idx = 0; idx < _fixedDatums.size(); idx++) {
+    FixedDatum listElement = _fixedDatums[idx];
+    marshalSize = marshalSize + listElement.getMarshalledSize();
+  }
 
-     for(size_t idx = 0; idx < _fixedDatums.size(); idx++)
-     {
-        FixedDatum x = _fixedDatums[idx];
-        x.marshal(dataStream);
-     }
+  for (uint64_t idx = 0; idx < _variableDatums.size(); idx++) {
+    VariableDatum listElement = _variableDatums[idx];
+    marshalSize = marshalSize + listElement.getMarshalledSize();
+  }
 
-
-     for(size_t idx = 0; idx < _variableDatums.size(); idx++)
-     {
-        VariableDatum x = _variableDatums[idx];
-        x.marshal(dataStream);
-     }
-
-}
-
-void DataQueryPdu::unmarshal(DataStream& dataStream)
-{
-    SimulationManagementFamilyPdu::unmarshal(dataStream); // unmarshal information in superclass first
-    dataStream >> _requestID;
-    dataStream >> _timeInterval;
-    dataStream >> _numberOfFixedDatumRecords;
-    dataStream >> _numberOfVariableDatumRecords;
-
-     _fixedDatums.clear();
-     for(size_t idx = 0; idx < _numberOfFixedDatumRecords; idx++)
-     {
-        FixedDatum x;
-        x.unmarshal(dataStream);
-        _fixedDatums.push_back(x);
-     }
-
-     _variableDatums.clear();
-     for(size_t idx = 0; idx < _numberOfVariableDatumRecords; idx++)
-     {
-        VariableDatum x;
-        x.unmarshal(dataStream);
-        _variableDatums.push_back(x);
-     }
-}
-
-
-bool DataQueryPdu::operator ==(const DataQueryPdu& rhs) const
- {
-     bool ivarsEqual = true;
-
-     ivarsEqual = SimulationManagementFamilyPdu::operator==(rhs);
-
-     if( ! (_requestID == rhs._requestID) ) ivarsEqual = false;
-     if( ! (_timeInterval == rhs._timeInterval) ) ivarsEqual = false;
-
-     for(size_t idx = 0; idx < _fixedDatums.size(); idx++)
-     {
-        if( ! ( _fixedDatums[idx] == rhs._fixedDatums[idx]) ) ivarsEqual = false;
-     }
-
-
-     for(size_t idx = 0; idx < _variableDatums.size(); idx++)
-     {
-        if( ! ( _variableDatums[idx] == rhs._variableDatums[idx]) ) ivarsEqual = false;
-     }
-
-
-    return ivarsEqual;
- }
-
-int DataQueryPdu::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = SimulationManagementFamilyPdu::getMarshalledSize();
-   marshalSize = marshalSize + 4;  // _requestID
-   marshalSize = marshalSize + 4;  // _timeInterval
-   marshalSize = marshalSize + 4;  // _numberOfFixedDatumRecords
-   marshalSize = marshalSize + 4;  // _numberOfVariableDatumRecords
-
-   for(unsigned long long idx=0; idx < _fixedDatums.size(); idx++)
-   {
-        FixedDatum listElement = _fixedDatums[idx];
-        marshalSize = marshalSize + listElement.getMarshalledSize();
-    }
-
-
-   for(unsigned long long idx=0; idx < _variableDatums.size(); idx++)
-   {
-        VariableDatum listElement = _variableDatums[idx];
-        marshalSize = marshalSize + listElement.getMarshalledSize();
-    }
-
-    return marshalSize;
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -194,7 +154,7 @@ int DataQueryPdu::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

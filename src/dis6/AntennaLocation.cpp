@@ -1,85 +1,72 @@
-#include <dis6/AntennaLocation.h>
+#include "dis6/AntennaLocation.h"
 
 using namespace DIS;
 
+AntennaLocation::AntennaLocation()
+    : _antennaLocation(), _relativeAntennaLocation() {}
 
-AntennaLocation::AntennaLocation():
-   _antennaLocation(), 
-   _relativeAntennaLocation()
-{
+AntennaLocation::~AntennaLocation() {}
+
+Vector3Double& AntennaLocation::getAntennaLocation() {
+  return _antennaLocation;
 }
 
-AntennaLocation::~AntennaLocation()
-{
+const Vector3Double& AntennaLocation::getAntennaLocation() const {
+  return _antennaLocation;
 }
 
-Vector3Double& AntennaLocation::getAntennaLocation() 
-{
-    return _antennaLocation;
+void AntennaLocation::setAntennaLocation(const Vector3Double& pX) {
+  _antennaLocation = pX;
 }
 
-const Vector3Double& AntennaLocation::getAntennaLocation() const
-{
-    return _antennaLocation;
+Vector3Float& AntennaLocation::getRelativeAntennaLocation() {
+  return _relativeAntennaLocation;
 }
 
-void AntennaLocation::setAntennaLocation(const Vector3Double &pX)
-{
-    _antennaLocation = pX;
+const Vector3Float& AntennaLocation::getRelativeAntennaLocation() const {
+  return _relativeAntennaLocation;
 }
 
-Vector3Float& AntennaLocation::getRelativeAntennaLocation() 
-{
-    return _relativeAntennaLocation;
+void AntennaLocation::setRelativeAntennaLocation(const Vector3Float& pX) {
+  _relativeAntennaLocation = pX;
 }
 
-const Vector3Float& AntennaLocation::getRelativeAntennaLocation() const
-{
-    return _relativeAntennaLocation;
+void AntennaLocation::marshal(DataStream& dataStream) const {
+  _antennaLocation.marshal(dataStream);
+  _relativeAntennaLocation.marshal(dataStream);
 }
 
-void AntennaLocation::setRelativeAntennaLocation(const Vector3Float &pX)
-{
-    _relativeAntennaLocation = pX;
+void AntennaLocation::unmarshal(DataStream& dataStream) {
+  _antennaLocation.unmarshal(dataStream);
+  _relativeAntennaLocation.unmarshal(dataStream);
 }
 
-void AntennaLocation::marshal(DataStream& dataStream) const
-{
-    _antennaLocation.marshal(dataStream);
-    _relativeAntennaLocation.marshal(dataStream);
+bool AntennaLocation::operator==(const AntennaLocation& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_antennaLocation == rhs._antennaLocation)) ivarsEqual = false;
+  if (!(_relativeAntennaLocation == rhs._relativeAntennaLocation))
+    ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void AntennaLocation::unmarshal(DataStream& dataStream)
-{
-    _antennaLocation.unmarshal(dataStream);
-    _relativeAntennaLocation.unmarshal(dataStream);
-}
+int AntennaLocation::getMarshalledSize() const {
+  int marshalSize = 0;
 
-
-bool AntennaLocation::operator ==(const AntennaLocation& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_antennaLocation == rhs._antennaLocation) ) ivarsEqual = false;
-     if( ! (_relativeAntennaLocation == rhs._relativeAntennaLocation) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int AntennaLocation::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + _antennaLocation.getMarshalledSize();  // _antennaLocation
-   marshalSize = marshalSize + _relativeAntennaLocation.getMarshalledSize();  // _relativeAntennaLocation
-    return marshalSize;
+  marshalSize =
+      marshalSize + _antennaLocation.getMarshalledSize();  // _antennaLocation
+  marshalSize =
+      marshalSize +
+      _relativeAntennaLocation.getMarshalledSize();  // _relativeAntennaLocation
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -92,7 +79,7 @@ int AntennaLocation::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

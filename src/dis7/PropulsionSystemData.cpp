@@ -1,75 +1,52 @@
-#include <dis7/PropulsionSystemData.h>
+#include "dis7/PropulsionSystemData.h"
 
 using namespace DIS;
 
+PropulsionSystemData::PropulsionSystemData()
+    : _powerSetting(0.0), _engineRpm(0.0) {}
 
-PropulsionSystemData::PropulsionSystemData():
-   _powerSetting(0.0), 
-   _engineRpm(0.0)
-{
+PropulsionSystemData::~PropulsionSystemData() {}
+
+float PropulsionSystemData::getPowerSetting() const { return _powerSetting; }
+
+void PropulsionSystemData::setPowerSetting(float pX) { _powerSetting = pX; }
+
+float PropulsionSystemData::getEngineRpm() const { return _engineRpm; }
+
+void PropulsionSystemData::setEngineRpm(float pX) { _engineRpm = pX; }
+
+void PropulsionSystemData::marshal(DataStream& dataStream) const {
+  dataStream << _powerSetting;
+  dataStream << _engineRpm;
 }
 
-PropulsionSystemData::~PropulsionSystemData()
-{
+void PropulsionSystemData::unmarshal(DataStream& dataStream) {
+  dataStream >> _powerSetting;
+  dataStream >> _engineRpm;
 }
 
-float PropulsionSystemData::getPowerSetting() const
-{
-    return _powerSetting;
+bool PropulsionSystemData::operator==(const PropulsionSystemData& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_powerSetting == rhs._powerSetting)) ivarsEqual = false;
+  if (!(_engineRpm == rhs._engineRpm)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void PropulsionSystemData::setPowerSetting(float pX)
-{
-    _powerSetting = pX;
-}
+int PropulsionSystemData::getMarshalledSize() const {
+  int marshalSize = 0;
 
-float PropulsionSystemData::getEngineRpm() const
-{
-    return _engineRpm;
-}
-
-void PropulsionSystemData::setEngineRpm(float pX)
-{
-    _engineRpm = pX;
-}
-
-void PropulsionSystemData::marshal(DataStream& dataStream) const
-{
-    dataStream << _powerSetting;
-    dataStream << _engineRpm;
-}
-
-void PropulsionSystemData::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _powerSetting;
-    dataStream >> _engineRpm;
-}
-
-
-bool PropulsionSystemData::operator ==(const PropulsionSystemData& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_powerSetting == rhs._powerSetting) ) ivarsEqual = false;
-     if( ! (_engineRpm == rhs._engineRpm) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int PropulsionSystemData::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 4;  // _powerSetting
-   marshalSize = marshalSize + 4;  // _engineRpm
-    return marshalSize;
+  marshalSize = marshalSize + 4;  // _powerSetting
+  marshalSize = marshalSize + 4;  // _engineRpm
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -82,7 +59,7 @@ int PropulsionSystemData::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

@@ -1,96 +1,92 @@
 #pragma once
 
-#include <dis7/EntityID.h>
-#include <dis7/EntityID.h>
-#include <dis7/FixedDatum.h>
-#include <dis7/VariableDatum.h>
 #include <vector>
-#include <dis7/SimulationManagementFamilyPdu.h>
-#include <dis7/utils/DataStream.h>
-#include <dis7/opendis7_export.h>
 
+#include "dis7/EntityID.h"
+#include "dis7/FixedDatum.h"
+#include "dis7/SimulationManagementFamilyPdu.h"
+#include "dis7/VariableDatum.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
-namespace DIS
-{
+namespace DIS {
 // Section 7.5.8. response to an action request PDU. COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT ActionResponsePdu : public SimulationManagementFamilyPdu
-{
-protected:
+class OPENDIS7_EXPORT ActionResponsePdu : public SimulationManagementFamilyPdu {
+ protected:
   /** Identifier for originating entity(or simulation) */
-  EntityID _originatingID; 
+  EntityID _originatingID;
 
   /** Identifier for the receiving entity(or simulation) */
-  EntityID _receivingID; 
+  EntityID _receivingID;
 
   /** Request ID that is unique */
-  unsigned int _requestID; 
+  uint32_t _requestID;
 
   /** Status of response */
-  unsigned int _requestStatus; 
+  uint32_t _requestStatus;
 
   /** Number of fixed datum records */
-  unsigned int _numberOfFixedDatumRecords; 
+  uint32_t _numberOfFixedDatumRecords;
 
   /** Number of variable datum records */
-  unsigned int _numberOfVariableDatumRecords; 
+  uint32_t _numberOfVariableDatumRecords;
 
   /** variable length list of fixed datums */
-  std::vector<FixedDatum> _fixedDatums; 
+  std::vector<FixedDatum> _fixedDatums;
 
   /** variable length list of variable length datums */
-  std::vector<VariableDatum> _variableDatums; 
-
+  std::vector<VariableDatum> _variableDatums;
 
  public:
-    ActionResponsePdu();
-    virtual ~ActionResponsePdu();
+  ActionResponsePdu();
+  virtual ~ActionResponsePdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getOriginatingID(); 
-    const EntityID&  getOriginatingID() const; 
-    void setOriginatingID(const EntityID    &pX);
+  EntityID& getOriginatingID();
+  const EntityID& getOriginatingID() const;
+  void setOriginatingID(const EntityID& pX);
 
-    EntityID& getReceivingID(); 
-    const EntityID&  getReceivingID() const; 
-    void setReceivingID(const EntityID    &pX);
+  EntityID& getReceivingID();
+  const EntityID& getReceivingID() const;
+  void setReceivingID(const EntityID& pX);
 
-    unsigned int getRequestID() const; 
-    void setRequestID(unsigned int pX); 
+  uint32_t getRequestID() const;
+  void setRequestID(uint32_t pX);
 
-    unsigned int getRequestStatus() const; 
-    void setRequestStatus(unsigned int pX); 
+  uint32_t getRequestStatus() const;
+  void setRequestStatus(uint32_t pX);
 
-    unsigned int getNumberOfFixedDatumRecords() const; 
+  uint32_t getNumberOfFixedDatumRecords() const;
 
-    unsigned int getNumberOfVariableDatumRecords() const; 
+  uint32_t getNumberOfVariableDatumRecords() const;
 
-    std::vector<FixedDatum>& getFixedDatums(); 
-    const std::vector<FixedDatum>& getFixedDatums() const; 
-    void setFixedDatums(const std::vector<FixedDatum>&    pX);
+  std::vector<FixedDatum>& getFixedDatums();
+  const std::vector<FixedDatum>& getFixedDatums() const;
+  void setFixedDatums(const std::vector<FixedDatum>& pX);
 
-    std::vector<VariableDatum>& getVariableDatums(); 
-    const std::vector<VariableDatum>& getVariableDatums() const; 
-    void setVariableDatums(const std::vector<VariableDatum>&    pX);
+  std::vector<VariableDatum>& getVariableDatums();
+  const std::vector<VariableDatum>& getVariableDatums() const;
+  void setVariableDatums(const std::vector<VariableDatum>& pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const ActionResponsePdu& rhs) const;
+  bool operator==(const ActionResponsePdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -103,7 +99,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

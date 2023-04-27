@@ -1,80 +1,63 @@
-#include <dis7/LiveEntityPdu.h>
+#include "dis7/LiveEntityPdu.h"
 
 using namespace DIS;
 
+LiveEntityPdu::LiveEntityPdu()
+    : PduSuperclass(), _subprotocolNumber(0), _padding(0) {}
 
-LiveEntityPdu::LiveEntityPdu() : PduSuperclass(),
-   _subprotocolNumber(0), 
-   _padding(0)
-{
+LiveEntityPdu::~LiveEntityPdu() {}
+
+uint16_t LiveEntityPdu::getSubprotocolNumber() const {
+  return _subprotocolNumber;
 }
 
-LiveEntityPdu::~LiveEntityPdu()
-{
+void LiveEntityPdu::setSubprotocolNumber(uint16_t pX) {
+  _subprotocolNumber = pX;
 }
 
-unsigned short LiveEntityPdu::getSubprotocolNumber() const
-{
-    return _subprotocolNumber;
+uint8_t LiveEntityPdu::getPadding() const { return _padding; }
+
+void LiveEntityPdu::setPadding(uint8_t pX) { _padding = pX; }
+
+void LiveEntityPdu::marshal(DataStream& dataStream) const {
+  PduSuperclass::marshal(
+      dataStream);  // Marshal information in superclass first
+  dataStream << _subprotocolNumber;
+  dataStream << _padding;
 }
 
-void LiveEntityPdu::setSubprotocolNumber(unsigned short pX)
-{
-    _subprotocolNumber = pX;
+void LiveEntityPdu::unmarshal(DataStream& dataStream) {
+  PduSuperclass::unmarshal(
+      dataStream);  // unmarshal information in superclass first
+  dataStream >> _subprotocolNumber;
+  dataStream >> _padding;
 }
 
-unsigned char LiveEntityPdu::getPadding() const
-{
-    return _padding;
+bool LiveEntityPdu::operator==(const LiveEntityPdu& rhs) const {
+  bool ivarsEqual = true;
+
+  ivarsEqual = PduSuperclass::operator==(rhs);
+
+  if (!(_subprotocolNumber == rhs._subprotocolNumber)) ivarsEqual = false;
+  if (!(_padding == rhs._padding)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void LiveEntityPdu::setPadding(unsigned char pX)
-{
-    _padding = pX;
-}
+int LiveEntityPdu::getMarshalledSize() const {
+  int marshalSize = 0;
 
-void LiveEntityPdu::marshal(DataStream& dataStream) const
-{
-    PduSuperclass::marshal(dataStream); // Marshal information in superclass first
-    dataStream << _subprotocolNumber;
-    dataStream << _padding;
-}
-
-void LiveEntityPdu::unmarshal(DataStream& dataStream)
-{
-    PduSuperclass::unmarshal(dataStream); // unmarshal information in superclass first
-    dataStream >> _subprotocolNumber;
-    dataStream >> _padding;
-}
-
-
-bool LiveEntityPdu::operator ==(const LiveEntityPdu& rhs) const
- {
-     bool ivarsEqual = true;
-
-     ivarsEqual = PduSuperclass::operator==(rhs);
-
-     if( ! (_subprotocolNumber == rhs._subprotocolNumber) ) ivarsEqual = false;
-     if( ! (_padding == rhs._padding) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int LiveEntityPdu::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = PduSuperclass::getMarshalledSize();
-   marshalSize = marshalSize + 2;  // _subprotocolNumber
-   marshalSize = marshalSize + 1;  // _padding
-    return marshalSize;
+  marshalSize = PduSuperclass::getMarshalledSize();
+  marshalSize = marshalSize + 2;  // _subprotocolNumber
+  marshalSize = marshalSize + 1;  // _padding
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -87,7 +70,7 @@ int LiveEntityPdu::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

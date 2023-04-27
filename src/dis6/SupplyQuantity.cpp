@@ -1,80 +1,53 @@
-#include <dis6/SupplyQuantity.h>
+#include "dis6/SupplyQuantity.h"
 
 using namespace DIS;
 
+SupplyQuantity::SupplyQuantity() : _supplyType(), _quantity(0) {}
 
-SupplyQuantity::SupplyQuantity():
-   _supplyType(), 
-   _quantity(0)
-{
+SupplyQuantity::~SupplyQuantity() {}
+
+EntityType& SupplyQuantity::getSupplyType() { return _supplyType; }
+
+const EntityType& SupplyQuantity::getSupplyType() const { return _supplyType; }
+
+void SupplyQuantity::setSupplyType(const EntityType& pX) { _supplyType = pX; }
+
+uint8_t SupplyQuantity::getQuantity() const { return _quantity; }
+
+void SupplyQuantity::setQuantity(uint8_t pX) { _quantity = pX; }
+
+void SupplyQuantity::marshal(DataStream& dataStream) const {
+  _supplyType.marshal(dataStream);
+  dataStream << _quantity;
 }
 
-SupplyQuantity::~SupplyQuantity()
-{
+void SupplyQuantity::unmarshal(DataStream& dataStream) {
+  _supplyType.unmarshal(dataStream);
+  dataStream >> _quantity;
 }
 
-EntityType& SupplyQuantity::getSupplyType() 
-{
-    return _supplyType;
+bool SupplyQuantity::operator==(const SupplyQuantity& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_supplyType == rhs._supplyType)) ivarsEqual = false;
+  if (!(_quantity == rhs._quantity)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-const EntityType& SupplyQuantity::getSupplyType() const
-{
-    return _supplyType;
-}
+int SupplyQuantity::getMarshalledSize() const {
+  int marshalSize = 0;
 
-void SupplyQuantity::setSupplyType(const EntityType &pX)
-{
-    _supplyType = pX;
-}
-
-unsigned char SupplyQuantity::getQuantity() const
-{
-    return _quantity;
-}
-
-void SupplyQuantity::setQuantity(unsigned char pX)
-{
-    _quantity = pX;
-}
-
-void SupplyQuantity::marshal(DataStream& dataStream) const
-{
-    _supplyType.marshal(dataStream);
-    dataStream << _quantity;
-}
-
-void SupplyQuantity::unmarshal(DataStream& dataStream)
-{
-    _supplyType.unmarshal(dataStream);
-    dataStream >> _quantity;
-}
-
-
-bool SupplyQuantity::operator ==(const SupplyQuantity& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_supplyType == rhs._supplyType) ) ivarsEqual = false;
-     if( ! (_quantity == rhs._quantity) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int SupplyQuantity::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + _supplyType.getMarshalledSize();  // _supplyType
-   marshalSize = marshalSize + 1;  // _quantity
-    return marshalSize;
+  marshalSize = marshalSize + _supplyType.getMarshalledSize();  // _supplyType
+  marshalSize = marshalSize + 1;                                // _quantity
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -87,7 +60,7 @@ int SupplyQuantity::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

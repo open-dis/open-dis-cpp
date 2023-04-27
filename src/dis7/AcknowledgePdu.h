@@ -1,75 +1,71 @@
 #pragma once
 
-#include <dis7/EntityID.h>
-#include <dis7/EntityID.h>
-#include <dis7/SimulationManagementFamilyPdu.h>
-#include <dis7/utils/DataStream.h>
-#include <dis7/opendis7_export.h>
+#include "dis7/EntityID.h"
+#include "dis7/SimulationManagementFamilyPdu.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
+namespace DIS {
+// Section 7.5.6. Acknowledge the receipt of a start/resume, stop/freeze, or
+// RemoveEntityPDU. COMPLETE
 
-namespace DIS
-{
-// Section 7.5.6. Acknowledge the receipt of a start/resume, stop/freeze, or RemoveEntityPDU. COMPLETE
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT AcknowledgePdu : public SimulationManagementFamilyPdu
-{
-protected:
+class OPENDIS7_EXPORT AcknowledgePdu : public SimulationManagementFamilyPdu {
+ protected:
   /** Identifier for originating entity(or simulation) */
-  EntityID _originatingID; 
+  EntityID _originatingID;
 
   /** Identifier for the receiving entity(or simulation) */
-  EntityID _receivingID; 
+  EntityID _receivingID;
 
   /** type of message being acknowledged */
-  unsigned short _acknowledgeFlag; 
+  uint16_t _acknowledgeFlag;
 
   /** Whether or not the receiving entity was able to comply with the request */
-  unsigned short _responseFlag; 
+  uint16_t _responseFlag;
 
   /** Request ID that is unique */
-  unsigned int _requestID; 
-
+  uint32_t _requestID;
 
  public:
-    AcknowledgePdu();
-    virtual ~AcknowledgePdu();
+  AcknowledgePdu();
+  virtual ~AcknowledgePdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getOriginatingID(); 
-    const EntityID&  getOriginatingID() const; 
-    void setOriginatingID(const EntityID    &pX);
+  EntityID& getOriginatingID();
+  const EntityID& getOriginatingID() const;
+  void setOriginatingID(const EntityID& pX);
 
-    EntityID& getReceivingID(); 
-    const EntityID&  getReceivingID() const; 
-    void setReceivingID(const EntityID    &pX);
+  EntityID& getReceivingID();
+  const EntityID& getReceivingID() const;
+  void setReceivingID(const EntityID& pX);
 
-    unsigned short getAcknowledgeFlag() const; 
-    void setAcknowledgeFlag(unsigned short pX); 
+  uint16_t getAcknowledgeFlag() const;
+  void setAcknowledgeFlag(uint16_t pX);
 
-    unsigned short getResponseFlag() const; 
-    void setResponseFlag(unsigned short pX); 
+  uint16_t getResponseFlag() const;
+  void setResponseFlag(uint16_t pX);
 
-    unsigned int getRequestID() const; 
-    void setRequestID(unsigned int pX); 
+  uint32_t getRequestID() const;
+  void setRequestID(uint32_t pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const AcknowledgePdu& rhs) const;
+  bool operator==(const AcknowledgePdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -82,7 +78,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

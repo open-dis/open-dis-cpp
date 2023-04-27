@@ -1,75 +1,61 @@
-#include <dis7/VariableTransmitterParameters.h>
+#include "dis7/VariableTransmitterParameters.h"
 
 using namespace DIS;
 
+VariableTransmitterParameters::VariableTransmitterParameters()
+    : _recordType(4), _recordLength(4) {}
 
-VariableTransmitterParameters::VariableTransmitterParameters():
-   _recordType(4), 
-   _recordLength(4)
-{
+VariableTransmitterParameters::~VariableTransmitterParameters() {}
+
+uint32_t VariableTransmitterParameters::getRecordType() const {
+  return _recordType;
 }
 
-VariableTransmitterParameters::~VariableTransmitterParameters()
-{
+void VariableTransmitterParameters::setRecordType(uint32_t pX) {
+  _recordType = pX;
 }
 
-unsigned int VariableTransmitterParameters::getRecordType() const
-{
-    return _recordType;
+uint32_t VariableTransmitterParameters::getRecordLength() const {
+  return _recordLength;
 }
 
-void VariableTransmitterParameters::setRecordType(unsigned int pX)
-{
-    _recordType = pX;
+void VariableTransmitterParameters::setRecordLength(uint32_t pX) {
+  _recordLength = pX;
 }
 
-unsigned int VariableTransmitterParameters::getRecordLength() const
-{
-    return _recordLength;
+void VariableTransmitterParameters::marshal(DataStream& dataStream) const {
+  dataStream << _recordType;
+  dataStream << _recordLength;
 }
 
-void VariableTransmitterParameters::setRecordLength(unsigned int pX)
-{
-    _recordLength = pX;
+void VariableTransmitterParameters::unmarshal(DataStream& dataStream) {
+  dataStream >> _recordType;
+  dataStream >> _recordLength;
 }
 
-void VariableTransmitterParameters::marshal(DataStream& dataStream) const
-{
-    dataStream << _recordType;
-    dataStream << _recordLength;
+bool VariableTransmitterParameters::operator==(
+    const VariableTransmitterParameters& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_recordType == rhs._recordType)) ivarsEqual = false;
+  if (!(_recordLength == rhs._recordLength)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void VariableTransmitterParameters::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _recordType;
-    dataStream >> _recordLength;
-}
+int VariableTransmitterParameters::getMarshalledSize() const {
+  int marshalSize = 0;
 
-
-bool VariableTransmitterParameters::operator ==(const VariableTransmitterParameters& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_recordType == rhs._recordType) ) ivarsEqual = false;
-     if( ! (_recordLength == rhs._recordLength) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int VariableTransmitterParameters::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 4;  // _recordType
-   marshalSize = marshalSize + 4;  // _recordLength
-    return marshalSize;
+  marshalSize = marshalSize + 4;  // _recordType
+  marshalSize = marshalSize + 4;  // _recordLength
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -82,7 +68,7 @@ int VariableTransmitterParameters::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

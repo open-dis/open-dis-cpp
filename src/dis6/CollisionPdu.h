@@ -1,99 +1,93 @@
 #pragma once
 
-#include <dis6/EntityID.h>
-#include <dis6/EntityID.h>
-#include <dis6/EventID.h>
-#include <dis6/Vector3Float.h>
-#include <dis6/Vector3Float.h>
-#include <dis6/EntityInformationFamilyPdu.h>
-#include <dis6/utils/DataStream.h>
-#include <dis6/opendis6_export.h>
+#include "dis6/EntityID.h"
+#include "dis6/EntityInformationFamilyPdu.h"
+#include "dis6/EventID.h"
+#include "dis6/Vector3Float.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
-
-namespace DIS
-{
+namespace DIS {
 // Section 5.3.3.2. Information about a collision. COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT CollisionPdu : public EntityInformationFamilyPdu
-{
-protected:
+class OPENDIS6_EXPORT CollisionPdu : public EntityInformationFamilyPdu {
+ protected:
   /** ID of the entity that issued the collision PDU */
-  EntityID _issuingEntityID; 
+  EntityID _issuingEntityID;
 
   /** ID of entity that has collided with the issuing entity ID */
-  EntityID _collidingEntityID; 
+  EntityID _collidingEntityID;
 
   /** ID of event */
-  EventID _eventID; 
+  EventID _eventID;
 
   /** ID of event */
-  unsigned char _collisionType; 
+  uint8_t _collisionType;
 
   /** some padding */
-  char _pad; 
+  char _pad;
 
   /** velocity at collision */
-  Vector3Float _velocity; 
+  Vector3Float _velocity;
 
   /** mass of issuing entity */
-  float _mass; 
+  float _mass;
 
   /** Location with respect to entity the issuing entity collided with */
-  Vector3Float _location; 
-
+  Vector3Float _location;
 
  public:
-    CollisionPdu();
-    virtual ~CollisionPdu();
+  CollisionPdu();
+  virtual ~CollisionPdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getIssuingEntityID(); 
-    const EntityID&  getIssuingEntityID() const; 
-    void setIssuingEntityID(const EntityID    &pX);
+  EntityID& getIssuingEntityID();
+  const EntityID& getIssuingEntityID() const;
+  void setIssuingEntityID(const EntityID& pX);
 
-    EntityID& getCollidingEntityID(); 
-    const EntityID&  getCollidingEntityID() const; 
-    void setCollidingEntityID(const EntityID    &pX);
+  EntityID& getCollidingEntityID();
+  const EntityID& getCollidingEntityID() const;
+  void setCollidingEntityID(const EntityID& pX);
 
-    EventID& getEventID(); 
-    const EventID&  getEventID() const; 
-    void setEventID(const EventID    &pX);
+  EventID& getEventID();
+  const EventID& getEventID() const;
+  void setEventID(const EventID& pX);
 
-    unsigned char getCollisionType() const; 
-    void setCollisionType(unsigned char pX); 
+  uint8_t getCollisionType() const;
+  void setCollisionType(uint8_t pX);
 
-    char getPad() const; 
-    void setPad(char pX); 
+  char getPad() const;
+  void setPad(char pX);
 
-    Vector3Float& getVelocity(); 
-    const Vector3Float&  getVelocity() const; 
-    void setVelocity(const Vector3Float    &pX);
+  Vector3Float& getVelocity();
+  const Vector3Float& getVelocity() const;
+  void setVelocity(const Vector3Float& pX);
 
-    float getMass() const; 
-    void setMass(float pX); 
+  float getMass() const;
+  void setMass(float pX);
 
-    Vector3Float& getLocation(); 
-    const Vector3Float&  getLocation() const; 
-    void setLocation(const Vector3Float    &pX);
+  Vector3Float& getLocation();
+  const Vector3Float& getLocation() const;
+  void setLocation(const Vector3Float& pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const CollisionPdu& rhs) const;
+  bool operator==(const CollisionPdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -106,7 +100,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

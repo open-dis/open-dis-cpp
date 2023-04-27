@@ -1,80 +1,65 @@
-#include <dis7/SimulationIdentifier.h>
+#include "dis7/SimulationIdentifier.h"
 
 using namespace DIS;
 
+SimulationIdentifier::SimulationIdentifier()
+    : _simulationAddress(), _referenceNumber(0) {}
 
-SimulationIdentifier::SimulationIdentifier():
-   _simulationAddress(), 
-   _referenceNumber(0)
-{
+SimulationIdentifier::~SimulationIdentifier() {}
+
+SimulationAddress& SimulationIdentifier::getSimulationAddress() {
+  return _simulationAddress;
 }
 
-SimulationIdentifier::~SimulationIdentifier()
-{
+const SimulationAddress& SimulationIdentifier::getSimulationAddress() const {
+  return _simulationAddress;
 }
 
-SimulationAddress& SimulationIdentifier::getSimulationAddress() 
-{
-    return _simulationAddress;
+void SimulationIdentifier::setSimulationAddress(const SimulationAddress& pX) {
+  _simulationAddress = pX;
 }
 
-const SimulationAddress& SimulationIdentifier::getSimulationAddress() const
-{
-    return _simulationAddress;
+uint16_t SimulationIdentifier::getReferenceNumber() const {
+  return _referenceNumber;
 }
 
-void SimulationIdentifier::setSimulationAddress(const SimulationAddress &pX)
-{
-    _simulationAddress = pX;
+void SimulationIdentifier::setReferenceNumber(uint16_t pX) {
+  _referenceNumber = pX;
 }
 
-unsigned short SimulationIdentifier::getReferenceNumber() const
-{
-    return _referenceNumber;
+void SimulationIdentifier::marshal(DataStream& dataStream) const {
+  _simulationAddress.marshal(dataStream);
+  dataStream << _referenceNumber;
 }
 
-void SimulationIdentifier::setReferenceNumber(unsigned short pX)
-{
-    _referenceNumber = pX;
+void SimulationIdentifier::unmarshal(DataStream& dataStream) {
+  _simulationAddress.unmarshal(dataStream);
+  dataStream >> _referenceNumber;
 }
 
-void SimulationIdentifier::marshal(DataStream& dataStream) const
-{
-    _simulationAddress.marshal(dataStream);
-    dataStream << _referenceNumber;
+bool SimulationIdentifier::operator==(const SimulationIdentifier& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_simulationAddress == rhs._simulationAddress)) ivarsEqual = false;
+  if (!(_referenceNumber == rhs._referenceNumber)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void SimulationIdentifier::unmarshal(DataStream& dataStream)
-{
-    _simulationAddress.unmarshal(dataStream);
-    dataStream >> _referenceNumber;
-}
+int SimulationIdentifier::getMarshalledSize() const {
+  int marshalSize = 0;
 
-
-bool SimulationIdentifier::operator ==(const SimulationIdentifier& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_simulationAddress == rhs._simulationAddress) ) ivarsEqual = false;
-     if( ! (_referenceNumber == rhs._referenceNumber) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int SimulationIdentifier::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + _simulationAddress.getMarshalledSize();  // _simulationAddress
-   marshalSize = marshalSize + 2;  // _referenceNumber
-    return marshalSize;
+  marshalSize = marshalSize +
+                _simulationAddress.getMarshalledSize();  // _simulationAddress
+  marshalSize = marshalSize + 2;                         // _referenceNumber
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -87,7 +72,7 @@ int SimulationIdentifier::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

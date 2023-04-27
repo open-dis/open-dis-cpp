@@ -1,58 +1,61 @@
 #pragma once
 
-#include <dis6/utils/DataStream.h>
-#include <dis6/opendis6_export.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
+namespace DIS {
+// 5.3.35: Information about a particular UA emitter shall be represented using
+// an Acoustic Emitter System record. This record shall consist of three fields:
+// Acoustic Name, Function, and Acoustic ID Number
 
-namespace DIS
-{
-// 5.3.35: Information about a particular UA emitter shall be represented using an Acoustic Emitter System record. This record shall consist of three fields: Acoustic Name, Function, and Acoustic ID Number
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT AcousticEmitterSystem
-{
-protected:
+class OPENDIS6_EXPORT AcousticEmitterSystem {
+ protected:
   /** This field shall specify the system for a particular UA emitter. */
-  unsigned short _acousticName; 
+  uint16_t _acousticName;
 
   /** This field shall describe the function of the acoustic system.  */
-  unsigned char _acousticFunction; 
+  uint8_t _acousticFunction;
 
-  /** This field shall specify the UA emitter identification number relative to a specific system. This field shall be represented by an 8-bit unsigned integer. This field allows the differentiation of multiple systems on an entity, even if in some instances two or more of the systems may be identical UA emitter types. Numbering of systems shall begin with the value 1.  */
-  unsigned char _acousticID; 
-
+  /** This field shall specify the UA emitter identification number relative to
+   * a specific system. This field shall be represented by an 8-bit unsigned
+   * integer. This field allows the differentiation of multiple systems on an
+   * entity, even if in some instances two or more of the systems may be
+   * identical UA emitter types. Numbering of systems shall begin with the
+   * value 1.  */
+  uint8_t _acousticID;
 
  public:
-    AcousticEmitterSystem();
-    virtual ~AcousticEmitterSystem();
+  AcousticEmitterSystem();
+  virtual ~AcousticEmitterSystem();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned short getAcousticName() const; 
-    void setAcousticName(unsigned short pX); 
+  uint16_t getAcousticName() const;
+  void setAcousticName(uint16_t pX);
 
-    unsigned char getAcousticFunction() const; 
-    void setAcousticFunction(unsigned char pX); 
+  uint8_t getAcousticFunction() const;
+  void setAcousticFunction(uint8_t pX);
 
-    unsigned char getAcousticID() const; 
-    void setAcousticID(unsigned char pX); 
+  uint8_t getAcousticID() const;
+  void setAcousticID(uint8_t pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const AcousticEmitterSystem& rhs) const;
+  bool operator==(const AcousticEmitterSystem& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -65,7 +68,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

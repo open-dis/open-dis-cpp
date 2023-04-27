@@ -1,105 +1,68 @@
-#include <dis7/ObjectType.h>
+#include "dis7/ObjectType.h"
 
 using namespace DIS;
 
+ObjectType::ObjectType()
+    : _domain(0), _objectKind(0), _category(0), _subcategory(0) {}
 
-ObjectType::ObjectType():
-   _domain(0), 
-   _objectKind(0), 
-   _category(0), 
-   _subcategory(0)
-{
+ObjectType::~ObjectType() {}
+
+uint8_t ObjectType::getDomain() const { return _domain; }
+
+void ObjectType::setDomain(uint8_t pX) { _domain = pX; }
+
+uint8_t ObjectType::getObjectKind() const { return _objectKind; }
+
+void ObjectType::setObjectKind(uint8_t pX) { _objectKind = pX; }
+
+uint8_t ObjectType::getCategory() const { return _category; }
+
+void ObjectType::setCategory(uint8_t pX) { _category = pX; }
+
+uint8_t ObjectType::getSubcategory() const { return _subcategory; }
+
+void ObjectType::setSubcategory(uint8_t pX) { _subcategory = pX; }
+
+void ObjectType::marshal(DataStream& dataStream) const {
+  dataStream << _domain;
+  dataStream << _objectKind;
+  dataStream << _category;
+  dataStream << _subcategory;
 }
 
-ObjectType::~ObjectType()
-{
+void ObjectType::unmarshal(DataStream& dataStream) {
+  dataStream >> _domain;
+  dataStream >> _objectKind;
+  dataStream >> _category;
+  dataStream >> _subcategory;
 }
 
-unsigned char ObjectType::getDomain() const
-{
-    return _domain;
+bool ObjectType::operator==(const ObjectType& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_domain == rhs._domain)) ivarsEqual = false;
+  if (!(_objectKind == rhs._objectKind)) ivarsEqual = false;
+  if (!(_category == rhs._category)) ivarsEqual = false;
+  if (!(_subcategory == rhs._subcategory)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void ObjectType::setDomain(unsigned char pX)
-{
-    _domain = pX;
-}
+int ObjectType::getMarshalledSize() const {
+  int marshalSize = 0;
 
-unsigned char ObjectType::getObjectKind() const
-{
-    return _objectKind;
-}
-
-void ObjectType::setObjectKind(unsigned char pX)
-{
-    _objectKind = pX;
-}
-
-unsigned char ObjectType::getCategory() const
-{
-    return _category;
-}
-
-void ObjectType::setCategory(unsigned char pX)
-{
-    _category = pX;
-}
-
-unsigned char ObjectType::getSubcategory() const
-{
-    return _subcategory;
-}
-
-void ObjectType::setSubcategory(unsigned char pX)
-{
-    _subcategory = pX;
-}
-
-void ObjectType::marshal(DataStream& dataStream) const
-{
-    dataStream << _domain;
-    dataStream << _objectKind;
-    dataStream << _category;
-    dataStream << _subcategory;
-}
-
-void ObjectType::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _domain;
-    dataStream >> _objectKind;
-    dataStream >> _category;
-    dataStream >> _subcategory;
-}
-
-
-bool ObjectType::operator ==(const ObjectType& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_domain == rhs._domain) ) ivarsEqual = false;
-     if( ! (_objectKind == rhs._objectKind) ) ivarsEqual = false;
-     if( ! (_category == rhs._category) ) ivarsEqual = false;
-     if( ! (_subcategory == rhs._subcategory) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int ObjectType::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 1;  // _domain
-   marshalSize = marshalSize + 1;  // _objectKind
-   marshalSize = marshalSize + 1;  // _category
-   marshalSize = marshalSize + 1;  // _subcategory
-    return marshalSize;
+  marshalSize = marshalSize + 1;  // _domain
+  marshalSize = marshalSize + 1;  // _objectKind
+  marshalSize = marshalSize + 1;  // _category
+  marshalSize = marshalSize + 1;  // _subcategory
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -112,7 +75,7 @@ int ObjectType::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

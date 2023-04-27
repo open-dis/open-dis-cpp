@@ -1,83 +1,77 @@
 #pragma once
 
-#include <dis7/EventIdentifier.h>
-#include <dis7/EventIdentifier.h>
-#include <dis7/EventIdentifier.h>
-#include <dis7/Vector3Double.h>
-#include <dis7/utils/DataStream.h>
-#include <dis7/opendis7_export.h>
+#include "dis7/EventIdentifier.h"
+#include "dis7/Vector3Double.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
-
-namespace DIS
-{
+namespace DIS {
 // Identity of a communications node. Section 6.2.51
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT LaunchedMunitionRecord
-{
-protected:
-  EventIdentifier _fireEventID; 
+class OPENDIS7_EXPORT LaunchedMunitionRecord {
+ protected:
+  EventIdentifier _fireEventID;
 
-  unsigned short _padding; 
+  uint16_t _padding;
 
-  EventIdentifier _firingEntityID; 
+  EventIdentifier _firingEntityID;
 
-  unsigned short _padding2; 
+  uint16_t _padding2;
 
-  EventIdentifier _targetEntityID; 
+  EventIdentifier _targetEntityID;
 
-  unsigned short _padding3; 
+  uint16_t _padding3;
 
-  Vector3Double _targetLocation; 
-
+  Vector3Double _targetLocation;
 
  public:
-    LaunchedMunitionRecord();
-    virtual ~LaunchedMunitionRecord();
+  LaunchedMunitionRecord();
+  virtual ~LaunchedMunitionRecord();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EventIdentifier& getFireEventID(); 
-    const EventIdentifier&  getFireEventID() const; 
-    void setFireEventID(const EventIdentifier    &pX);
+  EventIdentifier& getFireEventID();
+  const EventIdentifier& getFireEventID() const;
+  void setFireEventID(const EventIdentifier& pX);
 
-    unsigned short getPadding() const; 
-    void setPadding(unsigned short pX); 
+  uint16_t getPadding() const;
+  void setPadding(uint16_t pX);
 
-    EventIdentifier& getFiringEntityID(); 
-    const EventIdentifier&  getFiringEntityID() const; 
-    void setFiringEntityID(const EventIdentifier    &pX);
+  EventIdentifier& getFiringEntityID();
+  const EventIdentifier& getFiringEntityID() const;
+  void setFiringEntityID(const EventIdentifier& pX);
 
-    unsigned short getPadding2() const; 
-    void setPadding2(unsigned short pX); 
+  uint16_t getPadding2() const;
+  void setPadding2(uint16_t pX);
 
-    EventIdentifier& getTargetEntityID(); 
-    const EventIdentifier&  getTargetEntityID() const; 
-    void setTargetEntityID(const EventIdentifier    &pX);
+  EventIdentifier& getTargetEntityID();
+  const EventIdentifier& getTargetEntityID() const;
+  void setTargetEntityID(const EventIdentifier& pX);
 
-    unsigned short getPadding3() const; 
-    void setPadding3(unsigned short pX); 
+  uint16_t getPadding3() const;
+  void setPadding3(uint16_t pX);
 
-    Vector3Double& getTargetLocation(); 
-    const Vector3Double&  getTargetLocation() const; 
-    void setTargetLocation(const Vector3Double    &pX);
+  Vector3Double& getTargetLocation();
+  const Vector3Double& getTargetLocation() const;
+  void setTargetLocation(const Vector3Double& pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const LaunchedMunitionRecord& rhs) const;
+  bool operator==(const LaunchedMunitionRecord& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -90,7 +84,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

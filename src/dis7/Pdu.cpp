@@ -1,80 +1,58 @@
-#include <dis7/Pdu.h>
+#include "dis7/Pdu.h"
 
 using namespace DIS;
 
+Pdu::Pdu() : PduSuperclass(), _pduStatus(0), _padding(0) {}
 
-Pdu::Pdu() : PduSuperclass(),
-   _pduStatus(0), 
-   _padding(0)
-{
+Pdu::~Pdu() {}
+
+uint8_t Pdu::getPduStatus() const { return _pduStatus; }
+
+void Pdu::setPduStatus(uint8_t pX) { _pduStatus = pX; }
+
+uint8_t Pdu::getPadding() const { return _padding; }
+
+void Pdu::setPadding(uint8_t pX) { _padding = pX; }
+
+void Pdu::marshal(DataStream& dataStream) const {
+  PduSuperclass::marshal(
+      dataStream);  // Marshal information in superclass first
+  dataStream << _pduStatus;
+  dataStream << _padding;
 }
 
-Pdu::~Pdu()
-{
+void Pdu::unmarshal(DataStream& dataStream) {
+  PduSuperclass::unmarshal(
+      dataStream);  // unmarshal information in superclass first
+  dataStream >> _pduStatus;
+  dataStream >> _padding;
 }
 
-unsigned char Pdu::getPduStatus() const
-{
-    return _pduStatus;
+bool Pdu::operator==(const Pdu& rhs) const {
+  bool ivarsEqual = true;
+
+  ivarsEqual = PduSuperclass::operator==(rhs);
+
+  if (!(_pduStatus == rhs._pduStatus)) ivarsEqual = false;
+  if (!(_padding == rhs._padding)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void Pdu::setPduStatus(unsigned char pX)
-{
-    _pduStatus = pX;
-}
+int Pdu::getMarshalledSize() const {
+  int marshalSize = 0;
 
-unsigned char Pdu::getPadding() const
-{
-    return _padding;
-}
-
-void Pdu::setPadding(unsigned char pX)
-{
-    _padding = pX;
-}
-
-void Pdu::marshal(DataStream& dataStream) const
-{
-    PduSuperclass::marshal(dataStream); // Marshal information in superclass first
-    dataStream << _pduStatus;
-    dataStream << _padding;
-}
-
-void Pdu::unmarshal(DataStream& dataStream)
-{
-    PduSuperclass::unmarshal(dataStream); // unmarshal information in superclass first
-    dataStream >> _pduStatus;
-    dataStream >> _padding;
-}
-
-
-bool Pdu::operator ==(const Pdu& rhs) const
- {
-     bool ivarsEqual = true;
-
-     ivarsEqual = PduSuperclass::operator==(rhs);
-
-     if( ! (_pduStatus == rhs._pduStatus) ) ivarsEqual = false;
-     if( ! (_padding == rhs._padding) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int Pdu::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = PduSuperclass::getMarshalledSize();
-   marshalSize = marshalSize + 1;  // _pduStatus
-   marshalSize = marshalSize + 1;  // _padding
-    return marshalSize;
+  marshalSize = PduSuperclass::getMarshalledSize();
+  marshalSize = marshalSize + 1;  // _pduStatus
+  marshalSize = marshalSize + 1;  // _padding
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -87,7 +65,7 @@ int Pdu::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

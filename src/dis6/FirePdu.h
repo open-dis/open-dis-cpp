@@ -1,92 +1,88 @@
 #pragma once
 
-#include <dis6/EntityID.h>
-#include <dis6/EventID.h>
-#include <dis6/Vector3Double.h>
-#include <dis6/BurstDescriptor.h>
-#include <dis6/Vector3Float.h>
-#include <dis6/WarfareFamilyPdu.h>
-#include <dis6/utils/DataStream.h>
-#include <dis6/opendis6_export.h>
+#include "dis6/BurstDescriptor.h"
+#include "dis6/EntityID.h"
+#include "dis6/EventID.h"
+#include "dis6/Vector3Double.h"
+#include "dis6/Vector3Float.h"
+#include "dis6/WarfareFamilyPdu.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
-
-namespace DIS
-{
+namespace DIS {
 // Sectioin 5.3.4.1. Information about someone firing something. COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT FirePdu : public WarfareFamilyPdu
-{
-protected:
+class OPENDIS6_EXPORT FirePdu : public WarfareFamilyPdu {
+ protected:
   /** ID of the munition that is being shot */
-  EntityID _munitionID; 
+  EntityID _munitionID;
 
   /** ID of event */
-  EventID _eventID; 
+  EventID _eventID;
 
-  int _fireMissionIndex; 
+  int _fireMissionIndex;
 
   /** location of the firing event */
-  Vector3Double _locationInWorldCoordinates; 
+  Vector3Double _locationInWorldCoordinates;
 
   /** Describes munitions used in the firing event */
-  BurstDescriptor _burstDescriptor; 
+  BurstDescriptor _burstDescriptor;
 
   /** Velocity of the ammunition */
-  Vector3Float _velocity; 
+  Vector3Float _velocity;
 
   /** range to the target */
-  float _range; 
-
+  float _range;
 
  public:
-    FirePdu();
-    virtual ~FirePdu();
+  FirePdu();
+  virtual ~FirePdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getMunitionID(); 
-    const EntityID&  getMunitionID() const; 
-    void setMunitionID(const EntityID    &pX);
+  EntityID& getMunitionID();
+  const EntityID& getMunitionID() const;
+  void setMunitionID(const EntityID& pX);
 
-    EventID& getEventID(); 
-    const EventID&  getEventID() const; 
-    void setEventID(const EventID    &pX);
+  EventID& getEventID();
+  const EventID& getEventID() const;
+  void setEventID(const EventID& pX);
 
-    int getFireMissionIndex() const; 
-    void setFireMissionIndex(int pX); 
+  int getFireMissionIndex() const;
+  void setFireMissionIndex(int pX);
 
-    Vector3Double& getLocationInWorldCoordinates(); 
-    const Vector3Double&  getLocationInWorldCoordinates() const; 
-    void setLocationInWorldCoordinates(const Vector3Double    &pX);
+  Vector3Double& getLocationInWorldCoordinates();
+  const Vector3Double& getLocationInWorldCoordinates() const;
+  void setLocationInWorldCoordinates(const Vector3Double& pX);
 
-    BurstDescriptor& getBurstDescriptor(); 
-    const BurstDescriptor&  getBurstDescriptor() const; 
-    void setBurstDescriptor(const BurstDescriptor    &pX);
+  BurstDescriptor& getBurstDescriptor();
+  const BurstDescriptor& getBurstDescriptor() const;
+  void setBurstDescriptor(const BurstDescriptor& pX);
 
-    Vector3Float& getVelocity(); 
-    const Vector3Float&  getVelocity() const; 
-    void setVelocity(const Vector3Float    &pX);
+  Vector3Float& getVelocity();
+  const Vector3Float& getVelocity() const;
+  void setVelocity(const Vector3Float& pX);
 
-    float getRange() const; 
-    void setRange(float pX); 
+  float getRange() const;
+  void setRange(float pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const FirePdu& rhs) const;
+  bool operator==(const FirePdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -99,7 +95,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

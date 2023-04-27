@@ -1,90 +1,64 @@
-#include <dis6/ShaftRPMs.h>
+#include "dis6/ShaftRPMs.h"
 
 using namespace DIS;
 
+ShaftRPMs::ShaftRPMs()
+    : _currentShaftRPMs(0), _orderedShaftRPMs(0), _shaftRPMRateOfChange(0.0) {}
 
-ShaftRPMs::ShaftRPMs():
-   _currentShaftRPMs(0), 
-   _orderedShaftRPMs(0), 
-   _shaftRPMRateOfChange(0.0)
-{
+ShaftRPMs::~ShaftRPMs() {}
+
+int16_t ShaftRPMs::getCurrentShaftRPMs() const { return _currentShaftRPMs; }
+
+void ShaftRPMs::setCurrentShaftRPMs(int16_t pX) { _currentShaftRPMs = pX; }
+
+int16_t ShaftRPMs::getOrderedShaftRPMs() const { return _orderedShaftRPMs; }
+
+void ShaftRPMs::setOrderedShaftRPMs(int16_t pX) { _orderedShaftRPMs = pX; }
+
+float ShaftRPMs::getShaftRPMRateOfChange() const {
+  return _shaftRPMRateOfChange;
 }
 
-ShaftRPMs::~ShaftRPMs()
-{
+void ShaftRPMs::setShaftRPMRateOfChange(float pX) {
+  _shaftRPMRateOfChange = pX;
 }
 
-short ShaftRPMs::getCurrentShaftRPMs() const
-{
-    return _currentShaftRPMs;
+void ShaftRPMs::marshal(DataStream& dataStream) const {
+  dataStream << _currentShaftRPMs;
+  dataStream << _orderedShaftRPMs;
+  dataStream << _shaftRPMRateOfChange;
 }
 
-void ShaftRPMs::setCurrentShaftRPMs(short pX)
-{
-    _currentShaftRPMs = pX;
+void ShaftRPMs::unmarshal(DataStream& dataStream) {
+  dataStream >> _currentShaftRPMs;
+  dataStream >> _orderedShaftRPMs;
+  dataStream >> _shaftRPMRateOfChange;
 }
 
-short ShaftRPMs::getOrderedShaftRPMs() const
-{
-    return _orderedShaftRPMs;
+bool ShaftRPMs::operator==(const ShaftRPMs& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_currentShaftRPMs == rhs._currentShaftRPMs)) ivarsEqual = false;
+  if (!(_orderedShaftRPMs == rhs._orderedShaftRPMs)) ivarsEqual = false;
+  if (!(_shaftRPMRateOfChange == rhs._shaftRPMRateOfChange)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void ShaftRPMs::setOrderedShaftRPMs(short pX)
-{
-    _orderedShaftRPMs = pX;
-}
+int ShaftRPMs::getMarshalledSize() const {
+  int marshalSize = 0;
 
-float ShaftRPMs::getShaftRPMRateOfChange() const
-{
-    return _shaftRPMRateOfChange;
-}
-
-void ShaftRPMs::setShaftRPMRateOfChange(float pX)
-{
-    _shaftRPMRateOfChange = pX;
-}
-
-void ShaftRPMs::marshal(DataStream& dataStream) const
-{
-    dataStream << _currentShaftRPMs;
-    dataStream << _orderedShaftRPMs;
-    dataStream << _shaftRPMRateOfChange;
-}
-
-void ShaftRPMs::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _currentShaftRPMs;
-    dataStream >> _orderedShaftRPMs;
-    dataStream >> _shaftRPMRateOfChange;
-}
-
-
-bool ShaftRPMs::operator ==(const ShaftRPMs& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_currentShaftRPMs == rhs._currentShaftRPMs) ) ivarsEqual = false;
-     if( ! (_orderedShaftRPMs == rhs._orderedShaftRPMs) ) ivarsEqual = false;
-     if( ! (_shaftRPMRateOfChange == rhs._shaftRPMRateOfChange) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int ShaftRPMs::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 2;  // _currentShaftRPMs
-   marshalSize = marshalSize + 2;  // _orderedShaftRPMs
-   marshalSize = marshalSize + 4;  // _shaftRPMRateOfChange
-    return marshalSize;
+  marshalSize = marshalSize + 2;  // _currentShaftRPMs
+  marshalSize = marshalSize + 2;  // _orderedShaftRPMs
+  marshalSize = marshalSize + 4;  // _shaftRPMRateOfChange
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -97,7 +71,7 @@ int ShaftRPMs::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

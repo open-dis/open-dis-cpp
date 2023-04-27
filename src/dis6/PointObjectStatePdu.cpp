@@ -1,266 +1,216 @@
-#include <dis6/PointObjectStatePdu.h>
+#include "dis6/PointObjectStatePdu.h"
 
 using namespace DIS;
 
-
-PointObjectStatePdu::PointObjectStatePdu() : SyntheticEnvironmentFamilyPdu(),
-   _objectID(), 
-   _referencedObjectID(), 
-   _updateNumber(0), 
-   _forceID(0), 
-   _modifications(0), 
-   _objectType(), 
-   _objectLocation(), 
-   _objectOrientation(), 
-   _objectAppearance(0.0), 
-   _requesterID(), 
-   _receivingID(), 
-   _pad2(0)
-{
-    setPduType( 43 );
+PointObjectStatePdu::PointObjectStatePdu()
+    : SyntheticEnvironmentFamilyPdu(),
+      _objectID(),
+      _referencedObjectID(),
+      _updateNumber(0),
+      _forceID(0),
+      _modifications(0),
+      _objectType(),
+      _objectLocation(),
+      _objectOrientation(),
+      _objectAppearance(0.0),
+      _requesterID(),
+      _receivingID(),
+      _pad2(0) {
+  setPduType(43);
 }
 
-PointObjectStatePdu::~PointObjectStatePdu()
-{
+PointObjectStatePdu::~PointObjectStatePdu() {}
+
+EntityID& PointObjectStatePdu::getObjectID() { return _objectID; }
+
+const EntityID& PointObjectStatePdu::getObjectID() const { return _objectID; }
+
+void PointObjectStatePdu::setObjectID(const EntityID& pX) { _objectID = pX; }
+
+EntityID& PointObjectStatePdu::getReferencedObjectID() {
+  return _referencedObjectID;
 }
 
-EntityID& PointObjectStatePdu::getObjectID() 
-{
-    return _objectID;
+const EntityID& PointObjectStatePdu::getReferencedObjectID() const {
+  return _referencedObjectID;
 }
 
-const EntityID& PointObjectStatePdu::getObjectID() const
-{
-    return _objectID;
+void PointObjectStatePdu::setReferencedObjectID(const EntityID& pX) {
+  _referencedObjectID = pX;
 }
 
-void PointObjectStatePdu::setObjectID(const EntityID &pX)
-{
-    _objectID = pX;
+uint16_t PointObjectStatePdu::getUpdateNumber() const {
+  return _updateNumber;
 }
 
-EntityID& PointObjectStatePdu::getReferencedObjectID() 
-{
-    return _referencedObjectID;
+void PointObjectStatePdu::setUpdateNumber(uint16_t pX) {
+  _updateNumber = pX;
 }
 
-const EntityID& PointObjectStatePdu::getReferencedObjectID() const
-{
-    return _referencedObjectID;
+uint8_t PointObjectStatePdu::getForceID() const { return _forceID; }
+
+void PointObjectStatePdu::setForceID(uint8_t pX) { _forceID = pX; }
+
+uint8_t PointObjectStatePdu::getModifications() const {
+  return _modifications;
 }
 
-void PointObjectStatePdu::setReferencedObjectID(const EntityID &pX)
-{
-    _referencedObjectID = pX;
+void PointObjectStatePdu::setModifications(uint8_t pX) {
+  _modifications = pX;
 }
 
-unsigned short PointObjectStatePdu::getUpdateNumber() const
-{
-    return _updateNumber;
+ObjectType& PointObjectStatePdu::getObjectType() { return _objectType; }
+
+const ObjectType& PointObjectStatePdu::getObjectType() const {
+  return _objectType;
 }
 
-void PointObjectStatePdu::setUpdateNumber(unsigned short pX)
-{
-    _updateNumber = pX;
+void PointObjectStatePdu::setObjectType(const ObjectType& pX) {
+  _objectType = pX;
 }
 
-unsigned char PointObjectStatePdu::getForceID() const
-{
-    return _forceID;
+Vector3Double& PointObjectStatePdu::getObjectLocation() {
+  return _objectLocation;
 }
 
-void PointObjectStatePdu::setForceID(unsigned char pX)
-{
-    _forceID = pX;
+const Vector3Double& PointObjectStatePdu::getObjectLocation() const {
+  return _objectLocation;
 }
 
-unsigned char PointObjectStatePdu::getModifications() const
-{
-    return _modifications;
+void PointObjectStatePdu::setObjectLocation(const Vector3Double& pX) {
+  _objectLocation = pX;
 }
 
-void PointObjectStatePdu::setModifications(unsigned char pX)
-{
-    _modifications = pX;
+Orientation& PointObjectStatePdu::getObjectOrientation() {
+  return _objectOrientation;
 }
 
-ObjectType& PointObjectStatePdu::getObjectType() 
-{
-    return _objectType;
+const Orientation& PointObjectStatePdu::getObjectOrientation() const {
+  return _objectOrientation;
 }
 
-const ObjectType& PointObjectStatePdu::getObjectType() const
-{
-    return _objectType;
+void PointObjectStatePdu::setObjectOrientation(const Orientation& pX) {
+  _objectOrientation = pX;
 }
 
-void PointObjectStatePdu::setObjectType(const ObjectType &pX)
-{
-    _objectType = pX;
+double PointObjectStatePdu::getObjectAppearance() const {
+  return _objectAppearance;
 }
 
-Vector3Double& PointObjectStatePdu::getObjectLocation() 
-{
-    return _objectLocation;
+void PointObjectStatePdu::setObjectAppearance(double pX) {
+  _objectAppearance = pX;
 }
 
-const Vector3Double& PointObjectStatePdu::getObjectLocation() const
-{
-    return _objectLocation;
+SimulationAddress& PointObjectStatePdu::getRequesterID() {
+  return _requesterID;
 }
 
-void PointObjectStatePdu::setObjectLocation(const Vector3Double &pX)
-{
-    _objectLocation = pX;
+const SimulationAddress& PointObjectStatePdu::getRequesterID() const {
+  return _requesterID;
 }
 
-Orientation& PointObjectStatePdu::getObjectOrientation() 
-{
-    return _objectOrientation;
+void PointObjectStatePdu::setRequesterID(const SimulationAddress& pX) {
+  _requesterID = pX;
 }
 
-const Orientation& PointObjectStatePdu::getObjectOrientation() const
-{
-    return _objectOrientation;
+SimulationAddress& PointObjectStatePdu::getReceivingID() {
+  return _receivingID;
 }
 
-void PointObjectStatePdu::setObjectOrientation(const Orientation &pX)
-{
-    _objectOrientation = pX;
+const SimulationAddress& PointObjectStatePdu::getReceivingID() const {
+  return _receivingID;
 }
 
-double PointObjectStatePdu::getObjectAppearance() const
-{
-    return _objectAppearance;
+void PointObjectStatePdu::setReceivingID(const SimulationAddress& pX) {
+  _receivingID = pX;
 }
 
-void PointObjectStatePdu::setObjectAppearance(double pX)
-{
-    _objectAppearance = pX;
+uint32_t PointObjectStatePdu::getPad2() const { return _pad2; }
+
+void PointObjectStatePdu::setPad2(uint32_t pX) { _pad2 = pX; }
+
+void PointObjectStatePdu::marshal(DataStream& dataStream) const {
+  SyntheticEnvironmentFamilyPdu::marshal(
+      dataStream);  // Marshal information in superclass first
+  _objectID.marshal(dataStream);
+  _referencedObjectID.marshal(dataStream);
+  dataStream << _updateNumber;
+  dataStream << _forceID;
+  dataStream << _modifications;
+  _objectType.marshal(dataStream);
+  _objectLocation.marshal(dataStream);
+  _objectOrientation.marshal(dataStream);
+  dataStream << _objectAppearance;
+  _requesterID.marshal(dataStream);
+  _receivingID.marshal(dataStream);
+  dataStream << _pad2;
 }
 
-SimulationAddress& PointObjectStatePdu::getRequesterID() 
-{
-    return _requesterID;
+void PointObjectStatePdu::unmarshal(DataStream& dataStream) {
+  SyntheticEnvironmentFamilyPdu::unmarshal(
+      dataStream);  // unmarshal information in superclass first
+  _objectID.unmarshal(dataStream);
+  _referencedObjectID.unmarshal(dataStream);
+  dataStream >> _updateNumber;
+  dataStream >> _forceID;
+  dataStream >> _modifications;
+  _objectType.unmarshal(dataStream);
+  _objectLocation.unmarshal(dataStream);
+  _objectOrientation.unmarshal(dataStream);
+  dataStream >> _objectAppearance;
+  _requesterID.unmarshal(dataStream);
+  _receivingID.unmarshal(dataStream);
+  dataStream >> _pad2;
 }
 
-const SimulationAddress& PointObjectStatePdu::getRequesterID() const
-{
-    return _requesterID;
+bool PointObjectStatePdu::operator==(const PointObjectStatePdu& rhs) const {
+  bool ivarsEqual = true;
+
+  ivarsEqual = SyntheticEnvironmentFamilyPdu::operator==(rhs);
+
+  if (!(_objectID == rhs._objectID)) ivarsEqual = false;
+  if (!(_referencedObjectID == rhs._referencedObjectID)) ivarsEqual = false;
+  if (!(_updateNumber == rhs._updateNumber)) ivarsEqual = false;
+  if (!(_forceID == rhs._forceID)) ivarsEqual = false;
+  if (!(_modifications == rhs._modifications)) ivarsEqual = false;
+  if (!(_objectType == rhs._objectType)) ivarsEqual = false;
+  if (!(_objectLocation == rhs._objectLocation)) ivarsEqual = false;
+  if (!(_objectOrientation == rhs._objectOrientation)) ivarsEqual = false;
+  if (!(_objectAppearance == rhs._objectAppearance)) ivarsEqual = false;
+  if (!(_requesterID == rhs._requesterID)) ivarsEqual = false;
+  if (!(_receivingID == rhs._receivingID)) ivarsEqual = false;
+  if (!(_pad2 == rhs._pad2)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void PointObjectStatePdu::setRequesterID(const SimulationAddress &pX)
-{
-    _requesterID = pX;
-}
+int PointObjectStatePdu::getMarshalledSize() const {
+  int marshalSize = 0;
 
-SimulationAddress& PointObjectStatePdu::getReceivingID() 
-{
-    return _receivingID;
-}
-
-const SimulationAddress& PointObjectStatePdu::getReceivingID() const
-{
-    return _receivingID;
-}
-
-void PointObjectStatePdu::setReceivingID(const SimulationAddress &pX)
-{
-    _receivingID = pX;
-}
-
-unsigned int PointObjectStatePdu::getPad2() const
-{
-    return _pad2;
-}
-
-void PointObjectStatePdu::setPad2(unsigned int pX)
-{
-    _pad2 = pX;
-}
-
-void PointObjectStatePdu::marshal(DataStream& dataStream) const
-{
-    SyntheticEnvironmentFamilyPdu::marshal(dataStream); // Marshal information in superclass first
-    _objectID.marshal(dataStream);
-    _referencedObjectID.marshal(dataStream);
-    dataStream << _updateNumber;
-    dataStream << _forceID;
-    dataStream << _modifications;
-    _objectType.marshal(dataStream);
-    _objectLocation.marshal(dataStream);
-    _objectOrientation.marshal(dataStream);
-    dataStream << _objectAppearance;
-    _requesterID.marshal(dataStream);
-    _receivingID.marshal(dataStream);
-    dataStream << _pad2;
-}
-
-void PointObjectStatePdu::unmarshal(DataStream& dataStream)
-{
-    SyntheticEnvironmentFamilyPdu::unmarshal(dataStream); // unmarshal information in superclass first
-    _objectID.unmarshal(dataStream);
-    _referencedObjectID.unmarshal(dataStream);
-    dataStream >> _updateNumber;
-    dataStream >> _forceID;
-    dataStream >> _modifications;
-    _objectType.unmarshal(dataStream);
-    _objectLocation.unmarshal(dataStream);
-    _objectOrientation.unmarshal(dataStream);
-    dataStream >> _objectAppearance;
-    _requesterID.unmarshal(dataStream);
-    _receivingID.unmarshal(dataStream);
-    dataStream >> _pad2;
-}
-
-
-bool PointObjectStatePdu::operator ==(const PointObjectStatePdu& rhs) const
- {
-     bool ivarsEqual = true;
-
-     ivarsEqual = SyntheticEnvironmentFamilyPdu::operator==(rhs);
-
-     if( ! (_objectID == rhs._objectID) ) ivarsEqual = false;
-     if( ! (_referencedObjectID == rhs._referencedObjectID) ) ivarsEqual = false;
-     if( ! (_updateNumber == rhs._updateNumber) ) ivarsEqual = false;
-     if( ! (_forceID == rhs._forceID) ) ivarsEqual = false;
-     if( ! (_modifications == rhs._modifications) ) ivarsEqual = false;
-     if( ! (_objectType == rhs._objectType) ) ivarsEqual = false;
-     if( ! (_objectLocation == rhs._objectLocation) ) ivarsEqual = false;
-     if( ! (_objectOrientation == rhs._objectOrientation) ) ivarsEqual = false;
-     if( ! (_objectAppearance == rhs._objectAppearance) ) ivarsEqual = false;
-     if( ! (_requesterID == rhs._requesterID) ) ivarsEqual = false;
-     if( ! (_receivingID == rhs._receivingID) ) ivarsEqual = false;
-     if( ! (_pad2 == rhs._pad2) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int PointObjectStatePdu::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = SyntheticEnvironmentFamilyPdu::getMarshalledSize();
-   marshalSize = marshalSize + _objectID.getMarshalledSize();  // _objectID
-   marshalSize = marshalSize + _referencedObjectID.getMarshalledSize();  // _referencedObjectID
-   marshalSize = marshalSize + 2;  // _updateNumber
-   marshalSize = marshalSize + 1;  // _forceID
-   marshalSize = marshalSize + 1;  // _modifications
-   marshalSize = marshalSize + _objectType.getMarshalledSize();  // _objectType
-   marshalSize = marshalSize + _objectLocation.getMarshalledSize();  // _objectLocation
-   marshalSize = marshalSize + _objectOrientation.getMarshalledSize();  // _objectOrientation
-   marshalSize = marshalSize + 8;  // _objectAppearance
-   marshalSize = marshalSize + _requesterID.getMarshalledSize();  // _requesterID
-   marshalSize = marshalSize + _receivingID.getMarshalledSize();  // _receivingID
-   marshalSize = marshalSize + 4;  // _pad2
-    return marshalSize;
+  marshalSize = SyntheticEnvironmentFamilyPdu::getMarshalledSize();
+  marshalSize = marshalSize + _objectID.getMarshalledSize();  // _objectID
+  marshalSize = marshalSize +
+                _referencedObjectID.getMarshalledSize();  // _referencedObjectID
+  marshalSize = marshalSize + 2;                          // _updateNumber
+  marshalSize = marshalSize + 1;                          // _forceID
+  marshalSize = marshalSize + 1;                          // _modifications
+  marshalSize = marshalSize + _objectType.getMarshalledSize();  // _objectType
+  marshalSize =
+      marshalSize + _objectLocation.getMarshalledSize();  // _objectLocation
+  marshalSize = marshalSize +
+                _objectOrientation.getMarshalledSize();  // _objectOrientation
+  marshalSize = marshalSize + 8;                         // _objectAppearance
+  marshalSize = marshalSize + _requesterID.getMarshalledSize();  // _requesterID
+  marshalSize = marshalSize + _receivingID.getMarshalledSize();  // _receivingID
+  marshalSize = marshalSize + 4;                                 // _pad2
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -273,7 +223,7 @@ int PointObjectStatePdu::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

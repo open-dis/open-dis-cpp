@@ -1,60 +1,41 @@
-#include <dis7/PduStatus.h>
+#include "dis7/PduStatus.h"
 
 using namespace DIS;
 
+PduStatus::PduStatus() : _pduStatus(0) {}
 
-PduStatus::PduStatus():
-   _pduStatus(0)
-{
+PduStatus::~PduStatus() {}
+
+uint8_t PduStatus::getPduStatus() const { return _pduStatus; }
+
+void PduStatus::setPduStatus(uint8_t pX) { _pduStatus = pX; }
+
+void PduStatus::marshal(DataStream& dataStream) const {
+  dataStream << _pduStatus;
 }
 
-PduStatus::~PduStatus()
-{
+void PduStatus::unmarshal(DataStream& dataStream) { dataStream >> _pduStatus; }
+
+bool PduStatus::operator==(const PduStatus& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_pduStatus == rhs._pduStatus)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-unsigned char PduStatus::getPduStatus() const
-{
-    return _pduStatus;
-}
+int PduStatus::getMarshalledSize() const {
+  int marshalSize = 0;
 
-void PduStatus::setPduStatus(unsigned char pX)
-{
-    _pduStatus = pX;
-}
-
-void PduStatus::marshal(DataStream& dataStream) const
-{
-    dataStream << _pduStatus;
-}
-
-void PduStatus::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _pduStatus;
-}
-
-
-bool PduStatus::operator ==(const PduStatus& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_pduStatus == rhs._pduStatus) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int PduStatus::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 1;  // _pduStatus
-    return marshalSize;
+  marshalSize = marshalSize + 1;  // _pduStatus
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -67,7 +48,7 @@ int PduStatus::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

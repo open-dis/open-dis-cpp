@@ -1,150 +1,98 @@
-#include <dis7/AggregateType.h>
+#include "dis7/AggregateType.h"
 
 using namespace DIS;
 
+AggregateType::AggregateType()
+    : _aggregateKind(0),
+      _domain(0),
+      _country(0),
+      _category(0),
+      _subcategory(0),
+      _specific(0),
+      _extra(0) {}
 
-AggregateType::AggregateType():
-   _aggregateKind(0), 
-   _domain(0), 
-   _country(0), 
-   _category(0), 
-   _subcategory(0), 
-   _specific(0), 
-   _extra(0)
-{
+AggregateType::~AggregateType() {}
+
+uint8_t AggregateType::getAggregateKind() const { return _aggregateKind; }
+
+void AggregateType::setAggregateKind(uint8_t pX) { _aggregateKind = pX; }
+
+uint8_t AggregateType::getDomain() const { return _domain; }
+
+void AggregateType::setDomain(uint8_t pX) { _domain = pX; }
+
+uint16_t AggregateType::getCountry() const { return _country; }
+
+void AggregateType::setCountry(uint16_t pX) { _country = pX; }
+
+uint8_t AggregateType::getCategory() const { return _category; }
+
+void AggregateType::setCategory(uint8_t pX) { _category = pX; }
+
+uint8_t AggregateType::getSubcategory() const { return _subcategory; }
+
+void AggregateType::setSubcategory(uint8_t pX) { _subcategory = pX; }
+
+uint8_t AggregateType::getSpecific() const { return _specific; }
+
+void AggregateType::setSpecific(uint8_t pX) { _specific = pX; }
+
+uint8_t AggregateType::getExtra() const { return _extra; }
+
+void AggregateType::setExtra(uint8_t pX) { _extra = pX; }
+
+void AggregateType::marshal(DataStream& dataStream) const {
+  dataStream << _aggregateKind;
+  dataStream << _domain;
+  dataStream << _country;
+  dataStream << _category;
+  dataStream << _subcategory;
+  dataStream << _specific;
+  dataStream << _extra;
 }
 
-AggregateType::~AggregateType()
-{
+void AggregateType::unmarshal(DataStream& dataStream) {
+  dataStream >> _aggregateKind;
+  dataStream >> _domain;
+  dataStream >> _country;
+  dataStream >> _category;
+  dataStream >> _subcategory;
+  dataStream >> _specific;
+  dataStream >> _extra;
 }
 
-unsigned char AggregateType::getAggregateKind() const
-{
-    return _aggregateKind;
+bool AggregateType::operator==(const AggregateType& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_aggregateKind == rhs._aggregateKind)) ivarsEqual = false;
+  if (!(_domain == rhs._domain)) ivarsEqual = false;
+  if (!(_country == rhs._country)) ivarsEqual = false;
+  if (!(_category == rhs._category)) ivarsEqual = false;
+  if (!(_subcategory == rhs._subcategory)) ivarsEqual = false;
+  if (!(_specific == rhs._specific)) ivarsEqual = false;
+  if (!(_extra == rhs._extra)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void AggregateType::setAggregateKind(unsigned char pX)
-{
-    _aggregateKind = pX;
-}
+int AggregateType::getMarshalledSize() const {
+  int marshalSize = 0;
 
-unsigned char AggregateType::getDomain() const
-{
-    return _domain;
-}
-
-void AggregateType::setDomain(unsigned char pX)
-{
-    _domain = pX;
-}
-
-unsigned short AggregateType::getCountry() const
-{
-    return _country;
-}
-
-void AggregateType::setCountry(unsigned short pX)
-{
-    _country = pX;
-}
-
-unsigned char AggregateType::getCategory() const
-{
-    return _category;
-}
-
-void AggregateType::setCategory(unsigned char pX)
-{
-    _category = pX;
-}
-
-unsigned char AggregateType::getSubcategory() const
-{
-    return _subcategory;
-}
-
-void AggregateType::setSubcategory(unsigned char pX)
-{
-    _subcategory = pX;
-}
-
-unsigned char AggregateType::getSpecific() const
-{
-    return _specific;
-}
-
-void AggregateType::setSpecific(unsigned char pX)
-{
-    _specific = pX;
-}
-
-unsigned char AggregateType::getExtra() const
-{
-    return _extra;
-}
-
-void AggregateType::setExtra(unsigned char pX)
-{
-    _extra = pX;
-}
-
-void AggregateType::marshal(DataStream& dataStream) const
-{
-    dataStream << _aggregateKind;
-    dataStream << _domain;
-    dataStream << _country;
-    dataStream << _category;
-    dataStream << _subcategory;
-    dataStream << _specific;
-    dataStream << _extra;
-}
-
-void AggregateType::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _aggregateKind;
-    dataStream >> _domain;
-    dataStream >> _country;
-    dataStream >> _category;
-    dataStream >> _subcategory;
-    dataStream >> _specific;
-    dataStream >> _extra;
-}
-
-
-bool AggregateType::operator ==(const AggregateType& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_aggregateKind == rhs._aggregateKind) ) ivarsEqual = false;
-     if( ! (_domain == rhs._domain) ) ivarsEqual = false;
-     if( ! (_country == rhs._country) ) ivarsEqual = false;
-     if( ! (_category == rhs._category) ) ivarsEqual = false;
-     if( ! (_subcategory == rhs._subcategory) ) ivarsEqual = false;
-     if( ! (_specific == rhs._specific) ) ivarsEqual = false;
-     if( ! (_extra == rhs._extra) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int AggregateType::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 1;  // _aggregateKind
-   marshalSize = marshalSize + 1;  // _domain
-   marshalSize = marshalSize + 2;  // _country
-   marshalSize = marshalSize + 1;  // _category
-   marshalSize = marshalSize + 1;  // _subcategory
-   marshalSize = marshalSize + 1;  // _specific
-   marshalSize = marshalSize + 1;  // _extra
-    return marshalSize;
+  marshalSize = marshalSize + 1;  // _aggregateKind
+  marshalSize = marshalSize + 1;  // _domain
+  marshalSize = marshalSize + 2;  // _country
+  marshalSize = marshalSize + 1;  // _category
+  marshalSize = marshalSize + 1;  // _subcategory
+  marshalSize = marshalSize + 1;  // _specific
+  marshalSize = marshalSize + 1;  // _extra
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -157,7 +105,7 @@ int AggregateType::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

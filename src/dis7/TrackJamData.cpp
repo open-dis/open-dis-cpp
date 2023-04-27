@@ -1,95 +1,61 @@
-#include <dis7/TrackJamData.h>
+#include "dis7/TrackJamData.h"
 
 using namespace DIS;
 
+TrackJamData::TrackJamData() : _entityID(), _emitterNumber(0), _beamNumber(0) {}
 
-TrackJamData::TrackJamData():
-   _entityID(), 
-   _emitterNumber(0), 
-   _beamNumber(0)
-{
+TrackJamData::~TrackJamData() {}
+
+EntityID& TrackJamData::getEntityID() { return _entityID; }
+
+const EntityID& TrackJamData::getEntityID() const { return _entityID; }
+
+void TrackJamData::setEntityID(const EntityID& pX) { _entityID = pX; }
+
+uint8_t TrackJamData::getEmitterNumber() const { return _emitterNumber; }
+
+void TrackJamData::setEmitterNumber(uint8_t pX) { _emitterNumber = pX; }
+
+uint8_t TrackJamData::getBeamNumber() const { return _beamNumber; }
+
+void TrackJamData::setBeamNumber(uint8_t pX) { _beamNumber = pX; }
+
+void TrackJamData::marshal(DataStream& dataStream) const {
+  _entityID.marshal(dataStream);
+  dataStream << _emitterNumber;
+  dataStream << _beamNumber;
 }
 
-TrackJamData::~TrackJamData()
-{
+void TrackJamData::unmarshal(DataStream& dataStream) {
+  _entityID.unmarshal(dataStream);
+  dataStream >> _emitterNumber;
+  dataStream >> _beamNumber;
 }
 
-EntityID& TrackJamData::getEntityID() 
-{
-    return _entityID;
+bool TrackJamData::operator==(const TrackJamData& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_entityID == rhs._entityID)) ivarsEqual = false;
+  if (!(_emitterNumber == rhs._emitterNumber)) ivarsEqual = false;
+  if (!(_beamNumber == rhs._beamNumber)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-const EntityID& TrackJamData::getEntityID() const
-{
-    return _entityID;
-}
+int TrackJamData::getMarshalledSize() const {
+  int marshalSize = 0;
 
-void TrackJamData::setEntityID(const EntityID &pX)
-{
-    _entityID = pX;
-}
-
-unsigned char TrackJamData::getEmitterNumber() const
-{
-    return _emitterNumber;
-}
-
-void TrackJamData::setEmitterNumber(unsigned char pX)
-{
-    _emitterNumber = pX;
-}
-
-unsigned char TrackJamData::getBeamNumber() const
-{
-    return _beamNumber;
-}
-
-void TrackJamData::setBeamNumber(unsigned char pX)
-{
-    _beamNumber = pX;
-}
-
-void TrackJamData::marshal(DataStream& dataStream) const
-{
-    _entityID.marshal(dataStream);
-    dataStream << _emitterNumber;
-    dataStream << _beamNumber;
-}
-
-void TrackJamData::unmarshal(DataStream& dataStream)
-{
-    _entityID.unmarshal(dataStream);
-    dataStream >> _emitterNumber;
-    dataStream >> _beamNumber;
-}
-
-
-bool TrackJamData::operator ==(const TrackJamData& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_entityID == rhs._entityID) ) ivarsEqual = false;
-     if( ! (_emitterNumber == rhs._emitterNumber) ) ivarsEqual = false;
-     if( ! (_beamNumber == rhs._beamNumber) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int TrackJamData::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + _entityID.getMarshalledSize();  // _entityID
-   marshalSize = marshalSize + 1;  // _emitterNumber
-   marshalSize = marshalSize + 1;  // _beamNumber
-    return marshalSize;
+  marshalSize = marshalSize + _entityID.getMarshalledSize();  // _entityID
+  marshalSize = marshalSize + 1;                              // _emitterNumber
+  marshalSize = marshalSize + 1;                              // _beamNumber
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -102,7 +68,7 @@ int TrackJamData::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

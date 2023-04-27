@@ -1,58 +1,54 @@
 #pragma once
 
-#include <dis6/utils/DataStream.h>
-#include <dis6/opendis6_export.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
-
-namespace DIS
-{
+namespace DIS {
 // 5.2.47.  Layer header.
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT LayerHeader
-{
-protected:
+class OPENDIS6_EXPORT LayerHeader {
+ protected:
   /** Layer number */
-  unsigned char _layerNumber; 
+  uint8_t _layerNumber;
 
   /** Layer speccific information enumeration */
-  unsigned char _layerSpecificInformaiton; 
+  uint8_t _layerSpecificInformaiton;
 
   /** information length */
-  unsigned short _length; 
-
+  uint16_t _length;
 
  public:
-    LayerHeader();
-    virtual ~LayerHeader();
+  LayerHeader();
+  virtual ~LayerHeader();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getLayerNumber() const; 
-    void setLayerNumber(unsigned char pX); 
+  uint8_t getLayerNumber() const;
+  void setLayerNumber(uint8_t pX);
 
-    unsigned char getLayerSpecificInformaiton() const; 
-    void setLayerSpecificInformaiton(unsigned char pX); 
+  uint8_t getLayerSpecificInformaiton() const;
+  void setLayerSpecificInformaiton(uint8_t pX);
 
-    unsigned short getLength() const; 
-    void setLength(unsigned short pX); 
+  uint16_t getLength() const;
+  void setLength(uint16_t pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const LayerHeader& rhs) const;
+  bool operator==(const LayerHeader& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -65,7 +61,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

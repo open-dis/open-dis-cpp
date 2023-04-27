@@ -1,58 +1,55 @@
 #pragma once
 
-#include <dis6/utils/DataStream.h>
-#include <dis6/opendis6_export.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
+namespace DIS {
+// 5.2.2: angular velocity measured in radians per second out each of the
+// entity's own coordinate axes.
 
-namespace DIS
-{
-// 5.2.2: angular velocity measured in radians per second out each of the entity's own coordinate axes.
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT AngularVelocityVector
-{
-protected:
+class OPENDIS6_EXPORT AngularVelocityVector {
+ protected:
   /** velocity about the x axis */
-  float _x; 
+  float _x;
 
   /** velocity about the y axis */
-  float _y; 
+  float _y;
 
   /** velocity about the zaxis */
-  float _z; 
-
+  float _z;
 
  public:
-    AngularVelocityVector();
-    virtual ~AngularVelocityVector();
+  AngularVelocityVector();
+  virtual ~AngularVelocityVector();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    float getX() const; 
-    void setX(float pX); 
+  float getX() const;
+  void setX(float pX);
 
-    float getY() const; 
-    void setY(float pX); 
+  float getY() const;
+  void setY(float pX);
 
-    float getZ() const; 
-    void setZ(float pX); 
+  float getZ() const;
+  void setZ(float pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const AngularVelocityVector& rhs) const;
+  bool operator==(const AngularVelocityVector& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -65,7 +62,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

@@ -1,124 +1,96 @@
-#include <dis7/ArticulatedParts.h>
+#include "dis7/ArticulatedParts.h"
 
 using namespace DIS;
 
+ArticulatedParts::ArticulatedParts()
+    : _recordType(0),
+      _changeIndicator(0),
+      _partAttachedTo(0),
+      _parameterType(0),
+      _parameterValue(0),
+      _padding(0) {}
 
-ArticulatedParts::ArticulatedParts():
-   _recordType(0), 
-   _changeIndicator(0), 
-   _partAttachedTo(0), 
-   _parameterType(0), 
-   _parameterValue(0),
-   _padding(0)
-{
+ArticulatedParts::~ArticulatedParts() {}
+
+uint8_t ArticulatedParts::getRecordType() const { return _recordType; }
+
+void ArticulatedParts::setRecordType(uint8_t pX) { _recordType = pX; }
+
+uint8_t ArticulatedParts::getChangeIndicator() const {
+  return _changeIndicator;
 }
 
-ArticulatedParts::~ArticulatedParts()
-{
+void ArticulatedParts::setChangeIndicator(uint8_t pX) {
+  _changeIndicator = pX;
 }
 
-unsigned char ArticulatedParts::getRecordType() const
-{
-    return _recordType;
+uint16_t ArticulatedParts::getPartAttachedTo() const {
+  return _partAttachedTo;
 }
 
-void ArticulatedParts::setRecordType(unsigned char pX)
-{
-    _recordType = pX;
+void ArticulatedParts::setPartAttachedTo(uint16_t pX) {
+  _partAttachedTo = pX;
 }
 
-unsigned char ArticulatedParts::getChangeIndicator() const
-{
-    return _changeIndicator;
+uint32_t ArticulatedParts::getParameterType() const {
+  return _parameterType;
 }
 
-void ArticulatedParts::setChangeIndicator(unsigned char pX)
-{
-    _changeIndicator = pX;
+void ArticulatedParts::setParameterType(uint32_t pX) {
+  _parameterType = pX;
 }
 
-unsigned short ArticulatedParts::getPartAttachedTo() const
-{
-    return _partAttachedTo;
+float ArticulatedParts::getParameterValue() const { return _parameterValue; }
+
+void ArticulatedParts::setParameterValue(float pX) { _parameterValue = pX; }
+
+void ArticulatedParts::marshal(DataStream& dataStream) const {
+  dataStream << _recordType;
+  dataStream << _changeIndicator;
+  dataStream << _partAttachedTo;
+  dataStream << _parameterType;
+  dataStream << _parameterValue;
+  dataStream << _padding;
 }
 
-void ArticulatedParts::setPartAttachedTo(unsigned short pX)
-{
-    _partAttachedTo = pX;
+void ArticulatedParts::unmarshal(DataStream& dataStream) {
+  dataStream >> _recordType;
+  dataStream >> _changeIndicator;
+  dataStream >> _partAttachedTo;
+  dataStream >> _parameterType;
+  dataStream >> _parameterValue;
+  dataStream >> _padding;
 }
 
-unsigned int ArticulatedParts::getParameterType() const
-{
-    return _parameterType;
+bool ArticulatedParts::operator==(const ArticulatedParts& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_recordType == rhs._recordType)) ivarsEqual = false;
+  if (!(_changeIndicator == rhs._changeIndicator)) ivarsEqual = false;
+  if (!(_partAttachedTo == rhs._partAttachedTo)) ivarsEqual = false;
+  if (!(_parameterType == rhs._parameterType)) ivarsEqual = false;
+  if (!(_parameterValue == rhs._parameterValue)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void ArticulatedParts::setParameterType(unsigned int pX)
-{
-    _parameterType = pX;
-}
+int ArticulatedParts::getMarshalledSize() const {
+  int marshalSize = 0;
 
-float ArticulatedParts::getParameterValue() const
-{
-    return _parameterValue;
-}
-
-void ArticulatedParts::setParameterValue(float pX)
-{
-    _parameterValue = pX;
-}
-
-void ArticulatedParts::marshal(DataStream& dataStream) const
-{
-    dataStream << _recordType;
-    dataStream << _changeIndicator;
-    dataStream << _partAttachedTo;
-    dataStream << _parameterType;
-    dataStream << _parameterValue;
-    dataStream << _padding;
-}
-
-void ArticulatedParts::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _recordType;
-    dataStream >> _changeIndicator;
-    dataStream >> _partAttachedTo;
-    dataStream >> _parameterType;
-    dataStream >> _parameterValue;
-    dataStream >> _padding;
-}
-
-
-bool ArticulatedParts::operator ==(const ArticulatedParts& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_recordType == rhs._recordType) ) ivarsEqual = false;
-     if( ! (_changeIndicator == rhs._changeIndicator) ) ivarsEqual = false;
-     if( ! (_partAttachedTo == rhs._partAttachedTo) ) ivarsEqual = false;
-     if( ! (_parameterType == rhs._parameterType) ) ivarsEqual = false;
-     if( ! (_parameterValue == rhs._parameterValue) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int ArticulatedParts::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 1;  // _recordType
-   marshalSize = marshalSize + 1;  // _changeIndicator
-   marshalSize = marshalSize + 2;  // _partAttachedTo
-   marshalSize = marshalSize + 4;  // _parameterType
-   marshalSize = marshalSize + 4;  // _parameterValue
-   marshalSize = marshalSize + 4;  // _padding
-    return marshalSize;
+  marshalSize = marshalSize + 1;  // _recordType
+  marshalSize = marshalSize + 1;  // _changeIndicator
+  marshalSize = marshalSize + 2;  // _partAttachedTo
+  marshalSize = marshalSize + 4;  // _parameterType
+  marshalSize = marshalSize + 4;  // _parameterValue
+  marshalSize = marshalSize + 4;  // _padding
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -131,7 +103,7 @@ int ArticulatedParts::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

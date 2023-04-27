@@ -1,166 +1,163 @@
 #pragma once
 
-#include <dis6/RadioEntityType.h>
-#include <dis6/Vector3Double.h>
-#include <dis6/Vector3Float.h>
-#include <dis6/ModulationType.h>
-#include <dis6/Vector3Float.h>
-#include <dis6/Vector3Float.h>
 #include <vector>
-#include <dis6/RadioCommunicationsFamilyPdu.h>
-#include <dis6/utils/DataStream.h>
-#include <dis6/opendis6_export.h>
 
+#include "dis6/ModulationType.h"
+#include "dis6/RadioCommunicationsFamilyPdu.h"
+#include "dis6/RadioEntityType.h"
+#include "dis6/Vector3Double.h"
+#include "dis6/Vector3Float.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
-namespace DIS
-{
-// Section 5.3.8.1. Detailed information about a radio transmitter. This PDU requires manually         written code to complete, since the modulation parameters are of variable length. UNFINISHED
+namespace DIS {
+// Section 5.3.8.1. Detailed information about a radio transmitter. This PDU
+// requires manually         written code to complete, since the modulation
+// parameters are of variable length. UNFINISHED
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT TransmitterPdu : public RadioCommunicationsFamilyPdu
-{
-protected:
+class OPENDIS6_EXPORT TransmitterPdu : public RadioCommunicationsFamilyPdu {
+ protected:
   /** linear accelleration of entity */
-  RadioEntityType _radioEntityType; 
+  RadioEntityType _radioEntityType;
 
   /** transmit state */
-  unsigned char _transmitState; 
+  uint8_t _transmitState;
 
   /** input source */
-  unsigned char _inputSource; 
+  uint8_t _inputSource;
 
   /** padding */
-  unsigned short _padding1; 
+  uint16_t _padding1;
 
   /** Location of antenna */
-  Vector3Double _antennaLocation; 
+  Vector3Double _antennaLocation;
 
   /** relative location of antenna */
-  Vector3Float _relativeAntennaLocation; 
+  Vector3Float _relativeAntennaLocation;
 
   /** antenna pattern type */
-  unsigned short _antennaPatternType; 
+  uint16_t _antennaPatternType;
 
   /** atenna pattern length */
-  unsigned short _antennaPatternCount; 
+  uint16_t _antennaPatternCount;
 
   /** frequency */
-  unsigned long long _frequency;
+  uint64_t _frequency;
 
   /** transmit frequency Bandwidth */
-  float _transmitFrequencyBandwidth; 
+  float _transmitFrequencyBandwidth;
 
   /** transmission power */
-  float _power; 
+  float _power;
 
   /** modulation */
-  ModulationType _modulationType; 
+  ModulationType _modulationType;
 
   /** crypto system enumeration */
-  unsigned short _cryptoSystem; 
+  uint16_t _cryptoSystem;
 
   /** crypto system key identifer */
-  unsigned short _cryptoKeyId; 
+  uint16_t _cryptoKeyId;
 
   /** how many modulation parameters we have */
-  unsigned char _modulationParameterCount; 
+  uint8_t _modulationParameterCount;
 
   /** padding2 */
-  unsigned short _padding2; 
+  uint16_t _padding2;
 
   /** padding3 */
-  unsigned char _padding3; 
+  uint8_t _padding3;
 
   /** variable length list of modulation parameters */
-  std::vector<Vector3Float> _modulationParametersList; 
+  std::vector<Vector3Float> _modulationParametersList;
 
   /** variable length list of antenna pattern records */
-  std::vector<Vector3Float> _antennaPatternList; 
-
+  std::vector<Vector3Float> _antennaPatternList;
 
  public:
-    TransmitterPdu();
-    virtual ~TransmitterPdu();
+  TransmitterPdu();
+  virtual ~TransmitterPdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    RadioEntityType& getRadioEntityType(); 
-    const RadioEntityType&  getRadioEntityType() const; 
-    void setRadioEntityType(const RadioEntityType    &pX);
+  RadioEntityType& getRadioEntityType();
+  const RadioEntityType& getRadioEntityType() const;
+  void setRadioEntityType(const RadioEntityType& pX);
 
-    unsigned char getTransmitState() const; 
-    void setTransmitState(unsigned char pX); 
+  uint8_t getTransmitState() const;
+  void setTransmitState(uint8_t pX);
 
-    unsigned char getInputSource() const; 
-    void setInputSource(unsigned char pX); 
+  uint8_t getInputSource() const;
+  void setInputSource(uint8_t pX);
 
-    unsigned short getPadding1() const; 
-    void setPadding1(unsigned short pX); 
+  uint16_t getPadding1() const;
+  void setPadding1(uint16_t pX);
 
-    Vector3Double& getAntennaLocation(); 
-    const Vector3Double&  getAntennaLocation() const; 
-    void setAntennaLocation(const Vector3Double    &pX);
+  Vector3Double& getAntennaLocation();
+  const Vector3Double& getAntennaLocation() const;
+  void setAntennaLocation(const Vector3Double& pX);
 
-    Vector3Float& getRelativeAntennaLocation(); 
-    const Vector3Float&  getRelativeAntennaLocation() const; 
-    void setRelativeAntennaLocation(const Vector3Float    &pX);
+  Vector3Float& getRelativeAntennaLocation();
+  const Vector3Float& getRelativeAntennaLocation() const;
+  void setRelativeAntennaLocation(const Vector3Float& pX);
 
-    unsigned short getAntennaPatternType() const; 
-    void setAntennaPatternType(unsigned short pX); 
+  uint16_t getAntennaPatternType() const;
+  void setAntennaPatternType(uint16_t pX);
 
-    unsigned short getAntennaPatternCount() const; 
+  uint16_t getAntennaPatternCount() const;
 
-    unsigned long long getFrequency() const;
-    void setFrequency(unsigned long long pX);
+  uint64_t getFrequency() const;
+  void setFrequency(uint64_t pX);
 
-    float getTransmitFrequencyBandwidth() const; 
-    void setTransmitFrequencyBandwidth(float pX); 
+  float getTransmitFrequencyBandwidth() const;
+  void setTransmitFrequencyBandwidth(float pX);
 
-    float getPower() const; 
-    void setPower(float pX); 
+  float getPower() const;
+  void setPower(float pX);
 
-    ModulationType& getModulationType(); 
-    const ModulationType&  getModulationType() const; 
-    void setModulationType(const ModulationType    &pX);
+  ModulationType& getModulationType();
+  const ModulationType& getModulationType() const;
+  void setModulationType(const ModulationType& pX);
 
-    unsigned short getCryptoSystem() const; 
-    void setCryptoSystem(unsigned short pX); 
+  uint16_t getCryptoSystem() const;
+  void setCryptoSystem(uint16_t pX);
 
-    unsigned short getCryptoKeyId() const; 
-    void setCryptoKeyId(unsigned short pX); 
+  uint16_t getCryptoKeyId() const;
+  void setCryptoKeyId(uint16_t pX);
 
-    unsigned char getModulationParameterCount() const; 
+  uint8_t getModulationParameterCount() const;
 
-    unsigned short getPadding2() const; 
-    void setPadding2(unsigned short pX); 
+  uint16_t getPadding2() const;
+  void setPadding2(uint16_t pX);
 
-    unsigned char getPadding3() const; 
-    void setPadding3(unsigned char pX); 
+  uint8_t getPadding3() const;
+  void setPadding3(uint8_t pX);
 
-    std::vector<Vector3Float>& getModulationParametersList(); 
-    const std::vector<Vector3Float>& getModulationParametersList() const; 
-    void setModulationParametersList(const std::vector<Vector3Float>&    pX);
+  std::vector<Vector3Float>& getModulationParametersList();
+  const std::vector<Vector3Float>& getModulationParametersList() const;
+  void setModulationParametersList(const std::vector<Vector3Float>& pX);
 
-    std::vector<Vector3Float>& getAntennaPatternList(); 
-    const std::vector<Vector3Float>& getAntennaPatternList() const; 
-    void setAntennaPatternList(const std::vector<Vector3Float>&    pX);
+  std::vector<Vector3Float>& getAntennaPatternList();
+  const std::vector<Vector3Float>& getAntennaPatternList() const;
+  void setAntennaPatternList(const std::vector<Vector3Float>& pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const TransmitterPdu& rhs) const;
+  bool operator==(const TransmitterPdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -173,7 +170,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

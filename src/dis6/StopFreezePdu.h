@@ -1,73 +1,70 @@
 #pragma once
 
-#include <dis6/ClockTime.h>
-#include <dis6/SimulationManagementFamilyPdu.h>
-#include <dis6/utils/DataStream.h>
-#include <dis6/opendis6_export.h>
+#include "dis6/ClockTime.h"
+#include "dis6/SimulationManagementFamilyPdu.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
-
-namespace DIS
-{
+namespace DIS {
 // Section 5.2.3.4. Stop or freeze an exercise. COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT StopFreezePdu : public SimulationManagementFamilyPdu
-{
-protected:
+class OPENDIS6_EXPORT StopFreezePdu : public SimulationManagementFamilyPdu {
+ protected:
   /** UTC time at which the simulation shall stop or freeze */
-  ClockTime _realWorldTime; 
+  ClockTime _realWorldTime;
 
   /** Reason the simulation was stopped or frozen */
-  unsigned char _reason; 
+  uint8_t _reason;
 
-  /** Internal behavior of the simulation and its appearance while frozento the other participants */
-  unsigned char _frozenBehavior; 
+  /** Internal behavior of the simulation and its appearance while frozento the
+   * other participants */
+  uint8_t _frozenBehavior;
 
   /** padding */
-  short _padding1; 
+  int16_t _padding1;
 
   /** Request ID that is unique */
-  unsigned int _requestID; 
-
+  uint32_t _requestID;
 
  public:
-    StopFreezePdu();
-    virtual ~StopFreezePdu();
+  StopFreezePdu();
+  virtual ~StopFreezePdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    ClockTime& getRealWorldTime(); 
-    const ClockTime&  getRealWorldTime() const; 
-    void setRealWorldTime(const ClockTime    &pX);
+  ClockTime& getRealWorldTime();
+  const ClockTime& getRealWorldTime() const;
+  void setRealWorldTime(const ClockTime& pX);
 
-    unsigned char getReason() const; 
-    void setReason(unsigned char pX); 
+  uint8_t getReason() const;
+  void setReason(uint8_t pX);
 
-    unsigned char getFrozenBehavior() const; 
-    void setFrozenBehavior(unsigned char pX); 
+  uint8_t getFrozenBehavior() const;
+  void setFrozenBehavior(uint8_t pX);
 
-    short getPadding1() const; 
-    void setPadding1(short pX); 
+  int16_t getPadding1() const;
+  void setPadding1(int16_t pX);
 
-    unsigned int getRequestID() const; 
-    void setRequestID(unsigned int pX); 
+  uint32_t getRequestID() const;
+  void setRequestID(uint32_t pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const StopFreezePdu& rhs) const;
+  bool operator==(const StopFreezePdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -80,7 +77,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

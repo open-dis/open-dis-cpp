@@ -1,90 +1,72 @@
-#include <dis6/AcousticEmitterSystem.h>
+#include "dis6/AcousticEmitterSystem.h"
 
 using namespace DIS;
 
+AcousticEmitterSystem::AcousticEmitterSystem()
+    : _acousticName(0), _acousticFunction(0), _acousticID(0) {}
 
-AcousticEmitterSystem::AcousticEmitterSystem():
-   _acousticName(0), 
-   _acousticFunction(0), 
-   _acousticID(0)
-{
+AcousticEmitterSystem::~AcousticEmitterSystem() {}
+
+uint16_t AcousticEmitterSystem::getAcousticName() const {
+  return _acousticName;
 }
 
-AcousticEmitterSystem::~AcousticEmitterSystem()
-{
+void AcousticEmitterSystem::setAcousticName(uint16_t pX) {
+  _acousticName = pX;
 }
 
-unsigned short AcousticEmitterSystem::getAcousticName() const
-{
-    return _acousticName;
+uint8_t AcousticEmitterSystem::getAcousticFunction() const {
+  return _acousticFunction;
 }
 
-void AcousticEmitterSystem::setAcousticName(unsigned short pX)
-{
-    _acousticName = pX;
+void AcousticEmitterSystem::setAcousticFunction(uint8_t pX) {
+  _acousticFunction = pX;
 }
 
-unsigned char AcousticEmitterSystem::getAcousticFunction() const
-{
-    return _acousticFunction;
+uint8_t AcousticEmitterSystem::getAcousticID() const {
+  return _acousticID;
 }
 
-void AcousticEmitterSystem::setAcousticFunction(unsigned char pX)
-{
-    _acousticFunction = pX;
+void AcousticEmitterSystem::setAcousticID(uint8_t pX) {
+  _acousticID = pX;
 }
 
-unsigned char AcousticEmitterSystem::getAcousticID() const
-{
-    return _acousticID;
+void AcousticEmitterSystem::marshal(DataStream& dataStream) const {
+  dataStream << _acousticName;
+  dataStream << _acousticFunction;
+  dataStream << _acousticID;
 }
 
-void AcousticEmitterSystem::setAcousticID(unsigned char pX)
-{
-    _acousticID = pX;
+void AcousticEmitterSystem::unmarshal(DataStream& dataStream) {
+  dataStream >> _acousticName;
+  dataStream >> _acousticFunction;
+  dataStream >> _acousticID;
 }
 
-void AcousticEmitterSystem::marshal(DataStream& dataStream) const
-{
-    dataStream << _acousticName;
-    dataStream << _acousticFunction;
-    dataStream << _acousticID;
+bool AcousticEmitterSystem::operator==(const AcousticEmitterSystem& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_acousticName == rhs._acousticName)) ivarsEqual = false;
+  if (!(_acousticFunction == rhs._acousticFunction)) ivarsEqual = false;
+  if (!(_acousticID == rhs._acousticID)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void AcousticEmitterSystem::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _acousticName;
-    dataStream >> _acousticFunction;
-    dataStream >> _acousticID;
-}
+int AcousticEmitterSystem::getMarshalledSize() const {
+  int marshalSize = 0;
 
-
-bool AcousticEmitterSystem::operator ==(const AcousticEmitterSystem& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_acousticName == rhs._acousticName) ) ivarsEqual = false;
-     if( ! (_acousticFunction == rhs._acousticFunction) ) ivarsEqual = false;
-     if( ! (_acousticID == rhs._acousticID) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int AcousticEmitterSystem::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 2;  // _acousticName
-   marshalSize = marshalSize + 1;  // _acousticFunction
-   marshalSize = marshalSize + 1;  // _acousticID
-    return marshalSize;
+  marshalSize = marshalSize + 2;  // _acousticName
+  marshalSize = marshalSize + 1;  // _acousticFunction
+  marshalSize = marshalSize + 1;  // _acousticID
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -97,7 +79,7 @@ int AcousticEmitterSystem::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

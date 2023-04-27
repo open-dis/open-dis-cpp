@@ -1,64 +1,64 @@
 #pragma once
 
-#include <dis7/utils/DataStream.h>
-#include <dis7/opendis7_export.h>
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
+namespace DIS {
+// Information about the type of modulation used for radio transmission. 6.2.59
 
-namespace DIS
-{
-// Information about the type of modulation used for radio transmission. 6.2.59 
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT ModulationType
-{
-protected:
-  /** This field shall indicate the spread spectrum technique or combination of spread spectrum techniques in use. Bt field. */
-  unsigned short _spreadSpectrum; 
+class OPENDIS7_EXPORT ModulationType {
+ protected:
+  /** This field shall indicate the spread spectrum technique or combination of
+   * spread spectrum techniques in use. Bt field. */
+  uint16_t _spreadSpectrum;
 
   /** the major classification of the modulation type.  */
-  unsigned short _majorModulation; 
+  uint16_t _majorModulation;
 
-  /** provide certain detailed information depending upon the major modulation type */
-  unsigned short _detail; 
+  /** provide certain detailed information depending upon the major modulation
+   * type */
+  uint16_t _detail;
 
-  /** the radio system associated with this Transmitter PDU and shall be used as the basis to interpret other fields whose values depend on a specific radio system. */
-  unsigned short _radioSystem; 
-
+  /** the radio system associated with this Transmitter PDU and shall be used as
+   * the basis to interpret other fields whose values depend on a specific radio
+   * system. */
+  uint16_t _radioSystem;
 
  public:
-    ModulationType();
-    virtual ~ModulationType();
+  ModulationType();
+  virtual ~ModulationType();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned short getSpreadSpectrum() const; 
-    void setSpreadSpectrum(unsigned short pX); 
+  uint16_t getSpreadSpectrum() const;
+  void setSpreadSpectrum(uint16_t pX);
 
-    unsigned short getMajorModulation() const; 
-    void setMajorModulation(unsigned short pX); 
+  uint16_t getMajorModulation() const;
+  void setMajorModulation(uint16_t pX);
 
-    unsigned short getDetail() const; 
-    void setDetail(unsigned short pX); 
+  uint16_t getDetail() const;
+  void setDetail(uint16_t pX);
 
-    unsigned short getRadioSystem() const; 
-    void setRadioSystem(unsigned short pX); 
+  uint16_t getRadioSystem() const;
+  void setRadioSystem(uint16_t pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const ModulationType& rhs) const;
+  bool operator==(const ModulationType& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -71,7 +71,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

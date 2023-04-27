@@ -1,75 +1,51 @@
-#include <dis7/Relationship.h>
+#include "dis7/Relationship.h"
 
 using namespace DIS;
 
+Relationship::Relationship() : _nature(0), _position(0) {}
 
-Relationship::Relationship():
-   _nature(0), 
-   _position(0)
-{
+Relationship::~Relationship() {}
+
+uint16_t Relationship::getNature() const { return _nature; }
+
+void Relationship::setNature(uint16_t pX) { _nature = pX; }
+
+uint16_t Relationship::getPosition() const { return _position; }
+
+void Relationship::setPosition(uint16_t pX) { _position = pX; }
+
+void Relationship::marshal(DataStream& dataStream) const {
+  dataStream << _nature;
+  dataStream << _position;
 }
 
-Relationship::~Relationship()
-{
+void Relationship::unmarshal(DataStream& dataStream) {
+  dataStream >> _nature;
+  dataStream >> _position;
 }
 
-unsigned short Relationship::getNature() const
-{
-    return _nature;
+bool Relationship::operator==(const Relationship& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_nature == rhs._nature)) ivarsEqual = false;
+  if (!(_position == rhs._position)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void Relationship::setNature(unsigned short pX)
-{
-    _nature = pX;
-}
+int Relationship::getMarshalledSize() const {
+  int marshalSize = 0;
 
-unsigned short Relationship::getPosition() const
-{
-    return _position;
-}
-
-void Relationship::setPosition(unsigned short pX)
-{
-    _position = pX;
-}
-
-void Relationship::marshal(DataStream& dataStream) const
-{
-    dataStream << _nature;
-    dataStream << _position;
-}
-
-void Relationship::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _nature;
-    dataStream >> _position;
-}
-
-
-bool Relationship::operator ==(const Relationship& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_nature == rhs._nature) ) ivarsEqual = false;
-     if( ! (_position == rhs._position) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int Relationship::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 2;  // _nature
-   marshalSize = marshalSize + 2;  // _position
-    return marshalSize;
+  marshalSize = marshalSize + 2;  // _nature
+  marshalSize = marshalSize + 2;  // _position
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -82,7 +58,7 @@ int Relationship::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

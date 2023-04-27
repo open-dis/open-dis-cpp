@@ -1,72 +1,69 @@
 #pragma once
 
-#include <dis7/EntityType.h>
-#include <dis7/utils/DataStream.h>
-#include <dis7/opendis7_export.h>
+#include "dis7/EntityType.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
-
-namespace DIS
-{
+namespace DIS {
 // Association or disassociation of two entities.  Section 6.2.93.5
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT EntityTypeVP
-{
-protected:
-  /** the identification of the Variable Parameter record. Enumeration from EBV */
-  unsigned char _recordType; 
+class OPENDIS7_EXPORT EntityTypeVP {
+ protected:
+  /** the identification of the Variable Parameter record. Enumeration from EBV
+   */
+  uint8_t _recordType;
 
   /** Indicates if this VP has changed since last issuance */
-  unsigned char _changeIndicator; 
+  uint8_t _changeIndicator;
 
   /**  */
-  EntityType _entityType; 
+  EntityType _entityType;
 
   /** padding */
-  unsigned short _padding; 
+  uint16_t _padding;
 
   /** padding */
-  unsigned int _padding1; 
-
+  uint32_t _padding1;
 
  public:
-    EntityTypeVP();
-    virtual ~EntityTypeVP();
+  EntityTypeVP();
+  virtual ~EntityTypeVP();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getRecordType() const; 
-    void setRecordType(unsigned char pX); 
+  uint8_t getRecordType() const;
+  void setRecordType(uint8_t pX);
 
-    unsigned char getChangeIndicator() const; 
-    void setChangeIndicator(unsigned char pX); 
+  uint8_t getChangeIndicator() const;
+  void setChangeIndicator(uint8_t pX);
 
-    EntityType& getEntityType(); 
-    const EntityType&  getEntityType() const; 
-    void setEntityType(const EntityType    &pX);
+  EntityType& getEntityType();
+  const EntityType& getEntityType() const;
+  void setEntityType(const EntityType& pX);
 
-    unsigned short getPadding() const; 
-    void setPadding(unsigned short pX); 
+  uint16_t getPadding() const;
+  void setPadding(uint16_t pX);
 
-    unsigned int getPadding1() const; 
-    void setPadding1(unsigned int pX); 
+  uint32_t getPadding1() const;
+  void setPadding1(uint32_t pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const EntityTypeVP& rhs) const;
+  bool operator==(const EntityTypeVP& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -79,7 +76,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

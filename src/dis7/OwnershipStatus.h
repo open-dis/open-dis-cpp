@@ -1,60 +1,58 @@
 #pragma once
 
-#include <dis7/EntityID.h>
-#include <dis7/utils/DataStream.h>
-#include <dis7/opendis7_export.h>
+#include "dis7/EntityID.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
+namespace DIS {
+// used to convey entity and conflict status information associated with
+// transferring ownership of an entity. Section 6.2.65
 
-namespace DIS
-{
-// used to convey entity and conflict status information associated with transferring ownership of an entity. Section 6.2.65
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT OwnershipStatus
-{
-protected:
+class OPENDIS7_EXPORT OwnershipStatus {
+ protected:
   /** EntityID */
-  EntityID _entityId; 
+  EntityID _entityId;
 
-  /** The ownership and/or ownership conflict status of the entity represented by the Entity ID field. */
-  unsigned char _ownershipStatus; 
+  /** The ownership and/or ownership conflict status of the entity represented
+   * by the Entity ID field. */
+  uint8_t _ownershipStatus;
 
   /** padding */
-  unsigned char _padding; 
-
+  uint8_t _padding;
 
  public:
-    OwnershipStatus();
-    virtual ~OwnershipStatus();
+  OwnershipStatus();
+  virtual ~OwnershipStatus();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getEntityId(); 
-    const EntityID&  getEntityId() const; 
-    void setEntityId(const EntityID    &pX);
+  EntityID& getEntityId();
+  const EntityID& getEntityId() const;
+  void setEntityId(const EntityID& pX);
 
-    unsigned char getOwnershipStatus() const; 
-    void setOwnershipStatus(unsigned char pX); 
+  uint8_t getOwnershipStatus() const;
+  void setOwnershipStatus(uint8_t pX);
 
-    unsigned char getPadding() const; 
-    void setPadding(unsigned char pX); 
+  uint8_t getPadding() const;
+  void setPadding(uint8_t pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const OwnershipStatus& rhs) const;
+  bool operator==(const OwnershipStatus& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -67,7 +65,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

@@ -1,155 +1,117 @@
-#include <dis7/SeparationVP.h>
+#include "dis7/SeparationVP.h"
 
 using namespace DIS;
 
+SeparationVP::SeparationVP()
+    : _recordType(4),
+      _reasonForSeparation(0),
+      _preEntityIndicator(0),
+      _padding1(0),
+      _parentEntityID(),
+      _padding2(0),
+      _stationLocation(0) {}
 
-SeparationVP::SeparationVP():
-   _recordType(4), 
-   _reasonForSeparation(0), 
-   _preEntityIndicator(0), 
-   _padding1(0), 
-   _parentEntityID(), 
-   _padding2(0), 
-   _stationLocation(0)
-{
+SeparationVP::~SeparationVP() {}
+
+uint8_t SeparationVP::getRecordType() const { return _recordType; }
+
+void SeparationVP::setRecordType(uint8_t pX) { _recordType = pX; }
+
+uint8_t SeparationVP::getReasonForSeparation() const {
+  return _reasonForSeparation;
 }
 
-SeparationVP::~SeparationVP()
-{
+void SeparationVP::setReasonForSeparation(uint8_t pX) {
+  _reasonForSeparation = pX;
 }
 
-unsigned char SeparationVP::getRecordType() const
-{
-    return _recordType;
+uint8_t SeparationVP::getPreEntityIndicator() const {
+  return _preEntityIndicator;
 }
 
-void SeparationVP::setRecordType(unsigned char pX)
-{
-    _recordType = pX;
+void SeparationVP::setPreEntityIndicator(uint8_t pX) {
+  _preEntityIndicator = pX;
 }
 
-unsigned char SeparationVP::getReasonForSeparation() const
-{
-    return _reasonForSeparation;
+uint8_t SeparationVP::getPadding1() const { return _padding1; }
+
+void SeparationVP::setPadding1(uint8_t pX) { _padding1 = pX; }
+
+EntityID& SeparationVP::getParentEntityID() { return _parentEntityID; }
+
+const EntityID& SeparationVP::getParentEntityID() const {
+  return _parentEntityID;
 }
 
-void SeparationVP::setReasonForSeparation(unsigned char pX)
-{
-    _reasonForSeparation = pX;
+void SeparationVP::setParentEntityID(const EntityID& pX) {
+  _parentEntityID = pX;
 }
 
-unsigned char SeparationVP::getPreEntityIndicator() const
-{
-    return _preEntityIndicator;
+uint16_t SeparationVP::getPadding2() const { return _padding2; }
+
+void SeparationVP::setPadding2(uint16_t pX) { _padding2 = pX; }
+
+uint32_t SeparationVP::getStationLocation() const {
+  return _stationLocation;
 }
 
-void SeparationVP::setPreEntityIndicator(unsigned char pX)
-{
-    _preEntityIndicator = pX;
+void SeparationVP::setStationLocation(uint32_t pX) {
+  _stationLocation = pX;
 }
 
-unsigned char SeparationVP::getPadding1() const
-{
-    return _padding1;
+void SeparationVP::marshal(DataStream& dataStream) const {
+  dataStream << _recordType;
+  dataStream << _reasonForSeparation;
+  dataStream << _preEntityIndicator;
+  dataStream << _padding1;
+  _parentEntityID.marshal(dataStream);
+  dataStream << _padding2;
+  dataStream << _stationLocation;
 }
 
-void SeparationVP::setPadding1(unsigned char pX)
-{
-    _padding1 = pX;
+void SeparationVP::unmarshal(DataStream& dataStream) {
+  dataStream >> _recordType;
+  dataStream >> _reasonForSeparation;
+  dataStream >> _preEntityIndicator;
+  dataStream >> _padding1;
+  _parentEntityID.unmarshal(dataStream);
+  dataStream >> _padding2;
+  dataStream >> _stationLocation;
 }
 
-EntityID& SeparationVP::getParentEntityID() 
-{
-    return _parentEntityID;
+bool SeparationVP::operator==(const SeparationVP& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_recordType == rhs._recordType)) ivarsEqual = false;
+  if (!(_reasonForSeparation == rhs._reasonForSeparation)) ivarsEqual = false;
+  if (!(_preEntityIndicator == rhs._preEntityIndicator)) ivarsEqual = false;
+  if (!(_padding1 == rhs._padding1)) ivarsEqual = false;
+  if (!(_parentEntityID == rhs._parentEntityID)) ivarsEqual = false;
+  if (!(_padding2 == rhs._padding2)) ivarsEqual = false;
+  if (!(_stationLocation == rhs._stationLocation)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-const EntityID& SeparationVP::getParentEntityID() const
-{
-    return _parentEntityID;
-}
+int SeparationVP::getMarshalledSize() const {
+  int marshalSize = 0;
 
-void SeparationVP::setParentEntityID(const EntityID &pX)
-{
-    _parentEntityID = pX;
-}
-
-unsigned short SeparationVP::getPadding2() const
-{
-    return _padding2;
-}
-
-void SeparationVP::setPadding2(unsigned short pX)
-{
-    _padding2 = pX;
-}
-
-unsigned int SeparationVP::getStationLocation() const
-{
-    return _stationLocation;
-}
-
-void SeparationVP::setStationLocation(unsigned int pX)
-{
-    _stationLocation = pX;
-}
-
-void SeparationVP::marshal(DataStream& dataStream) const
-{
-    dataStream << _recordType;
-    dataStream << _reasonForSeparation;
-    dataStream << _preEntityIndicator;
-    dataStream << _padding1;
-    _parentEntityID.marshal(dataStream);
-    dataStream << _padding2;
-    dataStream << _stationLocation;
-}
-
-void SeparationVP::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _recordType;
-    dataStream >> _reasonForSeparation;
-    dataStream >> _preEntityIndicator;
-    dataStream >> _padding1;
-    _parentEntityID.unmarshal(dataStream);
-    dataStream >> _padding2;
-    dataStream >> _stationLocation;
-}
-
-
-bool SeparationVP::operator ==(const SeparationVP& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_recordType == rhs._recordType) ) ivarsEqual = false;
-     if( ! (_reasonForSeparation == rhs._reasonForSeparation) ) ivarsEqual = false;
-     if( ! (_preEntityIndicator == rhs._preEntityIndicator) ) ivarsEqual = false;
-     if( ! (_padding1 == rhs._padding1) ) ivarsEqual = false;
-     if( ! (_parentEntityID == rhs._parentEntityID) ) ivarsEqual = false;
-     if( ! (_padding2 == rhs._padding2) ) ivarsEqual = false;
-     if( ! (_stationLocation == rhs._stationLocation) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int SeparationVP::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 1;  // _recordType
-   marshalSize = marshalSize + 1;  // _reasonForSeparation
-   marshalSize = marshalSize + 1;  // _preEntityIndicator
-   marshalSize = marshalSize + 1;  // _padding1
-   marshalSize = marshalSize + _parentEntityID.getMarshalledSize();  // _parentEntityID
-   marshalSize = marshalSize + 2;  // _padding2
-   marshalSize = marshalSize + 4;  // _stationLocation
-    return marshalSize;
+  marshalSize = marshalSize + 1;  // _recordType
+  marshalSize = marshalSize + 1;  // _reasonForSeparation
+  marshalSize = marshalSize + 1;  // _preEntityIndicator
+  marshalSize = marshalSize + 1;  // _padding1
+  marshalSize =
+      marshalSize + _parentEntityID.getMarshalledSize();  // _parentEntityID
+  marshalSize = marshalSize + 2;                          // _padding2
+  marshalSize = marshalSize + 4;                          // _stationLocation
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -162,7 +124,7 @@ int SeparationVP::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

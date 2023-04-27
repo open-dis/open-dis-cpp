@@ -1,135 +1,94 @@
-#include <dis6/RecordSet.h>
+#include "dis6/RecordSet.h"
 
 using namespace DIS;
 
+RecordSet::RecordSet()
+    : _recordID(0),
+      _recordSetSerialNumber(0),
+      _recordLength(0),
+      _recordCount(0),
+      _recordValues(0),
+      _pad4(0) {}
 
-RecordSet::RecordSet():
-   _recordID(0), 
-   _recordSetSerialNumber(0), 
-   _recordLength(0), 
-   _recordCount(0), 
-   _recordValues(0), 
-   _pad4(0)
-{
+RecordSet::~RecordSet() {}
+
+uint32_t RecordSet::getRecordID() const { return _recordID; }
+
+void RecordSet::setRecordID(uint32_t pX) { _recordID = pX; }
+
+uint32_t RecordSet::getRecordSetSerialNumber() const {
+  return _recordSetSerialNumber;
 }
 
-RecordSet::~RecordSet()
-{
+void RecordSet::setRecordSetSerialNumber(uint32_t pX) {
+  _recordSetSerialNumber = pX;
 }
 
-unsigned int RecordSet::getRecordID() const
-{
-    return _recordID;
+uint16_t RecordSet::getRecordLength() const { return _recordLength; }
+
+void RecordSet::setRecordLength(uint16_t pX) { _recordLength = pX; }
+
+uint16_t RecordSet::getRecordCount() const { return _recordCount; }
+
+void RecordSet::setRecordCount(uint16_t pX) { _recordCount = pX; }
+
+uint16_t RecordSet::getRecordValues() const { return _recordValues; }
+
+void RecordSet::setRecordValues(uint16_t pX) { _recordValues = pX; }
+
+uint8_t RecordSet::getPad4() const { return _pad4; }
+
+void RecordSet::setPad4(uint8_t pX) { _pad4 = pX; }
+
+void RecordSet::marshal(DataStream& dataStream) const {
+  dataStream << _recordID;
+  dataStream << _recordSetSerialNumber;
+  dataStream << _recordLength;
+  dataStream << _recordCount;
+  dataStream << _recordValues;
+  dataStream << _pad4;
 }
 
-void RecordSet::setRecordID(unsigned int pX)
-{
-    _recordID = pX;
+void RecordSet::unmarshal(DataStream& dataStream) {
+  dataStream >> _recordID;
+  dataStream >> _recordSetSerialNumber;
+  dataStream >> _recordLength;
+  dataStream >> _recordCount;
+  dataStream >> _recordValues;
+  dataStream >> _pad4;
 }
 
-unsigned int RecordSet::getRecordSetSerialNumber() const
-{
-    return _recordSetSerialNumber;
+bool RecordSet::operator==(const RecordSet& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_recordID == rhs._recordID)) ivarsEqual = false;
+  if (!(_recordSetSerialNumber == rhs._recordSetSerialNumber))
+    ivarsEqual = false;
+  if (!(_recordLength == rhs._recordLength)) ivarsEqual = false;
+  if (!(_recordCount == rhs._recordCount)) ivarsEqual = false;
+  if (!(_recordValues == rhs._recordValues)) ivarsEqual = false;
+  if (!(_pad4 == rhs._pad4)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void RecordSet::setRecordSetSerialNumber(unsigned int pX)
-{
-    _recordSetSerialNumber = pX;
-}
+int RecordSet::getMarshalledSize() const {
+  int marshalSize = 0;
 
-unsigned short RecordSet::getRecordLength() const
-{
-    return _recordLength;
-}
-
-void RecordSet::setRecordLength(unsigned short pX)
-{
-    _recordLength = pX;
-}
-
-unsigned short RecordSet::getRecordCount() const
-{
-    return _recordCount;
-}
-
-void RecordSet::setRecordCount(unsigned short pX)
-{
-    _recordCount = pX;
-}
-
-unsigned short RecordSet::getRecordValues() const
-{
-    return _recordValues;
-}
-
-void RecordSet::setRecordValues(unsigned short pX)
-{
-    _recordValues = pX;
-}
-
-unsigned char RecordSet::getPad4() const
-{
-    return _pad4;
-}
-
-void RecordSet::setPad4(unsigned char pX)
-{
-    _pad4 = pX;
-}
-
-void RecordSet::marshal(DataStream& dataStream) const
-{
-    dataStream << _recordID;
-    dataStream << _recordSetSerialNumber;
-    dataStream << _recordLength;
-    dataStream << _recordCount;
-    dataStream << _recordValues;
-    dataStream << _pad4;
-}
-
-void RecordSet::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _recordID;
-    dataStream >> _recordSetSerialNumber;
-    dataStream >> _recordLength;
-    dataStream >> _recordCount;
-    dataStream >> _recordValues;
-    dataStream >> _pad4;
-}
-
-
-bool RecordSet::operator ==(const RecordSet& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_recordID == rhs._recordID) ) ivarsEqual = false;
-     if( ! (_recordSetSerialNumber == rhs._recordSetSerialNumber) ) ivarsEqual = false;
-     if( ! (_recordLength == rhs._recordLength) ) ivarsEqual = false;
-     if( ! (_recordCount == rhs._recordCount) ) ivarsEqual = false;
-     if( ! (_recordValues == rhs._recordValues) ) ivarsEqual = false;
-     if( ! (_pad4 == rhs._pad4) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int RecordSet::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 4;  // _recordID
-   marshalSize = marshalSize + 4;  // _recordSetSerialNumber
-   marshalSize = marshalSize + 2;  // _recordLength
-   marshalSize = marshalSize + 2;  // _recordCount
-   marshalSize = marshalSize + 2;  // _recordValues
-   marshalSize = marshalSize + 1;  // _pad4
-    return marshalSize;
+  marshalSize = marshalSize + 4;  // _recordID
+  marshalSize = marshalSize + 4;  // _recordSetSerialNumber
+  marshalSize = marshalSize + 2;  // _recordLength
+  marshalSize = marshalSize + 2;  // _recordCount
+  marshalSize = marshalSize + 2;  // _recordValues
+  marshalSize = marshalSize + 1;  // _pad4
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -142,7 +101,7 @@ int RecordSet::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

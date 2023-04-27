@@ -1,80 +1,77 @@
 #pragma once
 
-#include <dis6/FixedDatum.h>
-#include <dis6/VariableDatum.h>
 #include <vector>
-#include <dis6/SimulationManagementFamilyPdu.h>
-#include <dis6/utils/DataStream.h>
-#include <dis6/opendis6_export.h>
 
+#include "dis6/FixedDatum.h"
+#include "dis6/SimulationManagementFamilyPdu.h"
+#include "dis6/VariableDatum.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
-namespace DIS
-{
+namespace DIS {
 // Section 5.3.6.6. Request from simulation manager to an entity. COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT ActionRequestPdu : public SimulationManagementFamilyPdu
-{
-protected:
+class OPENDIS6_EXPORT ActionRequestPdu : public SimulationManagementFamilyPdu {
+ protected:
   /** Request ID that is unique */
-  unsigned int _requestID; 
+  uint32_t _requestID;
 
   /** identifies the action being requested */
-  unsigned int _actionID; 
+  uint32_t _actionID;
 
   /** Number of fixed datum records */
-  unsigned int _numberOfFixedDatumRecords; 
+  uint32_t _numberOfFixedDatumRecords;
 
   /** Number of variable datum records */
-  unsigned int _numberOfVariableDatumRecords; 
+  uint32_t _numberOfVariableDatumRecords;
 
   /** variable length list of fixed datums */
-  std::vector<FixedDatum> _fixedDatums; 
+  std::vector<FixedDatum> _fixedDatums;
 
   /** variable length list of variable length datums */
-  std::vector<VariableDatum> _variableDatums; 
-
+  std::vector<VariableDatum> _variableDatums;
 
  public:
-    ActionRequestPdu();
-    virtual ~ActionRequestPdu();
+  ActionRequestPdu();
+  virtual ~ActionRequestPdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned int getRequestID() const; 
-    void setRequestID(unsigned int pX); 
+  uint32_t getRequestID() const;
+  void setRequestID(uint32_t pX);
 
-    unsigned int getActionID() const; 
-    void setActionID(unsigned int pX); 
+  uint32_t getActionID() const;
+  void setActionID(uint32_t pX);
 
-    unsigned int getNumberOfFixedDatumRecords() const; 
+  uint32_t getNumberOfFixedDatumRecords() const;
 
-    unsigned int getNumberOfVariableDatumRecords() const; 
+  uint32_t getNumberOfVariableDatumRecords() const;
 
-    std::vector<FixedDatum>& getFixedDatums(); 
-    const std::vector<FixedDatum>& getFixedDatums() const; 
-    void setFixedDatums(const std::vector<FixedDatum>&    pX);
+  std::vector<FixedDatum>& getFixedDatums();
+  const std::vector<FixedDatum>& getFixedDatums() const;
+  void setFixedDatums(const std::vector<FixedDatum>& pX);
 
-    std::vector<VariableDatum>& getVariableDatums(); 
-    const std::vector<VariableDatum>& getVariableDatums() const; 
-    void setVariableDatums(const std::vector<VariableDatum>&    pX);
+  std::vector<VariableDatum>& getVariableDatums();
+  const std::vector<VariableDatum>& getVariableDatums() const;
+  void setVariableDatums(const std::vector<VariableDatum>& pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const ActionRequestPdu& rhs) const;
+  bool operator==(const ActionRequestPdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -87,7 +84,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

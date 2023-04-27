@@ -1,80 +1,65 @@
-#include <dis7/MinefieldIdentifier.h>
+#include "dis7/MinefieldIdentifier.h"
 
 using namespace DIS;
 
+MinefieldIdentifier::MinefieldIdentifier()
+    : _simulationAddress(), _minefieldNumber(0) {}
 
-MinefieldIdentifier::MinefieldIdentifier():
-   _simulationAddress(), 
-   _minefieldNumber(0)
-{
+MinefieldIdentifier::~MinefieldIdentifier() {}
+
+SimulationAddress& MinefieldIdentifier::getSimulationAddress() {
+  return _simulationAddress;
 }
 
-MinefieldIdentifier::~MinefieldIdentifier()
-{
+const SimulationAddress& MinefieldIdentifier::getSimulationAddress() const {
+  return _simulationAddress;
 }
 
-SimulationAddress& MinefieldIdentifier::getSimulationAddress() 
-{
-    return _simulationAddress;
+void MinefieldIdentifier::setSimulationAddress(const SimulationAddress& pX) {
+  _simulationAddress = pX;
 }
 
-const SimulationAddress& MinefieldIdentifier::getSimulationAddress() const
-{
-    return _simulationAddress;
+uint16_t MinefieldIdentifier::getMinefieldNumber() const {
+  return _minefieldNumber;
 }
 
-void MinefieldIdentifier::setSimulationAddress(const SimulationAddress &pX)
-{
-    _simulationAddress = pX;
+void MinefieldIdentifier::setMinefieldNumber(uint16_t pX) {
+  _minefieldNumber = pX;
 }
 
-unsigned short MinefieldIdentifier::getMinefieldNumber() const
-{
-    return _minefieldNumber;
+void MinefieldIdentifier::marshal(DataStream& dataStream) const {
+  _simulationAddress.marshal(dataStream);
+  dataStream << _minefieldNumber;
 }
 
-void MinefieldIdentifier::setMinefieldNumber(unsigned short pX)
-{
-    _minefieldNumber = pX;
+void MinefieldIdentifier::unmarshal(DataStream& dataStream) {
+  _simulationAddress.unmarshal(dataStream);
+  dataStream >> _minefieldNumber;
 }
 
-void MinefieldIdentifier::marshal(DataStream& dataStream) const
-{
-    _simulationAddress.marshal(dataStream);
-    dataStream << _minefieldNumber;
+bool MinefieldIdentifier::operator==(const MinefieldIdentifier& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_simulationAddress == rhs._simulationAddress)) ivarsEqual = false;
+  if (!(_minefieldNumber == rhs._minefieldNumber)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void MinefieldIdentifier::unmarshal(DataStream& dataStream)
-{
-    _simulationAddress.unmarshal(dataStream);
-    dataStream >> _minefieldNumber;
-}
+int MinefieldIdentifier::getMarshalledSize() const {
+  int marshalSize = 0;
 
-
-bool MinefieldIdentifier::operator ==(const MinefieldIdentifier& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_simulationAddress == rhs._simulationAddress) ) ivarsEqual = false;
-     if( ! (_minefieldNumber == rhs._minefieldNumber) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int MinefieldIdentifier::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + _simulationAddress.getMarshalledSize();  // _simulationAddress
-   marshalSize = marshalSize + 2;  // _minefieldNumber
-    return marshalSize;
+  marshalSize = marshalSize +
+                _simulationAddress.getMarshalledSize();  // _simulationAddress
+  marshalSize = marshalSize + 2;                         // _minefieldNumber
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -87,7 +72,7 @@ int MinefieldIdentifier::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

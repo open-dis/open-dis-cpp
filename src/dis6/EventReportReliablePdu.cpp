@@ -1,187 +1,161 @@
-#include <dis6/EventReportReliablePdu.h>
+#include "dis6/EventReportReliablePdu.h"
 
 using namespace DIS;
 
-
-EventReportReliablePdu::EventReportReliablePdu() : SimulationManagementWithReliabilityFamilyPdu(),
-   _eventType(0), 
-   _pad1(0), 
-   _numberOfFixedDatumRecords(0), 
-   _numberOfVariableDatumRecords(0)
-{
-    setPduType( 61 );
+EventReportReliablePdu::EventReportReliablePdu()
+    : SimulationManagementWithReliabilityFamilyPdu(),
+      _eventType(0),
+      _pad1(0),
+      _numberOfFixedDatumRecords(0),
+      _numberOfVariableDatumRecords(0) {
+  setPduType(61);
 }
 
-EventReportReliablePdu::~EventReportReliablePdu()
-{
-    _fixedDatumRecords.clear();
-    _variableDatumRecords.clear();
+EventReportReliablePdu::~EventReportReliablePdu() {
+  _fixedDatumRecords.clear();
+  _variableDatumRecords.clear();
 }
 
-unsigned short EventReportReliablePdu::getEventType() const
-{
-    return _eventType;
+uint16_t EventReportReliablePdu::getEventType() const {
+  return _eventType;
 }
 
-void EventReportReliablePdu::setEventType(unsigned short pX)
-{
-    _eventType = pX;
+void EventReportReliablePdu::setEventType(uint16_t pX) {
+  _eventType = pX;
 }
 
-unsigned int EventReportReliablePdu::getPad1() const
-{
-    return _pad1;
+uint32_t EventReportReliablePdu::getPad1() const { return _pad1; }
+
+void EventReportReliablePdu::setPad1(uint32_t pX) { _pad1 = pX; }
+
+uint32_t EventReportReliablePdu::getNumberOfFixedDatumRecords() const {
+  return _fixedDatumRecords.size();
 }
 
-void EventReportReliablePdu::setPad1(unsigned int pX)
-{
-    _pad1 = pX;
+uint32_t EventReportReliablePdu::getNumberOfVariableDatumRecords() const {
+  return _variableDatumRecords.size();
 }
 
-unsigned int EventReportReliablePdu::getNumberOfFixedDatumRecords() const
-{
-   return _fixedDatumRecords.size();
+std::vector<FixedDatum>& EventReportReliablePdu::getFixedDatumRecords() {
+  return _fixedDatumRecords;
 }
 
-unsigned int EventReportReliablePdu::getNumberOfVariableDatumRecords() const
-{
-   return _variableDatumRecords.size();
+const std::vector<FixedDatum>& EventReportReliablePdu::getFixedDatumRecords()
+    const {
+  return _fixedDatumRecords;
 }
 
-std::vector<FixedDatum>& EventReportReliablePdu::getFixedDatumRecords() 
-{
-    return _fixedDatumRecords;
+void EventReportReliablePdu::setFixedDatumRecords(
+    const std::vector<FixedDatum>& pX) {
+  _fixedDatumRecords = pX;
 }
 
-const std::vector<FixedDatum>& EventReportReliablePdu::getFixedDatumRecords() const
-{
-    return _fixedDatumRecords;
+std::vector<VariableDatum>& EventReportReliablePdu::getVariableDatumRecords() {
+  return _variableDatumRecords;
 }
 
-void EventReportReliablePdu::setFixedDatumRecords(const std::vector<FixedDatum>& pX)
-{
-     _fixedDatumRecords = pX;
+const std::vector<VariableDatum>&
+EventReportReliablePdu::getVariableDatumRecords() const {
+  return _variableDatumRecords;
 }
 
-std::vector<VariableDatum>& EventReportReliablePdu::getVariableDatumRecords() 
-{
-    return _variableDatumRecords;
+void EventReportReliablePdu::setVariableDatumRecords(
+    const std::vector<VariableDatum>& pX) {
+  _variableDatumRecords = pX;
 }
 
-const std::vector<VariableDatum>& EventReportReliablePdu::getVariableDatumRecords() const
-{
-    return _variableDatumRecords;
+void EventReportReliablePdu::marshal(DataStream& dataStream) const {
+  SimulationManagementWithReliabilityFamilyPdu::marshal(
+      dataStream);  // Marshal information in superclass first
+  dataStream << _eventType;
+  dataStream << _pad1;
+  dataStream << (uint32_t)_fixedDatumRecords.size();
+  dataStream << (uint32_t)_variableDatumRecords.size();
+
+  for (size_t idx = 0; idx < _fixedDatumRecords.size(); idx++) {
+    FixedDatum x = _fixedDatumRecords[idx];
+    x.marshal(dataStream);
+  }
+
+  for (size_t idx = 0; idx < _variableDatumRecords.size(); idx++) {
+    VariableDatum x = _variableDatumRecords[idx];
+    x.marshal(dataStream);
+  }
 }
 
-void EventReportReliablePdu::setVariableDatumRecords(const std::vector<VariableDatum>& pX)
-{
-     _variableDatumRecords = pX;
+void EventReportReliablePdu::unmarshal(DataStream& dataStream) {
+  SimulationManagementWithReliabilityFamilyPdu::unmarshal(
+      dataStream);  // unmarshal information in superclass first
+  dataStream >> _eventType;
+  dataStream >> _pad1;
+  dataStream >> _numberOfFixedDatumRecords;
+  dataStream >> _numberOfVariableDatumRecords;
+
+  _fixedDatumRecords.clear();
+  for (size_t idx = 0; idx < _numberOfFixedDatumRecords; idx++) {
+    FixedDatum x;
+    x.unmarshal(dataStream);
+    _fixedDatumRecords.push_back(x);
+  }
+
+  _variableDatumRecords.clear();
+  for (size_t idx = 0; idx < _numberOfVariableDatumRecords; idx++) {
+    VariableDatum x;
+    x.unmarshal(dataStream);
+    _variableDatumRecords.push_back(x);
+  }
 }
 
-void EventReportReliablePdu::marshal(DataStream& dataStream) const
-{
-    SimulationManagementWithReliabilityFamilyPdu::marshal(dataStream); // Marshal information in superclass first
-    dataStream << _eventType;
-    dataStream << _pad1;
-    dataStream << ( unsigned int )_fixedDatumRecords.size();
-    dataStream << ( unsigned int )_variableDatumRecords.size();
+bool EventReportReliablePdu::operator==(
+    const EventReportReliablePdu& rhs) const {
+  bool ivarsEqual = true;
 
-     for(size_t idx = 0; idx < _fixedDatumRecords.size(); idx++)
-     {
-        FixedDatum x = _fixedDatumRecords[idx];
-        x.marshal(dataStream);
-     }
+  ivarsEqual = SimulationManagementWithReliabilityFamilyPdu::operator==(rhs);
 
+  if (!(_eventType == rhs._eventType)) ivarsEqual = false;
+  if (!(_pad1 == rhs._pad1)) ivarsEqual = false;
 
-     for(size_t idx = 0; idx < _variableDatumRecords.size(); idx++)
-     {
-        VariableDatum x = _variableDatumRecords[idx];
-        x.marshal(dataStream);
-     }
+  for (size_t idx = 0; idx < _fixedDatumRecords.size(); idx++) {
+    if (!(_fixedDatumRecords[idx] == rhs._fixedDatumRecords[idx]))
+      ivarsEqual = false;
+  }
 
+  for (size_t idx = 0; idx < _variableDatumRecords.size(); idx++) {
+    if (!(_variableDatumRecords[idx] == rhs._variableDatumRecords[idx]))
+      ivarsEqual = false;
+  }
+
+  return ivarsEqual;
 }
 
-void EventReportReliablePdu::unmarshal(DataStream& dataStream)
-{
-    SimulationManagementWithReliabilityFamilyPdu::unmarshal(dataStream); // unmarshal information in superclass first
-    dataStream >> _eventType;
-    dataStream >> _pad1;
-    dataStream >> _numberOfFixedDatumRecords;
-    dataStream >> _numberOfVariableDatumRecords;
+int EventReportReliablePdu::getMarshalledSize() const {
+  int marshalSize = 0;
 
-     _fixedDatumRecords.clear();
-     for(size_t idx = 0; idx < _numberOfFixedDatumRecords; idx++)
-     {
-        FixedDatum x;
-        x.unmarshal(dataStream);
-        _fixedDatumRecords.push_back(x);
-     }
+  marshalSize =
+      SimulationManagementWithReliabilityFamilyPdu::getMarshalledSize();
+  marshalSize = marshalSize + 2;  // _eventType
+  marshalSize = marshalSize + 4;  // _pad1
+  marshalSize = marshalSize + 4;  // _numberOfFixedDatumRecords
+  marshalSize = marshalSize + 4;  // _numberOfVariableDatumRecords
 
-     _variableDatumRecords.clear();
-     for(size_t idx = 0; idx < _numberOfVariableDatumRecords; idx++)
-     {
-        VariableDatum x;
-        x.unmarshal(dataStream);
-        _variableDatumRecords.push_back(x);
-     }
-}
+  for (uint64_t idx = 0; idx < _fixedDatumRecords.size(); idx++) {
+    FixedDatum listElement = _fixedDatumRecords[idx];
+    marshalSize = marshalSize + listElement.getMarshalledSize();
+  }
 
+  for (uint64_t idx = 0; idx < _variableDatumRecords.size(); idx++) {
+    VariableDatum listElement = _variableDatumRecords[idx];
+    marshalSize = marshalSize + listElement.getMarshalledSize();
+  }
 
-bool EventReportReliablePdu::operator ==(const EventReportReliablePdu& rhs) const
- {
-     bool ivarsEqual = true;
-
-     ivarsEqual = SimulationManagementWithReliabilityFamilyPdu::operator==(rhs);
-
-     if( ! (_eventType == rhs._eventType) ) ivarsEqual = false;
-     if( ! (_pad1 == rhs._pad1) ) ivarsEqual = false;
-
-     for(size_t idx = 0; idx < _fixedDatumRecords.size(); idx++)
-     {
-        if( ! ( _fixedDatumRecords[idx] == rhs._fixedDatumRecords[idx]) ) ivarsEqual = false;
-     }
-
-
-     for(size_t idx = 0; idx < _variableDatumRecords.size(); idx++)
-     {
-        if( ! ( _variableDatumRecords[idx] == rhs._variableDatumRecords[idx]) ) ivarsEqual = false;
-     }
-
-
-    return ivarsEqual;
- }
-
-int EventReportReliablePdu::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = SimulationManagementWithReliabilityFamilyPdu::getMarshalledSize();
-   marshalSize = marshalSize + 2;  // _eventType
-   marshalSize = marshalSize + 4;  // _pad1
-   marshalSize = marshalSize + 4;  // _numberOfFixedDatumRecords
-   marshalSize = marshalSize + 4;  // _numberOfVariableDatumRecords
-
-   for(unsigned long long idx=0; idx < _fixedDatumRecords.size(); idx++)
-   {
-        FixedDatum listElement = _fixedDatumRecords[idx];
-        marshalSize = marshalSize + listElement.getMarshalledSize();
-    }
-
-
-   for(unsigned long long idx=0; idx < _variableDatumRecords.size(); idx++)
-   {
-        VariableDatum listElement = _variableDatumRecords[idx];
-        marshalSize = marshalSize + listElement.getMarshalledSize();
-    }
-
-    return marshalSize;
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -194,7 +168,7 @@ int EventReportReliablePdu::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

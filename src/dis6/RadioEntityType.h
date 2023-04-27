@@ -1,75 +1,71 @@
 #pragma once
 
-#include <dis6/utils/DataStream.h>
-#include <dis6/opendis6_export.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
-
-namespace DIS
-{
+namespace DIS {
 // Section 5.2.25. Identifies the type of radio
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT RadioEntityType
-{
-protected:
+class OPENDIS6_EXPORT RadioEntityType {
+ protected:
   /** Kind of entity */
-  unsigned char _entityKind; 
+  uint8_t _entityKind;
 
   /** Domain of entity (air, surface, subsurface, space, etc) */
-  unsigned char _domain; 
+  uint8_t _domain;
 
   /** country to which the design of the entity is attributed */
-  unsigned short _country; 
+  uint16_t _country;
 
   /** category of entity */
-  unsigned char _category; 
+  uint8_t _category;
 
   /** specific info based on subcategory field */
-  unsigned char _nomenclatureVersion; 
+  uint8_t _nomenclatureVersion;
 
-  unsigned short _nomenclature; 
-
+  uint16_t _nomenclature;
 
  public:
-    RadioEntityType();
-    virtual ~RadioEntityType();
+  RadioEntityType();
+  virtual ~RadioEntityType();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getEntityKind() const; 
-    void setEntityKind(unsigned char pX); 
+  uint8_t getEntityKind() const;
+  void setEntityKind(uint8_t pX);
 
-    unsigned char getDomain() const; 
-    void setDomain(unsigned char pX); 
+  uint8_t getDomain() const;
+  void setDomain(uint8_t pX);
 
-    unsigned short getCountry() const; 
-    void setCountry(unsigned short pX); 
+  uint16_t getCountry() const;
+  void setCountry(uint16_t pX);
 
-    unsigned char getCategory() const; 
-    void setCategory(unsigned char pX); 
+  uint8_t getCategory() const;
+  void setCategory(uint8_t pX);
 
-    unsigned char getNomenclatureVersion() const; 
-    void setNomenclatureVersion(unsigned char pX); 
+  uint8_t getNomenclatureVersion() const;
+  void setNomenclatureVersion(uint8_t pX);
 
-    unsigned short getNomenclature() const; 
-    void setNomenclature(unsigned short pX); 
+  uint16_t getNomenclature() const;
+  void setNomenclature(uint16_t pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const RadioEntityType& rhs) const;
+  bool operator==(const RadioEntityType& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -82,7 +78,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

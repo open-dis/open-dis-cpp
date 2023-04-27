@@ -1,78 +1,79 @@
 #pragma once
 
-#include <dis7/EntityType.h>
-#include <dis7/utils/DataStream.h>
-#include <dis7/opendis7_export.h>
+#include "dis7/EntityType.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
+namespace DIS {
+// indicate weapons (munitions) previously communicated via the Munition record.
+// Section 6.2.61
 
-namespace DIS
-{
-// indicate weapons (munitions) previously communicated via the Munition record. Section 6.2.61 
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT MunitionReload
-{
-protected:
-  /**  This field shall identify the entity type of the munition. See section 6.2.30. */
-  EntityType _munitionType; 
+class OPENDIS7_EXPORT MunitionReload {
+ protected:
+  /**  This field shall identify the entity type of the munition. See
+   * section 6.2.30. */
+  EntityType _munitionType;
 
   /** the station or launcher to which the munition is assigned. See Annex I */
-  unsigned int _station; 
+  uint32_t _station;
 
-  /** the standard quantity of this munition type normally loaded at this station/launcher if a station/launcher is specified. */
-  unsigned short _standardQuantity; 
+  /** the standard quantity of this munition type normally loaded at this
+   * station/launcher if a station/launcher is specified. */
+  uint16_t _standardQuantity;
 
-  /** the maximum quantity of this munition type that this station/launcher is capable of holding when a station/launcher is specified  */
-  unsigned short _maximumQuantity; 
+  /** the maximum quantity of this munition type that this station/launcher is
+   * capable of holding when a station/launcher is specified  */
+  uint16_t _maximumQuantity;
 
   /** the station name within the host at which the part entity is located. */
-  unsigned short _stationName; 
+  uint16_t _stationName;
 
-  /** the number of the particular wing station, cargo hold etc., at which the part is attached. */
-  unsigned short _stationNumber; 
-
+  /** the number of the particular wing station, cargo hold etc., at which the
+   * part is attached. */
+  uint16_t _stationNumber;
 
  public:
-    MunitionReload();
-    virtual ~MunitionReload();
+  MunitionReload();
+  virtual ~MunitionReload();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EntityType& getMunitionType(); 
-    const EntityType&  getMunitionType() const; 
-    void setMunitionType(const EntityType    &pX);
+  EntityType& getMunitionType();
+  const EntityType& getMunitionType() const;
+  void setMunitionType(const EntityType& pX);
 
-    unsigned int getStation() const; 
-    void setStation(unsigned int pX); 
+  uint32_t getStation() const;
+  void setStation(uint32_t pX);
 
-    unsigned short getStandardQuantity() const; 
-    void setStandardQuantity(unsigned short pX); 
+  uint16_t getStandardQuantity() const;
+  void setStandardQuantity(uint16_t pX);
 
-    unsigned short getMaximumQuantity() const; 
-    void setMaximumQuantity(unsigned short pX); 
+  uint16_t getMaximumQuantity() const;
+  void setMaximumQuantity(uint16_t pX);
 
-    unsigned short getStationName() const; 
-    void setStationName(unsigned short pX); 
+  uint16_t getStationName() const;
+  void setStationName(uint16_t pX);
 
-    unsigned short getStationNumber() const; 
-    void setStationNumber(unsigned short pX); 
+  uint16_t getStationNumber() const;
+  void setStationNumber(uint16_t pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const MunitionReload& rhs) const;
+  bool operator==(const MunitionReload& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -85,7 +86,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

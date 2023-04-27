@@ -1,52 +1,49 @@
 #pragma once
 
-#include <dis6/utils/DataStream.h>
-#include <dis6/opendis6_export.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
+namespace DIS {
+// Section 5.2.8. Time measurements that exceed one hour. Hours is the number of
+// hours since January 1, 1970, UTC
 
-namespace DIS
-{
-// Section 5.2.8. Time measurements that exceed one hour. Hours is the number of           hours since January 1, 1970, UTC
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT ClockTime
-{
-protected:
+class OPENDIS6_EXPORT ClockTime {
+ protected:
   /** Hours in UTC */
-  int _hour; 
+  int _hour;
 
   /** Time past the hour */
-  unsigned int _timePastHour; 
-
+  uint32_t _timePastHour;
 
  public:
-    ClockTime();
-    virtual ~ClockTime();
+  ClockTime();
+  virtual ~ClockTime();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    int getHour() const; 
-    void setHour(int pX); 
+  int getHour() const;
+  void setHour(int pX);
 
-    unsigned int getTimePastHour() const; 
-    void setTimePastHour(unsigned int pX); 
+  uint32_t getTimePastHour() const;
+  void setTimePastHour(uint32_t pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const ClockTime& rhs) const;
+  bool operator==(const ClockTime& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -59,7 +56,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

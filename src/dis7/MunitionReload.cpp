@@ -1,140 +1,108 @@
-#include <dis7/MunitionReload.h>
+#include "dis7/MunitionReload.h"
 
 using namespace DIS;
 
+MunitionReload::MunitionReload()
+    : _munitionType(),
+      _station(0),
+      _standardQuantity(0),
+      _maximumQuantity(0),
+      _stationName(0),
+      _stationNumber(0) {}
 
-MunitionReload::MunitionReload():
-   _munitionType(), 
-   _station(0), 
-   _standardQuantity(0), 
-   _maximumQuantity(0), 
-   _stationName(0), 
-   _stationNumber(0)
-{
+MunitionReload::~MunitionReload() {}
+
+EntityType& MunitionReload::getMunitionType() { return _munitionType; }
+
+const EntityType& MunitionReload::getMunitionType() const {
+  return _munitionType;
 }
 
-MunitionReload::~MunitionReload()
-{
+void MunitionReload::setMunitionType(const EntityType& pX) {
+  _munitionType = pX;
 }
 
-EntityType& MunitionReload::getMunitionType() 
-{
-    return _munitionType;
+uint32_t MunitionReload::getStation() const { return _station; }
+
+void MunitionReload::setStation(uint32_t pX) { _station = pX; }
+
+uint16_t MunitionReload::getStandardQuantity() const {
+  return _standardQuantity;
 }
 
-const EntityType& MunitionReload::getMunitionType() const
-{
-    return _munitionType;
+void MunitionReload::setStandardQuantity(uint16_t pX) {
+  _standardQuantity = pX;
 }
 
-void MunitionReload::setMunitionType(const EntityType &pX)
-{
-    _munitionType = pX;
+uint16_t MunitionReload::getMaximumQuantity() const {
+  return _maximumQuantity;
 }
 
-unsigned int MunitionReload::getStation() const
-{
-    return _station;
+void MunitionReload::setMaximumQuantity(uint16_t pX) {
+  _maximumQuantity = pX;
 }
 
-void MunitionReload::setStation(unsigned int pX)
-{
-    _station = pX;
+uint16_t MunitionReload::getStationName() const { return _stationName; }
+
+void MunitionReload::setStationName(uint16_t pX) { _stationName = pX; }
+
+uint16_t MunitionReload::getStationNumber() const {
+  return _stationNumber;
 }
 
-unsigned short MunitionReload::getStandardQuantity() const
-{
-    return _standardQuantity;
+void MunitionReload::setStationNumber(uint16_t pX) {
+  _stationNumber = pX;
 }
 
-void MunitionReload::setStandardQuantity(unsigned short pX)
-{
-    _standardQuantity = pX;
+void MunitionReload::marshal(DataStream& dataStream) const {
+  _munitionType.marshal(dataStream);
+  dataStream << _station;
+  dataStream << _standardQuantity;
+  dataStream << _maximumQuantity;
+  dataStream << _stationName;
+  dataStream << _stationNumber;
 }
 
-unsigned short MunitionReload::getMaximumQuantity() const
-{
-    return _maximumQuantity;
+void MunitionReload::unmarshal(DataStream& dataStream) {
+  _munitionType.unmarshal(dataStream);
+  dataStream >> _station;
+  dataStream >> _standardQuantity;
+  dataStream >> _maximumQuantity;
+  dataStream >> _stationName;
+  dataStream >> _stationNumber;
 }
 
-void MunitionReload::setMaximumQuantity(unsigned short pX)
-{
-    _maximumQuantity = pX;
+bool MunitionReload::operator==(const MunitionReload& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_munitionType == rhs._munitionType)) ivarsEqual = false;
+  if (!(_station == rhs._station)) ivarsEqual = false;
+  if (!(_standardQuantity == rhs._standardQuantity)) ivarsEqual = false;
+  if (!(_maximumQuantity == rhs._maximumQuantity)) ivarsEqual = false;
+  if (!(_stationName == rhs._stationName)) ivarsEqual = false;
+  if (!(_stationNumber == rhs._stationNumber)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-unsigned short MunitionReload::getStationName() const
-{
-    return _stationName;
-}
+int MunitionReload::getMarshalledSize() const {
+  int marshalSize = 0;
 
-void MunitionReload::setStationName(unsigned short pX)
-{
-    _stationName = pX;
-}
-
-unsigned short MunitionReload::getStationNumber() const
-{
-    return _stationNumber;
-}
-
-void MunitionReload::setStationNumber(unsigned short pX)
-{
-    _stationNumber = pX;
-}
-
-void MunitionReload::marshal(DataStream& dataStream) const
-{
-    _munitionType.marshal(dataStream);
-    dataStream << _station;
-    dataStream << _standardQuantity;
-    dataStream << _maximumQuantity;
-    dataStream << _stationName;
-    dataStream << _stationNumber;
-}
-
-void MunitionReload::unmarshal(DataStream& dataStream)
-{
-    _munitionType.unmarshal(dataStream);
-    dataStream >> _station;
-    dataStream >> _standardQuantity;
-    dataStream >> _maximumQuantity;
-    dataStream >> _stationName;
-    dataStream >> _stationNumber;
-}
-
-
-bool MunitionReload::operator ==(const MunitionReload& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_munitionType == rhs._munitionType) ) ivarsEqual = false;
-     if( ! (_station == rhs._station) ) ivarsEqual = false;
-     if( ! (_standardQuantity == rhs._standardQuantity) ) ivarsEqual = false;
-     if( ! (_maximumQuantity == rhs._maximumQuantity) ) ivarsEqual = false;
-     if( ! (_stationName == rhs._stationName) ) ivarsEqual = false;
-     if( ! (_stationNumber == rhs._stationNumber) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int MunitionReload::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + _munitionType.getMarshalledSize();  // _munitionType
-   marshalSize = marshalSize + 4;  // _station
-   marshalSize = marshalSize + 2;  // _standardQuantity
-   marshalSize = marshalSize + 2;  // _maximumQuantity
-   marshalSize = marshalSize + 2;  // _stationName
-   marshalSize = marshalSize + 2;  // _stationNumber
-    return marshalSize;
+  marshalSize =
+      marshalSize + _munitionType.getMarshalledSize();  // _munitionType
+  marshalSize = marshalSize + 4;                        // _station
+  marshalSize = marshalSize + 2;                        // _standardQuantity
+  marshalSize = marshalSize + 2;                        // _maximumQuantity
+  marshalSize = marshalSize + 2;                        // _stationName
+  marshalSize = marshalSize + 2;                        // _stationNumber
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -147,7 +115,7 @@ int MunitionReload::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

@@ -1,112 +1,80 @@
-#include <dis7/EntityMarking.h>
-
 #include <cstring>
+
+#include "dis7/EntityMarking.h"
 
 using namespace DIS;
 
-
-EntityMarking::EntityMarking():
-   _characterSet(0)
-{
-     // Initialize fixed length array
-     for(int lengthcharacters= 0; lengthcharacters < 11; lengthcharacters++)
-     {
-         _characters[lengthcharacters] = 0;
-     }
-
+EntityMarking::EntityMarking() : _characterSet(0) {
+  // Initialize fixed length array
+  for (int lengthcharacters = 0; lengthcharacters < 11; lengthcharacters++) {
+    _characters[lengthcharacters] = 0;
+  }
 }
 
-EntityMarking::~EntityMarking()
-{
+EntityMarking::~EntityMarking() {}
+
+uint8_t EntityMarking::getCharacterSet() const { return _characterSet; }
+
+void EntityMarking::setCharacterSet(uint8_t pX) { _characterSet = pX; }
+
+char* EntityMarking::getCharacters() { return _characters; }
+
+const char* EntityMarking::getCharacters() const { return _characters; }
+
+void EntityMarking::setCharacters(const char* x) {
+  for (int i = 0; i < 11; i++) {
+    _characters[i] = x[i];
+  }
 }
 
-unsigned char EntityMarking::getCharacterSet() const
-{
-    return _characterSet;
+// An alternate method to set the value if this could be a string. This is not
+// strictly comnpliant with the DIS standard.
+void EntityMarking::setByStringCharacters(const char* x) {
+  std::strncpy(_characters, x, 11 - 1);
+  _characters[11 - 1] = '\0';
 }
 
-void EntityMarking::setCharacterSet(unsigned char pX)
-{
-    _characterSet = pX;
+void EntityMarking::marshal(DataStream& dataStream) const {
+  dataStream << _characterSet;
+
+  for (size_t idx = 0; idx < 11; idx++) {
+    dataStream << _characters[idx];
+  }
 }
 
-char* EntityMarking::getCharacters() 
-{
-    return _characters;
+void EntityMarking::unmarshal(DataStream& dataStream) {
+  dataStream >> _characterSet;
+
+  for (size_t idx = 0; idx < 11; idx++) {
+    dataStream >> _characters[idx];
+  }
 }
 
-const char* EntityMarking::getCharacters() const
-{
-    return _characters;
+bool EntityMarking::operator==(const EntityMarking& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_characterSet == rhs._characterSet)) ivarsEqual = false;
+
+  for (uint8_t idx = 0; idx < 11; idx++) {
+    if (!(_characters[idx] == rhs._characters[idx])) ivarsEqual = false;
+  }
+
+  return ivarsEqual;
 }
 
-void EntityMarking::setCharacters(const char* x)
-{
-   for(int i = 0; i < 11; i++)
-   {
-        _characters[i] = x[i];
-   }
-}
+int EntityMarking::getMarshalledSize() const {
+  int marshalSize = 0;
 
-// An alternate method to set the value if this could be a string. This is not strictly comnpliant with the DIS standard.
-void EntityMarking::setByStringCharacters(const char* x)
-{
-   std::strncpy(_characters, x, 11-1);
-   _characters[11 -1] = '\0';
-}
-
-void EntityMarking::marshal(DataStream& dataStream) const
-{
-    dataStream << _characterSet;
-
-     for(size_t idx = 0; idx < 11; idx++)
-     {
-        dataStream << _characters[idx];
-     }
-
-}
-
-void EntityMarking::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _characterSet;
-
-     for(size_t idx = 0; idx < 11; idx++)
-     {
-        dataStream >> _characters[idx];
-     }
-
-}
-
-
-bool EntityMarking::operator ==(const EntityMarking& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_characterSet == rhs._characterSet) ) ivarsEqual = false;
-
-     for(unsigned char idx = 0; idx < 11; idx++)
-     {
-          if(!(_characters[idx] == rhs._characters[idx]) ) ivarsEqual = false;
-     }
-
-
-    return ivarsEqual;
- }
-
-int EntityMarking::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 1;  // _characterSet
-   marshalSize = marshalSize + 11 * 1;  // _characters
-    return marshalSize;
+  marshalSize = marshalSize + 1;       // _characterSet
+  marshalSize = marshalSize + 11 * 1;  // _characters
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -119,7 +87,7 @@ int EntityMarking::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

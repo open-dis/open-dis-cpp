@@ -1,88 +1,64 @@
-#include <dis6/SixByteChunk.h>
+#include "dis6/SixByteChunk.h"
 
 using namespace DIS;
 
-
-SixByteChunk::SixByteChunk()
-{
-     // Initialize fixed length array
-     for(int lengthotherParameters= 0; lengthotherParameters < 6; lengthotherParameters++)
-     {
-         _otherParameters[lengthotherParameters] = 0;
-     }
-
+SixByteChunk::SixByteChunk() {
+  // Initialize fixed length array
+  for (int lengthotherParameters = 0; lengthotherParameters < 6;
+       lengthotherParameters++) {
+    _otherParameters[lengthotherParameters] = 0;
+  }
 }
 
-SixByteChunk::~SixByteChunk()
-{
+SixByteChunk::~SixByteChunk() {}
+
+char* SixByteChunk::getOtherParameters() { return _otherParameters; }
+
+const char* SixByteChunk::getOtherParameters() const {
+  return _otherParameters;
 }
 
-char* SixByteChunk::getOtherParameters() 
-{
-    return _otherParameters;
+void SixByteChunk::setOtherParameters(const char* x) {
+  for (int i = 0; i < 6; i++) {
+    _otherParameters[i] = x[i];
+  }
 }
 
-const char* SixByteChunk::getOtherParameters() const
-{
-    return _otherParameters;
+void SixByteChunk::marshal(DataStream& dataStream) const {
+  for (size_t idx = 0; idx < 6; idx++) {
+    dataStream << _otherParameters[idx];
+  }
 }
 
-void SixByteChunk::setOtherParameters(const char* x)
-{
-   for(int i = 0; i < 6; i++)
-   {
-        _otherParameters[i] = x[i];
-   }
+void SixByteChunk::unmarshal(DataStream& dataStream) {
+  for (size_t idx = 0; idx < 6; idx++) {
+    dataStream >> _otherParameters[idx];
+  }
 }
 
-void SixByteChunk::marshal(DataStream& dataStream) const
-{
+bool SixByteChunk::operator==(const SixByteChunk& rhs) const {
+  bool ivarsEqual = true;
 
-     for(size_t idx = 0; idx < 6; idx++)
-     {
-        dataStream << _otherParameters[idx];
-     }
+  for (uint8_t idx = 0; idx < 6; idx++) {
+    if (!(_otherParameters[idx] == rhs._otherParameters[idx]))
+      ivarsEqual = false;
+  }
 
+  return ivarsEqual;
 }
 
-void SixByteChunk::unmarshal(DataStream& dataStream)
-{
+int SixByteChunk::getMarshalledSize() const {
+  int marshalSize = 0;
 
-     for(size_t idx = 0; idx < 6; idx++)
-     {
-        dataStream >> _otherParameters[idx];
-     }
-
-}
-
-
-bool SixByteChunk::operator ==(const SixByteChunk& rhs) const
- {
-     bool ivarsEqual = true;
-
-
-     for(unsigned char idx = 0; idx < 6; idx++)
-     {
-          if(!(_otherParameters[idx] == rhs._otherParameters[idx]) ) ivarsEqual = false;
-     }
-
-
-    return ivarsEqual;
- }
-
-int SixByteChunk::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 6 * 1;  // _otherParameters
-    return marshalSize;
+  marshalSize = marshalSize + 6 * 1;  // _otherParameters
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -95,7 +71,7 @@ int SixByteChunk::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

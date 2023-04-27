@@ -1,74 +1,76 @@
 #pragma once
 
-#include <dis7/utils/DataStream.h>
-#include <dis7/opendis7_export.h>
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
+namespace DIS {
+//  articulated parts for movable parts and a combination of moveable/attached
+//  parts of an entity. Section 6.2.94.2
 
-namespace DIS
-{
-//  articulated parts for movable parts and a combination of moveable/attached parts of an entity. Section 6.2.94.2
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT ArticulatedParts
-{
-protected:
-  /** the identification of the Variable Parameter record. Enumeration from EBV */
-  unsigned char _recordType; 
+class OPENDIS7_EXPORT ArticulatedParts {
+ protected:
+  /** the identification of the Variable Parameter record. Enumeration from EBV
+   */
+  uint8_t _recordType;
 
-  /** indicate the change of any parameter for any articulated part. Starts at zero, incremented for each change  */
-  unsigned char _changeIndicator; 
+  /** indicate the change of any parameter for any articulated part. Starts at
+   * zero, incremented for each change  */
+  uint8_t _changeIndicator;
 
-  /** the identification of the articulated part to which this articulation parameter is attached. This field shall be specified by a 16-bit unsigned integer. This field shall contain the value zero if the articulated part is attached directly to the entity. */
-  unsigned short _partAttachedTo; 
+  /** the identification of the articulated part to which this articulation
+   * parameter is attached. This field shall be specified by a 16-bit unsigned
+   * integer. This field shall contain the value zero if the articulated part is
+   * attached directly to the entity. */
+  uint16_t _partAttachedTo;
 
   /** the type of parameter represented, 32 bit enumeration */
-  unsigned int _parameterType; 
+  uint32_t _parameterType;
 
-  /** This field shall specify the parameter value and shall be specified by a 32-bit
-floating point number.  */
+  /** This field shall specify the parameter value and shall be specified by a
+32-bit floating point number.  */
   float _parameterValue;
 
   /** 32 bits of unused padding */
-  unsigned int _padding;
-
+  uint32_t _padding;
 
  public:
-    ArticulatedParts();
-    virtual ~ArticulatedParts();
+  ArticulatedParts();
+  virtual ~ArticulatedParts();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getRecordType() const; 
-    void setRecordType(unsigned char pX); 
+  uint8_t getRecordType() const;
+  void setRecordType(uint8_t pX);
 
-    unsigned char getChangeIndicator() const; 
-    void setChangeIndicator(unsigned char pX); 
+  uint8_t getChangeIndicator() const;
+  void setChangeIndicator(uint8_t pX);
 
-    unsigned short getPartAttachedTo() const; 
-    void setPartAttachedTo(unsigned short pX); 
+  uint16_t getPartAttachedTo() const;
+  void setPartAttachedTo(uint16_t pX);
 
-    unsigned int getParameterType() const; 
-    void setParameterType(unsigned int pX); 
+  uint32_t getParameterType() const;
+  void setParameterType(uint32_t pX);
 
-    float getParameterValue() const;
-    void setParameterValue(float pX);
+  float getParameterValue() const;
+  void setParameterValue(float pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const ArticulatedParts& rhs) const;
+  bool operator==(const ArticulatedParts& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -81,7 +83,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

@@ -1,81 +1,82 @@
-#include <dis7/IntercomSignalPdu.h>
+#include "dis7/IntercomSignalPdu.h"
 
 using namespace DIS;
 
 IntercomSignalPdu::IntercomSignalPdu()
-    : RadioCommunicationsFamilyPdu(), _entityID(), _communicationsDeviceID(0),
-      _encodingScheme(0), _tdlType(0), _sampleRate(0), _dataLength(0),
+    : RadioCommunicationsFamilyPdu(),
+      _entityID(),
+      _communicationsDeviceID(0),
+      _encodingScheme(0),
+      _tdlType(0),
+      _sampleRate(0),
+      _dataLength(0),
       _samples(0) {
   setPduType(31);
 }
 
 IntercomSignalPdu::~IntercomSignalPdu() { _data.clear(); }
 
-EntityID &IntercomSignalPdu::getEntityID() { return _entityID; }
+EntityID& IntercomSignalPdu::getEntityID() { return _entityID; }
 
-const EntityID &IntercomSignalPdu::getEntityID() const { return _entityID; }
+const EntityID& IntercomSignalPdu::getEntityID() const { return _entityID; }
 
-void IntercomSignalPdu::setEntityID(const EntityID &pX) { _entityID = pX; }
+void IntercomSignalPdu::setEntityID(const EntityID& pX) { _entityID = pX; }
 
-unsigned short IntercomSignalPdu::getCommunicationsDeviceID() const {
+uint16_t IntercomSignalPdu::getCommunicationsDeviceID() const {
   return _communicationsDeviceID;
 }
 
-void IntercomSignalPdu::setCommunicationsDeviceID(unsigned short pX) {
+void IntercomSignalPdu::setCommunicationsDeviceID(uint16_t pX) {
   _communicationsDeviceID = pX;
 }
 
-unsigned short IntercomSignalPdu::getEncodingScheme() const {
+uint16_t IntercomSignalPdu::getEncodingScheme() const {
   return _encodingScheme;
 }
 
-void IntercomSignalPdu::setEncodingScheme(unsigned short pX) {
+void IntercomSignalPdu::setEncodingScheme(uint16_t pX) {
   _encodingScheme = pX;
 }
 
-unsigned short IntercomSignalPdu::getTdlType() const { return _tdlType; }
+uint16_t IntercomSignalPdu::getTdlType() const { return _tdlType; }
 
-void IntercomSignalPdu::setTdlType(unsigned short pX) { _tdlType = pX; }
+void IntercomSignalPdu::setTdlType(uint16_t pX) { _tdlType = pX; }
 
-unsigned int IntercomSignalPdu::getSampleRate() const { return _sampleRate; }
+uint32_t IntercomSignalPdu::getSampleRate() const { return _sampleRate; }
 
-void IntercomSignalPdu::setSampleRate(unsigned int pX) { _sampleRate = pX; }
+void IntercomSignalPdu::setSampleRate(uint32_t pX) { _sampleRate = pX; }
 
-unsigned short IntercomSignalPdu::getDataLength() const { return _data.size(); }
+uint16_t IntercomSignalPdu::getDataLength() const { return _data.size(); }
 
-unsigned short IntercomSignalPdu::getSamples() const { return _samples; }
+uint16_t IntercomSignalPdu::getSamples() const { return _samples; }
 
-void IntercomSignalPdu::setSamples(unsigned short pX) { _samples = pX; }
+void IntercomSignalPdu::setSamples(uint16_t pX) { _samples = pX; }
 
-std::vector<uint8_t> &IntercomSignalPdu::getData() { return _data; }
+std::vector<uint8_t>& IntercomSignalPdu::getData() { return _data; }
 
-const std::vector<uint8_t> &IntercomSignalPdu::getData() const {
-  return _data;
-}
+const std::vector<uint8_t>& IntercomSignalPdu::getData() const { return _data; }
 
-void IntercomSignalPdu::setData(const std::vector<uint8_t> &pX) {
-  _data = pX;
-}
+void IntercomSignalPdu::setData(const std::vector<uint8_t>& pX) { _data = pX; }
 
-void IntercomSignalPdu::marshal(DataStream &dataStream) const {
+void IntercomSignalPdu::marshal(DataStream& dataStream) const {
   RadioCommunicationsFamilyPdu::marshal(
-      dataStream); // Marshal information in superclass first
+      dataStream);  // Marshal information in superclass first
   _entityID.marshal(dataStream);
   dataStream << _communicationsDeviceID;
   dataStream << _encodingScheme;
   dataStream << _tdlType;
   dataStream << _sampleRate;
-  dataStream << (unsigned short)_data.size();
+  dataStream << (uint16_t)_data.size();
   dataStream << _samples;
 
-  for (auto &byte : _data) {
+  for (auto& byte : _data) {
     dataStream << byte;
   }
 }
 
-void IntercomSignalPdu::unmarshal(DataStream &dataStream) {
+void IntercomSignalPdu::unmarshal(DataStream& dataStream) {
   RadioCommunicationsFamilyPdu::unmarshal(
-      dataStream); // unmarshal information in superclass first
+      dataStream);  // unmarshal information in superclass first
   _entityID.unmarshal(dataStream);
   dataStream >> _communicationsDeviceID;
   dataStream >> _encodingScheme;
@@ -92,27 +93,21 @@ void IntercomSignalPdu::unmarshal(DataStream &dataStream) {
   }
 }
 
-bool IntercomSignalPdu::operator==(const IntercomSignalPdu &rhs) const {
+bool IntercomSignalPdu::operator==(const IntercomSignalPdu& rhs) const {
   bool ivarsEqual = true;
 
   ivarsEqual = RadioCommunicationsFamilyPdu::operator==(rhs);
 
-  if (!(_entityID == rhs._entityID))
-    ivarsEqual = false;
+  if (!(_entityID == rhs._entityID)) ivarsEqual = false;
   if (!(_communicationsDeviceID == rhs._communicationsDeviceID))
     ivarsEqual = false;
-  if (!(_encodingScheme == rhs._encodingScheme))
-    ivarsEqual = false;
-  if (!(_tdlType == rhs._tdlType))
-    ivarsEqual = false;
-  if (!(_sampleRate == rhs._sampleRate))
-    ivarsEqual = false;
-  if (!(_samples == rhs._samples))
-    ivarsEqual = false;
+  if (!(_encodingScheme == rhs._encodingScheme)) ivarsEqual = false;
+  if (!(_tdlType == rhs._tdlType)) ivarsEqual = false;
+  if (!(_sampleRate == rhs._sampleRate)) ivarsEqual = false;
+  if (!(_samples == rhs._samples)) ivarsEqual = false;
 
   for (size_t idx = 0; idx < _data.size(); idx++) {
-    if (!(_data[idx] == rhs._data[idx]))
-      ivarsEqual = false;
+    if (!(_data[idx] == rhs._data[idx])) ivarsEqual = false;
   }
 
   return ivarsEqual;
@@ -122,13 +117,13 @@ int IntercomSignalPdu::getMarshalledSize() const {
   int marshalSize = 0;
 
   marshalSize = RadioCommunicationsFamilyPdu::getMarshalledSize();
-  marshalSize += _entityID.getMarshalledSize(); // _entityID
-  marshalSize += 2;                             // _communicationsDeviceID
-  marshalSize += 2;                             // _encodingScheme
-  marshalSize += 2;                             // _tdlType
-  marshalSize += 4;                             // _sampleRate
-  marshalSize += 2;                             // _dataLength
-  marshalSize += 2;                             // _samples
+  marshalSize += _entityID.getMarshalledSize();  // _entityID
+  marshalSize += 2;                              // _communicationsDeviceID
+  marshalSize += 2;                              // _encodingScheme
+  marshalSize += 2;                              // _tdlType
+  marshalSize += 4;                              // _sampleRate
+  marshalSize += 2;                              // _dataLength
+  marshalSize += 2;                              // _samples
   marshalSize += _data.size();
 
   return marshalSize;

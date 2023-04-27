@@ -1,64 +1,60 @@
 #pragma once
 
-#include <dis7/utils/DataStream.h>
-#include <dis7/opendis7_export.h>
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
-
-namespace DIS
-{
+namespace DIS {
 // Incomplete environment record; requires hand coding to fix. Section 6.2.31.1
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT Environment
-{
-protected:
+class OPENDIS7_EXPORT Environment {
+ protected:
   /** type */
-  unsigned int _environmentType; 
+  uint32_t _environmentType;
 
   /** length, in bits, of the record */
-  unsigned short _length; 
+  uint16_t _length;
 
   /** identifies the sequntially numbered record index */
-  unsigned char _index; 
+  uint8_t _index;
 
   /** padding */
-  unsigned char _padding; 
-
+  uint8_t _padding;
 
  public:
-    Environment();
-    virtual ~Environment();
+  Environment();
+  virtual ~Environment();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned int getEnvironmentType() const; 
-    void setEnvironmentType(unsigned int pX); 
+  uint32_t getEnvironmentType() const;
+  void setEnvironmentType(uint32_t pX);
 
-    unsigned short getLength() const; 
-    void setLength(unsigned short pX); 
+  uint16_t getLength() const;
+  void setLength(uint16_t pX);
 
-    unsigned char getIndex() const; 
-    void setIndex(unsigned char pX); 
+  uint8_t getIndex() const;
+  void setIndex(uint8_t pX);
 
-    unsigned char getPadding() const; 
-    void setPadding(unsigned char pX); 
+  uint8_t getPadding() const;
+  void setPadding(uint8_t pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const Environment& rhs) const;
+  bool operator==(const Environment& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -71,7 +67,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

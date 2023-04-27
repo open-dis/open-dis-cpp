@@ -1,67 +1,64 @@
 #pragma once
 
-#include <dis7/FixedDatum.h>
-#include <dis7/VariableDatum.h>
 #include <vector>
-#include <dis7/utils/DataStream.h>
-#include <dis7/opendis7_export.h>
 
+#include "dis7/FixedDatum.h"
+#include "dis7/VariableDatum.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
-namespace DIS
-{
-// List of fixed and variable datum records. Section 6.2.19 
+namespace DIS {
+// List of fixed and variable datum records. Section 6.2.19
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT DatumSpecification
-{
-protected:
+class OPENDIS7_EXPORT DatumSpecification {
+ protected:
   /** Number of fixed datums */
-  unsigned int _numberOfFixedDatums; 
+  uint32_t _numberOfFixedDatums;
 
   /** Number of variable datums */
-  unsigned int _numberOfVariableDatums; 
+  uint32_t _numberOfVariableDatums;
 
   /** variable length list fixed datums */
-  std::vector<FixedDatum> _fixedDatumIDList; 
+  std::vector<FixedDatum> _fixedDatumIDList;
 
   /** variable length list variable datums */
-  std::vector<VariableDatum> _variableDatumIDList; 
-
+  std::vector<VariableDatum> _variableDatumIDList;
 
  public:
-    DatumSpecification();
-    virtual ~DatumSpecification();
+  DatumSpecification();
+  virtual ~DatumSpecification();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned int getNumberOfFixedDatums() const; 
+  uint32_t getNumberOfFixedDatums() const;
 
-    unsigned int getNumberOfVariableDatums() const; 
+  uint32_t getNumberOfVariableDatums() const;
 
-    std::vector<FixedDatum>& getFixedDatumIDList(); 
-    const std::vector<FixedDatum>& getFixedDatumIDList() const; 
-    void setFixedDatumIDList(const std::vector<FixedDatum>&    pX);
+  std::vector<FixedDatum>& getFixedDatumIDList();
+  const std::vector<FixedDatum>& getFixedDatumIDList() const;
+  void setFixedDatumIDList(const std::vector<FixedDatum>& pX);
 
-    std::vector<VariableDatum>& getVariableDatumIDList(); 
-    const std::vector<VariableDatum>& getVariableDatumIDList() const; 
-    void setVariableDatumIDList(const std::vector<VariableDatum>&    pX);
+  std::vector<VariableDatum>& getVariableDatumIDList();
+  const std::vector<VariableDatum>& getVariableDatumIDList() const;
+  void setVariableDatumIDList(const std::vector<VariableDatum>& pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const DatumSpecification& rhs) const;
+  bool operator==(const DatumSpecification& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -74,7 +71,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

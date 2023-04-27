@@ -1,58 +1,54 @@
 #pragma once
 
-#include <dis6/utils/DataStream.h>
-#include <dis6/opendis6_export.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
-
-namespace DIS
-{
+namespace DIS {
 // Shaft RPMs, used in underwater acoustic clacluations.
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT ShaftRPMs
-{
-protected:
+class OPENDIS6_EXPORT ShaftRPMs {
+ protected:
   /** Current shaft RPMs */
-  short _currentShaftRPMs; 
+  int16_t _currentShaftRPMs;
 
   /** ordered shaft rpms */
-  short _orderedShaftRPMs; 
+  int16_t _orderedShaftRPMs;
 
   /** rate of change of shaft RPMs */
-  float _shaftRPMRateOfChange; 
-
+  float _shaftRPMRateOfChange;
 
  public:
-    ShaftRPMs();
-    virtual ~ShaftRPMs();
+  ShaftRPMs();
+  virtual ~ShaftRPMs();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    short getCurrentShaftRPMs() const; 
-    void setCurrentShaftRPMs(short pX); 
+  int16_t getCurrentShaftRPMs() const;
+  void setCurrentShaftRPMs(int16_t pX);
 
-    short getOrderedShaftRPMs() const; 
-    void setOrderedShaftRPMs(short pX); 
+  int16_t getOrderedShaftRPMs() const;
+  void setOrderedShaftRPMs(int16_t pX);
 
-    float getShaftRPMRateOfChange() const; 
-    void setShaftRPMRateOfChange(float pX); 
+  float getShaftRPMRateOfChange() const;
+  void setShaftRPMRateOfChange(float pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const ShaftRPMs& rhs) const;
+  bool operator==(const ShaftRPMs& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -65,7 +61,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

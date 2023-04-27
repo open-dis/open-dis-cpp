@@ -1,54 +1,56 @@
 #pragma once
 
-#include <dis7/SimulationAddress.h>
-#include <dis7/utils/DataStream.h>
-#include <dis7/opendis7_export.h>
+#include "dis7/SimulationAddress.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
+namespace DIS {
+// The unique designation of a simulation when using the 48-bit identifier
+// format shall be specified by the Sim- ulation Identifier record. The reason
+// that the 48-bit format is required in addition to the 32-bit simulation
+// address format that actually identifies a specific simulation is because some
+// 48-bit identifier fields in PDUs may contain either an Object Identifier,
+// such as an Entity ID, or a Simulation Identifier. Section 6.2.80
 
-namespace DIS
-{
-// The unique designation of a simulation when using the 48-bit identifier format shall be specified by the Sim- ulation Identifier record. The reason that the 48-bit format is required in addition to the 32-bit simulation address format that actually identifies a specific simulation is because some 48-bit identifier fields in PDUs may contain either an Object Identifier, such as an Entity ID, or a Simulation Identifier. Section 6.2.80
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT SimulationIdentifier
-{
-protected:
+class OPENDIS7_EXPORT SimulationIdentifier {
+ protected:
   /** Simulation address  */
-  SimulationAddress _simulationAddress; 
+  SimulationAddress _simulationAddress;
 
-  /** This field shall be set to zero as there is no reference number associated with a Simulation Identifier. */
-  unsigned short _referenceNumber; 
-
+  /** This field shall be set to zero as there is no reference number associated
+   * with a Simulation Identifier. */
+  uint16_t _referenceNumber;
 
  public:
-    SimulationIdentifier();
-    virtual ~SimulationIdentifier();
+  SimulationIdentifier();
+  virtual ~SimulationIdentifier();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    SimulationAddress& getSimulationAddress(); 
-    const SimulationAddress&  getSimulationAddress() const; 
-    void setSimulationAddress(const SimulationAddress    &pX);
+  SimulationAddress& getSimulationAddress();
+  const SimulationAddress& getSimulationAddress() const;
+  void setSimulationAddress(const SimulationAddress& pX);
 
-    unsigned short getReferenceNumber() const; 
-    void setReferenceNumber(unsigned short pX); 
+  uint16_t getReferenceNumber() const;
+  void setReferenceNumber(uint16_t pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const SimulationIdentifier& rhs) const;
+  bool operator==(const SimulationIdentifier& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -61,7 +63,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

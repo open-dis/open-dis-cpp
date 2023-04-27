@@ -3,53 +3,57 @@
 using namespace DIS;
 
 SignalPdu::SignalPdu()
-    : RadioCommunicationsFamilyPdu(), _encodingScheme(0), _tdlType(0),
-      _sampleRate(0), _dataLength(0), _samples(0) {
+    : RadioCommunicationsFamilyPdu(),
+      _encodingScheme(0),
+      _tdlType(0),
+      _sampleRate(0),
+      _dataLength(0),
+      _samples(0) {
   setPduType(26);
 }
 
 SignalPdu::~SignalPdu() { _data.clear(); }
 
-unsigned short SignalPdu::getEncodingScheme() const { return _encodingScheme; }
+uint16_t SignalPdu::getEncodingScheme() const { return _encodingScheme; }
 
-void SignalPdu::setEncodingScheme(unsigned short pX) { _encodingScheme = pX; }
+void SignalPdu::setEncodingScheme(uint16_t pX) { _encodingScheme = pX; }
 
-unsigned short SignalPdu::getTdlType() const { return _tdlType; }
+uint16_t SignalPdu::getTdlType() const { return _tdlType; }
 
-void SignalPdu::setTdlType(unsigned short pX) { _tdlType = pX; }
+void SignalPdu::setTdlType(uint16_t pX) { _tdlType = pX; }
 
-unsigned int SignalPdu::getSampleRate() const { return _sampleRate; }
+uint32_t SignalPdu::getSampleRate() const { return _sampleRate; }
 
-void SignalPdu::setSampleRate(unsigned int pX) { _sampleRate = pX; }
+void SignalPdu::setSampleRate(uint32_t pX) { _sampleRate = pX; }
 
-short SignalPdu::getDataLength() const { return _data.size(); }
+int16_t SignalPdu::getDataLength() const { return _data.size(); }
 
-short SignalPdu::getSamples() const { return _samples; }
+int16_t SignalPdu::getSamples() const { return _samples; }
 
-void SignalPdu::setSamples(short pX) { _samples = pX; }
+void SignalPdu::setSamples(int16_t pX) { _samples = pX; }
 
-std::vector<uint8_t> &SignalPdu::getData() { return _data; }
+std::vector<uint8_t>& SignalPdu::getData() { return _data; }
 
-const std::vector<uint8_t> &SignalPdu::getData() const { return _data; }
+const std::vector<uint8_t>& SignalPdu::getData() const { return _data; }
 
-void SignalPdu::setData(const std::vector<uint8_t> &pX) { _data = pX; }
+void SignalPdu::setData(const std::vector<uint8_t>& pX) { _data = pX; }
 
-void SignalPdu::marshal(DataStream &dataStream) const {
+void SignalPdu::marshal(DataStream& dataStream) const {
   RadioCommunicationsFamilyPdu::marshal(
-      dataStream); // Marshal information in superclass first
+      dataStream);  // Marshal information in superclass first
   dataStream << _encodingScheme;
   dataStream << _tdlType;
   dataStream << _sampleRate;
-  dataStream << (short)_data.size();
+  dataStream << (int16_t)_data.size();
   dataStream << _samples;
   for (auto byte : _data) {
     dataStream << byte;
   }
 }
 
-void SignalPdu::unmarshal(DataStream &dataStream) {
+void SignalPdu::unmarshal(DataStream& dataStream) {
   RadioCommunicationsFamilyPdu::unmarshal(
-      dataStream); // unmarshal information in superclass first
+      dataStream);  // unmarshal information in superclass first
   dataStream >> _encodingScheme;
   dataStream >> _tdlType;
   dataStream >> _sampleRate;
@@ -64,7 +68,7 @@ void SignalPdu::unmarshal(DataStream &dataStream) {
   }
 }
 
-bool SignalPdu::operator==(const SignalPdu &rhs) const {
+bool SignalPdu::operator==(const SignalPdu& rhs) const {
   auto ivarsEqual = true;
 
   ivarsEqual = RadioCommunicationsFamilyPdu::operator==(rhs) &&
@@ -79,11 +83,11 @@ int SignalPdu::getMarshalledSize() const {
   auto marshalSize = 0;
 
   marshalSize = RadioCommunicationsFamilyPdu::getMarshalledSize();
-  marshalSize += 2; // _encodingScheme
-  marshalSize += 2; // _tdlType
-  marshalSize += 4; // _sampleRate
-  marshalSize += 2; // _dataLength
-  marshalSize += 2; // _samples
+  marshalSize += 2;  // _encodingScheme
+  marshalSize += 2;  // _tdlType
+  marshalSize += 4;  // _sampleRate
+  marshalSize += 2;  // _dataLength
+  marshalSize += 2;  // _samples
   marshalSize += _data.size();
 
   return marshalSize;

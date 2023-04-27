@@ -1,95 +1,66 @@
-#include <dis7/OwnershipStatus.h>
+#include "dis7/OwnershipStatus.h"
 
 using namespace DIS;
 
+OwnershipStatus::OwnershipStatus()
+    : _entityId(), _ownershipStatus(0), _padding(0) {}
 
-OwnershipStatus::OwnershipStatus():
-   _entityId(), 
-   _ownershipStatus(0), 
-   _padding(0)
-{
+OwnershipStatus::~OwnershipStatus() {}
+
+EntityID& OwnershipStatus::getEntityId() { return _entityId; }
+
+const EntityID& OwnershipStatus::getEntityId() const { return _entityId; }
+
+void OwnershipStatus::setEntityId(const EntityID& pX) { _entityId = pX; }
+
+uint8_t OwnershipStatus::getOwnershipStatus() const {
+  return _ownershipStatus;
 }
 
-OwnershipStatus::~OwnershipStatus()
-{
+void OwnershipStatus::setOwnershipStatus(uint8_t pX) {
+  _ownershipStatus = pX;
 }
 
-EntityID& OwnershipStatus::getEntityId() 
-{
-    return _entityId;
+uint8_t OwnershipStatus::getPadding() const { return _padding; }
+
+void OwnershipStatus::setPadding(uint8_t pX) { _padding = pX; }
+
+void OwnershipStatus::marshal(DataStream& dataStream) const {
+  _entityId.marshal(dataStream);
+  dataStream << _ownershipStatus;
+  dataStream << _padding;
 }
 
-const EntityID& OwnershipStatus::getEntityId() const
-{
-    return _entityId;
+void OwnershipStatus::unmarshal(DataStream& dataStream) {
+  _entityId.unmarshal(dataStream);
+  dataStream >> _ownershipStatus;
+  dataStream >> _padding;
 }
 
-void OwnershipStatus::setEntityId(const EntityID &pX)
-{
-    _entityId = pX;
+bool OwnershipStatus::operator==(const OwnershipStatus& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_entityId == rhs._entityId)) ivarsEqual = false;
+  if (!(_ownershipStatus == rhs._ownershipStatus)) ivarsEqual = false;
+  if (!(_padding == rhs._padding)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-unsigned char OwnershipStatus::getOwnershipStatus() const
-{
-    return _ownershipStatus;
-}
+int OwnershipStatus::getMarshalledSize() const {
+  int marshalSize = 0;
 
-void OwnershipStatus::setOwnershipStatus(unsigned char pX)
-{
-    _ownershipStatus = pX;
-}
-
-unsigned char OwnershipStatus::getPadding() const
-{
-    return _padding;
-}
-
-void OwnershipStatus::setPadding(unsigned char pX)
-{
-    _padding = pX;
-}
-
-void OwnershipStatus::marshal(DataStream& dataStream) const
-{
-    _entityId.marshal(dataStream);
-    dataStream << _ownershipStatus;
-    dataStream << _padding;
-}
-
-void OwnershipStatus::unmarshal(DataStream& dataStream)
-{
-    _entityId.unmarshal(dataStream);
-    dataStream >> _ownershipStatus;
-    dataStream >> _padding;
-}
-
-
-bool OwnershipStatus::operator ==(const OwnershipStatus& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_entityId == rhs._entityId) ) ivarsEqual = false;
-     if( ! (_ownershipStatus == rhs._ownershipStatus) ) ivarsEqual = false;
-     if( ! (_padding == rhs._padding) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int OwnershipStatus::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + _entityId.getMarshalledSize();  // _entityId
-   marshalSize = marshalSize + 1;  // _ownershipStatus
-   marshalSize = marshalSize + 1;  // _padding
-    return marshalSize;
+  marshalSize = marshalSize + _entityId.getMarshalledSize();  // _entityId
+  marshalSize = marshalSize + 1;  // _ownershipStatus
+  marshalSize = marshalSize + 1;  // _padding
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -102,7 +73,7 @@ int OwnershipStatus::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

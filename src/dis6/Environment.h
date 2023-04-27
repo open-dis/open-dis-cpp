@@ -1,76 +1,74 @@
 #pragma once
 
-#include <dis6/utils/DataStream.h>
-#include <dis6/opendis6_export.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
+namespace DIS {
+// Section 5.2.40. Information about a geometry, a state associated with a
+// geometry, a bounding volume, or an associated entity ID. NOTE: this class
+// requires hand coding.
 
-namespace DIS
-{
-// Section 5.2.40. Information about a geometry, a state associated with a geometry, a bounding volume, or an associated entity ID. NOTE: this class requires hand coding.
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT Environment
-{
-protected:
+class OPENDIS6_EXPORT Environment {
+ protected:
   /** Record type */
-  unsigned int _environmentType; 
+  uint32_t _environmentType;
 
   /** length, in bits */
-  unsigned char _length; 
+  uint8_t _length;
 
   /** Identify the sequentially numbered record index */
-  unsigned char _index; 
+  uint8_t _index;
 
   /** padding */
-  unsigned char _padding1; 
+  uint8_t _padding1;
 
   /** Geometry or state record */
-  unsigned char _geometry; 
+  uint8_t _geometry;
 
   /** padding to bring the total size up to a 64 bit boundry */
-  unsigned char _padding2; 
-
+  uint8_t _padding2;
 
  public:
-    Environment();
-    virtual ~Environment();
+  Environment();
+  virtual ~Environment();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned int getEnvironmentType() const; 
-    void setEnvironmentType(unsigned int pX); 
+  uint32_t getEnvironmentType() const;
+  void setEnvironmentType(uint32_t pX);
 
-    unsigned char getLength() const; 
-    void setLength(unsigned char pX); 
+  uint8_t getLength() const;
+  void setLength(uint8_t pX);
 
-    unsigned char getIndex() const; 
-    void setIndex(unsigned char pX); 
+  uint8_t getIndex() const;
+  void setIndex(uint8_t pX);
 
-    unsigned char getPadding1() const; 
-    void setPadding1(unsigned char pX); 
+  uint8_t getPadding1() const;
+  void setPadding1(uint8_t pX);
 
-    unsigned char getGeometry() const; 
-    void setGeometry(unsigned char pX); 
+  uint8_t getGeometry() const;
+  void setGeometry(uint8_t pX);
 
-    unsigned char getPadding2() const; 
-    void setPadding2(unsigned char pX); 
+  uint8_t getPadding2() const;
+  void setPadding2(uint8_t pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const Environment& rhs) const;
+  bool operator==(const Environment& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -83,7 +81,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

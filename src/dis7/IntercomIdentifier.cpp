@@ -1,105 +1,83 @@
-#include <dis7/IntercomIdentifier.h>
+#include "dis7/IntercomIdentifier.h"
 
 using namespace DIS;
 
+IntercomIdentifier::IntercomIdentifier()
+    : _siteNumber(0),
+      _applicationNumber(0),
+      _referenceNumber(0),
+      _intercomNumber(0) {}
 
-IntercomIdentifier::IntercomIdentifier():
-   _siteNumber(0), 
-   _applicationNumber(0), 
-   _referenceNumber(0), 
-   _intercomNumber(0)
-{
+IntercomIdentifier::~IntercomIdentifier() {}
+
+uint16_t IntercomIdentifier::getSiteNumber() const { return _siteNumber; }
+
+void IntercomIdentifier::setSiteNumber(uint16_t pX) { _siteNumber = pX; }
+
+uint16_t IntercomIdentifier::getApplicationNumber() const {
+  return _applicationNumber;
 }
 
-IntercomIdentifier::~IntercomIdentifier()
-{
+void IntercomIdentifier::setApplicationNumber(uint16_t pX) {
+  _applicationNumber = pX;
 }
 
-unsigned short IntercomIdentifier::getSiteNumber() const
-{
-    return _siteNumber;
+uint16_t IntercomIdentifier::getReferenceNumber() const {
+  return _referenceNumber;
 }
 
-void IntercomIdentifier::setSiteNumber(unsigned short pX)
-{
-    _siteNumber = pX;
+void IntercomIdentifier::setReferenceNumber(uint16_t pX) {
+  _referenceNumber = pX;
 }
 
-unsigned short IntercomIdentifier::getApplicationNumber() const
-{
-    return _applicationNumber;
+uint16_t IntercomIdentifier::getIntercomNumber() const {
+  return _intercomNumber;
 }
 
-void IntercomIdentifier::setApplicationNumber(unsigned short pX)
-{
-    _applicationNumber = pX;
+void IntercomIdentifier::setIntercomNumber(uint16_t pX) {
+  _intercomNumber = pX;
 }
 
-unsigned short IntercomIdentifier::getReferenceNumber() const
-{
-    return _referenceNumber;
+void IntercomIdentifier::marshal(DataStream& dataStream) const {
+  dataStream << _siteNumber;
+  dataStream << _applicationNumber;
+  dataStream << _referenceNumber;
+  dataStream << _intercomNumber;
 }
 
-void IntercomIdentifier::setReferenceNumber(unsigned short pX)
-{
-    _referenceNumber = pX;
+void IntercomIdentifier::unmarshal(DataStream& dataStream) {
+  dataStream >> _siteNumber;
+  dataStream >> _applicationNumber;
+  dataStream >> _referenceNumber;
+  dataStream >> _intercomNumber;
 }
 
-unsigned short IntercomIdentifier::getIntercomNumber() const
-{
-    return _intercomNumber;
+bool IntercomIdentifier::operator==(const IntercomIdentifier& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_siteNumber == rhs._siteNumber)) ivarsEqual = false;
+  if (!(_applicationNumber == rhs._applicationNumber)) ivarsEqual = false;
+  if (!(_referenceNumber == rhs._referenceNumber)) ivarsEqual = false;
+  if (!(_intercomNumber == rhs._intercomNumber)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void IntercomIdentifier::setIntercomNumber(unsigned short pX)
-{
-    _intercomNumber = pX;
-}
+int IntercomIdentifier::getMarshalledSize() const {
+  int marshalSize = 0;
 
-void IntercomIdentifier::marshal(DataStream& dataStream) const
-{
-    dataStream << _siteNumber;
-    dataStream << _applicationNumber;
-    dataStream << _referenceNumber;
-    dataStream << _intercomNumber;
-}
-
-void IntercomIdentifier::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _siteNumber;
-    dataStream >> _applicationNumber;
-    dataStream >> _referenceNumber;
-    dataStream >> _intercomNumber;
-}
-
-
-bool IntercomIdentifier::operator ==(const IntercomIdentifier& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_siteNumber == rhs._siteNumber) ) ivarsEqual = false;
-     if( ! (_applicationNumber == rhs._applicationNumber) ) ivarsEqual = false;
-     if( ! (_referenceNumber == rhs._referenceNumber) ) ivarsEqual = false;
-     if( ! (_intercomNumber == rhs._intercomNumber) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int IntercomIdentifier::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 2;  // _siteNumber
-   marshalSize = marshalSize + 2;  // _applicationNumber
-   marshalSize = marshalSize + 2;  // _referenceNumber
-   marshalSize = marshalSize + 2;  // _intercomNumber
-    return marshalSize;
+  marshalSize = marshalSize + 2;  // _siteNumber
+  marshalSize = marshalSize + 2;  // _applicationNumber
+  marshalSize = marshalSize + 2;  // _referenceNumber
+  marshalSize = marshalSize + 2;  // _intercomNumber
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -112,7 +90,7 @@ int IntercomIdentifier::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

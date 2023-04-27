@@ -1,60 +1,57 @@
 #pragma once
 
-#include <dis7/utils/DataStream.h>
-#include <dis7/opendis7_export.h>
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
+namespace DIS {
+// Unique designation of an attached or unattached intercom in an event or
+// exercirse. Section 6.2.48
 
-namespace DIS
-{
-// Unique designation of an attached or unattached intercom in an event or exercirse. Section 6.2.48
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT IntercomIdentifier
-{
-protected:
-  unsigned short _siteNumber; 
+class OPENDIS7_EXPORT IntercomIdentifier {
+ protected:
+  uint16_t _siteNumber;
 
-  unsigned short _applicationNumber; 
+  uint16_t _applicationNumber;
 
-  unsigned short _referenceNumber; 
+  uint16_t _referenceNumber;
 
-  unsigned short _intercomNumber; 
-
+  uint16_t _intercomNumber;
 
  public:
-    IntercomIdentifier();
-    virtual ~IntercomIdentifier();
+  IntercomIdentifier();
+  virtual ~IntercomIdentifier();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned short getSiteNumber() const; 
-    void setSiteNumber(unsigned short pX); 
+  uint16_t getSiteNumber() const;
+  void setSiteNumber(uint16_t pX);
 
-    unsigned short getApplicationNumber() const; 
-    void setApplicationNumber(unsigned short pX); 
+  uint16_t getApplicationNumber() const;
+  void setApplicationNumber(uint16_t pX);
 
-    unsigned short getReferenceNumber() const; 
-    void setReferenceNumber(unsigned short pX); 
+  uint16_t getReferenceNumber() const;
+  void setReferenceNumber(uint16_t pX);
 
-    unsigned short getIntercomNumber() const; 
-    void setIntercomNumber(unsigned short pX); 
+  uint16_t getIntercomNumber() const;
+  void setIntercomNumber(uint16_t pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const IntercomIdentifier& rhs) const;
+  bool operator==(const IntercomIdentifier& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -67,7 +64,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

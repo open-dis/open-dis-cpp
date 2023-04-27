@@ -1,10 +1,11 @@
 #pragma once
 
+#include <cstdint>
+#include <vector>
+
 #include "dis6/RadioCommunicationsFamilyPdu.h"
 #include "dis6/opendis6_export.h"
 #include "dis6/utils/DataStream.h"
-#include <cstdint>
-#include <vector>
 
 namespace DIS {
 // Section 5.3.8.2. Detailed information about a radio transmitter. This PDU
@@ -18,55 +19,55 @@ namespace DIS {
 // @author DMcG, jkg
 
 class OPENDIS6_EXPORT SignalPdu : public RadioCommunicationsFamilyPdu {
-protected:
+ protected:
   /** encoding scheme used, and enumeration */
-  unsigned short _encodingScheme;
+  uint16_t _encodingScheme;
 
   /** tdl type */
-  unsigned short _tdlType;
+  uint16_t _tdlType;
 
   /** sample rate */
-  unsigned int _sampleRate;
+  uint32_t _sampleRate;
 
   /** length od data */
-  short _dataLength;
+  int16_t _dataLength;
 
   /** number of samples */
-  short _samples;
+  int16_t _samples;
 
   /** list of eight bit values */
   std::vector<uint8_t> _data;
 
-public:
+ public:
   SignalPdu();
   virtual ~SignalPdu();
 
-  virtual void marshal(DataStream &dataStream) const;
-  virtual void unmarshal(DataStream &dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getEncodingScheme() const;
-  void setEncodingScheme(unsigned short pX);
+  uint16_t getEncodingScheme() const;
+  void setEncodingScheme(uint16_t pX);
 
-  unsigned short getTdlType() const;
-  void setTdlType(unsigned short pX);
+  uint16_t getTdlType() const;
+  void setTdlType(uint16_t pX);
 
-  unsigned int getSampleRate() const;
-  void setSampleRate(unsigned int pX);
+  uint32_t getSampleRate() const;
+  void setSampleRate(uint32_t pX);
 
-  short getDataLength() const;
+  int16_t getDataLength() const;
 
-  short getSamples() const;
-  void setSamples(short pX);
+  int16_t getSamples() const;
+  void setSamples(int16_t pX);
 
-  std::vector<uint8_t> &getData();
-  const std::vector<uint8_t> &getData() const;
-  void setData(const std::vector<uint8_t> &pX);
+  std::vector<uint8_t>& getData();
+  const std::vector<uint8_t>& getData() const;
+  void setData(const std::vector<uint8_t>& pX);
 
   virtual int getMarshalledSize() const;
 
-  bool operator==(const SignalPdu &rhs) const;
+  bool operator==(const SignalPdu& rhs) const;
 };
-} // namespace DIS
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

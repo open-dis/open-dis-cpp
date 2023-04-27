@@ -1,90 +1,59 @@
-#include <dis6/EventID.h>
+#include "dis6/EventID.h"
 
 using namespace DIS;
 
+EventID::EventID() : _site(0), _application(0), _eventNumber(0) {}
 
-EventID::EventID():
-   _site(0), 
-   _application(0), 
-   _eventNumber(0)
-{
+EventID::~EventID() {}
+
+uint16_t EventID::getSite() const { return _site; }
+
+void EventID::setSite(uint16_t pX) { _site = pX; }
+
+uint16_t EventID::getApplication() const { return _application; }
+
+void EventID::setApplication(uint16_t pX) { _application = pX; }
+
+uint16_t EventID::getEventNumber() const { return _eventNumber; }
+
+void EventID::setEventNumber(uint16_t pX) { _eventNumber = pX; }
+
+void EventID::marshal(DataStream& dataStream) const {
+  dataStream << _site;
+  dataStream << _application;
+  dataStream << _eventNumber;
 }
 
-EventID::~EventID()
-{
+void EventID::unmarshal(DataStream& dataStream) {
+  dataStream >> _site;
+  dataStream >> _application;
+  dataStream >> _eventNumber;
 }
 
-unsigned short EventID::getSite() const
-{
-    return _site;
+bool EventID::operator==(const EventID& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_site == rhs._site)) ivarsEqual = false;
+  if (!(_application == rhs._application)) ivarsEqual = false;
+  if (!(_eventNumber == rhs._eventNumber)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void EventID::setSite(unsigned short pX)
-{
-    _site = pX;
-}
+int EventID::getMarshalledSize() const {
+  int marshalSize = 0;
 
-unsigned short EventID::getApplication() const
-{
-    return _application;
-}
-
-void EventID::setApplication(unsigned short pX)
-{
-    _application = pX;
-}
-
-unsigned short EventID::getEventNumber() const
-{
-    return _eventNumber;
-}
-
-void EventID::setEventNumber(unsigned short pX)
-{
-    _eventNumber = pX;
-}
-
-void EventID::marshal(DataStream& dataStream) const
-{
-    dataStream << _site;
-    dataStream << _application;
-    dataStream << _eventNumber;
-}
-
-void EventID::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _site;
-    dataStream >> _application;
-    dataStream >> _eventNumber;
-}
-
-
-bool EventID::operator ==(const EventID& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_site == rhs._site) ) ivarsEqual = false;
-     if( ! (_application == rhs._application) ) ivarsEqual = false;
-     if( ! (_eventNumber == rhs._eventNumber) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int EventID::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 2;  // _site
-   marshalSize = marshalSize + 2;  // _application
-   marshalSize = marshalSize + 2;  // _eventNumber
-    return marshalSize;
+  marshalSize = marshalSize + 2;  // _site
+  marshalSize = marshalSize + 2;  // _application
+  marshalSize = marshalSize + 2;  // _eventNumber
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -97,7 +66,7 @@ int EventID::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

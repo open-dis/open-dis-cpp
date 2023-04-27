@@ -1,131 +1,102 @@
-#include <dis6/ReceiverPdu.h>
+#include "dis6/ReceiverPdu.h"
 
 using namespace DIS;
 
-
-ReceiverPdu::ReceiverPdu() : RadioCommunicationsFamilyPdu(),
-   _receiverState(0), 
-   _padding1(0), 
-   _receivedPower(0.0), 
-   _transmitterEntityId(), 
-   _transmitterRadioId(0)
-{
-    setPduType( 27 );
+ReceiverPdu::ReceiverPdu()
+    : RadioCommunicationsFamilyPdu(),
+      _receiverState(0),
+      _padding1(0),
+      _receivedPower(0.0),
+      _transmitterEntityId(),
+      _transmitterRadioId(0) {
+  setPduType(27);
 }
 
-ReceiverPdu::~ReceiverPdu()
-{
+ReceiverPdu::~ReceiverPdu() {}
+
+uint16_t ReceiverPdu::getReceiverState() const { return _receiverState; }
+
+void ReceiverPdu::setReceiverState(uint16_t pX) { _receiverState = pX; }
+
+uint16_t ReceiverPdu::getPadding1() const { return _padding1; }
+
+void ReceiverPdu::setPadding1(uint16_t pX) { _padding1 = pX; }
+
+float ReceiverPdu::getReceivedPower() const { return _receivedPower; }
+
+void ReceiverPdu::setReceivedPower(float pX) { _receivedPower = pX; }
+
+EntityID& ReceiverPdu::getTransmitterEntityId() { return _transmitterEntityId; }
+
+const EntityID& ReceiverPdu::getTransmitterEntityId() const {
+  return _transmitterEntityId;
 }
 
-unsigned short ReceiverPdu::getReceiverState() const
-{
-    return _receiverState;
+void ReceiverPdu::setTransmitterEntityId(const EntityID& pX) {
+  _transmitterEntityId = pX;
 }
 
-void ReceiverPdu::setReceiverState(unsigned short pX)
-{
-    _receiverState = pX;
+uint16_t ReceiverPdu::getTransmitterRadioId() const {
+  return _transmitterRadioId;
 }
 
-unsigned short ReceiverPdu::getPadding1() const
-{
-    return _padding1;
+void ReceiverPdu::setTransmitterRadioId(uint16_t pX) {
+  _transmitterRadioId = pX;
 }
 
-void ReceiverPdu::setPadding1(unsigned short pX)
-{
-    _padding1 = pX;
+void ReceiverPdu::marshal(DataStream& dataStream) const {
+  RadioCommunicationsFamilyPdu::marshal(
+      dataStream);  // Marshal information in superclass first
+  dataStream << _receiverState;
+  dataStream << _padding1;
+  dataStream << _receivedPower;
+  _transmitterEntityId.marshal(dataStream);
+  dataStream << _transmitterRadioId;
 }
 
-float ReceiverPdu::getReceivedPower() const
-{
-    return _receivedPower;
+void ReceiverPdu::unmarshal(DataStream& dataStream) {
+  RadioCommunicationsFamilyPdu::unmarshal(
+      dataStream);  // unmarshal information in superclass first
+  dataStream >> _receiverState;
+  dataStream >> _padding1;
+  dataStream >> _receivedPower;
+  _transmitterEntityId.unmarshal(dataStream);
+  dataStream >> _transmitterRadioId;
 }
 
-void ReceiverPdu::setReceivedPower(float pX)
-{
-    _receivedPower = pX;
+bool ReceiverPdu::operator==(const ReceiverPdu& rhs) const {
+  bool ivarsEqual = true;
+
+  ivarsEqual = RadioCommunicationsFamilyPdu::operator==(rhs);
+
+  if (!(_receiverState == rhs._receiverState)) ivarsEqual = false;
+  if (!(_padding1 == rhs._padding1)) ivarsEqual = false;
+  if (!(_receivedPower == rhs._receivedPower)) ivarsEqual = false;
+  if (!(_transmitterEntityId == rhs._transmitterEntityId)) ivarsEqual = false;
+  if (!(_transmitterRadioId == rhs._transmitterRadioId)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-EntityID& ReceiverPdu::getTransmitterEntityId() 
-{
-    return _transmitterEntityId;
-}
+int ReceiverPdu::getMarshalledSize() const {
+  int marshalSize = 0;
 
-const EntityID& ReceiverPdu::getTransmitterEntityId() const
-{
-    return _transmitterEntityId;
-}
-
-void ReceiverPdu::setTransmitterEntityId(const EntityID &pX)
-{
-    _transmitterEntityId = pX;
-}
-
-unsigned short ReceiverPdu::getTransmitterRadioId() const
-{
-    return _transmitterRadioId;
-}
-
-void ReceiverPdu::setTransmitterRadioId(unsigned short pX)
-{
-    _transmitterRadioId = pX;
-}
-
-void ReceiverPdu::marshal(DataStream& dataStream) const
-{
-    RadioCommunicationsFamilyPdu::marshal(dataStream); // Marshal information in superclass first
-    dataStream << _receiverState;
-    dataStream << _padding1;
-    dataStream << _receivedPower;
-    _transmitterEntityId.marshal(dataStream);
-    dataStream << _transmitterRadioId;
-}
-
-void ReceiverPdu::unmarshal(DataStream& dataStream)
-{
-    RadioCommunicationsFamilyPdu::unmarshal(dataStream); // unmarshal information in superclass first
-    dataStream >> _receiverState;
-    dataStream >> _padding1;
-    dataStream >> _receivedPower;
-    _transmitterEntityId.unmarshal(dataStream);
-    dataStream >> _transmitterRadioId;
-}
-
-
-bool ReceiverPdu::operator ==(const ReceiverPdu& rhs) const
- {
-     bool ivarsEqual = true;
-
-     ivarsEqual = RadioCommunicationsFamilyPdu::operator==(rhs);
-
-     if( ! (_receiverState == rhs._receiverState) ) ivarsEqual = false;
-     if( ! (_padding1 == rhs._padding1) ) ivarsEqual = false;
-     if( ! (_receivedPower == rhs._receivedPower) ) ivarsEqual = false;
-     if( ! (_transmitterEntityId == rhs._transmitterEntityId) ) ivarsEqual = false;
-     if( ! (_transmitterRadioId == rhs._transmitterRadioId) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int ReceiverPdu::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = RadioCommunicationsFamilyPdu::getMarshalledSize();
-   marshalSize = marshalSize + 2;  // _receiverState
-   marshalSize = marshalSize + 2;  // _padding1
-   marshalSize = marshalSize + 4;  // _receivedPoser
-   marshalSize = marshalSize + _transmitterEntityId.getMarshalledSize();  // _transmitterEntityId
-   marshalSize = marshalSize + 2;  // _transmitterRadioId
-    return marshalSize;
+  marshalSize = RadioCommunicationsFamilyPdu::getMarshalledSize();
+  marshalSize = marshalSize + 2;  // _receiverState
+  marshalSize = marshalSize + 2;  // _padding1
+  marshalSize = marshalSize + 4;  // _receivedPoser
+  marshalSize =
+      marshalSize +
+      _transmitterEntityId.getMarshalledSize();  // _transmitterEntityId
+  marshalSize = marshalSize + 2;                 // _transmitterRadioId
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -138,7 +109,7 @@ int ReceiverPdu::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
