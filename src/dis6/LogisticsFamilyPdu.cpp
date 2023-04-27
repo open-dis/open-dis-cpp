@@ -2,51 +2,43 @@
 
 using namespace DIS;
 
-
-LogisticsFamilyPdu::LogisticsFamilyPdu() : Pdu()
+LogisticsFamilyPdu::LogisticsFamilyPdu()
+    : Pdu()
 
 {
-    setProtocolFamily( 3 );
+  setProtocolFamily(3);
 }
 
-LogisticsFamilyPdu::~LogisticsFamilyPdu()
-{
+LogisticsFamilyPdu::~LogisticsFamilyPdu() {}
+
+void LogisticsFamilyPdu::marshal(DataStream& dataStream) const {
+  Pdu::marshal(dataStream);  // Marshal information in superclass first
 }
 
-void LogisticsFamilyPdu::marshal(DataStream& dataStream) const
-{
-    Pdu::marshal(dataStream); // Marshal information in superclass first
+void LogisticsFamilyPdu::unmarshal(DataStream& dataStream) {
+  Pdu::unmarshal(dataStream);  // unmarshal information in superclass first
 }
 
-void LogisticsFamilyPdu::unmarshal(DataStream& dataStream)
-{
-    Pdu::unmarshal(dataStream); // unmarshal information in superclass first
+bool LogisticsFamilyPdu::operator==(const LogisticsFamilyPdu& rhs) const {
+  bool ivarsEqual = true;
+
+  ivarsEqual = Pdu::operator==(rhs);
+
+  return ivarsEqual;
 }
 
+int LogisticsFamilyPdu::getMarshalledSize() const {
+  int marshalSize = 0;
 
-bool LogisticsFamilyPdu::operator ==(const LogisticsFamilyPdu& rhs) const
- {
-     bool ivarsEqual = true;
-
-     ivarsEqual = Pdu::operator==(rhs);
-
-
-    return ivarsEqual;
- }
-
-int LogisticsFamilyPdu::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = Pdu::getMarshalledSize();
-    return marshalSize;
+  marshalSize = Pdu::getMarshalledSize();
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -59,7 +51,7 @@ int LogisticsFamilyPdu::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

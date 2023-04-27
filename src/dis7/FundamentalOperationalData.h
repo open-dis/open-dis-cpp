@@ -1,100 +1,96 @@
 #pragma once
 
-#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
+#include <dis7/utils/DataStream.h>
 
-
-namespace DIS
-{
+namespace DIS {
 // Basic operational data for IFF. Section 6.2.40.
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT FundamentalOperationalData
-{
-protected:
+class OPENDIS7_EXPORT FundamentalOperationalData {
+ protected:
   /** system status */
-  unsigned char _systemStatus; 
+  unsigned char _systemStatus;
 
   /** data field 1 */
-  unsigned char _dataField1; 
+  unsigned char _dataField1;
 
   /** eight boolean fields */
-  unsigned char _informationLayers; 
+  unsigned char _informationLayers;
 
   /** enumeration */
-  unsigned char _dataField2; 
+  unsigned char _dataField2;
 
   /** parameter, enumeration */
-  unsigned short _parameter1; 
+  unsigned short _parameter1;
 
   /** parameter, enumeration */
-  unsigned short _parameter2; 
+  unsigned short _parameter2;
 
   /** parameter, enumeration */
-  unsigned short _parameter3; 
+  unsigned short _parameter3;
 
   /** parameter, enumeration */
-  unsigned short _parameter4; 
+  unsigned short _parameter4;
 
   /** parameter, enumeration */
-  unsigned short _parameter5; 
+  unsigned short _parameter5;
 
   /** parameter, enumeration */
-  unsigned short _parameter6; 
-
+  unsigned short _parameter6;
 
  public:
-    FundamentalOperationalData();
-    virtual ~FundamentalOperationalData();
+  FundamentalOperationalData();
+  virtual ~FundamentalOperationalData();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getSystemStatus() const; 
-    void setSystemStatus(unsigned char pX); 
+  unsigned char getSystemStatus() const;
+  void setSystemStatus(unsigned char pX);
 
-    unsigned char getDataField1() const; 
-    void setDataField1(unsigned char pX); 
+  unsigned char getDataField1() const;
+  void setDataField1(unsigned char pX);
 
-    unsigned char getInformationLayers() const; 
-    void setInformationLayers(unsigned char pX); 
+  unsigned char getInformationLayers() const;
+  void setInformationLayers(unsigned char pX);
 
-    unsigned char getDataField2() const; 
-    void setDataField2(unsigned char pX); 
+  unsigned char getDataField2() const;
+  void setDataField2(unsigned char pX);
 
-    unsigned short getParameter1() const; 
-    void setParameter1(unsigned short pX); 
+  unsigned short getParameter1() const;
+  void setParameter1(unsigned short pX);
 
-    unsigned short getParameter2() const; 
-    void setParameter2(unsigned short pX); 
+  unsigned short getParameter2() const;
+  void setParameter2(unsigned short pX);
 
-    unsigned short getParameter3() const; 
-    void setParameter3(unsigned short pX); 
+  unsigned short getParameter3() const;
+  void setParameter3(unsigned short pX);
 
-    unsigned short getParameter4() const; 
-    void setParameter4(unsigned short pX); 
+  unsigned short getParameter4() const;
+  void setParameter4(unsigned short pX);
 
-    unsigned short getParameter5() const; 
-    void setParameter5(unsigned short pX); 
+  unsigned short getParameter5() const;
+  void setParameter5(unsigned short pX);
 
-    unsigned short getParameter6() const; 
-    void setParameter6(unsigned short pX); 
+  unsigned short getParameter6() const;
+  void setParameter6(unsigned short pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const FundamentalOperationalData& rhs) const;
+  bool operator==(const FundamentalOperationalData& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -107,7 +103,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

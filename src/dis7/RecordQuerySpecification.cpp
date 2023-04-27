@@ -2,97 +2,76 @@
 
 using namespace DIS;
 
+RecordQuerySpecification::RecordQuerySpecification() : _numberOfRecords(0) {}
 
-RecordQuerySpecification::RecordQuerySpecification():
-   _numberOfRecords(0)
-{
+RecordQuerySpecification::~RecordQuerySpecification() { _records.clear(); }
+
+unsigned int RecordQuerySpecification::getNumberOfRecords() const {
+  return _records.size();
 }
 
-RecordQuerySpecification::~RecordQuerySpecification()
-{
-    _records.clear();
+std::vector<FourByteChunk>& RecordQuerySpecification::getRecords() {
+  return _records;
 }
 
-unsigned int RecordQuerySpecification::getNumberOfRecords() const
-{
-   return _records.size();
+const std::vector<FourByteChunk>& RecordQuerySpecification::getRecords() const {
+  return _records;
 }
 
-std::vector<FourByteChunk>& RecordQuerySpecification::getRecords() 
-{
-    return _records;
+void RecordQuerySpecification::setRecords(
+    const std::vector<FourByteChunk>& pX) {
+  _records = pX;
 }
 
-const std::vector<FourByteChunk>& RecordQuerySpecification::getRecords() const
-{
-    return _records;
+void RecordQuerySpecification::marshal(DataStream& dataStream) const {
+  dataStream << (unsigned int)_records.size();
+
+  for (size_t idx = 0; idx < _records.size(); idx++) {
+    FourByteChunk x = _records[idx];
+    x.marshal(dataStream);
+  }
 }
 
-void RecordQuerySpecification::setRecords(const std::vector<FourByteChunk>& pX)
-{
-     _records = pX;
+void RecordQuerySpecification::unmarshal(DataStream& dataStream) {
+  dataStream >> _numberOfRecords;
+
+  _records.clear();
+  for (size_t idx = 0; idx < _numberOfRecords; idx++) {
+    FourByteChunk x;
+    x.unmarshal(dataStream);
+    _records.push_back(x);
+  }
 }
 
-void RecordQuerySpecification::marshal(DataStream& dataStream) const
-{
-    dataStream << ( unsigned int )_records.size();
+bool RecordQuerySpecification::operator==(
+    const RecordQuerySpecification& rhs) const {
+  bool ivarsEqual = true;
 
-     for(size_t idx = 0; idx < _records.size(); idx++)
-     {
-        FourByteChunk x = _records[idx];
-        x.marshal(dataStream);
-     }
+  for (size_t idx = 0; idx < _records.size(); idx++) {
+    if (!(_records[idx] == rhs._records[idx])) ivarsEqual = false;
+  }
 
+  return ivarsEqual;
 }
 
-void RecordQuerySpecification::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _numberOfRecords;
+int RecordQuerySpecification::getMarshalledSize() const {
+  int marshalSize = 0;
 
-     _records.clear();
-     for(size_t idx = 0; idx < _numberOfRecords; idx++)
-     {
-        FourByteChunk x;
-        x.unmarshal(dataStream);
-        _records.push_back(x);
-     }
-}
+  marshalSize = marshalSize + 4;  // _numberOfRecords
 
+  for (unsigned long long idx = 0; idx < _records.size(); idx++) {
+    FourByteChunk listElement = _records[idx];
+    marshalSize = marshalSize + listElement.getMarshalledSize();
+  }
 
-bool RecordQuerySpecification::operator ==(const RecordQuerySpecification& rhs) const
- {
-     bool ivarsEqual = true;
-
-
-     for(size_t idx = 0; idx < _records.size(); idx++)
-     {
-        if( ! ( _records[idx] == rhs._records[idx]) ) ivarsEqual = false;
-     }
-
-
-    return ivarsEqual;
- }
-
-int RecordQuerySpecification::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 4;  // _numberOfRecords
-
-   for(unsigned long long idx=0; idx < _records.size(); idx++)
-   {
-        FourByteChunk listElement = _records[idx];
-        marshalSize = marshalSize + listElement.getMarshalledSize();
-    }
-
-    return marshalSize;
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -105,7 +84,7 @@ int RecordQuerySpecification::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

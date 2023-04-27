@@ -1,121 +1,119 @@
 #pragma once
 
-#include <dis6/EntityID.h>
+#include <vector>
+
 #include <dis6/EntityID.h>
 #include <dis6/EntityType.h>
+#include <dis6/SimulationAddress.h>
 #include <dis6/SixByteChunk.h>
-#include <dis6/SimulationAddress.h>
-#include <dis6/SimulationAddress.h>
-#include <dis6/Vector3Double.h>
-#include <vector>
 #include <dis6/SyntheticEnvironmentFamilyPdu.h>
-#include <dis6/utils/DataStream.h>
+#include <dis6/Vector3Double.h>
 #include <dis6/opendis6_export.h>
+#include <dis6/utils/DataStream.h>
 
+namespace DIS {
+// Section 5.3.11.5: Information about the addition/modification of an oobject
+// that is geometrically      achored to the terrain with a set of three or more
+// points that come to a closure. COMPLETE
 
-namespace DIS
-{
-// Section 5.3.11.5: Information about the addition/modification of an oobject that is geometrically      achored to the terrain with a set of three or more points that come to a closure. COMPLETE
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT ArealObjectStatePdu : public SyntheticEnvironmentFamilyPdu
-{
-protected:
+class OPENDIS6_EXPORT ArealObjectStatePdu
+    : public SyntheticEnvironmentFamilyPdu {
+ protected:
   /** Object in synthetic environment */
-  EntityID _objectID; 
+  EntityID _objectID;
 
   /** Object with which this point object is associated */
-  EntityID _referencedObjectID; 
+  EntityID _referencedObjectID;
 
   /** unique update number of each state transition of an object */
-  unsigned short _updateNumber; 
+  unsigned short _updateNumber;
 
   /** force ID */
-  unsigned char _forceID; 
+  unsigned char _forceID;
 
   /** modifications enumeration */
-  unsigned char _modifications; 
+  unsigned char _modifications;
 
   /** Object type */
-  EntityType _objectType; 
+  EntityType _objectType;
 
   /** Object appearance */
-  SixByteChunk _objectAppearance; 
+  SixByteChunk _objectAppearance;
 
   /** Number of points */
-  unsigned short _numberOfPoints; 
+  unsigned short _numberOfPoints;
 
   /** requesterID */
-  SimulationAddress _requesterID; 
+  SimulationAddress _requesterID;
 
   /** receiver ID */
-  SimulationAddress _receivingID; 
+  SimulationAddress _receivingID;
 
   /** location of object */
-  std::vector<Vector3Double> _objectLocation; 
-
+  std::vector<Vector3Double> _objectLocation;
 
  public:
-    ArealObjectStatePdu();
-    virtual ~ArealObjectStatePdu();
+  ArealObjectStatePdu();
+  virtual ~ArealObjectStatePdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getObjectID(); 
-    const EntityID&  getObjectID() const; 
-    void setObjectID(const EntityID    &pX);
+  EntityID& getObjectID();
+  const EntityID& getObjectID() const;
+  void setObjectID(const EntityID& pX);
 
-    EntityID& getReferencedObjectID(); 
-    const EntityID&  getReferencedObjectID() const; 
-    void setReferencedObjectID(const EntityID    &pX);
+  EntityID& getReferencedObjectID();
+  const EntityID& getReferencedObjectID() const;
+  void setReferencedObjectID(const EntityID& pX);
 
-    unsigned short getUpdateNumber() const; 
-    void setUpdateNumber(unsigned short pX); 
+  unsigned short getUpdateNumber() const;
+  void setUpdateNumber(unsigned short pX);
 
-    unsigned char getForceID() const; 
-    void setForceID(unsigned char pX); 
+  unsigned char getForceID() const;
+  void setForceID(unsigned char pX);
 
-    unsigned char getModifications() const; 
-    void setModifications(unsigned char pX); 
+  unsigned char getModifications() const;
+  void setModifications(unsigned char pX);
 
-    EntityType& getObjectType(); 
-    const EntityType&  getObjectType() const; 
-    void setObjectType(const EntityType    &pX);
+  EntityType& getObjectType();
+  const EntityType& getObjectType() const;
+  void setObjectType(const EntityType& pX);
 
-    SixByteChunk& getObjectAppearance(); 
-    const SixByteChunk&  getObjectAppearance() const; 
-    void setObjectAppearance(const SixByteChunk    &pX);
+  SixByteChunk& getObjectAppearance();
+  const SixByteChunk& getObjectAppearance() const;
+  void setObjectAppearance(const SixByteChunk& pX);
 
-    unsigned short getNumberOfPoints() const; 
+  unsigned short getNumberOfPoints() const;
 
-    SimulationAddress& getRequesterID(); 
-    const SimulationAddress&  getRequesterID() const; 
-    void setRequesterID(const SimulationAddress    &pX);
+  SimulationAddress& getRequesterID();
+  const SimulationAddress& getRequesterID() const;
+  void setRequesterID(const SimulationAddress& pX);
 
-    SimulationAddress& getReceivingID(); 
-    const SimulationAddress&  getReceivingID() const; 
-    void setReceivingID(const SimulationAddress    &pX);
+  SimulationAddress& getReceivingID();
+  const SimulationAddress& getReceivingID() const;
+  void setReceivingID(const SimulationAddress& pX);
 
-    std::vector<Vector3Double>& getObjectLocation(); 
-    const std::vector<Vector3Double>& getObjectLocation() const; 
-    void setObjectLocation(const std::vector<Vector3Double>&    pX);
+  std::vector<Vector3Double>& getObjectLocation();
+  const std::vector<Vector3Double>& getObjectLocation() const;
+  void setObjectLocation(const std::vector<Vector3Double>& pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const ArealObjectStatePdu& rhs) const;
+  bool operator==(const ArealObjectStatePdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -128,7 +126,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

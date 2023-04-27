@@ -1,100 +1,96 @@
 #pragma once
 
+#include <dis6/Orientation.h>
 #include <dis6/SixByteChunk.h>
 #include <dis6/Vector3Double.h>
-#include <dis6/Orientation.h>
-#include <dis6/utils/DataStream.h>
 #include <dis6/opendis6_export.h>
+#include <dis6/utils/DataStream.h>
 
-
-namespace DIS
-{
+namespace DIS {
 // 5.2.48: Linear segment parameters
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT LinearSegmentParameter
-{
-protected:
+class OPENDIS6_EXPORT LinearSegmentParameter {
+ protected:
   /** number of segments */
-  unsigned char _segmentNumber; 
+  unsigned char _segmentNumber;
 
   /** segment appearance */
-  SixByteChunk _segmentAppearance; 
+  SixByteChunk _segmentAppearance;
 
   /** location */
-  Vector3Double _location; 
+  Vector3Double _location;
 
   /** orientation */
-  Orientation _orientation; 
+  Orientation _orientation;
 
   /** segmentLength */
-  unsigned short _segmentLength; 
+  unsigned short _segmentLength;
 
   /** segmentWidth */
-  unsigned short _segmentWidth; 
+  unsigned short _segmentWidth;
 
   /** segmentHeight */
-  unsigned short _segmentHeight; 
+  unsigned short _segmentHeight;
 
   /** segment Depth */
-  unsigned short _segmentDepth; 
+  unsigned short _segmentDepth;
 
   /** segment Depth */
-  unsigned int _pad1; 
-
+  unsigned int _pad1;
 
  public:
-    LinearSegmentParameter();
-    virtual ~LinearSegmentParameter();
+  LinearSegmentParameter();
+  virtual ~LinearSegmentParameter();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getSegmentNumber() const; 
-    void setSegmentNumber(unsigned char pX); 
+  unsigned char getSegmentNumber() const;
+  void setSegmentNumber(unsigned char pX);
 
-    SixByteChunk& getSegmentAppearance(); 
-    const SixByteChunk&  getSegmentAppearance() const; 
-    void setSegmentAppearance(const SixByteChunk    &pX);
+  SixByteChunk& getSegmentAppearance();
+  const SixByteChunk& getSegmentAppearance() const;
+  void setSegmentAppearance(const SixByteChunk& pX);
 
-    Vector3Double& getLocation(); 
-    const Vector3Double&  getLocation() const; 
-    void setLocation(const Vector3Double    &pX);
+  Vector3Double& getLocation();
+  const Vector3Double& getLocation() const;
+  void setLocation(const Vector3Double& pX);
 
-    Orientation& getOrientation(); 
-    const Orientation&  getOrientation() const; 
-    void setOrientation(const Orientation    &pX);
+  Orientation& getOrientation();
+  const Orientation& getOrientation() const;
+  void setOrientation(const Orientation& pX);
 
-    unsigned short getSegmentLength() const; 
-    void setSegmentLength(unsigned short pX); 
+  unsigned short getSegmentLength() const;
+  void setSegmentLength(unsigned short pX);
 
-    unsigned short getSegmentWidth() const; 
-    void setSegmentWidth(unsigned short pX); 
+  unsigned short getSegmentWidth() const;
+  void setSegmentWidth(unsigned short pX);
 
-    unsigned short getSegmentHeight() const; 
-    void setSegmentHeight(unsigned short pX); 
+  unsigned short getSegmentHeight() const;
+  void setSegmentHeight(unsigned short pX);
 
-    unsigned short getSegmentDepth() const; 
-    void setSegmentDepth(unsigned short pX); 
+  unsigned short getSegmentDepth() const;
+  void setSegmentDepth(unsigned short pX);
 
-    unsigned int getPad1() const; 
-    void setPad1(unsigned int pX); 
+  unsigned int getPad1() const;
+  void setPad1(unsigned int pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const LinearSegmentParameter& rhs) const;
+  bool operator==(const LinearSegmentParameter& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -107,7 +103,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

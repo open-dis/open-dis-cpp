@@ -1,58 +1,57 @@
 #pragma once
 
-#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
+#include <dis7/utils/DataStream.h>
 
+namespace DIS {
+// Additional operational data for an IFF emitting system and the number of IFF
+// Fundamental Parameter Data records Section 6.2.76.
 
-namespace DIS
-{
-// Additional operational data for an IFF emitting system and the number of IFF Fundamental Parameter Data records Section 6.2.76.
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT SecondaryOperationalData
-{
-protected:
-  /** additional operational characteristics of the IFF emitting system. Each 8-bit field will vary depending on the system type. */
-  unsigned char _operationalData1; 
+class OPENDIS7_EXPORT SecondaryOperationalData {
+ protected:
+  /** additional operational characteristics of the IFF emitting system. Each
+   * 8-bit field will vary depending on the system type. */
+  unsigned char _operationalData1;
 
-  /** additional operational characteristics of the IFF emitting system. Each 8-bit field will vary depending on the system type. */
-  unsigned char _operationalData2; 
+  /** additional operational characteristics of the IFF emitting system. Each
+   * 8-bit field will vary depending on the system type. */
+  unsigned char _operationalData2;
 
   /** the number of IFF Fundamental Parameter Data records that follow */
-  unsigned short _numberOfIFFFundamentalParameterRecords; 
-
+  unsigned short _numberOfIFFFundamentalParameterRecords;
 
  public:
-    SecondaryOperationalData();
-    virtual ~SecondaryOperationalData();
+  SecondaryOperationalData();
+  virtual ~SecondaryOperationalData();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getOperationalData1() const; 
-    void setOperationalData1(unsigned char pX); 
+  unsigned char getOperationalData1() const;
+  void setOperationalData1(unsigned char pX);
 
-    unsigned char getOperationalData2() const; 
-    void setOperationalData2(unsigned char pX); 
+  unsigned char getOperationalData2() const;
+  void setOperationalData2(unsigned char pX);
 
-    unsigned short getNumberOfIFFFundamentalParameterRecords() const; 
-    void setNumberOfIFFFundamentalParameterRecords(unsigned short pX); 
+  unsigned short getNumberOfIFFFundamentalParameterRecords() const;
+  void setNumberOfIFFFundamentalParameterRecords(unsigned short pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const SecondaryOperationalData& rhs) const;
+  bool operator==(const SecondaryOperationalData& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -65,7 +64,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

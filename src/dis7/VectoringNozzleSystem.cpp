@@ -2,74 +2,61 @@
 
 using namespace DIS;
 
+VectoringNozzleSystem::VectoringNozzleSystem()
+    : _horizontalDeflectionAngle(0.0), _verticalDeflectionAngle(0.0) {}
 
-VectoringNozzleSystem::VectoringNozzleSystem():
-   _horizontalDeflectionAngle(0.0), 
-   _verticalDeflectionAngle(0.0)
-{
+VectoringNozzleSystem::~VectoringNozzleSystem() {}
+
+float VectoringNozzleSystem::getHorizontalDeflectionAngle() const {
+  return _horizontalDeflectionAngle;
 }
 
-VectoringNozzleSystem::~VectoringNozzleSystem()
-{
+void VectoringNozzleSystem::setHorizontalDeflectionAngle(float pX) {
+  _horizontalDeflectionAngle = pX;
 }
 
-float VectoringNozzleSystem::getHorizontalDeflectionAngle() const
-{
-    return _horizontalDeflectionAngle;
+float VectoringNozzleSystem::getVerticalDeflectionAngle() const {
+  return _verticalDeflectionAngle;
 }
 
-void VectoringNozzleSystem::setHorizontalDeflectionAngle(float pX)
-{
-    _horizontalDeflectionAngle = pX;
+void VectoringNozzleSystem::setVerticalDeflectionAngle(float pX) {
+  _verticalDeflectionAngle = pX;
 }
 
-float VectoringNozzleSystem::getVerticalDeflectionAngle() const
-{
-    return _verticalDeflectionAngle;
+void VectoringNozzleSystem::marshal(DataStream& dataStream) const {
+  dataStream << _horizontalDeflectionAngle;
+  dataStream << _verticalDeflectionAngle;
 }
 
-void VectoringNozzleSystem::setVerticalDeflectionAngle(float pX)
-{
-    _verticalDeflectionAngle = pX;
+void VectoringNozzleSystem::unmarshal(DataStream& dataStream) {
+  dataStream >> _horizontalDeflectionAngle;
+  dataStream >> _verticalDeflectionAngle;
 }
 
-void VectoringNozzleSystem::marshal(DataStream& dataStream) const
-{
-    dataStream << _horizontalDeflectionAngle;
-    dataStream << _verticalDeflectionAngle;
+bool VectoringNozzleSystem::operator==(const VectoringNozzleSystem& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_horizontalDeflectionAngle == rhs._horizontalDeflectionAngle))
+    ivarsEqual = false;
+  if (!(_verticalDeflectionAngle == rhs._verticalDeflectionAngle))
+    ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void VectoringNozzleSystem::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _horizontalDeflectionAngle;
-    dataStream >> _verticalDeflectionAngle;
-}
+int VectoringNozzleSystem::getMarshalledSize() const {
+  int marshalSize = 0;
 
-
-bool VectoringNozzleSystem::operator ==(const VectoringNozzleSystem& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_horizontalDeflectionAngle == rhs._horizontalDeflectionAngle) ) ivarsEqual = false;
-     if( ! (_verticalDeflectionAngle == rhs._verticalDeflectionAngle) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int VectoringNozzleSystem::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 4;  // _horizontalDeflectionAngle
-   marshalSize = marshalSize + 4;  // _verticalDeflectionAngle
-    return marshalSize;
+  marshalSize = marshalSize + 4;  // _horizontalDeflectionAngle
+  marshalSize = marshalSize + 4;  // _verticalDeflectionAngle
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -82,7 +69,7 @@ int VectoringNozzleSystem::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

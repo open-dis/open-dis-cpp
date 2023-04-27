@@ -2,87 +2,63 @@
 
 using namespace DIS;
 
-
-EightByteChunk::EightByteChunk()
-{
-     // Initialize fixed length array
-     for(int lengthotherParameters= 0; lengthotherParameters < 8; lengthotherParameters++)
-     {
-         _otherParameters[lengthotherParameters] = 0;
-     }
-
+EightByteChunk::EightByteChunk() {
+  // Initialize fixed length array
+  for (int lengthotherParameters = 0; lengthotherParameters < 8;
+       lengthotherParameters++) {
+    _otherParameters[lengthotherParameters] = 0;
+  }
 }
 
-EightByteChunk::~EightByteChunk()
-{
+EightByteChunk::~EightByteChunk() {}
+
+char* EightByteChunk::getOtherParameters() { return _otherParameters; }
+
+const char* EightByteChunk::getOtherParameters() const {
+  return _otherParameters;
 }
 
-char* EightByteChunk::getOtherParameters() 
-{
-    return _otherParameters;
+void EightByteChunk::setOtherParameters(const char* x) {
+  for (int i = 0; i < 8; i++) {
+    _otherParameters[i] = x[i];
+  }
 }
 
-const char* EightByteChunk::getOtherParameters() const
-{
-    return _otherParameters;
+void EightByteChunk::marshal(DataStream& dataStream) const {
+  for (size_t idx = 0; idx < 8; idx++) {
+    dataStream << _otherParameters[idx];
+  }
 }
 
-void EightByteChunk::setOtherParameters(const char* x)
-{
-   for(int i = 0; i < 8; i++)
-   {
-        _otherParameters[i] = x[i];
-   }
+void EightByteChunk::unmarshal(DataStream& dataStream) {
+  for (size_t idx = 0; idx < 8; idx++) {
+    dataStream >> _otherParameters[idx];
+  }
 }
 
-void EightByteChunk::marshal(DataStream& dataStream) const
-{
+bool EightByteChunk::operator==(const EightByteChunk& rhs) const {
+  bool ivarsEqual = true;
 
-     for(size_t idx = 0; idx < 8; idx++)
-     {
-        dataStream << _otherParameters[idx];
-     }
+  for (unsigned char idx = 0; idx < 8; idx++) {
+    if (!(_otherParameters[idx] == rhs._otherParameters[idx]))
+      ivarsEqual = false;
+  }
 
+  return ivarsEqual;
 }
 
-void EightByteChunk::unmarshal(DataStream& dataStream)
-{
+int EightByteChunk::getMarshalledSize() const {
+  int marshalSize = 0;
 
-     for(size_t idx = 0; idx < 8; idx++)
-     {
-        dataStream >> _otherParameters[idx];
-     }
-
-}
-
-
-bool EightByteChunk::operator ==(const EightByteChunk& rhs) const
- {
-     bool ivarsEqual = true;
-
-
-     for(unsigned char idx = 0; idx < 8; idx++)
-     {
-          if(!(_otherParameters[idx] == rhs._otherParameters[idx]) ) ivarsEqual = false;
-     }
-
-
-    return ivarsEqual;
- }
-
-int EightByteChunk::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 8 * 1;  // _otherParameters
-    return marshalSize;
+  marshalSize = marshalSize + 8 * 1;  // _otherParameters
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -95,7 +71,7 @@ int EightByteChunk::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

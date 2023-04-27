@@ -1,58 +1,54 @@
 #pragma once
 
-#include <dis6/utils/DataStream.h>
 #include <dis6/opendis6_export.h>
+#include <dis6/utils/DataStream.h>
 
-
-namespace DIS
-{
+namespace DIS {
 // Section 5.2.35. information about a specific UA emmtter
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT AcousticEmitter
-{
-protected:
+class OPENDIS6_EXPORT AcousticEmitter {
+ protected:
   /** the system for a particular UA emitter, and an enumeration */
-  unsigned short _acousticName; 
+  unsigned short _acousticName;
 
   /** The function of the acoustic system */
-  unsigned char _function; 
+  unsigned char _function;
 
   /** The UA emitter identification number relative to a specific system */
-  unsigned char _acousticIdNumber; 
-
+  unsigned char _acousticIdNumber;
 
  public:
-    AcousticEmitter();
-    virtual ~AcousticEmitter();
+  AcousticEmitter();
+  virtual ~AcousticEmitter();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned short getAcousticName() const; 
-    void setAcousticName(unsigned short pX); 
+  unsigned short getAcousticName() const;
+  void setAcousticName(unsigned short pX);
 
-    unsigned char getFunction() const; 
-    void setFunction(unsigned char pX); 
+  unsigned char getFunction() const;
+  void setFunction(unsigned char pX);
 
-    unsigned char getAcousticIdNumber() const; 
-    void setAcousticIdNumber(unsigned char pX); 
+  unsigned char getAcousticIdNumber() const;
+  void setAcousticIdNumber(unsigned char pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const AcousticEmitter& rhs) const;
+  bool operator==(const AcousticEmitter& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -65,7 +61,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

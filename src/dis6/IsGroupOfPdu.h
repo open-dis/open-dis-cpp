@@ -1,87 +1,89 @@
 #pragma once
 
-#include <dis6/EntityID.h>
-#include <dis6/VariableDatum.h>
 #include <vector>
+
+#include <dis6/EntityID.h>
 #include <dis6/EntityManagementFamilyPdu.h>
-#include <dis6/utils/DataStream.h>
+#include <dis6/VariableDatum.h>
 #include <dis6/opendis6_export.h>
+#include <dis6/utils/DataStream.h>
 
+namespace DIS {
+// Section 5.3.9.2 Information about a particular group of entities grouped
+// together for the purposes of netowrk bandwidth         reduction or
+// aggregation. Needs manual cleanup. The GED size requires a database lookup.
+// UNFINISHED
 
-namespace DIS
-{
-// Section 5.3.9.2 Information about a particular group of entities grouped together for the purposes of netowrk bandwidth         reduction or aggregation. Needs manual cleanup. The GED size requires a database lookup. UNFINISHED
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT IsGroupOfPdu : public EntityManagementFamilyPdu
-{
-protected:
+class OPENDIS6_EXPORT IsGroupOfPdu : public EntityManagementFamilyPdu {
+ protected:
   /** ID of aggregated entities */
-  EntityID _groupEntityID; 
+  EntityID _groupEntityID;
 
   /** type of entities constituting the group */
-  unsigned char _groupedEntityCategory; 
+  unsigned char _groupedEntityCategory;
 
   /** Number of individual entities constituting the group */
-  unsigned char _numberOfGroupedEntities; 
+  unsigned char _numberOfGroupedEntities;
 
   /** padding */
-  unsigned int _pad2; 
+  unsigned int _pad2;
 
   /** latitude */
-  double _latitude; 
+  double _latitude;
 
   /** longitude */
-  double _longitude; 
+  double _longitude;
 
-  /** GED records about each individual entity in the group. ^^^this is wrong--need a database lookup to find the actual size of the list elements */
-  std::vector<VariableDatum> _groupedEntityDescriptions; 
-
+  /** GED records about each individual entity in the group. ^^^this is
+   * wrong--need a database lookup to find the actual size of the list elements
+   */
+  std::vector<VariableDatum> _groupedEntityDescriptions;
 
  public:
-    IsGroupOfPdu();
-    virtual ~IsGroupOfPdu();
+  IsGroupOfPdu();
+  virtual ~IsGroupOfPdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getGroupEntityID(); 
-    const EntityID&  getGroupEntityID() const; 
-    void setGroupEntityID(const EntityID    &pX);
+  EntityID& getGroupEntityID();
+  const EntityID& getGroupEntityID() const;
+  void setGroupEntityID(const EntityID& pX);
 
-    unsigned char getGroupedEntityCategory() const; 
-    void setGroupedEntityCategory(unsigned char pX); 
+  unsigned char getGroupedEntityCategory() const;
+  void setGroupedEntityCategory(unsigned char pX);
 
-    unsigned char getNumberOfGroupedEntities() const; 
+  unsigned char getNumberOfGroupedEntities() const;
 
-    unsigned int getPad2() const; 
-    void setPad2(unsigned int pX); 
+  unsigned int getPad2() const;
+  void setPad2(unsigned int pX);
 
-    double getLatitude() const; 
-    void setLatitude(double pX); 
+  double getLatitude() const;
+  void setLatitude(double pX);
 
-    double getLongitude() const; 
-    void setLongitude(double pX); 
+  double getLongitude() const;
+  void setLongitude(double pX);
 
-    std::vector<VariableDatum>& getGroupedEntityDescriptions(); 
-    const std::vector<VariableDatum>& getGroupedEntityDescriptions() const; 
-    void setGroupedEntityDescriptions(const std::vector<VariableDatum>&    pX);
+  std::vector<VariableDatum>& getGroupedEntityDescriptions();
+  const std::vector<VariableDatum>& getGroupedEntityDescriptions() const;
+  void setGroupedEntityDescriptions(const std::vector<VariableDatum>& pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const IsGroupOfPdu& rhs) const;
+  bool operator==(const IsGroupOfPdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -94,7 +96,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

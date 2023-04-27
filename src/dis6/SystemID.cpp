@@ -2,104 +2,67 @@
 
 using namespace DIS;
 
+SystemID::SystemID()
+    : _systemType(0), _systemName(0), _systemMode(0), _changeOptions(0) {}
 
-SystemID::SystemID():
-   _systemType(0), 
-   _systemName(0), 
-   _systemMode(0), 
-   _changeOptions(0)
-{
+SystemID::~SystemID() {}
+
+unsigned short SystemID::getSystemType() const { return _systemType; }
+
+void SystemID::setSystemType(unsigned short pX) { _systemType = pX; }
+
+unsigned short SystemID::getSystemName() const { return _systemName; }
+
+void SystemID::setSystemName(unsigned short pX) { _systemName = pX; }
+
+unsigned char SystemID::getSystemMode() const { return _systemMode; }
+
+void SystemID::setSystemMode(unsigned char pX) { _systemMode = pX; }
+
+unsigned char SystemID::getChangeOptions() const { return _changeOptions; }
+
+void SystemID::setChangeOptions(unsigned char pX) { _changeOptions = pX; }
+
+void SystemID::marshal(DataStream& dataStream) const {
+  dataStream << _systemType;
+  dataStream << _systemName;
+  dataStream << _systemMode;
+  dataStream << _changeOptions;
 }
 
-SystemID::~SystemID()
-{
+void SystemID::unmarshal(DataStream& dataStream) {
+  dataStream >> _systemType;
+  dataStream >> _systemName;
+  dataStream >> _systemMode;
+  dataStream >> _changeOptions;
 }
 
-unsigned short SystemID::getSystemType() const
-{
-    return _systemType;
+bool SystemID::operator==(const SystemID& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_systemType == rhs._systemType)) ivarsEqual = false;
+  if (!(_systemName == rhs._systemName)) ivarsEqual = false;
+  if (!(_systemMode == rhs._systemMode)) ivarsEqual = false;
+  if (!(_changeOptions == rhs._changeOptions)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void SystemID::setSystemType(unsigned short pX)
-{
-    _systemType = pX;
-}
+int SystemID::getMarshalledSize() const {
+  int marshalSize = 0;
 
-unsigned short SystemID::getSystemName() const
-{
-    return _systemName;
-}
-
-void SystemID::setSystemName(unsigned short pX)
-{
-    _systemName = pX;
-}
-
-unsigned char SystemID::getSystemMode() const
-{
-    return _systemMode;
-}
-
-void SystemID::setSystemMode(unsigned char pX)
-{
-    _systemMode = pX;
-}
-
-unsigned char SystemID::getChangeOptions() const
-{
-    return _changeOptions;
-}
-
-void SystemID::setChangeOptions(unsigned char pX)
-{
-    _changeOptions = pX;
-}
-
-void SystemID::marshal(DataStream& dataStream) const
-{
-    dataStream << _systemType;
-    dataStream << _systemName;
-    dataStream << _systemMode;
-    dataStream << _changeOptions;
-}
-
-void SystemID::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _systemType;
-    dataStream >> _systemName;
-    dataStream >> _systemMode;
-    dataStream >> _changeOptions;
-}
-
-
-bool SystemID::operator ==(const SystemID& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_systemType == rhs._systemType) ) ivarsEqual = false;
-     if( ! (_systemName == rhs._systemName) ) ivarsEqual = false;
-     if( ! (_systemMode == rhs._systemMode) ) ivarsEqual = false;
-     if( ! (_changeOptions == rhs._changeOptions) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int SystemID::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 2;  // _systemType
-   marshalSize = marshalSize + 2;  // _systemName
-   marshalSize = marshalSize + 1;  // _systemMode
-   marshalSize = marshalSize + 1;  // _changeOptions
-    return marshalSize;
+  marshalSize = marshalSize + 2;  // _systemType
+  marshalSize = marshalSize + 2;  // _systemName
+  marshalSize = marshalSize + 1;  // _systemMode
+  marshalSize = marshalSize + 1;  // _changeOptions
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -112,7 +75,7 @@ int SystemID::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

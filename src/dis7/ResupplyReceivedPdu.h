@@ -1,83 +1,83 @@
 #pragma once
 
-#include <dis7/EntityID.h>
-#include <dis7/EntityID.h>
-#include <dis7/SupplyQuantity.h>
 #include <vector>
+
+#include <dis7/EntityID.h>
 #include <dis7/LogisticsFamilyPdu.h>
-#include <dis7/utils/DataStream.h>
+#include <dis7/SupplyQuantity.h>
 #include <dis7/opendis7_export.h>
+#include <dis7/utils/DataStream.h>
 
+namespace DIS {
+// Section 7.4.4. Receipt of supplies is communicated by issuing Resupply
+// Received PDU. COMPLETE
 
-namespace DIS
-{
-// Section 7.4.4. Receipt of supplies is communicated by issuing Resupply Received PDU. COMPLETE
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT ResupplyReceivedPdu : public LogisticsFamilyPdu
-{
-protected:
-  /** Entity that is receiving service.  Shall be represented by Entity Identifier record (see 6.2.28) */
-  EntityID _receivingEntityID; 
+class OPENDIS7_EXPORT ResupplyReceivedPdu : public LogisticsFamilyPdu {
+ protected:
+  /** Entity that is receiving service.  Shall be represented by Entity
+   * Identifier record (see 6.2.28) */
+  EntityID _receivingEntityID;
 
-  /** Entity that is supplying.  Shall be represented by Entity Identifier record (see 6.2.28) */
-  EntityID _supplyingEntityID; 
+  /** Entity that is supplying.  Shall be represented by Entity Identifier
+   * record (see 6.2.28) */
+  EntityID _supplyingEntityID;
 
   /** How many supplies are taken by receiving entity */
-  unsigned char _numberOfSupplyTypes; 
+  unsigned char _numberOfSupplyTypes;
 
   /** padding */
-  short _padding1; 
+  short _padding1;
 
   /** padding */
-  char _padding2; 
+  char _padding2;
 
-  /** Type and amount of supplies for each specified supply type.  See 6.2.85 for supply quantity record. */
-  std::vector<SupplyQuantity> _supplies; 
-
+  /** Type and amount of supplies for each specified supply type.  See 6.2.85
+   * for supply quantity record. */
+  std::vector<SupplyQuantity> _supplies;
 
  public:
-    ResupplyReceivedPdu();
-    virtual ~ResupplyReceivedPdu();
+  ResupplyReceivedPdu();
+  virtual ~ResupplyReceivedPdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getReceivingEntityID(); 
-    const EntityID&  getReceivingEntityID() const; 
-    void setReceivingEntityID(const EntityID    &pX);
+  EntityID& getReceivingEntityID();
+  const EntityID& getReceivingEntityID() const;
+  void setReceivingEntityID(const EntityID& pX);
 
-    EntityID& getSupplyingEntityID(); 
-    const EntityID&  getSupplyingEntityID() const; 
-    void setSupplyingEntityID(const EntityID    &pX);
+  EntityID& getSupplyingEntityID();
+  const EntityID& getSupplyingEntityID() const;
+  void setSupplyingEntityID(const EntityID& pX);
 
-    unsigned char getNumberOfSupplyTypes() const; 
+  unsigned char getNumberOfSupplyTypes() const;
 
-    short getPadding1() const; 
-    void setPadding1(short pX); 
+  short getPadding1() const;
+  void setPadding1(short pX);
 
-    char getPadding2() const; 
-    void setPadding2(char pX); 
+  char getPadding2() const;
+  void setPadding2(char pX);
 
-    std::vector<SupplyQuantity>& getSupplies(); 
-    const std::vector<SupplyQuantity>& getSupplies() const; 
-    void setSupplies(const std::vector<SupplyQuantity>&    pX);
+  std::vector<SupplyQuantity>& getSupplies();
+  const std::vector<SupplyQuantity>& getSupplies() const;
+  void setSupplies(const std::vector<SupplyQuantity>& pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const ResupplyReceivedPdu& rhs) const;
+  bool operator==(const ResupplyReceivedPdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -90,7 +90,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

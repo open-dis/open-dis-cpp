@@ -1,58 +1,55 @@
 #pragma once
 
-#include <dis6/utils/DataStream.h>
 #include <dis6/opendis6_export.h>
+#include <dis6/utils/DataStream.h>
 
+namespace DIS {
+// Section 5.2.18. Identifies a unique event in a simulation via the combination
+// of three values
 
-namespace DIS
-{
-// Section 5.2.18. Identifies a unique event in a simulation via the combination of three values
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT EventID
-{
-protected:
+class OPENDIS6_EXPORT EventID {
+ protected:
   /** The site ID */
-  unsigned short _site; 
+  unsigned short _site;
 
   /** The application ID */
-  unsigned short _application; 
+  unsigned short _application;
 
   /** the number of the event */
-  unsigned short _eventNumber; 
-
+  unsigned short _eventNumber;
 
  public:
-    EventID();
-    virtual ~EventID();
+  EventID();
+  virtual ~EventID();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned short getSite() const; 
-    void setSite(unsigned short pX); 
+  unsigned short getSite() const;
+  void setSite(unsigned short pX);
 
-    unsigned short getApplication() const; 
-    void setApplication(unsigned short pX); 
+  unsigned short getApplication() const;
+  void setApplication(unsigned short pX);
 
-    unsigned short getEventNumber() const; 
-    void setEventNumber(unsigned short pX); 
+  unsigned short getEventNumber() const;
+  void setEventNumber(unsigned short pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const EventID& rhs) const;
+  bool operator==(const EventID& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -65,7 +62,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

@@ -1,64 +1,60 @@
 #pragma once
 
-#include <dis6/utils/DataStream.h>
 #include <dis6/opendis6_export.h>
+#include <dis6/utils/DataStream.h>
 
-
-namespace DIS
-{
+namespace DIS {
 // 5.2.58. Used in IFF ATC PDU
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT SystemID
-{
-protected:
+class OPENDIS6_EXPORT SystemID {
+ protected:
   /** System Type */
-  unsigned short _systemType; 
+  unsigned short _systemType;
 
   /** System name, an enumeration */
-  unsigned short _systemName; 
+  unsigned short _systemName;
 
   /** System mode */
-  unsigned char _systemMode; 
+  unsigned char _systemMode;
 
   /** Change Options */
-  unsigned char _changeOptions; 
-
+  unsigned char _changeOptions;
 
  public:
-    SystemID();
-    virtual ~SystemID();
+  SystemID();
+  virtual ~SystemID();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned short getSystemType() const; 
-    void setSystemType(unsigned short pX); 
+  unsigned short getSystemType() const;
+  void setSystemType(unsigned short pX);
 
-    unsigned short getSystemName() const; 
-    void setSystemName(unsigned short pX); 
+  unsigned short getSystemName() const;
+  void setSystemName(unsigned short pX);
 
-    unsigned char getSystemMode() const; 
-    void setSystemMode(unsigned char pX); 
+  unsigned char getSystemMode() const;
+  void setSystemMode(unsigned char pX);
 
-    unsigned char getChangeOptions() const; 
-    void setChangeOptions(unsigned char pX); 
+  unsigned char getChangeOptions() const;
+  void setChangeOptions(unsigned char pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const SystemID& rhs) const;
+  bool operator==(const SystemID& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -71,7 +67,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

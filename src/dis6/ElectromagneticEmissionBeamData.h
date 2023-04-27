@@ -1,104 +1,107 @@
 #pragma once
 
+#include <vector>
+
 #include <dis6/FundamentalParameterData.h>
 #include <dis6/TrackJamTarget.h>
-#include <vector>
-#include <dis6/utils/DataStream.h>
 #include <dis6/opendis6_export.h>
+#include <dis6/utils/DataStream.h>
 
-
-namespace DIS
-{
+namespace DIS {
 // Description of one electronic emission beam
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT ElectromagneticEmissionBeamData
-{
-protected:
+class OPENDIS6_EXPORT ElectromagneticEmissionBeamData {
+ protected:
   /** This field shall specify the length of this beams data in 32 bit words */
-  unsigned char _beamDataLength; 
+  unsigned char _beamDataLength;
 
-  /** This field shall specify a unique emitter database number assigned to differentiate between otherwise similar or identical emitter beams within an emitter system. */
-  unsigned char _beamIDNumber; 
+  /** This field shall specify a unique emitter database number assigned to
+   * differentiate between otherwise similar or identical emitter beams within
+   * an emitter system. */
+  unsigned char _beamIDNumber;
 
-  /** This field shall specify a Beam Parameter Index number that shall be used by receiving entities in conjunction with the Emitter Name field to provide a pointer to the stored database parameters required to regenerate the beam.  */
-  unsigned short _beamParameterIndex; 
+  /** This field shall specify a Beam Parameter Index number that shall be used
+   * by receiving entities in conjunction with the Emitter Name field to provide
+   * a pointer to the stored database parameters required to regenerate the
+   * beam.  */
+  unsigned short _beamParameterIndex;
 
   /** Fundamental parameter data such as frequency range, beam sweep, etc. */
-  FundamentalParameterData _fundamentalParameterData; 
+  FundamentalParameterData _fundamentalParameterData;
 
   /** beam function of a particular beam */
-  unsigned char _beamFunction; 
+  unsigned char _beamFunction;
 
   /** Number of track/jam targets */
-  unsigned char _numberOfTrackJamTargets; 
+  unsigned char _numberOfTrackJamTargets;
 
-  /** wheher or not the receiving simulation apps can assume all the targets in the scan pattern are being tracked/jammed */
-  unsigned char _highDensityTrackJam; 
+  /** wheher or not the receiving simulation apps can assume all the targets in
+   * the scan pattern are being tracked/jammed */
+  unsigned char _highDensityTrackJam;
 
   /** padding */
-  unsigned char _pad4; 
+  unsigned char _pad4;
 
   /** identify jamming techniques used */
-  unsigned int _jammingModeSequence; 
+  unsigned int _jammingModeSequence;
 
   /** variable length list of track/jam targets */
-  std::vector<TrackJamTarget> _trackJamTargets; 
-
+  std::vector<TrackJamTarget> _trackJamTargets;
 
  public:
-    ElectromagneticEmissionBeamData();
-    virtual ~ElectromagneticEmissionBeamData();
+  ElectromagneticEmissionBeamData();
+  virtual ~ElectromagneticEmissionBeamData();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getBeamDataLength() const; 
-    void setBeamDataLength(unsigned char pX); 
+  unsigned char getBeamDataLength() const;
+  void setBeamDataLength(unsigned char pX);
 
-    unsigned char getBeamIDNumber() const; 
-    void setBeamIDNumber(unsigned char pX); 
+  unsigned char getBeamIDNumber() const;
+  void setBeamIDNumber(unsigned char pX);
 
-    unsigned short getBeamParameterIndex() const; 
-    void setBeamParameterIndex(unsigned short pX); 
+  unsigned short getBeamParameterIndex() const;
+  void setBeamParameterIndex(unsigned short pX);
 
-    FundamentalParameterData& getFundamentalParameterData(); 
-    const FundamentalParameterData&  getFundamentalParameterData() const; 
-    void setFundamentalParameterData(const FundamentalParameterData    &pX);
+  FundamentalParameterData& getFundamentalParameterData();
+  const FundamentalParameterData& getFundamentalParameterData() const;
+  void setFundamentalParameterData(const FundamentalParameterData& pX);
 
-    unsigned char getBeamFunction() const; 
-    void setBeamFunction(unsigned char pX); 
+  unsigned char getBeamFunction() const;
+  void setBeamFunction(unsigned char pX);
 
-    unsigned char getNumberOfTrackJamTargets() const; 
+  unsigned char getNumberOfTrackJamTargets() const;
 
-    unsigned char getHighDensityTrackJam() const; 
-    void setHighDensityTrackJam(unsigned char pX); 
+  unsigned char getHighDensityTrackJam() const;
+  void setHighDensityTrackJam(unsigned char pX);
 
-    unsigned char getPad4() const; 
-    void setPad4(unsigned char pX); 
+  unsigned char getPad4() const;
+  void setPad4(unsigned char pX);
 
-    unsigned int getJammingModeSequence() const; 
-    void setJammingModeSequence(unsigned int pX); 
+  unsigned int getJammingModeSequence() const;
+  void setJammingModeSequence(unsigned int pX);
 
-    std::vector<TrackJamTarget>& getTrackJamTargets(); 
-    const std::vector<TrackJamTarget>& getTrackJamTargets() const; 
-    void setTrackJamTargets(const std::vector<TrackJamTarget>&    pX);
+  std::vector<TrackJamTarget>& getTrackJamTargets();
+  const std::vector<TrackJamTarget>& getTrackJamTargets() const;
+  void setTrackJamTargets(const std::vector<TrackJamTarget>& pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const ElectromagneticEmissionBeamData& rhs) const;
+  bool operator==(const ElectromagneticEmissionBeamData& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -111,7 +114,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

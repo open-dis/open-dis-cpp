@@ -1,52 +1,48 @@
 #pragma once
 
-#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
+#include <dis7/utils/DataStream.h>
 
-
-namespace DIS
-{
+namespace DIS {
 // Operational data for describing the vectoring nozzle systems Section 6.2.96
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT VectoringNozzleSystem
-{
-protected:
+class OPENDIS7_EXPORT VectoringNozzleSystem {
+ protected:
   /** In degrees */
-  float _horizontalDeflectionAngle; 
+  float _horizontalDeflectionAngle;
 
   /** In degrees */
-  float _verticalDeflectionAngle; 
-
+  float _verticalDeflectionAngle;
 
  public:
-    VectoringNozzleSystem();
-    virtual ~VectoringNozzleSystem();
+  VectoringNozzleSystem();
+  virtual ~VectoringNozzleSystem();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    float getHorizontalDeflectionAngle() const; 
-    void setHorizontalDeflectionAngle(float pX); 
+  float getHorizontalDeflectionAngle() const;
+  void setHorizontalDeflectionAngle(float pX);
 
-    float getVerticalDeflectionAngle() const; 
-    void setVerticalDeflectionAngle(float pX); 
+  float getVerticalDeflectionAngle() const;
+  void setVerticalDeflectionAngle(float pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const VectoringNozzleSystem& rhs) const;
+  bool operator==(const VectoringNozzleSystem& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -59,7 +55,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

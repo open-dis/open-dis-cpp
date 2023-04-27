@@ -1,90 +1,88 @@
 #pragma once
 
-#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
+#include <dis7/utils/DataStream.h>
 
+namespace DIS {
+// The Blanking Sector attribute record may be used to convey persistent areas
+// within a scan volume where emitter power for a specific active emitter beam
+// is reduced to an insignificant value. Section 6.2.12
 
-namespace DIS
-{
-// The Blanking Sector attribute record may be used to convey persistent areas within a scan volume where emitter power for a specific active emitter beam is reduced to an insignificant value. Section 6.2.12
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT BlankingSector
-{
-protected:
-  unsigned int _recordType; 
+class OPENDIS7_EXPORT BlankingSector {
+ protected:
+  unsigned int _recordType;
 
-  unsigned short _recordLength; 
+  unsigned short _recordLength;
 
-  unsigned char _emitterNumber; 
+  unsigned char _emitterNumber;
 
-  unsigned char _beamNumber; 
+  unsigned char _beamNumber;
 
-  unsigned char _stateIndicator; 
+  unsigned char _stateIndicator;
 
-  float _leftAzimuth; 
+  float _leftAzimuth;
 
-  float _rightAzimuth; 
+  float _rightAzimuth;
 
-  float _lowerElevation; 
+  float _lowerElevation;
 
-  float _upperElevation; 
+  float _upperElevation;
 
-  float _residualPower; 
-
+  float _residualPower;
 
  public:
-    BlankingSector();
-    virtual ~BlankingSector();
+  BlankingSector();
+  virtual ~BlankingSector();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned int getRecordType() const; 
-    void setRecordType(unsigned int pX); 
+  unsigned int getRecordType() const;
+  void setRecordType(unsigned int pX);
 
-    unsigned short getRecordLength() const; 
-    void setRecordLength(unsigned short pX); 
+  unsigned short getRecordLength() const;
+  void setRecordLength(unsigned short pX);
 
-    unsigned char getEmitterNumber() const; 
-    void setEmitterNumber(unsigned char pX); 
+  unsigned char getEmitterNumber() const;
+  void setEmitterNumber(unsigned char pX);
 
-    unsigned char getBeamNumber() const; 
-    void setBeamNumber(unsigned char pX); 
+  unsigned char getBeamNumber() const;
+  void setBeamNumber(unsigned char pX);
 
-    unsigned char getStateIndicator() const; 
-    void setStateIndicator(unsigned char pX); 
+  unsigned char getStateIndicator() const;
+  void setStateIndicator(unsigned char pX);
 
-    float getLeftAzimuth() const; 
-    void setLeftAzimuth(float pX); 
+  float getLeftAzimuth() const;
+  void setLeftAzimuth(float pX);
 
-    float getRightAzimuth() const; 
-    void setRightAzimuth(float pX); 
+  float getRightAzimuth() const;
+  void setRightAzimuth(float pX);
 
-    float getLowerElevation() const; 
-    void setLowerElevation(float pX); 
+  float getLowerElevation() const;
+  void setLowerElevation(float pX);
 
-    float getUpperElevation() const; 
-    void setUpperElevation(float pX); 
+  float getUpperElevation() const;
+  void setUpperElevation(float pX);
 
-    float getResidualPower() const; 
-    void setResidualPower(float pX); 
+  float getResidualPower() const;
+  void setResidualPower(float pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const BlankingSector& rhs) const;
+  bool operator==(const BlankingSector& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -97,7 +95,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

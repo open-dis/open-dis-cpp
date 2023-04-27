@@ -1,54 +1,51 @@
 #pragma once
 
 #include <dis7/EntityType.h>
-#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
+#include <dis7/utils/DataStream.h>
 
+namespace DIS {
+// Unique designation of a group of entities contained in the isGroupOfPdu.
+// Represents a group of entities rather than a single entity. Section 6.2.43
 
-namespace DIS
-{
-// Unique designation of a group of entities contained in the isGroupOfPdu. Represents a group of entities rather than a single entity. Section 6.2.43
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT GroupIdentifier
-{
-protected:
+class OPENDIS7_EXPORT GroupIdentifier {
+ protected:
   /** Simulation address (site and application number) */
-  EntityType _simulationAddress; 
+  EntityType _simulationAddress;
 
   /** group number */
-  unsigned short _groupNumber; 
-
+  unsigned short _groupNumber;
 
  public:
-    GroupIdentifier();
-    virtual ~GroupIdentifier();
+  GroupIdentifier();
+  virtual ~GroupIdentifier();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EntityType& getSimulationAddress(); 
-    const EntityType&  getSimulationAddress() const; 
-    void setSimulationAddress(const EntityType    &pX);
+  EntityType& getSimulationAddress();
+  const EntityType& getSimulationAddress() const;
+  void setSimulationAddress(const EntityType& pX);
 
-    unsigned short getGroupNumber() const; 
-    void setGroupNumber(unsigned short pX); 
+  unsigned short getGroupNumber() const;
+  void setGroupNumber(unsigned short pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const GroupIdentifier& rhs) const;
+  bool operator==(const GroupIdentifier& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -61,7 +58,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

@@ -1,46 +1,45 @@
 #pragma once
 
-#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
+#include <dis7/utils/DataStream.h>
 
+namespace DIS {
+// Information related to the status of a beam. This is contained in the beam
+// status field of the electromagnitec emission PDU. The first bit determines
+// whether the beam is active (0) or deactivated (1).
 
-namespace DIS
-{
-// Information related to the status of a beam. This is contained in the beam status field of the electromagnitec emission PDU. The first bit determines whether the beam is active (0) or deactivated (1).
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT BeamStatus
-{
-protected:
-  /** First bit zero means beam is active, first bit = 1 means deactivated. The rest is padding. */
-  unsigned char _beamState; 
-
+class OPENDIS7_EXPORT BeamStatus {
+ protected:
+  /** First bit zero means beam is active, first bit = 1 means deactivated. The
+   * rest is padding. */
+  unsigned char _beamState;
 
  public:
-    BeamStatus();
-    virtual ~BeamStatus();
+  BeamStatus();
+  virtual ~BeamStatus();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getBeamState() const; 
-    void setBeamState(unsigned char pX); 
+  unsigned char getBeamState() const;
+  void setBeamState(unsigned char pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const BeamStatus& rhs) const;
+  bool operator==(const BeamStatus& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -53,7 +52,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

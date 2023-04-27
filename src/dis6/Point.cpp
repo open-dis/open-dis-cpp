@@ -2,74 +2,50 @@
 
 using namespace DIS;
 
+Point::Point() : _x(0.0), _y(0.0) {}
 
-Point::Point():
-   _x(0.0), 
-   _y(0.0)
-{
+Point::~Point() {}
+
+float Point::getX() const { return _x; }
+
+void Point::setX(float pX) { _x = pX; }
+
+float Point::getY() const { return _y; }
+
+void Point::setY(float pX) { _y = pX; }
+
+void Point::marshal(DataStream& dataStream) const {
+  dataStream << _x;
+  dataStream << _y;
 }
 
-Point::~Point()
-{
+void Point::unmarshal(DataStream& dataStream) {
+  dataStream >> _x;
+  dataStream >> _y;
 }
 
-float Point::getX() const
-{
-    return _x;
+bool Point::operator==(const Point& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_x == rhs._x)) ivarsEqual = false;
+  if (!(_y == rhs._y)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void Point::setX(float pX)
-{
-    _x = pX;
-}
+int Point::getMarshalledSize() const {
+  int marshalSize = 0;
 
-float Point::getY() const
-{
-    return _y;
-}
-
-void Point::setY(float pX)
-{
-    _y = pX;
-}
-
-void Point::marshal(DataStream& dataStream) const
-{
-    dataStream << _x;
-    dataStream << _y;
-}
-
-void Point::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _x;
-    dataStream >> _y;
-}
-
-
-bool Point::operator ==(const Point& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_x == rhs._x) ) ivarsEqual = false;
-     if( ! (_y == rhs._y) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int Point::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 4;  // _x
-   marshalSize = marshalSize + 4;  // _y
-    return marshalSize;
+  marshalSize = marshalSize + 4;  // _x
+  marshalSize = marshalSize + 4;  // _y
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -82,7 +58,7 @@ int Point::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

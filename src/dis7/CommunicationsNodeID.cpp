@@ -2,79 +2,52 @@
 
 using namespace DIS;
 
+CommunicationsNodeID::CommunicationsNodeID() : _entityID(), _elementID(0) {}
 
-CommunicationsNodeID::CommunicationsNodeID():
-   _entityID(), 
-   _elementID(0)
-{
+CommunicationsNodeID::~CommunicationsNodeID() {}
+
+EntityID& CommunicationsNodeID::getEntityID() { return _entityID; }
+
+const EntityID& CommunicationsNodeID::getEntityID() const { return _entityID; }
+
+void CommunicationsNodeID::setEntityID(const EntityID& pX) { _entityID = pX; }
+
+unsigned short CommunicationsNodeID::getElementID() const { return _elementID; }
+
+void CommunicationsNodeID::setElementID(unsigned short pX) { _elementID = pX; }
+
+void CommunicationsNodeID::marshal(DataStream& dataStream) const {
+  _entityID.marshal(dataStream);
+  dataStream << _elementID;
 }
 
-CommunicationsNodeID::~CommunicationsNodeID()
-{
+void CommunicationsNodeID::unmarshal(DataStream& dataStream) {
+  _entityID.unmarshal(dataStream);
+  dataStream >> _elementID;
 }
 
-EntityID& CommunicationsNodeID::getEntityID() 
-{
-    return _entityID;
+bool CommunicationsNodeID::operator==(const CommunicationsNodeID& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_entityID == rhs._entityID)) ivarsEqual = false;
+  if (!(_elementID == rhs._elementID)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-const EntityID& CommunicationsNodeID::getEntityID() const
-{
-    return _entityID;
-}
+int CommunicationsNodeID::getMarshalledSize() const {
+  int marshalSize = 0;
 
-void CommunicationsNodeID::setEntityID(const EntityID &pX)
-{
-    _entityID = pX;
-}
-
-unsigned short CommunicationsNodeID::getElementID() const
-{
-    return _elementID;
-}
-
-void CommunicationsNodeID::setElementID(unsigned short pX)
-{
-    _elementID = pX;
-}
-
-void CommunicationsNodeID::marshal(DataStream& dataStream) const
-{
-    _entityID.marshal(dataStream);
-    dataStream << _elementID;
-}
-
-void CommunicationsNodeID::unmarshal(DataStream& dataStream)
-{
-    _entityID.unmarshal(dataStream);
-    dataStream >> _elementID;
-}
-
-
-bool CommunicationsNodeID::operator ==(const CommunicationsNodeID& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_entityID == rhs._entityID) ) ivarsEqual = false;
-     if( ! (_elementID == rhs._elementID) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int CommunicationsNodeID::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + _entityID.getMarshalledSize();  // _entityID
-   marshalSize = marshalSize + 2;  // _elementID
-    return marshalSize;
+  marshalSize = marshalSize + _entityID.getMarshalledSize();  // _entityID
+  marshalSize = marshalSize + 2;                              // _elementID
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -87,7 +60,7 @@ int CommunicationsNodeID::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

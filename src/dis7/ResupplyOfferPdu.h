@@ -1,83 +1,84 @@
 #pragma once
 
-#include <dis7/EntityID.h>
-#include <dis7/EntityID.h>
-#include <dis7/SupplyQuantity.h>
 #include <vector>
+
+#include <dis7/EntityID.h>
 #include <dis7/LogisticsFamilyPdu.h>
-#include <dis7/utils/DataStream.h>
+#include <dis7/SupplyQuantity.h>
 #include <dis7/opendis7_export.h>
+#include <dis7/utils/DataStream.h>
 
+namespace DIS {
+// Information used to communicate the offer of supplies by a supplying entity
+// to a receiving entity. Section 7.4.3 COMPLETE
 
-namespace DIS
-{
-// Information used to communicate the offer of supplies by a supplying entity to a receiving entity. Section 7.4.3 COMPLETE
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT ResupplyOfferPdu : public LogisticsFamilyPdu
-{
-protected:
-  /** Field identifies the Entity and respective Entity Record ID that is receiving service (see 6.2.28), Section 7.4.3 */
-  EntityID _receivingEntityID; 
+class OPENDIS7_EXPORT ResupplyOfferPdu : public LogisticsFamilyPdu {
+ protected:
+  /** Field identifies the Entity and respective Entity Record ID that is
+   * receiving service (see 6.2.28), Section 7.4.3 */
+  EntityID _receivingEntityID;
 
-  /** Identifies the Entity and respective Entity ID Record that is supplying  (see 6.2.28), Section 7.4.3 */
-  EntityID _supplyingEntityID; 
+  /** Identifies the Entity and respective Entity ID Record that is supplying
+   * (see 6.2.28), Section 7.4.3 */
+  EntityID _supplyingEntityID;
 
   /** How many supplies types are being offered, Section 7.4.3 */
-  unsigned char _numberOfSupplyTypes; 
+  unsigned char _numberOfSupplyTypes;
 
   /** padding */
-  char _padding1; 
+  char _padding1;
 
   /** padding */
-  short _padding2; 
+  short _padding2;
 
-  /** A Reord that Specifies the type of supply and the amount of that supply for each of the supply types in numberOfSupplyTypes (see 6.2.85), Section 7.4.3 */
-  std::vector<SupplyQuantity> _supplies; 
-
+  /** A Reord that Specifies the type of supply and the amount of that supply
+   * for each of the supply types in numberOfSupplyTypes (see 6.2.85),
+   * Section 7.4.3 */
+  std::vector<SupplyQuantity> _supplies;
 
  public:
-    ResupplyOfferPdu();
-    virtual ~ResupplyOfferPdu();
+  ResupplyOfferPdu();
+  virtual ~ResupplyOfferPdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getReceivingEntityID(); 
-    const EntityID&  getReceivingEntityID() const; 
-    void setReceivingEntityID(const EntityID    &pX);
+  EntityID& getReceivingEntityID();
+  const EntityID& getReceivingEntityID() const;
+  void setReceivingEntityID(const EntityID& pX);
 
-    EntityID& getSupplyingEntityID(); 
-    const EntityID&  getSupplyingEntityID() const; 
-    void setSupplyingEntityID(const EntityID    &pX);
+  EntityID& getSupplyingEntityID();
+  const EntityID& getSupplyingEntityID() const;
+  void setSupplyingEntityID(const EntityID& pX);
 
-    unsigned char getNumberOfSupplyTypes() const; 
+  unsigned char getNumberOfSupplyTypes() const;
 
-    char getPadding1() const; 
-    void setPadding1(char pX); 
+  char getPadding1() const;
+  void setPadding1(char pX);
 
-    short getPadding2() const; 
-    void setPadding2(short pX); 
+  short getPadding2() const;
+  void setPadding2(short pX);
 
-    std::vector<SupplyQuantity>& getSupplies(); 
-    const std::vector<SupplyQuantity>& getSupplies() const; 
-    void setSupplies(const std::vector<SupplyQuantity>&    pX);
+  std::vector<SupplyQuantity>& getSupplies();
+  const std::vector<SupplyQuantity>& getSupplies() const;
+  void setSupplies(const std::vector<SupplyQuantity>& pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const ResupplyOfferPdu& rhs) const;
+  bool operator==(const ResupplyOfferPdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -90,7 +91,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

@@ -2,94 +2,80 @@
 
 using namespace DIS;
 
+DirectedEnergyTargetEnergyDeposition::DirectedEnergyTargetEnergyDeposition()
+    : _targetEntityID(), _padding(0), _peakIrradiance(0.0) {}
 
-DirectedEnergyTargetEnergyDeposition::DirectedEnergyTargetEnergyDeposition():
-   _targetEntityID(), 
-   _padding(0), 
-   _peakIrradiance(0.0)
-{
+DirectedEnergyTargetEnergyDeposition::~DirectedEnergyTargetEnergyDeposition() {}
+
+EntityID& DirectedEnergyTargetEnergyDeposition::getTargetEntityID() {
+  return _targetEntityID;
 }
 
-DirectedEnergyTargetEnergyDeposition::~DirectedEnergyTargetEnergyDeposition()
-{
+const EntityID& DirectedEnergyTargetEnergyDeposition::getTargetEntityID()
+    const {
+  return _targetEntityID;
 }
 
-EntityID& DirectedEnergyTargetEnergyDeposition::getTargetEntityID() 
-{
-    return _targetEntityID;
+void DirectedEnergyTargetEnergyDeposition::setTargetEntityID(
+    const EntityID& pX) {
+  _targetEntityID = pX;
 }
 
-const EntityID& DirectedEnergyTargetEnergyDeposition::getTargetEntityID() const
-{
-    return _targetEntityID;
+unsigned short DirectedEnergyTargetEnergyDeposition::getPadding() const {
+  return _padding;
 }
 
-void DirectedEnergyTargetEnergyDeposition::setTargetEntityID(const EntityID &pX)
-{
-    _targetEntityID = pX;
+void DirectedEnergyTargetEnergyDeposition::setPadding(unsigned short pX) {
+  _padding = pX;
 }
 
-unsigned short DirectedEnergyTargetEnergyDeposition::getPadding() const
-{
-    return _padding;
+float DirectedEnergyTargetEnergyDeposition::getPeakIrradiance() const {
+  return _peakIrradiance;
 }
 
-void DirectedEnergyTargetEnergyDeposition::setPadding(unsigned short pX)
-{
-    _padding = pX;
+void DirectedEnergyTargetEnergyDeposition::setPeakIrradiance(float pX) {
+  _peakIrradiance = pX;
 }
 
-float DirectedEnergyTargetEnergyDeposition::getPeakIrradiance() const
-{
-    return _peakIrradiance;
+void DirectedEnergyTargetEnergyDeposition::marshal(
+    DataStream& dataStream) const {
+  _targetEntityID.marshal(dataStream);
+  dataStream << _padding;
+  dataStream << _peakIrradiance;
 }
 
-void DirectedEnergyTargetEnergyDeposition::setPeakIrradiance(float pX)
-{
-    _peakIrradiance = pX;
+void DirectedEnergyTargetEnergyDeposition::unmarshal(DataStream& dataStream) {
+  _targetEntityID.unmarshal(dataStream);
+  dataStream >> _padding;
+  dataStream >> _peakIrradiance;
 }
 
-void DirectedEnergyTargetEnergyDeposition::marshal(DataStream& dataStream) const
-{
-    _targetEntityID.marshal(dataStream);
-    dataStream << _padding;
-    dataStream << _peakIrradiance;
+bool DirectedEnergyTargetEnergyDeposition::operator==(
+    const DirectedEnergyTargetEnergyDeposition& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_targetEntityID == rhs._targetEntityID)) ivarsEqual = false;
+  if (!(_padding == rhs._padding)) ivarsEqual = false;
+  if (!(_peakIrradiance == rhs._peakIrradiance)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void DirectedEnergyTargetEnergyDeposition::unmarshal(DataStream& dataStream)
-{
-    _targetEntityID.unmarshal(dataStream);
-    dataStream >> _padding;
-    dataStream >> _peakIrradiance;
-}
+int DirectedEnergyTargetEnergyDeposition::getMarshalledSize() const {
+  int marshalSize = 0;
 
-
-bool DirectedEnergyTargetEnergyDeposition::operator ==(const DirectedEnergyTargetEnergyDeposition& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_targetEntityID == rhs._targetEntityID) ) ivarsEqual = false;
-     if( ! (_padding == rhs._padding) ) ivarsEqual = false;
-     if( ! (_peakIrradiance == rhs._peakIrradiance) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int DirectedEnergyTargetEnergyDeposition::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + _targetEntityID.getMarshalledSize();  // _targetEntityID
-   marshalSize = marshalSize + 2;  // _padding
-   marshalSize = marshalSize + 4;  // _peakIrradiance
-    return marshalSize;
+  marshalSize =
+      marshalSize + _targetEntityID.getMarshalledSize();  // _targetEntityID
+  marshalSize = marshalSize + 2;                          // _padding
+  marshalSize = marshalSize + 4;                          // _peakIrradiance
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -102,7 +88,7 @@ int DirectedEnergyTargetEnergyDeposition::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

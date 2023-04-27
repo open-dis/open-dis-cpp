@@ -1,88 +1,87 @@
 #pragma once
 
-#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
+#include <dis7/utils/DataStream.h>
 
+namespace DIS {
+// Not used. The PDU Header Record is directly incoroporated into the PDU class.
+// Here for completness only. Section 6.2.66
 
-namespace DIS
-{
-// Not used. The PDU Header Record is directly incoroporated into the PDU class. Here for completness only. Section 6.2.66
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT PduHeader
-{
-protected:
+class OPENDIS7_EXPORT PduHeader {
+ protected:
   /** The version of the protocol. 5=DIS-1995, 6=DIS-1998, 7=DIS-2009. */
-  unsigned char _protocolVersion; 
+  unsigned char _protocolVersion;
 
   /** Exercise ID */
-  unsigned char _exerciseID; 
+  unsigned char _exerciseID;
 
   /** Type of pdu, unique for each PDU class */
-  unsigned char _pduType; 
+  unsigned char _pduType;
 
   /** value that refers to the protocol family, eg SimulationManagement, etc */
-  unsigned char _protocolFamily; 
+  unsigned char _protocolFamily;
 
   /** Timestamp value */
-  unsigned int _timestamp; 
+  unsigned int _timestamp;
 
-  /** Length, in bytes, of the PDU. Changed name from length to avoid use of Hibernate QL reserved word. */
-  unsigned char _pduLength; 
+  /** Length, in bytes, of the PDU. Changed name from length to avoid use of
+   * Hibernate QL reserved word. */
+  unsigned char _pduLength;
 
-  /** PDU Status Record. Described in 6.2.67. This field is not present in earlier DIS versions  */
-  unsigned short _pduStatus; 
+  /** PDU Status Record. Described in 6.2.67. This field is not present in
+   * earlier DIS versions  */
+  unsigned short _pduStatus;
 
   /** zero filled array of padding */
-  unsigned char _padding; 
-
+  unsigned char _padding;
 
  public:
-    PduHeader();
-    virtual ~PduHeader();
+  PduHeader();
+  virtual ~PduHeader();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getProtocolVersion() const; 
-    void setProtocolVersion(unsigned char pX); 
+  unsigned char getProtocolVersion() const;
+  void setProtocolVersion(unsigned char pX);
 
-    unsigned char getExerciseID() const; 
-    void setExerciseID(unsigned char pX); 
+  unsigned char getExerciseID() const;
+  void setExerciseID(unsigned char pX);
 
-    unsigned char getPduType() const; 
-    void setPduType(unsigned char pX); 
+  unsigned char getPduType() const;
+  void setPduType(unsigned char pX);
 
-    unsigned char getProtocolFamily() const; 
-    void setProtocolFamily(unsigned char pX); 
+  unsigned char getProtocolFamily() const;
+  void setProtocolFamily(unsigned char pX);
 
-    unsigned int getTimestamp() const; 
-    void setTimestamp(unsigned int pX); 
+  unsigned int getTimestamp() const;
+  void setTimestamp(unsigned int pX);
 
-    unsigned char getPduLength() const; 
-    void setPduLength(unsigned char pX); 
+  unsigned char getPduLength() const;
+  void setPduLength(unsigned char pX);
 
-    unsigned short getPduStatus() const; 
-    void setPduStatus(unsigned short pX); 
+  unsigned short getPduStatus() const;
+  void setPduStatus(unsigned short pX);
 
-    unsigned char getPadding() const; 
-    void setPadding(unsigned char pX); 
+  unsigned char getPadding() const;
+  void setPadding(unsigned char pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const PduHeader& rhs) const;
+  bool operator==(const PduHeader& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -95,7 +94,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

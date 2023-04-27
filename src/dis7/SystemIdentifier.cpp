@@ -2,104 +2,71 @@
 
 using namespace DIS;
 
+SystemIdentifier::SystemIdentifier()
+    : _systemType(0), _systemName(0), _systemMode(0), _changeOptions(0) {}
 
-SystemIdentifier::SystemIdentifier():
-   _systemType(0), 
-   _systemName(0), 
-   _systemMode(0), 
-   _changeOptions(0)
-{
+SystemIdentifier::~SystemIdentifier() {}
+
+unsigned short SystemIdentifier::getSystemType() const { return _systemType; }
+
+void SystemIdentifier::setSystemType(unsigned short pX) { _systemType = pX; }
+
+unsigned short SystemIdentifier::getSystemName() const { return _systemName; }
+
+void SystemIdentifier::setSystemName(unsigned short pX) { _systemName = pX; }
+
+unsigned char SystemIdentifier::getSystemMode() const { return _systemMode; }
+
+void SystemIdentifier::setSystemMode(unsigned char pX) { _systemMode = pX; }
+
+unsigned char SystemIdentifier::getChangeOptions() const {
+  return _changeOptions;
 }
 
-SystemIdentifier::~SystemIdentifier()
-{
+void SystemIdentifier::setChangeOptions(unsigned char pX) {
+  _changeOptions = pX;
 }
 
-unsigned short SystemIdentifier::getSystemType() const
-{
-    return _systemType;
+void SystemIdentifier::marshal(DataStream& dataStream) const {
+  dataStream << _systemType;
+  dataStream << _systemName;
+  dataStream << _systemMode;
+  dataStream << _changeOptions;
 }
 
-void SystemIdentifier::setSystemType(unsigned short pX)
-{
-    _systemType = pX;
+void SystemIdentifier::unmarshal(DataStream& dataStream) {
+  dataStream >> _systemType;
+  dataStream >> _systemName;
+  dataStream >> _systemMode;
+  dataStream >> _changeOptions;
 }
 
-unsigned short SystemIdentifier::getSystemName() const
-{
-    return _systemName;
+bool SystemIdentifier::operator==(const SystemIdentifier& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_systemType == rhs._systemType)) ivarsEqual = false;
+  if (!(_systemName == rhs._systemName)) ivarsEqual = false;
+  if (!(_systemMode == rhs._systemMode)) ivarsEqual = false;
+  if (!(_changeOptions == rhs._changeOptions)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void SystemIdentifier::setSystemName(unsigned short pX)
-{
-    _systemName = pX;
-}
+int SystemIdentifier::getMarshalledSize() const {
+  int marshalSize = 0;
 
-unsigned char SystemIdentifier::getSystemMode() const
-{
-    return _systemMode;
-}
-
-void SystemIdentifier::setSystemMode(unsigned char pX)
-{
-    _systemMode = pX;
-}
-
-unsigned char SystemIdentifier::getChangeOptions() const
-{
-    return _changeOptions;
-}
-
-void SystemIdentifier::setChangeOptions(unsigned char pX)
-{
-    _changeOptions = pX;
-}
-
-void SystemIdentifier::marshal(DataStream& dataStream) const
-{
-    dataStream << _systemType;
-    dataStream << _systemName;
-    dataStream << _systemMode;
-    dataStream << _changeOptions;
-}
-
-void SystemIdentifier::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _systemType;
-    dataStream >> _systemName;
-    dataStream >> _systemMode;
-    dataStream >> _changeOptions;
-}
-
-
-bool SystemIdentifier::operator ==(const SystemIdentifier& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_systemType == rhs._systemType) ) ivarsEqual = false;
-     if( ! (_systemName == rhs._systemName) ) ivarsEqual = false;
-     if( ! (_systemMode == rhs._systemMode) ) ivarsEqual = false;
-     if( ! (_changeOptions == rhs._changeOptions) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int SystemIdentifier::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 2;  // _systemType
-   marshalSize = marshalSize + 2;  // _systemName
-   marshalSize = marshalSize + 1;  // _systemMode
-   marshalSize = marshalSize + 1;  // _changeOptions
-    return marshalSize;
+  marshalSize = marshalSize + 2;  // _systemType
+  marshalSize = marshalSize + 2;  // _systemName
+  marshalSize = marshalSize + 1;  // _systemMode
+  marshalSize = marshalSize + 1;  // _changeOptions
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -112,7 +79,7 @@ int SystemIdentifier::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

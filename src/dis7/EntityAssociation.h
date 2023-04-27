@@ -1,96 +1,93 @@
 #pragma once
 
 #include <dis7/EntityID.h>
-#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
+#include <dis7/utils/DataStream.h>
 
-
-namespace DIS
-{
+namespace DIS {
 // Association or disassociation of two entities.  Section 6.2.93.4
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT EntityAssociation
-{
-protected:
-  /** the identification of the Variable Parameter record. Enumeration from EBV */
-  unsigned char _recordType; 
+class OPENDIS7_EXPORT EntityAssociation {
+ protected:
+  /** the identification of the Variable Parameter record. Enumeration from EBV
+   */
+  unsigned char _recordType;
 
   /** Indicates if this VP has changed since last issuance */
-  unsigned char _changeIndicator; 
+  unsigned char _changeIndicator;
 
   /** Indicates association status between two entities; 8 bit enum */
-  unsigned char _associationStatus; 
+  unsigned char _associationStatus;
 
   /** Type of association; 8 bit enum */
-  unsigned char _associationType; 
+  unsigned char _associationType;
 
   /** Object ID of entity associated with this entity */
-  EntityID _entityID; 
+  EntityID _entityID;
 
   /** Station location on one's own entity. EBV doc. */
-  unsigned short _owsSttionLocation; 
+  unsigned short _owsSttionLocation;
 
   /** Type of physical connection. EBV doc */
-  unsigned short _physicalConnectionType; 
+  unsigned short _physicalConnectionType;
 
   /** Type of member the entity is within th egroup */
-  unsigned char _groupMemberType; 
+  unsigned char _groupMemberType;
 
   /** Group if any to which the entity belongs */
-  unsigned short _groupNumber; 
-
+  unsigned short _groupNumber;
 
  public:
-    EntityAssociation();
-    virtual ~EntityAssociation();
+  EntityAssociation();
+  virtual ~EntityAssociation();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getRecordType() const; 
-    void setRecordType(unsigned char pX); 
+  unsigned char getRecordType() const;
+  void setRecordType(unsigned char pX);
 
-    unsigned char getChangeIndicator() const; 
-    void setChangeIndicator(unsigned char pX); 
+  unsigned char getChangeIndicator() const;
+  void setChangeIndicator(unsigned char pX);
 
-    unsigned char getAssociationStatus() const; 
-    void setAssociationStatus(unsigned char pX); 
+  unsigned char getAssociationStatus() const;
+  void setAssociationStatus(unsigned char pX);
 
-    unsigned char getAssociationType() const; 
-    void setAssociationType(unsigned char pX); 
+  unsigned char getAssociationType() const;
+  void setAssociationType(unsigned char pX);
 
-    EntityID& getEntityID(); 
-    const EntityID&  getEntityID() const; 
-    void setEntityID(const EntityID    &pX);
+  EntityID& getEntityID();
+  const EntityID& getEntityID() const;
+  void setEntityID(const EntityID& pX);
 
-    unsigned short getOwsSttionLocation() const; 
-    void setOwsSttionLocation(unsigned short pX); 
+  unsigned short getOwsSttionLocation() const;
+  void setOwsSttionLocation(unsigned short pX);
 
-    unsigned short getPhysicalConnectionType() const; 
-    void setPhysicalConnectionType(unsigned short pX); 
+  unsigned short getPhysicalConnectionType() const;
+  void setPhysicalConnectionType(unsigned short pX);
 
-    unsigned char getGroupMemberType() const; 
-    void setGroupMemberType(unsigned char pX); 
+  unsigned char getGroupMemberType() const;
+  void setGroupMemberType(unsigned char pX);
 
-    unsigned short getGroupNumber() const; 
-    void setGroupNumber(unsigned short pX); 
+  unsigned short getGroupNumber() const;
+  void setGroupNumber(unsigned short pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const EntityAssociation& rhs) const;
+  bool operator==(const EntityAssociation& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -103,7 +100,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

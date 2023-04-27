@@ -2,89 +2,64 @@
 
 using namespace DIS;
 
+LayerHeader::LayerHeader()
+    : _layerNumber(0), _layerSpecificInformation(0), _length(0) {}
 
-LayerHeader::LayerHeader():
-   _layerNumber(0), 
-   _layerSpecificInformation(0), 
-   _length(0)
-{
+LayerHeader::~LayerHeader() {}
+
+unsigned char LayerHeader::getLayerNumber() const { return _layerNumber; }
+
+void LayerHeader::setLayerNumber(unsigned char pX) { _layerNumber = pX; }
+
+unsigned char LayerHeader::getLayerSpecificInformation() const {
+  return _layerSpecificInformation;
 }
 
-LayerHeader::~LayerHeader()
-{
+void LayerHeader::setLayerSpecificInformation(unsigned char pX) {
+  _layerSpecificInformation = pX;
 }
 
-unsigned char LayerHeader::getLayerNumber() const
-{
-    return _layerNumber;
+unsigned short LayerHeader::getLength() const { return _length; }
+
+void LayerHeader::setLength(unsigned short pX) { _length = pX; }
+
+void LayerHeader::marshal(DataStream& dataStream) const {
+  dataStream << _layerNumber;
+  dataStream << _layerSpecificInformation;
+  dataStream << _length;
 }
 
-void LayerHeader::setLayerNumber(unsigned char pX)
-{
-    _layerNumber = pX;
+void LayerHeader::unmarshal(DataStream& dataStream) {
+  dataStream >> _layerNumber;
+  dataStream >> _layerSpecificInformation;
+  dataStream >> _length;
 }
 
-unsigned char LayerHeader::getLayerSpecificInformation() const
-{
-    return _layerSpecificInformation;
+bool LayerHeader::operator==(const LayerHeader& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_layerNumber == rhs._layerNumber)) ivarsEqual = false;
+  if (!(_layerSpecificInformation == rhs._layerSpecificInformation))
+    ivarsEqual = false;
+  if (!(_length == rhs._length)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void LayerHeader::setLayerSpecificInformation(unsigned char pX)
-{
-    _layerSpecificInformation = pX;
-}
+int LayerHeader::getMarshalledSize() const {
+  int marshalSize = 0;
 
-unsigned short LayerHeader::getLength() const
-{
-    return _length;
-}
-
-void LayerHeader::setLength(unsigned short pX)
-{
-    _length = pX;
-}
-
-void LayerHeader::marshal(DataStream& dataStream) const
-{
-    dataStream << _layerNumber;
-    dataStream << _layerSpecificInformation;
-    dataStream << _length;
-}
-
-void LayerHeader::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _layerNumber;
-    dataStream >> _layerSpecificInformation;
-    dataStream >> _length;
-}
-
-
-bool LayerHeader::operator ==(const LayerHeader& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_layerNumber == rhs._layerNumber) ) ivarsEqual = false;
-     if( ! (_layerSpecificInformation == rhs._layerSpecificInformation) ) ivarsEqual = false;
-     if( ! (_length == rhs._length) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int LayerHeader::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 1;  // _layerNumber
-   marshalSize = marshalSize + 1;  // _layerSpecificInformation
-   marshalSize = marshalSize + 2;  // _length
-    return marshalSize;
+  marshalSize = marshalSize + 1;  // _layerNumber
+  marshalSize = marshalSize + 1;  // _layerSpecificInformation
+  marshalSize = marshalSize + 2;  // _length
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -97,7 +72,7 @@ int LayerHeader::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

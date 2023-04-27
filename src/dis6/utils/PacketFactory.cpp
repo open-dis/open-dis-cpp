@@ -1,27 +1,22 @@
-#include <dis6/utils/PacketFactory.h>
-#include <dis6/Pdu.h>
 #include <cstdlib>
+
+#include <dis6/Pdu.h>
+#include <dis6/utils/PacketFactory.h>
 
 using namespace DIS;
 
-Pdu* PacketFactory::CreatePacket(unsigned char id)
-{
-   FunctionMap::iterator iter =_fMap.find( id );
-   if( iter != _fMap.end() )
-   {
-      return (iter->second)();
-   }
+Pdu* PacketFactory::CreatePacket(unsigned char id) {
+  FunctionMap::iterator iter = _fMap.find(id);
+  if (iter != _fMap.end()) {
+    return (iter->second)();
+  }
 
-   return NULL;
+  return NULL;
 }
 
-void PacketFactory::DestroyPacket(Pdu* pdu)
-{
-   delete pdu;
-}
+void PacketFactory::DestroyPacket(Pdu* pdu) { delete pdu; }
 
-bool PacketFactory::IsRegistered(unsigned char id) const
-{
-   FunctionMap::const_iterator iter = _fMap.find(id);
-   return( iter != _fMap.end() );
+bool PacketFactory::IsRegistered(unsigned char id) const {
+  FunctionMap::const_iterator iter = _fMap.find(id);
+  return (iter != _fMap.end());
 }

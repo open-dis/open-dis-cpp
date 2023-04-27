@@ -1,69 +1,64 @@
 #pragma once
 
 #include <dis7/Vector3Float.h>
-#include <dis7/Vector3Float.h>
-#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
+#include <dis7/utils/DataStream.h>
 
-
-namespace DIS
-{
+namespace DIS {
 // Not specified in the standard. This is used by the ESPDU
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT DeadReckoningParameters
-{
-protected:
+class OPENDIS7_EXPORT DeadReckoningParameters {
+ protected:
   /** Algorithm to use in computing dead reckoning. See EBV doc. */
-  unsigned char _deadReckoningAlgorithm; 
+  unsigned char _deadReckoningAlgorithm;
 
   /** Dead reckoning parameters. Contents depends on algorithm. */
-  unsigned char _parameters[15]; 
+  unsigned char _parameters[15];
 
   /** Linear acceleration of the entity */
-  Vector3Float _entityLinearAcceleration; 
+  Vector3Float _entityLinearAcceleration;
 
   /** Angular velocity of the entity */
-  Vector3Float _entityAngularVelocity; 
-
+  Vector3Float _entityAngularVelocity;
 
  public:
-    DeadReckoningParameters();
-    virtual ~DeadReckoningParameters();
+  DeadReckoningParameters();
+  virtual ~DeadReckoningParameters();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getDeadReckoningAlgorithm() const; 
-    void setDeadReckoningAlgorithm(unsigned char pX); 
+  unsigned char getDeadReckoningAlgorithm() const;
+  void setDeadReckoningAlgorithm(unsigned char pX);
 
-    unsigned char*  getParameters(); 
-    const unsigned char*  getParameters() const; 
-    void setParameters( const unsigned char*    pX);
+  unsigned char* getParameters();
+  const unsigned char* getParameters() const;
+  void setParameters(const unsigned char* pX);
 
-    Vector3Float& getEntityLinearAcceleration(); 
-    const Vector3Float&  getEntityLinearAcceleration() const; 
-    void setEntityLinearAcceleration(const Vector3Float    &pX);
+  Vector3Float& getEntityLinearAcceleration();
+  const Vector3Float& getEntityLinearAcceleration() const;
+  void setEntityLinearAcceleration(const Vector3Float& pX);
 
-    Vector3Float& getEntityAngularVelocity(); 
-    const Vector3Float&  getEntityAngularVelocity() const; 
-    void setEntityAngularVelocity(const Vector3Float    &pX);
+  Vector3Float& getEntityAngularVelocity();
+  const Vector3Float& getEntityAngularVelocity() const;
+  void setEntityAngularVelocity(const Vector3Float& pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const DeadReckoningParameters& rhs) const;
+  bool operator==(const DeadReckoningParameters& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -76,7 +71,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

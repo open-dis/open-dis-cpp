@@ -2,74 +2,60 @@
 
 using namespace DIS;
 
+NamedLocationIdentification::NamedLocationIdentification()
+    : _stationName(0), _stationNumber(0) {}
 
-NamedLocationIdentification::NamedLocationIdentification():
-   _stationName(0), 
-   _stationNumber(0)
-{
+NamedLocationIdentification::~NamedLocationIdentification() {}
+
+unsigned short NamedLocationIdentification::getStationName() const {
+  return _stationName;
 }
 
-NamedLocationIdentification::~NamedLocationIdentification()
-{
+void NamedLocationIdentification::setStationName(unsigned short pX) {
+  _stationName = pX;
 }
 
-unsigned short NamedLocationIdentification::getStationName() const
-{
-    return _stationName;
+unsigned short NamedLocationIdentification::getStationNumber() const {
+  return _stationNumber;
 }
 
-void NamedLocationIdentification::setStationName(unsigned short pX)
-{
-    _stationName = pX;
+void NamedLocationIdentification::setStationNumber(unsigned short pX) {
+  _stationNumber = pX;
 }
 
-unsigned short NamedLocationIdentification::getStationNumber() const
-{
-    return _stationNumber;
+void NamedLocationIdentification::marshal(DataStream& dataStream) const {
+  dataStream << _stationName;
+  dataStream << _stationNumber;
 }
 
-void NamedLocationIdentification::setStationNumber(unsigned short pX)
-{
-    _stationNumber = pX;
+void NamedLocationIdentification::unmarshal(DataStream& dataStream) {
+  dataStream >> _stationName;
+  dataStream >> _stationNumber;
 }
 
-void NamedLocationIdentification::marshal(DataStream& dataStream) const
-{
-    dataStream << _stationName;
-    dataStream << _stationNumber;
+bool NamedLocationIdentification::operator==(
+    const NamedLocationIdentification& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_stationName == rhs._stationName)) ivarsEqual = false;
+  if (!(_stationNumber == rhs._stationNumber)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void NamedLocationIdentification::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _stationName;
-    dataStream >> _stationNumber;
-}
+int NamedLocationIdentification::getMarshalledSize() const {
+  int marshalSize = 0;
 
-
-bool NamedLocationIdentification::operator ==(const NamedLocationIdentification& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_stationName == rhs._stationName) ) ivarsEqual = false;
-     if( ! (_stationNumber == rhs._stationNumber) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int NamedLocationIdentification::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 2;  // _stationName
-   marshalSize = marshalSize + 2;  // _stationNumber
-    return marshalSize;
+  marshalSize = marshalSize + 2;  // _stationName
+  marshalSize = marshalSize + 2;  // _stationNumber
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -82,7 +68,7 @@ int NamedLocationIdentification::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

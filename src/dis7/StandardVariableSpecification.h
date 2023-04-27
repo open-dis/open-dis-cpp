@@ -1,54 +1,56 @@
 #pragma once
 
-#include <dis7/SimulationManagementPduHeader.h>
 #include <vector>
-#include <dis7/utils/DataStream.h>
+
+#include <dis7/SimulationManagementPduHeader.h>
 #include <dis7/opendis7_export.h>
+#include <dis7/utils/DataStream.h>
 
+namespace DIS {
+// Does not work, and causes failure in anything it is embedded in.
+// Section 6.2.82
 
-namespace DIS
-{
-// Does not work, and causes failure in anything it is embedded in. Section 6.2.82
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT StandardVariableSpecification
-{
-protected:
+class OPENDIS7_EXPORT StandardVariableSpecification {
+ protected:
   /** Number of static variable records */
-  unsigned short _numberOfStandardVariableRecords; 
+  unsigned short _numberOfStandardVariableRecords;
 
-  /** variable length list of standard variables, The class type and length here are WRONG and will cause the incorrect serialization of any class in whihc it is embedded. */
-  std::vector<SimulationManagementPduHeader> _standardVariables; 
-
+  /** variable length list of standard variables, The class type and length here
+   * are WRONG and will cause the incorrect serialization of any class in whihc
+   * it is embedded. */
+  std::vector<SimulationManagementPduHeader> _standardVariables;
 
  public:
-    StandardVariableSpecification();
-    virtual ~StandardVariableSpecification();
+  StandardVariableSpecification();
+  virtual ~StandardVariableSpecification();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned short getNumberOfStandardVariableRecords() const; 
+  unsigned short getNumberOfStandardVariableRecords() const;
 
-    std::vector<SimulationManagementPduHeader>& getStandardVariables(); 
-    const std::vector<SimulationManagementPduHeader>& getStandardVariables() const; 
-    void setStandardVariables(const std::vector<SimulationManagementPduHeader>&    pX);
+  std::vector<SimulationManagementPduHeader>& getStandardVariables();
+  const std::vector<SimulationManagementPduHeader>& getStandardVariables()
+      const;
+  void setStandardVariables(
+      const std::vector<SimulationManagementPduHeader>& pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const StandardVariableSpecification& rhs) const;
+  bool operator==(const StandardVariableSpecification& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -61,7 +63,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

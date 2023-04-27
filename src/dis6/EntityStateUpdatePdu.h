@@ -1,98 +1,97 @@
 #pragma once
 
-#include <dis6/EntityID.h>
-#include <dis6/Vector3Float.h>
-#include <dis6/Vector3Double.h>
-#include <dis6/Orientation.h>
-#include <dis6/ArticulationParameter.h>
 #include <vector>
+
+#include <dis6/ArticulationParameter.h>
+#include <dis6/EntityID.h>
 #include <dis6/EntityInformationFamilyPdu.h>
-#include <dis6/utils/DataStream.h>
+#include <dis6/Orientation.h>
+#include <dis6/Vector3Double.h>
+#include <dis6/Vector3Float.h>
 #include <dis6/opendis6_export.h>
+#include <dis6/utils/DataStream.h>
 
+namespace DIS {
+// 5.3.3.4. Nonstatic information about a particular entity may be communicated
+// by issuing an Entity State Update PDU. COMPLETE
 
-namespace DIS
-{
-// 5.3.3.4. Nonstatic information about a particular entity may be communicated by issuing an Entity State Update PDU. COMPLETE
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT EntityStateUpdatePdu : public EntityInformationFamilyPdu
-{
-protected:
+class OPENDIS6_EXPORT EntityStateUpdatePdu : public EntityInformationFamilyPdu {
+ protected:
   /** This field shall identify the entity issuing the PDU */
-  EntityID _entityID; 
+  EntityID _entityID;
 
   /** Padding */
-  char _padding1; 
+  char _padding1;
 
   /** How many articulation parameters are in the variable length list */
-  unsigned char _numberOfArticulationParameters; 
+  unsigned char _numberOfArticulationParameters;
 
   /** Describes the speed of the entity in the world */
-  Vector3Float _entityLinearVelocity; 
+  Vector3Float _entityLinearVelocity;
 
   /** describes the location of the entity in the world */
-  Vector3Double _entityLocation; 
+  Vector3Double _entityLocation;
 
   /** describes the orientation of the entity, in euler angles */
-  Orientation _entityOrientation; 
+  Orientation _entityOrientation;
 
-  /** a series of bit flags that are used to help draw the entity, such as smoking, on fire, etc. */
-  int _entityAppearance; 
+  /** a series of bit flags that are used to help draw the entity, such as
+   * smoking, on fire, etc. */
+  int _entityAppearance;
 
-  std::vector<ArticulationParameter> _articulationParameters; 
-
+  std::vector<ArticulationParameter> _articulationParameters;
 
  public:
-    EntityStateUpdatePdu();
-    virtual ~EntityStateUpdatePdu();
+  EntityStateUpdatePdu();
+  virtual ~EntityStateUpdatePdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getEntityID(); 
-    const EntityID&  getEntityID() const; 
-    void setEntityID(const EntityID    &pX);
+  EntityID& getEntityID();
+  const EntityID& getEntityID() const;
+  void setEntityID(const EntityID& pX);
 
-    char getPadding1() const; 
-    void setPadding1(char pX); 
+  char getPadding1() const;
+  void setPadding1(char pX);
 
-    unsigned char getNumberOfArticulationParameters() const; 
+  unsigned char getNumberOfArticulationParameters() const;
 
-    Vector3Float& getEntityLinearVelocity(); 
-    const Vector3Float&  getEntityLinearVelocity() const; 
-    void setEntityLinearVelocity(const Vector3Float    &pX);
+  Vector3Float& getEntityLinearVelocity();
+  const Vector3Float& getEntityLinearVelocity() const;
+  void setEntityLinearVelocity(const Vector3Float& pX);
 
-    Vector3Double& getEntityLocation(); 
-    const Vector3Double&  getEntityLocation() const; 
-    void setEntityLocation(const Vector3Double    &pX);
+  Vector3Double& getEntityLocation();
+  const Vector3Double& getEntityLocation() const;
+  void setEntityLocation(const Vector3Double& pX);
 
-    Orientation& getEntityOrientation(); 
-    const Orientation&  getEntityOrientation() const; 
-    void setEntityOrientation(const Orientation    &pX);
+  Orientation& getEntityOrientation();
+  const Orientation& getEntityOrientation() const;
+  void setEntityOrientation(const Orientation& pX);
 
-    int getEntityAppearance() const; 
-    void setEntityAppearance(int pX); 
+  int getEntityAppearance() const;
+  void setEntityAppearance(int pX);
 
-    std::vector<ArticulationParameter>& getArticulationParameters(); 
-    const std::vector<ArticulationParameter>& getArticulationParameters() const; 
-    void setArticulationParameters(const std::vector<ArticulationParameter>&    pX);
+  std::vector<ArticulationParameter>& getArticulationParameters();
+  const std::vector<ArticulationParameter>& getArticulationParameters() const;
+  void setArticulationParameters(const std::vector<ArticulationParameter>& pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const EntityStateUpdatePdu& rhs) const;
+  bool operator==(const EntityStateUpdatePdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -105,7 +104,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

@@ -1,75 +1,70 @@
 #pragma once
 
 #include <dis7/EntityID.h>
-#include <dis7/EntityID.h>
 #include <dis7/LogisticsFamilyPdu.h>
-#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
+#include <dis7/utils/DataStream.h>
 
-
-namespace DIS
-{
+namespace DIS {
 // Section 7.4.7. Sent after repair complete PDU. COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT RepairResponsePdu : public LogisticsFamilyPdu
-{
-protected:
+class OPENDIS7_EXPORT RepairResponsePdu : public LogisticsFamilyPdu {
+ protected:
   /** Entity that requested repairs.  See 6.2.28 */
-  EntityID _receivingEntityID; 
+  EntityID _receivingEntityID;
 
   /** Entity that is repairing.  See 6.2.28 */
-  EntityID _repairingEntityID; 
+  EntityID _repairingEntityID;
 
   /** Result of repair operation */
-  unsigned char _repairResult; 
+  unsigned char _repairResult;
 
   /** padding */
-  short _padding1; 
+  short _padding1;
 
   /** padding */
-  char _padding2; 
-
+  char _padding2;
 
  public:
-    RepairResponsePdu();
-    virtual ~RepairResponsePdu();
+  RepairResponsePdu();
+  virtual ~RepairResponsePdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getReceivingEntityID(); 
-    const EntityID&  getReceivingEntityID() const; 
-    void setReceivingEntityID(const EntityID    &pX);
+  EntityID& getReceivingEntityID();
+  const EntityID& getReceivingEntityID() const;
+  void setReceivingEntityID(const EntityID& pX);
 
-    EntityID& getRepairingEntityID(); 
-    const EntityID&  getRepairingEntityID() const; 
-    void setRepairingEntityID(const EntityID    &pX);
+  EntityID& getRepairingEntityID();
+  const EntityID& getRepairingEntityID() const;
+  void setRepairingEntityID(const EntityID& pX);
 
-    unsigned char getRepairResult() const; 
-    void setRepairResult(unsigned char pX); 
+  unsigned char getRepairResult() const;
+  void setRepairResult(unsigned char pX);
 
-    short getPadding1() const; 
-    void setPadding1(short pX); 
+  short getPadding1() const;
+  void setPadding1(short pX);
 
-    char getPadding2() const; 
-    void setPadding2(char pX); 
+  char getPadding2() const;
+  void setPadding2(char pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const RepairResponsePdu& rhs) const;
+  bool operator==(const RepairResponsePdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -82,7 +77,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

@@ -1,87 +1,83 @@
 #pragma once
 
 #include <dis7/EntityID.h>
-#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
+#include <dis7/utils/DataStream.h>
 
-
-namespace DIS
-{
+namespace DIS {
 // Effect of IO on an entity. Section 6.2.49.3
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT IOEffect
-{
-protected:
-  unsigned int _recordType; 
+class OPENDIS7_EXPORT IOEffect {
+ protected:
+  unsigned int _recordType;
 
-  unsigned short _recordLength; 
+  unsigned short _recordLength;
 
-  unsigned char _ioStatus; 
+  unsigned char _ioStatus;
 
-  unsigned char _ioLinkType; 
+  unsigned char _ioLinkType;
 
-  EntityID _ioEffect; 
+  EntityID _ioEffect;
 
-  unsigned char _ioEffectDutyCycle; 
+  unsigned char _ioEffectDutyCycle;
 
-  unsigned short _ioEffectDuration; 
+  unsigned short _ioEffectDuration;
 
-  unsigned short _ioProcess; 
+  unsigned short _ioProcess;
 
-  unsigned short _padding; 
-
+  unsigned short _padding;
 
  public:
-    IOEffect();
-    virtual ~IOEffect();
+  IOEffect();
+  virtual ~IOEffect();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned int getRecordType() const; 
-    void setRecordType(unsigned int pX); 
+  unsigned int getRecordType() const;
+  void setRecordType(unsigned int pX);
 
-    unsigned short getRecordLength() const; 
-    void setRecordLength(unsigned short pX); 
+  unsigned short getRecordLength() const;
+  void setRecordLength(unsigned short pX);
 
-    unsigned char getIoStatus() const; 
-    void setIoStatus(unsigned char pX); 
+  unsigned char getIoStatus() const;
+  void setIoStatus(unsigned char pX);
 
-    unsigned char getIoLinkType() const; 
-    void setIoLinkType(unsigned char pX); 
+  unsigned char getIoLinkType() const;
+  void setIoLinkType(unsigned char pX);
 
-    EntityID& getIoEffect(); 
-    const EntityID&  getIoEffect() const; 
-    void setIoEffect(const EntityID    &pX);
+  EntityID& getIoEffect();
+  const EntityID& getIoEffect() const;
+  void setIoEffect(const EntityID& pX);
 
-    unsigned char getIoEffectDutyCycle() const; 
-    void setIoEffectDutyCycle(unsigned char pX); 
+  unsigned char getIoEffectDutyCycle() const;
+  void setIoEffectDutyCycle(unsigned char pX);
 
-    unsigned short getIoEffectDuration() const; 
-    void setIoEffectDuration(unsigned short pX); 
+  unsigned short getIoEffectDuration() const;
+  void setIoEffectDuration(unsigned short pX);
 
-    unsigned short getIoProcess() const; 
-    void setIoProcess(unsigned short pX); 
+  unsigned short getIoProcess() const;
+  void setIoProcess(unsigned short pX);
 
-    unsigned short getPadding() const; 
-    void setPadding(unsigned short pX); 
+  unsigned short getPadding() const;
+  void setPadding(unsigned short pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const IOEffect& rhs) const;
+  bool operator==(const IOEffect& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -94,7 +90,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

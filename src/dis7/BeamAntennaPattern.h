@@ -1,97 +1,106 @@
 #pragma once
 
 #include <dis7/EulerAngles.h>
-#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
+#include <dis7/utils/DataStream.h>
 
+namespace DIS {
+// Used when the antenna pattern type field has a value of 1. Specifies the
+// direction, pattern, and polarization of radiation from an antenna.
+// Section 6.2.9.2
 
-namespace DIS
-{
-// Used when the antenna pattern type field has a value of 1. Specifies the direction, pattern, and polarization of radiation from an antenna. Section 6.2.9.2
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT BeamAntennaPattern
-{
-protected:
-  /** The rotation that transforms the reference coordinate sytem into the beam coordinate system. Either world coordinates or entity coordinates may be used as the reference coordinate system, as specified by the reference system field of the antenna pattern record. */
-  EulerAngles _beamDirection; 
+class OPENDIS7_EXPORT BeamAntennaPattern {
+ protected:
+  /** The rotation that transforms the reference coordinate sytem into the beam
+   * coordinate system. Either world coordinates or entity coordinates may be
+   * used as the reference coordinate system, as specified by the reference
+   * system field of the antenna pattern record. */
+  EulerAngles _beamDirection;
 
-  float _azimuthBeamwidth; 
+  float _azimuthBeamwidth;
 
-  float _elevationBeamwidth; 
+  float _elevationBeamwidth;
 
-  float _referenceSystem; 
+  float _referenceSystem;
 
-  unsigned char _padding1; 
+  unsigned char _padding1;
 
-  unsigned short _padding2; 
+  unsigned short _padding2;
 
-  /** This field shall specify the magnitude of the Z-component (in beam coordinates) of the Electrical field at some arbitrary single point in the main beam and in the far field of the antenna.  */
-  float _ez; 
+  /** This field shall specify the magnitude of the Z-component (in beam
+   * coordinates) of the Electrical field at some arbitrary single point in the
+   * main beam and in the far field of the antenna.  */
+  float _ez;
 
-  /** This field shall specify the magnitude of the X-component (in beam coordinates) of the Electri- cal field at some arbitrary single point in the main beam and in the far field of the antenna. */
-  float _ex; 
+  /** This field shall specify the magnitude of the X-component (in beam
+   * coordinates) of the Electri- cal field at some arbitrary single point in
+   * the main beam and in the far field of the antenna. */
+  float _ex;
 
-  /** This field shall specify the phase angle between EZ and EX in radians. If fully omni-direc- tional antenna is modeled using beam pattern type one, the omni-directional antenna shall be repre- sented by beam direction Euler angles psi, theta, and phi of zero, an azimuth beamwidth of 2PI, and an elevation beamwidth of PI */
-  float _phase; 
+  /** This field shall specify the phase angle between EZ and EX in radians. If
+   * fully omni-direc- tional antenna is modeled using beam pattern type one,
+   * the omni-directional antenna shall be repre- sented by beam direction Euler
+   * angles psi, theta, and phi of zero, an azimuth beamwidth of 2PI, and an
+   * elevation beamwidth of PI */
+  float _phase;
 
   /** padding */
-  unsigned int _padding3; 
-
+  unsigned int _padding3;
 
  public:
-    BeamAntennaPattern();
-    virtual ~BeamAntennaPattern();
+  BeamAntennaPattern();
+  virtual ~BeamAntennaPattern();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EulerAngles& getBeamDirection(); 
-    const EulerAngles&  getBeamDirection() const; 
-    void setBeamDirection(const EulerAngles    &pX);
+  EulerAngles& getBeamDirection();
+  const EulerAngles& getBeamDirection() const;
+  void setBeamDirection(const EulerAngles& pX);
 
-    float getAzimuthBeamwidth() const; 
-    void setAzimuthBeamwidth(float pX); 
+  float getAzimuthBeamwidth() const;
+  void setAzimuthBeamwidth(float pX);
 
-    float getElevationBeamwidth() const; 
-    void setElevationBeamwidth(float pX); 
+  float getElevationBeamwidth() const;
+  void setElevationBeamwidth(float pX);
 
-    float getReferenceSystem() const; 
-    void setReferenceSystem(float pX); 
+  float getReferenceSystem() const;
+  void setReferenceSystem(float pX);
 
-    unsigned char getPadding1() const; 
-    void setPadding1(unsigned char pX); 
+  unsigned char getPadding1() const;
+  void setPadding1(unsigned char pX);
 
-    unsigned short getPadding2() const; 
-    void setPadding2(unsigned short pX); 
+  unsigned short getPadding2() const;
+  void setPadding2(unsigned short pX);
 
-    float getEz() const; 
-    void setEz(float pX); 
+  float getEz() const;
+  void setEz(float pX);
 
-    float getEx() const; 
-    void setEx(float pX); 
+  float getEx() const;
+  void setEx(float pX);
 
-    float getPhase() const; 
-    void setPhase(float pX); 
+  float getPhase() const;
+  void setPhase(float pX);
 
-    unsigned int getPadding3() const; 
-    void setPadding3(unsigned int pX); 
+  unsigned int getPadding3() const;
+  void setPadding3(unsigned int pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const BeamAntennaPattern& rhs) const;
+  bool operator==(const BeamAntennaPattern& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -104,7 +113,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

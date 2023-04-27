@@ -2,102 +2,72 @@
 
 using namespace DIS;
 
-
-AggregateMarking::AggregateMarking():
-   _characterSet(0)
-{
-     // Initialize fixed length array
-     for(int lengthcharacters= 0; lengthcharacters < 31; lengthcharacters++)
-     {
-         _characters[lengthcharacters] = 0;
-     }
-
+AggregateMarking::AggregateMarking() : _characterSet(0) {
+  // Initialize fixed length array
+  for (int lengthcharacters = 0; lengthcharacters < 31; lengthcharacters++) {
+    _characters[lengthcharacters] = 0;
+  }
 }
 
-AggregateMarking::~AggregateMarking()
-{
+AggregateMarking::~AggregateMarking() {}
+
+unsigned char AggregateMarking::getCharacterSet() const {
+  return _characterSet;
 }
 
-unsigned char AggregateMarking::getCharacterSet() const
-{
-    return _characterSet;
+void AggregateMarking::setCharacterSet(unsigned char pX) { _characterSet = pX; }
+
+char* AggregateMarking::getCharacters() { return _characters; }
+
+const char* AggregateMarking::getCharacters() const { return _characters; }
+
+void AggregateMarking::setCharacters(const char* x) {
+  for (int i = 0; i < 31; i++) {
+    _characters[i] = x[i];
+  }
 }
 
-void AggregateMarking::setCharacterSet(unsigned char pX)
-{
-    _characterSet = pX;
+void AggregateMarking::marshal(DataStream& dataStream) const {
+  dataStream << _characterSet;
+
+  for (size_t idx = 0; idx < 31; idx++) {
+    dataStream << _characters[idx];
+  }
 }
 
-char* AggregateMarking::getCharacters() 
-{
-    return _characters;
+void AggregateMarking::unmarshal(DataStream& dataStream) {
+  dataStream >> _characterSet;
+
+  for (size_t idx = 0; idx < 31; idx++) {
+    dataStream >> _characters[idx];
+  }
 }
 
-const char* AggregateMarking::getCharacters() const
-{
-    return _characters;
+bool AggregateMarking::operator==(const AggregateMarking& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_characterSet == rhs._characterSet)) ivarsEqual = false;
+
+  for (unsigned char idx = 0; idx < 31; idx++) {
+    if (!(_characters[idx] == rhs._characters[idx])) ivarsEqual = false;
+  }
+
+  return ivarsEqual;
 }
 
-void AggregateMarking::setCharacters(const char* x)
-{
-   for(int i = 0; i < 31; i++)
-   {
-        _characters[i] = x[i];
-   }
-}
+int AggregateMarking::getMarshalledSize() const {
+  int marshalSize = 0;
 
-void AggregateMarking::marshal(DataStream& dataStream) const
-{
-    dataStream << _characterSet;
-
-     for(size_t idx = 0; idx < 31; idx++)
-     {
-        dataStream << _characters[idx];
-     }
-
-}
-
-void AggregateMarking::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _characterSet;
-
-     for(size_t idx = 0; idx < 31; idx++)
-     {
-        dataStream >> _characters[idx];
-     }
-
-}
-
-
-bool AggregateMarking::operator ==(const AggregateMarking& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_characterSet == rhs._characterSet) ) ivarsEqual = false;
-
-     for(unsigned char idx = 0; idx < 31; idx++)
-     {
-          if(!(_characters[idx] == rhs._characters[idx]) ) ivarsEqual = false;
-     }
-
-
-    return ivarsEqual;
- }
-
-int AggregateMarking::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 1;  // _characterSet
-   marshalSize = marshalSize + 31 * 1;  // _characters
-    return marshalSize;
+  marshalSize = marshalSize + 1;       // _characterSet
+  marshalSize = marshalSize + 31 * 1;  // _characters
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -110,7 +80,7 @@ int AggregateMarking::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

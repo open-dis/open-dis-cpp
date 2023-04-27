@@ -1,52 +1,53 @@
 #pragma once
 
-#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
+#include <dis7/utils/DataStream.h>
 
+namespace DIS {
+// A Simulation Address record shall consist of the Site Identification number
+// and the Application Identification number. Section 6.2.79
 
-namespace DIS
-{
-// A Simulation Address record shall consist of the Site Identification number and the Application Identification number. Section 6.2.79 
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT SimulationAddress
-{
-protected:
-  /** A site is defined as a facility, installation, organizational unit or a geographic location that has one or more simulation applications capable of participating in a distributed event.  */
-  unsigned short _site; 
+class OPENDIS7_EXPORT SimulationAddress {
+ protected:
+  /** A site is defined as a facility, installation, organizational unit or a
+   * geographic location that has one or more simulation applications capable of
+   * participating in a distributed event.  */
+  unsigned short _site;
 
-  /** An application is defined as a software program that is used to generate and process distributed simulation data including live, virtual and constructive data. */
-  unsigned short _application; 
-
+  /** An application is defined as a software program that is used to generate
+   * and process distributed simulation data including live, virtual and
+   * constructive data. */
+  unsigned short _application;
 
  public:
-    SimulationAddress();
-    virtual ~SimulationAddress();
+  SimulationAddress();
+  virtual ~SimulationAddress();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned short getSite() const; 
-    void setSite(unsigned short pX); 
+  unsigned short getSite() const;
+  void setSite(unsigned short pX);
 
-    unsigned short getApplication() const; 
-    void setApplication(unsigned short pX); 
+  unsigned short getApplication() const;
+  void setApplication(unsigned short pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const SimulationAddress& rhs) const;
+  bool operator==(const SimulationAddress& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -59,7 +60,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

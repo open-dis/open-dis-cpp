@@ -2,264 +2,250 @@
 
 using namespace DIS;
 
+DirectedEnergyPrecisionAimpoint::DirectedEnergyPrecisionAimpoint()
+    : _recordType(4000),
+      _recordLength(88),
+      _padding(0),
+      _targetSpotLocation(),
+      _targetSpotEntityLocation(),
+      _targetSpotVelocity(),
+      _targetSpotAcceleration(),
+      _targetEntityID(),
+      _targetComponentID(0),
+      _SpotShape(0),
+      _BeamSpotXSecSemiMajorAxis(0),
+      _BeamSpotCrossSectionSemiMinorAxis(0),
+      _BeamSpotCrossSectionOrientAngle(0) {}
 
-DirectedEnergyPrecisionAimpoint::DirectedEnergyPrecisionAimpoint():
-   _recordType(4000), 
-   _recordLength(88), 
-   _padding(0), 
-   _targetSpotLocation(), 
-   _targetSpotEntityLocation(), 
-   _targetSpotVelocity(), 
-   _targetSpotAcceleration(), 
-   _targetEntityID(), 
-   _targetComponentID(0), 
-   _SpotShape(0), 
-   _BeamSpotXSecSemiMajorAxis(0), 
-   _BeamSpotCrossSectionSemiMinorAxis(0), 
-   _BeamSpotCrossSectionOrientAngle(0)
-{
+DirectedEnergyPrecisionAimpoint::~DirectedEnergyPrecisionAimpoint() {}
+
+unsigned int DirectedEnergyPrecisionAimpoint::getRecordType() const {
+  return _recordType;
 }
 
-DirectedEnergyPrecisionAimpoint::~DirectedEnergyPrecisionAimpoint()
-{
+void DirectedEnergyPrecisionAimpoint::setRecordType(unsigned int pX) {
+  _recordType = pX;
 }
 
-unsigned int DirectedEnergyPrecisionAimpoint::getRecordType() const
-{
-    return _recordType;
+unsigned short DirectedEnergyPrecisionAimpoint::getRecordLength() const {
+  return _recordLength;
 }
 
-void DirectedEnergyPrecisionAimpoint::setRecordType(unsigned int pX)
-{
-    _recordType = pX;
+void DirectedEnergyPrecisionAimpoint::setRecordLength(unsigned short pX) {
+  _recordLength = pX;
 }
 
-unsigned short DirectedEnergyPrecisionAimpoint::getRecordLength() const
-{
-    return _recordLength;
+unsigned short DirectedEnergyPrecisionAimpoint::getPadding() const {
+  return _padding;
 }
 
-void DirectedEnergyPrecisionAimpoint::setRecordLength(unsigned short pX)
-{
-    _recordLength = pX;
+void DirectedEnergyPrecisionAimpoint::setPadding(unsigned short pX) {
+  _padding = pX;
 }
 
-unsigned short DirectedEnergyPrecisionAimpoint::getPadding() const
-{
-    return _padding;
+Vector3Double& DirectedEnergyPrecisionAimpoint::getTargetSpotLocation() {
+  return _targetSpotLocation;
 }
 
-void DirectedEnergyPrecisionAimpoint::setPadding(unsigned short pX)
-{
-    _padding = pX;
+const Vector3Double& DirectedEnergyPrecisionAimpoint::getTargetSpotLocation()
+    const {
+  return _targetSpotLocation;
 }
 
-Vector3Double& DirectedEnergyPrecisionAimpoint::getTargetSpotLocation() 
-{
-    return _targetSpotLocation;
+void DirectedEnergyPrecisionAimpoint::setTargetSpotLocation(
+    const Vector3Double& pX) {
+  _targetSpotLocation = pX;
 }
 
-const Vector3Double& DirectedEnergyPrecisionAimpoint::getTargetSpotLocation() const
-{
-    return _targetSpotLocation;
+Vector3Float& DirectedEnergyPrecisionAimpoint::getTargetSpotEntityLocation() {
+  return _targetSpotEntityLocation;
 }
 
-void DirectedEnergyPrecisionAimpoint::setTargetSpotLocation(const Vector3Double &pX)
-{
-    _targetSpotLocation = pX;
+const Vector3Float&
+DirectedEnergyPrecisionAimpoint::getTargetSpotEntityLocation() const {
+  return _targetSpotEntityLocation;
 }
 
-Vector3Float& DirectedEnergyPrecisionAimpoint::getTargetSpotEntityLocation() 
-{
-    return _targetSpotEntityLocation;
+void DirectedEnergyPrecisionAimpoint::setTargetSpotEntityLocation(
+    const Vector3Float& pX) {
+  _targetSpotEntityLocation = pX;
 }
 
-const Vector3Float& DirectedEnergyPrecisionAimpoint::getTargetSpotEntityLocation() const
-{
-    return _targetSpotEntityLocation;
+Vector3Float& DirectedEnergyPrecisionAimpoint::getTargetSpotVelocity() {
+  return _targetSpotVelocity;
 }
 
-void DirectedEnergyPrecisionAimpoint::setTargetSpotEntityLocation(const Vector3Float &pX)
-{
-    _targetSpotEntityLocation = pX;
+const Vector3Float& DirectedEnergyPrecisionAimpoint::getTargetSpotVelocity()
+    const {
+  return _targetSpotVelocity;
 }
 
-Vector3Float& DirectedEnergyPrecisionAimpoint::getTargetSpotVelocity() 
-{
-    return _targetSpotVelocity;
+void DirectedEnergyPrecisionAimpoint::setTargetSpotVelocity(
+    const Vector3Float& pX) {
+  _targetSpotVelocity = pX;
 }
 
-const Vector3Float& DirectedEnergyPrecisionAimpoint::getTargetSpotVelocity() const
-{
-    return _targetSpotVelocity;
+Vector3Float& DirectedEnergyPrecisionAimpoint::getTargetSpotAcceleration() {
+  return _targetSpotAcceleration;
 }
 
-void DirectedEnergyPrecisionAimpoint::setTargetSpotVelocity(const Vector3Float &pX)
-{
-    _targetSpotVelocity = pX;
+const Vector3Float& DirectedEnergyPrecisionAimpoint::getTargetSpotAcceleration()
+    const {
+  return _targetSpotAcceleration;
 }
 
-Vector3Float& DirectedEnergyPrecisionAimpoint::getTargetSpotAcceleration() 
-{
-    return _targetSpotAcceleration;
+void DirectedEnergyPrecisionAimpoint::setTargetSpotAcceleration(
+    const Vector3Float& pX) {
+  _targetSpotAcceleration = pX;
 }
 
-const Vector3Float& DirectedEnergyPrecisionAimpoint::getTargetSpotAcceleration() const
-{
-    return _targetSpotAcceleration;
+EntityID& DirectedEnergyPrecisionAimpoint::getTargetEntityID() {
+  return _targetEntityID;
 }
 
-void DirectedEnergyPrecisionAimpoint::setTargetSpotAcceleration(const Vector3Float &pX)
-{
-    _targetSpotAcceleration = pX;
+const EntityID& DirectedEnergyPrecisionAimpoint::getTargetEntityID() const {
+  return _targetEntityID;
 }
 
-EntityID& DirectedEnergyPrecisionAimpoint::getTargetEntityID() 
-{
-    return _targetEntityID;
+void DirectedEnergyPrecisionAimpoint::setTargetEntityID(const EntityID& pX) {
+  _targetEntityID = pX;
 }
 
-const EntityID& DirectedEnergyPrecisionAimpoint::getTargetEntityID() const
-{
-    return _targetEntityID;
+unsigned char DirectedEnergyPrecisionAimpoint::getTargetComponentID() const {
+  return _targetComponentID;
 }
 
-void DirectedEnergyPrecisionAimpoint::setTargetEntityID(const EntityID &pX)
-{
-    _targetEntityID = pX;
+void DirectedEnergyPrecisionAimpoint::setTargetComponentID(unsigned char pX) {
+  _targetComponentID = pX;
 }
 
-unsigned char DirectedEnergyPrecisionAimpoint::getTargetComponentID() const
-{
-    return _targetComponentID;
+unsigned char DirectedEnergyPrecisionAimpoint::getSpotShape() const {
+  return _SpotShape;
 }
 
-void DirectedEnergyPrecisionAimpoint::setTargetComponentID(unsigned char pX)
-{
-    _targetComponentID = pX;
+void DirectedEnergyPrecisionAimpoint::setSpotShape(unsigned char pX) {
+  _SpotShape = pX;
 }
 
-unsigned char DirectedEnergyPrecisionAimpoint::getSpotShape() const
-{
-    return _SpotShape;
+float DirectedEnergyPrecisionAimpoint::getBeamSpotXSecSemiMajorAxis() const {
+  return _BeamSpotXSecSemiMajorAxis;
 }
 
-void DirectedEnergyPrecisionAimpoint::setSpotShape(unsigned char pX)
-{
-    _SpotShape = pX;
+void DirectedEnergyPrecisionAimpoint::setBeamSpotXSecSemiMajorAxis(float pX) {
+  _BeamSpotXSecSemiMajorAxis = pX;
 }
 
-float DirectedEnergyPrecisionAimpoint::getBeamSpotXSecSemiMajorAxis() const
-{
-    return _BeamSpotXSecSemiMajorAxis;
+float DirectedEnergyPrecisionAimpoint::getBeamSpotCrossSectionSemiMinorAxis()
+    const {
+  return _BeamSpotCrossSectionSemiMinorAxis;
 }
 
-void DirectedEnergyPrecisionAimpoint::setBeamSpotXSecSemiMajorAxis(float pX)
-{
-    _BeamSpotXSecSemiMajorAxis = pX;
+void DirectedEnergyPrecisionAimpoint::setBeamSpotCrossSectionSemiMinorAxis(
+    float pX) {
+  _BeamSpotCrossSectionSemiMinorAxis = pX;
 }
 
-float DirectedEnergyPrecisionAimpoint::getBeamSpotCrossSectionSemiMinorAxis() const
-{
-    return _BeamSpotCrossSectionSemiMinorAxis;
+float DirectedEnergyPrecisionAimpoint::getBeamSpotCrossSectionOrientAngle()
+    const {
+  return _BeamSpotCrossSectionOrientAngle;
 }
 
-void DirectedEnergyPrecisionAimpoint::setBeamSpotCrossSectionSemiMinorAxis(float pX)
-{
-    _BeamSpotCrossSectionSemiMinorAxis = pX;
+void DirectedEnergyPrecisionAimpoint::setBeamSpotCrossSectionOrientAngle(
+    float pX) {
+  _BeamSpotCrossSectionOrientAngle = pX;
 }
 
-float DirectedEnergyPrecisionAimpoint::getBeamSpotCrossSectionOrientAngle() const
-{
-    return _BeamSpotCrossSectionOrientAngle;
+void DirectedEnergyPrecisionAimpoint::marshal(DataStream& dataStream) const {
+  dataStream << _recordType;
+  dataStream << _recordLength;
+  dataStream << _padding;
+  _targetSpotLocation.marshal(dataStream);
+  _targetSpotEntityLocation.marshal(dataStream);
+  _targetSpotVelocity.marshal(dataStream);
+  _targetSpotAcceleration.marshal(dataStream);
+  _targetEntityID.marshal(dataStream);
+  dataStream << _targetComponentID;
+  dataStream << _SpotShape;
+  dataStream << _BeamSpotXSecSemiMajorAxis;
+  dataStream << _BeamSpotCrossSectionSemiMinorAxis;
+  dataStream << _BeamSpotCrossSectionOrientAngle;
 }
 
-void DirectedEnergyPrecisionAimpoint::setBeamSpotCrossSectionOrientAngle(float pX)
-{
-    _BeamSpotCrossSectionOrientAngle = pX;
+void DirectedEnergyPrecisionAimpoint::unmarshal(DataStream& dataStream) {
+  dataStream >> _recordType;
+  dataStream >> _recordLength;
+  dataStream >> _padding;
+  _targetSpotLocation.unmarshal(dataStream);
+  _targetSpotEntityLocation.unmarshal(dataStream);
+  _targetSpotVelocity.unmarshal(dataStream);
+  _targetSpotAcceleration.unmarshal(dataStream);
+  _targetEntityID.unmarshal(dataStream);
+  dataStream >> _targetComponentID;
+  dataStream >> _SpotShape;
+  dataStream >> _BeamSpotXSecSemiMajorAxis;
+  dataStream >> _BeamSpotCrossSectionSemiMinorAxis;
+  dataStream >> _BeamSpotCrossSectionOrientAngle;
 }
 
-void DirectedEnergyPrecisionAimpoint::marshal(DataStream& dataStream) const
-{
-    dataStream << _recordType;
-    dataStream << _recordLength;
-    dataStream << _padding;
-    _targetSpotLocation.marshal(dataStream);
-    _targetSpotEntityLocation.marshal(dataStream);
-    _targetSpotVelocity.marshal(dataStream);
-    _targetSpotAcceleration.marshal(dataStream);
-    _targetEntityID.marshal(dataStream);
-    dataStream << _targetComponentID;
-    dataStream << _SpotShape;
-    dataStream << _BeamSpotXSecSemiMajorAxis;
-    dataStream << _BeamSpotCrossSectionSemiMinorAxis;
-    dataStream << _BeamSpotCrossSectionOrientAngle;
+bool DirectedEnergyPrecisionAimpoint::operator==(
+    const DirectedEnergyPrecisionAimpoint& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_recordType == rhs._recordType)) ivarsEqual = false;
+  if (!(_recordLength == rhs._recordLength)) ivarsEqual = false;
+  if (!(_padding == rhs._padding)) ivarsEqual = false;
+  if (!(_targetSpotLocation == rhs._targetSpotLocation)) ivarsEqual = false;
+  if (!(_targetSpotEntityLocation == rhs._targetSpotEntityLocation))
+    ivarsEqual = false;
+  if (!(_targetSpotVelocity == rhs._targetSpotVelocity)) ivarsEqual = false;
+  if (!(_targetSpotAcceleration == rhs._targetSpotAcceleration))
+    ivarsEqual = false;
+  if (!(_targetEntityID == rhs._targetEntityID)) ivarsEqual = false;
+  if (!(_targetComponentID == rhs._targetComponentID)) ivarsEqual = false;
+  if (!(_SpotShape == rhs._SpotShape)) ivarsEqual = false;
+  if (!(_BeamSpotXSecSemiMajorAxis == rhs._BeamSpotXSecSemiMajorAxis))
+    ivarsEqual = false;
+  if (!(_BeamSpotCrossSectionSemiMinorAxis ==
+        rhs._BeamSpotCrossSectionSemiMinorAxis))
+    ivarsEqual = false;
+  if (!(_BeamSpotCrossSectionOrientAngle ==
+        rhs._BeamSpotCrossSectionOrientAngle))
+    ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void DirectedEnergyPrecisionAimpoint::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _recordType;
-    dataStream >> _recordLength;
-    dataStream >> _padding;
-    _targetSpotLocation.unmarshal(dataStream);
-    _targetSpotEntityLocation.unmarshal(dataStream);
-    _targetSpotVelocity.unmarshal(dataStream);
-    _targetSpotAcceleration.unmarshal(dataStream);
-    _targetEntityID.unmarshal(dataStream);
-    dataStream >> _targetComponentID;
-    dataStream >> _SpotShape;
-    dataStream >> _BeamSpotXSecSemiMajorAxis;
-    dataStream >> _BeamSpotCrossSectionSemiMinorAxis;
-    dataStream >> _BeamSpotCrossSectionOrientAngle;
-}
+int DirectedEnergyPrecisionAimpoint::getMarshalledSize() const {
+  int marshalSize = 0;
 
-
-bool DirectedEnergyPrecisionAimpoint::operator ==(const DirectedEnergyPrecisionAimpoint& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_recordType == rhs._recordType) ) ivarsEqual = false;
-     if( ! (_recordLength == rhs._recordLength) ) ivarsEqual = false;
-     if( ! (_padding == rhs._padding) ) ivarsEqual = false;
-     if( ! (_targetSpotLocation == rhs._targetSpotLocation) ) ivarsEqual = false;
-     if( ! (_targetSpotEntityLocation == rhs._targetSpotEntityLocation) ) ivarsEqual = false;
-     if( ! (_targetSpotVelocity == rhs._targetSpotVelocity) ) ivarsEqual = false;
-     if( ! (_targetSpotAcceleration == rhs._targetSpotAcceleration) ) ivarsEqual = false;
-     if( ! (_targetEntityID == rhs._targetEntityID) ) ivarsEqual = false;
-     if( ! (_targetComponentID == rhs._targetComponentID) ) ivarsEqual = false;
-     if( ! (_SpotShape == rhs._SpotShape) ) ivarsEqual = false;
-     if( ! (_BeamSpotXSecSemiMajorAxis == rhs._BeamSpotXSecSemiMajorAxis) ) ivarsEqual = false;
-     if( ! (_BeamSpotCrossSectionSemiMinorAxis == rhs._BeamSpotCrossSectionSemiMinorAxis) ) ivarsEqual = false;
-     if( ! (_BeamSpotCrossSectionOrientAngle == rhs._BeamSpotCrossSectionOrientAngle) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int DirectedEnergyPrecisionAimpoint::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 4;  // _recordType
-   marshalSize = marshalSize + 2;  // _recordLength
-   marshalSize = marshalSize + 2;  // _padding
-   marshalSize = marshalSize + _targetSpotLocation.getMarshalledSize();  // _targetSpotLocation
-   marshalSize = marshalSize + _targetSpotEntityLocation.getMarshalledSize();  // _targetSpotEntityLocation
-   marshalSize = marshalSize + _targetSpotVelocity.getMarshalledSize();  // _targetSpotVelocity
-   marshalSize = marshalSize + _targetSpotAcceleration.getMarshalledSize();  // _targetSpotAcceleration
-   marshalSize = marshalSize + _targetEntityID.getMarshalledSize();  // _targetEntityID
-   marshalSize = marshalSize + 1;  // _targetComponentID
-   marshalSize = marshalSize + 1;  // _SpotShape
-   marshalSize = marshalSize + 4;  // _BeamSpotXSecSemiMajorAxis
-   marshalSize = marshalSize + 4;  // _BeamSpotCrossSectionSemiMinorAxis
-   marshalSize = marshalSize + 4;  // _BeamSpotCrossSectionOrientAngle
-    return marshalSize;
+  marshalSize = marshalSize + 4;  // _recordType
+  marshalSize = marshalSize + 2;  // _recordLength
+  marshalSize = marshalSize + 2;  // _padding
+  marshalSize = marshalSize +
+                _targetSpotLocation.getMarshalledSize();  // _targetSpotLocation
+  marshalSize =
+      marshalSize + _targetSpotEntityLocation
+                        .getMarshalledSize();  // _targetSpotEntityLocation
+  marshalSize = marshalSize +
+                _targetSpotVelocity.getMarshalledSize();  // _targetSpotVelocity
+  marshalSize =
+      marshalSize +
+      _targetSpotAcceleration.getMarshalledSize();  // _targetSpotAcceleration
+  marshalSize =
+      marshalSize + _targetEntityID.getMarshalledSize();  // _targetEntityID
+  marshalSize = marshalSize + 1;                          // _targetComponentID
+  marshalSize = marshalSize + 1;                          // _SpotShape
+  marshalSize = marshalSize + 4;  // _BeamSpotXSecSemiMajorAxis
+  marshalSize = marshalSize + 4;  // _BeamSpotCrossSectionSemiMinorAxis
+  marshalSize = marshalSize + 4;  // _BeamSpotCrossSectionOrientAngle
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -272,7 +258,7 @@ int DirectedEnergyPrecisionAimpoint::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

@@ -2,79 +2,59 @@
 
 using namespace DIS;
 
+ExpendableDescriptor::ExpendableDescriptor() : _expendableType(), _padding(0) {}
 
-ExpendableDescriptor::ExpendableDescriptor():
-   _expendableType(), 
-   _padding(0)
-{
+ExpendableDescriptor::~ExpendableDescriptor() {}
+
+EntityType& ExpendableDescriptor::getExpendableType() {
+  return _expendableType;
 }
 
-ExpendableDescriptor::~ExpendableDescriptor()
-{
+const EntityType& ExpendableDescriptor::getExpendableType() const {
+  return _expendableType;
 }
 
-EntityType& ExpendableDescriptor::getExpendableType() 
-{
-    return _expendableType;
+void ExpendableDescriptor::setExpendableType(const EntityType& pX) {
+  _expendableType = pX;
 }
 
-const EntityType& ExpendableDescriptor::getExpendableType() const
-{
-    return _expendableType;
+long long ExpendableDescriptor::getPadding() const { return _padding; }
+
+void ExpendableDescriptor::setPadding(long long pX) { _padding = pX; }
+
+void ExpendableDescriptor::marshal(DataStream& dataStream) const {
+  _expendableType.marshal(dataStream);
+  dataStream << _padding;
 }
 
-void ExpendableDescriptor::setExpendableType(const EntityType &pX)
-{
-    _expendableType = pX;
+void ExpendableDescriptor::unmarshal(DataStream& dataStream) {
+  _expendableType.unmarshal(dataStream);
+  dataStream >> _padding;
 }
 
-long long ExpendableDescriptor::getPadding() const
-{
-    return _padding;
+bool ExpendableDescriptor::operator==(const ExpendableDescriptor& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_expendableType == rhs._expendableType)) ivarsEqual = false;
+  if (!(_padding == rhs._padding)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void ExpendableDescriptor::setPadding(long long pX)
-{
-    _padding = pX;
-}
+int ExpendableDescriptor::getMarshalledSize() const {
+  int marshalSize = 0;
 
-void ExpendableDescriptor::marshal(DataStream& dataStream) const
-{
-    _expendableType.marshal(dataStream);
-    dataStream << _padding;
-}
-
-void ExpendableDescriptor::unmarshal(DataStream& dataStream)
-{
-    _expendableType.unmarshal(dataStream);
-    dataStream >> _padding;
-}
-
-
-bool ExpendableDescriptor::operator ==(const ExpendableDescriptor& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_expendableType == rhs._expendableType) ) ivarsEqual = false;
-     if( ! (_padding == rhs._padding) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int ExpendableDescriptor::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + _expendableType.getMarshalledSize();  // _expendableType
-   marshalSize = marshalSize + 8;  // _padding
-    return marshalSize;
+  marshalSize =
+      marshalSize + _expendableType.getMarshalledSize();  // _expendableType
+  marshalSize = marshalSize + 8;                          // _padding
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -87,7 +67,7 @@ int ExpendableDescriptor::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

@@ -2,59 +2,42 @@
 
 using namespace DIS;
 
+UnsignedDISInteger::UnsignedDISInteger() : _val(0) {}
 
-UnsignedDISInteger::UnsignedDISInteger():
-   _val(0)
-{
+UnsignedDISInteger::~UnsignedDISInteger() {}
+
+unsigned int UnsignedDISInteger::getVal() const { return _val; }
+
+void UnsignedDISInteger::setVal(unsigned int pX) { _val = pX; }
+
+void UnsignedDISInteger::marshal(DataStream& dataStream) const {
+  dataStream << _val;
 }
 
-UnsignedDISInteger::~UnsignedDISInteger()
-{
+void UnsignedDISInteger::unmarshal(DataStream& dataStream) {
+  dataStream >> _val;
 }
 
-unsigned int UnsignedDISInteger::getVal() const
-{
-    return _val;
+bool UnsignedDISInteger::operator==(const UnsignedDISInteger& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_val == rhs._val)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void UnsignedDISInteger::setVal(unsigned int pX)
-{
-    _val = pX;
-}
+int UnsignedDISInteger::getMarshalledSize() const {
+  int marshalSize = 0;
 
-void UnsignedDISInteger::marshal(DataStream& dataStream) const
-{
-    dataStream << _val;
-}
-
-void UnsignedDISInteger::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _val;
-}
-
-
-bool UnsignedDISInteger::operator ==(const UnsignedDISInteger& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_val == rhs._val) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int UnsignedDISInteger::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 4;  // _val
-    return marshalSize;
+  marshalSize = marshalSize + 4;  // _val
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -67,7 +50,7 @@ int UnsignedDISInteger::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

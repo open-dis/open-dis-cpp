@@ -1,70 +1,71 @@
 #pragma once
 
-#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
+#include <dis7/utils/DataStream.h>
 
-
-namespace DIS
-{
+namespace DIS {
 // Removable parts that may be attached to an entity.  Section 6.2.94.3
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT AttachedParts
-{
-protected:
-  /** the identification of the Variable Parameter record. Enumeration from EBV */
-  unsigned char _recordType; 
+class OPENDIS7_EXPORT AttachedParts {
+ protected:
+  /** the identification of the Variable Parameter record. Enumeration from EBV
+   */
+  unsigned char _recordType;
 
   /** 0 = attached, 1 = detached. See I.2.3.1 for state transition diagram */
-  unsigned char _detachedIndicator; 
+  unsigned char _detachedIndicator;
 
-  /** the identification of the articulated part to which this articulation parameter is attached. This field shall be specified by a 16-bit unsigned integer. This field shall contain the value zero if the articulated part is attached directly to the entity. */
-  unsigned short _partAttachedTo; 
+  /** the identification of the articulated part to which this articulation
+   * parameter is attached. This field shall be specified by a 16-bit unsigned
+   * integer. This field shall contain the value zero if the articulated part is
+   * attached directly to the entity. */
+  unsigned short _partAttachedTo;
 
   /** The location or station to which the part is attached */
-  unsigned int _parameterType; 
+  unsigned int _parameterType;
 
-  /** The definition of the 64 bits shall be determined based on the type of parameter specified in the Parameter Type field  */
+  /** The definition of the 64 bits shall be determined based on the type of
+   * parameter specified in the Parameter Type field  */
   unsigned long long _attachedPartType;
 
-
  public:
-    AttachedParts();
-    virtual ~AttachedParts();
+  AttachedParts();
+  virtual ~AttachedParts();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getRecordType() const; 
-    void setRecordType(unsigned char pX); 
+  unsigned char getRecordType() const;
+  void setRecordType(unsigned char pX);
 
-    unsigned char getDetachedIndicator() const; 
-    void setDetachedIndicator(unsigned char pX); 
+  unsigned char getDetachedIndicator() const;
+  void setDetachedIndicator(unsigned char pX);
 
-    unsigned short getPartAttachedTo() const; 
-    void setPartAttachedTo(unsigned short pX); 
+  unsigned short getPartAttachedTo() const;
+  void setPartAttachedTo(unsigned short pX);
 
-    unsigned int getParameterType() const; 
-    void setParameterType(unsigned int pX); 
+  unsigned int getParameterType() const;
+  void setParameterType(unsigned int pX);
 
-    unsigned long long getAttachedPartType() const;
-    void setAttachedPartType(unsigned long long pX);
+  unsigned long long getAttachedPartType() const;
+  void setAttachedPartType(unsigned long long pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const AttachedParts& rhs) const;
+  bool operator==(const AttachedParts& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -77,7 +78,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

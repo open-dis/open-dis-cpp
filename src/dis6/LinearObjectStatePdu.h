@@ -1,107 +1,106 @@
 #pragma once
 
-#include <dis6/EntityID.h>
-#include <dis6/EntityID.h>
-#include <dis6/SimulationAddress.h>
-#include <dis6/SimulationAddress.h>
-#include <dis6/ObjectType.h>
-#include <dis6/LinearSegmentParameter.h>
 #include <vector>
+
+#include <dis6/EntityID.h>
+#include <dis6/LinearSegmentParameter.h>
+#include <dis6/ObjectType.h>
+#include <dis6/SimulationAddress.h>
 #include <dis6/SyntheticEnvironmentFamilyPdu.h>
-#include <dis6/utils/DataStream.h>
 #include <dis6/opendis6_export.h>
+#include <dis6/utils/DataStream.h>
 
+namespace DIS {
+// Section 5.3.11.4: Information abut the addition or modification of a
+// synthecic enviroment object that      is anchored to the terrain with a
+// single point and has size or orientation. COMPLETE
 
-namespace DIS
-{
-// Section 5.3.11.4: Information abut the addition or modification of a synthecic enviroment object that      is anchored to the terrain with a single point and has size or orientation. COMPLETE
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT LinearObjectStatePdu : public SyntheticEnvironmentFamilyPdu
-{
-protected:
+class OPENDIS6_EXPORT LinearObjectStatePdu
+    : public SyntheticEnvironmentFamilyPdu {
+ protected:
   /** Object in synthetic environment */
-  EntityID _objectID; 
+  EntityID _objectID;
 
   /** Object with which this point object is associated */
-  EntityID _referencedObjectID; 
+  EntityID _referencedObjectID;
 
   /** unique update number of each state transition of an object */
-  unsigned short _updateNumber; 
+  unsigned short _updateNumber;
 
   /** force ID */
-  unsigned char _forceID; 
+  unsigned char _forceID;
 
   /** number of linear segment parameters */
-  unsigned char _numberOfSegments; 
+  unsigned char _numberOfSegments;
 
   /** requesterID */
-  SimulationAddress _requesterID; 
+  SimulationAddress _requesterID;
 
   /** receiver ID */
-  SimulationAddress _receivingID; 
+  SimulationAddress _receivingID;
 
   /** Object type */
-  ObjectType _objectType; 
+  ObjectType _objectType;
 
   /** Linear segment parameters */
-  std::vector<LinearSegmentParameter> _linearSegmentParameters; 
-
+  std::vector<LinearSegmentParameter> _linearSegmentParameters;
 
  public:
-    LinearObjectStatePdu();
-    virtual ~LinearObjectStatePdu();
+  LinearObjectStatePdu();
+  virtual ~LinearObjectStatePdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getObjectID(); 
-    const EntityID&  getObjectID() const; 
-    void setObjectID(const EntityID    &pX);
+  EntityID& getObjectID();
+  const EntityID& getObjectID() const;
+  void setObjectID(const EntityID& pX);
 
-    EntityID& getReferencedObjectID(); 
-    const EntityID&  getReferencedObjectID() const; 
-    void setReferencedObjectID(const EntityID    &pX);
+  EntityID& getReferencedObjectID();
+  const EntityID& getReferencedObjectID() const;
+  void setReferencedObjectID(const EntityID& pX);
 
-    unsigned short getUpdateNumber() const; 
-    void setUpdateNumber(unsigned short pX); 
+  unsigned short getUpdateNumber() const;
+  void setUpdateNumber(unsigned short pX);
 
-    unsigned char getForceID() const; 
-    void setForceID(unsigned char pX); 
+  unsigned char getForceID() const;
+  void setForceID(unsigned char pX);
 
-    unsigned char getNumberOfSegments() const; 
+  unsigned char getNumberOfSegments() const;
 
-    SimulationAddress& getRequesterID(); 
-    const SimulationAddress&  getRequesterID() const; 
-    void setRequesterID(const SimulationAddress    &pX);
+  SimulationAddress& getRequesterID();
+  const SimulationAddress& getRequesterID() const;
+  void setRequesterID(const SimulationAddress& pX);
 
-    SimulationAddress& getReceivingID(); 
-    const SimulationAddress&  getReceivingID() const; 
-    void setReceivingID(const SimulationAddress    &pX);
+  SimulationAddress& getReceivingID();
+  const SimulationAddress& getReceivingID() const;
+  void setReceivingID(const SimulationAddress& pX);
 
-    ObjectType& getObjectType(); 
-    const ObjectType&  getObjectType() const; 
-    void setObjectType(const ObjectType    &pX);
+  ObjectType& getObjectType();
+  const ObjectType& getObjectType() const;
+  void setObjectType(const ObjectType& pX);
 
-    std::vector<LinearSegmentParameter>& getLinearSegmentParameters(); 
-    const std::vector<LinearSegmentParameter>& getLinearSegmentParameters() const; 
-    void setLinearSegmentParameters(const std::vector<LinearSegmentParameter>&    pX);
+  std::vector<LinearSegmentParameter>& getLinearSegmentParameters();
+  const std::vector<LinearSegmentParameter>& getLinearSegmentParameters() const;
+  void setLinearSegmentParameters(
+      const std::vector<LinearSegmentParameter>& pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const LinearObjectStatePdu& rhs) const;
+  bool operator==(const LinearObjectStatePdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -114,7 +113,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

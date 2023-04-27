@@ -2,74 +2,60 @@
 
 using namespace DIS;
 
+LiveSimulationAddress::LiveSimulationAddress()
+    : _liveSiteNumber(0), _liveApplicationNumber(0) {}
 
-LiveSimulationAddress::LiveSimulationAddress():
-   _liveSiteNumber(0), 
-   _liveApplicationNumber(0)
-{
+LiveSimulationAddress::~LiveSimulationAddress() {}
+
+unsigned char LiveSimulationAddress::getLiveSiteNumber() const {
+  return _liveSiteNumber;
 }
 
-LiveSimulationAddress::~LiveSimulationAddress()
-{
+void LiveSimulationAddress::setLiveSiteNumber(unsigned char pX) {
+  _liveSiteNumber = pX;
 }
 
-unsigned char LiveSimulationAddress::getLiveSiteNumber() const
-{
-    return _liveSiteNumber;
+unsigned short LiveSimulationAddress::getLiveApplicationNumber() const {
+  return _liveApplicationNumber;
 }
 
-void LiveSimulationAddress::setLiveSiteNumber(unsigned char pX)
-{
-    _liveSiteNumber = pX;
+void LiveSimulationAddress::setLiveApplicationNumber(unsigned short pX) {
+  _liveApplicationNumber = pX;
 }
 
-unsigned short LiveSimulationAddress::getLiveApplicationNumber() const
-{
-    return _liveApplicationNumber;
+void LiveSimulationAddress::marshal(DataStream& dataStream) const {
+  dataStream << _liveSiteNumber;
+  dataStream << _liveApplicationNumber;
 }
 
-void LiveSimulationAddress::setLiveApplicationNumber(unsigned short pX)
-{
-    _liveApplicationNumber = pX;
+void LiveSimulationAddress::unmarshal(DataStream& dataStream) {
+  dataStream >> _liveSiteNumber;
+  dataStream >> _liveApplicationNumber;
 }
 
-void LiveSimulationAddress::marshal(DataStream& dataStream) const
-{
-    dataStream << _liveSiteNumber;
-    dataStream << _liveApplicationNumber;
+bool LiveSimulationAddress::operator==(const LiveSimulationAddress& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_liveSiteNumber == rhs._liveSiteNumber)) ivarsEqual = false;
+  if (!(_liveApplicationNumber == rhs._liveApplicationNumber))
+    ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void LiveSimulationAddress::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _liveSiteNumber;
-    dataStream >> _liveApplicationNumber;
-}
+int LiveSimulationAddress::getMarshalledSize() const {
+  int marshalSize = 0;
 
-
-bool LiveSimulationAddress::operator ==(const LiveSimulationAddress& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_liveSiteNumber == rhs._liveSiteNumber) ) ivarsEqual = false;
-     if( ! (_liveApplicationNumber == rhs._liveApplicationNumber) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int LiveSimulationAddress::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 1;  // _liveSiteNumber
-   marshalSize = marshalSize + 2;  // _liveApplicationNumber
-    return marshalSize;
+  marshalSize = marshalSize + 1;  // _liveSiteNumber
+  marshalSize = marshalSize + 2;  // _liveApplicationNumber
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -82,7 +68,7 @@ int LiveSimulationAddress::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

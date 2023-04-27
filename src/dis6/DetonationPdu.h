@@ -1,114 +1,111 @@
 #pragma once
 
+#include <vector>
+
+#include <dis6/ArticulationParameter.h>
+#include <dis6/BurstDescriptor.h>
 #include <dis6/EntityID.h>
 #include <dis6/EventID.h>
-#include <dis6/Vector3Float.h>
 #include <dis6/Vector3Double.h>
-#include <dis6/BurstDescriptor.h>
 #include <dis6/Vector3Float.h>
-#include <dis6/ArticulationParameter.h>
-#include <vector>
 #include <dis6/WarfareFamilyPdu.h>
-#include <dis6/utils/DataStream.h>
 #include <dis6/opendis6_export.h>
+#include <dis6/utils/DataStream.h>
 
-
-namespace DIS
-{
+namespace DIS {
 // Section 5.3.4.2. Information about stuff exploding. COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT DetonationPdu : public WarfareFamilyPdu
-{
-protected:
+class OPENDIS6_EXPORT DetonationPdu : public WarfareFamilyPdu {
+ protected:
   /** ID of muntion that was fired */
-  EntityID _munitionID; 
+  EntityID _munitionID;
 
   /** ID firing event */
-  EventID _eventID; 
+  EventID _eventID;
 
   /** ID firing event */
-  Vector3Float _velocity; 
+  Vector3Float _velocity;
 
   /** where the detonation is, in world coordinates */
-  Vector3Double _locationInWorldCoordinates; 
+  Vector3Double _locationInWorldCoordinates;
 
   /** Describes munition used */
-  BurstDescriptor _burstDescriptor; 
+  BurstDescriptor _burstDescriptor;
 
-  /** location of the detonation or impact in the target entity's coordinate system. This information should be used for damage assessment. */
-  Vector3Float _locationInEntityCoordinates; 
+  /** location of the detonation or impact in the target entity's coordinate
+   * system. This information should be used for damage assessment. */
+  Vector3Float _locationInEntityCoordinates;
 
   /** result of the explosion */
-  unsigned char _detonationResult; 
+  unsigned char _detonationResult;
 
   /** How many articulation parameters we have */
-  unsigned char _numberOfArticulationParameters; 
+  unsigned char _numberOfArticulationParameters;
 
   /** padding */
-  short _pad; 
+  short _pad;
 
-  std::vector<ArticulationParameter> _articulationParameters; 
-
+  std::vector<ArticulationParameter> _articulationParameters;
 
  public:
-    DetonationPdu();
-    virtual ~DetonationPdu();
+  DetonationPdu();
+  virtual ~DetonationPdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getMunitionID(); 
-    const EntityID&  getMunitionID() const; 
-    void setMunitionID(const EntityID    &pX);
+  EntityID& getMunitionID();
+  const EntityID& getMunitionID() const;
+  void setMunitionID(const EntityID& pX);
 
-    EventID& getEventID(); 
-    const EventID&  getEventID() const; 
-    void setEventID(const EventID    &pX);
+  EventID& getEventID();
+  const EventID& getEventID() const;
+  void setEventID(const EventID& pX);
 
-    Vector3Float& getVelocity(); 
-    const Vector3Float&  getVelocity() const; 
-    void setVelocity(const Vector3Float    &pX);
+  Vector3Float& getVelocity();
+  const Vector3Float& getVelocity() const;
+  void setVelocity(const Vector3Float& pX);
 
-    Vector3Double& getLocationInWorldCoordinates(); 
-    const Vector3Double&  getLocationInWorldCoordinates() const; 
-    void setLocationInWorldCoordinates(const Vector3Double    &pX);
+  Vector3Double& getLocationInWorldCoordinates();
+  const Vector3Double& getLocationInWorldCoordinates() const;
+  void setLocationInWorldCoordinates(const Vector3Double& pX);
 
-    BurstDescriptor& getBurstDescriptor(); 
-    const BurstDescriptor&  getBurstDescriptor() const; 
-    void setBurstDescriptor(const BurstDescriptor    &pX);
+  BurstDescriptor& getBurstDescriptor();
+  const BurstDescriptor& getBurstDescriptor() const;
+  void setBurstDescriptor(const BurstDescriptor& pX);
 
-    Vector3Float& getLocationInEntityCoordinates(); 
-    const Vector3Float&  getLocationInEntityCoordinates() const; 
-    void setLocationInEntityCoordinates(const Vector3Float    &pX);
+  Vector3Float& getLocationInEntityCoordinates();
+  const Vector3Float& getLocationInEntityCoordinates() const;
+  void setLocationInEntityCoordinates(const Vector3Float& pX);
 
-    unsigned char getDetonationResult() const; 
-    void setDetonationResult(unsigned char pX); 
+  unsigned char getDetonationResult() const;
+  void setDetonationResult(unsigned char pX);
 
-    unsigned char getNumberOfArticulationParameters() const; 
+  unsigned char getNumberOfArticulationParameters() const;
 
-    short getPad() const; 
-    void setPad(short pX); 
+  short getPad() const;
+  void setPad(short pX);
 
-    std::vector<ArticulationParameter>& getArticulationParameters(); 
-    const std::vector<ArticulationParameter>& getArticulationParameters() const; 
-    void setArticulationParameters(const std::vector<ArticulationParameter>&    pX);
+  std::vector<ArticulationParameter>& getArticulationParameters();
+  const std::vector<ArticulationParameter>& getArticulationParameters() const;
+  void setArticulationParameters(const std::vector<ArticulationParameter>& pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const DetonationPdu& rhs) const;
+  bool operator==(const DetonationPdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -121,7 +118,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

@@ -1,70 +1,68 @@
 #pragma once
 
-#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
+#include <dis7/utils/DataStream.h>
 
+namespace DIS {
+// specification of additional information associated with an entity or
+// detonation, not otherwise accounted for in a PDU 6.2.93.1
 
-namespace DIS
-{
-// specification of additional information associated with an entity or detonation, not otherwise accounted for in a PDU 6.2.93.1
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT VariableParameter
-{
-protected:
-  /** the identification of the Variable Parameter record. Enumeration from EBV */
-  unsigned char _recordType; 
+class OPENDIS7_EXPORT VariableParameter {
+ protected:
+  /** the identification of the Variable Parameter record. Enumeration from EBV
+   */
+  unsigned char _recordType;
 
   /** Variable parameter data fields. Two doubles minus one byte */
-  double _variableParameterFields1; 
+  double _variableParameterFields1;
 
   /** Variable parameter data fields.  */
-  unsigned int _variableParameterFields2; 
+  unsigned int _variableParameterFields2;
 
   /** Variable parameter data fields.  */
-  unsigned short _variableParameterFields3; 
+  unsigned short _variableParameterFields3;
 
   /** Variable parameter data fields.  */
-  unsigned char _variableParameterFields4; 
-
+  unsigned char _variableParameterFields4;
 
  public:
-    VariableParameter();
-    virtual ~VariableParameter();
+  VariableParameter();
+  virtual ~VariableParameter();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getRecordType() const; 
-    void setRecordType(unsigned char pX); 
+  unsigned char getRecordType() const;
+  void setRecordType(unsigned char pX);
 
-    double getVariableParameterFields1() const; 
-    void setVariableParameterFields1(double pX); 
+  double getVariableParameterFields1() const;
+  void setVariableParameterFields1(double pX);
 
-    unsigned int getVariableParameterFields2() const; 
-    void setVariableParameterFields2(unsigned int pX); 
+  unsigned int getVariableParameterFields2() const;
+  void setVariableParameterFields2(unsigned int pX);
 
-    unsigned short getVariableParameterFields3() const; 
-    void setVariableParameterFields3(unsigned short pX); 
+  unsigned short getVariableParameterFields3() const;
+  void setVariableParameterFields3(unsigned short pX);
 
-    unsigned char getVariableParameterFields4() const; 
-    void setVariableParameterFields4(unsigned char pX); 
+  unsigned char getVariableParameterFields4() const;
+  void setVariableParameterFields4(unsigned char pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const VariableParameter& rhs) const;
+  bool operator==(const VariableParameter& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -77,7 +75,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

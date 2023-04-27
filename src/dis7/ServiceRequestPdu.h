@@ -1,82 +1,79 @@
 #pragma once
 
-#include <dis7/EntityID.h>
-#include <dis7/EntityID.h>
-#include <dis7/SupplyQuantity.h>
 #include <vector>
+
+#include <dis7/EntityID.h>
 #include <dis7/LogisticsFamilyPdu.h>
-#include <dis7/utils/DataStream.h>
+#include <dis7/SupplyQuantity.h>
 #include <dis7/opendis7_export.h>
+#include <dis7/utils/DataStream.h>
 
+namespace DIS {
+// Service Request PDU shall be used to communicate information associated with
+// one entity requesting a service from another). Section 7.4.2 COMPLETE
 
-namespace DIS
-{
-// Service Request PDU shall be used to communicate information associated with                            one entity requesting a service from another). Section 7.4.2 COMPLETE
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT ServiceRequestPdu : public LogisticsFamilyPdu
-{
-protected:
+class OPENDIS7_EXPORT ServiceRequestPdu : public LogisticsFamilyPdu {
+ protected:
   /** Entity that is requesting service (see 6.2.28), Section 7.4.2 */
-  EntityID _requestingEntityID; 
+  EntityID _requestingEntityID;
 
   /** Entity that is providing the service (see 6.2.28), Section 7.4.2 */
-  EntityID _servicingEntityID; 
+  EntityID _servicingEntityID;
 
   /** Type of service requested, Section 7.4.2 */
-  unsigned char _serviceTypeRequested; 
+  unsigned char _serviceTypeRequested;
 
   /** How many requested, Section 7.4.2 */
-  unsigned char _numberOfSupplyTypes; 
+  unsigned char _numberOfSupplyTypes;
 
   /** padding */
-  short _serviceRequestPadding; 
+  short _serviceRequestPadding;
 
-  std::vector<SupplyQuantity> _supplies; 
-
+  std::vector<SupplyQuantity> _supplies;
 
  public:
-    ServiceRequestPdu();
-    virtual ~ServiceRequestPdu();
+  ServiceRequestPdu();
+  virtual ~ServiceRequestPdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getRequestingEntityID(); 
-    const EntityID&  getRequestingEntityID() const; 
-    void setRequestingEntityID(const EntityID    &pX);
+  EntityID& getRequestingEntityID();
+  const EntityID& getRequestingEntityID() const;
+  void setRequestingEntityID(const EntityID& pX);
 
-    EntityID& getServicingEntityID(); 
-    const EntityID&  getServicingEntityID() const; 
-    void setServicingEntityID(const EntityID    &pX);
+  EntityID& getServicingEntityID();
+  const EntityID& getServicingEntityID() const;
+  void setServicingEntityID(const EntityID& pX);
 
-    unsigned char getServiceTypeRequested() const; 
-    void setServiceTypeRequested(unsigned char pX); 
+  unsigned char getServiceTypeRequested() const;
+  void setServiceTypeRequested(unsigned char pX);
 
-    unsigned char getNumberOfSupplyTypes() const; 
+  unsigned char getNumberOfSupplyTypes() const;
 
-    short getServiceRequestPadding() const; 
-    void setServiceRequestPadding(short pX); 
+  short getServiceRequestPadding() const;
+  void setServiceRequestPadding(short pX);
 
-    std::vector<SupplyQuantity>& getSupplies(); 
-    const std::vector<SupplyQuantity>& getSupplies() const; 
-    void setSupplies(const std::vector<SupplyQuantity>&    pX);
+  std::vector<SupplyQuantity>& getSupplies();
+  const std::vector<SupplyQuantity>& getSupplies() const;
+  void setSupplies(const std::vector<SupplyQuantity>& pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const ServiceRequestPdu& rhs) const;
+  bool operator==(const ServiceRequestPdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -89,7 +86,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

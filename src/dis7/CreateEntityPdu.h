@@ -1,63 +1,58 @@
 #pragma once
 
 #include <dis7/EntityID.h>
-#include <dis7/EntityID.h>
 #include <dis7/SimulationManagementFamilyPdu.h>
-#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
+#include <dis7/utils/DataStream.h>
 
-
-namespace DIS
-{
+namespace DIS {
 // Section 7.5.2. Create a new entity. COMPLETE
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT CreateEntityPdu : public SimulationManagementFamilyPdu
-{
-protected:
+class OPENDIS7_EXPORT CreateEntityPdu : public SimulationManagementFamilyPdu {
+ protected:
   /** Identifier for the request */
-  EntityID _originatingID; 
+  EntityID _originatingID;
 
   /** Identifier for the request */
-  EntityID _receivingID; 
+  EntityID _receivingID;
 
   /** Identifier for the request.  See 6.2.75 */
-  unsigned int _requestID; 
-
+  unsigned int _requestID;
 
  public:
-    CreateEntityPdu();
-    virtual ~CreateEntityPdu();
+  CreateEntityPdu();
+  virtual ~CreateEntityPdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getOriginatingID(); 
-    const EntityID&  getOriginatingID() const; 
-    void setOriginatingID(const EntityID    &pX);
+  EntityID& getOriginatingID();
+  const EntityID& getOriginatingID() const;
+  void setOriginatingID(const EntityID& pX);
 
-    EntityID& getReceivingID(); 
-    const EntityID&  getReceivingID() const; 
-    void setReceivingID(const EntityID    &pX);
+  EntityID& getReceivingID();
+  const EntityID& getReceivingID() const;
+  void setReceivingID(const EntityID& pX);
 
-    unsigned int getRequestID() const; 
-    void setRequestID(unsigned int pX); 
+  unsigned int getRequestID() const;
+  void setRequestID(unsigned int pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const CreateEntityPdu& rhs) const;
+  bool operator==(const CreateEntityPdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -70,7 +65,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

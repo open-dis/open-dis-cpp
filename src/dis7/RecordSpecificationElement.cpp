@@ -2,134 +2,110 @@
 
 using namespace DIS;
 
+RecordSpecificationElement::RecordSpecificationElement()
+    : _recordID(0),
+      _recordSetSerialNumber(0),
+      _recordLength(0),
+      _recordCount(0),
+      _recordValues(0),
+      _pad4(0) {}
 
-RecordSpecificationElement::RecordSpecificationElement():
-   _recordID(0), 
-   _recordSetSerialNumber(0), 
-   _recordLength(0), 
-   _recordCount(0), 
-   _recordValues(0), 
-   _pad4(0)
-{
+RecordSpecificationElement::~RecordSpecificationElement() {}
+
+unsigned int RecordSpecificationElement::getRecordID() const {
+  return _recordID;
 }
 
-RecordSpecificationElement::~RecordSpecificationElement()
-{
+void RecordSpecificationElement::setRecordID(unsigned int pX) {
+  _recordID = pX;
 }
 
-unsigned int RecordSpecificationElement::getRecordID() const
-{
-    return _recordID;
+unsigned int RecordSpecificationElement::getRecordSetSerialNumber() const {
+  return _recordSetSerialNumber;
 }
 
-void RecordSpecificationElement::setRecordID(unsigned int pX)
-{
-    _recordID = pX;
+void RecordSpecificationElement::setRecordSetSerialNumber(unsigned int pX) {
+  _recordSetSerialNumber = pX;
 }
 
-unsigned int RecordSpecificationElement::getRecordSetSerialNumber() const
-{
-    return _recordSetSerialNumber;
+unsigned short RecordSpecificationElement::getRecordLength() const {
+  return _recordLength;
 }
 
-void RecordSpecificationElement::setRecordSetSerialNumber(unsigned int pX)
-{
-    _recordSetSerialNumber = pX;
+void RecordSpecificationElement::setRecordLength(unsigned short pX) {
+  _recordLength = pX;
 }
 
-unsigned short RecordSpecificationElement::getRecordLength() const
-{
-    return _recordLength;
+unsigned short RecordSpecificationElement::getRecordCount() const {
+  return _recordCount;
 }
 
-void RecordSpecificationElement::setRecordLength(unsigned short pX)
-{
-    _recordLength = pX;
+void RecordSpecificationElement::setRecordCount(unsigned short pX) {
+  _recordCount = pX;
 }
 
-unsigned short RecordSpecificationElement::getRecordCount() const
-{
-    return _recordCount;
+unsigned short RecordSpecificationElement::getRecordValues() const {
+  return _recordValues;
 }
 
-void RecordSpecificationElement::setRecordCount(unsigned short pX)
-{
-    _recordCount = pX;
+void RecordSpecificationElement::setRecordValues(unsigned short pX) {
+  _recordValues = pX;
 }
 
-unsigned short RecordSpecificationElement::getRecordValues() const
-{
-    return _recordValues;
+unsigned char RecordSpecificationElement::getPad4() const { return _pad4; }
+
+void RecordSpecificationElement::setPad4(unsigned char pX) { _pad4 = pX; }
+
+void RecordSpecificationElement::marshal(DataStream& dataStream) const {
+  dataStream << _recordID;
+  dataStream << _recordSetSerialNumber;
+  dataStream << _recordLength;
+  dataStream << _recordCount;
+  dataStream << _recordValues;
+  dataStream << _pad4;
 }
 
-void RecordSpecificationElement::setRecordValues(unsigned short pX)
-{
-    _recordValues = pX;
+void RecordSpecificationElement::unmarshal(DataStream& dataStream) {
+  dataStream >> _recordID;
+  dataStream >> _recordSetSerialNumber;
+  dataStream >> _recordLength;
+  dataStream >> _recordCount;
+  dataStream >> _recordValues;
+  dataStream >> _pad4;
 }
 
-unsigned char RecordSpecificationElement::getPad4() const
-{
-    return _pad4;
+bool RecordSpecificationElement::operator==(
+    const RecordSpecificationElement& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_recordID == rhs._recordID)) ivarsEqual = false;
+  if (!(_recordSetSerialNumber == rhs._recordSetSerialNumber))
+    ivarsEqual = false;
+  if (!(_recordLength == rhs._recordLength)) ivarsEqual = false;
+  if (!(_recordCount == rhs._recordCount)) ivarsEqual = false;
+  if (!(_recordValues == rhs._recordValues)) ivarsEqual = false;
+  if (!(_pad4 == rhs._pad4)) ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void RecordSpecificationElement::setPad4(unsigned char pX)
-{
-    _pad4 = pX;
-}
+int RecordSpecificationElement::getMarshalledSize() const {
+  int marshalSize = 0;
 
-void RecordSpecificationElement::marshal(DataStream& dataStream) const
-{
-    dataStream << _recordID;
-    dataStream << _recordSetSerialNumber;
-    dataStream << _recordLength;
-    dataStream << _recordCount;
-    dataStream << _recordValues;
-    dataStream << _pad4;
-}
-
-void RecordSpecificationElement::unmarshal(DataStream& dataStream)
-{
-    dataStream >> _recordID;
-    dataStream >> _recordSetSerialNumber;
-    dataStream >> _recordLength;
-    dataStream >> _recordCount;
-    dataStream >> _recordValues;
-    dataStream >> _pad4;
-}
-
-
-bool RecordSpecificationElement::operator ==(const RecordSpecificationElement& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_recordID == rhs._recordID) ) ivarsEqual = false;
-     if( ! (_recordSetSerialNumber == rhs._recordSetSerialNumber) ) ivarsEqual = false;
-     if( ! (_recordLength == rhs._recordLength) ) ivarsEqual = false;
-     if( ! (_recordCount == rhs._recordCount) ) ivarsEqual = false;
-     if( ! (_recordValues == rhs._recordValues) ) ivarsEqual = false;
-     if( ! (_pad4 == rhs._pad4) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int RecordSpecificationElement::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + 4;  // _recordID
-   marshalSize = marshalSize + 4;  // _recordSetSerialNumber
-   marshalSize = marshalSize + 2;  // _recordLength
-   marshalSize = marshalSize + 2;  // _recordCount
-   marshalSize = marshalSize + 2;  // _recordValues
-   marshalSize = marshalSize + 1;  // _pad4
-    return marshalSize;
+  marshalSize = marshalSize + 4;  // _recordID
+  marshalSize = marshalSize + 4;  // _recordSetSerialNumber
+  marshalSize = marshalSize + 2;  // _recordLength
+  marshalSize = marshalSize + 2;  // _recordCount
+  marshalSize = marshalSize + 2;  // _recordValues
+  marshalSize = marshalSize + 1;  // _pad4
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -142,7 +118,7 @@ int RecordSpecificationElement::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

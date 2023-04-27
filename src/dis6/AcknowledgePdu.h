@@ -1,59 +1,56 @@
 #pragma once
 
 #include <dis6/SimulationManagementFamilyPdu.h>
-#include <dis6/utils/DataStream.h>
 #include <dis6/opendis6_export.h>
+#include <dis6/utils/DataStream.h>
 
+namespace DIS {
+// Section 5.3.6.5. Acknowledge the receiptof a start/resume, stop/freeze, or
+// RemoveEntityPDU. COMPLETE
 
-namespace DIS
-{
-// Section 5.3.6.5. Acknowledge the receiptof a start/resume, stop/freeze, or RemoveEntityPDU. COMPLETE
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT AcknowledgePdu : public SimulationManagementFamilyPdu
-{
-protected:
+class OPENDIS6_EXPORT AcknowledgePdu : public SimulationManagementFamilyPdu {
+ protected:
   /** type of message being acknowledged */
-  unsigned short _acknowledgeFlag; 
+  unsigned short _acknowledgeFlag;
 
   /** Whether or not the receiving entity was able to comply with the request */
-  unsigned short _responseFlag; 
+  unsigned short _responseFlag;
 
   /** Request ID that is unique */
-  unsigned int _requestID; 
-
+  unsigned int _requestID;
 
  public:
-    AcknowledgePdu();
-    virtual ~AcknowledgePdu();
+  AcknowledgePdu();
+  virtual ~AcknowledgePdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned short getAcknowledgeFlag() const; 
-    void setAcknowledgeFlag(unsigned short pX); 
+  unsigned short getAcknowledgeFlag() const;
+  void setAcknowledgeFlag(unsigned short pX);
 
-    unsigned short getResponseFlag() const; 
-    void setResponseFlag(unsigned short pX); 
+  unsigned short getResponseFlag() const;
+  void setResponseFlag(unsigned short pX);
 
-    unsigned int getRequestID() const; 
-    void setRequestID(unsigned int pX); 
+  unsigned int getRequestID() const;
+  void setRequestID(unsigned int pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const AcknowledgePdu& rhs) const;
+  bool operator==(const AcknowledgePdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -66,7 +63,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

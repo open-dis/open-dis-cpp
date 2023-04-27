@@ -1,48 +1,54 @@
 #pragma once
 
-#include <dis7/EEFundamentalParameterData.h>
-#include <dis7/TrackJamData.h>
-#include <dis7/JammingTechnique.h>
-#include <dis7/BeamData.h>
 #include <vector>
-#include <dis7/utils/DataStream.h>
+
+#include <dis7/BeamData.h>
+#include <dis7/EEFundamentalParameterData.h>
+#include <dis7/JammingTechnique.h>
+#include <dis7/TrackJamData.h>
 #include <dis7/opendis7_export.h>
+#include <dis7/utils/DataStream.h>
 
-
-namespace DIS
-{
+namespace DIS {
 // Description of one electronic emission beam
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT ElectromagneticEmissionBeamData
-{
-protected:
+class OPENDIS7_EXPORT ElectromagneticEmissionBeamData {
+ protected:
   /** This field shall specify the length of this beams data in 32 bit words */
-  unsigned char _beamDataLength; 
+  unsigned char _beamDataLength;
 
-  /** This field shall specify a unique emitter database number assigned to differentiate between otherwise similar or identical emitter beams within an emitter system. */
-  unsigned char _beamIDNumber; 
+  /** This field shall specify a unique emitter database number assigned to
+   * differentiate between otherwise similar or identical emitter beams within
+   * an emitter system. */
+  unsigned char _beamIDNumber;
 
-  /** This field shall specify a Beam Parameter Index number that shall be used by receiving entities in conjunction with the Emitter Name field to provide a pointer to the stored database parameters required to regenerate the beam.  */
-  unsigned short _beamParameterIndex; 
+  /** This field shall specify a Beam Parameter Index number that shall be used
+   * by receiving entities in conjunction with the Emitter Name field to provide
+   * a pointer to the stored database parameters required to regenerate the
+   * beam.  */
+  unsigned short _beamParameterIndex;
 
-  /** Fundamental parameter data such as frequency range, erp, pulse width, etc. */
+  /** Fundamental parameter data such as frequency range, erp, pulse width, etc.
+   */
   EEFundamentalParameterData _fundamentalParameterData;
 
   /** Beam data contains Azimuth, Elevation, Sweep variables */
   BeamData _beamData;
 
   /** beam function of a particular beam */
-  unsigned char _beamFunction; 
+  unsigned char _beamFunction;
 
   /** Number of track/jam targets */
-  unsigned char _numberOfTrackJamTargets; 
+  unsigned char _numberOfTrackJamTargets;
 
-  /** wheher or not the receiving simulation apps can assume all the targets in the scan pattern are being tracked/jammed */
-  unsigned char _highDensityTrackJam; 
+  /** wheher or not the receiving simulation apps can assume all the targets in
+   * the scan pattern are being tracked/jammed */
+  unsigned char _highDensityTrackJam;
 
   unsigned char _beamStatus;
 
@@ -50,63 +56,62 @@ protected:
   JammingTechnique _jammingTechnique;
 
   /** variable length list of track/jam targets */
-  std::vector<TrackJamData> _trackJamTargets; 
+  std::vector<TrackJamData> _trackJamTargets;
 
  public:
-     ElectromagneticEmissionBeamData();
-    virtual ~ElectromagneticEmissionBeamData();
+  ElectromagneticEmissionBeamData();
+  virtual ~ElectromagneticEmissionBeamData();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getBeamDataLength() const; 
-    void setBeamDataLength(unsigned char pX); 
+  unsigned char getBeamDataLength() const;
+  void setBeamDataLength(unsigned char pX);
 
-    unsigned char getBeamIDNumber() const; 
-    void setBeamIDNumber(unsigned char pX); 
+  unsigned char getBeamIDNumber() const;
+  void setBeamIDNumber(unsigned char pX);
 
-    unsigned short getBeamParameterIndex() const; 
-    void setBeamParameterIndex(unsigned short pX); 
+  unsigned short getBeamParameterIndex() const;
+  void setBeamParameterIndex(unsigned short pX);
 
-    EEFundamentalParameterData& getFundamentalParameterData(); 
-    const EEFundamentalParameterData&  getFundamentalParameterData() const; 
-    void setFundamentalParameterData(const EEFundamentalParameterData    &pX);
+  EEFundamentalParameterData& getFundamentalParameterData();
+  const EEFundamentalParameterData& getFundamentalParameterData() const;
+  void setFundamentalParameterData(const EEFundamentalParameterData& pX);
 
-	BeamData& getBeamData();
-	const BeamData&  getBeamData() const;
-	void setBeamData(const BeamData    &pX);
+  BeamData& getBeamData();
+  const BeamData& getBeamData() const;
+  void setBeamData(const BeamData& pX);
 
-    unsigned char getBeamFunction() const; 
-    void setBeamFunction(unsigned char pX); 
+  unsigned char getBeamFunction() const;
+  void setBeamFunction(unsigned char pX);
 
-    unsigned char getNumberOfTrackJamTargets() const; 
+  unsigned char getNumberOfTrackJamTargets() const;
 
-    unsigned char getHighDensityTrackJam() const; 
-    void setHighDensityTrackJam(unsigned char pX); 
+  unsigned char getHighDensityTrackJam() const;
+  void setHighDensityTrackJam(unsigned char pX);
 
-    unsigned char getBeamStatus() const; 
-    void setBeamStatus(unsigned char pX); 
+  unsigned char getBeamStatus() const;
+  void setBeamStatus(unsigned char pX);
 
-    JammingTechnique& getJammingTechnique();
-    const JammingTechnique& getJammingTechnique() const;
-    void setJammingTechnique(const JammingTechnique& pX);
+  JammingTechnique& getJammingTechnique();
+  const JammingTechnique& getJammingTechnique() const;
+  void setJammingTechnique(const JammingTechnique& pX);
 
-    std::vector<TrackJamData>& getTrackJamTargets(); 
-    const std::vector<TrackJamData>& getTrackJamTargets() const; 
-    void setTrackJamTargets(const std::vector<TrackJamData>&    pX);
+  std::vector<TrackJamData>& getTrackJamTargets();
+  const std::vector<TrackJamData>& getTrackJamTargets() const;
+  void setTrackJamTargets(const std::vector<TrackJamData>& pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const ElectromagneticEmissionBeamData& rhs) const;
+  bool operator==(const ElectromagneticEmissionBeamData& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -119,7 +124,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

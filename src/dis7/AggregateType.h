@@ -1,81 +1,79 @@
 #pragma once
 
-#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
+#include <dis7/utils/DataStream.h>
 
-
-namespace DIS
-{
+namespace DIS {
 // Identifies the type and organization of an aggregate. Section 6.2.5
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT AggregateType
-{
-protected:
-  /** Grouping criterion used to group the aggregate. Enumeration from EBV document */
-  unsigned char _aggregateKind; 
+class OPENDIS7_EXPORT AggregateType {
+ protected:
+  /** Grouping criterion used to group the aggregate. Enumeration from EBV
+   * document */
+  unsigned char _aggregateKind;
 
-  /** Domain of entity (air, surface, subsurface, space, etc) Zero means domain does not apply. */
-  unsigned char _domain; 
+  /** Domain of entity (air, surface, subsurface, space, etc) Zero means domain
+   * does not apply. */
+  unsigned char _domain;
 
   /** country to which the design of the entity is attributed */
-  unsigned short _country; 
+  unsigned short _country;
 
   /** category of entity */
-  unsigned char _category; 
+  unsigned char _category;
 
   /** subcategory of entity */
-  unsigned char _subcategory; 
+  unsigned char _subcategory;
 
   /** specific info based on subcategory field */
-  unsigned char _specific; 
+  unsigned char _specific;
 
-  unsigned char _extra; 
-
+  unsigned char _extra;
 
  public:
-    AggregateType();
-    virtual ~AggregateType();
+  AggregateType();
+  virtual ~AggregateType();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getAggregateKind() const; 
-    void setAggregateKind(unsigned char pX); 
+  unsigned char getAggregateKind() const;
+  void setAggregateKind(unsigned char pX);
 
-    unsigned char getDomain() const; 
-    void setDomain(unsigned char pX); 
+  unsigned char getDomain() const;
+  void setDomain(unsigned char pX);
 
-    unsigned short getCountry() const; 
-    void setCountry(unsigned short pX); 
+  unsigned short getCountry() const;
+  void setCountry(unsigned short pX);
 
-    unsigned char getCategory() const; 
-    void setCategory(unsigned char pX); 
+  unsigned char getCategory() const;
+  void setCategory(unsigned char pX);
 
-    unsigned char getSubcategory() const; 
-    void setSubcategory(unsigned char pX); 
+  unsigned char getSubcategory() const;
+  void setSubcategory(unsigned char pX);
 
-    unsigned char getSpecific() const; 
-    void setSpecific(unsigned char pX); 
+  unsigned char getSpecific() const;
+  void setSpecific(unsigned char pX);
 
-    unsigned char getExtra() const; 
-    void setExtra(unsigned char pX); 
+  unsigned char getExtra() const;
+  void setExtra(unsigned char pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const AggregateType& rhs) const;
+  bool operator==(const AggregateType& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -88,7 +86,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

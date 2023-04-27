@@ -1,92 +1,92 @@
 #pragma once
 
-#include <dis6/FixedDatum.h>
-#include <dis6/VariableDatum.h>
 #include <vector>
+
+#include <dis6/FixedDatum.h>
 #include <dis6/SimulationManagementWithReliabilityFamilyPdu.h>
-#include <dis6/utils/DataStream.h>
+#include <dis6/VariableDatum.h>
 #include <dis6/opendis6_export.h>
+#include <dis6/utils/DataStream.h>
 
+namespace DIS {
+// Section 5.3.12.9: initializing or chaning internal state information,
+// reliable. Needs manual intervention to fix     padding on variable datums.
+// UNFINISHED
 
-namespace DIS
-{
-// Section 5.3.12.9: initializing or chaning internal state information, reliable. Needs manual intervention to fix     padding on variable datums. UNFINISHED
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT SetDataReliablePdu : public SimulationManagementWithReliabilityFamilyPdu
-{
-protected:
+class OPENDIS6_EXPORT SetDataReliablePdu
+    : public SimulationManagementWithReliabilityFamilyPdu {
+ protected:
   /** level of reliability service used for this transaction */
-  unsigned char _requiredReliabilityService; 
+  unsigned char _requiredReliabilityService;
 
   /** padding */
-  unsigned short _pad1; 
+  unsigned short _pad1;
 
   /** padding */
-  unsigned char _pad2; 
+  unsigned char _pad2;
 
   /** Request ID */
-  unsigned int _requestID; 
+  unsigned int _requestID;
 
   /** Fixed datum record count */
-  unsigned int _numberOfFixedDatumRecords; 
+  unsigned int _numberOfFixedDatumRecords;
 
   /** variable datum record count */
-  unsigned int _numberOfVariableDatumRecords; 
+  unsigned int _numberOfVariableDatumRecords;
 
   /** Fixed datum records */
-  std::vector<FixedDatum> _fixedDatumRecords; 
+  std::vector<FixedDatum> _fixedDatumRecords;
 
   /** Variable datum records */
-  std::vector<VariableDatum> _variableDatumRecords; 
-
+  std::vector<VariableDatum> _variableDatumRecords;
 
  public:
-    SetDataReliablePdu();
-    virtual ~SetDataReliablePdu();
+  SetDataReliablePdu();
+  virtual ~SetDataReliablePdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned char getRequiredReliabilityService() const; 
-    void setRequiredReliabilityService(unsigned char pX); 
+  unsigned char getRequiredReliabilityService() const;
+  void setRequiredReliabilityService(unsigned char pX);
 
-    unsigned short getPad1() const; 
-    void setPad1(unsigned short pX); 
+  unsigned short getPad1() const;
+  void setPad1(unsigned short pX);
 
-    unsigned char getPad2() const; 
-    void setPad2(unsigned char pX); 
+  unsigned char getPad2() const;
+  void setPad2(unsigned char pX);
 
-    unsigned int getRequestID() const; 
-    void setRequestID(unsigned int pX); 
+  unsigned int getRequestID() const;
+  void setRequestID(unsigned int pX);
 
-    unsigned int getNumberOfFixedDatumRecords() const; 
+  unsigned int getNumberOfFixedDatumRecords() const;
 
-    unsigned int getNumberOfVariableDatumRecords() const; 
+  unsigned int getNumberOfVariableDatumRecords() const;
 
-    std::vector<FixedDatum>& getFixedDatumRecords(); 
-    const std::vector<FixedDatum>& getFixedDatumRecords() const; 
-    void setFixedDatumRecords(const std::vector<FixedDatum>&    pX);
+  std::vector<FixedDatum>& getFixedDatumRecords();
+  const std::vector<FixedDatum>& getFixedDatumRecords() const;
+  void setFixedDatumRecords(const std::vector<FixedDatum>& pX);
 
-    std::vector<VariableDatum>& getVariableDatumRecords(); 
-    const std::vector<VariableDatum>& getVariableDatumRecords() const; 
-    void setVariableDatumRecords(const std::vector<VariableDatum>&    pX);
+  std::vector<VariableDatum>& getVariableDatumRecords();
+  const std::vector<VariableDatum>& getVariableDatumRecords() const;
+  void setVariableDatumRecords(const std::vector<VariableDatum>& pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const SetDataReliablePdu& rhs) const;
+  bool operator==(const SetDataReliablePdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -99,7 +99,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

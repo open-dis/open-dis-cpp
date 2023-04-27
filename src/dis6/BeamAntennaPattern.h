@@ -1,86 +1,89 @@
 #pragma once
 
 #include <dis6/Orientation.h>
-#include <dis6/utils/DataStream.h>
 #include <dis6/opendis6_export.h>
+#include <dis6/utils/DataStream.h>
 
+namespace DIS {
+// Section 5.2.4.2. Used when the antenna pattern type field has a value of 1.
+// Specifies           the direction, patter, and polarization of radiation from
+// an antenna.
 
-namespace DIS
-{
-// Section 5.2.4.2. Used when the antenna pattern type field has a value of 1. Specifies           the direction, patter, and polarization of radiation from an antenna.
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT BeamAntennaPattern
-{
-protected:
-  /** The rotation that transformst he reference coordinate sytem     into the beam coordinate system. Either world coordinates or entity coordinates may be used as the     reference coordinate system, as specified by teh reference system field of the antenna pattern record. */
-  Orientation _beamDirection; 
+class OPENDIS6_EXPORT BeamAntennaPattern {
+ protected:
+  /** The rotation that transformst he reference coordinate sytem     into the
+   * beam coordinate system. Either world coordinates or entity coordinates may
+   * be used as the     reference coordinate system, as specified by teh
+   * reference system field of the antenna pattern record. */
+  Orientation _beamDirection;
 
-  float _azimuthBeamwidth; 
+  float _azimuthBeamwidth;
 
-  float _referenceSystem; 
+  float _referenceSystem;
 
-  short _padding1; 
+  short _padding1;
 
-  char _padding2; 
+  char _padding2;
 
-  /** Magnigute of the z-component in beam coordinates at some arbitrary      single point in the mainbeam      and in the far field of the antenna. */
-  float _ez; 
+  /** Magnigute of the z-component in beam coordinates at some arbitrary single
+   * point in the mainbeam      and in the far field of the antenna. */
+  float _ez;
 
-  /** Magnigute of the x-component in beam coordinates at some arbitrary      single point in the mainbeam      and in the far field of the antenna. */
-  float _ex; 
+  /** Magnigute of the x-component in beam coordinates at some arbitrary single
+   * point in the mainbeam      and in the far field of the antenna. */
+  float _ex;
 
   /** THe phase angle between Ez and Ex in radians. */
-  float _phase; 
-
+  float _phase;
 
  public:
-    BeamAntennaPattern();
-    virtual ~BeamAntennaPattern();
+  BeamAntennaPattern();
+  virtual ~BeamAntennaPattern();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    Orientation& getBeamDirection(); 
-    const Orientation&  getBeamDirection() const; 
-    void setBeamDirection(const Orientation    &pX);
+  Orientation& getBeamDirection();
+  const Orientation& getBeamDirection() const;
+  void setBeamDirection(const Orientation& pX);
 
-    float getAzimuthBeamwidth() const; 
-    void setAzimuthBeamwidth(float pX); 
+  float getAzimuthBeamwidth() const;
+  void setAzimuthBeamwidth(float pX);
 
-    float getReferenceSystem() const; 
-    void setReferenceSystem(float pX); 
+  float getReferenceSystem() const;
+  void setReferenceSystem(float pX);
 
-    short getPadding1() const; 
-    void setPadding1(short pX); 
+  short getPadding1() const;
+  void setPadding1(short pX);
 
-    char getPadding2() const; 
-    void setPadding2(char pX); 
+  char getPadding2() const;
+  void setPadding2(char pX);
 
-    float getEz() const; 
-    void setEz(float pX); 
+  float getEz() const;
+  void setEz(float pX);
 
-    float getEx() const; 
-    void setEx(float pX); 
+  float getEx() const;
+  void setEx(float pX);
 
-    float getPhase() const; 
-    void setPhase(float pX); 
+  float getPhase() const;
+  void setPhase(float pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const BeamAntennaPattern& rhs) const;
+  bool operator==(const BeamAntennaPattern& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -93,7 +96,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

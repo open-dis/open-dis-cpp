@@ -6,148 +6,142 @@
 #define _dcl_dis_data_stream_h_
 
 // the class member, DataStream::BufferType is causing warnign 4251.
-// disable it until a proper fix is found, as instructed from the enlightening article:
-// http://www.unknownroad.com/rtfm/VisualStudio/warningC4251.html
+// disable it until a proper fix is found, as instructed from the enlightening
+// article: http://www.unknownroad.com/rtfm/VisualStudio/warningC4251.html
 #if _MSC_VER
-#pragma warning( push )
-#pragma warning( disable : 4251 )
+#pragma warning(push)
+#pragma warning(disable : 4251)
 #endif
 
-#include <string>                 // for typedef, member
-#include <vector>                 // for typedef, member
-#include <dis6/utils/Endian.h>           // for enum
-#include <dis6/opendis6_export.h>       // for library symbols
-#include <cstdlib>                // for size_t and NULL definition
-#include <cstring>                // for memcpy
+#include <cstdlib>  // for size_t and NULL definition
+#include <cstring>  // for memcpy
+#include <string>   // for typedef, member
+#include <vector>   // for typedef, member
 
-namespace DIS
-{
-   /// a class to support managing a network buffer.
-   /// the clients are responsible for managing the char buffer memory.
-   /// this class explicitly defines operators for expected types.
-   class OPENDIS6_EXPORT DataStream
-   {
-   public:
-      /// Setup the internal buffer's Endian type.
-      /// @param stream the Endian type to use for the internal buffer,
-      /// which will be used for network socket writes.
-      DataStream(Endian stream);
+#include <dis6/opendis6_export.h>  // for library symbols
+#include <dis6/utils/Endian.h>     // for enum
 
-      /// Setup the internal buffer.
-      /// @param buffer the data to copy and manage.
-      /// @param length the number of bytes in the buffer.
-      /// @param stream the Endian type to use for the internal buffer,
-      DataStream(const char* buffer, size_t length, Endian stream);
-      ~DataStream();
+namespace DIS {
+/// a class to support managing a network buffer.
+/// the clients are responsible for managing the char buffer memory.
+/// this class explicitly defines operators for expected types.
+class OPENDIS6_EXPORT DataStream {
+ public:
+  /// Setup the internal buffer's Endian type.
+  /// @param stream the Endian type to use for the internal buffer,
+  /// which will be used for network socket writes.
+  DataStream(Endian stream);
 
-      /// a method for reading the stored buffer data.
-      /// @param offset the index distance with respect to the current read point.
-      const char& operator [](unsigned int offset) const;
+  /// Setup the internal buffer.
+  /// @param buffer the data to copy and manage.
+  /// @param length the number of bytes in the buffer.
+  /// @param stream the Endian type to use for the internal buffer,
+  DataStream(const char* buffer, size_t length, Endian stream);
+  ~DataStream();
 
-      /// take ownership of the data buffer.
-      void SetStream(const char* buffer, size_t length, Endian order);
+  /// a method for reading the stored buffer data.
+  /// @param offset the index distance with respect to the current read point.
+  const char& operator[](unsigned int offset) const;
 
-      // write operations
-      DataStream& operator <<(bool c);
-      DataStream& operator <<(char c);
-      DataStream& operator <<(unsigned char c);
-      DataStream& operator <<(float c);
-      DataStream& operator <<(double c);
-      DataStream& operator <<(int c);
-      DataStream& operator <<(unsigned int c);
-      DataStream& operator <<(long long c);
-      DataStream& operator <<(unsigned long long c);
-      DataStream& operator <<(unsigned short c);
-      DataStream& operator <<(short c);
+  /// take ownership of the data buffer.
+  void SetStream(const char* buffer, size_t length, Endian order);
 
-      // read operations
-      DataStream& operator >>(bool& c);
-      DataStream& operator >>(char& c);
-      DataStream& operator >>(unsigned char& c);
-      DataStream& operator >>(float& c);
-      DataStream& operator >>(double& c);
-      DataStream& operator >>(int& c);
-      DataStream& operator >>(unsigned int& c);
-      DataStream& operator >>(long long& c);
-      DataStream& operator >>(unsigned long long& c);
-      DataStream& operator >>(unsigned short& c);
-      DataStream& operator >>(short& c);
+  // write operations
+  DataStream& operator<<(bool c);
+  DataStream& operator<<(char c);
+  DataStream& operator<<(unsigned char c);
+  DataStream& operator<<(float c);
+  DataStream& operator<<(double c);
+  DataStream& operator<<(int c);
+  DataStream& operator<<(unsigned int c);
+  DataStream& operator<<(long long c);
+  DataStream& operator<<(unsigned long long c);
+  DataStream& operator<<(unsigned short c);
+  DataStream& operator<<(short c);
 
-      Endian GetStreamEndian() const;
-      Endian GetMachineEndian() const;
+  // read operations
+  DataStream& operator>>(bool& c);
+  DataStream& operator>>(char& c);
+  DataStream& operator>>(unsigned char& c);
+  DataStream& operator>>(float& c);
+  DataStream& operator>>(double& c);
+  DataStream& operator>>(int& c);
+  DataStream& operator>>(unsigned int& c);
+  DataStream& operator>>(long long& c);
+  DataStream& operator>>(unsigned long long& c);
+  DataStream& operator>>(unsigned short& c);
+  DataStream& operator>>(short& c);
 
-      size_t GetWritePos() const;
-      size_t GetReadPos() const;
+  Endian GetStreamEndian() const;
+  Endian GetMachineEndian() const;
 
-      size_t size() const;
+  size_t GetWritePos() const;
+  size_t GetReadPos() const;
 
-      void clear();
+  size_t size() const;
 
-      bool empty() const;
+  void clear();
 
-   private:
-      template<typename T, typename IterT>
-      void IncrementPointer(IterT& iter)
-      {
-         iter += sizeof(T);
-      }
+  bool empty() const;
 
-      template<typename T, typename IterT>
-      void DecrementPointer(IterT& iter)
-      {
-         iter -= sizeof(T);
-      }
+ private:
+  template <typename T, typename IterT>
+  void IncrementPointer(IterT& iter) {
+    iter += sizeof(T);
+  }
 
-      /// this algorithm should only be used for primitive types,
-      /// because the class size takes into account the virtual function table.
-      template<typename T>
-      void WriteAlgorithm(T t)
-      {
-         char* ch = reinterpret_cast<char*>( &t );
-         DoFlip( ch , sizeof(T) );
-         DoWrite( ch , sizeof(T) );
-         IncrementPointer<T>( _write_pos );
-      }
+  template <typename T, typename IterT>
+  void DecrementPointer(IterT& iter) {
+    iter -= sizeof(T);
+  }
 
-      /// this algorithm should only be used for primitive types,
-      /// because the class size takes into account the virtual function table.
-      template<typename T>
-      void ReadAlgorithm(T& t)
-      {
-         char ch[sizeof(T)];
-         DoRead( ch , sizeof(T) );
-         DoFlip( ch , sizeof(T) );
-         memcpy(&t, ch, sizeof(t));
-         IncrementPointer<T>( _read_pos );
-      }
+  /// this algorithm should only be used for primitive types,
+  /// because the class size takes into account the virtual function table.
+  template <typename T>
+  void WriteAlgorithm(T t) {
+    char* ch = reinterpret_cast<char*>(&t);
+    DoFlip(ch, sizeof(T));
+    DoWrite(ch, sizeof(T));
+    IncrementPointer<T>(_write_pos);
+  }
 
-      /// will flip the buffer if the buffer endian is different than the machine's.
-      void DoFlip(char* buf, size_t bufsize);
+  /// this algorithm should only be used for primitive types,
+  /// because the class size takes into account the virtual function table.
+  template <typename T>
+  void ReadAlgorithm(T& t) {
+    char ch[sizeof(T)];
+    DoRead(ch, sizeof(T));
+    DoFlip(ch, sizeof(T));
+    memcpy(&t, ch, sizeof(t));
+    IncrementPointer<T>(_read_pos);
+  }
 
-      void DoWrite(const char* buf, size_t bufsize);
+  /// will flip the buffer if the buffer endian is different than the machine's.
+  void DoFlip(char* buf, size_t bufsize);
 
-      void DoRead(char* ch, size_t bufsize);
+  void DoWrite(const char* buf, size_t bufsize);
 
+  void DoRead(char* ch, size_t bufsize);
 
-      typedef std::vector<char> BufferType;
-      //const BufferType& GetBuffer() const;
+  typedef std::vector<char> BufferType;
+  // const BufferType& GetBuffer() const;
 
-      BufferType _buffer;
+  BufferType _buffer;
 
-      /// the location of the read/write.
-      size_t _read_pos;
-      size_t _write_pos;
+  /// the location of the read/write.
+  size_t _read_pos;
+  size_t _write_pos;
 
-      /// the requirement for the managed buffer
-      Endian _stream_endian;
+  /// the requirement for the managed buffer
+  Endian _stream_endian;
 
-      /// the native endian type
-      Endian _machine_endian;
-   };
-}
+  /// the native endian type
+  Endian _machine_endian;
+};
+}  // namespace DIS
 
 #if _MSC_VER
-#pragma warning( pop )
+#pragma warning(pop)
 #endif
 
 #endif  // _dcl_dis_data_stream_h_

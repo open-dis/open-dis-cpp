@@ -1,10 +1,11 @@
 #pragma once
 
+#include <vector>
+
 #include <dis7/EntityID.h>
 #include <dis7/RadioCommunicationsFamilyPdu.h>
 #include <dis7/opendis7_export.h>
 #include <dis7/utils/DataStream.h>
-#include <vector>
 
 namespace DIS {
 //  Actual transmission of intercome voice data. Section 7.7.5. COMPLETE
@@ -15,7 +16,7 @@ namespace DIS {
 // @author DMcG, jkg
 
 class OPENDIS7_EXPORT IntercomSignalPdu : public RadioCommunicationsFamilyPdu {
-protected:
+ protected:
   /** entity ID */
   EntityID _entityID;
 
@@ -40,16 +41,16 @@ protected:
   /** data bytes */
   std::vector<uint8_t> _data;
 
-public:
+ public:
   IntercomSignalPdu();
   virtual ~IntercomSignalPdu();
 
-  virtual void marshal(DataStream &dataStream) const;
-  virtual void unmarshal(DataStream &dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-  EntityID &getEntityID();
-  const EntityID &getEntityID() const;
-  void setEntityID(const EntityID &pX);
+  EntityID& getEntityID();
+  const EntityID& getEntityID() const;
+  void setEntityID(const EntityID& pX);
 
   unsigned short getCommunicationsDeviceID() const;
   void setCommunicationsDeviceID(unsigned short pX);
@@ -68,15 +69,15 @@ public:
   unsigned short getSamples() const;
   void setSamples(unsigned short pX);
 
-  std::vector<uint8_t> &getData();
-  const std::vector<uint8_t> &getData() const;
-  void setData(const std::vector<uint8_t> &pX);
+  std::vector<uint8_t>& getData();
+  const std::vector<uint8_t>& getData() const;
+  void setData(const std::vector<uint8_t>& pX);
 
   virtual int getMarshalledSize() const;
 
-  bool operator==(const IntercomSignalPdu &rhs) const;
+  bool operator==(const IntercomSignalPdu& rhs) const;
 };
-} // namespace DIS
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

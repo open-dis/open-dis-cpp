@@ -1,75 +1,76 @@
 #pragma once
 
-#include <dis7/EntityID.h>
-#include <dis7/DirectedEnergyDamage.h>
 #include <vector>
+
+#include <dis7/DirectedEnergyDamage.h>
+#include <dis7/EntityID.h>
 #include <dis7/WarfareFamilyPdu.h>
-#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
+#include <dis7/utils/DataStream.h>
 
+namespace DIS {
+// shall be used to communicate detailed damage information sustained by an
+// entity regardless of the source of the damage Section 7.3.5  COMPLETE
 
-namespace DIS
-{
-// shall be used to communicate detailed damage information sustained by an entity regardless of the source of the damage Section 7.3.5  COMPLETE
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT EntityDamageStatusPdu : public WarfareFamilyPdu
-{
-protected:
-  /** Field shall identify the damaged entity (see 6.2.28), Section 7.3.4 COMPLETE */
-  EntityID _damagedEntityID; 
+class OPENDIS7_EXPORT EntityDamageStatusPdu : public WarfareFamilyPdu {
+ protected:
+  /** Field shall identify the damaged entity (see 6.2.28), Section 7.3.4
+   * COMPLETE */
+  EntityID _damagedEntityID;
 
   /** Padding. */
-  unsigned short _padding1; 
+  unsigned short _padding1;
 
   /** Padding. */
-  unsigned short _padding2; 
+  unsigned short _padding2;
 
-  /** field shall specify the number of Damage Description records, Section 7.3.5 */
-  unsigned short _numberOfDamageDescription; 
+  /** field shall specify the number of Damage Description records,
+   * Section 7.3.5 */
+  unsigned short _numberOfDamageDescription;
 
-  /** Fields shall contain one or more Damage Description records (see 6.2.17) and may contain other Standard Variable records, Section 7.3.5 */
-  std::vector<DirectedEnergyDamage> _damageDescriptionRecords; 
-
+  /** Fields shall contain one or more Damage Description records (see 6.2.17)
+   * and may contain other Standard Variable records, Section 7.3.5 */
+  std::vector<DirectedEnergyDamage> _damageDescriptionRecords;
 
  public:
-    EntityDamageStatusPdu();
-    virtual ~EntityDamageStatusPdu();
+  EntityDamageStatusPdu();
+  virtual ~EntityDamageStatusPdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getDamagedEntityID(); 
-    const EntityID&  getDamagedEntityID() const; 
-    void setDamagedEntityID(const EntityID    &pX);
+  EntityID& getDamagedEntityID();
+  const EntityID& getDamagedEntityID() const;
+  void setDamagedEntityID(const EntityID& pX);
 
-    unsigned short getPadding1() const; 
-    void setPadding1(unsigned short pX); 
+  unsigned short getPadding1() const;
+  void setPadding1(unsigned short pX);
 
-    unsigned short getPadding2() const; 
-    void setPadding2(unsigned short pX); 
+  unsigned short getPadding2() const;
+  void setPadding2(unsigned short pX);
 
-    unsigned short getNumberOfDamageDescription() const; 
+  unsigned short getNumberOfDamageDescription() const;
 
-    std::vector<DirectedEnergyDamage>& getDamageDescriptionRecords(); 
-    const std::vector<DirectedEnergyDamage>& getDamageDescriptionRecords() const; 
-    void setDamageDescriptionRecords(const std::vector<DirectedEnergyDamage>&    pX);
+  std::vector<DirectedEnergyDamage>& getDamageDescriptionRecords();
+  const std::vector<DirectedEnergyDamage>& getDamageDescriptionRecords() const;
+  void setDamageDescriptionRecords(const std::vector<DirectedEnergyDamage>& pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const EntityDamageStatusPdu& rhs) const;
+  bool operator==(const EntityDamageStatusPdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -82,7 +83,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

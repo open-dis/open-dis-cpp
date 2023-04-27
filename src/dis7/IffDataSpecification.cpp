@@ -2,64 +2,53 @@
 
 using namespace DIS;
 
+IffDataSpecification::IffDataSpecification() : _numberOfIffDataRecords() {}
 
-IffDataSpecification::IffDataSpecification():
-   _numberOfIffDataRecords()
-{
+IffDataSpecification::~IffDataSpecification() {}
+
+EntityType& IffDataSpecification::getNumberOfIffDataRecords() {
+  return _numberOfIffDataRecords;
 }
 
-IffDataSpecification::~IffDataSpecification()
-{
+const EntityType& IffDataSpecification::getNumberOfIffDataRecords() const {
+  return _numberOfIffDataRecords;
 }
 
-EntityType& IffDataSpecification::getNumberOfIffDataRecords() 
-{
-    return _numberOfIffDataRecords;
+void IffDataSpecification::setNumberOfIffDataRecords(const EntityType& pX) {
+  _numberOfIffDataRecords = pX;
 }
 
-const EntityType& IffDataSpecification::getNumberOfIffDataRecords() const
-{
-    return _numberOfIffDataRecords;
+void IffDataSpecification::marshal(DataStream& dataStream) const {
+  _numberOfIffDataRecords.marshal(dataStream);
 }
 
-void IffDataSpecification::setNumberOfIffDataRecords(const EntityType &pX)
-{
-    _numberOfIffDataRecords = pX;
+void IffDataSpecification::unmarshal(DataStream& dataStream) {
+  _numberOfIffDataRecords.unmarshal(dataStream);
 }
 
-void IffDataSpecification::marshal(DataStream& dataStream) const
-{
-    _numberOfIffDataRecords.marshal(dataStream);
+bool IffDataSpecification::operator==(const IffDataSpecification& rhs) const {
+  bool ivarsEqual = true;
+
+  if (!(_numberOfIffDataRecords == rhs._numberOfIffDataRecords))
+    ivarsEqual = false;
+
+  return ivarsEqual;
 }
 
-void IffDataSpecification::unmarshal(DataStream& dataStream)
-{
-    _numberOfIffDataRecords.unmarshal(dataStream);
-}
+int IffDataSpecification::getMarshalledSize() const {
+  int marshalSize = 0;
 
-
-bool IffDataSpecification::operator ==(const IffDataSpecification& rhs) const
- {
-     bool ivarsEqual = true;
-
-     if( ! (_numberOfIffDataRecords == rhs._numberOfIffDataRecords) ) ivarsEqual = false;
-
-    return ivarsEqual;
- }
-
-int IffDataSpecification::getMarshalledSize() const
-{
-   int marshalSize = 0;
-
-   marshalSize = marshalSize + _numberOfIffDataRecords.getMarshalledSize();  // _numberOfIffDataRecords
-    return marshalSize;
+  marshalSize =
+      marshalSize +
+      _numberOfIffDataRecords.getMarshalledSize();  // _numberOfIffDataRecords
+  return marshalSize;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -72,7 +61,7 @@ int IffDataSpecification::getMarshalledSize() const
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

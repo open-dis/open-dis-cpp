@@ -1,124 +1,121 @@
 #pragma once
 
-#include <dis7/MinefieldIdentifier.h>
-#include <dis7/EntityType.h>
-#include <dis7/Vector3Double.h>
-#include <dis7/EulerAngles.h>
-#include <dis7/Vector2Float.h>
-#include <dis7/EntityType.h>
 #include <vector>
+
+#include <dis7/EntityType.h>
+#include <dis7/EulerAngles.h>
 #include <dis7/MinefieldFamilyPdu.h>
-#include <dis7/utils/DataStream.h>
+#include <dis7/MinefieldIdentifier.h>
+#include <dis7/Vector2Float.h>
+#include <dis7/Vector3Double.h>
 #include <dis7/opendis7_export.h>
+#include <dis7/utils/DataStream.h>
 
+namespace DIS {
+// information about the complete minefield. The minefield presence, perimiter,
+// etc. Section 7.9.2 COMPLETE
 
-namespace DIS
-{
-// information about the complete minefield. The minefield presence, perimiter, etc. Section 7.9.2 COMPLETE
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT MinefieldStatePdu : public MinefieldFamilyPdu
-{
-protected:
+class OPENDIS7_EXPORT MinefieldStatePdu : public MinefieldFamilyPdu {
+ protected:
   /** Minefield ID */
-  MinefieldIdentifier _minefieldID; 
+  MinefieldIdentifier _minefieldID;
 
   /** Minefield sequence */
-  unsigned short _minefieldSequence; 
+  unsigned short _minefieldSequence;
 
   /** force ID */
-  unsigned char _forceID; 
+  unsigned char _forceID;
 
   /** Number of permieter points */
-  unsigned char _numberOfPerimeterPoints; 
+  unsigned char _numberOfPerimeterPoints;
 
   /** type of minefield */
-  EntityType _minefieldType; 
+  EntityType _minefieldType;
 
   /** how many mine types */
-  unsigned short _numberOfMineTypes; 
+  unsigned short _numberOfMineTypes;
 
   /** location of center of minefield in world coords */
-  Vector3Double _minefieldLocation; 
+  Vector3Double _minefieldLocation;
 
   /** orientation of minefield */
-  EulerAngles _minefieldOrientation; 
+  EulerAngles _minefieldOrientation;
 
   /** appearance bitflags */
-  unsigned short _appearance; 
+  unsigned short _appearance;
 
   /** protocolMode. First two bits are the protocol mode, 14 bits reserved. */
-  unsigned short _protocolMode; 
+  unsigned short _protocolMode;
 
   /** perimeter points for the minefield */
-  std::vector<Vector2Float> _perimeterPoints; 
+  std::vector<Vector2Float> _perimeterPoints;
 
   /** Type of mines */
-  std::vector<EntityType> _mineType; 
-
+  std::vector<EntityType> _mineType;
 
  public:
-    MinefieldStatePdu();
-    virtual ~MinefieldStatePdu();
+  MinefieldStatePdu();
+  virtual ~MinefieldStatePdu();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    MinefieldIdentifier& getMinefieldID(); 
-    const MinefieldIdentifier&  getMinefieldID() const; 
-    void setMinefieldID(const MinefieldIdentifier    &pX);
+  MinefieldIdentifier& getMinefieldID();
+  const MinefieldIdentifier& getMinefieldID() const;
+  void setMinefieldID(const MinefieldIdentifier& pX);
 
-    unsigned short getMinefieldSequence() const; 
-    void setMinefieldSequence(unsigned short pX); 
+  unsigned short getMinefieldSequence() const;
+  void setMinefieldSequence(unsigned short pX);
 
-    unsigned char getForceID() const; 
-    void setForceID(unsigned char pX); 
+  unsigned char getForceID() const;
+  void setForceID(unsigned char pX);
 
-    unsigned char getNumberOfPerimeterPoints() const; 
+  unsigned char getNumberOfPerimeterPoints() const;
 
-    EntityType& getMinefieldType(); 
-    const EntityType&  getMinefieldType() const; 
-    void setMinefieldType(const EntityType    &pX);
+  EntityType& getMinefieldType();
+  const EntityType& getMinefieldType() const;
+  void setMinefieldType(const EntityType& pX);
 
-    unsigned short getNumberOfMineTypes() const; 
+  unsigned short getNumberOfMineTypes() const;
 
-    Vector3Double& getMinefieldLocation(); 
-    const Vector3Double&  getMinefieldLocation() const; 
-    void setMinefieldLocation(const Vector3Double    &pX);
+  Vector3Double& getMinefieldLocation();
+  const Vector3Double& getMinefieldLocation() const;
+  void setMinefieldLocation(const Vector3Double& pX);
 
-    EulerAngles& getMinefieldOrientation(); 
-    const EulerAngles&  getMinefieldOrientation() const; 
-    void setMinefieldOrientation(const EulerAngles    &pX);
+  EulerAngles& getMinefieldOrientation();
+  const EulerAngles& getMinefieldOrientation() const;
+  void setMinefieldOrientation(const EulerAngles& pX);
 
-    unsigned short getAppearance() const; 
-    void setAppearance(unsigned short pX); 
+  unsigned short getAppearance() const;
+  void setAppearance(unsigned short pX);
 
-    unsigned short getProtocolMode() const; 
-    void setProtocolMode(unsigned short pX); 
+  unsigned short getProtocolMode() const;
+  void setProtocolMode(unsigned short pX);
 
-    std::vector<Vector2Float>& getPerimeterPoints(); 
-    const std::vector<Vector2Float>& getPerimeterPoints() const; 
-    void setPerimeterPoints(const std::vector<Vector2Float>&    pX);
+  std::vector<Vector2Float>& getPerimeterPoints();
+  const std::vector<Vector2Float>& getPerimeterPoints() const;
+  void setPerimeterPoints(const std::vector<Vector2Float>& pX);
 
-    std::vector<EntityType>& getMineType(); 
-    const std::vector<EntityType>& getMineType() const; 
-    void setMineType(const std::vector<EntityType>&    pX);
+  std::vector<EntityType>& getMineType();
+  const std::vector<EntityType>& getMineType() const;
+  void setMineType(const std::vector<EntityType>& pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const MinefieldStatePdu& rhs) const;
+  bool operator==(const MinefieldStatePdu& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -131,7 +128,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

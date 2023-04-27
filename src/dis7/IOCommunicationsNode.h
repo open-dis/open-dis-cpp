@@ -1,72 +1,69 @@
 #pragma once
 
 #include <dis7/EntityID.h>
-#include <dis7/utils/DataStream.h>
 #include <dis7/opendis7_export.h>
+#include <dis7/utils/DataStream.h>
 
+namespace DIS {
+// A communications node that is part of a simulted communcations network.
+// Section 6.2.49.2
 
-namespace DIS
-{
-// A communications node that is part of a simulted communcations network. Section 6.2.49.2
-
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved. 
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS7_EXPORT IOCommunicationsNode
-{
-protected:
-  unsigned int _recordType; 
+class OPENDIS7_EXPORT IOCommunicationsNode {
+ protected:
+  unsigned int _recordType;
 
-  unsigned short _recordLength; 
+  unsigned short _recordLength;
 
-  unsigned char _communcationsNodeType; 
+  unsigned char _communcationsNodeType;
 
-  unsigned char _padding; 
+  unsigned char _padding;
 
-  EntityID _communicationsNode; 
+  EntityID _communicationsNode;
 
-  unsigned short _elementID; 
-
+  unsigned short _elementID;
 
  public:
-    IOCommunicationsNode();
-    virtual ~IOCommunicationsNode();
+  IOCommunicationsNode();
+  virtual ~IOCommunicationsNode();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned int getRecordType() const; 
-    void setRecordType(unsigned int pX); 
+  unsigned int getRecordType() const;
+  void setRecordType(unsigned int pX);
 
-    unsigned short getRecordLength() const; 
-    void setRecordLength(unsigned short pX); 
+  unsigned short getRecordLength() const;
+  void setRecordLength(unsigned short pX);
 
-    unsigned char getCommuncationsNodeType() const; 
-    void setCommuncationsNodeType(unsigned char pX); 
+  unsigned char getCommuncationsNodeType() const;
+  void setCommuncationsNodeType(unsigned char pX);
 
-    unsigned char getPadding() const; 
-    void setPadding(unsigned char pX); 
+  unsigned char getPadding() const;
+  void setPadding(unsigned char pX);
 
-    EntityID& getCommunicationsNode(); 
-    const EntityID&  getCommunicationsNode() const; 
-    void setCommunicationsNode(const EntityID    &pX);
+  EntityID& getCommunicationsNode();
+  const EntityID& getCommunicationsNode() const;
+  void setCommunicationsNode(const EntityID& pX);
 
-    unsigned short getElementID() const; 
-    void setElementID(unsigned short pX); 
+  unsigned short getElementID() const;
+  void setElementID(unsigned short pX);
 
+  virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const IOCommunicationsNode& rhs) const;
+  bool operator==(const IOCommunicationsNode& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 //  are met:
-// 
+//
 //  * Redistributions of source code must retain the above copyright
 // notice, this list of conditions and the following disclaimer.
 // * Redistributions in binary form must reproduce the above copyright
@@ -79,7 +76,7 @@ virtual int getMarshalledSize() const;
 // nor the names of its contributors may be used to endorse or
 //  promote products derived from this software without specific
 // prior written permission.
-// 
+//
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
 // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS

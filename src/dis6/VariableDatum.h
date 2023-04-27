@@ -1,23 +1,24 @@
 #pragma once
 
-#include <dis6/utils/DataStream.h>
-#include <dis6/opendis6_export.h>
 #include <vector>
 
-// length in bytes for the variable data. This should be a dynamically allocated array.
+#include <dis6/opendis6_export.h>
+#include <dis6/utils/DataStream.h>
+
+// length in bytes for the variable data. This should be a dynamically allocated
+// array.
 #define STATIC_ARRAY_LENGTH 128
 
-namespace DIS
-{
+namespace DIS {
 // Section 5.2.32. Variable Datum Record
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All rights reserved.
+// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+// rights reserved.
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT VariableDatum
-{
-protected:
+class OPENDIS6_EXPORT VariableDatum {
+ protected:
   /** ID of the variable datum */
   unsigned int _variableDatumID;
 
@@ -28,30 +29,28 @@ protected:
   std::vector<char> _variableDatums;
   unsigned int _arrayLength;
 
-
  public:
-    VariableDatum();
-    virtual ~VariableDatum();
+  VariableDatum();
+  virtual ~VariableDatum();
 
-    virtual void marshal(DataStream& dataStream) const;
-    virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(DataStream& dataStream) const;
+  virtual void unmarshal(DataStream& dataStream);
 
-    unsigned int getVariableDatumID() const;
-    void setVariableDatumID(unsigned int pX);
+  unsigned int getVariableDatumID() const;
+  void setVariableDatumID(unsigned int pX);
 
-    unsigned int getVariableDatumLength() const;
-    void setVariableDatumLength(unsigned int pX);
+  unsigned int getVariableDatumLength() const;
+  void setVariableDatumLength(unsigned int pX);
 
-    char*  getVariableDatums();
-    const char*  getVariableDatums() const;
-    void setVariableDatums(const char* pX, const unsigned int length);
+  char* getVariableDatums();
+  const char* getVariableDatums() const;
+  void setVariableDatums(const char* pX, const unsigned int length);
 
+  virtual unsigned int getMarshalledSize() const;
 
-virtual unsigned int getMarshalledSize() const;
-
-     bool operator  ==(const VariableDatum& rhs) const;
+  bool operator==(const VariableDatum& rhs) const;
 };
-}
+}  // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
