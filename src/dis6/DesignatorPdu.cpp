@@ -1,4 +1,4 @@
-#include <dis6/DesignatorPdu.h>
+#include "dis6/DesignatorPdu.h"
 
 using namespace DIS;
 
@@ -33,9 +33,9 @@ void DesignatorPdu::setDesignatingEntityID(const EntityID& pX) {
   _designatingEntityID = pX;
 }
 
-unsigned short DesignatorPdu::getCodeName() const { return _codeName; }
+uint16_t DesignatorPdu::getCodeName() const { return _codeName; }
 
-void DesignatorPdu::setCodeName(unsigned short pX) { _codeName = pX; }
+void DesignatorPdu::setCodeName(uint16_t pX) { _codeName = pX; }
 
 EntityID& DesignatorPdu::getDesignatedEntityID() { return _designatedEntityID; }
 
@@ -47,11 +47,11 @@ void DesignatorPdu::setDesignatedEntityID(const EntityID& pX) {
   _designatedEntityID = pX;
 }
 
-unsigned short DesignatorPdu::getDesignatorCode() const {
+uint16_t DesignatorPdu::getDesignatorCode() const {
   return _designatorCode;
 }
 
-void DesignatorPdu::setDesignatorCode(unsigned short pX) {
+void DesignatorPdu::setDesignatorCode(uint16_t pX) {
   _designatorCode = pX;
 }
 
@@ -99,9 +99,9 @@ void DesignatorPdu::setDeadReckoningAlgorithm(char pX) {
   _deadReckoningAlgorithm = pX;
 }
 
-unsigned short DesignatorPdu::getPadding1() const { return _padding1; }
+uint16_t DesignatorPdu::getPadding1() const { return _padding1; }
 
-void DesignatorPdu::setPadding1(unsigned short pX) { _padding1 = pX; }
+void DesignatorPdu::setPadding1(uint16_t pX) { _padding1 = pX; }
 
 char DesignatorPdu::getPadding2() const { return _padding2; }
 

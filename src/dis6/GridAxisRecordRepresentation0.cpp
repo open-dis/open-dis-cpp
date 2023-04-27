@@ -1,4 +1,4 @@
-#include <dis6/GridAxisRecordRepresentation0.h>
+#include "dis6/GridAxisRecordRepresentation0.h"
 
 using namespace DIS;
 
@@ -9,7 +9,7 @@ GridAxisRecordRepresentation0::~GridAxisRecordRepresentation0() {
   _dataValues.clear();
 }
 
-unsigned short GridAxisRecordRepresentation0::getNumberOfBytes() const {
+uint16_t GridAxisRecordRepresentation0::getNumberOfBytes() const {
   return _dataValues.size();
 }
 
@@ -30,7 +30,7 @@ void GridAxisRecordRepresentation0::setDataValues(
 void GridAxisRecordRepresentation0::marshal(DataStream& dataStream) const {
   GridAxisRecord::marshal(
       dataStream);  // Marshal information in superclass first
-  dataStream << (unsigned short)_dataValues.size();
+  dataStream << (uint16_t)_dataValues.size();
 
   for (auto& byte : _dataValues) {
     dataStream << byte;

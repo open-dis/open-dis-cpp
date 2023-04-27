@@ -2,13 +2,13 @@
 
 #include <vector>
 
-#include <dis6/EntityID.h>
-#include <dis6/LinearSegmentParameter.h>
-#include <dis6/ObjectType.h>
-#include <dis6/SimulationAddress.h>
-#include <dis6/SyntheticEnvironmentFamilyPdu.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/EntityID.h"
+#include "dis6/LinearSegmentParameter.h"
+#include "dis6/ObjectType.h"
+#include "dis6/SimulationAddress.h"
+#include "dis6/SyntheticEnvironmentFamilyPdu.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.11.4: Information abut the addition or modification of a
@@ -30,7 +30,7 @@ class OPENDIS6_EXPORT LinearObjectStatePdu
   EntityID _referencedObjectID;
 
   /** unique update number of each state transition of an object */
-  unsigned short _updateNumber;
+  uint16_t _updateNumber;
 
   /** force ID */
   unsigned char _forceID;
@@ -65,8 +65,8 @@ class OPENDIS6_EXPORT LinearObjectStatePdu
   const EntityID& getReferencedObjectID() const;
   void setReferencedObjectID(const EntityID& pX);
 
-  unsigned short getUpdateNumber() const;
-  void setUpdateNumber(unsigned short pX);
+  uint16_t getUpdateNumber() const;
+  void setUpdateNumber(uint16_t pX);
 
   unsigned char getForceID() const;
   void setForceID(unsigned char pX);

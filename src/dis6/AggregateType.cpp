@@ -1,4 +1,4 @@
-#include <dis6/AggregateType.h>
+#include "dis6/AggregateType.h"
 
 using namespace DIS;
 
@@ -21,9 +21,9 @@ unsigned char AggregateType::getDomain() const { return _domain; }
 
 void AggregateType::setDomain(unsigned char pX) { _domain = pX; }
 
-unsigned short AggregateType::getCountry() const { return _country; }
+uint16_t AggregateType::getCountry() const { return _country; }
 
-void AggregateType::setCountry(unsigned short pX) { _country = pX; }
+void AggregateType::setCountry(uint16_t pX) { _country = pX; }
 
 unsigned char AggregateType::getCategory() const { return _category; }
 

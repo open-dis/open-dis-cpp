@@ -1,4 +1,4 @@
-#include <dis6/AcousticBeamFundamentalParameter.h>
+#include "dis6/AcousticBeamFundamentalParameter.h"
 
 using namespace DIS;
 
@@ -12,21 +12,21 @@ AcousticBeamFundamentalParameter::AcousticBeamFundamentalParameter()
 
 AcousticBeamFundamentalParameter::~AcousticBeamFundamentalParameter() {}
 
-unsigned short
+uint16_t
 AcousticBeamFundamentalParameter::getActiveEmissionParameterIndex() const {
   return _activeEmissionParameterIndex;
 }
 
 void AcousticBeamFundamentalParameter::setActiveEmissionParameterIndex(
-    unsigned short pX) {
+    uint16_t pX) {
   _activeEmissionParameterIndex = pX;
 }
 
-unsigned short AcousticBeamFundamentalParameter::getScanPattern() const {
+uint16_t AcousticBeamFundamentalParameter::getScanPattern() const {
   return _scanPattern;
 }
 
-void AcousticBeamFundamentalParameter::setScanPattern(unsigned short pX) {
+void AcousticBeamFundamentalParameter::setScanPattern(uint16_t pX) {
   _scanPattern = pX;
 }
 

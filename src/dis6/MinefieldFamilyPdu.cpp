@@ -1,4 +1,4 @@
-#include <dis6/MinefieldFamilyPdu.h>
+#include "dis6/MinefieldFamilyPdu.h"
 
 using namespace DIS;
 

@@ -1,4 +1,4 @@
-#include <dis6/IffAtcNavAidsLayer1Pdu.h>
+#include "dis6/IffAtcNavAidsLayer1Pdu.h"
 
 using namespace DIS;
 
@@ -51,9 +51,9 @@ const SystemID& IffAtcNavAidsLayer1Pdu::getSystemID() const {
 
 void IffAtcNavAidsLayer1Pdu::setSystemID(const SystemID& pX) { _systemID = pX; }
 
-unsigned short IffAtcNavAidsLayer1Pdu::getPad2() const { return _pad2; }
+uint16_t IffAtcNavAidsLayer1Pdu::getPad2() const { return _pad2; }
 
-void IffAtcNavAidsLayer1Pdu::setPad2(unsigned short pX) { _pad2 = pX; }
+void IffAtcNavAidsLayer1Pdu::setPad2(uint16_t pX) { _pad2 = pX; }
 
 IffFundamentalData& IffAtcNavAidsLayer1Pdu::getFundamentalParameters() {
   return _fundamentalParameters;

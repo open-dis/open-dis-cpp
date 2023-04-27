@@ -1,4 +1,4 @@
-#include <dis6/NamedLocation.h>
+#include "dis6/NamedLocation.h"
 
 using namespace DIS;
 
@@ -6,15 +6,15 @@ NamedLocation::NamedLocation() : _stationName(0), _stationNumber(0) {}
 
 NamedLocation::~NamedLocation() {}
 
-unsigned short NamedLocation::getStationName() const { return _stationName; }
+uint16_t NamedLocation::getStationName() const { return _stationName; }
 
-void NamedLocation::setStationName(unsigned short pX) { _stationName = pX; }
+void NamedLocation::setStationName(uint16_t pX) { _stationName = pX; }
 
-unsigned short NamedLocation::getStationNumber() const {
+uint16_t NamedLocation::getStationNumber() const {
   return _stationNumber;
 }
 
-void NamedLocation::setStationNumber(unsigned short pX) { _stationNumber = pX; }
+void NamedLocation::setStationNumber(uint16_t pX) { _stationNumber = pX; }
 
 void NamedLocation::marshal(DataStream& dataStream) const {
   dataStream << _stationName;

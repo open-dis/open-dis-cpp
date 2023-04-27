@@ -1,4 +1,4 @@
-#include <dis6/LayerHeader.h>
+#include "dis6/LayerHeader.h"
 
 using namespace DIS;
 
@@ -19,9 +19,9 @@ void LayerHeader::setLayerSpecificInformaiton(unsigned char pX) {
   _layerSpecificInformaiton = pX;
 }
 
-unsigned short LayerHeader::getLength() const { return _length; }
+uint16_t LayerHeader::getLength() const { return _length; }
 
-void LayerHeader::setLength(unsigned short pX) { _length = pX; }
+void LayerHeader::setLength(uint16_t pX) { _length = pX; }
 
 void LayerHeader::marshal(DataStream& dataStream) const {
   dataStream << _layerNumber;

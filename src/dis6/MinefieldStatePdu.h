@@ -2,14 +2,14 @@
 
 #include <vector>
 
-#include <dis6/EntityID.h>
-#include <dis6/EntityType.h>
-#include <dis6/MinefieldFamilyPdu.h>
-#include <dis6/Orientation.h>
-#include <dis6/Point.h>
-#include <dis6/Vector3Double.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/EntityID.h"
+#include "dis6/EntityType.h"
+#include "dis6/MinefieldFamilyPdu.h"
+#include "dis6/Orientation.h"
+#include "dis6/Point.h"
+#include "dis6/Vector3Double.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.10.1 Abstract superclass for PDUs relating to minefields.
@@ -26,7 +26,7 @@ class OPENDIS6_EXPORT MinefieldStatePdu : public MinefieldFamilyPdu {
   EntityID _minefieldID;
 
   /** Minefield sequence */
-  unsigned short _minefieldSequence;
+  uint16_t _minefieldSequence;
 
   /** force ID */
   unsigned char _forceID;
@@ -38,7 +38,7 @@ class OPENDIS6_EXPORT MinefieldStatePdu : public MinefieldFamilyPdu {
   EntityType _minefieldType;
 
   /** how many mine types */
-  unsigned short _numberOfMineTypes;
+  uint16_t _numberOfMineTypes;
 
   /** location of minefield in world coords */
   Vector3Double _minefieldLocation;
@@ -47,10 +47,10 @@ class OPENDIS6_EXPORT MinefieldStatePdu : public MinefieldFamilyPdu {
   Orientation _minefieldOrientation;
 
   /** appearance bitflags */
-  unsigned short _appearance;
+  uint16_t _appearance;
 
   /** protocolMode */
-  unsigned short _protocolMode;
+  uint16_t _protocolMode;
 
   /** perimeter points for the minefield */
   std::vector<Point> _perimeterPoints;
@@ -69,8 +69,8 @@ class OPENDIS6_EXPORT MinefieldStatePdu : public MinefieldFamilyPdu {
   const EntityID& getMinefieldID() const;
   void setMinefieldID(const EntityID& pX);
 
-  unsigned short getMinefieldSequence() const;
-  void setMinefieldSequence(unsigned short pX);
+  uint16_t getMinefieldSequence() const;
+  void setMinefieldSequence(uint16_t pX);
 
   unsigned char getForceID() const;
   void setForceID(unsigned char pX);
@@ -81,7 +81,7 @@ class OPENDIS6_EXPORT MinefieldStatePdu : public MinefieldFamilyPdu {
   const EntityType& getMinefieldType() const;
   void setMinefieldType(const EntityType& pX);
 
-  unsigned short getNumberOfMineTypes() const;
+  uint16_t getNumberOfMineTypes() const;
 
   Vector3Double& getMinefieldLocation();
   const Vector3Double& getMinefieldLocation() const;
@@ -91,11 +91,11 @@ class OPENDIS6_EXPORT MinefieldStatePdu : public MinefieldFamilyPdu {
   const Orientation& getMinefieldOrientation() const;
   void setMinefieldOrientation(const Orientation& pX);
 
-  unsigned short getAppearance() const;
-  void setAppearance(unsigned short pX);
+  uint16_t getAppearance() const;
+  void setAppearance(uint16_t pX);
 
-  unsigned short getProtocolMode() const;
-  void setProtocolMode(unsigned short pX);
+  uint16_t getProtocolMode() const;
+  void setProtocolMode(uint16_t pX);
 
   std::vector<Point>& getPerimeterPoints();
   const std::vector<Point>& getPerimeterPoints() const;

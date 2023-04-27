@@ -1,4 +1,4 @@
-#include <dis6/MinefieldStatePdu.h>
+#include "dis6/MinefieldStatePdu.h"
 
 using namespace DIS;
 
@@ -32,11 +32,11 @@ void MinefieldStatePdu::setMinefieldID(const EntityID& pX) {
   _minefieldID = pX;
 }
 
-unsigned short MinefieldStatePdu::getMinefieldSequence() const {
+uint16_t MinefieldStatePdu::getMinefieldSequence() const {
   return _minefieldSequence;
 }
 
-void MinefieldStatePdu::setMinefieldSequence(unsigned short pX) {
+void MinefieldStatePdu::setMinefieldSequence(uint16_t pX) {
   _minefieldSequence = pX;
 }
 
@@ -58,7 +58,7 @@ void MinefieldStatePdu::setMinefieldType(const EntityType& pX) {
   _minefieldType = pX;
 }
 
-unsigned short MinefieldStatePdu::getNumberOfMineTypes() const {
+uint16_t MinefieldStatePdu::getNumberOfMineTypes() const {
   return _mineType.size();
 }
 
@@ -86,15 +86,15 @@ void MinefieldStatePdu::setMinefieldOrientation(const Orientation& pX) {
   _minefieldOrientation = pX;
 }
 
-unsigned short MinefieldStatePdu::getAppearance() const { return _appearance; }
+uint16_t MinefieldStatePdu::getAppearance() const { return _appearance; }
 
-void MinefieldStatePdu::setAppearance(unsigned short pX) { _appearance = pX; }
+void MinefieldStatePdu::setAppearance(uint16_t pX) { _appearance = pX; }
 
-unsigned short MinefieldStatePdu::getProtocolMode() const {
+uint16_t MinefieldStatePdu::getProtocolMode() const {
   return _protocolMode;
 }
 
-void MinefieldStatePdu::setProtocolMode(unsigned short pX) {
+void MinefieldStatePdu::setProtocolMode(uint16_t pX) {
   _protocolMode = pX;
 }
 
@@ -128,7 +128,7 @@ void MinefieldStatePdu::marshal(DataStream& dataStream) const {
   dataStream << _forceID;
   dataStream << (unsigned char)_perimeterPoints.size();
   _minefieldType.marshal(dataStream);
-  dataStream << (unsigned short)_mineType.size();
+  dataStream << (uint16_t)_mineType.size();
   _minefieldLocation.marshal(dataStream);
   _minefieldOrientation.marshal(dataStream);
   dataStream << _appearance;
@@ -219,12 +219,12 @@ int MinefieldStatePdu::getMarshalledSize() const {
   marshalSize = marshalSize + 2;                  // _appearance
   marshalSize = marshalSize + 2;                  // _protocolMode
 
-  for (unsigned long long idx = 0; idx < _perimeterPoints.size(); idx++) {
+  for (uint64_t idx = 0; idx < _perimeterPoints.size(); idx++) {
     Point listElement = _perimeterPoints[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }
 
-  for (unsigned long long idx = 0; idx < _mineType.size(); idx++) {
+  for (uint64_t idx = 0; idx < _mineType.size(); idx++) {
     EntityType listElement = _mineType[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

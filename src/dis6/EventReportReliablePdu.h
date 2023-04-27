@@ -2,11 +2,11 @@
 
 #include <vector>
 
-#include <dis6/FixedDatum.h>
-#include <dis6/SimulationManagementWithReliabilityFamilyPdu.h>
-#include <dis6/VariableDatum.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/FixedDatum.h"
+#include "dis6/SimulationManagementWithReliabilityFamilyPdu.h"
+#include "dis6/VariableDatum.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.12.11: reports the occurance of a significatnt event to the
@@ -22,7 +22,7 @@ class OPENDIS6_EXPORT EventReportReliablePdu
     : public SimulationManagementWithReliabilityFamilyPdu {
  protected:
   /** Event type */
-  unsigned short _eventType;
+  uint16_t _eventType;
 
   /** padding */
   unsigned int _pad1;
@@ -46,8 +46,8 @@ class OPENDIS6_EXPORT EventReportReliablePdu
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getEventType() const;
-  void setEventType(unsigned short pX);
+  uint16_t getEventType() const;
+  void setEventType(uint16_t pX);
 
   unsigned int getPad1() const;
   void setPad1(unsigned int pX);

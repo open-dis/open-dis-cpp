@@ -2,10 +2,10 @@
 
 #include <vector>
 
-#include <dis6/FourByteChunk.h>
-#include <dis6/GridAxisRecord.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/FourByteChunk.h"
+#include "dis6/GridAxisRecord.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // 5.2.44: Grid data record, representation 1
@@ -18,7 +18,7 @@ namespace DIS {
 class OPENDIS6_EXPORT GridAxisRecordRepresentation2 : public GridAxisRecord {
  protected:
   /** number of values */
-  unsigned short _numberOfValues;
+  uint16_t _numberOfValues;
 
   /** variable length list of data parameters ^^^this is wrong--need padding as
    * well */
@@ -31,7 +31,7 @@ class OPENDIS6_EXPORT GridAxisRecordRepresentation2 : public GridAxisRecord {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getNumberOfValues() const;
+  uint16_t getNumberOfValues() const;
 
   std::vector<FourByteChunk>& getDataValues();
   const std::vector<FourByteChunk>& getDataValues() const;

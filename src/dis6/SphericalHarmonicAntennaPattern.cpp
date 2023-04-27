@@ -1,4 +1,4 @@
-#include <dis6/SphericalHarmonicAntennaPattern.h>
+#include "dis6/SphericalHarmonicAntennaPattern.h"
 
 using namespace DIS;
 

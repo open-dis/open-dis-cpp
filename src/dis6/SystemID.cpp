@@ -1,4 +1,4 @@
-#include <dis6/SystemID.h>
+#include "dis6/SystemID.h"
 
 using namespace DIS;
 
@@ -7,13 +7,13 @@ SystemID::SystemID()
 
 SystemID::~SystemID() {}
 
-unsigned short SystemID::getSystemType() const { return _systemType; }
+uint16_t SystemID::getSystemType() const { return _systemType; }
 
-void SystemID::setSystemType(unsigned short pX) { _systemType = pX; }
+void SystemID::setSystemType(uint16_t pX) { _systemType = pX; }
 
-unsigned short SystemID::getSystemName() const { return _systemName; }
+uint16_t SystemID::getSystemName() const { return _systemName; }
 
-void SystemID::setSystemName(unsigned short pX) { _systemName = pX; }
+void SystemID::setSystemName(uint16_t pX) { _systemName = pX; }
 
 unsigned char SystemID::getSystemMode() const { return _systemMode; }
 

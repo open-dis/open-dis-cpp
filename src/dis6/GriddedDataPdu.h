@@ -2,13 +2,13 @@
 
 #include <vector>
 
-#include <dis6/EntityID.h>
-#include <dis6/EntityType.h>
-#include <dis6/GridAxisRecord.h>
-#include <dis6/Orientation.h>
-#include <dis6/SyntheticEnvironmentFamilyPdu.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/EntityID.h"
+#include "dis6/EntityType.h"
+#include "dis6/GridAxisRecord.h"
+#include "dis6/Orientation.h"
+#include "dis6/SyntheticEnvironmentFamilyPdu.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.11.2: Information about globat, spatially varying enviornmental
@@ -26,16 +26,16 @@ class OPENDIS6_EXPORT GriddedDataPdu : public SyntheticEnvironmentFamilyPdu {
   EntityID _environmentalSimulationApplicationID;
 
   /** unique identifier for each piece of enviornmental data */
-  unsigned short _fieldNumber;
+  uint16_t _fieldNumber;
 
   /** sequence number for the total set of PDUS used to transmit the data */
-  unsigned short _pduNumber;
+  uint16_t _pduNumber;
 
   /** Total number of PDUS used to transmit the data */
-  unsigned short _pduTotal;
+  uint16_t _pduTotal;
 
   /** coordinate system of the grid */
-  unsigned short _coordinateSystem;
+  uint16_t _coordinateSystem;
 
   /** number of grid axes for the environmental data */
   unsigned char _numberOfGridAxes;
@@ -50,7 +50,7 @@ class OPENDIS6_EXPORT GriddedDataPdu : public SyntheticEnvironmentFamilyPdu {
   Orientation _orientation;
 
   /** valid time of the enviormental data sample, 64 bit unsigned int */
-  unsigned long long _sampleTime;
+  uint64_t _sampleTime;
 
   /** total number of all data values for all pdus for an environmental sample
    */
@@ -60,7 +60,7 @@ class OPENDIS6_EXPORT GriddedDataPdu : public SyntheticEnvironmentFamilyPdu {
   unsigned char _vectorDimension;
 
   /** padding */
-  unsigned short _padding1;
+  uint16_t _padding1;
 
   /** padding */
   unsigned char _padding2;
@@ -79,17 +79,17 @@ class OPENDIS6_EXPORT GriddedDataPdu : public SyntheticEnvironmentFamilyPdu {
   const EntityID& getEnvironmentalSimulationApplicationID() const;
   void setEnvironmentalSimulationApplicationID(const EntityID& pX);
 
-  unsigned short getFieldNumber() const;
-  void setFieldNumber(unsigned short pX);
+  uint16_t getFieldNumber() const;
+  void setFieldNumber(uint16_t pX);
 
-  unsigned short getPduNumber() const;
-  void setPduNumber(unsigned short pX);
+  uint16_t getPduNumber() const;
+  void setPduNumber(uint16_t pX);
 
-  unsigned short getPduTotal() const;
-  void setPduTotal(unsigned short pX);
+  uint16_t getPduTotal() const;
+  void setPduTotal(uint16_t pX);
 
-  unsigned short getCoordinateSystem() const;
-  void setCoordinateSystem(unsigned short pX);
+  uint16_t getCoordinateSystem() const;
+  void setCoordinateSystem(uint16_t pX);
 
   unsigned char getNumberOfGridAxes() const;
 
@@ -104,8 +104,8 @@ class OPENDIS6_EXPORT GriddedDataPdu : public SyntheticEnvironmentFamilyPdu {
   const Orientation& getOrientation() const;
   void setOrientation(const Orientation& pX);
 
-  unsigned long long getSampleTime() const;
-  void setSampleTime(unsigned long long pX);
+  uint64_t getSampleTime() const;
+  void setSampleTime(uint64_t pX);
 
   unsigned int getTotalValues() const;
   void setTotalValues(unsigned int pX);
@@ -113,8 +113,8 @@ class OPENDIS6_EXPORT GriddedDataPdu : public SyntheticEnvironmentFamilyPdu {
   unsigned char getVectorDimension() const;
   void setVectorDimension(unsigned char pX);
 
-  unsigned short getPadding1() const;
-  void setPadding1(unsigned short pX);
+  uint16_t getPadding1() const;
+  void setPadding1(uint16_t pX);
 
   unsigned char getPadding2() const;
   void setPadding2(unsigned char pX);

@@ -1,4 +1,4 @@
-#include <dis6/ModulationType.h>
+#include "dis6/ModulationType.h"
 
 using namespace DIS;
 
@@ -7,25 +7,25 @@ ModulationType::ModulationType()
 
 ModulationType::~ModulationType() {}
 
-unsigned short ModulationType::getSpreadSpectrum() const {
+uint16_t ModulationType::getSpreadSpectrum() const {
   return _spreadSpectrum;
 }
 
-void ModulationType::setSpreadSpectrum(unsigned short pX) {
+void ModulationType::setSpreadSpectrum(uint16_t pX) {
   _spreadSpectrum = pX;
 }
 
-unsigned short ModulationType::getMajor() const { return _major; }
+uint16_t ModulationType::getMajor() const { return _major; }
 
-void ModulationType::setMajor(unsigned short pX) { _major = pX; }
+void ModulationType::setMajor(uint16_t pX) { _major = pX; }
 
-unsigned short ModulationType::getDetail() const { return _detail; }
+uint16_t ModulationType::getDetail() const { return _detail; }
 
-void ModulationType::setDetail(unsigned short pX) { _detail = pX; }
+void ModulationType::setDetail(uint16_t pX) { _detail = pX; }
 
-unsigned short ModulationType::getSystem() const { return _system; }
+uint16_t ModulationType::getSystem() const { return _system; }
 
-void ModulationType::setSystem(unsigned short pX) { _system = pX; }
+void ModulationType::setSystem(uint16_t pX) { _system = pX; }
 
 void ModulationType::marshal(DataStream& dataStream) const {
   dataStream << _spreadSpectrum;

@@ -1,13 +1,13 @@
 #pragma once
 
-#include <dis6/EntityID.h>
-#include <dis6/ObjectType.h>
-#include <dis6/Orientation.h>
-#include <dis6/SimulationAddress.h>
-#include <dis6/SyntheticEnvironmentFamilyPdu.h>
-#include <dis6/Vector3Double.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/EntityID.h"
+#include "dis6/ObjectType.h"
+#include "dis6/Orientation.h"
+#include "dis6/SimulationAddress.h"
+#include "dis6/SyntheticEnvironmentFamilyPdu.h"
+#include "dis6/Vector3Double.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.11.3: Inormation abut the addition or modification of a synthecic
@@ -29,7 +29,7 @@ class OPENDIS6_EXPORT PointObjectStatePdu
   EntityID _referencedObjectID;
 
   /** unique update number of each state transition of an object */
-  unsigned short _updateNumber;
+  uint16_t _updateNumber;
 
   /** force ID */
   unsigned char _forceID;
@@ -73,8 +73,8 @@ class OPENDIS6_EXPORT PointObjectStatePdu
   const EntityID& getReferencedObjectID() const;
   void setReferencedObjectID(const EntityID& pX);
 
-  unsigned short getUpdateNumber() const;
-  void setUpdateNumber(unsigned short pX);
+  uint16_t getUpdateNumber() const;
+  void setUpdateNumber(uint16_t pX);
 
   unsigned char getForceID() const;
   void setForceID(unsigned char pX);

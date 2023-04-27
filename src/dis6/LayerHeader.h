@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // 5.2.47.  Layer header.
@@ -20,7 +20,7 @@ class OPENDIS6_EXPORT LayerHeader {
   unsigned char _layerSpecificInformaiton;
 
   /** information length */
-  unsigned short _length;
+  uint16_t _length;
 
  public:
   LayerHeader();
@@ -35,8 +35,8 @@ class OPENDIS6_EXPORT LayerHeader {
   unsigned char getLayerSpecificInformaiton() const;
   void setLayerSpecificInformaiton(unsigned char pX);
 
-  unsigned short getLength() const;
-  void setLength(unsigned short pX);
+  uint16_t getLength() const;
+  void setLength(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

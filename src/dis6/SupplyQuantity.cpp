@@ -1,4 +1,4 @@
-#include <dis6/SupplyQuantity.h>
+#include "dis6/SupplyQuantity.h"
 
 using namespace DIS;
 

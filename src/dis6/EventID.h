@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.2.18. Identifies a unique event in a simulation via the combination
@@ -15,13 +15,13 @@ namespace DIS {
 class OPENDIS6_EXPORT EventID {
  protected:
   /** The site ID */
-  unsigned short _site;
+  uint16_t _site;
 
   /** The application ID */
-  unsigned short _application;
+  uint16_t _application;
 
   /** the number of the event */
-  unsigned short _eventNumber;
+  uint16_t _eventNumber;
 
  public:
   EventID();
@@ -30,14 +30,14 @@ class OPENDIS6_EXPORT EventID {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getSite() const;
-  void setSite(unsigned short pX);
+  uint16_t getSite() const;
+  void setSite(uint16_t pX);
 
-  unsigned short getApplication() const;
-  void setApplication(unsigned short pX);
+  uint16_t getApplication() const;
+  void setApplication(uint16_t pX);
 
-  unsigned short getEventNumber() const;
-  void setEventNumber(unsigned short pX);
+  uint16_t getEventNumber() const;
+  void setEventNumber(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

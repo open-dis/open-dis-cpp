@@ -1,4 +1,4 @@
-#include <dis6/ArealObjectStatePdu.h>
+#include "dis6/ArealObjectStatePdu.h"
 
 using namespace DIS;
 
@@ -37,11 +37,11 @@ void ArealObjectStatePdu::setReferencedObjectID(const EntityID& pX) {
   _referencedObjectID = pX;
 }
 
-unsigned short ArealObjectStatePdu::getUpdateNumber() const {
+uint16_t ArealObjectStatePdu::getUpdateNumber() const {
   return _updateNumber;
 }
 
-void ArealObjectStatePdu::setUpdateNumber(unsigned short pX) {
+void ArealObjectStatePdu::setUpdateNumber(uint16_t pX) {
   _updateNumber = pX;
 }
 
@@ -79,7 +79,7 @@ void ArealObjectStatePdu::setObjectAppearance(const SixByteChunk& pX) {
   _objectAppearance = pX;
 }
 
-unsigned short ArealObjectStatePdu::getNumberOfPoints() const {
+uint16_t ArealObjectStatePdu::getNumberOfPoints() const {
   return _objectLocation.size();
 }
 
@@ -131,7 +131,7 @@ void ArealObjectStatePdu::marshal(DataStream& dataStream) const {
   dataStream << _modifications;
   _objectType.marshal(dataStream);
   _objectAppearance.marshal(dataStream);
-  dataStream << (unsigned short)_objectLocation.size();
+  dataStream << (uint16_t)_objectLocation.size();
   _requesterID.marshal(dataStream);
   _receivingID.marshal(dataStream);
 
@@ -202,7 +202,7 @@ int ArealObjectStatePdu::getMarshalledSize() const {
   marshalSize = marshalSize + _requesterID.getMarshalledSize();  // _requesterID
   marshalSize = marshalSize + _receivingID.getMarshalledSize();  // _receivingID
 
-  for (unsigned long long idx = 0; idx < _objectLocation.size(); idx++) {
+  for (uint64_t idx = 0; idx < _objectLocation.size(); idx++) {
     Vector3Double listElement = _objectLocation[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

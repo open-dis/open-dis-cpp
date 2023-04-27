@@ -2,11 +2,11 @@
 
 #include <vector>
 
-#include <dis6/EntityID.h>
-#include <dis6/IntercomCommunicationsParameters.h>
-#include <dis6/RadioCommunicationsFamilyPdu.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/EntityID.h"
+#include "dis6/IntercomCommunicationsParameters.h"
+#include "dis6/RadioCommunicationsFamilyPdu.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.8.5. Detailed inofrmation about the state of an intercom device
@@ -50,7 +50,7 @@ class OPENDIS6_EXPORT IntercomControlPdu : public RadioCommunicationsFamilyPdu {
   EntityID _masterEntityID;
 
   /** specific intercom device that has created this intercom channel */
-  unsigned short _masterCommunicationsDeviceID;
+  uint16_t _masterCommunicationsDeviceID;
 
   /** number of intercom parameters */
   unsigned int _intercomParametersLength;
@@ -95,8 +95,8 @@ class OPENDIS6_EXPORT IntercomControlPdu : public RadioCommunicationsFamilyPdu {
   const EntityID& getMasterEntityID() const;
   void setMasterEntityID(const EntityID& pX);
 
-  unsigned short getMasterCommunicationsDeviceID() const;
-  void setMasterCommunicationsDeviceID(unsigned short pX);
+  uint16_t getMasterCommunicationsDeviceID() const;
+  void setMasterCommunicationsDeviceID(uint16_t pX);
 
   unsigned int getIntercomParametersLength() const;
 

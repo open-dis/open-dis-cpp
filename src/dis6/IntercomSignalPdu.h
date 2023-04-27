@@ -22,22 +22,22 @@ class OPENDIS6_EXPORT IntercomSignalPdu : public RadioCommunicationsFamilyPdu {
   EntityID _entityID;
 
   /** ID of communications device */
-  unsigned short _communicationsDeviceID;
+  uint16_t _communicationsDeviceID;
 
   /** encoding scheme */
-  unsigned short _encodingScheme;
+  uint16_t _encodingScheme;
 
   /** tactical data link type */
-  unsigned short _tdlType;
+  uint16_t _tdlType;
 
   /** sample rate */
   unsigned int _sampleRate;
 
   /** data length */
-  unsigned short _dataLength;
+  uint16_t _dataLength;
 
   /** samples */
-  unsigned short _samples;
+  uint16_t _samples;
 
   /** data bytes */
   std::vector<uint8_t> _data;
@@ -53,22 +53,22 @@ class OPENDIS6_EXPORT IntercomSignalPdu : public RadioCommunicationsFamilyPdu {
   const EntityID& getEntityID() const;
   void setEntityID(const EntityID& pX);
 
-  unsigned short getCommunicationsDeviceID() const;
-  void setCommunicationsDeviceID(unsigned short pX);
+  uint16_t getCommunicationsDeviceID() const;
+  void setCommunicationsDeviceID(uint16_t pX);
 
-  unsigned short getEncodingScheme() const;
-  void setEncodingScheme(unsigned short pX);
+  uint16_t getEncodingScheme() const;
+  void setEncodingScheme(uint16_t pX);
 
-  unsigned short getTdlType() const;
-  void setTdlType(unsigned short pX);
+  uint16_t getTdlType() const;
+  void setTdlType(uint16_t pX);
 
   unsigned int getSampleRate() const;
   void setSampleRate(unsigned int pX);
 
-  unsigned short getDataLength() const;
+  uint16_t getDataLength() const;
 
-  unsigned short getSamples() const;
-  void setSamples(unsigned short pX);
+  uint16_t getSamples() const;
+  void setSamples(uint16_t pX);
 
   std::vector<uint8_t>& getData();
   const std::vector<uint8_t>& getData() const;

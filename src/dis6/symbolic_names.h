@@ -1,6 +1,6 @@
 #pragma once
 
-#include <dis6/EntityID.h>
+#include "dis6/EntityID.h"
 
 /**
  * Symbolic names as defined in 5.1.4
@@ -8,11 +8,11 @@
 namespace DIS {
 const unsigned int AGG_HRT_BEAT_TIMER = 30U;  // s
 const unsigned int AGG_RESPONSE_DFLT = 10U;   // s
-const unsigned short ALL_AGGS = 0xFFFFU;
-const unsigned short ALL_APPLIC = 0xFFFFU;
-const unsigned short ALL_ENTITIES = 0xFFFFU;
-const unsigned short ALL_OBJECTS = 0xFFFFU;
-const unsigned short ALL_SITES = 0xFFFFU;
+const uint16_t ALL_AGGS = 0xFFFFU;
+const uint16_t ALL_APPLIC = 0xFFFFU;
+const uint16_t ALL_ENTITIES = 0xFFFFU;
+const uint16_t ALL_OBJECTS = 0xFFFFU;
+const uint16_t ALL_SITES = 0xFFFFU;
 const unsigned int APPEAR_HRT_BEAT_TIMER = 60U;  // se
 const unsigned int COLLISION_ELASTIC_TO = 5U;    // s
 const unsigned int COLLISION_THRSH_DFLT = 1U;    // m/s
@@ -23,7 +23,7 @@ const unsigned int EE_AZ_THRSH_DFLT = 1U;       // degrees
 const unsigned int EE_EL_THRSH_DFLT = 1U;       // degrees
 
 const unsigned int EP_DIMENSION_THRSH_DFLT = 1U;  // m
-const unsigned short EP_NO_SEQUENCE = 0xFFFFU;
+const uint16_t EP_NO_SEQUENCE = 0xFFFFU;
 const unsigned int EP_POS_THRSH_DFLT = 1U;     // m shift
 const unsigned int EP_STATE_THRSH_DFLT = 10U;  //%
 const unsigned int GD_HRT_BEAT_TIMER = 15U;    // min
@@ -39,14 +39,14 @@ const unsigned int MINEFIELD_DATA_TIMEOUT_DLFT = 5U;  // s
 const unsigned int MINEFIELD_DFLT = 5U;               // s
 const unsigned int MINEFIELD_RESPONSE_DFLT = 1U;      // s
 
-const unsigned short NO_AGG = 0U;
-const unsigned short NO_APPLIC = 0U;
-const unsigned short NO_ENTITY = 0U;
+const uint16_t NO_AGG = 0U;
+const uint16_t NO_APPLIC = 0U;
+const uint16_t NO_ENTITY = 0U;
 
 const unsigned int NO_FIRE_MISSION = 0U;
 
-const unsigned short NO_OBJECT = 0U;
-const unsigned short NO_SITE = 0U;
+const uint16_t NO_OBJECT = 0U;
+const uint16_t NO_SITE = 0U;
 
 const unsigned int REPAR_REC_T1_DFLT = 5U;   // s
 const unsigned int REPAR_SUP_T1_DFLT = 12U;  // s
@@ -54,7 +54,7 @@ const unsigned int REPAR_SUP_T2_DFLT = 12U;  // s
 const unsigned int RESUP_REC_T1_DFLT = 5U;   // s
 const unsigned int RESUP_REC_T2_DFLT = 55U;  // s
 const unsigned int RESUP_SUP_T1_DFLT = 1U;   // min
-const unsigned short RQST_ASSIGN_ID = 0xFFFEU;
+const uint16_t RQST_ASSIGN_ID = 0xFFFEU;
 const unsigned int SEES_NDA_THRSH_DFLT =
     2U;  // degrees in the axis of deflection
 const unsigned int SEES_PS_THRSH_DFLT =
@@ -80,8 +80,8 @@ const unsigned int UA_SRPM_ROC_CHANGE_DELTA =
 const unsigned int UA_STATE_UPDATE_HRT_BEAT_TIMER = 3U;  // min
 
 /** If you want to have the EntityID constants below, you
- * need to add the constructor EntityID(unsigned short,unsigned short,unsigned
- * short) and recompile open-dis
+ * need to add the constructor EntityID(uint16_t,uint16_t,unsigned
+ * int16_t) and recompile open-dis
  *
  */
 /*

@@ -2,10 +2,10 @@
 
 #include <vector>
 
-#include <dis6/GridAxisRecord.h>
-#include <dis6/TwoByteChunk.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/GridAxisRecord.h"
+#include "dis6/TwoByteChunk.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // 5.2.44: Grid data record, representation 1
@@ -24,7 +24,7 @@ class OPENDIS6_EXPORT GridAxisRecordRepresentation1 : public GridAxisRecord {
   float _fieldOffset;
 
   /** Number of data values */
-  unsigned short _numberOfValues;
+  uint16_t _numberOfValues;
 
   /** variable length list of data parameters ^^^this is wrong--need padding as
    * well */
@@ -43,7 +43,7 @@ class OPENDIS6_EXPORT GridAxisRecordRepresentation1 : public GridAxisRecord {
   float getFieldOffset() const;
   void setFieldOffset(float pX);
 
-  unsigned short getNumberOfValues() const;
+  uint16_t getNumberOfValues() const;
 
   std::vector<TwoByteChunk>& getDataValues();
   const std::vector<TwoByteChunk>& getDataValues() const;

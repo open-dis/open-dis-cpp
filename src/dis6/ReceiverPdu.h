@@ -1,9 +1,9 @@
 #pragma once
 
-#include <dis6/EntityID.h>
-#include <dis6/RadioCommunicationsFamilyPdu.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/EntityID.h"
+#include "dis6/RadioCommunicationsFamilyPdu.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.8.3. Communication of a receiver state. COMPLETE
@@ -16,10 +16,10 @@ namespace DIS {
 class OPENDIS6_EXPORT ReceiverPdu : public RadioCommunicationsFamilyPdu {
  protected:
   /** encoding scheme used, and enumeration */
-  unsigned short _receiverState;
+  uint16_t _receiverState;
 
   /** padding */
-  unsigned short _padding1;
+  uint16_t _padding1;
 
   /** received power */
   float _receivedPower;
@@ -28,7 +28,7 @@ class OPENDIS6_EXPORT ReceiverPdu : public RadioCommunicationsFamilyPdu {
   EntityID _transmitterEntityId;
 
   /** ID of transmitting radio */
-  unsigned short _transmitterRadioId;
+  uint16_t _transmitterRadioId;
 
  public:
   ReceiverPdu();
@@ -37,11 +37,11 @@ class OPENDIS6_EXPORT ReceiverPdu : public RadioCommunicationsFamilyPdu {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getReceiverState() const;
-  void setReceiverState(unsigned short pX);
+  uint16_t getReceiverState() const;
+  void setReceiverState(uint16_t pX);
 
-  unsigned short getPadding1() const;
-  void setPadding1(unsigned short pX);
+  uint16_t getPadding1() const;
+  void setPadding1(uint16_t pX);
 
   float getReceivedPower() const;
   void setReceivedPower(float pX);
@@ -50,8 +50,8 @@ class OPENDIS6_EXPORT ReceiverPdu : public RadioCommunicationsFamilyPdu {
   const EntityID& getTransmitterEntityId() const;
   void setTransmitterEntityId(const EntityID& pX);
 
-  unsigned short getTransmitterRadioId() const;
-  void setTransmitterRadioId(unsigned short pX);
+  uint16_t getTransmitterRadioId() const;
+  void setTransmitterRadioId(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

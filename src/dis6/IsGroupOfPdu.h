@@ -2,11 +2,11 @@
 
 #include <vector>
 
-#include <dis6/EntityID.h>
-#include <dis6/EntityManagementFamilyPdu.h>
-#include <dis6/VariableDatum.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/EntityID.h"
+#include "dis6/EntityManagementFamilyPdu.h"
+#include "dis6/VariableDatum.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.9.2 Information about a particular group of entities grouped

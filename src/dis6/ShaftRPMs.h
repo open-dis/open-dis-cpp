@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Shaft RPMs, used in underwater acoustic clacluations.
@@ -14,10 +14,10 @@ namespace DIS {
 class OPENDIS6_EXPORT ShaftRPMs {
  protected:
   /** Current shaft RPMs */
-  short _currentShaftRPMs;
+  int16_t _currentShaftRPMs;
 
   /** ordered shaft rpms */
-  short _orderedShaftRPMs;
+  int16_t _orderedShaftRPMs;
 
   /** rate of change of shaft RPMs */
   float _shaftRPMRateOfChange;
@@ -29,11 +29,11 @@ class OPENDIS6_EXPORT ShaftRPMs {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  short getCurrentShaftRPMs() const;
-  void setCurrentShaftRPMs(short pX);
+  int16_t getCurrentShaftRPMs() const;
+  void setCurrentShaftRPMs(int16_t pX);
 
-  short getOrderedShaftRPMs() const;
-  void setOrderedShaftRPMs(short pX);
+  int16_t getOrderedShaftRPMs() const;
+  void setOrderedShaftRPMs(int16_t pX);
 
   float getShaftRPMRateOfChange() const;
   void setShaftRPMRateOfChange(float pX);

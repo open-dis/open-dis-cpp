@@ -1,4 +1,4 @@
-#include <dis6/DetonationPdu.h>
+#include "dis6/DetonationPdu.h"
 
 using namespace DIS;
 
@@ -84,9 +84,9 @@ unsigned char DetonationPdu::getNumberOfArticulationParameters() const {
   return _articulationParameters.size();
 }
 
-short DetonationPdu::getPad() const { return _pad; }
+int16_t DetonationPdu::getPad() const { return _pad; }
 
-void DetonationPdu::setPad(short pX) { _pad = pX; }
+void DetonationPdu::setPad(int16_t pX) { _pad = pX; }
 
 std::vector<ArticulationParameter>& DetonationPdu::getArticulationParameters() {
   return _articulationParameters;
@@ -185,7 +185,7 @@ int DetonationPdu::getMarshalledSize() const {
   marshalSize = marshalSize + 1;  // _numberOfArticulationParameters
   marshalSize = marshalSize + 2;  // _pad
 
-  for (unsigned long long idx = 0; idx < _articulationParameters.size();
+  for (uint64_t idx = 0; idx < _articulationParameters.size();
        idx++) {
     ArticulationParameter listElement = _articulationParameters[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();

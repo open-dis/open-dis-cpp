@@ -2,10 +2,10 @@
 
 #include <vector>
 
-#include <dis6/FundamentalParameterData.h>
-#include <dis6/TrackJamTarget.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/FundamentalParameterData.h"
+#include "dis6/TrackJamTarget.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Description of one electronic emission beam
@@ -29,7 +29,7 @@ class OPENDIS6_EXPORT ElectromagneticEmissionBeamData {
    * by receiving entities in conjunction with the Emitter Name field to provide
    * a pointer to the stored database parameters required to regenerate the
    * beam.  */
-  unsigned short _beamParameterIndex;
+  uint16_t _beamParameterIndex;
 
   /** Fundamental parameter data such as frequency range, beam sweep, etc. */
   FundamentalParameterData _fundamentalParameterData;
@@ -66,8 +66,8 @@ class OPENDIS6_EXPORT ElectromagneticEmissionBeamData {
   unsigned char getBeamIDNumber() const;
   void setBeamIDNumber(unsigned char pX);
 
-  unsigned short getBeamParameterIndex() const;
-  void setBeamParameterIndex(unsigned short pX);
+  uint16_t getBeamParameterIndex() const;
+  void setBeamParameterIndex(uint16_t pX);
 
   FundamentalParameterData& getFundamentalParameterData();
   const FundamentalParameterData& getFundamentalParameterData() const;

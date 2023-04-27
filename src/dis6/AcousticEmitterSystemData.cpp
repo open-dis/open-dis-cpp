@@ -1,4 +1,4 @@
-#include <dis6/AcousticEmitterSystemData.h>
+#include "dis6/AcousticEmitterSystemData.h"
 
 using namespace DIS;
 
@@ -25,9 +25,9 @@ unsigned char AcousticEmitterSystemData::getNumberOfBeams() const {
   return _beamRecords.size();
 }
 
-unsigned short AcousticEmitterSystemData::getPad2() const { return _pad2; }
+uint16_t AcousticEmitterSystemData::getPad2() const { return _pad2; }
 
-void AcousticEmitterSystemData::setPad2(unsigned short pX) { _pad2 = pX; }
+void AcousticEmitterSystemData::setPad2(uint16_t pX) { _pad2 = pX; }
 
 AcousticEmitterSystem& AcousticEmitterSystemData::getAcousticEmitterSystem() {
   return _acousticEmitterSystem;
@@ -127,7 +127,7 @@ int AcousticEmitterSystemData::getMarshalledSize() const {
   marshalSize =
       marshalSize + _emitterLocation.getMarshalledSize();  // _emitterLocation
 
-  for (unsigned long long idx = 0; idx < _beamRecords.size(); idx++) {
+  for (uint64_t idx = 0; idx < _beamRecords.size(); idx++) {
     AcousticBeamData listElement = _beamRecords[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

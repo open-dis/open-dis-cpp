@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // 5.3.35: Information about a particular UA emitter shall be represented using
@@ -16,7 +16,7 @@ namespace DIS {
 class OPENDIS6_EXPORT AcousticEmitterSystem {
  protected:
   /** This field shall specify the system for a particular UA emitter. */
-  unsigned short _acousticName;
+  uint16_t _acousticName;
 
   /** This field shall describe the function of the acoustic system.  */
   unsigned char _acousticFunction;
@@ -36,8 +36,8 @@ class OPENDIS6_EXPORT AcousticEmitterSystem {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getAcousticName() const;
-  void setAcousticName(unsigned short pX);
+  uint16_t getAcousticName() const;
+  void setAcousticName(uint16_t pX);
 
   unsigned char getAcousticFunction() const;
   void setAcousticFunction(unsigned char pX);

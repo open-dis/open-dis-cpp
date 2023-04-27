@@ -2,13 +2,13 @@
 
 #include <vector>
 
-#include <dis6/EntityID.h>
-#include <dis6/EntityType.h>
-#include <dis6/MinefieldFamilyPdu.h>
-#include <dis6/TwoByteChunk.h>
-#include <dis6/Vector3Float.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/EntityID.h"
+#include "dis6/EntityType.h"
+#include "dis6/MinefieldFamilyPdu.h"
+#include "dis6/TwoByteChunk.h"
+#include "dis6/Vector3Float.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.10.3 Information about individual mines within a minefield. This
@@ -28,7 +28,7 @@ class OPENDIS6_EXPORT MinefieldDataPdu : public MinefieldFamilyPdu {
   EntityID _requestingEntityID;
 
   /** Minefield sequence number */
-  unsigned short _minefieldSequenceNumbeer;
+  uint16_t _minefieldSequenceNumbeer;
 
   /** request ID */
   unsigned char _requestID;
@@ -79,8 +79,8 @@ class OPENDIS6_EXPORT MinefieldDataPdu : public MinefieldFamilyPdu {
   const EntityID& getRequestingEntityID() const;
   void setRequestingEntityID(const EntityID& pX);
 
-  unsigned short getMinefieldSequenceNumbeer() const;
-  void setMinefieldSequenceNumbeer(unsigned short pX);
+  uint16_t getMinefieldSequenceNumbeer() const;
+  void setMinefieldSequenceNumbeer(uint16_t pX);
 
   unsigned char getRequestID() const;
   void setRequestID(unsigned char pX);

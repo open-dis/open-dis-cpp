@@ -1,4 +1,4 @@
-#include <dis6/StartResumeReliablePdu.h>
+#include "dis6/StartResumeReliablePdu.h"
 
 using namespace DIS;
 
@@ -45,9 +45,9 @@ void StartResumeReliablePdu::setRequiredReliabilityService(unsigned char pX) {
   _requiredReliabilityService = pX;
 }
 
-unsigned short StartResumeReliablePdu::getPad1() const { return _pad1; }
+uint16_t StartResumeReliablePdu::getPad1() const { return _pad1; }
 
-void StartResumeReliablePdu::setPad1(unsigned short pX) { _pad1 = pX; }
+void StartResumeReliablePdu::setPad1(uint16_t pX) { _pad1 = pX; }
 
 unsigned char StartResumeReliablePdu::getPad2() const { return _pad2; }
 

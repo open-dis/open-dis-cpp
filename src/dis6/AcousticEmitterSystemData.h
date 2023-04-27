@@ -2,11 +2,11 @@
 
 #include <vector>
 
-#include <dis6/AcousticBeamData.h>
-#include <dis6/AcousticEmitterSystem.h>
-#include <dis6/Vector3Float.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/AcousticBeamData.h"
+#include "dis6/AcousticEmitterSystem.h"
+#include "dis6/Vector3Float.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Used in the UA pdu; ties together an emmitter and a location. This requires
@@ -26,7 +26,7 @@ class OPENDIS6_EXPORT AcousticEmitterSystemData {
   unsigned char _numberOfBeams;
 
   /** padding */
-  unsigned short _pad2;
+  uint16_t _pad2;
 
   /** This field shall specify the system for a particular UA emitter. */
   AcousticEmitterSystem _acousticEmitterSystem;
@@ -51,8 +51,8 @@ class OPENDIS6_EXPORT AcousticEmitterSystemData {
 
   unsigned char getNumberOfBeams() const;
 
-  unsigned short getPad2() const;
-  void setPad2(unsigned short pX);
+  uint16_t getPad2() const;
+  void setPad2(uint16_t pX);
 
   AcousticEmitterSystem& getAcousticEmitterSystem();
   const AcousticEmitterSystem& getAcousticEmitterSystem() const;

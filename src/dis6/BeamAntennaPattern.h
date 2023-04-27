@@ -1,8 +1,8 @@
 #pragma once
 
-#include <dis6/Orientation.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/Orientation.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.2.4.2. Used when the antenna pattern type field has a value of 1.
@@ -26,7 +26,7 @@ class OPENDIS6_EXPORT BeamAntennaPattern {
 
   float _referenceSystem;
 
-  short _padding1;
+  int16_t _padding1;
 
   char _padding2;
 
@@ -58,8 +58,8 @@ class OPENDIS6_EXPORT BeamAntennaPattern {
   float getReferenceSystem() const;
   void setReferenceSystem(float pX);
 
-  short getPadding1() const;
-  void setPadding1(short pX);
+  int16_t getPadding1() const;
+  void setPadding1(int16_t pX);
 
   char getPadding2() const;
   void setPadding2(char pX);

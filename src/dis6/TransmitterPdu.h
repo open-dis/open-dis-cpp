@@ -2,13 +2,13 @@
 
 #include <vector>
 
-#include <dis6/ModulationType.h>
-#include <dis6/RadioCommunicationsFamilyPdu.h>
-#include <dis6/RadioEntityType.h>
-#include <dis6/Vector3Double.h>
-#include <dis6/Vector3Float.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/ModulationType.h"
+#include "dis6/RadioCommunicationsFamilyPdu.h"
+#include "dis6/RadioEntityType.h"
+#include "dis6/Vector3Double.h"
+#include "dis6/Vector3Float.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.8.1. Detailed information about a radio transmitter. This PDU
@@ -32,7 +32,7 @@ class OPENDIS6_EXPORT TransmitterPdu : public RadioCommunicationsFamilyPdu {
   unsigned char _inputSource;
 
   /** padding */
-  unsigned short _padding1;
+  uint16_t _padding1;
 
   /** Location of antenna */
   Vector3Double _antennaLocation;
@@ -41,13 +41,13 @@ class OPENDIS6_EXPORT TransmitterPdu : public RadioCommunicationsFamilyPdu {
   Vector3Float _relativeAntennaLocation;
 
   /** antenna pattern type */
-  unsigned short _antennaPatternType;
+  uint16_t _antennaPatternType;
 
   /** atenna pattern length */
-  unsigned short _antennaPatternCount;
+  uint16_t _antennaPatternCount;
 
   /** frequency */
-  unsigned long long _frequency;
+  uint64_t _frequency;
 
   /** transmit frequency Bandwidth */
   float _transmitFrequencyBandwidth;
@@ -59,16 +59,16 @@ class OPENDIS6_EXPORT TransmitterPdu : public RadioCommunicationsFamilyPdu {
   ModulationType _modulationType;
 
   /** crypto system enumeration */
-  unsigned short _cryptoSystem;
+  uint16_t _cryptoSystem;
 
   /** crypto system key identifer */
-  unsigned short _cryptoKeyId;
+  uint16_t _cryptoKeyId;
 
   /** how many modulation parameters we have */
   unsigned char _modulationParameterCount;
 
   /** padding2 */
-  unsigned short _padding2;
+  uint16_t _padding2;
 
   /** padding3 */
   unsigned char _padding3;
@@ -96,8 +96,8 @@ class OPENDIS6_EXPORT TransmitterPdu : public RadioCommunicationsFamilyPdu {
   unsigned char getInputSource() const;
   void setInputSource(unsigned char pX);
 
-  unsigned short getPadding1() const;
-  void setPadding1(unsigned short pX);
+  uint16_t getPadding1() const;
+  void setPadding1(uint16_t pX);
 
   Vector3Double& getAntennaLocation();
   const Vector3Double& getAntennaLocation() const;
@@ -107,13 +107,13 @@ class OPENDIS6_EXPORT TransmitterPdu : public RadioCommunicationsFamilyPdu {
   const Vector3Float& getRelativeAntennaLocation() const;
   void setRelativeAntennaLocation(const Vector3Float& pX);
 
-  unsigned short getAntennaPatternType() const;
-  void setAntennaPatternType(unsigned short pX);
+  uint16_t getAntennaPatternType() const;
+  void setAntennaPatternType(uint16_t pX);
 
-  unsigned short getAntennaPatternCount() const;
+  uint16_t getAntennaPatternCount() const;
 
-  unsigned long long getFrequency() const;
-  void setFrequency(unsigned long long pX);
+  uint64_t getFrequency() const;
+  void setFrequency(uint64_t pX);
 
   float getTransmitFrequencyBandwidth() const;
   void setTransmitFrequencyBandwidth(float pX);
@@ -125,16 +125,16 @@ class OPENDIS6_EXPORT TransmitterPdu : public RadioCommunicationsFamilyPdu {
   const ModulationType& getModulationType() const;
   void setModulationType(const ModulationType& pX);
 
-  unsigned short getCryptoSystem() const;
-  void setCryptoSystem(unsigned short pX);
+  uint16_t getCryptoSystem() const;
+  void setCryptoSystem(uint16_t pX);
 
-  unsigned short getCryptoKeyId() const;
-  void setCryptoKeyId(unsigned short pX);
+  uint16_t getCryptoKeyId() const;
+  void setCryptoKeyId(uint16_t pX);
 
   unsigned char getModulationParameterCount() const;
 
-  unsigned short getPadding2() const;
-  void setPadding2(unsigned short pX);
+  uint16_t getPadding2() const;
+  void setPadding2(uint16_t pX);
 
   unsigned char getPadding3() const;
   void setPadding3(unsigned char pX);

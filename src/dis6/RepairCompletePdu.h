@@ -1,9 +1,9 @@
 #pragma once
 
-#include <dis6/EntityID.h>
-#include <dis6/LogisticsFamilyPdu.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/EntityID.h"
+#include "dis6/LogisticsFamilyPdu.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.2.5.5. Repair is complete. COMPLETE
@@ -22,10 +22,10 @@ class OPENDIS6_EXPORT RepairCompletePdu : public LogisticsFamilyPdu {
   EntityID _repairingEntityID;
 
   /** Enumeration for type of repair */
-  unsigned short _repair;
+  uint16_t _repair;
 
   /** padding, number prevents conflict with superclass ivar name */
-  short _padding2;
+  int16_t _padding2;
 
  public:
   RepairCompletePdu();
@@ -42,11 +42,11 @@ class OPENDIS6_EXPORT RepairCompletePdu : public LogisticsFamilyPdu {
   const EntityID& getRepairingEntityID() const;
   void setRepairingEntityID(const EntityID& pX);
 
-  unsigned short getRepair() const;
-  void setRepair(unsigned short pX);
+  uint16_t getRepair() const;
+  void setRepair(uint16_t pX);
 
-  short getPadding2() const;
-  void setPadding2(short pX);
+  int16_t getPadding2() const;
+  void setPadding2(int16_t pX);
 
   virtual int getMarshalledSize() const;
 

@@ -1,4 +1,4 @@
-#include <dis6/IsPartOfPdu.h>
+#include "dis6/IsPartOfPdu.h"
 
 using namespace DIS;
 

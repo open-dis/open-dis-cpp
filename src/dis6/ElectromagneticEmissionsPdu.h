@@ -2,12 +2,12 @@
 
 #include <vector>
 
-#include <dis6/DistributedEmissionsFamilyPdu.h>
-#include <dis6/ElectromagneticEmissionSystemData.h>
-#include <dis6/EntityID.h>
-#include <dis6/EventID.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/DistributedEmissionsFamilyPdu.h"
+#include "dis6/ElectromagneticEmissionSystemData.h"
+#include "dis6/EntityID.h"
+#include "dis6/EventID.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.7.1. Information about active electronic warfare (EW) emissions
@@ -39,7 +39,7 @@ class OPENDIS6_EXPORT ElectromagneticEmissionsPdu
   unsigned char _numberOfSystems;
 
   /** padding */
-  unsigned short _paddingForEmissionsPdu;
+  uint16_t _paddingForEmissionsPdu;
 
   /** Electromagnetic emmissions systems */
   std::vector<ElectromagneticEmissionSystemData> _systems;
@@ -64,8 +64,8 @@ class OPENDIS6_EXPORT ElectromagneticEmissionsPdu
 
   unsigned char getNumberOfSystems() const;
 
-  unsigned short getPaddingForEmissionsPdu() const;
-  void setPaddingForEmissionsPdu(unsigned short pX);
+  uint16_t getPaddingForEmissionsPdu() const;
+  void setPaddingForEmissionsPdu(uint16_t pX);
 
   std::vector<ElectromagneticEmissionSystemData>& getSystems();
   const std::vector<ElectromagneticEmissionSystemData>& getSystems() const;

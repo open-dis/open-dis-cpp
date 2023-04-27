@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.2.5. Articulation parameters for  movable parts and attached parts
@@ -20,7 +20,7 @@ class OPENDIS6_EXPORT ArticulationParameter {
 
   unsigned char _changeIndicator;
 
-  unsigned short _partAttachedTo;
+  uint16_t _partAttachedTo;
 
   int _parameterType;
 
@@ -39,8 +39,8 @@ class OPENDIS6_EXPORT ArticulationParameter {
   unsigned char getChangeIndicator() const;
   void setChangeIndicator(unsigned char pX);
 
-  unsigned short getPartAttachedTo() const;
-  void setPartAttachedTo(unsigned short pX);
+  uint16_t getPartAttachedTo() const;
+  void setPartAttachedTo(uint16_t pX);
 
   int getParameterType() const;
   void setParameterType(int pX);

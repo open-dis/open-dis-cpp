@@ -1,4 +1,4 @@
-#include <dis6/FundamentalParameterDataIff.h>
+#include "dis6/FundamentalParameterDataIff.h"
 
 using namespace DIS;
 
@@ -46,9 +46,9 @@ void FundamentalParameterDataIff::setApplicableModes(unsigned char pX) {
   _applicableModes = pX;
 }
 
-unsigned short FundamentalParameterDataIff::getPad2() const { return _pad2; }
+uint16_t FundamentalParameterDataIff::getPad2() const { return _pad2; }
 
-void FundamentalParameterDataIff::setPad2(unsigned short pX) { _pad2 = pX; }
+void FundamentalParameterDataIff::setPad2(uint16_t pX) { _pad2 = pX; }
 
 unsigned char FundamentalParameterDataIff::getPad3() const { return _pad3; }
 

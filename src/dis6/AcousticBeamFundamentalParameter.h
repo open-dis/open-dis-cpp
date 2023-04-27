@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Used in UaPdu
@@ -14,10 +14,10 @@ namespace DIS {
 class OPENDIS6_EXPORT AcousticBeamFundamentalParameter {
  protected:
   /** parameter index */
-  unsigned short _activeEmissionParameterIndex;
+  uint16_t _activeEmissionParameterIndex;
 
   /** scan pattern */
-  unsigned short _scanPattern;
+  uint16_t _scanPattern;
 
   /** beam center azimuth */
   float _beamCenterAzimuth;
@@ -38,11 +38,11 @@ class OPENDIS6_EXPORT AcousticBeamFundamentalParameter {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getActiveEmissionParameterIndex() const;
-  void setActiveEmissionParameterIndex(unsigned short pX);
+  uint16_t getActiveEmissionParameterIndex() const;
+  void setActiveEmissionParameterIndex(uint16_t pX);
 
-  unsigned short getScanPattern() const;
-  void setScanPattern(unsigned short pX);
+  uint16_t getScanPattern() const;
+  void setScanPattern(uint16_t pX);
 
   float getBeamCenterAzimuth() const;
   void setBeamCenterAzimuth(float pX);

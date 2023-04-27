@@ -2,12 +2,12 @@
 
 #include <vector>
 
-#include <dis6/DistributedEmissionsFamilyPdu.h>
-#include <dis6/EntityID.h>
-#include <dis6/PropulsionSystemData.h>
-#include <dis6/VectoringNozzleSystemData.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/DistributedEmissionsFamilyPdu.h"
+#include "dis6/EntityID.h"
+#include "dis6/PropulsionSystemData.h"
+#include "dis6/VectoringNozzleSystemData.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.7.5. SEES PDU, supplemental emissions entity state information.
@@ -24,19 +24,19 @@ class OPENDIS6_EXPORT SeesPdu : public DistributedEmissionsFamilyPdu {
   EntityID _orginatingEntityID;
 
   /** IR Signature representation index */
-  unsigned short _infraredSignatureRepresentationIndex;
+  uint16_t _infraredSignatureRepresentationIndex;
 
   /** acoustic Signature representation index */
-  unsigned short _acousticSignatureRepresentationIndex;
+  uint16_t _acousticSignatureRepresentationIndex;
 
   /** radar cross section representation index */
-  unsigned short _radarCrossSectionSignatureRepresentationIndex;
+  uint16_t _radarCrossSectionSignatureRepresentationIndex;
 
   /** how many propulsion systems */
-  unsigned short _numberOfPropulsionSystems;
+  uint16_t _numberOfPropulsionSystems;
 
   /** how many vectoring nozzle systems */
-  unsigned short _numberOfVectoringNozzleSystems;
+  uint16_t _numberOfVectoringNozzleSystems;
 
   /** variable length list of propulsion system data */
   std::vector<PropulsionSystemData> _propulsionSystemData;
@@ -55,18 +55,18 @@ class OPENDIS6_EXPORT SeesPdu : public DistributedEmissionsFamilyPdu {
   const EntityID& getOrginatingEntityID() const;
   void setOrginatingEntityID(const EntityID& pX);
 
-  unsigned short getInfraredSignatureRepresentationIndex() const;
-  void setInfraredSignatureRepresentationIndex(unsigned short pX);
+  uint16_t getInfraredSignatureRepresentationIndex() const;
+  void setInfraredSignatureRepresentationIndex(uint16_t pX);
 
-  unsigned short getAcousticSignatureRepresentationIndex() const;
-  void setAcousticSignatureRepresentationIndex(unsigned short pX);
+  uint16_t getAcousticSignatureRepresentationIndex() const;
+  void setAcousticSignatureRepresentationIndex(uint16_t pX);
 
-  unsigned short getRadarCrossSectionSignatureRepresentationIndex() const;
-  void setRadarCrossSectionSignatureRepresentationIndex(unsigned short pX);
+  uint16_t getRadarCrossSectionSignatureRepresentationIndex() const;
+  void setRadarCrossSectionSignatureRepresentationIndex(uint16_t pX);
 
-  unsigned short getNumberOfPropulsionSystems() const;
+  uint16_t getNumberOfPropulsionSystems() const;
 
-  unsigned short getNumberOfVectoringNozzleSystems() const;
+  uint16_t getNumberOfVectoringNozzleSystems() const;
 
   std::vector<PropulsionSystemData>& getPropulsionSystemData();
   const std::vector<PropulsionSystemData>& getPropulsionSystemData() const;

@@ -1,4 +1,4 @@
-#include <dis6/UaPdu.h>
+#include "dis6/UaPdu.h"
 
 using namespace DIS;
 
@@ -42,11 +42,11 @@ char UaPdu::getPad() const { return _pad; }
 
 void UaPdu::setPad(char pX) { _pad = pX; }
 
-unsigned short UaPdu::getPassiveParameterIndex() const {
+uint16_t UaPdu::getPassiveParameterIndex() const {
   return _passiveParameterIndex;
 }
 
-void UaPdu::setPassiveParameterIndex(unsigned short pX) {
+void UaPdu::setPassiveParameterIndex(uint16_t pX) {
   _passiveParameterIndex = pX;
 }
 
@@ -199,17 +199,17 @@ int UaPdu::getMarshalledSize() const {
   marshalSize = marshalSize + 1;  // _numberOfAPAs
   marshalSize = marshalSize + 1;  // _numberOfUAEmitterSystems
 
-  for (unsigned long long idx = 0; idx < _shaftRPMs.size(); idx++) {
+  for (uint64_t idx = 0; idx < _shaftRPMs.size(); idx++) {
     ShaftRPMs listElement = _shaftRPMs[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }
 
-  for (unsigned long long idx = 0; idx < _apaData.size(); idx++) {
+  for (uint64_t idx = 0; idx < _apaData.size(); idx++) {
     ApaData listElement = _apaData[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }
 
-  for (unsigned long long idx = 0; idx < _emitterSystems.size(); idx++) {
+  for (uint64_t idx = 0; idx < _emitterSystems.size(); idx++) {
     AcousticEmitterSystemData listElement = _emitterSystems[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

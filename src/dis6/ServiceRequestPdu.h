@@ -2,11 +2,11 @@
 
 #include <vector>
 
-#include <dis6/EntityID.h>
-#include <dis6/LogisticsFamilyPdu.h>
-#include <dis6/SupplyQuantity.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/EntityID.h"
+#include "dis6/LogisticsFamilyPdu.h"
+#include "dis6/SupplyQuantity.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.5.1. Information about a request for supplies. COMPLETE
@@ -31,7 +31,7 @@ class OPENDIS6_EXPORT ServiceRequestPdu : public LogisticsFamilyPdu {
   unsigned char _numberOfSupplyTypes;
 
   /** padding */
-  short _serviceRequestPadding;
+  int16_t _serviceRequestPadding;
 
   std::vector<SupplyQuantity> _supplies;
 
@@ -55,8 +55,8 @@ class OPENDIS6_EXPORT ServiceRequestPdu : public LogisticsFamilyPdu {
 
   unsigned char getNumberOfSupplyTypes() const;
 
-  short getServiceRequestPadding() const;
-  void setServiceRequestPadding(short pX);
+  int16_t getServiceRequestPadding() const;
+  void setServiceRequestPadding(int16_t pX);
 
   std::vector<SupplyQuantity>& getSupplies();
   const std::vector<SupplyQuantity>& getSupplies() const;

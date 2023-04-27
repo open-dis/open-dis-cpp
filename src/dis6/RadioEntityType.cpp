@@ -1,4 +1,4 @@
-#include <dis6/RadioEntityType.h>
+#include "dis6/RadioEntityType.h"
 
 using namespace DIS;
 
@@ -20,9 +20,9 @@ unsigned char RadioEntityType::getDomain() const { return _domain; }
 
 void RadioEntityType::setDomain(unsigned char pX) { _domain = pX; }
 
-unsigned short RadioEntityType::getCountry() const { return _country; }
+uint16_t RadioEntityType::getCountry() const { return _country; }
 
-void RadioEntityType::setCountry(unsigned short pX) { _country = pX; }
+void RadioEntityType::setCountry(uint16_t pX) { _country = pX; }
 
 unsigned char RadioEntityType::getCategory() const { return _category; }
 
@@ -36,11 +36,11 @@ void RadioEntityType::setNomenclatureVersion(unsigned char pX) {
   _nomenclatureVersion = pX;
 }
 
-unsigned short RadioEntityType::getNomenclature() const {
+uint16_t RadioEntityType::getNomenclature() const {
   return _nomenclature;
 }
 
-void RadioEntityType::setNomenclature(unsigned short pX) { _nomenclature = pX; }
+void RadioEntityType::setNomenclature(uint16_t pX) { _nomenclature = pX; }
 
 void RadioEntityType::marshal(DataStream& dataStream) const {
   dataStream << _entityKind;

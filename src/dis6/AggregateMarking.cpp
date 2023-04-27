@@ -1,4 +1,4 @@
-#include <dis6/AggregateMarking.h>
+#include "dis6/AggregateMarking.h"
 
 using namespace DIS;
 

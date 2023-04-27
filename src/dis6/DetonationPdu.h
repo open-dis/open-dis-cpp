@@ -2,15 +2,15 @@
 
 #include <vector>
 
-#include <dis6/ArticulationParameter.h>
-#include <dis6/BurstDescriptor.h>
-#include <dis6/EntityID.h>
-#include <dis6/EventID.h>
-#include <dis6/Vector3Double.h>
-#include <dis6/Vector3Float.h>
-#include <dis6/WarfareFamilyPdu.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/ArticulationParameter.h"
+#include "dis6/BurstDescriptor.h"
+#include "dis6/EntityID.h"
+#include "dis6/EventID.h"
+#include "dis6/Vector3Double.h"
+#include "dis6/Vector3Float.h"
+#include "dis6/WarfareFamilyPdu.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.4.2. Information about stuff exploding. COMPLETE
@@ -48,7 +48,7 @@ class OPENDIS6_EXPORT DetonationPdu : public WarfareFamilyPdu {
   unsigned char _numberOfArticulationParameters;
 
   /** padding */
-  short _pad;
+  int16_t _pad;
 
   std::vector<ArticulationParameter> _articulationParameters;
 
@@ -88,8 +88,8 @@ class OPENDIS6_EXPORT DetonationPdu : public WarfareFamilyPdu {
 
   unsigned char getNumberOfArticulationParameters() const;
 
-  short getPad() const;
-  void setPad(short pX);
+  int16_t getPad() const;
+  void setPad(int16_t pX);
 
   std::vector<ArticulationParameter>& getArticulationParameters();
   const std::vector<ArticulationParameter>& getArticulationParameters() const;

@@ -1,4 +1,4 @@
-#include <dis6/LinearSegmentParameter.h>
+#include "dis6/LinearSegmentParameter.h"
 
 using namespace DIS;
 
@@ -55,35 +55,35 @@ void LinearSegmentParameter::setOrientation(const Orientation& pX) {
   _orientation = pX;
 }
 
-unsigned short LinearSegmentParameter::getSegmentLength() const {
+uint16_t LinearSegmentParameter::getSegmentLength() const {
   return _segmentLength;
 }
 
-void LinearSegmentParameter::setSegmentLength(unsigned short pX) {
+void LinearSegmentParameter::setSegmentLength(uint16_t pX) {
   _segmentLength = pX;
 }
 
-unsigned short LinearSegmentParameter::getSegmentWidth() const {
+uint16_t LinearSegmentParameter::getSegmentWidth() const {
   return _segmentWidth;
 }
 
-void LinearSegmentParameter::setSegmentWidth(unsigned short pX) {
+void LinearSegmentParameter::setSegmentWidth(uint16_t pX) {
   _segmentWidth = pX;
 }
 
-unsigned short LinearSegmentParameter::getSegmentHeight() const {
+uint16_t LinearSegmentParameter::getSegmentHeight() const {
   return _segmentHeight;
 }
 
-void LinearSegmentParameter::setSegmentHeight(unsigned short pX) {
+void LinearSegmentParameter::setSegmentHeight(uint16_t pX) {
   _segmentHeight = pX;
 }
 
-unsigned short LinearSegmentParameter::getSegmentDepth() const {
+uint16_t LinearSegmentParameter::getSegmentDepth() const {
   return _segmentDepth;
 }
 
-void LinearSegmentParameter::setSegmentDepth(unsigned short pX) {
+void LinearSegmentParameter::setSegmentDepth(uint16_t pX) {
   _segmentDepth = pX;
 }
 

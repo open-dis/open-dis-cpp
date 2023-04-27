@@ -1,4 +1,4 @@
-#include <dis6/IntercomCommunicationsParameters.h>
+#include "dis6/IntercomCommunicationsParameters.h"
 
 using namespace DIS;
 
@@ -7,19 +7,19 @@ IntercomCommunicationsParameters::IntercomCommunicationsParameters()
 
 IntercomCommunicationsParameters::~IntercomCommunicationsParameters() {}
 
-unsigned short IntercomCommunicationsParameters::getRecordType() const {
+uint16_t IntercomCommunicationsParameters::getRecordType() const {
   return _recordType;
 }
 
-void IntercomCommunicationsParameters::setRecordType(unsigned short pX) {
+void IntercomCommunicationsParameters::setRecordType(uint16_t pX) {
   _recordType = pX;
 }
 
-unsigned short IntercomCommunicationsParameters::getRecordLength() const {
+uint16_t IntercomCommunicationsParameters::getRecordLength() const {
   return _recordLength;
 }
 
-void IntercomCommunicationsParameters::setRecordLength(unsigned short pX) {
+void IntercomCommunicationsParameters::setRecordLength(uint16_t pX) {
   _recordLength = pX;
 }
 

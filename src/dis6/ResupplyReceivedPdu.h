@@ -2,11 +2,11 @@
 
 #include <vector>
 
-#include <dis6/EntityID.h>
-#include <dis6/LogisticsFamilyPdu.h>
-#include <dis6/SupplyQuantity.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/EntityID.h"
+#include "dis6/LogisticsFamilyPdu.h"
+#include "dis6/SupplyQuantity.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.5.3. Receipt of supplies is communiated. COMPLETE
@@ -28,7 +28,7 @@ class OPENDIS6_EXPORT ResupplyReceivedPdu : public LogisticsFamilyPdu {
   unsigned char _numberOfSupplyTypes;
 
   /** padding */
-  short _padding1;
+  int16_t _padding1;
 
   /** padding */
   char _padding2;
@@ -52,8 +52,8 @@ class OPENDIS6_EXPORT ResupplyReceivedPdu : public LogisticsFamilyPdu {
 
   unsigned char getNumberOfSupplyTypes() const;
 
-  short getPadding1() const;
-  void setPadding1(short pX);
+  int16_t getPadding1() const;
+  void setPadding1(int16_t pX);
 
   char getPadding2() const;
   void setPadding2(char pX);

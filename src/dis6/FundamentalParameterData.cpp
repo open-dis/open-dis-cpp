@@ -1,4 +1,4 @@
-#include <dis6/FundamentalParameterData.h>
+#include "dis6/FundamentalParameterData.h"
 
 using namespace DIS;
 

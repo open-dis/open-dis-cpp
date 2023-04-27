@@ -2,11 +2,11 @@
 
 #include <vector>
 
-#include <dis6/FixedDatum.h>
-#include <dis6/SimulationManagementFamilyPdu.h>
-#include <dis6/VariableDatum.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/FixedDatum.h"
+#include "dis6/SimulationManagementFamilyPdu.h"
+#include "dis6/VariableDatum.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.6.10. Information issued in response to a data query pdu or a set

@@ -1,4 +1,4 @@
-#include <dis6/EnvironmentalProcessPdu.h>
+#include "dis6/EnvironmentalProcessPdu.h"
 
 using namespace DIS;
 
@@ -61,11 +61,11 @@ unsigned char EnvironmentalProcessPdu::getNumberOfEnvironmentRecords() const {
   return _environmentRecords.size();
 }
 
-unsigned short EnvironmentalProcessPdu::getSequenceNumber() const {
+uint16_t EnvironmentalProcessPdu::getSequenceNumber() const {
   return _sequenceNumber;
 }
 
-void EnvironmentalProcessPdu::setSequenceNumber(unsigned short pX) {
+void EnvironmentalProcessPdu::setSequenceNumber(uint16_t pX) {
   _sequenceNumber = pX;
 }
 
@@ -152,7 +152,7 @@ int EnvironmentalProcessPdu::getMarshalledSize() const {
   marshalSize = marshalSize + 1;  // _numberOfEnvironmentRecords
   marshalSize = marshalSize + 2;  // _sequenceNumber
 
-  for (unsigned long long idx = 0; idx < _environmentRecords.size(); idx++) {
+  for (uint64_t idx = 0; idx < _environmentRecords.size(); idx++) {
     Environment listElement = _environmentRecords[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

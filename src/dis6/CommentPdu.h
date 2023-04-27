@@ -2,11 +2,11 @@
 
 #include <vector>
 
-#include <dis6/FixedDatum.h>
-#include <dis6/SimulationManagementFamilyPdu.h>
-#include <dis6/VariableDatum.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/FixedDatum.h"
+#include "dis6/SimulationManagementFamilyPdu.h"
+#include "dis6/VariableDatum.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.6.12. Arbitrary messages can be entered into the data stream via

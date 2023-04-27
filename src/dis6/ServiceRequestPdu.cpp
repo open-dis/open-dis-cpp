@@ -1,4 +1,4 @@
-#include <dis6/ServiceRequestPdu.h>
+#include "dis6/ServiceRequestPdu.h"
 
 using namespace DIS;
 
@@ -50,11 +50,11 @@ unsigned char ServiceRequestPdu::getNumberOfSupplyTypes() const {
   return _supplies.size();
 }
 
-short ServiceRequestPdu::getServiceRequestPadding() const {
+int16_t ServiceRequestPdu::getServiceRequestPadding() const {
   return _serviceRequestPadding;
 }
 
-void ServiceRequestPdu::setServiceRequestPadding(short pX) {
+void ServiceRequestPdu::setServiceRequestPadding(int16_t pX) {
   _serviceRequestPadding = pX;
 }
 
@@ -132,7 +132,7 @@ int ServiceRequestPdu::getMarshalledSize() const {
   marshalSize = marshalSize + 1;  // _numberOfSupplyTypes
   marshalSize = marshalSize + 2;  // _serviceRequestPadding
 
-  for (unsigned long long idx = 0; idx < _supplies.size(); idx++) {
+  for (uint64_t idx = 0; idx < _supplies.size(); idx++) {
     SupplyQuantity listElement = _supplies[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

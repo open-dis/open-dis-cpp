@@ -1,9 +1,9 @@
 #pragma once
 
-#include <dis6/ClockTime.h>
-#include <dis6/SimulationManagementWithReliabilityFamilyPdu.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/ClockTime.h"
+#include "dis6/SimulationManagementWithReliabilityFamilyPdu.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.12.4: Stop freeze simulation, relaible. COMPLETE

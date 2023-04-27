@@ -1,4 +1,4 @@
-#include <dis6/IsGroupOfPdu.h>
+#include "dis6/IsGroupOfPdu.h"
 
 using namespace DIS;
 
@@ -128,7 +128,7 @@ int IsGroupOfPdu::getMarshalledSize() const {
   marshalSize = marshalSize + 8;  // _latitude
   marshalSize = marshalSize + 8;  // _longitude
 
-  for (unsigned long long idx = 0; idx < _groupedEntityDescriptions.size();
+  for (uint64_t idx = 0; idx < _groupedEntityDescriptions.size();
        idx++) {
     VariableDatum listElement = _groupedEntityDescriptions[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();

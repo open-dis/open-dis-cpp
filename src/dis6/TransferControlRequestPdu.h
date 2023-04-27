@@ -2,11 +2,11 @@
 
 #include <vector>
 
-#include <dis6/EntityID.h>
-#include <dis6/EntityManagementFamilyPdu.h>
-#include <dis6/RecordSet.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/EntityID.h"
+#include "dis6/EntityManagementFamilyPdu.h"
+#include "dis6/RecordSet.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.9.3 Information initiating the dyanic allocation and control of

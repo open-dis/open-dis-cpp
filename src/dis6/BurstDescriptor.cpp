@@ -1,4 +1,4 @@
-#include <dis6/BurstDescriptor.h>
+#include "dis6/BurstDescriptor.h"
 
 using namespace DIS;
 
@@ -13,21 +13,21 @@ const EntityType& BurstDescriptor::getMunition() const { return _munition; }
 
 void BurstDescriptor::setMunition(const EntityType& pX) { _munition = pX; }
 
-unsigned short BurstDescriptor::getWarhead() const { return _warhead; }
+uint16_t BurstDescriptor::getWarhead() const { return _warhead; }
 
-void BurstDescriptor::setWarhead(unsigned short pX) { _warhead = pX; }
+void BurstDescriptor::setWarhead(uint16_t pX) { _warhead = pX; }
 
-unsigned short BurstDescriptor::getFuse() const { return _fuse; }
+uint16_t BurstDescriptor::getFuse() const { return _fuse; }
 
-void BurstDescriptor::setFuse(unsigned short pX) { _fuse = pX; }
+void BurstDescriptor::setFuse(uint16_t pX) { _fuse = pX; }
 
-unsigned short BurstDescriptor::getQuantity() const { return _quantity; }
+uint16_t BurstDescriptor::getQuantity() const { return _quantity; }
 
-void BurstDescriptor::setQuantity(unsigned short pX) { _quantity = pX; }
+void BurstDescriptor::setQuantity(uint16_t pX) { _quantity = pX; }
 
-unsigned short BurstDescriptor::getRate() const { return _rate; }
+uint16_t BurstDescriptor::getRate() const { return _rate; }
 
-void BurstDescriptor::setRate(unsigned short pX) { _rate = pX; }
+void BurstDescriptor::setRate(uint16_t pX) { _rate = pX; }
 
 void BurstDescriptor::marshal(DataStream& dataStream) const {
   _munition.marshal(dataStream);

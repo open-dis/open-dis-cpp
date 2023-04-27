@@ -1,4 +1,4 @@
-#include <dis6/RadioCommunicationsFamilyPdu.h>
+#include "dis6/RadioCommunicationsFamilyPdu.h"
 
 using namespace DIS;
 
@@ -19,11 +19,11 @@ void RadioCommunicationsFamilyPdu::setEntityId(const EntityID& pX) {
   _entityId = pX;
 }
 
-unsigned short RadioCommunicationsFamilyPdu::getRadioId() const {
+uint16_t RadioCommunicationsFamilyPdu::getRadioId() const {
   return _radioId;
 }
 
-void RadioCommunicationsFamilyPdu::setRadioId(unsigned short pX) {
+void RadioCommunicationsFamilyPdu::setRadioId(uint16_t pX) {
   _radioId = pX;
 }
 

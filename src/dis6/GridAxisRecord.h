@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // 5.2.44: Grid data record, a common abstract superclass for several subtypes
@@ -14,10 +14,10 @@ namespace DIS {
 class OPENDIS6_EXPORT GridAxisRecord {
  protected:
   /** type of environmental sample */
-  unsigned short _sampleType;
+  uint16_t _sampleType;
 
   /** value that describes data representation */
-  unsigned short _dataRepresentation;
+  uint16_t _dataRepresentation;
 
  public:
   GridAxisRecord();
@@ -26,11 +26,11 @@ class OPENDIS6_EXPORT GridAxisRecord {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getSampleType() const;
-  void setSampleType(unsigned short pX);
+  uint16_t getSampleType() const;
+  void setSampleType(uint16_t pX);
 
-  unsigned short getDataRepresentation() const;
-  void setDataRepresentation(unsigned short pX);
+  uint16_t getDataRepresentation() const;
+  void setDataRepresentation(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

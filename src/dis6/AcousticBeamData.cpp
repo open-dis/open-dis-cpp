@@ -1,4 +1,4 @@
-#include <dis6/AcousticBeamData.h>
+#include "dis6/AcousticBeamData.h"
 
 using namespace DIS;
 
@@ -10,11 +10,11 @@ AcousticBeamData::AcousticBeamData()
 
 AcousticBeamData::~AcousticBeamData() {}
 
-unsigned short AcousticBeamData::getBeamDataLength() const {
+uint16_t AcousticBeamData::getBeamDataLength() const {
   return _beamDataLength;
 }
 
-void AcousticBeamData::setBeamDataLength(unsigned short pX) {
+void AcousticBeamData::setBeamDataLength(uint16_t pX) {
   _beamDataLength = pX;
 }
 
@@ -24,9 +24,9 @@ unsigned char AcousticBeamData::getBeamIDNumber() const {
 
 void AcousticBeamData::setBeamIDNumber(unsigned char pX) { _beamIDNumber = pX; }
 
-unsigned short AcousticBeamData::getPad2() const { return _pad2; }
+uint16_t AcousticBeamData::getPad2() const { return _pad2; }
 
-void AcousticBeamData::setPad2(unsigned short pX) { _pad2 = pX; }
+void AcousticBeamData::setPad2(uint16_t pX) { _pad2 = pX; }
 
 AcousticBeamFundamentalParameter&
 AcousticBeamData::getFundamentalDataParameters() {

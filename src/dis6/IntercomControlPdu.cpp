@@ -1,4 +1,4 @@
-#include <dis6/IntercomControlPdu.h>
+#include "dis6/IntercomControlPdu.h"
 
 using namespace DIS;
 
@@ -90,11 +90,11 @@ void IntercomControlPdu::setMasterEntityID(const EntityID& pX) {
   _masterEntityID = pX;
 }
 
-unsigned short IntercomControlPdu::getMasterCommunicationsDeviceID() const {
+uint16_t IntercomControlPdu::getMasterCommunicationsDeviceID() const {
   return _masterCommunicationsDeviceID;
 }
 
-void IntercomControlPdu::setMasterCommunicationsDeviceID(unsigned short pX) {
+void IntercomControlPdu::setMasterCommunicationsDeviceID(uint16_t pX) {
   _masterCommunicationsDeviceID = pX;
 }
 
@@ -206,7 +206,7 @@ int IntercomControlPdu::getMarshalledSize() const {
   marshalSize = marshalSize + 2;  // _masterCommunicationsDeviceID
   marshalSize = marshalSize + 4;  // _intercomParametersLength
 
-  for (unsigned long long idx = 0; idx < _intercomParameters.size(); idx++) {
+  for (uint64_t idx = 0; idx < _intercomParameters.size(); idx++) {
     IntercomCommunicationsParameters listElement = _intercomParameters[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

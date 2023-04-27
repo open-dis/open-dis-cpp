@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // 5.2.46.  Intercom communcations parameters
@@ -14,10 +14,10 @@ namespace DIS {
 class OPENDIS6_EXPORT IntercomCommunicationsParameters {
  protected:
   /** Type of intercom parameters record */
-  unsigned short _recordType;
+  uint16_t _recordType;
 
   /** length of record */
-  unsigned short _recordLength;
+  uint16_t _recordLength;
 
   /** Jerks. Looks like the committee is forcing a lookup of the record type
    * parameter to find out how long the field is. This is a placeholder. */
@@ -30,11 +30,11 @@ class OPENDIS6_EXPORT IntercomCommunicationsParameters {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getRecordType() const;
-  void setRecordType(unsigned short pX);
+  uint16_t getRecordType() const;
+  void setRecordType(uint16_t pX);
 
-  unsigned short getRecordLength() const;
-  void setRecordLength(unsigned short pX);
+  uint16_t getRecordLength() const;
+  void setRecordLength(uint16_t pX);
 
   unsigned int getRecordSpecificField() const;
   void setRecordSpecificField(unsigned int pX);

@@ -14,23 +14,23 @@ SignalPdu::SignalPdu()
 
 SignalPdu::~SignalPdu() { _data.clear(); }
 
-unsigned short SignalPdu::getEncodingScheme() const { return _encodingScheme; }
+uint16_t SignalPdu::getEncodingScheme() const { return _encodingScheme; }
 
-void SignalPdu::setEncodingScheme(unsigned short pX) { _encodingScheme = pX; }
+void SignalPdu::setEncodingScheme(uint16_t pX) { _encodingScheme = pX; }
 
-unsigned short SignalPdu::getTdlType() const { return _tdlType; }
+uint16_t SignalPdu::getTdlType() const { return _tdlType; }
 
-void SignalPdu::setTdlType(unsigned short pX) { _tdlType = pX; }
+void SignalPdu::setTdlType(uint16_t pX) { _tdlType = pX; }
 
 unsigned int SignalPdu::getSampleRate() const { return _sampleRate; }
 
 void SignalPdu::setSampleRate(unsigned int pX) { _sampleRate = pX; }
 
-short SignalPdu::getDataLength() const { return _data.size(); }
+int16_t SignalPdu::getDataLength() const { return _data.size(); }
 
-short SignalPdu::getSamples() const { return _samples; }
+int16_t SignalPdu::getSamples() const { return _samples; }
 
-void SignalPdu::setSamples(short pX) { _samples = pX; }
+void SignalPdu::setSamples(int16_t pX) { _samples = pX; }
 
 std::vector<uint8_t>& SignalPdu::getData() { return _data; }
 
@@ -44,7 +44,7 @@ void SignalPdu::marshal(DataStream& dataStream) const {
   dataStream << _encodingScheme;
   dataStream << _tdlType;
   dataStream << _sampleRate;
-  dataStream << (short)_data.size();
+  dataStream << (int16_t)_data.size();
   dataStream << _samples;
   for (auto byte : _data) {
     dataStream << byte;

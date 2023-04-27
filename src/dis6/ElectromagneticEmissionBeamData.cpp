@@ -1,4 +1,4 @@
-#include <dis6/ElectromagneticEmissionBeamData.h>
+#include "dis6/ElectromagneticEmissionBeamData.h"
 
 using namespace DIS;
 
@@ -33,11 +33,11 @@ void ElectromagneticEmissionBeamData::setBeamIDNumber(unsigned char pX) {
   _beamIDNumber = pX;
 }
 
-unsigned short ElectromagneticEmissionBeamData::getBeamParameterIndex() const {
+uint16_t ElectromagneticEmissionBeamData::getBeamParameterIndex() const {
   return _beamParameterIndex;
 }
 
-void ElectromagneticEmissionBeamData::setBeamParameterIndex(unsigned short pX) {
+void ElectromagneticEmissionBeamData::setBeamParameterIndex(uint16_t pX) {
   _beamParameterIndex = pX;
 }
 
@@ -177,7 +177,7 @@ int ElectromagneticEmissionBeamData::getMarshalledSize() const {
   marshalSize = marshalSize + 1;               // _pad4
   marshalSize = marshalSize + 4;               // _jammingModeSequence
 
-  for (unsigned long long idx = 0; idx < _trackJamTargets.size(); idx++) {
+  for (uint64_t idx = 0; idx < _trackJamTargets.size(); idx++) {
     TrackJamTarget listElement = _trackJamTargets[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

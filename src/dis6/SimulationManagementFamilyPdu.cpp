@@ -1,4 +1,4 @@
-#include <dis6/SimulationManagementFamilyPdu.h>
+#include "dis6/SimulationManagementFamilyPdu.h"
 
 using namespace DIS;
 

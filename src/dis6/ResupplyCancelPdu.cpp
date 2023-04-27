@@ -1,4 +1,4 @@
-#include <dis6/ResupplyCancelPdu.h>
+#include "dis6/ResupplyCancelPdu.h"
 
 using namespace DIS;
 

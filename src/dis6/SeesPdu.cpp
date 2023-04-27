@@ -1,4 +1,4 @@
-#include <dis6/SeesPdu.h>
+#include "dis6/SeesPdu.h"
 
 using namespace DIS;
 
@@ -28,37 +28,37 @@ void SeesPdu::setOrginatingEntityID(const EntityID& pX) {
   _orginatingEntityID = pX;
 }
 
-unsigned short SeesPdu::getInfraredSignatureRepresentationIndex() const {
+uint16_t SeesPdu::getInfraredSignatureRepresentationIndex() const {
   return _infraredSignatureRepresentationIndex;
 }
 
-void SeesPdu::setInfraredSignatureRepresentationIndex(unsigned short pX) {
+void SeesPdu::setInfraredSignatureRepresentationIndex(uint16_t pX) {
   _infraredSignatureRepresentationIndex = pX;
 }
 
-unsigned short SeesPdu::getAcousticSignatureRepresentationIndex() const {
+uint16_t SeesPdu::getAcousticSignatureRepresentationIndex() const {
   return _acousticSignatureRepresentationIndex;
 }
 
-void SeesPdu::setAcousticSignatureRepresentationIndex(unsigned short pX) {
+void SeesPdu::setAcousticSignatureRepresentationIndex(uint16_t pX) {
   _acousticSignatureRepresentationIndex = pX;
 }
 
-unsigned short SeesPdu::getRadarCrossSectionSignatureRepresentationIndex()
+uint16_t SeesPdu::getRadarCrossSectionSignatureRepresentationIndex()
     const {
   return _radarCrossSectionSignatureRepresentationIndex;
 }
 
 void SeesPdu::setRadarCrossSectionSignatureRepresentationIndex(
-    unsigned short pX) {
+    uint16_t pX) {
   _radarCrossSectionSignatureRepresentationIndex = pX;
 }
 
-unsigned short SeesPdu::getNumberOfPropulsionSystems() const {
+uint16_t SeesPdu::getNumberOfPropulsionSystems() const {
   return _propulsionSystemData.size();
 }
 
-unsigned short SeesPdu::getNumberOfVectoringNozzleSystems() const {
+uint16_t SeesPdu::getNumberOfVectoringNozzleSystems() const {
   return _vectoringSystemData.size();
 }
 
@@ -97,8 +97,8 @@ void SeesPdu::marshal(DataStream& dataStream) const {
   dataStream << _infraredSignatureRepresentationIndex;
   dataStream << _acousticSignatureRepresentationIndex;
   dataStream << _radarCrossSectionSignatureRepresentationIndex;
-  dataStream << (unsigned short)_propulsionSystemData.size();
-  dataStream << (unsigned short)_vectoringSystemData.size();
+  dataStream << (uint16_t)_propulsionSystemData.size();
+  dataStream << (uint16_t)_vectoringSystemData.size();
 
   for (size_t idx = 0; idx < _propulsionSystemData.size(); idx++) {
     PropulsionSystemData x = _propulsionSystemData[idx];
@@ -178,12 +178,12 @@ int SeesPdu::getMarshalledSize() const {
   marshalSize = marshalSize + 2;  // _numberOfPropulsionSystems
   marshalSize = marshalSize + 2;  // _numberOfVectoringNozzleSystems
 
-  for (unsigned long long idx = 0; idx < _propulsionSystemData.size(); idx++) {
+  for (uint64_t idx = 0; idx < _propulsionSystemData.size(); idx++) {
     PropulsionSystemData listElement = _propulsionSystemData[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }
 
-  for (unsigned long long idx = 0; idx < _vectoringSystemData.size(); idx++) {
+  for (uint64_t idx = 0; idx < _vectoringSystemData.size(); idx++) {
     VectoringNozzleSystemData listElement = _vectoringSystemData[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

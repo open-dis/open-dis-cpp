@@ -1,4 +1,4 @@
-#include <dis6/ObjectType.h>
+#include "dis6/ObjectType.h"
 
 using namespace DIS;
 
@@ -15,9 +15,9 @@ unsigned char ObjectType::getDomain() const { return _domain; }
 
 void ObjectType::setDomain(unsigned char pX) { _domain = pX; }
 
-unsigned short ObjectType::getCountry() const { return _country; }
+uint16_t ObjectType::getCountry() const { return _country; }
 
-void ObjectType::setCountry(unsigned short pX) { _country = pX; }
+void ObjectType::setCountry(uint16_t pX) { _country = pX; }
 
 unsigned char ObjectType::getCategory() const { return _category; }
 

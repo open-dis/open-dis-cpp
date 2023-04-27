@@ -1,8 +1,8 @@
 #pragma once
 
-#include <dis6/SimulationManagementWithReliabilityFamilyPdu.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/SimulationManagementWithReliabilityFamilyPdu.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.12.5: Ack receipt of a start-resume, stop-freeze, create-entity
@@ -17,10 +17,10 @@ class OPENDIS6_EXPORT AcknowledgeReliablePdu
     : public SimulationManagementWithReliabilityFamilyPdu {
  protected:
   /** ack flags */
-  unsigned short _acknowledgeFlag;
+  uint16_t _acknowledgeFlag;
 
   /** response flags */
-  unsigned short _responseFlag;
+  uint16_t _responseFlag;
 
   /** Request ID */
   unsigned int _requestID;
@@ -32,11 +32,11 @@ class OPENDIS6_EXPORT AcknowledgeReliablePdu
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getAcknowledgeFlag() const;
-  void setAcknowledgeFlag(unsigned short pX);
+  uint16_t getAcknowledgeFlag() const;
+  void setAcknowledgeFlag(uint16_t pX);
 
-  unsigned short getResponseFlag() const;
-  void setResponseFlag(unsigned short pX);
+  uint16_t getResponseFlag() const;
+  void setResponseFlag(uint16_t pX);
 
   unsigned int getRequestID() const;
   void setRequestID(unsigned int pX);

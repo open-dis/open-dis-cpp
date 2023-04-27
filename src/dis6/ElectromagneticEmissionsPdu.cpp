@@ -1,4 +1,4 @@
-#include <dis6/ElectromagneticEmissionsPdu.h>
+#include "dis6/ElectromagneticEmissionsPdu.h"
 
 using namespace DIS;
 
@@ -51,11 +51,11 @@ unsigned char ElectromagneticEmissionsPdu::getNumberOfSystems() const {
   return _systems.size();
 }
 
-unsigned short ElectromagneticEmissionsPdu::getPaddingForEmissionsPdu() const {
+uint16_t ElectromagneticEmissionsPdu::getPaddingForEmissionsPdu() const {
   return _paddingForEmissionsPdu;
 }
 
-void ElectromagneticEmissionsPdu::setPaddingForEmissionsPdu(unsigned short pX) {
+void ElectromagneticEmissionsPdu::setPaddingForEmissionsPdu(uint16_t pX) {
   _paddingForEmissionsPdu = pX;
 }
 
@@ -136,7 +136,7 @@ int ElectromagneticEmissionsPdu::getMarshalledSize() const {
   marshalSize = marshalSize + 1;  // _numberOfSystems
   marshalSize = marshalSize + 2;  // _paddingForEmissionsPdu
 
-  for (unsigned long long idx = 0; idx < _systems.size(); idx++) {
+  for (uint64_t idx = 0; idx < _systems.size(); idx++) {
     ElectromagneticEmissionSystemData listElement = _systems[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

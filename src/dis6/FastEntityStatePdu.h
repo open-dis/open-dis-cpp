@@ -2,10 +2,10 @@
 
 #include <vector>
 
-#include <dis6/ArticulationParameter.h>
-#include <dis6/EntityInformationFamilyPdu.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/ArticulationParameter.h"
+#include "dis6/EntityInformationFamilyPdu.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.3.1. Represents the postion and state of one entity in the world.
@@ -20,13 +20,13 @@ namespace DIS {
 class OPENDIS6_EXPORT FastEntityStatePdu : public EntityInformationFamilyPdu {
  protected:
   /** The site ID */
-  unsigned short _site;
+  uint16_t _site;
 
   /** The application ID */
-  unsigned short _application;
+  uint16_t _application;
 
   /** the entity ID */
-  unsigned short _entity;
+  uint16_t _entity;
 
   /** what force this entity is affiliated with, eg red, blue, neutral, etc */
   unsigned char _forceId;
@@ -41,7 +41,7 @@ class OPENDIS6_EXPORT FastEntityStatePdu : public EntityInformationFamilyPdu {
   unsigned char _domain;
 
   /** country to which the design of the entity is attributed */
-  unsigned short _country;
+  uint16_t _country;
 
   /** category of entity */
   unsigned char _category;
@@ -61,7 +61,7 @@ class OPENDIS6_EXPORT FastEntityStatePdu : public EntityInformationFamilyPdu {
   unsigned char _altDomain;
 
   /** country to which the design of the entity is attributed */
-  unsigned short _altCountry;
+  uint16_t _altCountry;
 
   /** category of entity */
   unsigned char _altCategory;
@@ -143,14 +143,14 @@ class OPENDIS6_EXPORT FastEntityStatePdu : public EntityInformationFamilyPdu {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getSite() const;
-  void setSite(unsigned short pX);
+  uint16_t getSite() const;
+  void setSite(uint16_t pX);
 
-  unsigned short getApplication() const;
-  void setApplication(unsigned short pX);
+  uint16_t getApplication() const;
+  void setApplication(uint16_t pX);
 
-  unsigned short getEntity() const;
-  void setEntity(unsigned short pX);
+  uint16_t getEntity() const;
+  void setEntity(uint16_t pX);
 
   unsigned char getForceId() const;
   void setForceId(unsigned char pX);
@@ -163,8 +163,8 @@ class OPENDIS6_EXPORT FastEntityStatePdu : public EntityInformationFamilyPdu {
   unsigned char getDomain() const;
   void setDomain(unsigned char pX);
 
-  unsigned short getCountry() const;
-  void setCountry(unsigned short pX);
+  uint16_t getCountry() const;
+  void setCountry(uint16_t pX);
 
   unsigned char getCategory() const;
   void setCategory(unsigned char pX);
@@ -184,8 +184,8 @@ class OPENDIS6_EXPORT FastEntityStatePdu : public EntityInformationFamilyPdu {
   unsigned char getAltDomain() const;
   void setAltDomain(unsigned char pX);
 
-  unsigned short getAltCountry() const;
-  void setAltCountry(unsigned short pX);
+  uint16_t getAltCountry() const;
+  void setAltCountry(uint16_t pX);
 
   unsigned char getAltCategory() const;
   void setAltCategory(unsigned char pX);

@@ -1,11 +1,11 @@
 #pragma once
 
-#include <dis6/EntityID.h>
-#include <dis6/EntityInformationFamilyPdu.h>
-#include <dis6/EventID.h>
-#include <dis6/Vector3Float.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/EntityID.h"
+#include "dis6/EntityInformationFamilyPdu.h"
+#include "dis6/EventID.h"
+#include "dis6/Vector3Float.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.3.2. Information about a collision. COMPLETE

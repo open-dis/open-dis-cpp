@@ -2,14 +2,14 @@
 
 #include <vector>
 
-#include <dis6/EntityID.h>
-#include <dis6/EntityType.h>
-#include <dis6/SimulationAddress.h>
-#include <dis6/SixByteChunk.h>
-#include <dis6/SyntheticEnvironmentFamilyPdu.h>
-#include <dis6/Vector3Double.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/EntityID.h"
+#include "dis6/EntityType.h"
+#include "dis6/SimulationAddress.h"
+#include "dis6/SixByteChunk.h"
+#include "dis6/SyntheticEnvironmentFamilyPdu.h"
+#include "dis6/Vector3Double.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.11.5: Information about the addition/modification of an oobject
@@ -31,7 +31,7 @@ class OPENDIS6_EXPORT ArealObjectStatePdu
   EntityID _referencedObjectID;
 
   /** unique update number of each state transition of an object */
-  unsigned short _updateNumber;
+  uint16_t _updateNumber;
 
   /** force ID */
   unsigned char _forceID;
@@ -46,7 +46,7 @@ class OPENDIS6_EXPORT ArealObjectStatePdu
   SixByteChunk _objectAppearance;
 
   /** Number of points */
-  unsigned short _numberOfPoints;
+  uint16_t _numberOfPoints;
 
   /** requesterID */
   SimulationAddress _requesterID;
@@ -72,8 +72,8 @@ class OPENDIS6_EXPORT ArealObjectStatePdu
   const EntityID& getReferencedObjectID() const;
   void setReferencedObjectID(const EntityID& pX);
 
-  unsigned short getUpdateNumber() const;
-  void setUpdateNumber(unsigned short pX);
+  uint16_t getUpdateNumber() const;
+  void setUpdateNumber(uint16_t pX);
 
   unsigned char getForceID() const;
   void setForceID(unsigned char pX);
@@ -89,7 +89,7 @@ class OPENDIS6_EXPORT ArealObjectStatePdu
   const SixByteChunk& getObjectAppearance() const;
   void setObjectAppearance(const SixByteChunk& pX);
 
-  unsigned short getNumberOfPoints() const;
+  uint16_t getNumberOfPoints() const;
 
   SimulationAddress& getRequesterID();
   const SimulationAddress& getRequesterID() const;

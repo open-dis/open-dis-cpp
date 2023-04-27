@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // 5.2.42. Basic operational data ofr IFF ATC NAVAIDS
@@ -26,22 +26,22 @@ class OPENDIS6_EXPORT IffFundamentalData {
   unsigned char _modifier;
 
   /** parameter, enumeration */
-  unsigned short _parameter1;
+  uint16_t _parameter1;
 
   /** parameter, enumeration */
-  unsigned short _parameter2;
+  uint16_t _parameter2;
 
   /** parameter, enumeration */
-  unsigned short _parameter3;
+  uint16_t _parameter3;
 
   /** parameter, enumeration */
-  unsigned short _parameter4;
+  uint16_t _parameter4;
 
   /** parameter, enumeration */
-  unsigned short _parameter5;
+  uint16_t _parameter5;
 
   /** parameter, enumeration */
-  unsigned short _parameter6;
+  uint16_t _parameter6;
 
  public:
   IffFundamentalData();
@@ -62,23 +62,23 @@ class OPENDIS6_EXPORT IffFundamentalData {
   unsigned char getModifier() const;
   void setModifier(unsigned char pX);
 
-  unsigned short getParameter1() const;
-  void setParameter1(unsigned short pX);
+  uint16_t getParameter1() const;
+  void setParameter1(uint16_t pX);
 
-  unsigned short getParameter2() const;
-  void setParameter2(unsigned short pX);
+  uint16_t getParameter2() const;
+  void setParameter2(uint16_t pX);
 
-  unsigned short getParameter3() const;
-  void setParameter3(unsigned short pX);
+  uint16_t getParameter3() const;
+  void setParameter3(uint16_t pX);
 
-  unsigned short getParameter4() const;
-  void setParameter4(unsigned short pX);
+  uint16_t getParameter4() const;
+  void setParameter4(uint16_t pX);
 
-  unsigned short getParameter5() const;
-  void setParameter5(unsigned short pX);
+  uint16_t getParameter5() const;
+  void setParameter5(uint16_t pX);
 
-  unsigned short getParameter6() const;
-  void setParameter6(unsigned short pX);
+  uint16_t getParameter6() const;
+  void setParameter6(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

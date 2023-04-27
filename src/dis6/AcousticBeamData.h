@@ -1,8 +1,8 @@
 #pragma once
 
-#include <dis6/AcousticBeamFundamentalParameter.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/AcousticBeamFundamentalParameter.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Used in UA PDU
@@ -15,13 +15,13 @@ namespace DIS {
 class OPENDIS6_EXPORT AcousticBeamData {
  protected:
   /** beam data length */
-  unsigned short _beamDataLength;
+  uint16_t _beamDataLength;
 
   /** beamIDNumber */
   unsigned char _beamIDNumber;
 
   /** padding */
-  unsigned short _pad2;
+  uint16_t _pad2;
 
   /** fundamental data parameters */
   AcousticBeamFundamentalParameter _fundamentalDataParameters;
@@ -33,14 +33,14 @@ class OPENDIS6_EXPORT AcousticBeamData {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getBeamDataLength() const;
-  void setBeamDataLength(unsigned short pX);
+  uint16_t getBeamDataLength() const;
+  void setBeamDataLength(uint16_t pX);
 
   unsigned char getBeamIDNumber() const;
   void setBeamIDNumber(unsigned char pX);
 
-  unsigned short getPad2() const;
-  void setPad2(unsigned short pX);
+  uint16_t getPad2() const;
+  void setPad2(uint16_t pX);
 
   AcousticBeamFundamentalParameter& getFundamentalDataParameters();
   const AcousticBeamFundamentalParameter& getFundamentalDataParameters() const;

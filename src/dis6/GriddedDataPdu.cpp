@@ -1,4 +1,4 @@
-#include <dis6/GriddedDataPdu.h>
+#include "dis6/GriddedDataPdu.h"
 
 using namespace DIS;
 
@@ -37,23 +37,23 @@ void GriddedDataPdu::setEnvironmentalSimulationApplicationID(
   _environmentalSimulationApplicationID = pX;
 }
 
-unsigned short GriddedDataPdu::getFieldNumber() const { return _fieldNumber; }
+uint16_t GriddedDataPdu::getFieldNumber() const { return _fieldNumber; }
 
-void GriddedDataPdu::setFieldNumber(unsigned short pX) { _fieldNumber = pX; }
+void GriddedDataPdu::setFieldNumber(uint16_t pX) { _fieldNumber = pX; }
 
-unsigned short GriddedDataPdu::getPduNumber() const { return _pduNumber; }
+uint16_t GriddedDataPdu::getPduNumber() const { return _pduNumber; }
 
-void GriddedDataPdu::setPduNumber(unsigned short pX) { _pduNumber = pX; }
+void GriddedDataPdu::setPduNumber(uint16_t pX) { _pduNumber = pX; }
 
-unsigned short GriddedDataPdu::getPduTotal() const { return _pduTotal; }
+uint16_t GriddedDataPdu::getPduTotal() const { return _pduTotal; }
 
-void GriddedDataPdu::setPduTotal(unsigned short pX) { _pduTotal = pX; }
+void GriddedDataPdu::setPduTotal(uint16_t pX) { _pduTotal = pX; }
 
-unsigned short GriddedDataPdu::getCoordinateSystem() const {
+uint16_t GriddedDataPdu::getCoordinateSystem() const {
   return _coordinateSystem;
 }
 
-void GriddedDataPdu::setCoordinateSystem(unsigned short pX) {
+void GriddedDataPdu::setCoordinateSystem(uint16_t pX) {
   _coordinateSystem = pX;
 }
 
@@ -85,9 +85,9 @@ void GriddedDataPdu::setOrientation(const Orientation& pX) {
   _orientation = pX;
 }
 
-unsigned long long GriddedDataPdu::getSampleTime() const { return _sampleTime; }
+uint64_t GriddedDataPdu::getSampleTime() const { return _sampleTime; }
 
-void GriddedDataPdu::setSampleTime(unsigned long long pX) { _sampleTime = pX; }
+void GriddedDataPdu::setSampleTime(uint64_t pX) { _sampleTime = pX; }
 
 unsigned int GriddedDataPdu::getTotalValues() const { return _totalValues; }
 
@@ -101,9 +101,9 @@ void GriddedDataPdu::setVectorDimension(unsigned char pX) {
   _vectorDimension = pX;
 }
 
-unsigned short GriddedDataPdu::getPadding1() const { return _padding1; }
+uint16_t GriddedDataPdu::getPadding1() const { return _padding1; }
 
-void GriddedDataPdu::setPadding1(unsigned short pX) { _padding1 = pX; }
+void GriddedDataPdu::setPadding1(uint16_t pX) { _padding1 = pX; }
 
 unsigned char GriddedDataPdu::getPadding2() const { return _padding2; }
 
@@ -222,7 +222,7 @@ int GriddedDataPdu::getMarshalledSize() const {
   marshalSize = marshalSize + 2;  // _padding1
   marshalSize = marshalSize + 1;  // _padding2
 
-  for (unsigned long long idx = 0; idx < _gridDataList.size(); idx++) {
+  for (uint64_t idx = 0; idx < _gridDataList.size(); idx++) {
     GridAxisRecord listElement = _gridDataList[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

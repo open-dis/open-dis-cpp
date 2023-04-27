@@ -54,10 +54,10 @@ class OPENDIS6_EXPORT DataStream {
   DataStream& operator<<(double c);
   DataStream& operator<<(int c);
   DataStream& operator<<(unsigned int c);
-  DataStream& operator<<(long long c);
-  DataStream& operator<<(unsigned long long c);
-  DataStream& operator<<(unsigned short c);
-  DataStream& operator<<(short c);
+  DataStream& operator<<(int64_t c);
+  DataStream& operator<<(uint64_t c);
+  DataStream& operator<<(uint16_t c);
+  DataStream& operator<<(int16_t c);
 
   // read operations
   DataStream& operator>>(bool& c);
@@ -67,10 +67,10 @@ class OPENDIS6_EXPORT DataStream {
   DataStream& operator>>(double& c);
   DataStream& operator>>(int& c);
   DataStream& operator>>(unsigned int& c);
-  DataStream& operator>>(long long& c);
-  DataStream& operator>>(unsigned long long& c);
-  DataStream& operator>>(unsigned short& c);
-  DataStream& operator>>(short& c);
+  DataStream& operator>>(int64_t& c);
+  DataStream& operator>>(uint64_t& c);
+  DataStream& operator>>(uint16_t& c);
+  DataStream& operator>>(int16_t& c);
 
   Endian GetStreamEndian() const;
   Endian GetMachineEndian() const;

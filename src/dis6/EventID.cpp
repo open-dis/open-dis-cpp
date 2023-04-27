@@ -1,4 +1,4 @@
-#include <dis6/EventID.h>
+#include "dis6/EventID.h"
 
 using namespace DIS;
 
@@ -6,17 +6,17 @@ EventID::EventID() : _site(0), _application(0), _eventNumber(0) {}
 
 EventID::~EventID() {}
 
-unsigned short EventID::getSite() const { return _site; }
+uint16_t EventID::getSite() const { return _site; }
 
-void EventID::setSite(unsigned short pX) { _site = pX; }
+void EventID::setSite(uint16_t pX) { _site = pX; }
 
-unsigned short EventID::getApplication() const { return _application; }
+uint16_t EventID::getApplication() const { return _application; }
 
-void EventID::setApplication(unsigned short pX) { _application = pX; }
+void EventID::setApplication(uint16_t pX) { _application = pX; }
 
-unsigned short EventID::getEventNumber() const { return _eventNumber; }
+uint16_t EventID::getEventNumber() const { return _eventNumber; }
 
-void EventID::setEventNumber(unsigned short pX) { _eventNumber = pX; }
+void EventID::setEventNumber(uint16_t pX) { _eventNumber = pX; }
 
 void EventID::marshal(DataStream& dataStream) const {
   dataStream << _site;

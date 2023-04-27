@@ -1,4 +1,4 @@
-#include <dis6/TransferControlRequestPdu.h>
+#include "dis6/TransferControlRequestPdu.h"
 
 using namespace DIS;
 
@@ -166,7 +166,7 @@ int TransferControlRequestPdu::getMarshalledSize() const {
       marshalSize + _transferEntityID.getMarshalledSize();  // _transferEntityID
   marshalSize = marshalSize + 1;  // _numberOfRecordSets
 
-  for (unsigned long long idx = 0; idx < _recordSets.size(); idx++) {
+  for (uint64_t idx = 0; idx < _recordSets.size(); idx++) {
     RecordSet listElement = _recordSets[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

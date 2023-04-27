@@ -1,4 +1,4 @@
-#include <dis6/PointObjectStatePdu.h>
+#include "dis6/PointObjectStatePdu.h"
 
 using namespace DIS;
 
@@ -39,11 +39,11 @@ void PointObjectStatePdu::setReferencedObjectID(const EntityID& pX) {
   _referencedObjectID = pX;
 }
 
-unsigned short PointObjectStatePdu::getUpdateNumber() const {
+uint16_t PointObjectStatePdu::getUpdateNumber() const {
   return _updateNumber;
 }
 
-void PointObjectStatePdu::setUpdateNumber(unsigned short pX) {
+void PointObjectStatePdu::setUpdateNumber(uint16_t pX) {
   _updateNumber = pX;
 }
 

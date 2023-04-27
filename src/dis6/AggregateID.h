@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.2.36. Each agregate in a given simulation app is given an aggregate
@@ -16,13 +16,13 @@ namespace DIS {
 class OPENDIS6_EXPORT AggregateID {
  protected:
   /** The site ID */
-  unsigned short _site;
+  uint16_t _site;
 
   /** The application ID */
-  unsigned short _application;
+  uint16_t _application;
 
   /** the aggregate ID */
-  unsigned short _aggregateID;
+  uint16_t _aggregateID;
 
  public:
   AggregateID();
@@ -31,14 +31,14 @@ class OPENDIS6_EXPORT AggregateID {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getSite() const;
-  void setSite(unsigned short pX);
+  uint16_t getSite() const;
+  void setSite(uint16_t pX);
 
-  unsigned short getApplication() const;
-  void setApplication(unsigned short pX);
+  uint16_t getApplication() const;
+  void setApplication(uint16_t pX);
 
-  unsigned short getAggregateID() const;
-  void setAggregateID(unsigned short pX);
+  uint16_t getAggregateID() const;
+  void setAggregateID(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

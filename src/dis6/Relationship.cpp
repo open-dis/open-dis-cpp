@@ -1,4 +1,4 @@
-#include <dis6/Relationship.h>
+#include "dis6/Relationship.h"
 
 using namespace DIS;
 
@@ -6,13 +6,13 @@ Relationship::Relationship() : _nature(0), _position(0) {}
 
 Relationship::~Relationship() {}
 
-unsigned short Relationship::getNature() const { return _nature; }
+uint16_t Relationship::getNature() const { return _nature; }
 
-void Relationship::setNature(unsigned short pX) { _nature = pX; }
+void Relationship::setNature(uint16_t pX) { _nature = pX; }
 
-unsigned short Relationship::getPosition() const { return _position; }
+uint16_t Relationship::getPosition() const { return _position; }
 
-void Relationship::setPosition(unsigned short pX) { _position = pX; }
+void Relationship::setPosition(uint16_t pX) { _position = pX; }
 
 void Relationship::marshal(DataStream& dataStream) const {
   dataStream << _nature;

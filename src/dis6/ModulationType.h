@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Radio modulation
@@ -14,16 +14,16 @@ namespace DIS {
 class OPENDIS6_EXPORT ModulationType {
  protected:
   /** spread spectrum, 16 bit boolean array */
-  unsigned short _spreadSpectrum;
+  uint16_t _spreadSpectrum;
 
   /** major */
-  unsigned short _major;
+  uint16_t _major;
 
   /** detail */
-  unsigned short _detail;
+  uint16_t _detail;
 
   /** system */
-  unsigned short _system;
+  uint16_t _system;
 
  public:
   ModulationType();
@@ -32,17 +32,17 @@ class OPENDIS6_EXPORT ModulationType {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getSpreadSpectrum() const;
-  void setSpreadSpectrum(unsigned short pX);
+  uint16_t getSpreadSpectrum() const;
+  void setSpreadSpectrum(uint16_t pX);
 
-  unsigned short getMajor() const;
-  void setMajor(unsigned short pX);
+  uint16_t getMajor() const;
+  void setMajor(uint16_t pX);
 
-  unsigned short getDetail() const;
-  void setDetail(unsigned short pX);
+  uint16_t getDetail() const;
+  void setDetail(uint16_t pX);
 
-  unsigned short getSystem() const;
-  void setSystem(unsigned short pX);
+  uint16_t getSystem() const;
+  void setSystem(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

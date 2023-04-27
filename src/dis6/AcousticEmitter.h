@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.2.35. information about a specific UA emmtter
@@ -14,7 +14,7 @@ namespace DIS {
 class OPENDIS6_EXPORT AcousticEmitter {
  protected:
   /** the system for a particular UA emitter, and an enumeration */
-  unsigned short _acousticName;
+  uint16_t _acousticName;
 
   /** The function of the acoustic system */
   unsigned char _function;
@@ -29,8 +29,8 @@ class OPENDIS6_EXPORT AcousticEmitter {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getAcousticName() const;
-  void setAcousticName(unsigned short pX);
+  uint16_t getAcousticName() const;
+  void setAcousticName(uint16_t pX);
 
   unsigned char getFunction() const;
   void setFunction(unsigned char pX);

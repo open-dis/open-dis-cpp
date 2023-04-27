@@ -1,4 +1,4 @@
-#include <dis6/TrackJamTarget.h>
+#include "dis6/TrackJamTarget.h"
 
 using namespace DIS;
 

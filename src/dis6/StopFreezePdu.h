@@ -1,9 +1,9 @@
 #pragma once
 
-#include <dis6/ClockTime.h>
-#include <dis6/SimulationManagementFamilyPdu.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/ClockTime.h"
+#include "dis6/SimulationManagementFamilyPdu.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.2.3.4. Stop or freeze an exercise. COMPLETE
@@ -26,7 +26,7 @@ class OPENDIS6_EXPORT StopFreezePdu : public SimulationManagementFamilyPdu {
   unsigned char _frozenBehavior;
 
   /** padding */
-  short _padding1;
+  int16_t _padding1;
 
   /** Request ID that is unique */
   unsigned int _requestID;
@@ -48,8 +48,8 @@ class OPENDIS6_EXPORT StopFreezePdu : public SimulationManagementFamilyPdu {
   unsigned char getFrozenBehavior() const;
   void setFrozenBehavior(unsigned char pX);
 
-  short getPadding1() const;
-  void setPadding1(short pX);
+  int16_t getPadding1() const;
+  void setPadding1(int16_t pX);
 
   unsigned int getRequestID() const;
   void setRequestID(unsigned int pX);

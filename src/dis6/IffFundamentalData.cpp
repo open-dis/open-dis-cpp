@@ -1,4 +1,4 @@
-#include <dis6/IffFundamentalData.h>
+#include "dis6/IffFundamentalData.h"
 
 using namespace DIS;
 
@@ -44,29 +44,29 @@ unsigned char IffFundamentalData::getModifier() const { return _modifier; }
 
 void IffFundamentalData::setModifier(unsigned char pX) { _modifier = pX; }
 
-unsigned short IffFundamentalData::getParameter1() const { return _parameter1; }
+uint16_t IffFundamentalData::getParameter1() const { return _parameter1; }
 
-void IffFundamentalData::setParameter1(unsigned short pX) { _parameter1 = pX; }
+void IffFundamentalData::setParameter1(uint16_t pX) { _parameter1 = pX; }
 
-unsigned short IffFundamentalData::getParameter2() const { return _parameter2; }
+uint16_t IffFundamentalData::getParameter2() const { return _parameter2; }
 
-void IffFundamentalData::setParameter2(unsigned short pX) { _parameter2 = pX; }
+void IffFundamentalData::setParameter2(uint16_t pX) { _parameter2 = pX; }
 
-unsigned short IffFundamentalData::getParameter3() const { return _parameter3; }
+uint16_t IffFundamentalData::getParameter3() const { return _parameter3; }
 
-void IffFundamentalData::setParameter3(unsigned short pX) { _parameter3 = pX; }
+void IffFundamentalData::setParameter3(uint16_t pX) { _parameter3 = pX; }
 
-unsigned short IffFundamentalData::getParameter4() const { return _parameter4; }
+uint16_t IffFundamentalData::getParameter4() const { return _parameter4; }
 
-void IffFundamentalData::setParameter4(unsigned short pX) { _parameter4 = pX; }
+void IffFundamentalData::setParameter4(uint16_t pX) { _parameter4 = pX; }
 
-unsigned short IffFundamentalData::getParameter5() const { return _parameter5; }
+uint16_t IffFundamentalData::getParameter5() const { return _parameter5; }
 
-void IffFundamentalData::setParameter5(unsigned short pX) { _parameter5 = pX; }
+void IffFundamentalData::setParameter5(uint16_t pX) { _parameter5 = pX; }
 
-unsigned short IffFundamentalData::getParameter6() const { return _parameter6; }
+uint16_t IffFundamentalData::getParameter6() const { return _parameter6; }
 
-void IffFundamentalData::setParameter6(unsigned short pX) { _parameter6 = pX; }
+void IffFundamentalData::setParameter6(uint16_t pX) { _parameter6 = pX; }
 
 void IffFundamentalData::marshal(DataStream& dataStream) const {
   dataStream << _systemStatus;

@@ -1,4 +1,4 @@
-#include <dis6/EmitterSystem.h>
+#include "dis6/EmitterSystem.h"
 
 using namespace DIS;
 
@@ -7,9 +7,9 @@ EmitterSystem::EmitterSystem()
 
 EmitterSystem::~EmitterSystem() {}
 
-unsigned short EmitterSystem::getEmitterName() const { return _emitterName; }
+uint16_t EmitterSystem::getEmitterName() const { return _emitterName; }
 
-void EmitterSystem::setEmitterName(unsigned short pX) { _emitterName = pX; }
+void EmitterSystem::setEmitterName(uint16_t pX) { _emitterName = pX; }
 
 unsigned char EmitterSystem::getFunction() const { return _function; }
 

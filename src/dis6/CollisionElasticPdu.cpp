@@ -1,4 +1,4 @@
-#include <dis6/CollisionElasticPdu.h>
+#include "dis6/CollisionElasticPdu.h"
 
 using namespace DIS;
 
@@ -59,9 +59,9 @@ void CollisionElasticPdu::setCollisionEventID(const EventID& pX) {
   _collisionEventID = pX;
 }
 
-short CollisionElasticPdu::getPad() const { return _pad; }
+int16_t CollisionElasticPdu::getPad() const { return _pad; }
 
-void CollisionElasticPdu::setPad(short pX) { _pad = pX; }
+void CollisionElasticPdu::setPad(int16_t pX) { _pad = pX; }
 
 Vector3Float& CollisionElasticPdu::getContactVelocity() {
   return _contactVelocity;

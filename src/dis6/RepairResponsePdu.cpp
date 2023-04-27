@@ -1,4 +1,4 @@
-#include <dis6/RepairResponsePdu.h>
+#include "dis6/RepairResponsePdu.h"
 
 using namespace DIS;
 
@@ -46,9 +46,9 @@ void RepairResponsePdu::setRepairResult(unsigned char pX) {
   _repairResult = pX;
 }
 
-short RepairResponsePdu::getPadding1() const { return _padding1; }
+int16_t RepairResponsePdu::getPadding1() const { return _padding1; }
 
-void RepairResponsePdu::setPadding1(short pX) { _padding1 = pX; }
+void RepairResponsePdu::setPadding1(int16_t pX) { _padding1 = pX; }
 
 char RepairResponsePdu::getPadding2() const { return _padding2; }
 

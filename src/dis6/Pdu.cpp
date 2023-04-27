@@ -1,4 +1,4 @@
-#include <dis6/Pdu.h>
+#include "dis6/Pdu.h"
 
 using namespace DIS;
 
@@ -33,13 +33,13 @@ unsigned int Pdu::getTimestamp() const { return _timestamp; }
 
 void Pdu::setTimestamp(unsigned int pX) { _timestamp = pX; }
 
-unsigned short Pdu::getLength() const { return this->getMarshalledSize(); }
+uint16_t Pdu::getLength() const { return this->getMarshalledSize(); }
 
-void Pdu::setLength(unsigned short pX) { _length = pX; }
+void Pdu::setLength(uint16_t pX) { _length = pX; }
 
-short Pdu::getPadding() const { return _padding; }
+int16_t Pdu::getPadding() const { return _padding; }
 
-void Pdu::setPadding(short pX) { _padding = pX; }
+void Pdu::setPadding(int16_t pX) { _padding = pX; }
 
 void Pdu::marshal(DataStream& dataStream) const {
   dataStream << _protocolVersion;

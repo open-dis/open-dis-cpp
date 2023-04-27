@@ -1,11 +1,11 @@
 #pragma once
 
-#include <dis6/DistributedEmissionsFamilyPdu.h>
-#include <dis6/EntityID.h>
-#include <dis6/Vector3Double.h>
-#include <dis6/Vector3Float.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/DistributedEmissionsFamilyPdu.h"
+#include "dis6/EntityID.h"
+#include "dis6/Vector3Double.h"
+#include "dis6/Vector3Float.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.7.2. Handles designating operations. COMPLETE
@@ -23,14 +23,14 @@ class OPENDIS6_EXPORT DesignatorPdu : public DistributedEmissionsFamilyPdu {
   /** This field shall specify a unique emitter database number assigned to
    * differentiate between otherwise similar or identical emitter beams within
    * an emitter system. */
-  unsigned short _codeName;
+  uint16_t _codeName;
 
   /** ID of the entity being designated */
   EntityID _designatedEntityID;
 
   /** This field shall identify the designator code being used by the
    * designating entity  */
-  unsigned short _designatorCode;
+  uint16_t _designatorCode;
 
   /** This field shall identify the designator output power in watts */
   float _designatorPower;
@@ -48,7 +48,7 @@ class OPENDIS6_EXPORT DesignatorPdu : public DistributedEmissionsFamilyPdu {
   char _deadReckoningAlgorithm;
 
   /** padding */
-  unsigned short _padding1;
+  uint16_t _padding1;
 
   /** padding */
   char _padding2;
@@ -67,15 +67,15 @@ class OPENDIS6_EXPORT DesignatorPdu : public DistributedEmissionsFamilyPdu {
   const EntityID& getDesignatingEntityID() const;
   void setDesignatingEntityID(const EntityID& pX);
 
-  unsigned short getCodeName() const;
-  void setCodeName(unsigned short pX);
+  uint16_t getCodeName() const;
+  void setCodeName(uint16_t pX);
 
   EntityID& getDesignatedEntityID();
   const EntityID& getDesignatedEntityID() const;
   void setDesignatedEntityID(const EntityID& pX);
 
-  unsigned short getDesignatorCode() const;
-  void setDesignatorCode(unsigned short pX);
+  uint16_t getDesignatorCode() const;
+  void setDesignatorCode(uint16_t pX);
 
   float getDesignatorPower() const;
   void setDesignatorPower(float pX);
@@ -94,8 +94,8 @@ class OPENDIS6_EXPORT DesignatorPdu : public DistributedEmissionsFamilyPdu {
   char getDeadReckoningAlgorithm() const;
   void setDeadReckoningAlgorithm(char pX);
 
-  unsigned short getPadding1() const;
-  void setPadding1(unsigned short pX);
+  uint16_t getPadding1() const;
+  void setPadding1(uint16_t pX);
 
   char getPadding2() const;
   void setPadding2(char pX);

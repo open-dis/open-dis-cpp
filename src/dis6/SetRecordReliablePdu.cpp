@@ -1,4 +1,4 @@
-#include <dis6/SetRecordReliablePdu.h>
+#include "dis6/SetRecordReliablePdu.h"
 
 using namespace DIS;
 
@@ -26,9 +26,9 @@ void SetRecordReliablePdu::setRequiredReliabilityService(unsigned char pX) {
   _requiredReliabilityService = pX;
 }
 
-unsigned short SetRecordReliablePdu::getPad1() const { return _pad1; }
+uint16_t SetRecordReliablePdu::getPad1() const { return _pad1; }
 
-void SetRecordReliablePdu::setPad1(unsigned short pX) { _pad1 = pX; }
+void SetRecordReliablePdu::setPad1(uint16_t pX) { _pad1 = pX; }
 
 unsigned char SetRecordReliablePdu::getPad2() const { return _pad2; }
 
@@ -111,7 +111,7 @@ int SetRecordReliablePdu::getMarshalledSize() const {
   marshalSize = marshalSize + 1;  // _pad2
   marshalSize = marshalSize + 4;  // _numberOfRecordSets
 
-  for (unsigned long long idx = 0; idx < _recordSets.size(); idx++) {
+  for (uint64_t idx = 0; idx < _recordSets.size(); idx++) {
     RecordSet listElement = _recordSets[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

@@ -2,11 +2,11 @@
 
 #include <vector>
 
-#include <dis6/FixedDatum.h>
-#include <dis6/SimulationManagementWithReliabilityFamilyPdu.h>
-#include <dis6/VariableDatum.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/FixedDatum.h"
+#include "dis6/SimulationManagementWithReliabilityFamilyPdu.h"
+#include "dis6/VariableDatum.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.12.6: request from a simulation manager to a managed entity to
@@ -24,7 +24,7 @@ class OPENDIS6_EXPORT ActionRequestReliablePdu
   unsigned char _requiredReliabilityService;
 
   /** padding */
-  unsigned short _pad1;
+  uint16_t _pad1;
 
   /** padding */
   unsigned char _pad2;
@@ -57,8 +57,8 @@ class OPENDIS6_EXPORT ActionRequestReliablePdu
   unsigned char getRequiredReliabilityService() const;
   void setRequiredReliabilityService(unsigned char pX);
 
-  unsigned short getPad1() const;
-  void setPad1(unsigned short pX);
+  uint16_t getPad1() const;
+  void setPad1(uint16_t pX);
 
   unsigned char getPad2() const;
   void setPad2(unsigned char pX);

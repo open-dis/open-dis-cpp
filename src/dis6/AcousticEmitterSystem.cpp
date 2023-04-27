@@ -1,4 +1,4 @@
-#include <dis6/AcousticEmitterSystem.h>
+#include "dis6/AcousticEmitterSystem.h"
 
 using namespace DIS;
 
@@ -7,11 +7,11 @@ AcousticEmitterSystem::AcousticEmitterSystem()
 
 AcousticEmitterSystem::~AcousticEmitterSystem() {}
 
-unsigned short AcousticEmitterSystem::getAcousticName() const {
+uint16_t AcousticEmitterSystem::getAcousticName() const {
   return _acousticName;
 }
 
-void AcousticEmitterSystem::setAcousticName(unsigned short pX) {
+void AcousticEmitterSystem::setAcousticName(uint16_t pX) {
   _acousticName = pX;
 }
 

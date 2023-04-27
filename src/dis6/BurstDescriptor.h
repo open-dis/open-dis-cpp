@@ -1,8 +1,8 @@
 #pragma once
 
-#include <dis6/EntityType.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/EntityType.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.2.7. Specifies the type of muntion fired, the type of warhead, the
@@ -20,16 +20,16 @@ class OPENDIS6_EXPORT BurstDescriptor {
   EntityType _munition;
 
   /** type of warhead */
-  unsigned short _warhead;
+  uint16_t _warhead;
 
   /** type of fuse used */
-  unsigned short _fuse;
+  uint16_t _fuse;
 
   /** how many of the munition were fired */
-  unsigned short _quantity;
+  uint16_t _quantity;
 
   /** rate at which the munition was fired */
-  unsigned short _rate;
+  uint16_t _rate;
 
  public:
   BurstDescriptor();
@@ -42,17 +42,17 @@ class OPENDIS6_EXPORT BurstDescriptor {
   const EntityType& getMunition() const;
   void setMunition(const EntityType& pX);
 
-  unsigned short getWarhead() const;
-  void setWarhead(unsigned short pX);
+  uint16_t getWarhead() const;
+  void setWarhead(uint16_t pX);
 
-  unsigned short getFuse() const;
-  void setFuse(unsigned short pX);
+  uint16_t getFuse() const;
+  void setFuse(uint16_t pX);
 
-  unsigned short getQuantity() const;
-  void setQuantity(unsigned short pX);
+  uint16_t getQuantity() const;
+  void setQuantity(uint16_t pX);
 
-  unsigned short getRate() const;
-  void setRate(unsigned short pX);
+  uint16_t getRate() const;
+  void setRate(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

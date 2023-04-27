@@ -1,4 +1,4 @@
-#include <dis6/AcknowledgeReliablePdu.h>
+#include "dis6/AcknowledgeReliablePdu.h"
 
 using namespace DIS;
 
@@ -12,19 +12,19 @@ AcknowledgeReliablePdu::AcknowledgeReliablePdu()
 
 AcknowledgeReliablePdu::~AcknowledgeReliablePdu() {}
 
-unsigned short AcknowledgeReliablePdu::getAcknowledgeFlag() const {
+uint16_t AcknowledgeReliablePdu::getAcknowledgeFlag() const {
   return _acknowledgeFlag;
 }
 
-void AcknowledgeReliablePdu::setAcknowledgeFlag(unsigned short pX) {
+void AcknowledgeReliablePdu::setAcknowledgeFlag(uint16_t pX) {
   _acknowledgeFlag = pX;
 }
 
-unsigned short AcknowledgeReliablePdu::getResponseFlag() const {
+uint16_t AcknowledgeReliablePdu::getResponseFlag() const {
   return _responseFlag;
 }
 
-void AcknowledgeReliablePdu::setResponseFlag(unsigned short pX) {
+void AcknowledgeReliablePdu::setResponseFlag(uint16_t pX) {
   _responseFlag = pX;
 }
 

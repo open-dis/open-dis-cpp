@@ -2,17 +2,17 @@
 
 #include <vector>
 
-#include <dis6/AggregateID.h>
-#include <dis6/AggregateMarking.h>
-#include <dis6/EntityID.h>
-#include <dis6/EntityManagementFamilyPdu.h>
-#include <dis6/EntityType.h>
-#include <dis6/Orientation.h>
-#include <dis6/VariableDatum.h>
-#include <dis6/Vector3Double.h>
-#include <dis6/Vector3Float.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/AggregateID.h"
+#include "dis6/AggregateMarking.h"
+#include "dis6/EntityID.h"
+#include "dis6/EntityManagementFamilyPdu.h"
+#include "dis6/EntityType.h"
+#include "dis6/Orientation.h"
+#include "dis6/VariableDatum.h"
+#include "dis6/Vector3Double.h"
+#include "dis6/Vector3Float.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.9.1 informationa bout aggregating entities anc communicating
@@ -60,16 +60,16 @@ class OPENDIS6_EXPORT AggregateStatePdu : public EntityManagementFamilyPdu {
   Vector3Float _velocity;
 
   /** number of aggregates */
-  unsigned short _numberOfDisAggregates;
+  uint16_t _numberOfDisAggregates;
 
   /** number of entities */
-  unsigned short _numberOfDisEntities;
+  uint16_t _numberOfDisEntities;
 
   /** number of silent aggregate types */
-  unsigned short _numberOfSilentAggregateTypes;
+  uint16_t _numberOfSilentAggregateTypes;
 
   /** number of silent entity types */
-  unsigned short _numberOfSilentEntityTypes;
+  uint16_t _numberOfSilentEntityTypes;
 
   /** aggregates  list */
   std::vector<AggregateID> _aggregateIDList;
@@ -137,13 +137,13 @@ class OPENDIS6_EXPORT AggregateStatePdu : public EntityManagementFamilyPdu {
   const Vector3Float& getVelocity() const;
   void setVelocity(const Vector3Float& pX);
 
-  unsigned short getNumberOfDisAggregates() const;
+  uint16_t getNumberOfDisAggregates() const;
 
-  unsigned short getNumberOfDisEntities() const;
+  uint16_t getNumberOfDisEntities() const;
 
-  unsigned short getNumberOfSilentAggregateTypes() const;
+  uint16_t getNumberOfSilentAggregateTypes() const;
 
-  unsigned short getNumberOfSilentEntityTypes() const;
+  uint16_t getNumberOfSilentEntityTypes() const;
 
   std::vector<AggregateID>& getAggregateIDList();
   const std::vector<AggregateID>& getAggregateIDList() const;

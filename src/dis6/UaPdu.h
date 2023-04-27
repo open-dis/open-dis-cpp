@@ -2,14 +2,14 @@
 
 #include <vector>
 
-#include <dis6/AcousticEmitterSystemData.h>
-#include <dis6/ApaData.h>
-#include <dis6/DistributedEmissionsFamilyPdu.h>
-#include <dis6/EntityID.h>
-#include <dis6/EventID.h>
-#include <dis6/ShaftRPMs.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/AcousticEmitterSystemData.h"
+#include "dis6/ApaData.h"
+#include "dis6/DistributedEmissionsFamilyPdu.h"
+#include "dis6/EntityID.h"
+#include "dis6/EventID.h"
+#include "dis6/ShaftRPMs.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.7.3. Information about underwater acoustic emmissions. This
@@ -42,7 +42,7 @@ class OPENDIS6_EXPORT UaPdu : public DistributedEmissionsFamilyPdu {
    * The indicated database record (or  file) shall define all noise generated
    * as a function of propulsion plant configurations and associated
    * auxiliaries. */
-  unsigned short _passiveParameterIndex;
+  uint16_t _passiveParameterIndex;
 
   /** This field shall specify the entity propulsion plant configuration. This
    * field is used to determine the passive signature characteristics of an
@@ -89,8 +89,8 @@ class OPENDIS6_EXPORT UaPdu : public DistributedEmissionsFamilyPdu {
   char getPad() const;
   void setPad(char pX);
 
-  unsigned short getPassiveParameterIndex() const;
-  void setPassiveParameterIndex(unsigned short pX);
+  uint16_t getPassiveParameterIndex() const;
+  void setPassiveParameterIndex(uint16_t pX);
 
   unsigned char getPropulsionPlantConfiguration() const;
   void setPropulsionPlantConfiguration(unsigned char pX);

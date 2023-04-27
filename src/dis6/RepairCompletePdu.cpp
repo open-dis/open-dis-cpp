@@ -1,4 +1,4 @@
-#include <dis6/RepairCompletePdu.h>
+#include "dis6/RepairCompletePdu.h"
 
 using namespace DIS;
 
@@ -37,13 +37,13 @@ void RepairCompletePdu::setRepairingEntityID(const EntityID& pX) {
   _repairingEntityID = pX;
 }
 
-unsigned short RepairCompletePdu::getRepair() const { return _repair; }
+uint16_t RepairCompletePdu::getRepair() const { return _repair; }
 
-void RepairCompletePdu::setRepair(unsigned short pX) { _repair = pX; }
+void RepairCompletePdu::setRepair(uint16_t pX) { _repair = pX; }
 
-short RepairCompletePdu::getPadding2() const { return _padding2; }
+int16_t RepairCompletePdu::getPadding2() const { return _padding2; }
 
-void RepairCompletePdu::setPadding2(short pX) { _padding2 = pX; }
+void RepairCompletePdu::setPadding2(int16_t pX) { _padding2 = pX; }
 
 void RepairCompletePdu::marshal(DataStream& dataStream) const {
   LogisticsFamilyPdu::marshal(

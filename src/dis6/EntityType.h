@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.2.16. Identifies the type of entity, including kind of entity,
@@ -21,7 +21,7 @@ class OPENDIS6_EXPORT EntityType {
   unsigned char _domain;
 
   /** country to which the design of the entity is attributed */
-  unsigned short _country;
+  uint16_t _country;
 
   /** category of entity */
   unsigned char _category;
@@ -47,8 +47,8 @@ class OPENDIS6_EXPORT EntityType {
   unsigned char getDomain() const;
   void setDomain(unsigned char pX);
 
-  unsigned short getCountry() const;
-  void setCountry(unsigned short pX);
+  uint16_t getCountry() const;
+  void setCountry(uint16_t pX);
 
   unsigned char getCategory() const;
   void setCategory(unsigned char pX);

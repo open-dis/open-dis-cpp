@@ -1,4 +1,4 @@
-#include <dis6/PduContainer.h>
+#include "dis6/PduContainer.h"
 
 using namespace DIS;
 
@@ -49,7 +49,7 @@ int PduContainer::getMarshalledSize() const {
 
   marshalSize = marshalSize + 4;  // _numberOfPdus
 
-  for (unsigned long long idx = 0; idx < _pdus.size(); idx++) {
+  for (uint64_t idx = 0; idx < _pdus.size(); idx++) {
     Pdu listElement = _pdus[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

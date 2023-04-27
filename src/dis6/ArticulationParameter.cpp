@@ -1,4 +1,4 @@
-#include <dis6/ArticulationParameter.h>
+#include "dis6/ArticulationParameter.h"
 
 using namespace DIS;
 
@@ -27,11 +27,11 @@ void ArticulationParameter::setChangeIndicator(unsigned char pX) {
   _changeIndicator = pX;
 }
 
-unsigned short ArticulationParameter::getPartAttachedTo() const {
+uint16_t ArticulationParameter::getPartAttachedTo() const {
   return _partAttachedTo;
 }
 
-void ArticulationParameter::setPartAttachedTo(unsigned short pX) {
+void ArticulationParameter::setPartAttachedTo(uint16_t pX) {
   _partAttachedTo = pX;
 }
 

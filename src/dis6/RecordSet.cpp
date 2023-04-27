@@ -1,4 +1,4 @@
-#include <dis6/RecordSet.h>
+#include "dis6/RecordSet.h"
 
 using namespace DIS;
 
@@ -24,17 +24,17 @@ void RecordSet::setRecordSetSerialNumber(unsigned int pX) {
   _recordSetSerialNumber = pX;
 }
 
-unsigned short RecordSet::getRecordLength() const { return _recordLength; }
+uint16_t RecordSet::getRecordLength() const { return _recordLength; }
 
-void RecordSet::setRecordLength(unsigned short pX) { _recordLength = pX; }
+void RecordSet::setRecordLength(uint16_t pX) { _recordLength = pX; }
 
-unsigned short RecordSet::getRecordCount() const { return _recordCount; }
+uint16_t RecordSet::getRecordCount() const { return _recordCount; }
 
-void RecordSet::setRecordCount(unsigned short pX) { _recordCount = pX; }
+void RecordSet::setRecordCount(uint16_t pX) { _recordCount = pX; }
 
-unsigned short RecordSet::getRecordValues() const { return _recordValues; }
+uint16_t RecordSet::getRecordValues() const { return _recordValues; }
 
-void RecordSet::setRecordValues(unsigned short pX) { _recordValues = pX; }
+void RecordSet::setRecordValues(uint16_t pX) { _recordValues = pX; }
 
 unsigned char RecordSet::getPad4() const { return _pad4; }
 

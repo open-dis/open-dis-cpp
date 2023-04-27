@@ -1,4 +1,4 @@
-#include <dis6/GridAxisRecordRepresentation2.h>
+#include "dis6/GridAxisRecordRepresentation2.h"
 
 using namespace DIS;
 
@@ -9,7 +9,7 @@ GridAxisRecordRepresentation2::~GridAxisRecordRepresentation2() {
   _dataValues.clear();
 }
 
-unsigned short GridAxisRecordRepresentation2::getNumberOfValues() const {
+uint16_t GridAxisRecordRepresentation2::getNumberOfValues() const {
   return _dataValues.size();
 }
 
@@ -30,7 +30,7 @@ void GridAxisRecordRepresentation2::setDataValues(
 void GridAxisRecordRepresentation2::marshal(DataStream& dataStream) const {
   GridAxisRecord::marshal(
       dataStream);  // Marshal information in superclass first
-  dataStream << (unsigned short)_dataValues.size();
+  dataStream << (uint16_t)_dataValues.size();
 
   for (size_t idx = 0; idx < _dataValues.size(); idx++) {
     FourByteChunk x = _dataValues[idx];
@@ -70,7 +70,7 @@ int GridAxisRecordRepresentation2::getMarshalledSize() const {
   marshalSize = GridAxisRecord::getMarshalledSize();
   marshalSize = marshalSize + 2;  // _numberOfValues
 
-  for (unsigned long long idx = 0; idx < _dataValues.size(); idx++) {
+  for (uint64_t idx = 0; idx < _dataValues.size(); idx++) {
     FourByteChunk listElement = _dataValues[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

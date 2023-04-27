@@ -1,4 +1,4 @@
-#include <dis6/ReceiverPdu.h>
+#include "dis6/ReceiverPdu.h"
 
 using namespace DIS;
 
@@ -14,13 +14,13 @@ ReceiverPdu::ReceiverPdu()
 
 ReceiverPdu::~ReceiverPdu() {}
 
-unsigned short ReceiverPdu::getReceiverState() const { return _receiverState; }
+uint16_t ReceiverPdu::getReceiverState() const { return _receiverState; }
 
-void ReceiverPdu::setReceiverState(unsigned short pX) { _receiverState = pX; }
+void ReceiverPdu::setReceiverState(uint16_t pX) { _receiverState = pX; }
 
-unsigned short ReceiverPdu::getPadding1() const { return _padding1; }
+uint16_t ReceiverPdu::getPadding1() const { return _padding1; }
 
-void ReceiverPdu::setPadding1(unsigned short pX) { _padding1 = pX; }
+void ReceiverPdu::setPadding1(uint16_t pX) { _padding1 = pX; }
 
 float ReceiverPdu::getReceivedPower() const { return _receivedPower; }
 
@@ -36,11 +36,11 @@ void ReceiverPdu::setTransmitterEntityId(const EntityID& pX) {
   _transmitterEntityId = pX;
 }
 
-unsigned short ReceiverPdu::getTransmitterRadioId() const {
+uint16_t ReceiverPdu::getTransmitterRadioId() const {
   return _transmitterRadioId;
 }
 
-void ReceiverPdu::setTransmitterRadioId(unsigned short pX) {
+void ReceiverPdu::setTransmitterRadioId(uint16_t pX) {
   _transmitterRadioId = pX;
 }
 

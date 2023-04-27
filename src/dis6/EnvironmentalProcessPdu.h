@@ -2,12 +2,12 @@
 
 #include <vector>
 
-#include <dis6/EntityID.h>
-#include <dis6/EntityType.h>
-#include <dis6/Environment.h>
-#include <dis6/SyntheticEnvironmentFamilyPdu.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/EntityID.h"
+#include "dis6/EntityType.h"
+#include "dis6/Environment.h"
+#include "dis6/SyntheticEnvironmentFamilyPdu.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.11.1: Information about environmental effects and processes. This
@@ -39,7 +39,7 @@ class OPENDIS6_EXPORT EnvironmentalProcessPdu
 
   /** PDU sequence number for the environmentla process if pdu sequencing
    * required */
-  unsigned short _sequenceNumber;
+  uint16_t _sequenceNumber;
 
   /** environemt records */
   std::vector<Environment> _environmentRecords;
@@ -67,8 +67,8 @@ class OPENDIS6_EXPORT EnvironmentalProcessPdu
 
   unsigned char getNumberOfEnvironmentRecords() const;
 
-  unsigned short getSequenceNumber() const;
-  void setSequenceNumber(unsigned short pX);
+  uint16_t getSequenceNumber() const;
+  void setSequenceNumber(uint16_t pX);
 
   std::vector<Environment>& getEnvironmentRecords();
   const std::vector<Environment>& getEnvironmentRecords() const;

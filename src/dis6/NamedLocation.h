@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // discrete ostional relationsihip
@@ -14,10 +14,10 @@ namespace DIS {
 class OPENDIS6_EXPORT NamedLocation {
  protected:
   /** station name enumeration */
-  unsigned short _stationName;
+  uint16_t _stationName;
 
   /** station number */
-  unsigned short _stationNumber;
+  uint16_t _stationNumber;
 
  public:
   NamedLocation();
@@ -26,11 +26,11 @@ class OPENDIS6_EXPORT NamedLocation {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getStationName() const;
-  void setStationName(unsigned short pX);
+  uint16_t getStationName() const;
+  void setStationName(uint16_t pX);
 
-  unsigned short getStationNumber() const;
-  void setStationNumber(unsigned short pX);
+  uint16_t getStationNumber() const;
+  void setStationNumber(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

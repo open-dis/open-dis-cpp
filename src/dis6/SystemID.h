@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // 5.2.58. Used in IFF ATC PDU
@@ -14,10 +14,10 @@ namespace DIS {
 class OPENDIS6_EXPORT SystemID {
  protected:
   /** System Type */
-  unsigned short _systemType;
+  uint16_t _systemType;
 
   /** System name, an enumeration */
-  unsigned short _systemName;
+  uint16_t _systemName;
 
   /** System mode */
   unsigned char _systemMode;
@@ -32,11 +32,11 @@ class OPENDIS6_EXPORT SystemID {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getSystemType() const;
-  void setSystemType(unsigned short pX);
+  uint16_t getSystemType() const;
+  void setSystemType(uint16_t pX);
 
-  unsigned short getSystemName() const;
-  void setSystemName(unsigned short pX);
+  uint16_t getSystemName() const;
+  void setSystemName(uint16_t pX);
 
   unsigned char getSystemMode() const;
   void setSystemMode(unsigned char pX);

@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // 5.2.56. Purpose for joinging two entities
@@ -14,10 +14,10 @@ namespace DIS {
 class OPENDIS6_EXPORT Relationship {
  protected:
   /** Nature of join */
-  unsigned short _nature;
+  uint16_t _nature;
 
   /** position of join */
-  unsigned short _position;
+  uint16_t _position;
 
  public:
   Relationship();
@@ -26,11 +26,11 @@ class OPENDIS6_EXPORT Relationship {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getNature() const;
-  void setNature(unsigned short pX);
+  uint16_t getNature() const;
+  void setNature(uint16_t pX);
 
-  unsigned short getPosition() const;
-  void setPosition(unsigned short pX);
+  uint16_t getPosition() const;
+  void setPosition(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

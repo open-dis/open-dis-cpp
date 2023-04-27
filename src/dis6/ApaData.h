@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Used in UA PDU
@@ -14,10 +14,10 @@ namespace DIS {
 class OPENDIS6_EXPORT ApaData {
  protected:
   /** Index of APA parameter */
-  unsigned short _parameterIndex;
+  uint16_t _parameterIndex;
 
   /** Index of APA parameter */
-  short _parameterValue;
+  int16_t _parameterValue;
 
  public:
   ApaData();
@@ -26,11 +26,11 @@ class OPENDIS6_EXPORT ApaData {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getParameterIndex() const;
-  void setParameterIndex(unsigned short pX);
+  uint16_t getParameterIndex() const;
+  void setParameterIndex(uint16_t pX);
 
-  short getParameterValue() const;
-  void setParameterValue(short pX);
+  int16_t getParameterValue() const;
+  void setParameterValue(int16_t pX);
 
   virtual int getMarshalledSize() const;
 

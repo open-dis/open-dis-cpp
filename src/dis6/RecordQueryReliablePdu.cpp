@@ -1,4 +1,4 @@
-#include <dis6/RecordQueryReliablePdu.h>
+#include "dis6/RecordQueryReliablePdu.h"
 
 using namespace DIS;
 
@@ -28,19 +28,19 @@ void RecordQueryReliablePdu::setRequiredReliabilityService(unsigned char pX) {
   _requiredReliabilityService = pX;
 }
 
-unsigned short RecordQueryReliablePdu::getPad1() const { return _pad1; }
+uint16_t RecordQueryReliablePdu::getPad1() const { return _pad1; }
 
-void RecordQueryReliablePdu::setPad1(unsigned short pX) { _pad1 = pX; }
+void RecordQueryReliablePdu::setPad1(uint16_t pX) { _pad1 = pX; }
 
 unsigned char RecordQueryReliablePdu::getPad2() const { return _pad2; }
 
 void RecordQueryReliablePdu::setPad2(unsigned char pX) { _pad2 = pX; }
 
-unsigned short RecordQueryReliablePdu::getEventType() const {
+uint16_t RecordQueryReliablePdu::getEventType() const {
   return _eventType;
 }
 
-void RecordQueryReliablePdu::setEventType(unsigned short pX) {
+void RecordQueryReliablePdu::setEventType(uint16_t pX) {
   _eventType = pX;
 }
 
@@ -135,7 +135,7 @@ int RecordQueryReliablePdu::getMarshalledSize() const {
   marshalSize = marshalSize + 4;  // _time
   marshalSize = marshalSize + 4;  // _numberOfRecords
 
-  for (unsigned long long idx = 0; idx < _recordIDs.size(); idx++) {
+  for (uint64_t idx = 0; idx < _recordIDs.size(); idx++) {
     FourByteChunk listElement = _recordIDs[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

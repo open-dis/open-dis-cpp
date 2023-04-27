@@ -1,9 +1,9 @@
 #pragma once
 
-#include <dis6/EntityID.h>
-#include <dis6/Pdu.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/EntityID.h"
+#include "dis6/Pdu.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.8. Abstract superclass for radio communications PDUs.
@@ -19,7 +19,7 @@ class OPENDIS6_EXPORT RadioCommunicationsFamilyPdu : public Pdu {
   EntityID _entityId;
 
   /** particular radio within an entity */
-  unsigned short _radioId;
+  uint16_t _radioId;
 
  public:
   RadioCommunicationsFamilyPdu();
@@ -32,8 +32,8 @@ class OPENDIS6_EXPORT RadioCommunicationsFamilyPdu : public Pdu {
   const EntityID& getEntityId() const;
   void setEntityId(const EntityID& pX);
 
-  unsigned short getRadioId() const;
-  void setRadioId(unsigned short pX);
+  uint16_t getRadioId() const;
+  void setRadioId(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

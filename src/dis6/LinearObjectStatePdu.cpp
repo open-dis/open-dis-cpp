@@ -1,4 +1,4 @@
-#include <dis6/LinearObjectStatePdu.h>
+#include "dis6/LinearObjectStatePdu.h"
 
 using namespace DIS;
 
@@ -37,11 +37,11 @@ void LinearObjectStatePdu::setReferencedObjectID(const EntityID& pX) {
   _referencedObjectID = pX;
 }
 
-unsigned short LinearObjectStatePdu::getUpdateNumber() const {
+uint16_t LinearObjectStatePdu::getUpdateNumber() const {
   return _updateNumber;
 }
 
-void LinearObjectStatePdu::setUpdateNumber(unsigned short pX) {
+void LinearObjectStatePdu::setUpdateNumber(uint16_t pX) {
   _updateNumber = pX;
 }
 
@@ -175,7 +175,7 @@ int LinearObjectStatePdu::getMarshalledSize() const {
   marshalSize = marshalSize + _receivingID.getMarshalledSize();  // _receivingID
   marshalSize = marshalSize + _objectType.getMarshalledSize();   // _objectType
 
-  for (unsigned long long idx = 0; idx < _linearSegmentParameters.size();
+  for (uint64_t idx = 0; idx < _linearSegmentParameters.size();
        idx++) {
     LinearSegmentParameter listElement = _linearSegmentParameters[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();

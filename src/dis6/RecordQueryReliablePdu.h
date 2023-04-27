@@ -2,10 +2,10 @@
 
 #include <vector>
 
-#include <dis6/FourByteChunk.h>
-#include <dis6/SimulationManagementWithReliabilityFamilyPdu.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/FourByteChunk.h"
+#include "dis6/SimulationManagementWithReliabilityFamilyPdu.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.12.13: A request for one or more records of data from an entity.
@@ -26,13 +26,13 @@ class OPENDIS6_EXPORT RecordQueryReliablePdu
   unsigned char _requiredReliabilityService;
 
   /** padding. The spec is unclear and contradictory here. */
-  unsigned short _pad1;
+  uint16_t _pad1;
 
   /** padding */
   unsigned char _pad2;
 
   /** event type */
-  unsigned short _eventType;
+  uint16_t _eventType;
 
   /** time */
   unsigned int _time;
@@ -56,14 +56,14 @@ class OPENDIS6_EXPORT RecordQueryReliablePdu
   unsigned char getRequiredReliabilityService() const;
   void setRequiredReliabilityService(unsigned char pX);
 
-  unsigned short getPad1() const;
-  void setPad1(unsigned short pX);
+  uint16_t getPad1() const;
+  void setPad1(uint16_t pX);
 
   unsigned char getPad2() const;
   void setPad2(unsigned char pX);
 
-  unsigned short getEventType() const;
-  void setEventType(unsigned short pX);
+  uint16_t getEventType() const;
+  void setEventType(uint16_t pX);
 
   unsigned int getTime() const;
   void setTime(unsigned int pX);

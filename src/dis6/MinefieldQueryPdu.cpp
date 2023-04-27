@@ -1,4 +1,4 @@
-#include <dis6/MinefieldQueryPdu.h>
+#include "dis6/MinefieldQueryPdu.h"
 
 using namespace DIS;
 
@@ -189,13 +189,13 @@ int MinefieldQueryPdu::getMarshalledSize() const {
   marshalSize = marshalSize +
                 _requestedMineType.getMarshalledSize();  // _requestedMineType
 
-  for (unsigned long long idx = 0; idx < _requestedPerimeterPoints.size();
+  for (uint64_t idx = 0; idx < _requestedPerimeterPoints.size();
        idx++) {
     Point listElement = _requestedPerimeterPoints[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }
 
-  for (unsigned long long idx = 0; idx < _sensorTypes.size(); idx++) {
+  for (uint64_t idx = 0; idx < _sensorTypes.size(); idx++) {
     TwoByteChunk listElement = _sensorTypes[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

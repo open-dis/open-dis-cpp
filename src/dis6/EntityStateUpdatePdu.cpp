@@ -1,4 +1,4 @@
-#include <dis6/EntityStateUpdatePdu.h>
+#include "dis6/EntityStateUpdatePdu.h"
 
 using namespace DIS;
 
@@ -164,7 +164,7 @@ int EntityStateUpdatePdu::getMarshalledSize() const {
                 _entityOrientation.getMarshalledSize();  // _entityOrientation
   marshalSize = marshalSize + 4;                         // _entityAppearance
 
-  for (unsigned long long idx = 0; idx < _articulationParameters.size();
+  for (uint64_t idx = 0; idx < _articulationParameters.size();
        idx++) {
     ArticulationParameter listElement = _articulationParameters[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();

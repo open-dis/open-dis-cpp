@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Record sets, used in transfer control request PDU
@@ -20,13 +20,13 @@ class OPENDIS6_EXPORT RecordSet {
   unsigned int _recordSetSerialNumber;
 
   /** record length */
-  unsigned short _recordLength;
+  uint16_t _recordLength;
 
   /** record count */
-  unsigned short _recordCount;
+  uint16_t _recordCount;
 
   /** ^^^This is wrong--variable sized data records */
-  unsigned short _recordValues;
+  uint16_t _recordValues;
 
   /** ^^^This is wrong--variable sized padding */
   unsigned char _pad4;
@@ -44,14 +44,14 @@ class OPENDIS6_EXPORT RecordSet {
   unsigned int getRecordSetSerialNumber() const;
   void setRecordSetSerialNumber(unsigned int pX);
 
-  unsigned short getRecordLength() const;
-  void setRecordLength(unsigned short pX);
+  uint16_t getRecordLength() const;
+  void setRecordLength(uint16_t pX);
 
-  unsigned short getRecordCount() const;
-  void setRecordCount(unsigned short pX);
+  uint16_t getRecordCount() const;
+  void setRecordCount(uint16_t pX);
 
-  unsigned short getRecordValues() const;
-  void setRecordValues(unsigned short pX);
+  uint16_t getRecordValues() const;
+  void setRecordValues(uint16_t pX);
 
   unsigned char getPad4() const;
   void setPad4(unsigned char pX);

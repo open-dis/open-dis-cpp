@@ -1,13 +1,13 @@
 #pragma once
 
-#include <dis6/BurstDescriptor.h>
-#include <dis6/EntityID.h>
-#include <dis6/EventID.h>
-#include <dis6/Vector3Double.h>
-#include <dis6/Vector3Float.h>
-#include <dis6/WarfareFamilyPdu.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/BurstDescriptor.h"
+#include "dis6/EntityID.h"
+#include "dis6/EventID.h"
+#include "dis6/Vector3Double.h"
+#include "dis6/Vector3Float.h"
+#include "dis6/WarfareFamilyPdu.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Sectioin 5.3.4.1. Information about someone firing something. COMPLETE

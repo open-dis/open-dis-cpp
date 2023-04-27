@@ -2,11 +2,11 @@
 
 #include <vector>
 
-#include <dis6/FixedDatum.h>
-#include <dis6/SimulationManagementWithReliabilityFamilyPdu.h>
-#include <dis6/VariableDatum.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/FixedDatum.h"
+#include "dis6/SimulationManagementWithReliabilityFamilyPdu.h"
+#include "dis6/VariableDatum.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.12.12: Arbitrary messages. Only reliable this time. Neds manual

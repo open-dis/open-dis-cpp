@@ -1,4 +1,4 @@
-#include <dis6/IffAtcNavAidsLayer2Pdu.h>
+#include "dis6/IffAtcNavAidsLayer2Pdu.h"
 
 using namespace DIS;
 
@@ -114,7 +114,7 @@ int IffAtcNavAidsLayer2Pdu::getMarshalledSize() const {
       marshalSize + _secondaryOperationalData
                         .getMarshalledSize();  // _secondaryOperationalData
 
-  for (unsigned long long idx = 0; idx < _fundamentalIffParameters.size();
+  for (uint64_t idx = 0; idx < _fundamentalIffParameters.size();
        idx++) {
     FundamentalParameterDataIff listElement = _fundamentalIffParameters[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();

@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.2.11. This field shall specify information about a particular
@@ -15,7 +15,7 @@ namespace DIS {
 class OPENDIS6_EXPORT EmitterSystem {
  protected:
   /** Name of the emitter, 16 bit enumeration */
-  unsigned short _emitterName;
+  uint16_t _emitterName;
 
   /** function of the emitter, 8 bit enumeration */
   unsigned char _function;
@@ -30,8 +30,8 @@ class OPENDIS6_EXPORT EmitterSystem {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getEmitterName() const;
-  void setEmitterName(unsigned short pX);
+  uint16_t getEmitterName() const;
+  void setEmitterName(uint16_t pX);
 
   unsigned char getFunction() const;
   void setFunction(unsigned char pX);

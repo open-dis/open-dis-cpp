@@ -1,4 +1,4 @@
-#include <dis6/ElectromagneticEmissionSystemData.h>
+#include "dis6/ElectromagneticEmissionSystemData.h"
 
 using namespace DIS;
 
@@ -25,12 +25,12 @@ unsigned char ElectromagneticEmissionSystemData::getNumberOfBeams() const {
   return _beamDataRecords.size();
 }
 
-unsigned short ElectromagneticEmissionSystemData::getEmissionsPadding2() const {
+uint16_t ElectromagneticEmissionSystemData::getEmissionsPadding2() const {
   return _emissionsPadding2;
 }
 
 void ElectromagneticEmissionSystemData::setEmissionsPadding2(
-    unsigned short pX) {
+    uint16_t pX) {
   _emissionsPadding2 = pX;
 }
 
@@ -130,7 +130,7 @@ int ElectromagneticEmissionSystemData::getMarshalledSize() const {
       marshalSize + _emitterSystem.getMarshalledSize();       // _emitterSystem
   marshalSize = marshalSize + _location.getMarshalledSize();  // _location
 
-  for (unsigned long long idx = 0; idx < _beamDataRecords.size(); idx++) {
+  for (uint64_t idx = 0; idx < _beamDataRecords.size(); idx++) {
     ElectromagneticEmissionBeamData listElement = _beamDataRecords[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

@@ -1,4 +1,4 @@
-#include <dis6/AggregateStatePdu.h>
+#include "dis6/AggregateStatePdu.h"
 
 using namespace DIS;
 
@@ -115,19 +115,19 @@ const Vector3Float& AggregateStatePdu::getVelocity() const { return _velocity; }
 
 void AggregateStatePdu::setVelocity(const Vector3Float& pX) { _velocity = pX; }
 
-unsigned short AggregateStatePdu::getNumberOfDisAggregates() const {
+uint16_t AggregateStatePdu::getNumberOfDisAggregates() const {
   return _aggregateIDList.size();
 }
 
-unsigned short AggregateStatePdu::getNumberOfDisEntities() const {
+uint16_t AggregateStatePdu::getNumberOfDisEntities() const {
   return _entityIDList.size();
 }
 
-unsigned short AggregateStatePdu::getNumberOfSilentAggregateTypes() const {
+uint16_t AggregateStatePdu::getNumberOfSilentAggregateTypes() const {
   return _silentAggregateSystemList.size();
 }
 
-unsigned short AggregateStatePdu::getNumberOfSilentEntityTypes() const {
+uint16_t AggregateStatePdu::getNumberOfSilentEntityTypes() const {
   return _silentEntitySystemList.size();
 }
 
@@ -218,10 +218,10 @@ void AggregateStatePdu::marshal(DataStream& dataStream) const {
   _orientation.marshal(dataStream);
   _centerOfMass.marshal(dataStream);
   _velocity.marshal(dataStream);
-  dataStream << (unsigned short)_aggregateIDList.size();
-  dataStream << (unsigned short)_entityIDList.size();
-  dataStream << (unsigned short)_silentAggregateSystemList.size();
-  dataStream << (unsigned short)_silentEntitySystemList.size();
+  dataStream << (uint16_t)_aggregateIDList.size();
+  dataStream << (uint16_t)_entityIDList.size();
+  dataStream << (uint16_t)_silentAggregateSystemList.size();
+  dataStream << (uint16_t)_silentEntitySystemList.size();
 
   for (size_t idx = 0; idx < _aggregateIDList.size(); idx++) {
     AggregateID x = _aggregateIDList[idx];
@@ -377,25 +377,25 @@ int AggregateStatePdu::getMarshalledSize() const {
   marshalSize = marshalSize + 2;  // _numberOfSilentAggregateTypes
   marshalSize = marshalSize + 2;  // _numberOfSilentEntityTypes
 
-  for (unsigned long long idx = 0; idx < _aggregateIDList.size(); idx++) {
+  for (uint64_t idx = 0; idx < _aggregateIDList.size(); idx++) {
     AggregateID listElement = _aggregateIDList[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }
 
-  for (unsigned long long idx = 0; idx < _entityIDList.size(); idx++) {
+  for (uint64_t idx = 0; idx < _entityIDList.size(); idx++) {
     EntityID listElement = _entityIDList[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }
 
   marshalSize = marshalSize + 1;  // _pad2
 
-  for (unsigned long long idx = 0; idx < _silentAggregateSystemList.size();
+  for (uint64_t idx = 0; idx < _silentAggregateSystemList.size();
        idx++) {
     EntityType listElement = _silentAggregateSystemList[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }
 
-  for (unsigned long long idx = 0; idx < _silentEntitySystemList.size();
+  for (uint64_t idx = 0; idx < _silentEntitySystemList.size();
        idx++) {
     EntityType listElement = _silentEntitySystemList[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
@@ -403,7 +403,7 @@ int AggregateStatePdu::getMarshalledSize() const {
 
   marshalSize = marshalSize + 4;  // _numberOfVariableDatumRecords
 
-  for (unsigned long long idx = 0; idx < _variableDatumList.size(); idx++) {
+  for (uint64_t idx = 0; idx < _variableDatumList.size(); idx++) {
     VariableDatum listElement = _variableDatumList[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

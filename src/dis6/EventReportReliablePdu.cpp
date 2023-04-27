@@ -1,4 +1,4 @@
-#include <dis6/EventReportReliablePdu.h>
+#include "dis6/EventReportReliablePdu.h"
 
 using namespace DIS;
 
@@ -16,11 +16,11 @@ EventReportReliablePdu::~EventReportReliablePdu() {
   _variableDatumRecords.clear();
 }
 
-unsigned short EventReportReliablePdu::getEventType() const {
+uint16_t EventReportReliablePdu::getEventType() const {
   return _eventType;
 }
 
-void EventReportReliablePdu::setEventType(unsigned short pX) {
+void EventReportReliablePdu::setEventType(uint16_t pX) {
   _eventType = pX;
 }
 
@@ -138,12 +138,12 @@ int EventReportReliablePdu::getMarshalledSize() const {
   marshalSize = marshalSize + 4;  // _numberOfFixedDatumRecords
   marshalSize = marshalSize + 4;  // _numberOfVariableDatumRecords
 
-  for (unsigned long long idx = 0; idx < _fixedDatumRecords.size(); idx++) {
+  for (uint64_t idx = 0; idx < _fixedDatumRecords.size(); idx++) {
     FixedDatum listElement = _fixedDatumRecords[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }
 
-  for (unsigned long long idx = 0; idx < _variableDatumRecords.size(); idx++) {
+  for (uint64_t idx = 0; idx < _variableDatumRecords.size(); idx++) {
     VariableDatum listElement = _variableDatumRecords[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

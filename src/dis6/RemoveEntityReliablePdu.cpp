@@ -1,4 +1,4 @@
-#include <dis6/RemoveEntityReliablePdu.h>
+#include "dis6/RemoveEntityReliablePdu.h"
 
 using namespace DIS;
 
@@ -21,9 +21,9 @@ void RemoveEntityReliablePdu::setRequiredReliabilityService(unsigned char pX) {
   _requiredReliabilityService = pX;
 }
 
-unsigned short RemoveEntityReliablePdu::getPad1() const { return _pad1; }
+uint16_t RemoveEntityReliablePdu::getPad1() const { return _pad1; }
 
-void RemoveEntityReliablePdu::setPad1(unsigned short pX) { _pad1 = pX; }
+void RemoveEntityReliablePdu::setPad1(uint16_t pX) { _pad1 = pX; }
 
 unsigned char RemoveEntityReliablePdu::getPad2() const { return _pad2; }
 

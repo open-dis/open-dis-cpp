@@ -1,11 +1,11 @@
 #pragma once
 
-#include <dis6/EntityID.h>
-#include <dis6/EntityInformationFamilyPdu.h>
-#include <dis6/EventID.h>
-#include <dis6/Vector3Float.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/EntityID.h"
+#include "dis6/EntityInformationFamilyPdu.h"
+#include "dis6/EventID.h"
+#include "dis6/Vector3Float.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // 5.3.3.3. Information about elastic collisions in a DIS exercise shall be
@@ -28,7 +28,7 @@ class OPENDIS6_EXPORT CollisionElasticPdu : public EntityInformationFamilyPdu {
   EventID _collisionEventID;
 
   /** some padding */
-  short _pad;
+  int16_t _pad;
 
   /** velocity at collision */
   Vector3Float _contactVelocity;
@@ -85,8 +85,8 @@ class OPENDIS6_EXPORT CollisionElasticPdu : public EntityInformationFamilyPdu {
   const EventID& getCollisionEventID() const;
   void setCollisionEventID(const EventID& pX);
 
-  short getPad() const;
-  void setPad(short pX);
+  int16_t getPad() const;
+  void setPad(int16_t pX);
 
   Vector3Float& getContactVelocity();
   const Vector3Float& getContactVelocity() const;

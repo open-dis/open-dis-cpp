@@ -10,7 +10,7 @@ DataStream::DataStream(Endian stream)
       _write_pos(0),
       _stream_endian(stream),
       _machine_endian(LITTLE) {
-  long one(1);
+  int32_t one(1);
   char e = (reinterpret_cast<char*>(&one))[0];
 
   if (e == (char)1) {
@@ -26,7 +26,7 @@ DataStream::DataStream(const char* buffer, size_t length, Endian stream)
       _write_pos(0),
       _stream_endian(stream),
       _machine_endian(LITTLE) {
-  long one(1);
+  int32_t one(1);
   char e = (reinterpret_cast<char*>(&one))[0];
 
   if (e == (char)1) {
@@ -153,22 +153,22 @@ DataStream& DataStream::operator<<(unsigned int d) {
   return *this;
 }
 
-DataStream& DataStream::operator<<(long long d) {
+DataStream& DataStream::operator<<(int64_t d) {
   WriteAlgorithm(d);
   return *this;
 }
 
-DataStream& DataStream::operator<<(unsigned long long d) {
+DataStream& DataStream::operator<<(uint64_t d) {
   WriteAlgorithm(d);
   return *this;
 }
 
-DataStream& DataStream::operator<<(unsigned short d) {
+DataStream& DataStream::operator<<(uint16_t d) {
   WriteAlgorithm(d);
   return *this;
 }
 
-DataStream& DataStream::operator<<(short d) {
+DataStream& DataStream::operator<<(int16_t d) {
   WriteAlgorithm(d);
   return *this;
 }
@@ -204,22 +204,22 @@ DataStream& DataStream::operator>>(unsigned int& d) {
   return *this;
 }
 
-DataStream& DataStream::operator>>(long long& d) {
+DataStream& DataStream::operator>>(int64_t& d) {
   ReadAlgorithm(d);
   return *this;
 }
 
-DataStream& DataStream::operator>>(unsigned long long& d) {
+DataStream& DataStream::operator>>(uint64_t& d) {
   ReadAlgorithm(d);
   return *this;
 }
 
-DataStream& DataStream::operator>>(unsigned short& d) {
+DataStream& DataStream::operator>>(uint16_t& d) {
   ReadAlgorithm(d);
   return *this;
 }
 
-DataStream& DataStream::operator>>(short& d) {
+DataStream& DataStream::operator>>(int16_t& d) {
   ReadAlgorithm(d);
   return *this;
 }

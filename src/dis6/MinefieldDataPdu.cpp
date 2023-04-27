@@ -1,4 +1,4 @@
-#include <dis6/MinefieldDataPdu.h>
+#include "dis6/MinefieldDataPdu.h"
 
 using namespace DIS;
 
@@ -44,11 +44,11 @@ void MinefieldDataPdu::setRequestingEntityID(const EntityID& pX) {
   _requestingEntityID = pX;
 }
 
-unsigned short MinefieldDataPdu::getMinefieldSequenceNumbeer() const {
+uint16_t MinefieldDataPdu::getMinefieldSequenceNumbeer() const {
   return _minefieldSequenceNumbeer;
 }
 
-void MinefieldDataPdu::setMinefieldSequenceNumbeer(unsigned short pX) {
+void MinefieldDataPdu::setMinefieldSequenceNumbeer(uint16_t pX) {
   _minefieldSequenceNumbeer = pX;
 }
 
@@ -225,14 +225,14 @@ int MinefieldDataPdu::getMarshalledSize() const {
   marshalSize = marshalSize + 4;  // _dataFilter
   marshalSize = marshalSize + _mineType.getMarshalledSize();  // _mineType
 
-  for (unsigned long long idx = 0; idx < _sensorTypes.size(); idx++) {
+  for (uint64_t idx = 0; idx < _sensorTypes.size(); idx++) {
     TwoByteChunk listElement = _sensorTypes[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }
 
   marshalSize = marshalSize + 1;  // _pad3
 
-  for (unsigned long long idx = 0; idx < _mineLocation.size(); idx++) {
+  for (uint64_t idx = 0; idx < _mineLocation.size(); idx++) {
     Vector3Float listElement = _mineLocation[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

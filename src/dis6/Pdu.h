@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // The superclass for all PDUs. This incorporates the PduHeader record,
@@ -30,10 +30,10 @@ class OPENDIS6_EXPORT Pdu {
   unsigned int _timestamp;
 
   /** Length, in bytes, of the PDU */
-  unsigned short _length;
+  uint16_t _length;
 
   /** zero-filled array of padding */
-  short _padding;
+  int16_t _padding;
 
  public:
   Pdu();
@@ -57,11 +57,11 @@ class OPENDIS6_EXPORT Pdu {
   unsigned int getTimestamp() const;
   void setTimestamp(unsigned int pX);
 
-  unsigned short getLength() const;
-  void setLength(unsigned short pX);
+  uint16_t getLength() const;
+  void setLength(uint16_t pX);
 
-  short getPadding() const;
-  void setPadding(short pX);
+  int16_t getPadding() const;
+  void setPadding(int16_t pX);
 
   virtual int getMarshalledSize() const;
 

@@ -1,4 +1,4 @@
-#include <dis6/BeamAntennaPattern.h>
+#include "dis6/BeamAntennaPattern.h"
 
 using namespace DIS;
 
@@ -38,9 +38,9 @@ float BeamAntennaPattern::getReferenceSystem() const {
 
 void BeamAntennaPattern::setReferenceSystem(float pX) { _referenceSystem = pX; }
 
-short BeamAntennaPattern::getPadding1() const { return _padding1; }
+int16_t BeamAntennaPattern::getPadding1() const { return _padding1; }
 
-void BeamAntennaPattern::setPadding1(short pX) { _padding1 = pX; }
+void BeamAntennaPattern::setPadding1(int16_t pX) { _padding1 = pX; }
 
 char BeamAntennaPattern::getPadding2() const { return _padding2; }
 

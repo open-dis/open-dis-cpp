@@ -1,4 +1,4 @@
-#include <dis6/LogisticsFamilyPdu.h>
+#include "dis6/LogisticsFamilyPdu.h"
 
 using namespace DIS;
 

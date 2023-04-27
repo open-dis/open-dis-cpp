@@ -1,4 +1,4 @@
-#include <dis6/ShaftRPMs.h>
+#include "dis6/ShaftRPMs.h"
 
 using namespace DIS;
 
@@ -7,13 +7,13 @@ ShaftRPMs::ShaftRPMs()
 
 ShaftRPMs::~ShaftRPMs() {}
 
-short ShaftRPMs::getCurrentShaftRPMs() const { return _currentShaftRPMs; }
+int16_t ShaftRPMs::getCurrentShaftRPMs() const { return _currentShaftRPMs; }
 
-void ShaftRPMs::setCurrentShaftRPMs(short pX) { _currentShaftRPMs = pX; }
+void ShaftRPMs::setCurrentShaftRPMs(int16_t pX) { _currentShaftRPMs = pX; }
 
-short ShaftRPMs::getOrderedShaftRPMs() const { return _orderedShaftRPMs; }
+int16_t ShaftRPMs::getOrderedShaftRPMs() const { return _orderedShaftRPMs; }
 
-void ShaftRPMs::setOrderedShaftRPMs(short pX) { _orderedShaftRPMs = pX; }
+void ShaftRPMs::setOrderedShaftRPMs(int16_t pX) { _orderedShaftRPMs = pX; }
 
 float ShaftRPMs::getShaftRPMRateOfChange() const {
   return _shaftRPMRateOfChange;

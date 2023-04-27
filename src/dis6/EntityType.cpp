@@ -1,4 +1,4 @@
-#include <dis6/EntityType.h>
+#include "dis6/EntityType.h"
 
 using namespace DIS;
 
@@ -21,9 +21,9 @@ unsigned char EntityType::getDomain() const { return _domain; }
 
 void EntityType::setDomain(unsigned char pX) { _domain = pX; }
 
-unsigned short EntityType::getCountry() const { return _country; }
+uint16_t EntityType::getCountry() const { return _country; }
 
-void EntityType::setCountry(unsigned short pX) { _country = pX; }
+void EntityType::setCountry(uint16_t pX) { _country = pX; }
 
 unsigned char EntityType::getCategory() const { return _category; }
 

@@ -1,8 +1,8 @@
 #pragma once
 
-#include <dis6/Pdu.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/Pdu.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.10.1 Abstract superclass for PDUs relating to minefields

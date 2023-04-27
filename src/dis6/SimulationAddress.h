@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.2.14.1. A Simulation Address  record shall consist of the Site
@@ -15,10 +15,10 @@ namespace DIS {
 class OPENDIS6_EXPORT SimulationAddress {
  protected:
   /** The site ID */
-  unsigned short _site;
+  uint16_t _site;
 
   /** The application ID */
-  unsigned short _application;
+  uint16_t _application;
 
  public:
   SimulationAddress();
@@ -27,11 +27,11 @@ class OPENDIS6_EXPORT SimulationAddress {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getSite() const;
-  void setSite(unsigned short pX);
+  uint16_t getSite() const;
+  void setSite(uint16_t pX);
 
-  unsigned short getApplication() const;
-  void setApplication(unsigned short pX);
+  uint16_t getApplication() const;
+  void setApplication(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

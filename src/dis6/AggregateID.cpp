@@ -1,4 +1,4 @@
-#include <dis6/AggregateID.h>
+#include "dis6/AggregateID.h"
 
 using namespace DIS;
 
@@ -6,17 +6,17 @@ AggregateID::AggregateID() : _site(0), _application(0), _aggregateID(0) {}
 
 AggregateID::~AggregateID() {}
 
-unsigned short AggregateID::getSite() const { return _site; }
+uint16_t AggregateID::getSite() const { return _site; }
 
-void AggregateID::setSite(unsigned short pX) { _site = pX; }
+void AggregateID::setSite(uint16_t pX) { _site = pX; }
 
-unsigned short AggregateID::getApplication() const { return _application; }
+uint16_t AggregateID::getApplication() const { return _application; }
 
-void AggregateID::setApplication(unsigned short pX) { _application = pX; }
+void AggregateID::setApplication(uint16_t pX) { _application = pX; }
 
-unsigned short AggregateID::getAggregateID() const { return _aggregateID; }
+uint16_t AggregateID::getAggregateID() const { return _aggregateID; }
 
-void AggregateID::setAggregateID(unsigned short pX) { _aggregateID = pX; }
+void AggregateID::setAggregateID(uint16_t pX) { _aggregateID = pX; }
 
 void AggregateID::marshal(DataStream& dataStream) const {
   dataStream << _site;

@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include <dis6/VariableDatum.h>
+#include "dis6/VariableDatum.h"
 
 using namespace DIS;
 
@@ -8,7 +8,7 @@ VariableDatum::VariableDatum()
     : _variableDatumID(0),
       _variableDatumLength(0),
       _variableDatums(static_cast<std::size_t>(STATIC_ARRAY_LENGTH),
-                      char(0)),  // can (theoretically) throw
+                      static_cast<char>(0)),  // can (theoretically) throw
       _arrayLength(0) {}
 
 VariableDatum::~VariableDatum() {
@@ -56,10 +56,10 @@ void VariableDatum::setVariableDatums(const char* x,
   // datum?
   if (_variableDatums.size() < length) _variableDatums.resize(length);
 
-  for (unsigned int i = 0; i < length; i++) {
+  for (auto i = 0; i < length; i++) {
     _variableDatums[i] = x[i];
   }
-  for (unsigned long i = length; i < _variableDatums.size(); i++) {
+  for (auto i = length; i < _variableDatums.size(); i++) {
     _variableDatums[i] = 0;
   }
 }
@@ -68,7 +68,7 @@ void VariableDatum::marshal(DataStream& dataStream) const {
   dataStream << _variableDatumID;
   dataStream << _variableDatumLength;
 
-  for (unsigned int idx = 0; idx < _arrayLength; idx++) {
+  for (auto idx = 0; idx < _arrayLength; idx++) {
     dataStream << _variableDatums[idx];
   }
 }
@@ -95,8 +95,7 @@ void VariableDatum::unmarshal(DataStream& dataStream) {
     // std::cout << (int)_variableDatums[idx] << " ";
   }
   // std::cout << std::endl;
-  for (unsigned long long idx = _arrayLength; idx < _variableDatums.size();
-       idx++) {
+  for (uint64_t idx = _arrayLength; idx < _variableDatums.size(); idx++) {
     _variableDatums[idx] = 0;
   }
   // std::cout << " Created and copied data to new _variableDatums array" <<

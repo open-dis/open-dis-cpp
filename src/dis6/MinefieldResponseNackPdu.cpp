@@ -1,4 +1,4 @@
-#include <dis6/MinefieldResponseNackPdu.h>
+#include "dis6/MinefieldResponseNackPdu.h"
 
 using namespace DIS;
 
@@ -123,7 +123,7 @@ int MinefieldResponseNackPdu::getMarshalledSize() const {
   marshalSize = marshalSize + 1;                          // _requestID
   marshalSize = marshalSize + 1;  // _numberOfMissingPdus
 
-  for (unsigned long long idx = 0; idx < _missingPduSequenceNumbers.size();
+  for (uint64_t idx = 0; idx < _missingPduSequenceNumbers.size();
        idx++) {
     EightByteChunk listElement = _missingPduSequenceNumbers[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();

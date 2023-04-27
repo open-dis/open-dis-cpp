@@ -1,4 +1,4 @@
-#include <dis6/ResupplyOfferPdu.h>
+#include "dis6/ResupplyOfferPdu.h"
 
 using namespace DIS;
 
@@ -42,9 +42,9 @@ unsigned char ResupplyOfferPdu::getNumberOfSupplyTypes() const {
   return _supplies.size();
 }
 
-short ResupplyOfferPdu::getPadding1() const { return _padding1; }
+int16_t ResupplyOfferPdu::getPadding1() const { return _padding1; }
 
-void ResupplyOfferPdu::setPadding1(short pX) { _padding1 = pX; }
+void ResupplyOfferPdu::setPadding1(int16_t pX) { _padding1 = pX; }
 
 char ResupplyOfferPdu::getPadding2() const { return _padding2; }
 
@@ -123,7 +123,7 @@ int ResupplyOfferPdu::getMarshalledSize() const {
   marshalSize = marshalSize + 2;                         // _padding1
   marshalSize = marshalSize + 1;                         // _padding2
 
-  for (unsigned long long idx = 0; idx < _supplies.size(); idx++) {
+  for (uint64_t idx = 0; idx < _supplies.size(); idx++) {
     SupplyQuantity listElement = _supplies[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

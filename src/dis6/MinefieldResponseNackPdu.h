@@ -2,11 +2,11 @@
 
 #include <vector>
 
-#include <dis6/EightByteChunk.h>
-#include <dis6/EntityID.h>
-#include <dis6/MinefieldFamilyPdu.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/EightByteChunk.h"
+#include "dis6/EntityID.h"
+#include "dis6/MinefieldFamilyPdu.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.10.4 proivde the means to request a retransmit of a minefield

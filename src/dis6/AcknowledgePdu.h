@@ -1,8 +1,8 @@
 #pragma once
 
-#include <dis6/SimulationManagementFamilyPdu.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/SimulationManagementFamilyPdu.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.6.5. Acknowledge the receiptof a start/resume, stop/freeze, or
@@ -16,10 +16,10 @@ namespace DIS {
 class OPENDIS6_EXPORT AcknowledgePdu : public SimulationManagementFamilyPdu {
  protected:
   /** type of message being acknowledged */
-  unsigned short _acknowledgeFlag;
+  uint16_t _acknowledgeFlag;
 
   /** Whether or not the receiving entity was able to comply with the request */
-  unsigned short _responseFlag;
+  uint16_t _responseFlag;
 
   /** Request ID that is unique */
   unsigned int _requestID;
@@ -31,11 +31,11 @@ class OPENDIS6_EXPORT AcknowledgePdu : public SimulationManagementFamilyPdu {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getAcknowledgeFlag() const;
-  void setAcknowledgeFlag(unsigned short pX);
+  uint16_t getAcknowledgeFlag() const;
+  void setAcknowledgeFlag(uint16_t pX);
 
-  unsigned short getResponseFlag() const;
-  void setResponseFlag(unsigned short pX);
+  uint16_t getResponseFlag() const;
+  void setResponseFlag(uint16_t pX);
 
   unsigned int getRequestID() const;
   void setRequestID(unsigned int pX);

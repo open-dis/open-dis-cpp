@@ -1,4 +1,4 @@
-#include <dis6/SetDataReliablePdu.h>
+#include "dis6/SetDataReliablePdu.h"
 
 using namespace DIS;
 
@@ -26,9 +26,9 @@ void SetDataReliablePdu::setRequiredReliabilityService(unsigned char pX) {
   _requiredReliabilityService = pX;
 }
 
-unsigned short SetDataReliablePdu::getPad1() const { return _pad1; }
+uint16_t SetDataReliablePdu::getPad1() const { return _pad1; }
 
-void SetDataReliablePdu::setPad1(unsigned short pX) { _pad1 = pX; }
+void SetDataReliablePdu::setPad1(uint16_t pX) { _pad1 = pX; }
 
 unsigned char SetDataReliablePdu::getPad2() const { return _pad2; }
 
@@ -156,12 +156,12 @@ int SetDataReliablePdu::getMarshalledSize() const {
   marshalSize = marshalSize + 4;  // _numberOfFixedDatumRecords
   marshalSize = marshalSize + 4;  // _numberOfVariableDatumRecords
 
-  for (unsigned long long idx = 0; idx < _fixedDatumRecords.size(); idx++) {
+  for (uint64_t idx = 0; idx < _fixedDatumRecords.size(); idx++) {
     FixedDatum listElement = _fixedDatumRecords[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }
 
-  for (unsigned long long idx = 0; idx < _variableDatumRecords.size(); idx++) {
+  for (uint64_t idx = 0; idx < _variableDatumRecords.size(); idx++) {
     VariableDatum listElement = _variableDatumRecords[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

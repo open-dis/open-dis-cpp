@@ -1,6 +1,6 @@
 #include <cstring>
 
-#include <dis6/FastEntityStatePdu.h>
+#include "dis6/FastEntityStatePdu.h"
 
 using namespace DIS;
 
@@ -58,21 +58,21 @@ FastEntityStatePdu::FastEntityStatePdu()
 
 FastEntityStatePdu::~FastEntityStatePdu() { _articulationParameters.clear(); }
 
-unsigned short FastEntityStatePdu::getSite() const { return _site; }
+uint16_t FastEntityStatePdu::getSite() const { return _site; }
 
-void FastEntityStatePdu::setSite(unsigned short pX) { _site = pX; }
+void FastEntityStatePdu::setSite(uint16_t pX) { _site = pX; }
 
-unsigned short FastEntityStatePdu::getApplication() const {
+uint16_t FastEntityStatePdu::getApplication() const {
   return _application;
 }
 
-void FastEntityStatePdu::setApplication(unsigned short pX) {
+void FastEntityStatePdu::setApplication(uint16_t pX) {
   _application = pX;
 }
 
-unsigned short FastEntityStatePdu::getEntity() const { return _entity; }
+uint16_t FastEntityStatePdu::getEntity() const { return _entity; }
 
-void FastEntityStatePdu::setEntity(unsigned short pX) { _entity = pX; }
+void FastEntityStatePdu::setEntity(uint16_t pX) { _entity = pX; }
 
 unsigned char FastEntityStatePdu::getForceId() const { return _forceId; }
 
@@ -90,9 +90,9 @@ unsigned char FastEntityStatePdu::getDomain() const { return _domain; }
 
 void FastEntityStatePdu::setDomain(unsigned char pX) { _domain = pX; }
 
-unsigned short FastEntityStatePdu::getCountry() const { return _country; }
+uint16_t FastEntityStatePdu::getCountry() const { return _country; }
 
-void FastEntityStatePdu::setCountry(unsigned short pX) { _country = pX; }
+void FastEntityStatePdu::setCountry(uint16_t pX) { _country = pX; }
 
 unsigned char FastEntityStatePdu::getCategory() const { return _category; }
 
@@ -124,9 +124,9 @@ unsigned char FastEntityStatePdu::getAltDomain() const { return _altDomain; }
 
 void FastEntityStatePdu::setAltDomain(unsigned char pX) { _altDomain = pX; }
 
-unsigned short FastEntityStatePdu::getAltCountry() const { return _altCountry; }
+uint16_t FastEntityStatePdu::getAltCountry() const { return _altCountry; }
 
-void FastEntityStatePdu::setAltCountry(unsigned short pX) { _altCountry = pX; }
+void FastEntityStatePdu::setAltCountry(uint16_t pX) { _altCountry = pX; }
 
 unsigned char FastEntityStatePdu::getAltCategory() const {
   return _altCategory;
@@ -508,7 +508,7 @@ int FastEntityStatePdu::getMarshalledSize() const {
   marshalSize = marshalSize + 12 * 1;  // _marking
   marshalSize = marshalSize + 4;       // _capabilities
 
-  for (unsigned long long idx = 0; idx < _articulationParameters.size();
+  for (uint64_t idx = 0; idx < _articulationParameters.size();
        idx++) {
     ArticulationParameter listElement = _articulationParameters[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();

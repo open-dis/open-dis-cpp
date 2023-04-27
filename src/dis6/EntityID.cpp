@@ -1,4 +1,4 @@
-#include <dis6/EntityID.h>
+#include "dis6/EntityID.h"
 
 using namespace DIS;
 
@@ -6,17 +6,17 @@ EntityID::EntityID() : _site(0), _application(0), _entity(0) {}
 
 EntityID::~EntityID() {}
 
-unsigned short EntityID::getSite() const { return _site; }
+uint16_t EntityID::getSite() const { return _site; }
 
-void EntityID::setSite(unsigned short pX) { _site = pX; }
+void EntityID::setSite(uint16_t pX) { _site = pX; }
 
-unsigned short EntityID::getApplication() const { return _application; }
+uint16_t EntityID::getApplication() const { return _application; }
 
-void EntityID::setApplication(unsigned short pX) { _application = pX; }
+void EntityID::setApplication(uint16_t pX) { _application = pX; }
 
-unsigned short EntityID::getEntity() const { return _entity; }
+uint16_t EntityID::getEntity() const { return _entity; }
 
-void EntityID::setEntity(unsigned short pX) { _entity = pX; }
+void EntityID::setEntity(uint16_t pX) { _entity = pX; }
 
 void EntityID::marshal(DataStream& dataStream) const {
   dataStream << _site;

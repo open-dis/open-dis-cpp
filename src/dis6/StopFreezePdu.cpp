@@ -1,4 +1,4 @@
-#include <dis6/StopFreezePdu.h>
+#include "dis6/StopFreezePdu.h"
 
 using namespace DIS;
 
@@ -36,9 +36,9 @@ void StopFreezePdu::setFrozenBehavior(unsigned char pX) {
   _frozenBehavior = pX;
 }
 
-short StopFreezePdu::getPadding1() const { return _padding1; }
+int16_t StopFreezePdu::getPadding1() const { return _padding1; }
 
-void StopFreezePdu::setPadding1(short pX) { _padding1 = pX; }
+void StopFreezePdu::setPadding1(int16_t pX) { _padding1 = pX; }
 
 unsigned int StopFreezePdu::getRequestID() const { return _requestID; }
 

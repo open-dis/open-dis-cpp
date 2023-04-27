@@ -1,13 +1,13 @@
 #pragma once
 
-#include <dis6/DistributedEmissionsFamilyPdu.h>
-#include <dis6/EntityID.h>
-#include <dis6/EventID.h>
-#include <dis6/IffFundamentalData.h>
-#include <dis6/SystemID.h>
-#include <dis6/Vector3Float.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/DistributedEmissionsFamilyPdu.h"
+#include "dis6/EntityID.h"
+#include "dis6/EventID.h"
+#include "dis6/IffFundamentalData.h"
+#include "dis6/SystemID.h"
+#include "dis6/Vector3Float.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // 5.3.7.4.1: Navigational and IFF PDU. COMPLETE
@@ -34,7 +34,7 @@ class OPENDIS6_EXPORT IffAtcNavAidsLayer1Pdu
   SystemID _systemID;
 
   /** padding */
-  unsigned short _pad2;
+  uint16_t _pad2;
 
   /** fundamental parameters */
   IffFundamentalData _fundamentalParameters;
@@ -62,8 +62,8 @@ class OPENDIS6_EXPORT IffAtcNavAidsLayer1Pdu
   const SystemID& getSystemID() const;
   void setSystemID(const SystemID& pX);
 
-  unsigned short getPad2() const;
-  void setPad2(unsigned short pX);
+  uint16_t getPad2() const;
+  void setPad2(uint16_t pX);
 
   IffFundamentalData& getFundamentalParameters();
   const IffFundamentalData& getFundamentalParameters() const;

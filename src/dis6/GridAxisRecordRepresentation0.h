@@ -18,7 +18,7 @@ namespace DIS {
 class OPENDIS6_EXPORT GridAxisRecordRepresentation0 : public GridAxisRecord {
  protected:
   /** number of bytes of environmental state data */
-  unsigned short _numberOfBytes;
+  uint16_t _numberOfBytes;
 
   /** variable length list of data parameters ^^^this is wrong--need padding as
    * well */
@@ -31,7 +31,7 @@ class OPENDIS6_EXPORT GridAxisRecordRepresentation0 : public GridAxisRecord {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getNumberOfBytes() const;
+  uint16_t getNumberOfBytes() const;
 
   std::vector<uint8_t>& getDataValues();
   const std::vector<uint8_t>& getDataValues() const;

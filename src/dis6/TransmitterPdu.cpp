@@ -1,4 +1,4 @@
-#include <dis6/TransmitterPdu.h>
+#include "dis6/TransmitterPdu.h"
 
 using namespace DIS;
 
@@ -51,9 +51,9 @@ unsigned char TransmitterPdu::getInputSource() const { return _inputSource; }
 
 void TransmitterPdu::setInputSource(unsigned char pX) { _inputSource = pX; }
 
-unsigned short TransmitterPdu::getPadding1() const { return _padding1; }
+uint16_t TransmitterPdu::getPadding1() const { return _padding1; }
 
-void TransmitterPdu::setPadding1(unsigned short pX) { _padding1 = pX; }
+void TransmitterPdu::setPadding1(uint16_t pX) { _padding1 = pX; }
 
 Vector3Double& TransmitterPdu::getAntennaLocation() { return _antennaLocation; }
 
@@ -77,21 +77,21 @@ void TransmitterPdu::setRelativeAntennaLocation(const Vector3Float& pX) {
   _relativeAntennaLocation = pX;
 }
 
-unsigned short TransmitterPdu::getAntennaPatternType() const {
+uint16_t TransmitterPdu::getAntennaPatternType() const {
   return _antennaPatternType;
 }
 
-void TransmitterPdu::setAntennaPatternType(unsigned short pX) {
+void TransmitterPdu::setAntennaPatternType(uint16_t pX) {
   _antennaPatternType = pX;
 }
 
-unsigned short TransmitterPdu::getAntennaPatternCount() const {
+uint16_t TransmitterPdu::getAntennaPatternCount() const {
   return _antennaPatternList.size();
 }
 
-unsigned long long TransmitterPdu::getFrequency() const { return _frequency; }
+uint64_t TransmitterPdu::getFrequency() const { return _frequency; }
 
-void TransmitterPdu::setFrequency(unsigned long long pX) { _frequency = pX; }
+void TransmitterPdu::setFrequency(uint64_t pX) { _frequency = pX; }
 
 float TransmitterPdu::getTransmitFrequencyBandwidth() const {
   return _transmitFrequencyBandwidth;
@@ -115,21 +115,21 @@ void TransmitterPdu::setModulationType(const ModulationType& pX) {
   _modulationType = pX;
 }
 
-unsigned short TransmitterPdu::getCryptoSystem() const { return _cryptoSystem; }
+uint16_t TransmitterPdu::getCryptoSystem() const { return _cryptoSystem; }
 
-void TransmitterPdu::setCryptoSystem(unsigned short pX) { _cryptoSystem = pX; }
+void TransmitterPdu::setCryptoSystem(uint16_t pX) { _cryptoSystem = pX; }
 
-unsigned short TransmitterPdu::getCryptoKeyId() const { return _cryptoKeyId; }
+uint16_t TransmitterPdu::getCryptoKeyId() const { return _cryptoKeyId; }
 
-void TransmitterPdu::setCryptoKeyId(unsigned short pX) { _cryptoKeyId = pX; }
+void TransmitterPdu::setCryptoKeyId(uint16_t pX) { _cryptoKeyId = pX; }
 
 unsigned char TransmitterPdu::getModulationParameterCount() const {
   return _modulationParametersList.size();
 }
 
-unsigned short TransmitterPdu::getPadding2() const { return _padding2; }
+uint16_t TransmitterPdu::getPadding2() const { return _padding2; }
 
-void TransmitterPdu::setPadding2(unsigned short pX) { _padding2 = pX; }
+void TransmitterPdu::setPadding2(uint16_t pX) { _padding2 = pX; }
 
 unsigned char TransmitterPdu::getPadding3() const { return _padding3; }
 
@@ -172,7 +172,7 @@ void TransmitterPdu::marshal(DataStream& dataStream) const {
   _antennaLocation.marshal(dataStream);
   _relativeAntennaLocation.marshal(dataStream);
   dataStream << _antennaPatternType;
-  dataStream << (unsigned short)_antennaPatternList.size();
+  dataStream << (uint16_t)_antennaPatternList.size();
   dataStream << _frequency;
   dataStream << _transmitFrequencyBandwidth;
   dataStream << _power;
@@ -293,13 +293,13 @@ int TransmitterPdu::getMarshalledSize() const {
   marshalSize = marshalSize + 2;  // _padding2
   marshalSize = marshalSize + 1;  // _padding3
 
-  for (unsigned long long idx = 0; idx < _modulationParametersList.size();
+  for (uint64_t idx = 0; idx < _modulationParametersList.size();
        idx++) {
     Vector3Float listElement = _modulationParametersList[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }
 
-  for (unsigned long long idx = 0; idx < _antennaPatternList.size(); idx++) {
+  for (uint64_t idx = 0; idx < _antennaPatternList.size(); idx++) {
     Vector3Float listElement = _antennaPatternList[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

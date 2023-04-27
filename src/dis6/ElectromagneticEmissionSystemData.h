@@ -2,11 +2,11 @@
 
 #include <vector>
 
-#include <dis6/ElectromagneticEmissionBeamData.h>
-#include <dis6/EmitterSystem.h>
-#include <dis6/Vector3Float.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/ElectromagneticEmissionBeamData.h"
+#include "dis6/EmitterSystem.h"
+#include "dis6/Vector3Float.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Data about one electronic system
@@ -28,7 +28,7 @@ class OPENDIS6_EXPORT ElectromagneticEmissionSystemData {
   unsigned char _numberOfBeams;
 
   /** padding. */
-  unsigned short _emissionsPadding2;
+  uint16_t _emissionsPadding2;
 
   /** This field shall specify information about a particular emitter system */
   EmitterSystem _emitterSystem;
@@ -51,8 +51,8 @@ class OPENDIS6_EXPORT ElectromagneticEmissionSystemData {
 
   unsigned char getNumberOfBeams() const;
 
-  unsigned short getEmissionsPadding2() const;
-  void setEmissionsPadding2(unsigned short pX);
+  uint16_t getEmissionsPadding2() const;
+  void setEmissionsPadding2(uint16_t pX);
 
   EmitterSystem& getEmitterSystem();
   const EmitterSystem& getEmitterSystem() const;

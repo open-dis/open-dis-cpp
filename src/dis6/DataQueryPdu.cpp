@@ -1,4 +1,4 @@
-#include <dis6/DataQueryPdu.h>
+#include "dis6/DataQueryPdu.h"
 
 using namespace DIS;
 
@@ -124,12 +124,12 @@ int DataQueryPdu::getMarshalledSize() const {
   marshalSize = marshalSize + 4;  // _numberOfFixedDatumRecords
   marshalSize = marshalSize + 4;  // _numberOfVariableDatumRecords
 
-  for (unsigned long long idx = 0; idx < _fixedDatums.size(); idx++) {
+  for (uint64_t idx = 0; idx < _fixedDatums.size(); idx++) {
     FixedDatum listElement = _fixedDatums[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }
 
-  for (unsigned long long idx = 0; idx < _variableDatums.size(); idx++) {
+  for (uint64_t idx = 0; idx < _variableDatums.size(); idx++) {
     VariableDatum listElement = _variableDatums[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

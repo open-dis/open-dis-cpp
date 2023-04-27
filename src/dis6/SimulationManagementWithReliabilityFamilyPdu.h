@@ -1,9 +1,9 @@
 #pragma once
 
-#include <dis6/EntityID.h>
-#include <dis6/Pdu.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/EntityID.h"
+#include "dis6/Pdu.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.12: Abstract superclass for reliable simulation management PDUs

@@ -1,4 +1,4 @@
-#include <dis6/GridAxisRecord.h>
+#include "dis6/GridAxisRecord.h"
 
 using namespace DIS;
 
@@ -6,15 +6,15 @@ GridAxisRecord::GridAxisRecord() : _sampleType(0), _dataRepresentation(0) {}
 
 GridAxisRecord::~GridAxisRecord() {}
 
-unsigned short GridAxisRecord::getSampleType() const { return _sampleType; }
+uint16_t GridAxisRecord::getSampleType() const { return _sampleType; }
 
-void GridAxisRecord::setSampleType(unsigned short pX) { _sampleType = pX; }
+void GridAxisRecord::setSampleType(uint16_t pX) { _sampleType = pX; }
 
-unsigned short GridAxisRecord::getDataRepresentation() const {
+uint16_t GridAxisRecord::getDataRepresentation() const {
   return _dataRepresentation;
 }
 
-void GridAxisRecord::setDataRepresentation(unsigned short pX) {
+void GridAxisRecord::setDataRepresentation(uint16_t pX) {
   _dataRepresentation = pX;
 }
 

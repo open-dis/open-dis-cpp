@@ -1,10 +1,10 @@
 #pragma once
 
-#include <dis6/Orientation.h>
-#include <dis6/SixByteChunk.h>
-#include <dis6/Vector3Double.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/Orientation.h"
+#include "dis6/SixByteChunk.h"
+#include "dis6/Vector3Double.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // 5.2.48: Linear segment parameters
@@ -29,16 +29,16 @@ class OPENDIS6_EXPORT LinearSegmentParameter {
   Orientation _orientation;
 
   /** segmentLength */
-  unsigned short _segmentLength;
+  uint16_t _segmentLength;
 
   /** segmentWidth */
-  unsigned short _segmentWidth;
+  uint16_t _segmentWidth;
 
   /** segmentHeight */
-  unsigned short _segmentHeight;
+  uint16_t _segmentHeight;
 
   /** segment Depth */
-  unsigned short _segmentDepth;
+  uint16_t _segmentDepth;
 
   /** segment Depth */
   unsigned int _pad1;
@@ -65,17 +65,17 @@ class OPENDIS6_EXPORT LinearSegmentParameter {
   const Orientation& getOrientation() const;
   void setOrientation(const Orientation& pX);
 
-  unsigned short getSegmentLength() const;
-  void setSegmentLength(unsigned short pX);
+  uint16_t getSegmentLength() const;
+  void setSegmentLength(uint16_t pX);
 
-  unsigned short getSegmentWidth() const;
-  void setSegmentWidth(unsigned short pX);
+  uint16_t getSegmentWidth() const;
+  void setSegmentWidth(uint16_t pX);
 
-  unsigned short getSegmentHeight() const;
-  void setSegmentHeight(unsigned short pX);
+  uint16_t getSegmentHeight() const;
+  void setSegmentHeight(uint16_t pX);
 
-  unsigned short getSegmentDepth() const;
-  void setSegmentDepth(unsigned short pX);
+  uint16_t getSegmentDepth() const;
+  void setSegmentDepth(uint16_t pX);
 
   unsigned int getPad1() const;
   void setPad1(unsigned int pX);

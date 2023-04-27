@@ -1,13 +1,13 @@
 #pragma once
 
-#include <dis6/EntityID.h>
-#include <dis6/EntityManagementFamilyPdu.h>
-#include <dis6/EntityType.h>
-#include <dis6/NamedLocation.h>
-#include <dis6/Relationship.h>
-#include <dis6/Vector3Float.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/EntityID.h"
+#include "dis6/EntityManagementFamilyPdu.h"
+#include "dis6/EntityType.h"
+#include "dis6/NamedLocation.h"
+#include "dis6/Relationship.h"
+#include "dis6/Vector3Float.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.9.4 The joining of two or more simulation entities is

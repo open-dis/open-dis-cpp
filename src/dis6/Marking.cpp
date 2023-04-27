@@ -1,6 +1,6 @@
 #include <cstring>
 
-#include <dis6/Marking.h>
+#include "dis6/Marking.h"
 
 using namespace DIS;
 

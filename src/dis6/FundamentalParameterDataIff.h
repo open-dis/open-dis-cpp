@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // 5.2.45. Fundamental IFF atc data
@@ -32,7 +32,7 @@ class OPENDIS6_EXPORT FundamentalParameterDataIff {
   unsigned char _applicableModes;
 
   /** padding */
-  unsigned short _pad2;
+  uint16_t _pad2;
 
   /** padding */
   unsigned char _pad3;
@@ -62,8 +62,8 @@ class OPENDIS6_EXPORT FundamentalParameterDataIff {
   unsigned char getApplicableModes() const;
   void setApplicableModes(unsigned char pX);
 
-  unsigned short getPad2() const;
-  void setPad2(unsigned short pX);
+  uint16_t getPad2() const;
+  void setPad2(uint16_t pX);
 
   unsigned char getPad3() const;
   void setPad3(unsigned char pX);

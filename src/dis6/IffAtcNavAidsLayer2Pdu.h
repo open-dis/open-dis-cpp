@@ -2,12 +2,12 @@
 
 #include <vector>
 
-#include <dis6/BeamData.h>
-#include <dis6/FundamentalParameterDataIff.h>
-#include <dis6/IffAtcNavAidsLayer1Pdu.h>
-#include <dis6/LayerHeader.h>
-#include <dis6/opendis6_export.h>
-#include <dis6/utils/DataStream.h>
+#include "dis6/BeamData.h"
+#include "dis6/FundamentalParameterDataIff.h"
+#include "dis6/IffAtcNavAidsLayer1Pdu.h"
+#include "dis6/LayerHeader.h"
+#include "dis6/opendis6_export.h"
+#include "dis6/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.7.4.2 When present, layer 2 should follow layer 1 and have the
