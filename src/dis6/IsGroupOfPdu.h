@@ -25,13 +25,13 @@ class OPENDIS6_EXPORT IsGroupOfPdu : public EntityManagementFamilyPdu {
   EntityID _groupEntityID;
 
   /** type of entities constituting the group */
-  unsigned char _groupedEntityCategory;
+  uint8_t _groupedEntityCategory;
 
   /** Number of individual entities constituting the group */
-  unsigned char _numberOfGroupedEntities;
+  uint8_t _numberOfGroupedEntities;
 
   /** padding */
-  unsigned int _pad2;
+  uint32_t _pad2;
 
   /** latitude */
   double _latitude;
@@ -55,13 +55,13 @@ class OPENDIS6_EXPORT IsGroupOfPdu : public EntityManagementFamilyPdu {
   const EntityID& getGroupEntityID() const;
   void setGroupEntityID(const EntityID& pX);
 
-  unsigned char getGroupedEntityCategory() const;
-  void setGroupedEntityCategory(unsigned char pX);
+  uint8_t getGroupedEntityCategory() const;
+  void setGroupedEntityCategory(uint8_t pX);
 
-  unsigned char getNumberOfGroupedEntities() const;
+  uint8_t getNumberOfGroupedEntities() const;
 
-  unsigned int getPad2() const;
-  void setPad2(unsigned int pX);
+  uint32_t getPad2() const;
+  void setPad2(uint32_t pX);
 
   double getLatitude() const;
   void setLatitude(double pX);

@@ -15,19 +15,19 @@ namespace DIS {
 class OPENDIS6_EXPORT Pdu {
  protected:
   /** The version of the protocol. 5=DIS-1995, 6=DIS-1998. */
-  unsigned char _protocolVersion;
+  uint8_t _protocolVersion;
 
   /** Exercise ID */
-  unsigned char _exerciseID;
+  uint8_t _exerciseID;
 
   /** Type of pdu, unique for each PDU class */
-  unsigned char _pduType;
+  uint8_t _pduType;
 
   /** value that refers to the protocol family, eg SimulationManagement, et */
-  unsigned char _protocolFamily;
+  uint8_t _protocolFamily;
 
   /** Timestamp value */
-  unsigned int _timestamp;
+  uint32_t _timestamp;
 
   /** Length, in bytes, of the PDU */
   uint16_t _length;
@@ -42,20 +42,20 @@ class OPENDIS6_EXPORT Pdu {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned char getProtocolVersion() const;
-  void setProtocolVersion(unsigned char pX);
+  uint8_t getProtocolVersion() const;
+  void setProtocolVersion(uint8_t pX);
 
-  unsigned char getExerciseID() const;
-  void setExerciseID(unsigned char pX);
+  uint8_t getExerciseID() const;
+  void setExerciseID(uint8_t pX);
 
-  unsigned char getPduType() const;
-  void setPduType(unsigned char pX);
+  uint8_t getPduType() const;
+  void setPduType(uint8_t pX);
 
-  unsigned char getProtocolFamily() const;
-  void setProtocolFamily(unsigned char pX);
+  uint8_t getProtocolFamily() const;
+  void setProtocolFamily(uint8_t pX);
 
-  unsigned int getTimestamp() const;
-  void setTimestamp(unsigned int pX);
+  uint32_t getTimestamp() const;
+  void setTimestamp(uint32_t pX);
 
   uint16_t getLength() const;
   void setLength(uint16_t pX);

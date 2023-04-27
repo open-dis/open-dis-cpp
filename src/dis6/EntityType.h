@@ -15,24 +15,24 @@ namespace DIS {
 class OPENDIS6_EXPORT EntityType {
  protected:
   /** Kind of entity */
-  unsigned char _entityKind;
+  uint8_t _entityKind;
 
   /** Domain of entity (air, surface, subsurface, space, etc) */
-  unsigned char _domain;
+  uint8_t _domain;
 
   /** country to which the design of the entity is attributed */
   uint16_t _country;
 
   /** category of entity */
-  unsigned char _category;
+  uint8_t _category;
 
   /** subcategory of entity */
-  unsigned char _subcategory;
+  uint8_t _subcategory;
 
   /** specific info based on subcategory field */
-  unsigned char _specific;
+  uint8_t _specific;
 
-  unsigned char _extra;
+  uint8_t _extra;
 
  public:
   EntityType();
@@ -41,26 +41,26 @@ class OPENDIS6_EXPORT EntityType {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned char getEntityKind() const;
-  void setEntityKind(unsigned char pX);
+  uint8_t getEntityKind() const;
+  void setEntityKind(uint8_t pX);
 
-  unsigned char getDomain() const;
-  void setDomain(unsigned char pX);
+  uint8_t getDomain() const;
+  void setDomain(uint8_t pX);
 
   uint16_t getCountry() const;
   void setCountry(uint16_t pX);
 
-  unsigned char getCategory() const;
-  void setCategory(unsigned char pX);
+  uint8_t getCategory() const;
+  void setCategory(uint8_t pX);
 
-  unsigned char getSubcategory() const;
-  void setSubcategory(unsigned char pX);
+  uint8_t getSubcategory() const;
+  void setSubcategory(uint8_t pX);
 
-  unsigned char getSpecific() const;
-  void setSpecific(unsigned char pX);
+  uint8_t getSpecific() const;
+  void setSpecific(uint8_t pX);
 
-  unsigned char getExtra() const;
-  void setExtra(unsigned char pX);
+  uint8_t getExtra() const;
+  void setExtra(uint8_t pX);
 
   virtual int getMarshalledSize() const;
 

@@ -34,10 +34,10 @@ class OPENDIS6_EXPORT ArealObjectStatePdu
   uint16_t _updateNumber;
 
   /** force ID */
-  unsigned char _forceID;
+  uint8_t _forceID;
 
   /** modifications enumeration */
-  unsigned char _modifications;
+  uint8_t _modifications;
 
   /** Object type */
   EntityType _objectType;
@@ -75,11 +75,11 @@ class OPENDIS6_EXPORT ArealObjectStatePdu
   uint16_t getUpdateNumber() const;
   void setUpdateNumber(uint16_t pX);
 
-  unsigned char getForceID() const;
-  void setForceID(unsigned char pX);
+  uint8_t getForceID() const;
+  void setForceID(uint8_t pX);
 
-  unsigned char getModifications() const;
-  void setModifications(unsigned char pX);
+  uint8_t getModifications() const;
+  void setModifications(uint8_t pX);
 
   EntityType& getObjectType();
   const EntityType& getObjectType() const;

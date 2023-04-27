@@ -42,9 +42,9 @@ uint16_t IntercomSignalPdu::getTdlType() const { return _tdlType; }
 
 void IntercomSignalPdu::setTdlType(uint16_t pX) { _tdlType = pX; }
 
-unsigned int IntercomSignalPdu::getSampleRate() const { return _sampleRate; }
+uint32_t IntercomSignalPdu::getSampleRate() const { return _sampleRate; }
 
-void IntercomSignalPdu::setSampleRate(unsigned int pX) { _sampleRate = pX; }
+void IntercomSignalPdu::setSampleRate(uint32_t pX) { _sampleRate = pX; }
 
 uint16_t IntercomSignalPdu::getDataLength() const { return _data.size(); }
 

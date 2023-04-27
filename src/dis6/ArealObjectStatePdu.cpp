@@ -45,15 +45,15 @@ void ArealObjectStatePdu::setUpdateNumber(uint16_t pX) {
   _updateNumber = pX;
 }
 
-unsigned char ArealObjectStatePdu::getForceID() const { return _forceID; }
+uint8_t ArealObjectStatePdu::getForceID() const { return _forceID; }
 
-void ArealObjectStatePdu::setForceID(unsigned char pX) { _forceID = pX; }
+void ArealObjectStatePdu::setForceID(uint8_t pX) { _forceID = pX; }
 
-unsigned char ArealObjectStatePdu::getModifications() const {
+uint8_t ArealObjectStatePdu::getModifications() const {
   return _modifications;
 }
 
-void ArealObjectStatePdu::setModifications(unsigned char pX) {
+void ArealObjectStatePdu::setModifications(uint8_t pX) {
   _modifications = pX;
 }
 

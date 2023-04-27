@@ -12,9 +12,9 @@ const EntityType& SupplyQuantity::getSupplyType() const { return _supplyType; }
 
 void SupplyQuantity::setSupplyType(const EntityType& pX) { _supplyType = pX; }
 
-unsigned char SupplyQuantity::getQuantity() const { return _quantity; }
+uint8_t SupplyQuantity::getQuantity() const { return _quantity; }
 
-void SupplyQuantity::setQuantity(unsigned char pX) { _quantity = pX; }
+void SupplyQuantity::setQuantity(uint8_t pX) { _quantity = pX; }
 
 void SupplyQuantity::marshal(DataStream& dataStream) const {
   _supplyType.marshal(dataStream);

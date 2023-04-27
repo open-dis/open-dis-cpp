@@ -23,16 +23,16 @@ class OPENDIS6_EXPORT StartResumeReliablePdu
   ClockTime _simulationTime;
 
   /** level of reliability service used for this transaction */
-  unsigned char _requiredReliabilityService;
+  uint8_t _requiredReliabilityService;
 
   /** padding */
   uint16_t _pad1;
 
   /** padding */
-  unsigned char _pad2;
+  uint8_t _pad2;
 
   /** Request ID */
-  unsigned int _requestID;
+  uint32_t _requestID;
 
  public:
   StartResumeReliablePdu();
@@ -49,17 +49,17 @@ class OPENDIS6_EXPORT StartResumeReliablePdu
   const ClockTime& getSimulationTime() const;
   void setSimulationTime(const ClockTime& pX);
 
-  unsigned char getRequiredReliabilityService() const;
-  void setRequiredReliabilityService(unsigned char pX);
+  uint8_t getRequiredReliabilityService() const;
+  void setRequiredReliabilityService(uint8_t pX);
 
   uint16_t getPad1() const;
   void setPad1(uint16_t pX);
 
-  unsigned char getPad2() const;
-  void setPad2(unsigned char pX);
+  uint8_t getPad2() const;
+  void setPad2(uint8_t pX);
 
-  unsigned int getRequestID() const;
-  void setRequestID(unsigned int pX);
+  uint32_t getRequestID() const;
+  void setRequestID(uint32_t pX);
 
   virtual int getMarshalledSize() const;
 

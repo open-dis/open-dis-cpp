@@ -22,9 +22,9 @@ uint16_t SignalPdu::getTdlType() const { return _tdlType; }
 
 void SignalPdu::setTdlType(uint16_t pX) { _tdlType = pX; }
 
-unsigned int SignalPdu::getSampleRate() const { return _sampleRate; }
+uint32_t SignalPdu::getSampleRate() const { return _sampleRate; }
 
-void SignalPdu::setSampleRate(unsigned int pX) { _sampleRate = pX; }
+void SignalPdu::setSampleRate(uint32_t pX) { _sampleRate = pX; }
 
 int16_t SignalPdu::getDataLength() const { return _data.size(); }
 

@@ -14,10 +14,10 @@ namespace DIS {
 class OPENDIS6_EXPORT RecordSet {
  protected:
   /** record ID */
-  unsigned int _recordID;
+  uint32_t _recordID;
 
   /** record set serial number */
-  unsigned int _recordSetSerialNumber;
+  uint32_t _recordSetSerialNumber;
 
   /** record length */
   uint16_t _recordLength;
@@ -29,7 +29,7 @@ class OPENDIS6_EXPORT RecordSet {
   uint16_t _recordValues;
 
   /** ^^^This is wrong--variable sized padding */
-  unsigned char _pad4;
+  uint8_t _pad4;
 
  public:
   RecordSet();
@@ -38,11 +38,11 @@ class OPENDIS6_EXPORT RecordSet {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getRecordID() const;
-  void setRecordID(unsigned int pX);
+  uint32_t getRecordID() const;
+  void setRecordID(uint32_t pX);
 
-  unsigned int getRecordSetSerialNumber() const;
-  void setRecordSetSerialNumber(unsigned int pX);
+  uint32_t getRecordSetSerialNumber() const;
+  void setRecordSetSerialNumber(uint32_t pX);
 
   uint16_t getRecordLength() const;
   void setRecordLength(uint16_t pX);
@@ -53,8 +53,8 @@ class OPENDIS6_EXPORT RecordSet {
   uint16_t getRecordValues() const;
   void setRecordValues(uint16_t pX);
 
-  unsigned char getPad4() const;
-  void setPad4(unsigned char pX);
+  uint8_t getPad4() const;
+  void setPad4(uint8_t pX);
 
   virtual int getMarshalledSize() const;
 

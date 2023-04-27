@@ -29,10 +29,10 @@ class OPENDIS6_EXPORT MinefieldStatePdu : public MinefieldFamilyPdu {
   uint16_t _minefieldSequence;
 
   /** force ID */
-  unsigned char _forceID;
+  uint8_t _forceID;
 
   /** Number of permieter points */
-  unsigned char _numberOfPerimeterPoints;
+  uint8_t _numberOfPerimeterPoints;
 
   /** type of minefield */
   EntityType _minefieldType;
@@ -72,10 +72,10 @@ class OPENDIS6_EXPORT MinefieldStatePdu : public MinefieldFamilyPdu {
   uint16_t getMinefieldSequence() const;
   void setMinefieldSequence(uint16_t pX);
 
-  unsigned char getForceID() const;
-  void setForceID(unsigned char pX);
+  uint8_t getForceID() const;
+  void setForceID(uint8_t pX);
 
-  unsigned char getNumberOfPerimeterPoints() const;
+  uint8_t getNumberOfPerimeterPoints() const;
 
   EntityType& getMinefieldType();
   const EntityType& getMinefieldType() const;

@@ -16,23 +16,23 @@ ActionResponsePdu::~ActionResponsePdu() {
   _variableDatums.clear();
 }
 
-unsigned int ActionResponsePdu::getRequestID() const { return _requestID; }
+uint32_t ActionResponsePdu::getRequestID() const { return _requestID; }
 
-void ActionResponsePdu::setRequestID(unsigned int pX) { _requestID = pX; }
+void ActionResponsePdu::setRequestID(uint32_t pX) { _requestID = pX; }
 
-unsigned int ActionResponsePdu::getRequestStatus() const {
+uint32_t ActionResponsePdu::getRequestStatus() const {
   return _requestStatus;
 }
 
-void ActionResponsePdu::setRequestStatus(unsigned int pX) {
+void ActionResponsePdu::setRequestStatus(uint32_t pX) {
   _requestStatus = pX;
 }
 
-unsigned int ActionResponsePdu::getNumberOfFixedDatumRecords() const {
+uint32_t ActionResponsePdu::getNumberOfFixedDatumRecords() const {
   return _fixedDatums.size();
 }
 
-unsigned int ActionResponsePdu::getNumberOfVariableDatumRecords() const {
+uint32_t ActionResponsePdu::getNumberOfVariableDatumRecords() const {
   return _variableDatums.size();
 }
 
@@ -66,8 +66,8 @@ void ActionResponsePdu::marshal(DataStream& dataStream) const {
       dataStream);  // Marshal information in superclass first
   dataStream << _requestID;
   dataStream << _requestStatus;
-  dataStream << (unsigned int)_fixedDatums.size();
-  dataStream << (unsigned int)_variableDatums.size();
+  dataStream << (uint32_t)_fixedDatums.size();
+  dataStream << (uint32_t)_variableDatums.size();
 
   for (size_t idx = 0; idx < _fixedDatums.size(); idx++) {
     FixedDatum x = _fixedDatums[idx];

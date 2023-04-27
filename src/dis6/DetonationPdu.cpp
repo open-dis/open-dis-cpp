@@ -72,15 +72,15 @@ void DetonationPdu::setLocationInEntityCoordinates(const Vector3Float& pX) {
   _locationInEntityCoordinates = pX;
 }
 
-unsigned char DetonationPdu::getDetonationResult() const {
+uint8_t DetonationPdu::getDetonationResult() const {
   return _detonationResult;
 }
 
-void DetonationPdu::setDetonationResult(unsigned char pX) {
+void DetonationPdu::setDetonationResult(uint8_t pX) {
   _detonationResult = pX;
 }
 
-unsigned char DetonationPdu::getNumberOfArticulationParameters() const {
+uint8_t DetonationPdu::getNumberOfArticulationParameters() const {
   return _articulationParameters.size();
 }
 
@@ -112,7 +112,7 @@ void DetonationPdu::marshal(DataStream& dataStream) const {
   _burstDescriptor.marshal(dataStream);
   _locationInEntityCoordinates.marshal(dataStream);
   dataStream << _detonationResult;
-  dataStream << (unsigned char)_articulationParameters.size();
+  dataStream << (uint8_t)_articulationParameters.size();
   dataStream << _pad;
 
   for (size_t idx = 0; idx < _articulationParameters.size(); idx++) {

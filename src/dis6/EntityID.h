@@ -11,7 +11,7 @@ namespace DIS {
 // exhausted. No entity shall  have an entity identifier number of NO_ENTITY,
 // ALL_ENTITIES, or RQST_ASSIGN_ID. The entity iden-  tifier number need not be
 // registered or retained for future exercises. The entity identifier number
-// shall be  specified by a 16-bit unsigned integer.  An entity identifier
+// shall be  specified by a 16-bit uint32_teger.  An entity identifier
 // number equal to zero with valid site and application identification shall
 // address a  simulation application. An entity identifier number equal to
 // ALL_ENTITIES shall mean all entities within  the specified site and

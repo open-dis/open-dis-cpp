@@ -14,19 +14,19 @@ namespace DIS {
 class OPENDIS6_EXPORT RadioEntityType {
  protected:
   /** Kind of entity */
-  unsigned char _entityKind;
+  uint8_t _entityKind;
 
   /** Domain of entity (air, surface, subsurface, space, etc) */
-  unsigned char _domain;
+  uint8_t _domain;
 
   /** country to which the design of the entity is attributed */
   uint16_t _country;
 
   /** category of entity */
-  unsigned char _category;
+  uint8_t _category;
 
   /** specific info based on subcategory field */
-  unsigned char _nomenclatureVersion;
+  uint8_t _nomenclatureVersion;
 
   uint16_t _nomenclature;
 
@@ -37,20 +37,20 @@ class OPENDIS6_EXPORT RadioEntityType {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned char getEntityKind() const;
-  void setEntityKind(unsigned char pX);
+  uint8_t getEntityKind() const;
+  void setEntityKind(uint8_t pX);
 
-  unsigned char getDomain() const;
-  void setDomain(unsigned char pX);
+  uint8_t getDomain() const;
+  void setDomain(uint8_t pX);
 
   uint16_t getCountry() const;
   void setCountry(uint16_t pX);
 
-  unsigned char getCategory() const;
-  void setCategory(unsigned char pX);
+  uint8_t getCategory() const;
+  void setCategory(uint8_t pX);
 
-  unsigned char getNomenclatureVersion() const;
-  void setNomenclatureVersion(unsigned char pX);
+  uint8_t getNomenclatureVersion() const;
+  void setNomenclatureVersion(uint8_t pX);
 
   uint16_t getNomenclature() const;
   void setNomenclature(uint16_t pX);

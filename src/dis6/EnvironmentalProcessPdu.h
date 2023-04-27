@@ -29,13 +29,13 @@ class OPENDIS6_EXPORT EnvironmentalProcessPdu
   EntityType _environmentType;
 
   /** model type */
-  unsigned char _modelType;
+  uint8_t _modelType;
 
   /** Environment status */
-  unsigned char _environmentStatus;
+  uint8_t _environmentStatus;
 
   /** number of environment records  */
-  unsigned char _numberOfEnvironmentRecords;
+  uint8_t _numberOfEnvironmentRecords;
 
   /** PDU sequence number for the environmentla process if pdu sequencing
    * required */
@@ -59,13 +59,13 @@ class OPENDIS6_EXPORT EnvironmentalProcessPdu
   const EntityType& getEnvironmentType() const;
   void setEnvironmentType(const EntityType& pX);
 
-  unsigned char getModelType() const;
-  void setModelType(unsigned char pX);
+  uint8_t getModelType() const;
+  void setModelType(uint8_t pX);
 
-  unsigned char getEnvironmentStatus() const;
-  void setEnvironmentStatus(unsigned char pX);
+  uint8_t getEnvironmentStatus() const;
+  void setEnvironmentStatus(uint8_t pX);
 
-  unsigned char getNumberOfEnvironmentRecords() const;
+  uint8_t getNumberOfEnvironmentRecords() const;
 
   uint16_t getSequenceNumber() const;
   void setSequenceNumber(uint16_t pX);

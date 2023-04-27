@@ -52,39 +52,39 @@ void MinefieldDataPdu::setMinefieldSequenceNumbeer(uint16_t pX) {
   _minefieldSequenceNumbeer = pX;
 }
 
-unsigned char MinefieldDataPdu::getRequestID() const { return _requestID; }
+uint8_t MinefieldDataPdu::getRequestID() const { return _requestID; }
 
-void MinefieldDataPdu::setRequestID(unsigned char pX) { _requestID = pX; }
+void MinefieldDataPdu::setRequestID(uint8_t pX) { _requestID = pX; }
 
-unsigned char MinefieldDataPdu::getPduSequenceNumber() const {
+uint8_t MinefieldDataPdu::getPduSequenceNumber() const {
   return _pduSequenceNumber;
 }
 
-void MinefieldDataPdu::setPduSequenceNumber(unsigned char pX) {
+void MinefieldDataPdu::setPduSequenceNumber(uint8_t pX) {
   _pduSequenceNumber = pX;
 }
 
-unsigned char MinefieldDataPdu::getNumberOfPdus() const {
+uint8_t MinefieldDataPdu::getNumberOfPdus() const {
   return _numberOfPdus;
 }
 
-void MinefieldDataPdu::setNumberOfPdus(unsigned char pX) { _numberOfPdus = pX; }
+void MinefieldDataPdu::setNumberOfPdus(uint8_t pX) { _numberOfPdus = pX; }
 
-unsigned char MinefieldDataPdu::getNumberOfMinesInThisPdu() const {
+uint8_t MinefieldDataPdu::getNumberOfMinesInThisPdu() const {
   return _mineLocation.size();
 }
 
-unsigned char MinefieldDataPdu::getNumberOfSensorTypes() const {
+uint8_t MinefieldDataPdu::getNumberOfSensorTypes() const {
   return _sensorTypes.size();
 }
 
-unsigned char MinefieldDataPdu::getPad2() const { return _pad2; }
+uint8_t MinefieldDataPdu::getPad2() const { return _pad2; }
 
-void MinefieldDataPdu::setPad2(unsigned char pX) { _pad2 = pX; }
+void MinefieldDataPdu::setPad2(uint8_t pX) { _pad2 = pX; }
 
-unsigned int MinefieldDataPdu::getDataFilter() const { return _dataFilter; }
+uint32_t MinefieldDataPdu::getDataFilter() const { return _dataFilter; }
 
-void MinefieldDataPdu::setDataFilter(unsigned int pX) { _dataFilter = pX; }
+void MinefieldDataPdu::setDataFilter(uint32_t pX) { _dataFilter = pX; }
 
 EntityType& MinefieldDataPdu::getMineType() { return _mineType; }
 
@@ -104,9 +104,9 @@ void MinefieldDataPdu::setSensorTypes(const std::vector<TwoByteChunk>& pX) {
   _sensorTypes = pX;
 }
 
-unsigned char MinefieldDataPdu::getPad3() const { return _pad3; }
+uint8_t MinefieldDataPdu::getPad3() const { return _pad3; }
 
-void MinefieldDataPdu::setPad3(unsigned char pX) { _pad3 = pX; }
+void MinefieldDataPdu::setPad3(uint8_t pX) { _pad3 = pX; }
 
 std::vector<Vector3Float>& MinefieldDataPdu::getMineLocation() {
   return _mineLocation;
@@ -129,8 +129,8 @@ void MinefieldDataPdu::marshal(DataStream& dataStream) const {
   dataStream << _requestID;
   dataStream << _pduSequenceNumber;
   dataStream << _numberOfPdus;
-  dataStream << (unsigned char)_mineLocation.size();
-  dataStream << (unsigned char)_sensorTypes.size();
+  dataStream << (uint8_t)_mineLocation.size();
+  dataStream << (uint8_t)_sensorTypes.size();
   dataStream << _pad2;
   dataStream << _dataFilter;
   _mineType.marshal(dataStream);

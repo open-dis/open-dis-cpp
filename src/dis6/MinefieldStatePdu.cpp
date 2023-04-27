@@ -40,11 +40,11 @@ void MinefieldStatePdu::setMinefieldSequence(uint16_t pX) {
   _minefieldSequence = pX;
 }
 
-unsigned char MinefieldStatePdu::getForceID() const { return _forceID; }
+uint8_t MinefieldStatePdu::getForceID() const { return _forceID; }
 
-void MinefieldStatePdu::setForceID(unsigned char pX) { _forceID = pX; }
+void MinefieldStatePdu::setForceID(uint8_t pX) { _forceID = pX; }
 
-unsigned char MinefieldStatePdu::getNumberOfPerimeterPoints() const {
+uint8_t MinefieldStatePdu::getNumberOfPerimeterPoints() const {
   return _perimeterPoints.size();
 }
 
@@ -126,7 +126,7 @@ void MinefieldStatePdu::marshal(DataStream& dataStream) const {
   _minefieldID.marshal(dataStream);
   dataStream << _minefieldSequence;
   dataStream << _forceID;
-  dataStream << (unsigned char)_perimeterPoints.size();
+  dataStream << (uint8_t)_perimeterPoints.size();
   _minefieldType.marshal(dataStream);
   dataStream << (uint16_t)_mineType.size();
   _minefieldLocation.marshal(dataStream);

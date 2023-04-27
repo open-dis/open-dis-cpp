@@ -15,11 +15,11 @@ LinearSegmentParameter::LinearSegmentParameter()
 
 LinearSegmentParameter::~LinearSegmentParameter() {}
 
-unsigned char LinearSegmentParameter::getSegmentNumber() const {
+uint8_t LinearSegmentParameter::getSegmentNumber() const {
   return _segmentNumber;
 }
 
-void LinearSegmentParameter::setSegmentNumber(unsigned char pX) {
+void LinearSegmentParameter::setSegmentNumber(uint8_t pX) {
   _segmentNumber = pX;
 }
 
@@ -87,9 +87,9 @@ void LinearSegmentParameter::setSegmentDepth(uint16_t pX) {
   _segmentDepth = pX;
 }
 
-unsigned int LinearSegmentParameter::getPad1() const { return _pad1; }
+uint32_t LinearSegmentParameter::getPad1() const { return _pad1; }
 
-void LinearSegmentParameter::setPad1(unsigned int pX) { _pad1 = pX; }
+void LinearSegmentParameter::setPad1(uint32_t pX) { _pad1 = pX; }
 
 void LinearSegmentParameter::marshal(DataStream& dataStream) const {
   dataStream << _segmentNumber;

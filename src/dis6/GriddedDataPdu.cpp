@@ -57,13 +57,13 @@ void GriddedDataPdu::setCoordinateSystem(uint16_t pX) {
   _coordinateSystem = pX;
 }
 
-unsigned char GriddedDataPdu::getNumberOfGridAxes() const {
+uint8_t GriddedDataPdu::getNumberOfGridAxes() const {
   return _gridDataList.size();
 }
 
-unsigned char GriddedDataPdu::getConstantGrid() const { return _constantGrid; }
+uint8_t GriddedDataPdu::getConstantGrid() const { return _constantGrid; }
 
-void GriddedDataPdu::setConstantGrid(unsigned char pX) { _constantGrid = pX; }
+void GriddedDataPdu::setConstantGrid(uint8_t pX) { _constantGrid = pX; }
 
 EntityType& GriddedDataPdu::getEnvironmentType() { return _environmentType; }
 
@@ -89,15 +89,15 @@ uint64_t GriddedDataPdu::getSampleTime() const { return _sampleTime; }
 
 void GriddedDataPdu::setSampleTime(uint64_t pX) { _sampleTime = pX; }
 
-unsigned int GriddedDataPdu::getTotalValues() const { return _totalValues; }
+uint32_t GriddedDataPdu::getTotalValues() const { return _totalValues; }
 
-void GriddedDataPdu::setTotalValues(unsigned int pX) { _totalValues = pX; }
+void GriddedDataPdu::setTotalValues(uint32_t pX) { _totalValues = pX; }
 
-unsigned char GriddedDataPdu::getVectorDimension() const {
+uint8_t GriddedDataPdu::getVectorDimension() const {
   return _vectorDimension;
 }
 
-void GriddedDataPdu::setVectorDimension(unsigned char pX) {
+void GriddedDataPdu::setVectorDimension(uint8_t pX) {
   _vectorDimension = pX;
 }
 
@@ -105,9 +105,9 @@ uint16_t GriddedDataPdu::getPadding1() const { return _padding1; }
 
 void GriddedDataPdu::setPadding1(uint16_t pX) { _padding1 = pX; }
 
-unsigned char GriddedDataPdu::getPadding2() const { return _padding2; }
+uint8_t GriddedDataPdu::getPadding2() const { return _padding2; }
 
-void GriddedDataPdu::setPadding2(unsigned char pX) { _padding2 = pX; }
+void GriddedDataPdu::setPadding2(uint8_t pX) { _padding2 = pX; }
 
 std::vector<GridAxisRecord>& GriddedDataPdu::getGridDataList() {
   return _gridDataList;
@@ -129,7 +129,7 @@ void GriddedDataPdu::marshal(DataStream& dataStream) const {
   dataStream << _pduNumber;
   dataStream << _pduTotal;
   dataStream << _coordinateSystem;
-  dataStream << (unsigned char)_gridDataList.size();
+  dataStream << (uint8_t)_gridDataList.size();
   dataStream << _constantGrid;
   _environmentType.marshal(dataStream);
   _orientation.marshal(dataStream);

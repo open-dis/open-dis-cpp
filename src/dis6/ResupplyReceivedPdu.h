@@ -25,7 +25,7 @@ class OPENDIS6_EXPORT ResupplyReceivedPdu : public LogisticsFamilyPdu {
   EntityID _supplyingEntityID;
 
   /** how many supplies are being offered */
-  unsigned char _numberOfSupplyTypes;
+  uint8_t _numberOfSupplyTypes;
 
   /** padding */
   int16_t _padding1;
@@ -50,7 +50,7 @@ class OPENDIS6_EXPORT ResupplyReceivedPdu : public LogisticsFamilyPdu {
   const EntityID& getSupplyingEntityID() const;
   void setSupplyingEntityID(const EntityID& pX);
 
-  unsigned char getNumberOfSupplyTypes() const;
+  uint8_t getNumberOfSupplyTypes() const;
 
   int16_t getPadding1() const;
   void setPadding1(int16_t pX);

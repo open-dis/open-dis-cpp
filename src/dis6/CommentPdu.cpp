@@ -14,11 +14,11 @@ CommentPdu::~CommentPdu() {
   _variableDatums.clear();
 }
 
-unsigned int CommentPdu::getNumberOfFixedDatumRecords() const {
+uint32_t CommentPdu::getNumberOfFixedDatumRecords() const {
   return _fixedDatums.size();
 }
 
-unsigned int CommentPdu::getNumberOfVariableDatumRecords() const {
+uint32_t CommentPdu::getNumberOfVariableDatumRecords() const {
   return _variableDatums.size();
 }
 
@@ -47,8 +47,8 @@ void CommentPdu::setVariableDatums(const std::vector<VariableDatum>& pX) {
 void CommentPdu::marshal(DataStream& dataStream) const {
   SimulationManagementFamilyPdu::marshal(
       dataStream);  // Marshal information in superclass first
-  dataStream << (unsigned int)_fixedDatums.size();
-  dataStream << (unsigned int)_variableDatums.size();
+  dataStream << (uint32_t)_fixedDatums.size();
+  dataStream << (uint32_t)_variableDatums.size();
 
   for (size_t idx = 0; idx < _fixedDatums.size(); idx++) {
     FixedDatum x = _fixedDatums[idx];

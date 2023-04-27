@@ -17,7 +17,7 @@ namespace DIS {
 class OPENDIS6_EXPORT LinearSegmentParameter {
  protected:
   /** number of segments */
-  unsigned char _segmentNumber;
+  uint8_t _segmentNumber;
 
   /** segment appearance */
   SixByteChunk _segmentAppearance;
@@ -41,7 +41,7 @@ class OPENDIS6_EXPORT LinearSegmentParameter {
   uint16_t _segmentDepth;
 
   /** segment Depth */
-  unsigned int _pad1;
+  uint32_t _pad1;
 
  public:
   LinearSegmentParameter();
@@ -50,8 +50,8 @@ class OPENDIS6_EXPORT LinearSegmentParameter {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned char getSegmentNumber() const;
-  void setSegmentNumber(unsigned char pX);
+  uint8_t getSegmentNumber() const;
+  void setSegmentNumber(uint8_t pX);
 
   SixByteChunk& getSegmentAppearance();
   const SixByteChunk& getSegmentAppearance() const;
@@ -77,8 +77,8 @@ class OPENDIS6_EXPORT LinearSegmentParameter {
   uint16_t getSegmentDepth() const;
   void setSegmentDepth(uint16_t pX);
 
-  unsigned int getPad1() const;
-  void setPad1(unsigned int pX);
+  uint32_t getPad1() const;
+  void setPad1(uint32_t pX);
 
   virtual int getMarshalledSize() const;
 

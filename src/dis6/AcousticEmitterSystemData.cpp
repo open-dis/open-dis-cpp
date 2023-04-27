@@ -13,15 +13,15 @@ AcousticEmitterSystemData::~AcousticEmitterSystemData() {
   _beamRecords.clear();
 }
 
-unsigned char AcousticEmitterSystemData::getEmitterSystemDataLength() const {
+uint8_t AcousticEmitterSystemData::getEmitterSystemDataLength() const {
   return _emitterSystemDataLength;
 }
 
-void AcousticEmitterSystemData::setEmitterSystemDataLength(unsigned char pX) {
+void AcousticEmitterSystemData::setEmitterSystemDataLength(uint8_t pX) {
   _emitterSystemDataLength = pX;
 }
 
-unsigned char AcousticEmitterSystemData::getNumberOfBeams() const {
+uint8_t AcousticEmitterSystemData::getNumberOfBeams() const {
   return _beamRecords.size();
 }
 
@@ -71,7 +71,7 @@ void AcousticEmitterSystemData::setBeamRecords(
 
 void AcousticEmitterSystemData::marshal(DataStream& dataStream) const {
   dataStream << _emitterSystemDataLength;
-  dataStream << (unsigned char)_beamRecords.size();
+  dataStream << (uint8_t)_beamRecords.size();
   dataStream << _pad2;
   _acousticEmitterSystem.marshal(dataStream);
   _emitterLocation.marshal(dataStream);

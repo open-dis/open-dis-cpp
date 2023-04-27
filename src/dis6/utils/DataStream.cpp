@@ -62,7 +62,7 @@ void DataStream::clear() {
 
 bool DataStream::empty() const { return _buffer.empty(); }
 
-const char& DataStream::operator[](unsigned int offset) const {
+const char& DataStream::operator[](uint32_t offset) const {
   return _buffer[_read_pos + offset];
 }
 
@@ -81,7 +81,7 @@ void DataStream::SetStream(const char* buffer, size_t length, Endian stream) {
 
   // take ownership of the data
   // copy the data, expensive!
-  for (unsigned int i = 0; i < length; ++i) {
+  for (uint32_t i = 0; i < length; ++i) {
     _buffer[i] = buffer[i];
   }
 }
@@ -108,7 +108,7 @@ void DataStream::DoFlip(char* buf, size_t bufsize) {
 }
 
 void DataStream::DoWrite(const char* buf, size_t bufsize) {
-  for (unsigned int i = 0; i < bufsize; ++i) {
+  for (uint32_t i = 0; i < bufsize; ++i) {
     // ignores the _write_pos value currently,
     // this should allow for values to always be appended to the end of the
     // buffer.
@@ -117,7 +117,7 @@ void DataStream::DoWrite(const char* buf, size_t bufsize) {
 }
 
 void DataStream::DoRead(char* ch, size_t bufsize) {
-  for (unsigned int i = 0; i < bufsize; i++) {
+  for (uint32_t i = 0; i < bufsize; i++) {
     ch[i] = _buffer.at(_read_pos + i);
   }
 }
@@ -128,7 +128,7 @@ DataStream& DataStream::operator<<(char c) {
   return *this;
 }
 
-DataStream& DataStream::operator<<(unsigned char c) {
+DataStream& DataStream::operator<<(uint8_t c) {
   WriteAlgorithm(c);
   return *this;
 }
@@ -148,7 +148,7 @@ DataStream& DataStream::operator<<(int d) {
   return *this;
 }
 
-DataStream& DataStream::operator<<(unsigned int d) {
+DataStream& DataStream::operator<<(uint32_t d) {
   WriteAlgorithm(d);
   return *this;
 }
@@ -179,7 +179,7 @@ DataStream& DataStream::operator>>(char& c) {
   return *this;
 }
 
-DataStream& DataStream::operator>>(unsigned char& c) {
+DataStream& DataStream::operator>>(uint8_t& c) {
   ReadAlgorithm(c);
   return *this;
 }
@@ -199,7 +199,7 @@ DataStream& DataStream::operator>>(int& d) {
   return *this;
 }
 
-DataStream& DataStream::operator>>(unsigned int& d) {
+DataStream& DataStream::operator>>(uint32_t& d) {
   ReadAlgorithm(d);
   return *this;
 }

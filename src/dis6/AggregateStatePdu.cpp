@@ -41,15 +41,15 @@ void AggregateStatePdu::setAggregateID(const EntityID& pX) {
   _aggregateID = pX;
 }
 
-unsigned char AggregateStatePdu::getForceID() const { return _forceID; }
+uint8_t AggregateStatePdu::getForceID() const { return _forceID; }
 
-void AggregateStatePdu::setForceID(unsigned char pX) { _forceID = pX; }
+void AggregateStatePdu::setForceID(uint8_t pX) { _forceID = pX; }
 
-unsigned char AggregateStatePdu::getAggregateState() const {
+uint8_t AggregateStatePdu::getAggregateState() const {
   return _aggregateState;
 }
 
-void AggregateStatePdu::setAggregateState(unsigned char pX) {
+void AggregateStatePdu::setAggregateState(uint8_t pX) {
   _aggregateState = pX;
 }
 
@@ -63,9 +63,9 @@ void AggregateStatePdu::setAggregateType(const EntityType& pX) {
   _aggregateType = pX;
 }
 
-unsigned int AggregateStatePdu::getFormation() const { return _formation; }
+uint32_t AggregateStatePdu::getFormation() const { return _formation; }
 
-void AggregateStatePdu::setFormation(unsigned int pX) { _formation = pX; }
+void AggregateStatePdu::setFormation(uint32_t pX) { _formation = pX; }
 
 AggregateMarking& AggregateStatePdu::getAggregateMarking() {
   return _aggregateMarking;
@@ -155,9 +155,9 @@ void AggregateStatePdu::setEntityIDList(const std::vector<EntityID>& pX) {
   _entityIDList = pX;
 }
 
-unsigned char AggregateStatePdu::getPad2() const { return _pad2; }
+uint8_t AggregateStatePdu::getPad2() const { return _pad2; }
 
-void AggregateStatePdu::setPad2(unsigned char pX) { _pad2 = pX; }
+void AggregateStatePdu::setPad2(uint8_t pX) { _pad2 = pX; }
 
 std::vector<EntityType>& AggregateStatePdu::getSilentAggregateSystemList() {
   return _silentAggregateSystemList;
@@ -187,7 +187,7 @@ void AggregateStatePdu::setSilentEntitySystemList(
   _silentEntitySystemList = pX;
 }
 
-unsigned int AggregateStatePdu::getNumberOfVariableDatumRecords() const {
+uint32_t AggregateStatePdu::getNumberOfVariableDatumRecords() const {
   return _variableDatumList.size();
 }
 
@@ -245,7 +245,7 @@ void AggregateStatePdu::marshal(DataStream& dataStream) const {
     x.marshal(dataStream);
   }
 
-  dataStream << (unsigned int)_variableDatumList.size();
+  dataStream << (uint32_t)_variableDatumList.size();
 
   for (size_t idx = 0; idx < _variableDatumList.size(); idx++) {
     VariableDatum x = _variableDatumList[idx];

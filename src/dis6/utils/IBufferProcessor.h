@@ -12,7 +12,7 @@ namespace DIS {
 class IBufferProcessor {
  public:
   virtual ~IBufferProcessor() {}
-  virtual void Process(const char* buf, unsigned int size, Endian e) = 0;
+  virtual void Process(const char* buf, uint32_t size, Endian e) = 0;
 };
 }  // namespace DIS
 

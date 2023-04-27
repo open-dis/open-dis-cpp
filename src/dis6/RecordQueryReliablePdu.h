@@ -20,25 +20,25 @@ class OPENDIS6_EXPORT RecordQueryReliablePdu
     : public SimulationManagementWithReliabilityFamilyPdu {
  protected:
   /** request ID */
-  unsigned int _requestID;
+  uint32_t _requestID;
 
   /** level of reliability service used for this transaction */
-  unsigned char _requiredReliabilityService;
+  uint8_t _requiredReliabilityService;
 
   /** padding. The spec is unclear and contradictory here. */
   uint16_t _pad1;
 
   /** padding */
-  unsigned char _pad2;
+  uint8_t _pad2;
 
   /** event type */
   uint16_t _eventType;
 
   /** time */
-  unsigned int _time;
+  uint32_t _time;
 
   /** numberOfRecords */
-  unsigned int _numberOfRecords;
+  uint32_t _numberOfRecords;
 
   /** record IDs */
   std::vector<FourByteChunk> _recordIDs;
@@ -50,25 +50,25 @@ class OPENDIS6_EXPORT RecordQueryReliablePdu
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getRequestID() const;
-  void setRequestID(unsigned int pX);
+  uint32_t getRequestID() const;
+  void setRequestID(uint32_t pX);
 
-  unsigned char getRequiredReliabilityService() const;
-  void setRequiredReliabilityService(unsigned char pX);
+  uint8_t getRequiredReliabilityService() const;
+  void setRequiredReliabilityService(uint8_t pX);
 
   uint16_t getPad1() const;
   void setPad1(uint16_t pX);
 
-  unsigned char getPad2() const;
-  void setPad2(unsigned char pX);
+  uint8_t getPad2() const;
+  void setPad2(uint8_t pX);
 
   uint16_t getEventType() const;
   void setEventType(uint16_t pX);
 
-  unsigned int getTime() const;
-  void setTime(unsigned int pX);
+  uint32_t getTime() const;
+  void setTime(uint32_t pX);
 
-  unsigned int getNumberOfRecords() const;
+  uint32_t getNumberOfRecords() const;
 
   std::vector<FourByteChunk>& getRecordIDs();
   const std::vector<FourByteChunk>& getRecordIDs() const;

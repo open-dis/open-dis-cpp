@@ -7,25 +7,25 @@ ObjectType::ObjectType()
 
 ObjectType::~ObjectType() {}
 
-unsigned char ObjectType::getEntityKind() const { return _entityKind; }
+uint8_t ObjectType::getEntityKind() const { return _entityKind; }
 
-void ObjectType::setEntityKind(unsigned char pX) { _entityKind = pX; }
+void ObjectType::setEntityKind(uint8_t pX) { _entityKind = pX; }
 
-unsigned char ObjectType::getDomain() const { return _domain; }
+uint8_t ObjectType::getDomain() const { return _domain; }
 
-void ObjectType::setDomain(unsigned char pX) { _domain = pX; }
+void ObjectType::setDomain(uint8_t pX) { _domain = pX; }
 
 uint16_t ObjectType::getCountry() const { return _country; }
 
 void ObjectType::setCountry(uint16_t pX) { _country = pX; }
 
-unsigned char ObjectType::getCategory() const { return _category; }
+uint8_t ObjectType::getCategory() const { return _category; }
 
-void ObjectType::setCategory(unsigned char pX) { _category = pX; }
+void ObjectType::setCategory(uint8_t pX) { _category = pX; }
 
-unsigned char ObjectType::getSubcategory() const { return _subcategory; }
+uint8_t ObjectType::getSubcategory() const { return _subcategory; }
 
-void ObjectType::setSubcategory(unsigned char pX) { _subcategory = pX; }
+void ObjectType::setSubcategory(uint8_t pX) { _subcategory = pX; }
 
 void ObjectType::marshal(DataStream& dataStream) const {
   dataStream << _entityKind;

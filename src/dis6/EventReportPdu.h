@@ -20,16 +20,16 @@ namespace DIS {
 class OPENDIS6_EXPORT EventReportPdu : public SimulationManagementFamilyPdu {
  protected:
   /** Type of event */
-  unsigned int _eventType;
+  uint32_t _eventType;
 
   /** padding */
-  unsigned int _padding1;
+  uint32_t _padding1;
 
   /** Number of fixed datum records */
-  unsigned int _numberOfFixedDatumRecords;
+  uint32_t _numberOfFixedDatumRecords;
 
   /** Number of variable datum records */
-  unsigned int _numberOfVariableDatumRecords;
+  uint32_t _numberOfVariableDatumRecords;
 
   /** variable length list of fixed datums */
   std::vector<FixedDatum> _fixedDatums;
@@ -44,15 +44,15 @@ class OPENDIS6_EXPORT EventReportPdu : public SimulationManagementFamilyPdu {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getEventType() const;
-  void setEventType(unsigned int pX);
+  uint32_t getEventType() const;
+  void setEventType(uint32_t pX);
 
-  unsigned int getPadding1() const;
-  void setPadding1(unsigned int pX);
+  uint32_t getPadding1() const;
+  void setPadding1(uint32_t pX);
 
-  unsigned int getNumberOfFixedDatumRecords() const;
+  uint32_t getNumberOfFixedDatumRecords() const;
 
-  unsigned int getNumberOfVariableDatumRecords() const;
+  uint32_t getNumberOfVariableDatumRecords() const;
 
   std::vector<FixedDatum>& getFixedDatums();
   const std::vector<FixedDatum>& getFixedDatums() const;

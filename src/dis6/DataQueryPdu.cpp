@@ -16,19 +16,19 @@ DataQueryPdu::~DataQueryPdu() {
   _variableDatums.clear();
 }
 
-unsigned int DataQueryPdu::getRequestID() const { return _requestID; }
+uint32_t DataQueryPdu::getRequestID() const { return _requestID; }
 
-void DataQueryPdu::setRequestID(unsigned int pX) { _requestID = pX; }
+void DataQueryPdu::setRequestID(uint32_t pX) { _requestID = pX; }
 
-unsigned int DataQueryPdu::getTimeInterval() const { return _timeInterval; }
+uint32_t DataQueryPdu::getTimeInterval() const { return _timeInterval; }
 
-void DataQueryPdu::setTimeInterval(unsigned int pX) { _timeInterval = pX; }
+void DataQueryPdu::setTimeInterval(uint32_t pX) { _timeInterval = pX; }
 
-unsigned int DataQueryPdu::getNumberOfFixedDatumRecords() const {
+uint32_t DataQueryPdu::getNumberOfFixedDatumRecords() const {
   return _fixedDatums.size();
 }
 
-unsigned int DataQueryPdu::getNumberOfVariableDatumRecords() const {
+uint32_t DataQueryPdu::getNumberOfVariableDatumRecords() const {
   return _variableDatums.size();
 }
 
@@ -59,8 +59,8 @@ void DataQueryPdu::marshal(DataStream& dataStream) const {
       dataStream);  // Marshal information in superclass first
   dataStream << _requestID;
   dataStream << _timeInterval;
-  dataStream << (unsigned int)_fixedDatums.size();
-  dataStream << (unsigned int)_variableDatums.size();
+  dataStream << (uint32_t)_fixedDatums.size();
+  dataStream << (uint32_t)_variableDatums.size();
 
   for (size_t idx = 0; idx < _fixedDatums.size(); idx++) {
     FixedDatum x = _fixedDatums[idx];

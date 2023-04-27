@@ -19,7 +19,7 @@ class OPENDIS6_EXPORT SupplyQuantity {
   EntityType _supplyType;
 
   /** quantity to be supplied */
-  unsigned char _quantity;
+  uint8_t _quantity;
 
  public:
   SupplyQuantity();
@@ -32,8 +32,8 @@ class OPENDIS6_EXPORT SupplyQuantity {
   const EntityType& getSupplyType() const;
   void setSupplyType(const EntityType& pX);
 
-  unsigned char getQuantity() const;
-  void setQuantity(unsigned char pX);
+  uint8_t getQuantity() const;
+  void setQuantity(uint8_t pX);
 
   virtual int getMarshalledSize() const;
 

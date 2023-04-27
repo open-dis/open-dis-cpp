@@ -13,25 +13,25 @@ Pdu::Pdu()
 
 Pdu::~Pdu() {}
 
-unsigned char Pdu::getProtocolVersion() const { return _protocolVersion; }
+uint8_t Pdu::getProtocolVersion() const { return _protocolVersion; }
 
-void Pdu::setProtocolVersion(unsigned char pX) { _protocolVersion = pX; }
+void Pdu::setProtocolVersion(uint8_t pX) { _protocolVersion = pX; }
 
-unsigned char Pdu::getExerciseID() const { return _exerciseID; }
+uint8_t Pdu::getExerciseID() const { return _exerciseID; }
 
-void Pdu::setExerciseID(unsigned char pX) { _exerciseID = pX; }
+void Pdu::setExerciseID(uint8_t pX) { _exerciseID = pX; }
 
-unsigned char Pdu::getPduType() const { return _pduType; }
+uint8_t Pdu::getPduType() const { return _pduType; }
 
-void Pdu::setPduType(unsigned char pX) { _pduType = pX; }
+void Pdu::setPduType(uint8_t pX) { _pduType = pX; }
 
-unsigned char Pdu::getProtocolFamily() const { return _protocolFamily; }
+uint8_t Pdu::getProtocolFamily() const { return _protocolFamily; }
 
-void Pdu::setProtocolFamily(unsigned char pX) { _protocolFamily = pX; }
+void Pdu::setProtocolFamily(uint8_t pX) { _protocolFamily = pX; }
 
-unsigned int Pdu::getTimestamp() const { return _timestamp; }
+uint32_t Pdu::getTimestamp() const { return _timestamp; }
 
-void Pdu::setTimestamp(unsigned int pX) { _timestamp = pX; }
+void Pdu::setTimestamp(uint32_t pX) { _timestamp = pX; }
 
 uint16_t Pdu::getLength() const { return this->getMarshalledSize(); }
 

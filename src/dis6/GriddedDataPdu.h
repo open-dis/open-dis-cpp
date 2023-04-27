@@ -38,10 +38,10 @@ class OPENDIS6_EXPORT GriddedDataPdu : public SyntheticEnvironmentFamilyPdu {
   uint16_t _coordinateSystem;
 
   /** number of grid axes for the environmental data */
-  unsigned char _numberOfGridAxes;
+  uint8_t _numberOfGridAxes;
 
   /** are domain grid axes identidal to those of the priveious domain update? */
-  unsigned char _constantGrid;
+  uint8_t _constantGrid;
 
   /** type of environment */
   EntityType _environmentType;
@@ -49,21 +49,21 @@ class OPENDIS6_EXPORT GriddedDataPdu : public SyntheticEnvironmentFamilyPdu {
   /** orientation of the data grid */
   Orientation _orientation;
 
-  /** valid time of the enviormental data sample, 64 bit unsigned int */
+  /** valid time of the enviormental data sample, 64 bit uint32_t */
   uint64_t _sampleTime;
 
   /** total number of all data values for all pdus for an environmental sample
    */
-  unsigned int _totalValues;
+  uint32_t _totalValues;
 
   /** total number of data values at each grid point. */
-  unsigned char _vectorDimension;
+  uint8_t _vectorDimension;
 
   /** padding */
   uint16_t _padding1;
 
   /** padding */
-  unsigned char _padding2;
+  uint8_t _padding2;
 
   /** Grid data ^^^This is wrong */
   std::vector<GridAxisRecord> _gridDataList;
@@ -91,10 +91,10 @@ class OPENDIS6_EXPORT GriddedDataPdu : public SyntheticEnvironmentFamilyPdu {
   uint16_t getCoordinateSystem() const;
   void setCoordinateSystem(uint16_t pX);
 
-  unsigned char getNumberOfGridAxes() const;
+  uint8_t getNumberOfGridAxes() const;
 
-  unsigned char getConstantGrid() const;
-  void setConstantGrid(unsigned char pX);
+  uint8_t getConstantGrid() const;
+  void setConstantGrid(uint8_t pX);
 
   EntityType& getEnvironmentType();
   const EntityType& getEnvironmentType() const;
@@ -107,17 +107,17 @@ class OPENDIS6_EXPORT GriddedDataPdu : public SyntheticEnvironmentFamilyPdu {
   uint64_t getSampleTime() const;
   void setSampleTime(uint64_t pX);
 
-  unsigned int getTotalValues() const;
-  void setTotalValues(unsigned int pX);
+  uint32_t getTotalValues() const;
+  void setTotalValues(uint32_t pX);
 
-  unsigned char getVectorDimension() const;
-  void setVectorDimension(unsigned char pX);
+  uint8_t getVectorDimension() const;
+  void setVectorDimension(uint8_t pX);
 
   uint16_t getPadding1() const;
   void setPadding1(uint16_t pX);
 
-  unsigned char getPadding2() const;
-  void setPadding2(unsigned char pX);
+  uint8_t getPadding2() const;
+  void setPadding2(uint8_t pX);
 
   std::vector<GridAxisRecord>& getGridDataList();
   const std::vector<GridAxisRecord>& getGridDataList() const;

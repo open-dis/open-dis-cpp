@@ -32,9 +32,9 @@ void StartResumePdu::setSimulationTime(const ClockTime& pX) {
   _simulationTime = pX;
 }
 
-unsigned int StartResumePdu::getRequestID() const { return _requestID; }
+uint32_t StartResumePdu::getRequestID() const { return _requestID; }
 
-void StartResumePdu::setRequestID(unsigned int pX) { _requestID = pX; }
+void StartResumePdu::setRequestID(uint32_t pX) { _requestID = pX; }
 
 void StartResumePdu::marshal(DataStream& dataStream) const {
   SimulationManagementFamilyPdu::marshal(

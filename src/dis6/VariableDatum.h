@@ -20,14 +20,14 @@ namespace DIS {
 class OPENDIS6_EXPORT VariableDatum {
  protected:
   /** ID of the variable datum */
-  unsigned int _variableDatumID;
+  uint32_t _variableDatumID;
 
   /** length of the variable datums */
-  unsigned int _variableDatumLength;
+  uint32_t _variableDatumLength;
 
   /** The variable datum data.*/
   std::vector<char> _variableDatums;
-  unsigned int _arrayLength;
+  uint32_t _arrayLength;
 
  public:
   VariableDatum();
@@ -36,17 +36,17 @@ class OPENDIS6_EXPORT VariableDatum {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getVariableDatumID() const;
-  void setVariableDatumID(unsigned int pX);
+  uint32_t getVariableDatumID() const;
+  void setVariableDatumID(uint32_t pX);
 
-  unsigned int getVariableDatumLength() const;
-  void setVariableDatumLength(unsigned int pX);
+  uint32_t getVariableDatumLength() const;
+  void setVariableDatumLength(uint32_t pX);
 
   char* getVariableDatums();
   const char* getVariableDatums() const;
-  void setVariableDatums(const char* pX, const unsigned int length);
+  void setVariableDatums(const char* pX, const uint32_t length);
 
-  virtual unsigned int getMarshalledSize() const;
+  virtual uint32_t getMarshalledSize() const;
 
   bool operator==(const VariableDatum& rhs) const;
 };

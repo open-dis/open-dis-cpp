@@ -13,15 +13,15 @@ ElectromagneticEmissionSystemData::~ElectromagneticEmissionSystemData() {
   _beamDataRecords.clear();
 }
 
-unsigned char ElectromagneticEmissionSystemData::getSystemDataLength() const {
+uint8_t ElectromagneticEmissionSystemData::getSystemDataLength() const {
   return _systemDataLength;
 }
 
-void ElectromagneticEmissionSystemData::setSystemDataLength(unsigned char pX) {
+void ElectromagneticEmissionSystemData::setSystemDataLength(uint8_t pX) {
   _systemDataLength = pX;
 }
 
-unsigned char ElectromagneticEmissionSystemData::getNumberOfBeams() const {
+uint8_t ElectromagneticEmissionSystemData::getNumberOfBeams() const {
   return _beamDataRecords.size();
 }
 
@@ -77,7 +77,7 @@ void ElectromagneticEmissionSystemData::setBeamDataRecords(
 
 void ElectromagneticEmissionSystemData::marshal(DataStream& dataStream) const {
   dataStream << _systemDataLength;
-  dataStream << (unsigned char)_beamDataRecords.size();
+  dataStream << (uint8_t)_beamDataRecords.size();
   dataStream << _emissionsPadding2;
   _emitterSystem.marshal(dataStream);
   _location.marshal(dataStream);

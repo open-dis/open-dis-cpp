@@ -31,7 +31,7 @@ class OPENDIS6_EXPORT IntercomSignalPdu : public RadioCommunicationsFamilyPdu {
   uint16_t _tdlType;
 
   /** sample rate */
-  unsigned int _sampleRate;
+  uint32_t _sampleRate;
 
   /** data length */
   uint16_t _dataLength;
@@ -62,8 +62,8 @@ class OPENDIS6_EXPORT IntercomSignalPdu : public RadioCommunicationsFamilyPdu {
   uint16_t getTdlType() const;
   void setTdlType(uint16_t pX);
 
-  unsigned int getSampleRate() const;
-  void setSampleRate(unsigned int pX);
+  uint32_t getSampleRate() const;
+  void setSampleRate(uint32_t pX);
 
   uint16_t getDataLength() const;
 

@@ -14,10 +14,10 @@ namespace DIS {
 class OPENDIS6_EXPORT LayerHeader {
  protected:
   /** Layer number */
-  unsigned char _layerNumber;
+  uint8_t _layerNumber;
 
   /** Layer speccific information enumeration */
-  unsigned char _layerSpecificInformaiton;
+  uint8_t _layerSpecificInformaiton;
 
   /** information length */
   uint16_t _length;
@@ -29,11 +29,11 @@ class OPENDIS6_EXPORT LayerHeader {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned char getLayerNumber() const;
-  void setLayerNumber(unsigned char pX);
+  uint8_t getLayerNumber() const;
+  void setLayerNumber(uint8_t pX);
 
-  unsigned char getLayerSpecificInformaiton() const;
-  void setLayerSpecificInformaiton(unsigned char pX);
+  uint8_t getLayerSpecificInformaiton() const;
+  void setLayerSpecificInformaiton(uint8_t pX);
 
   uint16_t getLength() const;
   void setLength(uint16_t pX);

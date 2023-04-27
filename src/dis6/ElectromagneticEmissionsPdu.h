@@ -32,11 +32,11 @@ class OPENDIS6_EXPORT ElectromagneticEmissionsPdu
    * state update or just data that has changed since issuance of the last
    * Electromagnetic Emission PDU [relative to the identified entity and
    * emission system(s)]. */
-  unsigned char _stateUpdateIndicator;
+  uint8_t _stateUpdateIndicator;
 
   /** This field shall specify the number of emission systems being described in
    * the current PDU. */
-  unsigned char _numberOfSystems;
+  uint8_t _numberOfSystems;
 
   /** padding */
   uint16_t _paddingForEmissionsPdu;
@@ -59,10 +59,10 @@ class OPENDIS6_EXPORT ElectromagneticEmissionsPdu
   const EventID& getEventID() const;
   void setEventID(const EventID& pX);
 
-  unsigned char getStateUpdateIndicator() const;
-  void setStateUpdateIndicator(unsigned char pX);
+  uint8_t getStateUpdateIndicator() const;
+  void setStateUpdateIndicator(uint8_t pX);
 
-  unsigned char getNumberOfSystems() const;
+  uint8_t getNumberOfSystems() const;
 
   uint16_t getPaddingForEmissionsPdu() const;
   void setPaddingForEmissionsPdu(uint16_t pX);

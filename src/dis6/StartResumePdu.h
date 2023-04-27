@@ -22,7 +22,7 @@ class OPENDIS6_EXPORT StartResumePdu : public SimulationManagementFamilyPdu {
   ClockTime _simulationTime;
 
   /** Identifier for the request */
-  unsigned int _requestID;
+  uint32_t _requestID;
 
  public:
   StartResumePdu();
@@ -39,8 +39,8 @@ class OPENDIS6_EXPORT StartResumePdu : public SimulationManagementFamilyPdu {
   const ClockTime& getSimulationTime() const;
   void setSimulationTime(const ClockTime& pX);
 
-  unsigned int getRequestID() const;
-  void setRequestID(unsigned int pX);
+  uint32_t getRequestID() const;
+  void setRequestID(uint32_t pX);
 
   virtual int getMarshalledSize() const;
 

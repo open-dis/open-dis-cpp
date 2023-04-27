@@ -15,19 +15,19 @@ VariableDatum::~VariableDatum() {
   // delete [] _variableDatums;
 }
 
-unsigned int VariableDatum::getVariableDatumID() const {
+uint32_t VariableDatum::getVariableDatumID() const {
   return _variableDatumID;
 }
 
-void VariableDatum::setVariableDatumID(unsigned int pX) {
+void VariableDatum::setVariableDatumID(uint32_t pX) {
   _variableDatumID = pX;
 }
 
-unsigned int VariableDatum::getVariableDatumLength() const {
+uint32_t VariableDatum::getVariableDatumLength() const {
   return _variableDatumLength;
 }
 
-void VariableDatum::setVariableDatumLength(unsigned int pX) {
+void VariableDatum::setVariableDatumLength(uint32_t pX) {
   _variableDatumLength = pX;
 }
 
@@ -42,12 +42,12 @@ const char* VariableDatum::getVariableDatums() const {
 }
 
 void VariableDatum::setVariableDatums(const char* x,
-                                      const unsigned int length) {
+                                      const uint32_t length) {
   // convert and store length as bits
   _variableDatumLength = length * 8;
 
   // Figure out _arrayLength (including padding to force whole 8 byte chunks)
-  unsigned int chunks = length / 8;
+  uint32_t chunks = length / 8;
   int remainder = length % 8;
   if (remainder > 0) chunks++;
   _arrayLength = chunks * 8;
@@ -90,7 +90,7 @@ void VariableDatum::unmarshal(DataStream& dataStream) {
   if (_variableDatums.size() < _arrayLength)
     _variableDatums.resize(_arrayLength);
 
-  for (unsigned int idx = 0; idx < _arrayLength; idx++) {
+  for (uint32_t idx = 0; idx < _arrayLength; idx++) {
     dataStream >> _variableDatums[idx];
     // std::cout << (int)_variableDatums[idx] << " ";
   }
@@ -121,8 +121,8 @@ bool VariableDatum::operator==(const VariableDatum& rhs) const {
   return ivarsEqual;
 }
 
-unsigned int VariableDatum::getMarshalledSize() const {
-  unsigned int marshalSize = 0;
+uint32_t VariableDatum::getMarshalledSize() const {
+  uint32_t marshalSize = 0;
 
   marshalSize = marshalSize + 4;  // _variableDatumID
   marshalSize = marshalSize + 4;  // _variableDatumLength

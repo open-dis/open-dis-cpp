@@ -27,7 +27,7 @@ class OPENDIS6_EXPORT CollisionPdu : public EntityInformationFamilyPdu {
   EventID _eventID;
 
   /** ID of event */
-  unsigned char _collisionType;
+  uint8_t _collisionType;
 
   /** some padding */
   char _pad;
@@ -60,8 +60,8 @@ class OPENDIS6_EXPORT CollisionPdu : public EntityInformationFamilyPdu {
   const EventID& getEventID() const;
   void setEventID(const EventID& pX);
 
-  unsigned char getCollisionType() const;
-  void setCollisionType(unsigned char pX);
+  uint8_t getCollisionType() const;
+  void setCollisionType(uint8_t pX);
 
   char getPad() const;
   void setPad(char pX);

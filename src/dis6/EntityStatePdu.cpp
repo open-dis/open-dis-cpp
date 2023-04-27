@@ -27,9 +27,9 @@ const EntityID& EntityStatePdu::getEntityID() const { return _entityID; }
 
 void EntityStatePdu::setEntityID(const EntityID& pX) { _entityID = pX; }
 
-unsigned char EntityStatePdu::getForceId() const { return _forceId; }
+uint8_t EntityStatePdu::getForceId() const { return _forceId; }
 
-void EntityStatePdu::setForceId(unsigned char pX) { _forceId = pX; }
+void EntityStatePdu::setForceId(uint8_t pX) { _forceId = pX; }
 
 char EntityStatePdu::getNumberOfArticulationParameters() const {
   return _articulationParameters.size();

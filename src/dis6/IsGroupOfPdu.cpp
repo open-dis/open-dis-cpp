@@ -23,21 +23,21 @@ const EntityID& IsGroupOfPdu::getGroupEntityID() const {
 
 void IsGroupOfPdu::setGroupEntityID(const EntityID& pX) { _groupEntityID = pX; }
 
-unsigned char IsGroupOfPdu::getGroupedEntityCategory() const {
+uint8_t IsGroupOfPdu::getGroupedEntityCategory() const {
   return _groupedEntityCategory;
 }
 
-void IsGroupOfPdu::setGroupedEntityCategory(unsigned char pX) {
+void IsGroupOfPdu::setGroupedEntityCategory(uint8_t pX) {
   _groupedEntityCategory = pX;
 }
 
-unsigned char IsGroupOfPdu::getNumberOfGroupedEntities() const {
+uint8_t IsGroupOfPdu::getNumberOfGroupedEntities() const {
   return _groupedEntityDescriptions.size();
 }
 
-unsigned int IsGroupOfPdu::getPad2() const { return _pad2; }
+uint32_t IsGroupOfPdu::getPad2() const { return _pad2; }
 
-void IsGroupOfPdu::setPad2(unsigned int pX) { _pad2 = pX; }
+void IsGroupOfPdu::setPad2(uint32_t pX) { _pad2 = pX; }
 
 double IsGroupOfPdu::getLatitude() const { return _latitude; }
 
@@ -66,7 +66,7 @@ void IsGroupOfPdu::marshal(DataStream& dataStream) const {
       dataStream);  // Marshal information in superclass first
   _groupEntityID.marshal(dataStream);
   dataStream << _groupedEntityCategory;
-  dataStream << (unsigned char)_groupedEntityDescriptions.size();
+  dataStream << (uint8_t)_groupedEntityDescriptions.size();
   dataStream << _pad2;
   dataStream << _latitude;
   dataStream << _longitude;

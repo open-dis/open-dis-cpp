@@ -11,19 +11,19 @@ ArticulationParameter::ArticulationParameter()
 
 ArticulationParameter::~ArticulationParameter() {}
 
-unsigned char ArticulationParameter::getParameterTypeDesignator() const {
+uint8_t ArticulationParameter::getParameterTypeDesignator() const {
   return _parameterTypeDesignator;
 }
 
-void ArticulationParameter::setParameterTypeDesignator(unsigned char pX) {
+void ArticulationParameter::setParameterTypeDesignator(uint8_t pX) {
   _parameterTypeDesignator = pX;
 }
 
-unsigned char ArticulationParameter::getChangeIndicator() const {
+uint8_t ArticulationParameter::getChangeIndicator() const {
   return _changeIndicator;
 }
 
-void ArticulationParameter::setChangeIndicator(unsigned char pX) {
+void ArticulationParameter::setChangeIndicator(uint8_t pX) {
   _changeIndicator = pX;
 }
 

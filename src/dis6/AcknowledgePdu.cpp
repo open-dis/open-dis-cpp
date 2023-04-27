@@ -24,9 +24,9 @@ uint16_t AcknowledgePdu::getResponseFlag() const { return _responseFlag; }
 
 void AcknowledgePdu::setResponseFlag(uint16_t pX) { _responseFlag = pX; }
 
-unsigned int AcknowledgePdu::getRequestID() const { return _requestID; }
+uint32_t AcknowledgePdu::getRequestID() const { return _requestID; }
 
-void AcknowledgePdu::setRequestID(unsigned int pX) { _requestID = pX; }
+void AcknowledgePdu::setRequestID(uint32_t pX) { _requestID = pX; }
 
 void AcknowledgePdu::marshal(DataStream& dataStream) const {
   SimulationManagementFamilyPdu::marshal(

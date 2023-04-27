@@ -15,7 +15,7 @@ namespace DIS {
 class OPENDIS6_EXPORT CreateEntityPdu : public SimulationManagementFamilyPdu {
  protected:
   /** Identifier for the request */
-  unsigned int _requestID;
+  uint32_t _requestID;
 
  public:
   CreateEntityPdu();
@@ -24,8 +24,8 @@ class OPENDIS6_EXPORT CreateEntityPdu : public SimulationManagementFamilyPdu {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getRequestID() const;
-  void setRequestID(unsigned int pX);
+  uint32_t getRequestID() const;
+  void setRequestID(uint32_t pX);
 
   virtual int getMarshalledSize() const;
 

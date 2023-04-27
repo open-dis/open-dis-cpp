@@ -17,19 +17,19 @@ ElectromagneticEmissionBeamData::~ElectromagneticEmissionBeamData() {
   _trackJamTargets.clear();
 }
 
-unsigned char ElectromagneticEmissionBeamData::getBeamDataLength() const {
+uint8_t ElectromagneticEmissionBeamData::getBeamDataLength() const {
   return _beamDataLength;
 }
 
-void ElectromagneticEmissionBeamData::setBeamDataLength(unsigned char pX) {
+void ElectromagneticEmissionBeamData::setBeamDataLength(uint8_t pX) {
   _beamDataLength = pX;
 }
 
-unsigned char ElectromagneticEmissionBeamData::getBeamIDNumber() const {
+uint8_t ElectromagneticEmissionBeamData::getBeamIDNumber() const {
   return _beamIDNumber;
 }
 
-void ElectromagneticEmissionBeamData::setBeamIDNumber(unsigned char pX) {
+void ElectromagneticEmissionBeamData::setBeamIDNumber(uint8_t pX) {
   _beamIDNumber = pX;
 }
 
@@ -56,36 +56,36 @@ void ElectromagneticEmissionBeamData::setFundamentalParameterData(
   _fundamentalParameterData = pX;
 }
 
-unsigned char ElectromagneticEmissionBeamData::getBeamFunction() const {
+uint8_t ElectromagneticEmissionBeamData::getBeamFunction() const {
   return _beamFunction;
 }
 
-void ElectromagneticEmissionBeamData::setBeamFunction(unsigned char pX) {
+void ElectromagneticEmissionBeamData::setBeamFunction(uint8_t pX) {
   _beamFunction = pX;
 }
 
-unsigned char ElectromagneticEmissionBeamData::getNumberOfTrackJamTargets()
+uint8_t ElectromagneticEmissionBeamData::getNumberOfTrackJamTargets()
     const {
   return _trackJamTargets.size();
 }
 
-unsigned char ElectromagneticEmissionBeamData::getHighDensityTrackJam() const {
+uint8_t ElectromagneticEmissionBeamData::getHighDensityTrackJam() const {
   return _highDensityTrackJam;
 }
 
-void ElectromagneticEmissionBeamData::setHighDensityTrackJam(unsigned char pX) {
+void ElectromagneticEmissionBeamData::setHighDensityTrackJam(uint8_t pX) {
   _highDensityTrackJam = pX;
 }
 
-unsigned char ElectromagneticEmissionBeamData::getPad4() const { return _pad4; }
+uint8_t ElectromagneticEmissionBeamData::getPad4() const { return _pad4; }
 
-void ElectromagneticEmissionBeamData::setPad4(unsigned char pX) { _pad4 = pX; }
+void ElectromagneticEmissionBeamData::setPad4(uint8_t pX) { _pad4 = pX; }
 
-unsigned int ElectromagneticEmissionBeamData::getJammingModeSequence() const {
+uint32_t ElectromagneticEmissionBeamData::getJammingModeSequence() const {
   return _jammingModeSequence;
 }
 
-void ElectromagneticEmissionBeamData::setJammingModeSequence(unsigned int pX) {
+void ElectromagneticEmissionBeamData::setJammingModeSequence(uint32_t pX) {
   _jammingModeSequence = pX;
 }
 
@@ -110,7 +110,7 @@ void ElectromagneticEmissionBeamData::marshal(DataStream& dataStream) const {
   dataStream << _beamParameterIndex;
   _fundamentalParameterData.marshal(dataStream);
   dataStream << _beamFunction;
-  dataStream << (unsigned char)_trackJamTargets.size();
+  dataStream << (uint8_t)_trackJamTargets.size();
   dataStream << _highDensityTrackJam;
   dataStream << _pad4;
   dataStream << _jammingModeSequence;

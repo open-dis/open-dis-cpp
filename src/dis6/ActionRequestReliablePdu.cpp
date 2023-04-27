@@ -19,11 +19,11 @@ ActionRequestReliablePdu::~ActionRequestReliablePdu() {
   _variableDatumRecords.clear();
 }
 
-unsigned char ActionRequestReliablePdu::getRequiredReliabilityService() const {
+uint8_t ActionRequestReliablePdu::getRequiredReliabilityService() const {
   return _requiredReliabilityService;
 }
 
-void ActionRequestReliablePdu::setRequiredReliabilityService(unsigned char pX) {
+void ActionRequestReliablePdu::setRequiredReliabilityService(uint8_t pX) {
   _requiredReliabilityService = pX;
 }
 
@@ -31,27 +31,27 @@ uint16_t ActionRequestReliablePdu::getPad1() const { return _pad1; }
 
 void ActionRequestReliablePdu::setPad1(uint16_t pX) { _pad1 = pX; }
 
-unsigned char ActionRequestReliablePdu::getPad2() const { return _pad2; }
+uint8_t ActionRequestReliablePdu::getPad2() const { return _pad2; }
 
-void ActionRequestReliablePdu::setPad2(unsigned char pX) { _pad2 = pX; }
+void ActionRequestReliablePdu::setPad2(uint8_t pX) { _pad2 = pX; }
 
-unsigned int ActionRequestReliablePdu::getRequestID() const {
+uint32_t ActionRequestReliablePdu::getRequestID() const {
   return _requestID;
 }
 
-void ActionRequestReliablePdu::setRequestID(unsigned int pX) {
+void ActionRequestReliablePdu::setRequestID(uint32_t pX) {
   _requestID = pX;
 }
 
-unsigned int ActionRequestReliablePdu::getActionID() const { return _actionID; }
+uint32_t ActionRequestReliablePdu::getActionID() const { return _actionID; }
 
-void ActionRequestReliablePdu::setActionID(unsigned int pX) { _actionID = pX; }
+void ActionRequestReliablePdu::setActionID(uint32_t pX) { _actionID = pX; }
 
-unsigned int ActionRequestReliablePdu::getNumberOfFixedDatumRecords() const {
+uint32_t ActionRequestReliablePdu::getNumberOfFixedDatumRecords() const {
   return _fixedDatumRecords.size();
 }
 
-unsigned int ActionRequestReliablePdu::getNumberOfVariableDatumRecords() const {
+uint32_t ActionRequestReliablePdu::getNumberOfVariableDatumRecords() const {
   return _variableDatumRecords.size();
 }
 
@@ -92,8 +92,8 @@ void ActionRequestReliablePdu::marshal(DataStream& dataStream) const {
   dataStream << _pad2;
   dataStream << _requestID;
   dataStream << _actionID;
-  dataStream << (unsigned int)_fixedDatumRecords.size();
-  dataStream << (unsigned int)_variableDatumRecords.size();
+  dataStream << (uint32_t)_fixedDatumRecords.size();
+  dataStream << (uint32_t)_variableDatumRecords.size();
 
   for (size_t idx = 0; idx < _fixedDatumRecords.size(); idx++) {
     FixedDatum x = _fixedDatumRecords[idx];

@@ -30,19 +30,19 @@ float FundamentalParameterDataIff::getPulseWidth() const { return _pulseWidth; }
 
 void FundamentalParameterDataIff::setPulseWidth(float pX) { _pulseWidth = pX; }
 
-unsigned int FundamentalParameterDataIff::getBurstLength() const {
+uint32_t FundamentalParameterDataIff::getBurstLength() const {
   return _burstLength;
 }
 
-void FundamentalParameterDataIff::setBurstLength(unsigned int pX) {
+void FundamentalParameterDataIff::setBurstLength(uint32_t pX) {
   _burstLength = pX;
 }
 
-unsigned char FundamentalParameterDataIff::getApplicableModes() const {
+uint8_t FundamentalParameterDataIff::getApplicableModes() const {
   return _applicableModes;
 }
 
-void FundamentalParameterDataIff::setApplicableModes(unsigned char pX) {
+void FundamentalParameterDataIff::setApplicableModes(uint8_t pX) {
   _applicableModes = pX;
 }
 
@@ -50,9 +50,9 @@ uint16_t FundamentalParameterDataIff::getPad2() const { return _pad2; }
 
 void FundamentalParameterDataIff::setPad2(uint16_t pX) { _pad2 = pX; }
 
-unsigned char FundamentalParameterDataIff::getPad3() const { return _pad3; }
+uint8_t FundamentalParameterDataIff::getPad3() const { return _pad3; }
 
-void FundamentalParameterDataIff::setPad3(unsigned char pX) { _pad3 = pX; }
+void FundamentalParameterDataIff::setPad3(uint8_t pX) { _pad3 = pX; }
 
 void FundamentalParameterDataIff::marshal(DataStream& dataStream) const {
   dataStream << _erp;

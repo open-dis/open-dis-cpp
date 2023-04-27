@@ -19,17 +19,17 @@ class OPENDIS6_EXPORT StopFreezePdu : public SimulationManagementFamilyPdu {
   ClockTime _realWorldTime;
 
   /** Reason the simulation was stopped or frozen */
-  unsigned char _reason;
+  uint8_t _reason;
 
   /** Internal behavior of the simulation and its appearance while frozento the
    * other participants */
-  unsigned char _frozenBehavior;
+  uint8_t _frozenBehavior;
 
   /** padding */
   int16_t _padding1;
 
   /** Request ID that is unique */
-  unsigned int _requestID;
+  uint32_t _requestID;
 
  public:
   StopFreezePdu();
@@ -42,17 +42,17 @@ class OPENDIS6_EXPORT StopFreezePdu : public SimulationManagementFamilyPdu {
   const ClockTime& getRealWorldTime() const;
   void setRealWorldTime(const ClockTime& pX);
 
-  unsigned char getReason() const;
-  void setReason(unsigned char pX);
+  uint8_t getReason() const;
+  void setReason(uint8_t pX);
 
-  unsigned char getFrozenBehavior() const;
-  void setFrozenBehavior(unsigned char pX);
+  uint8_t getFrozenBehavior() const;
+  void setFrozenBehavior(uint8_t pX);
 
   int16_t getPadding1() const;
   void setPadding1(int16_t pX);
 
-  unsigned int getRequestID() const;
-  void setRequestID(unsigned int pX);
+  uint32_t getRequestID() const;
+  void setRequestID(uint32_t pX);
 
   virtual int getMarshalledSize() const;
 

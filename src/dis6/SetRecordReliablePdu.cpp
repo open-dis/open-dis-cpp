@@ -14,15 +14,15 @@ SetRecordReliablePdu::SetRecordReliablePdu()
 
 SetRecordReliablePdu::~SetRecordReliablePdu() { _recordSets.clear(); }
 
-unsigned int SetRecordReliablePdu::getRequestID() const { return _requestID; }
+uint32_t SetRecordReliablePdu::getRequestID() const { return _requestID; }
 
-void SetRecordReliablePdu::setRequestID(unsigned int pX) { _requestID = pX; }
+void SetRecordReliablePdu::setRequestID(uint32_t pX) { _requestID = pX; }
 
-unsigned char SetRecordReliablePdu::getRequiredReliabilityService() const {
+uint8_t SetRecordReliablePdu::getRequiredReliabilityService() const {
   return _requiredReliabilityService;
 }
 
-void SetRecordReliablePdu::setRequiredReliabilityService(unsigned char pX) {
+void SetRecordReliablePdu::setRequiredReliabilityService(uint8_t pX) {
   _requiredReliabilityService = pX;
 }
 
@@ -30,11 +30,11 @@ uint16_t SetRecordReliablePdu::getPad1() const { return _pad1; }
 
 void SetRecordReliablePdu::setPad1(uint16_t pX) { _pad1 = pX; }
 
-unsigned char SetRecordReliablePdu::getPad2() const { return _pad2; }
+uint8_t SetRecordReliablePdu::getPad2() const { return _pad2; }
 
-void SetRecordReliablePdu::setPad2(unsigned char pX) { _pad2 = pX; }
+void SetRecordReliablePdu::setPad2(uint8_t pX) { _pad2 = pX; }
 
-unsigned int SetRecordReliablePdu::getNumberOfRecordSets() const {
+uint32_t SetRecordReliablePdu::getNumberOfRecordSets() const {
   return _recordSets.size();
 }
 
@@ -57,7 +57,7 @@ void SetRecordReliablePdu::marshal(DataStream& dataStream) const {
   dataStream << _requiredReliabilityService;
   dataStream << _pad1;
   dataStream << _pad2;
-  dataStream << (unsigned int)_recordSets.size();
+  dataStream << (uint32_t)_recordSets.size();
 
   for (size_t idx = 0; idx < _recordSets.size(); idx++) {
     RecordSet x = _recordSets[idx];

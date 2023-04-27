@@ -16,19 +16,19 @@ EventReportPdu::~EventReportPdu() {
   _variableDatums.clear();
 }
 
-unsigned int EventReportPdu::getEventType() const { return _eventType; }
+uint32_t EventReportPdu::getEventType() const { return _eventType; }
 
-void EventReportPdu::setEventType(unsigned int pX) { _eventType = pX; }
+void EventReportPdu::setEventType(uint32_t pX) { _eventType = pX; }
 
-unsigned int EventReportPdu::getPadding1() const { return _padding1; }
+uint32_t EventReportPdu::getPadding1() const { return _padding1; }
 
-void EventReportPdu::setPadding1(unsigned int pX) { _padding1 = pX; }
+void EventReportPdu::setPadding1(uint32_t pX) { _padding1 = pX; }
 
-unsigned int EventReportPdu::getNumberOfFixedDatumRecords() const {
+uint32_t EventReportPdu::getNumberOfFixedDatumRecords() const {
   return _fixedDatums.size();
 }
 
-unsigned int EventReportPdu::getNumberOfVariableDatumRecords() const {
+uint32_t EventReportPdu::getNumberOfVariableDatumRecords() const {
   return _variableDatums.size();
 }
 
@@ -61,8 +61,8 @@ void EventReportPdu::marshal(DataStream& dataStream) const {
       dataStream);  // Marshal information in superclass first
   dataStream << _eventType;
   dataStream << _padding1;
-  dataStream << (unsigned int)_fixedDatums.size();
-  dataStream << (unsigned int)_variableDatums.size();
+  dataStream << (uint32_t)_fixedDatums.size();
+  dataStream << (uint32_t)_variableDatums.size();
 
   for (size_t idx = 0; idx < _fixedDatums.size(); idx++) {
     FixedDatum x = _fixedDatums[idx];

@@ -22,37 +22,37 @@ class DataStream;
 class OPENDIS6_EXPORT IncomingMessage : public IBufferProcessor {
  public:
   /// the container type for supporting processors.
-  typedef std::multimap<unsigned char, IPacketProcessor*>
+  typedef std::multimap<uint8_t, IPacketProcessor*>
       PacketProcessorContainer;
 
   /// the container type for supporting PDU banks.
-  typedef std::multimap<unsigned char, IPduBank*> PduBankContainer;
+  typedef std::multimap<uint8_t, IPduBank*> PduBankContainer;
 
   IncomingMessage();
   ~IncomingMessage();
 
-  void Process(const char* buf, unsigned int size, Endian e);
+  void Process(const char* buf, uint32_t size, Endian e);
 
   /// registers the ipp instance to process packets with the id
   /// @return 'true' if the pair of parameters were not found in the container
   /// and were addded.  'false' if the pair was found.
-  bool AddProcessor(unsigned char id, IPacketProcessor* pp);
+  bool AddProcessor(uint8_t id, IPacketProcessor* pp);
 
   /// unregisters the ipp instance for packets with the id.  it does not clean
   /// up the delete the ipp.
   /// @return 'true' if the pair of parameters were found in the container and
   /// removed.  'false' if the pair was not found.
-  bool RemoveProcessor(unsigned char id, const IPacketProcessor* pp);
+  bool RemoveProcessor(uint8_t id, const IPacketProcessor* pp);
 
   /// registers the PDU bank instance to provide the PDU object
   /// @return 'true' if the pair of parameters were not found in the container
   /// and were addded.  'false' if the pair was found.
-  bool AddPduBank(unsigned char pdu_type, IPduBank* pduBank);
+  bool AddPduBank(uint8_t pdu_type, IPduBank* pduBank);
 
   /// unregisters the PDU bank instance
   /// @return 'true' if the pair of parameters were found in the container and
   /// removed.  'false' if the pair was not found.
-  bool RemovePduBank(unsigned char pdu_type, const IPduBank* pduBank);
+  bool RemovePduBank(uint8_t pdu_type, const IPduBank* pduBank);
 
   PacketProcessorContainer& GetProcessors();
   const PacketProcessorContainer& GetProcessors() const;
@@ -75,12 +75,12 @@ class OPENDIS6_EXPORT IncomingMessage : public IBufferProcessor {
   /// Searches the proccesor container multimap for a matching container and
   /// returns the iterator
   bool FindProccessorContainer(
-      unsigned char id, const IPacketProcessor* pp,
+      uint8_t id, const IPacketProcessor* pp,
       PacketProcessorContainer::iterator& containerIter);
 
   /// Searches the PDU bank container multimap for a matching container and
   /// returns the iterator
-  bool FindPduBankContainer(unsigned char pdu_type, const IPduBank* pduBank,
+  bool FindPduBankContainer(uint8_t pdu_type, const IPduBank* pduBank,
                             PduBankContainer::iterator& containerIter);
 };
 

@@ -13,6 +13,6 @@ class IPduBank {
   /// finds the PDU instance corresponding to the identifier
   /// @param pdu_type the 8-bit PDU type identifier
   /// @return NULL when the pdu_type is unknown.
-  virtual Pdu* GetStaticPDU(unsigned char pdu_type, DataStream& ds) = 0;
+  virtual Pdu* GetStaticPDU(uint8_t pdu_type, DataStream& ds) = 0;
 };
 }  // namespace DIS

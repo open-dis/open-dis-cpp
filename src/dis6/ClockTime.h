@@ -18,7 +18,7 @@ class OPENDIS6_EXPORT ClockTime {
   int _hour;
 
   /** Time past the hour */
-  unsigned int _timePastHour;
+  uint32_t _timePastHour;
 
  public:
   ClockTime();
@@ -30,8 +30,8 @@ class OPENDIS6_EXPORT ClockTime {
   int getHour() const;
   void setHour(int pX);
 
-  unsigned int getTimePastHour() const;
-  void setTimePastHour(unsigned int pX);
+  uint32_t getTimePastHour() const;
+  void setTimePastHour(uint32_t pX);
 
   virtual int getMarshalledSize() const;
 

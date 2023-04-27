@@ -13,11 +13,11 @@ CreateEntityReliablePdu::CreateEntityReliablePdu()
 
 CreateEntityReliablePdu::~CreateEntityReliablePdu() {}
 
-unsigned char CreateEntityReliablePdu::getRequiredReliabilityService() const {
+uint8_t CreateEntityReliablePdu::getRequiredReliabilityService() const {
   return _requiredReliabilityService;
 }
 
-void CreateEntityReliablePdu::setRequiredReliabilityService(unsigned char pX) {
+void CreateEntityReliablePdu::setRequiredReliabilityService(uint8_t pX) {
   _requiredReliabilityService = pX;
 }
 
@@ -25,15 +25,15 @@ uint16_t CreateEntityReliablePdu::getPad1() const { return _pad1; }
 
 void CreateEntityReliablePdu::setPad1(uint16_t pX) { _pad1 = pX; }
 
-unsigned char CreateEntityReliablePdu::getPad2() const { return _pad2; }
+uint8_t CreateEntityReliablePdu::getPad2() const { return _pad2; }
 
-void CreateEntityReliablePdu::setPad2(unsigned char pX) { _pad2 = pX; }
+void CreateEntityReliablePdu::setPad2(uint8_t pX) { _pad2 = pX; }
 
-unsigned int CreateEntityReliablePdu::getRequestID() const {
+uint32_t CreateEntityReliablePdu::getRequestID() const {
   return _requestID;
 }
 
-void CreateEntityReliablePdu::setRequestID(unsigned int pX) { _requestID = pX; }
+void CreateEntityReliablePdu::setRequestID(uint32_t pX) { _requestID = pX; }
 
 void CreateEntityReliablePdu::marshal(DataStream& dataStream) const {
   SimulationManagementWithReliabilityFamilyPdu::marshal(

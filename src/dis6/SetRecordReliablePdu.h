@@ -20,19 +20,19 @@ class OPENDIS6_EXPORT SetRecordReliablePdu
     : public SimulationManagementWithReliabilityFamilyPdu {
  protected:
   /** request ID */
-  unsigned int _requestID;
+  uint32_t _requestID;
 
   /** level of reliability service used for this transaction */
-  unsigned char _requiredReliabilityService;
+  uint8_t _requiredReliabilityService;
 
   /** padding. The spec is unclear and contradictory here. */
   uint16_t _pad1;
 
   /** padding */
-  unsigned char _pad2;
+  uint8_t _pad2;
 
   /** Number of record sets in list */
-  unsigned int _numberOfRecordSets;
+  uint32_t _numberOfRecordSets;
 
   /** record sets */
   std::vector<RecordSet> _recordSets;
@@ -44,19 +44,19 @@ class OPENDIS6_EXPORT SetRecordReliablePdu
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getRequestID() const;
-  void setRequestID(unsigned int pX);
+  uint32_t getRequestID() const;
+  void setRequestID(uint32_t pX);
 
-  unsigned char getRequiredReliabilityService() const;
-  void setRequiredReliabilityService(unsigned char pX);
+  uint8_t getRequiredReliabilityService() const;
+  void setRequiredReliabilityService(uint8_t pX);
 
   uint16_t getPad1() const;
   void setPad1(uint16_t pX);
 
-  unsigned char getPad2() const;
-  void setPad2(unsigned char pX);
+  uint8_t getPad2() const;
+  void setPad2(uint8_t pX);
 
-  unsigned int getNumberOfRecordSets() const;
+  uint32_t getNumberOfRecordSets() const;
 
   std::vector<RecordSet>& getRecordSets();
   const std::vector<RecordSet>& getRecordSets() const;

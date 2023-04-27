@@ -23,11 +23,11 @@ void IntercomCommunicationsParameters::setRecordLength(uint16_t pX) {
   _recordLength = pX;
 }
 
-unsigned int IntercomCommunicationsParameters::getRecordSpecificField() const {
+uint32_t IntercomCommunicationsParameters::getRecordSpecificField() const {
   return _recordSpecificField;
 }
 
-void IntercomCommunicationsParameters::setRecordSpecificField(unsigned int pX) {
+void IntercomCommunicationsParameters::setRecordSpecificField(uint32_t pX) {
   _recordSpecificField = pX;
 }
 

@@ -6,13 +6,13 @@ FixedDatum::FixedDatum() : _fixedDatumID(0), _fixedDatumValue(0) {}
 
 FixedDatum::~FixedDatum() {}
 
-unsigned int FixedDatum::getFixedDatumID() const { return _fixedDatumID; }
+uint32_t FixedDatum::getFixedDatumID() const { return _fixedDatumID; }
 
-void FixedDatum::setFixedDatumID(unsigned int pX) { _fixedDatumID = pX; }
+void FixedDatum::setFixedDatumID(uint32_t pX) { _fixedDatumID = pX; }
 
-unsigned int FixedDatum::getFixedDatumValue() const { return _fixedDatumValue; }
+uint32_t FixedDatum::getFixedDatumValue() const { return _fixedDatumValue; }
 
-void FixedDatum::setFixedDatumValue(unsigned int pX) { _fixedDatumValue = pX; }
+void FixedDatum::setFixedDatumValue(uint32_t pX) { _fixedDatumValue = pX; }
 
 void FixedDatum::marshal(DataStream& dataStream) const {
   dataStream << _fixedDatumID;

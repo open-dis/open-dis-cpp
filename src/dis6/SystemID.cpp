@@ -15,13 +15,13 @@ uint16_t SystemID::getSystemName() const { return _systemName; }
 
 void SystemID::setSystemName(uint16_t pX) { _systemName = pX; }
 
-unsigned char SystemID::getSystemMode() const { return _systemMode; }
+uint8_t SystemID::getSystemMode() const { return _systemMode; }
 
-void SystemID::setSystemMode(unsigned char pX) { _systemMode = pX; }
+void SystemID::setSystemMode(uint8_t pX) { _systemMode = pX; }
 
-unsigned char SystemID::getChangeOptions() const { return _changeOptions; }
+uint8_t SystemID::getChangeOptions() const { return _changeOptions; }
 
-void SystemID::setChangeOptions(unsigned char pX) { _changeOptions = pX; }
+void SystemID::setChangeOptions(uint8_t pX) { _changeOptions = pX; }
 
 void SystemID::marshal(DataStream& dataStream) const {
   dataStream << _systemType;

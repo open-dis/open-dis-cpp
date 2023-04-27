@@ -18,7 +18,7 @@ class OPENDIS6_EXPORT AcousticBeamData {
   uint16_t _beamDataLength;
 
   /** beamIDNumber */
-  unsigned char _beamIDNumber;
+  uint8_t _beamIDNumber;
 
   /** padding */
   uint16_t _pad2;
@@ -36,8 +36,8 @@ class OPENDIS6_EXPORT AcousticBeamData {
   uint16_t getBeamDataLength() const;
   void setBeamDataLength(uint16_t pX);
 
-  unsigned char getBeamIDNumber() const;
-  void setBeamIDNumber(unsigned char pX);
+  uint8_t getBeamIDNumber() const;
+  void setBeamIDNumber(uint8_t pX);
 
   uint16_t getPad2() const;
   void setPad2(uint16_t pX);

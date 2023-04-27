@@ -14,16 +14,16 @@ namespace DIS {
 class OPENDIS6_EXPORT IffFundamentalData {
  protected:
   /** system status */
-  unsigned char _systemStatus;
+  uint8_t _systemStatus;
 
   /** Alternate parameter 4 */
-  unsigned char _alternateParameter4;
+  uint8_t _alternateParameter4;
 
   /** eight boolean fields */
-  unsigned char _informationLayers;
+  uint8_t _informationLayers;
 
   /** enumeration */
-  unsigned char _modifier;
+  uint8_t _modifier;
 
   /** parameter, enumeration */
   uint16_t _parameter1;
@@ -50,17 +50,17 @@ class OPENDIS6_EXPORT IffFundamentalData {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned char getSystemStatus() const;
-  void setSystemStatus(unsigned char pX);
+  uint8_t getSystemStatus() const;
+  void setSystemStatus(uint8_t pX);
 
-  unsigned char getAlternateParameter4() const;
-  void setAlternateParameter4(unsigned char pX);
+  uint8_t getAlternateParameter4() const;
+  void setAlternateParameter4(uint8_t pX);
 
-  unsigned char getInformationLayers() const;
-  void setInformationLayers(unsigned char pX);
+  uint8_t getInformationLayers() const;
+  void setInformationLayers(uint8_t pX);
 
-  unsigned char getModifier() const;
-  void setModifier(unsigned char pX);
+  uint8_t getModifier() const;
+  void setModifier(uint8_t pX);
 
   uint16_t getParameter1() const;
   void setParameter1(uint16_t pX);

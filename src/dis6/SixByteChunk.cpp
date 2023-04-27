@@ -39,7 +39,7 @@ void SixByteChunk::unmarshal(DataStream& dataStream) {
 bool SixByteChunk::operator==(const SixByteChunk& rhs) const {
   bool ivarsEqual = true;
 
-  for (unsigned char idx = 0; idx < 6; idx++) {
+  for (uint8_t idx = 0; idx < 6; idx++) {
     if (!(_otherParameters[idx] == rhs._otherParameters[idx]))
       ivarsEqual = false;
   }

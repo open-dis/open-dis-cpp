@@ -15,19 +15,19 @@ void AcousticEmitterSystem::setAcousticName(uint16_t pX) {
   _acousticName = pX;
 }
 
-unsigned char AcousticEmitterSystem::getAcousticFunction() const {
+uint8_t AcousticEmitterSystem::getAcousticFunction() const {
   return _acousticFunction;
 }
 
-void AcousticEmitterSystem::setAcousticFunction(unsigned char pX) {
+void AcousticEmitterSystem::setAcousticFunction(uint8_t pX) {
   _acousticFunction = pX;
 }
 
-unsigned char AcousticEmitterSystem::getAcousticID() const {
+uint8_t AcousticEmitterSystem::getAcousticID() const {
   return _acousticID;
 }
 
-void AcousticEmitterSystem::setAcousticID(unsigned char pX) {
+void AcousticEmitterSystem::setAcousticID(uint8_t pX) {
   _acousticID = pX;
 }
 

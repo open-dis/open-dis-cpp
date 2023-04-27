@@ -39,7 +39,7 @@ void TwoByteChunk::unmarshal(DataStream& dataStream) {
 bool TwoByteChunk::operator==(const TwoByteChunk& rhs) const {
   bool ivarsEqual = true;
 
-  for (unsigned char idx = 0; idx < 2; idx++) {
+  for (uint8_t idx = 0; idx < 2; idx++) {
     if (!(_otherParameters[idx] == rhs._otherParameters[idx]))
       ivarsEqual = false;
   }

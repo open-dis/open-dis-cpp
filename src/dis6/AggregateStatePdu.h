@@ -32,16 +32,16 @@ class OPENDIS6_EXPORT AggregateStatePdu : public EntityManagementFamilyPdu {
   EntityID _aggregateID;
 
   /** force ID */
-  unsigned char _forceID;
+  uint8_t _forceID;
 
   /** state of aggregate */
-  unsigned char _aggregateState;
+  uint8_t _aggregateState;
 
   /** entity type of the aggregated entities */
   EntityType _aggregateType;
 
   /** formation of aggregated entities */
-  unsigned int _formation;
+  uint32_t _formation;
 
   /** marking for aggregate; first char is charset type, rest is char data */
   AggregateMarking _aggregateMarking;
@@ -79,7 +79,7 @@ class OPENDIS6_EXPORT AggregateStatePdu : public EntityManagementFamilyPdu {
 
   /** ^^^padding to put the start of the next list on a 32 bit boundary. This
    * needs to be fixed */
-  unsigned char _pad2;
+  uint8_t _pad2;
 
   /** silent entity types */
   std::vector<EntityType> _silentAggregateSystemList;
@@ -88,7 +88,7 @@ class OPENDIS6_EXPORT AggregateStatePdu : public EntityManagementFamilyPdu {
   std::vector<EntityType> _silentEntitySystemList;
 
   /** number of variable datum records */
-  unsigned int _numberOfVariableDatumRecords;
+  uint32_t _numberOfVariableDatumRecords;
 
   /** variableDatums */
   std::vector<VariableDatum> _variableDatumList;
@@ -104,18 +104,18 @@ class OPENDIS6_EXPORT AggregateStatePdu : public EntityManagementFamilyPdu {
   const EntityID& getAggregateID() const;
   void setAggregateID(const EntityID& pX);
 
-  unsigned char getForceID() const;
-  void setForceID(unsigned char pX);
+  uint8_t getForceID() const;
+  void setForceID(uint8_t pX);
 
-  unsigned char getAggregateState() const;
-  void setAggregateState(unsigned char pX);
+  uint8_t getAggregateState() const;
+  void setAggregateState(uint8_t pX);
 
   EntityType& getAggregateType();
   const EntityType& getAggregateType() const;
   void setAggregateType(const EntityType& pX);
 
-  unsigned int getFormation() const;
-  void setFormation(unsigned int pX);
+  uint32_t getFormation() const;
+  void setFormation(uint32_t pX);
 
   AggregateMarking& getAggregateMarking();
   const AggregateMarking& getAggregateMarking() const;
@@ -153,8 +153,8 @@ class OPENDIS6_EXPORT AggregateStatePdu : public EntityManagementFamilyPdu {
   const std::vector<EntityID>& getEntityIDList() const;
   void setEntityIDList(const std::vector<EntityID>& pX);
 
-  unsigned char getPad2() const;
-  void setPad2(unsigned char pX);
+  uint8_t getPad2() const;
+  void setPad2(uint8_t pX);
 
   std::vector<EntityType>& getSilentAggregateSystemList();
   const std::vector<EntityType>& getSilentAggregateSystemList() const;
@@ -164,7 +164,7 @@ class OPENDIS6_EXPORT AggregateStatePdu : public EntityManagementFamilyPdu {
   const std::vector<EntityType>& getSilentEntitySystemList() const;
   void setSilentEntitySystemList(const std::vector<EntityType>& pX);
 
-  unsigned int getNumberOfVariableDatumRecords() const;
+  uint32_t getNumberOfVariableDatumRecords() const;
 
   std::vector<VariableDatum>& getVariableDatumList();
   const std::vector<VariableDatum>& getVariableDatumList() const;

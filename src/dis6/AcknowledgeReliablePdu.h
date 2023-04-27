@@ -23,7 +23,7 @@ class OPENDIS6_EXPORT AcknowledgeReliablePdu
   uint16_t _responseFlag;
 
   /** Request ID */
-  unsigned int _requestID;
+  uint32_t _requestID;
 
  public:
   AcknowledgeReliablePdu();
@@ -38,8 +38,8 @@ class OPENDIS6_EXPORT AcknowledgeReliablePdu
   uint16_t getResponseFlag() const;
   void setResponseFlag(uint16_t pX);
 
-  unsigned int getRequestID() const;
-  void setRequestID(unsigned int pX);
+  uint32_t getRequestID() const;
+  void setRequestID(uint32_t pX);
 
   virtual int getMarshalledSize() const;
 

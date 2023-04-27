@@ -11,13 +11,13 @@ using namespace DIS;
 
 // the DIS specification says the type is known for all PDUs at the 3rd byte of
 // the PDU buffer.
-const unsigned int PDU_TYPE_POSITION = 2;
+const uint32_t PDU_TYPE_POSITION = 2;
 
 IncomingMessage::IncomingMessage() : _processors(), _pduBanks() {}
 
 IncomingMessage::~IncomingMessage() {}
 
-void IncomingMessage::Process(const char* buf, unsigned int size, Endian e) {
+void IncomingMessage::Process(const char* buf, uint32_t size, Endian e) {
   if (size < 1) {
     return;
   }
@@ -25,7 +25,7 @@ void IncomingMessage::Process(const char* buf, unsigned int size, Endian e) {
   DataStream ds(buf, size, e);
 
   while (ds.GetReadPos() < ds.size()) {
-    unsigned char pdu_type = ds[PDU_TYPE_POSITION];
+    uint8_t pdu_type = ds[PDU_TYPE_POSITION];
     SwitchOnType(static_cast<DIS::PDUType>(pdu_type), ds);
   }
 }
@@ -63,7 +63,7 @@ void IncomingMessage::SwitchOnType(DIS::PDUType pdu_type, DataStream& ds) {
   }
 }
 
-bool IncomingMessage::AddProcessor(unsigned char id, IPacketProcessor* pp) {
+bool IncomingMessage::AddProcessor(uint8_t id, IPacketProcessor* pp) {
   PacketProcessorContainer::value_type candidate(id, pp);
   PacketProcessorContainer::iterator containerIter;
 
@@ -78,7 +78,7 @@ bool IncomingMessage::AddProcessor(unsigned char id, IPacketProcessor* pp) {
 
 ///\todo add proper support for erasing from a multimap.
 ///\warning erases any processor registered for the id
-bool IncomingMessage::RemoveProcessor(unsigned char id,
+bool IncomingMessage::RemoveProcessor(uint8_t id,
                                       const IPacketProcessor* pp) {
   PacketProcessorContainer::iterator containerIter;
 
@@ -92,7 +92,7 @@ bool IncomingMessage::RemoveProcessor(unsigned char id,
   return false;
 }
 
-bool IncomingMessage::AddPduBank(unsigned char id, IPduBank* pduBank) {
+bool IncomingMessage::AddPduBank(uint8_t id, IPduBank* pduBank) {
   PduBankContainer::value_type candidate(id, pduBank);
   PduBankContainer::iterator containerIter;
 
@@ -107,7 +107,7 @@ bool IncomingMessage::AddPduBank(unsigned char id, IPduBank* pduBank) {
 
 ///\todo add proper support for erasing from a multimap.
 ///\warning erases any PDU bank registered PDU type
-bool IncomingMessage::RemovePduBank(unsigned char id, const IPduBank* pduBank) {
+bool IncomingMessage::RemovePduBank(uint8_t id, const IPduBank* pduBank) {
   PduBankContainer::iterator containerIter;
 
   if (FindPduBankContainer(id, pduBank, containerIter)) {
@@ -138,7 +138,7 @@ const IncomingMessage::PduBankContainer& IncomingMessage::GetPduBanks() const {
 }
 
 bool IncomingMessage::FindProccessorContainer(
-    unsigned char id, const IPacketProcessor* pp,
+    uint8_t id, const IPacketProcessor* pp,
     PacketProcessorContainer::iterator& containerIter) {
   PacketProcessIteratorPair iterPair = _processors.equal_range(id);
 
@@ -159,7 +159,7 @@ bool IncomingMessage::FindProccessorContainer(
 }
 
 bool IncomingMessage::FindPduBankContainer(
-    unsigned char pdu_type, const IPduBank* pduBank,
+    uint8_t pdu_type, const IPduBank* pduBank,
     PduBankContainer::iterator& containerIter) {
   PduBankIteratorPair iterPair = _pduBanks.equal_range(pdu_type);
 

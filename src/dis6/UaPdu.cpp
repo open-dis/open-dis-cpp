@@ -50,19 +50,19 @@ void UaPdu::setPassiveParameterIndex(uint16_t pX) {
   _passiveParameterIndex = pX;
 }
 
-unsigned char UaPdu::getPropulsionPlantConfiguration() const {
+uint8_t UaPdu::getPropulsionPlantConfiguration() const {
   return _propulsionPlantConfiguration;
 }
 
-void UaPdu::setPropulsionPlantConfiguration(unsigned char pX) {
+void UaPdu::setPropulsionPlantConfiguration(uint8_t pX) {
   _propulsionPlantConfiguration = pX;
 }
 
-unsigned char UaPdu::getNumberOfShafts() const { return _shaftRPMs.size(); }
+uint8_t UaPdu::getNumberOfShafts() const { return _shaftRPMs.size(); }
 
-unsigned char UaPdu::getNumberOfAPAs() const { return _apaData.size(); }
+uint8_t UaPdu::getNumberOfAPAs() const { return _apaData.size(); }
 
-unsigned char UaPdu::getNumberOfUAEmitterSystems() const {
+uint8_t UaPdu::getNumberOfUAEmitterSystems() const {
   return _emitterSystems.size();
 }
 
@@ -100,9 +100,9 @@ void UaPdu::marshal(DataStream& dataStream) const {
   dataStream << _pad;
   dataStream << _passiveParameterIndex;
   dataStream << _propulsionPlantConfiguration;
-  dataStream << (unsigned char)_shaftRPMs.size();
-  dataStream << (unsigned char)_apaData.size();
-  dataStream << (unsigned char)_emitterSystems.size();
+  dataStream << (uint8_t)_shaftRPMs.size();
+  dataStream << (uint8_t)_apaData.size();
+  dataStream << (uint8_t)_emitterSystems.size();
 
   for (size_t idx = 0; idx < _shaftRPMs.size(); idx++) {
     ShaftRPMs x = _shaftRPMs[idx];

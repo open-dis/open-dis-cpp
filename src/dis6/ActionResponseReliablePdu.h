@@ -20,16 +20,16 @@ class OPENDIS6_EXPORT ActionResponseReliablePdu
     : public SimulationManagementWithReliabilityFamilyPdu {
  protected:
   /** request ID */
-  unsigned int _requestID;
+  uint32_t _requestID;
 
   /** status of response */
-  unsigned int _responseStatus;
+  uint32_t _responseStatus;
 
   /** Fixed datum record count */
-  unsigned int _numberOfFixedDatumRecords;
+  uint32_t _numberOfFixedDatumRecords;
 
   /** variable datum record count */
-  unsigned int _numberOfVariableDatumRecords;
+  uint32_t _numberOfVariableDatumRecords;
 
   /** Fixed datum records */
   std::vector<FixedDatum> _fixedDatumRecords;
@@ -44,15 +44,15 @@ class OPENDIS6_EXPORT ActionResponseReliablePdu
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getRequestID() const;
-  void setRequestID(unsigned int pX);
+  uint32_t getRequestID() const;
+  void setRequestID(uint32_t pX);
 
-  unsigned int getResponseStatus() const;
-  void setResponseStatus(unsigned int pX);
+  uint32_t getResponseStatus() const;
+  void setResponseStatus(uint32_t pX);
 
-  unsigned int getNumberOfFixedDatumRecords() const;
+  uint32_t getNumberOfFixedDatumRecords() const;
 
-  unsigned int getNumberOfVariableDatumRecords() const;
+  uint32_t getNumberOfVariableDatumRecords() const;
 
   std::vector<FixedDatum>& getFixedDatumRecords();
   const std::vector<FixedDatum>& getFixedDatumRecords() const;

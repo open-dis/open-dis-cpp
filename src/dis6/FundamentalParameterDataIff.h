@@ -26,16 +26,16 @@ class OPENDIS6_EXPORT FundamentalParameterDataIff {
   float _pulseWidth;
 
   /** Burst length */
-  unsigned int _burstLength;
+  uint32_t _burstLength;
 
   /** Applicable modes enumeration */
-  unsigned char _applicableModes;
+  uint8_t _applicableModes;
 
   /** padding */
   uint16_t _pad2;
 
   /** padding */
-  unsigned char _pad3;
+  uint8_t _pad3;
 
  public:
   FundamentalParameterDataIff();
@@ -56,17 +56,17 @@ class OPENDIS6_EXPORT FundamentalParameterDataIff {
   float getPulseWidth() const;
   void setPulseWidth(float pX);
 
-  unsigned int getBurstLength() const;
-  void setBurstLength(unsigned int pX);
+  uint32_t getBurstLength() const;
+  void setBurstLength(uint32_t pX);
 
-  unsigned char getApplicableModes() const;
-  void setApplicableModes(unsigned char pX);
+  uint8_t getApplicableModes() const;
+  void setApplicableModes(uint8_t pX);
 
   uint16_t getPad2() const;
   void setPad2(uint16_t pX);
 
-  unsigned char getPad3() const;
-  void setPad3(unsigned char pX);
+  uint8_t getPad3() const;
+  void setPad3(uint8_t pX);
 
   virtual int getMarshalledSize() const;
 

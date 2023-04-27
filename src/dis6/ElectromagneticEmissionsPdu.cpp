@@ -39,15 +39,15 @@ void ElectromagneticEmissionsPdu::setEventID(const EventID& pX) {
   _eventID = pX;
 }
 
-unsigned char ElectromagneticEmissionsPdu::getStateUpdateIndicator() const {
+uint8_t ElectromagneticEmissionsPdu::getStateUpdateIndicator() const {
   return _stateUpdateIndicator;
 }
 
-void ElectromagneticEmissionsPdu::setStateUpdateIndicator(unsigned char pX) {
+void ElectromagneticEmissionsPdu::setStateUpdateIndicator(uint8_t pX) {
   _stateUpdateIndicator = pX;
 }
 
-unsigned char ElectromagneticEmissionsPdu::getNumberOfSystems() const {
+uint8_t ElectromagneticEmissionsPdu::getNumberOfSystems() const {
   return _systems.size();
 }
 
@@ -80,7 +80,7 @@ void ElectromagneticEmissionsPdu::marshal(DataStream& dataStream) const {
   _emittingEntityID.marshal(dataStream);
   _eventID.marshal(dataStream);
   dataStream << _stateUpdateIndicator;
-  dataStream << (unsigned char)_systems.size();
+  dataStream << (uint8_t)_systems.size();
   dataStream << _paddingForEmissionsPdu;
 
   for (size_t idx = 0; idx < _systems.size(); idx++) {

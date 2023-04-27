@@ -19,16 +19,16 @@ namespace DIS {
 class OPENDIS6_EXPORT ActionRequestPdu : public SimulationManagementFamilyPdu {
  protected:
   /** Request ID that is unique */
-  unsigned int _requestID;
+  uint32_t _requestID;
 
   /** identifies the action being requested */
-  unsigned int _actionID;
+  uint32_t _actionID;
 
   /** Number of fixed datum records */
-  unsigned int _numberOfFixedDatumRecords;
+  uint32_t _numberOfFixedDatumRecords;
 
   /** Number of variable datum records */
-  unsigned int _numberOfVariableDatumRecords;
+  uint32_t _numberOfVariableDatumRecords;
 
   /** variable length list of fixed datums */
   std::vector<FixedDatum> _fixedDatums;
@@ -43,15 +43,15 @@ class OPENDIS6_EXPORT ActionRequestPdu : public SimulationManagementFamilyPdu {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getRequestID() const;
-  void setRequestID(unsigned int pX);
+  uint32_t getRequestID() const;
+  void setRequestID(uint32_t pX);
 
-  unsigned int getActionID() const;
-  void setActionID(unsigned int pX);
+  uint32_t getActionID() const;
+  void setActionID(uint32_t pX);
 
-  unsigned int getNumberOfFixedDatumRecords() const;
+  uint32_t getNumberOfFixedDatumRecords() const;
 
-  unsigned int getNumberOfVariableDatumRecords() const;
+  uint32_t getNumberOfVariableDatumRecords() const;
 
   std::vector<FixedDatum>& getFixedDatums();
   const std::vector<FixedDatum>& getFixedDatums() const;

@@ -41,7 +41,7 @@ class OPENDIS6_EXPORT DataStream {
 
   /// a method for reading the stored buffer data.
   /// @param offset the index distance with respect to the current read point.
-  const char& operator[](unsigned int offset) const;
+  const char& operator[](uint32_t offset) const;
 
   /// take ownership of the data buffer.
   void SetStream(const char* buffer, size_t length, Endian order);
@@ -49,11 +49,11 @@ class OPENDIS6_EXPORT DataStream {
   // write operations
   DataStream& operator<<(bool c);
   DataStream& operator<<(char c);
-  DataStream& operator<<(unsigned char c);
+  DataStream& operator<<(uint8_t c);
   DataStream& operator<<(float c);
   DataStream& operator<<(double c);
   DataStream& operator<<(int c);
-  DataStream& operator<<(unsigned int c);
+  DataStream& operator<<(uint32_t c);
   DataStream& operator<<(int64_t c);
   DataStream& operator<<(uint64_t c);
   DataStream& operator<<(uint16_t c);
@@ -62,11 +62,11 @@ class OPENDIS6_EXPORT DataStream {
   // read operations
   DataStream& operator>>(bool& c);
   DataStream& operator>>(char& c);
-  DataStream& operator>>(unsigned char& c);
+  DataStream& operator>>(uint8_t& c);
   DataStream& operator>>(float& c);
   DataStream& operator>>(double& c);
   DataStream& operator>>(int& c);
-  DataStream& operator>>(unsigned int& c);
+  DataStream& operator>>(uint32_t& c);
   DataStream& operator>>(int64_t& c);
   DataStream& operator>>(uint64_t& c);
   DataStream& operator>>(uint16_t& c);

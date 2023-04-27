@@ -42,10 +42,10 @@ class OPENDIS6_EXPORT DetonationPdu : public WarfareFamilyPdu {
   Vector3Float _locationInEntityCoordinates;
 
   /** result of the explosion */
-  unsigned char _detonationResult;
+  uint8_t _detonationResult;
 
   /** How many articulation parameters we have */
-  unsigned char _numberOfArticulationParameters;
+  uint8_t _numberOfArticulationParameters;
 
   /** padding */
   int16_t _pad;
@@ -83,10 +83,10 @@ class OPENDIS6_EXPORT DetonationPdu : public WarfareFamilyPdu {
   const Vector3Float& getLocationInEntityCoordinates() const;
   void setLocationInEntityCoordinates(const Vector3Float& pX);
 
-  unsigned char getDetonationResult() const;
-  void setDetonationResult(unsigned char pX);
+  uint8_t getDetonationResult() const;
+  void setDetonationResult(uint8_t pX);
 
-  unsigned char getNumberOfArticulationParameters() const;
+  uint8_t getNumberOfArticulationParameters() const;
 
   int16_t getPad() const;
   void setPad(int16_t pX);

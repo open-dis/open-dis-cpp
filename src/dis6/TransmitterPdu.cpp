@@ -41,15 +41,15 @@ void TransmitterPdu::setRadioEntityType(const RadioEntityType& pX) {
   _radioEntityType = pX;
 }
 
-unsigned char TransmitterPdu::getTransmitState() const {
+uint8_t TransmitterPdu::getTransmitState() const {
   return _transmitState;
 }
 
-void TransmitterPdu::setTransmitState(unsigned char pX) { _transmitState = pX; }
+void TransmitterPdu::setTransmitState(uint8_t pX) { _transmitState = pX; }
 
-unsigned char TransmitterPdu::getInputSource() const { return _inputSource; }
+uint8_t TransmitterPdu::getInputSource() const { return _inputSource; }
 
-void TransmitterPdu::setInputSource(unsigned char pX) { _inputSource = pX; }
+void TransmitterPdu::setInputSource(uint8_t pX) { _inputSource = pX; }
 
 uint16_t TransmitterPdu::getPadding1() const { return _padding1; }
 
@@ -123,7 +123,7 @@ uint16_t TransmitterPdu::getCryptoKeyId() const { return _cryptoKeyId; }
 
 void TransmitterPdu::setCryptoKeyId(uint16_t pX) { _cryptoKeyId = pX; }
 
-unsigned char TransmitterPdu::getModulationParameterCount() const {
+uint8_t TransmitterPdu::getModulationParameterCount() const {
   return _modulationParametersList.size();
 }
 
@@ -131,9 +131,9 @@ uint16_t TransmitterPdu::getPadding2() const { return _padding2; }
 
 void TransmitterPdu::setPadding2(uint16_t pX) { _padding2 = pX; }
 
-unsigned char TransmitterPdu::getPadding3() const { return _padding3; }
+uint8_t TransmitterPdu::getPadding3() const { return _padding3; }
 
-void TransmitterPdu::setPadding3(unsigned char pX) { _padding3 = pX; }
+void TransmitterPdu::setPadding3(uint8_t pX) { _padding3 = pX; }
 
 std::vector<Vector3Float>& TransmitterPdu::getModulationParametersList() {
   return _modulationParametersList;
@@ -179,7 +179,7 @@ void TransmitterPdu::marshal(DataStream& dataStream) const {
   _modulationType.marshal(dataStream);
   dataStream << _cryptoSystem;
   dataStream << _cryptoKeyId;
-  dataStream << (unsigned char)_modulationParametersList.size();
+  dataStream << (uint8_t)_modulationParametersList.size();
   dataStream << _padding2;
   dataStream << _padding3;
 

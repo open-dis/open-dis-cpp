@@ -13,9 +13,9 @@ Marking::Marking() : _characterSet(0) {
 
 Marking::~Marking() {}
 
-unsigned char Marking::getCharacterSet() const { return _characterSet; }
+uint8_t Marking::getCharacterSet() const { return _characterSet; }
 
-void Marking::setCharacterSet(unsigned char pX) { _characterSet = pX; }
+void Marking::setCharacterSet(uint8_t pX) { _characterSet = pX; }
 
 char* Marking::getCharacters() { return _characters; }
 
@@ -55,7 +55,7 @@ bool Marking::operator==(const Marking& rhs) const {
 
   if (!(_characterSet == rhs._characterSet)) ivarsEqual = false;
 
-  for (unsigned char idx = 0; idx < 11; idx++) {
+  for (uint8_t idx = 0; idx < 11; idx++) {
     if (!(_characters[idx] == rhs._characters[idx])) ivarsEqual = false;
   }
 

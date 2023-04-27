@@ -25,33 +25,33 @@ void StopFreezeReliablePdu::setRealWorldTime(const ClockTime& pX) {
   _realWorldTime = pX;
 }
 
-unsigned char StopFreezeReliablePdu::getReason() const { return _reason; }
+uint8_t StopFreezeReliablePdu::getReason() const { return _reason; }
 
-void StopFreezeReliablePdu::setReason(unsigned char pX) { _reason = pX; }
+void StopFreezeReliablePdu::setReason(uint8_t pX) { _reason = pX; }
 
-unsigned char StopFreezeReliablePdu::getFrozenBehavior() const {
+uint8_t StopFreezeReliablePdu::getFrozenBehavior() const {
   return _frozenBehavior;
 }
 
-void StopFreezeReliablePdu::setFrozenBehavior(unsigned char pX) {
+void StopFreezeReliablePdu::setFrozenBehavior(uint8_t pX) {
   _frozenBehavior = pX;
 }
 
-unsigned char StopFreezeReliablePdu::getRequiredReliablityService() const {
+uint8_t StopFreezeReliablePdu::getRequiredReliablityService() const {
   return _requiredReliablityService;
 }
 
-void StopFreezeReliablePdu::setRequiredReliablityService(unsigned char pX) {
+void StopFreezeReliablePdu::setRequiredReliablityService(uint8_t pX) {
   _requiredReliablityService = pX;
 }
 
-unsigned char StopFreezeReliablePdu::getPad1() const { return _pad1; }
+uint8_t StopFreezeReliablePdu::getPad1() const { return _pad1; }
 
-void StopFreezeReliablePdu::setPad1(unsigned char pX) { _pad1 = pX; }
+void StopFreezeReliablePdu::setPad1(uint8_t pX) { _pad1 = pX; }
 
-unsigned int StopFreezeReliablePdu::getRequestID() const { return _requestID; }
+uint32_t StopFreezeReliablePdu::getRequestID() const { return _requestID; }
 
-void StopFreezeReliablePdu::setRequestID(unsigned int pX) { _requestID = pX; }
+void StopFreezeReliablePdu::setRequestID(uint32_t pX) { _requestID = pX; }
 
 void StopFreezeReliablePdu::marshal(DataStream& dataStream) const {
   SimulationManagementWithReliabilityFamilyPdu::marshal(

@@ -41,23 +41,23 @@ void EnvironmentalProcessPdu::setEnvironmentType(const EntityType& pX) {
   _environmentType = pX;
 }
 
-unsigned char EnvironmentalProcessPdu::getModelType() const {
+uint8_t EnvironmentalProcessPdu::getModelType() const {
   return _modelType;
 }
 
-void EnvironmentalProcessPdu::setModelType(unsigned char pX) {
+void EnvironmentalProcessPdu::setModelType(uint8_t pX) {
   _modelType = pX;
 }
 
-unsigned char EnvironmentalProcessPdu::getEnvironmentStatus() const {
+uint8_t EnvironmentalProcessPdu::getEnvironmentStatus() const {
   return _environmentStatus;
 }
 
-void EnvironmentalProcessPdu::setEnvironmentStatus(unsigned char pX) {
+void EnvironmentalProcessPdu::setEnvironmentStatus(uint8_t pX) {
   _environmentStatus = pX;
 }
 
-unsigned char EnvironmentalProcessPdu::getNumberOfEnvironmentRecords() const {
+uint8_t EnvironmentalProcessPdu::getNumberOfEnvironmentRecords() const {
   return _environmentRecords.size();
 }
 
@@ -90,7 +90,7 @@ void EnvironmentalProcessPdu::marshal(DataStream& dataStream) const {
   _environmentType.marshal(dataStream);
   dataStream << _modelType;
   dataStream << _environmentStatus;
-  dataStream << (unsigned char)_environmentRecords.size();
+  dataStream << (uint8_t)_environmentRecords.size();
   dataStream << _sequenceNumber;
 
   for (size_t idx = 0; idx < _environmentRecords.size(); idx++) {

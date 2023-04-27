@@ -45,11 +45,11 @@ void LinearObjectStatePdu::setUpdateNumber(uint16_t pX) {
   _updateNumber = pX;
 }
 
-unsigned char LinearObjectStatePdu::getForceID() const { return _forceID; }
+uint8_t LinearObjectStatePdu::getForceID() const { return _forceID; }
 
-void LinearObjectStatePdu::setForceID(unsigned char pX) { _forceID = pX; }
+void LinearObjectStatePdu::setForceID(uint8_t pX) { _forceID = pX; }
 
-unsigned char LinearObjectStatePdu::getNumberOfSegments() const {
+uint8_t LinearObjectStatePdu::getNumberOfSegments() const {
   return _linearSegmentParameters.size();
 }
 
@@ -109,7 +109,7 @@ void LinearObjectStatePdu::marshal(DataStream& dataStream) const {
   _referencedObjectID.marshal(dataStream);
   dataStream << _updateNumber;
   dataStream << _forceID;
-  dataStream << (unsigned char)_linearSegmentParameters.size();
+  dataStream << (uint8_t)_linearSegmentParameters.size();
   _requesterID.marshal(dataStream);
   _receivingID.marshal(dataStream);
   _objectType.marshal(dataStream);

@@ -12,15 +12,15 @@ RecordSet::RecordSet()
 
 RecordSet::~RecordSet() {}
 
-unsigned int RecordSet::getRecordID() const { return _recordID; }
+uint32_t RecordSet::getRecordID() const { return _recordID; }
 
-void RecordSet::setRecordID(unsigned int pX) { _recordID = pX; }
+void RecordSet::setRecordID(uint32_t pX) { _recordID = pX; }
 
-unsigned int RecordSet::getRecordSetSerialNumber() const {
+uint32_t RecordSet::getRecordSetSerialNumber() const {
   return _recordSetSerialNumber;
 }
 
-void RecordSet::setRecordSetSerialNumber(unsigned int pX) {
+void RecordSet::setRecordSetSerialNumber(uint32_t pX) {
   _recordSetSerialNumber = pX;
 }
 
@@ -36,9 +36,9 @@ uint16_t RecordSet::getRecordValues() const { return _recordValues; }
 
 void RecordSet::setRecordValues(uint16_t pX) { _recordValues = pX; }
 
-unsigned char RecordSet::getPad4() const { return _pad4; }
+uint8_t RecordSet::getPad4() const { return _pad4; }
 
-void RecordSet::setPad4(unsigned char pX) { _pad4 = pX; }
+void RecordSet::setPad4(uint8_t pX) { _pad4 = pX; }
 
 void RecordSet::marshal(DataStream& dataStream) const {
   dataStream << _recordID;

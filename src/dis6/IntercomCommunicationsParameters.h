@@ -21,7 +21,7 @@ class OPENDIS6_EXPORT IntercomCommunicationsParameters {
 
   /** Jerks. Looks like the committee is forcing a lookup of the record type
    * parameter to find out how long the field is. This is a placeholder. */
-  unsigned int _recordSpecificField;
+  uint32_t _recordSpecificField;
 
  public:
   IntercomCommunicationsParameters();
@@ -36,8 +36,8 @@ class OPENDIS6_EXPORT IntercomCommunicationsParameters {
   uint16_t getRecordLength() const;
   void setRecordLength(uint16_t pX);
 
-  unsigned int getRecordSpecificField() const;
-  void setRecordSpecificField(unsigned int pX);
+  uint32_t getRecordSpecificField() const;
+  void setRecordSpecificField(uint32_t pX);
 
   virtual int getMarshalledSize() const;
 

@@ -14,10 +14,10 @@ namespace DIS {
 class OPENDIS6_EXPORT FixedDatum {
  protected:
   /** ID of the fixed datum */
-  unsigned int _fixedDatumID;
+  uint32_t _fixedDatumID;
 
   /** Value for the fixed datum */
-  unsigned int _fixedDatumValue;
+  uint32_t _fixedDatumValue;
 
  public:
   FixedDatum();
@@ -26,11 +26,11 @@ class OPENDIS6_EXPORT FixedDatum {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getFixedDatumID() const;
-  void setFixedDatumID(unsigned int pX);
+  uint32_t getFixedDatumID() const;
+  void setFixedDatumID(uint32_t pX);
 
-  unsigned int getFixedDatumValue() const;
-  void setFixedDatumValue(unsigned int pX);
+  uint32_t getFixedDatumValue() const;
+  void setFixedDatumValue(uint32_t pX);
 
   virtual int getMarshalledSize() const;
 

@@ -11,7 +11,7 @@ class OPENDIS6_EXPORT PduBank {
   /// finds the PDU instance corresponding to the identifier
   /// @param pdu_type the 8-bit PDU type identifier
   /// @return NULL when the pdu_type is unknown.
-  ///\todo make this parameter just 'unsigned char' since that will be easier to
+  ///\todo make this parameter just 'uint8_t' since that will be easier to
   ///generate.
   static Pdu* GetStaticPDU(DIS::PDUType pdu_type);
 };
