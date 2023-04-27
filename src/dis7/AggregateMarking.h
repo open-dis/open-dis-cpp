@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // Specifies the character set used in the first byte, followed by up to 31

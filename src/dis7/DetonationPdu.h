@@ -2,15 +2,15 @@
 
 #include <vector>
 
-#include <dis7/EntityID.h>
-#include <dis7/EventIdentifier.h>
-#include <dis7/MunitionDescriptor.h>
-#include <dis7/VariableParameter.h>
-#include <dis7/Vector3Double.h>
-#include <dis7/Vector3Float.h>
-#include <dis7/WarfareFamilyPdu.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/EntityID.h"
+#include "dis7/EventIdentifier.h"
+#include "dis7/MunitionDescriptor.h"
+#include "dis7/VariableParameter.h"
+#include "dis7/Vector3Double.h"
+#include "dis7/Vector3Float.h"
+#include "dis7/WarfareFamilyPdu.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // Detonation or impact of munitions, as well as, non-munition explosions, the

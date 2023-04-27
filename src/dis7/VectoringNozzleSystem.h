@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // Operational data for describing the vectoring nozzle systems Section 6.2.96

@@ -1,9 +1,9 @@
 #pragma once
 
-#include <dis7/EntityID.h>
-#include <dis7/Vector3Double.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/EntityID.h"
+#include "dis7/Vector3Double.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // An entity's associations with other entities and/or locations. For each

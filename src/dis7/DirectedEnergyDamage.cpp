@@ -1,4 +1,4 @@
-#include <dis7/DirectedEnergyDamage.h>
+#include "dis7/DirectedEnergyDamage.h"
 
 using namespace DIS;
 

@@ -2,10 +2,10 @@
 
 #include <vector>
 
-#include <dis7/EntityID.h>
-#include <dis7/RadioCommunicationsFamilyPdu.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/EntityID.h"
+#include "dis7/RadioCommunicationsFamilyPdu.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 //  Actual transmission of intercome voice data. Section 7.7.5. COMPLETE

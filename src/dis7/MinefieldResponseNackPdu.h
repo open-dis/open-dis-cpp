@@ -2,11 +2,11 @@
 
 #include <vector>
 
-#include <dis7/EightByteChunk.h>
-#include <dis7/EntityID.h>
-#include <dis7/MinefieldFamilyPdu.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/EightByteChunk.h"
+#include "dis7/EntityID.h"
+#include "dis7/MinefieldFamilyPdu.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // proivde the means to request a retransmit of a minefield data pdu.

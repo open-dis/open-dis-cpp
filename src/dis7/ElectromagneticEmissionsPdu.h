@@ -2,13 +2,13 @@
 
 #include <vector>
 
-#include <dis7/DistributedEmissionsFamilyPdu.h>
-#include <dis7/ElectromagneticEmissionSystemData.h>
-#include <dis7/EntityID.h>
-#include <dis7/EventIdentifier.h>
-#include <dis7/Vector3Float.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/DistributedEmissionsFamilyPdu.h"
+#include "dis7/ElectromagneticEmissionSystemData.h"
+#include "dis7/EntityID.h"
+#include "dis7/EventIdentifier.h"
+#include "dis7/Vector3Float.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.7.1. Information about active electronic warfare (EW) emissions

@@ -1,4 +1,4 @@
-#include <dis7/ElectromagneticEmissionBeamData.h>
+#include "dis7/ElectromagneticEmissionBeamData.h"
 
 using namespace DIS;
 

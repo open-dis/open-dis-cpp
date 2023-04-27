@@ -2,14 +2,14 @@
 
 #include <vector>
 
-#include <dis7/EntityType.h>
-#include <dis7/EulerAngles.h>
-#include <dis7/MinefieldFamilyPdu.h>
-#include <dis7/MinefieldIdentifier.h>
-#include <dis7/Vector2Float.h>
-#include <dis7/Vector3Double.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/EntityType.h"
+#include "dis7/EulerAngles.h"
+#include "dis7/MinefieldFamilyPdu.h"
+#include "dis7/MinefieldIdentifier.h"
+#include "dis7/Vector2Float.h"
+#include "dis7/Vector3Double.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // information about the complete minefield. The minefield presence, perimiter,

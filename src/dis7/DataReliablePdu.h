@@ -2,11 +2,11 @@
 
 #include <vector>
 
-#include <dis7/FixedDatum.h>
-#include <dis7/SimulationManagementWithReliabilityFamilyPdu.h>
-#include <dis7/VariableDatum.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/FixedDatum.h"
+#include "dis7/SimulationManagementWithReliabilityFamilyPdu.h"
+#include "dis7/VariableDatum.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.12.10: issued in response to a data query R or set dataR pdu.

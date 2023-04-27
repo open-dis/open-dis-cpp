@@ -1,8 +1,8 @@
 #pragma once
 
-#include <dis7/Pdu.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/Pdu.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.7. Electromagnetic Emissions. Abstract superclass for distirubted

@@ -2,11 +2,11 @@
 
 #include <vector>
 
-#include <dis7/EntityID.h>
-#include <dis7/LogisticsFamilyPdu.h>
-#include <dis7/SupplyQuantity.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/EntityID.h"
+#include "dis7/LogisticsFamilyPdu.h"
+#include "dis7/SupplyQuantity.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // Section 7.4.4. Receipt of supplies is communicated by issuing Resupply

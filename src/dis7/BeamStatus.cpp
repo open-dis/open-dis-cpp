@@ -1,4 +1,4 @@
-#include <dis7/BeamStatus.h>
+#include "dis7/BeamStatus.h"
 
 using namespace DIS;
 

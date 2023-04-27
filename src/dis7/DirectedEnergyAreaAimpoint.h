@@ -2,10 +2,10 @@
 
 #include <vector>
 
-#include <dis7/BeamAntennaPattern.h>
-#include <dis7/DirectedEnergyTargetEnergyDeposition.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/BeamAntennaPattern.h"
+#include "dis7/DirectedEnergyTargetEnergyDeposition.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // DE Precision Aimpoint Record. NOT COMPLETE. Section 6.2.21.2

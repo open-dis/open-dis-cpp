@@ -1,4 +1,4 @@
-#include <dis7/DirectedEnergyPrecisionAimpoint.h>
+#include "dis7/DirectedEnergyPrecisionAimpoint.h"
 
 using namespace DIS;
 

@@ -2,11 +2,11 @@
 
 #include <vector>
 
-#include <dis7/DirectedEnergyDamage.h>
-#include <dis7/EntityID.h>
-#include <dis7/WarfareFamilyPdu.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/DirectedEnergyDamage.h"
+#include "dis7/EntityID.h"
+#include "dis7/WarfareFamilyPdu.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // shall be used to communicate detailed damage information sustained by an

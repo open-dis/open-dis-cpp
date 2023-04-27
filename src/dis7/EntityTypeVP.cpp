@@ -1,4 +1,4 @@
-#include <dis7/EntityTypeVP.h>
+#include "dis7/EntityTypeVP.h"
 
 using namespace DIS;
 

@@ -1,4 +1,4 @@
-#include <dis7/DataPdu.h>
+#include "dis7/DataPdu.h"
 
 using namespace DIS;
 

@@ -1,4 +1,4 @@
-#include <dis7/BeamAntennaPattern.h>
+#include "dis7/BeamAntennaPattern.h"
 
 using namespace DIS;
 

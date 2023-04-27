@@ -1,4 +1,4 @@
-#include <dis7/EntityDamageStatusPdu.h>
+#include "dis7/EntityDamageStatusPdu.h"
 
 using namespace DIS;
 

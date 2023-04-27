@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // Time measurements that exceed one hour are represented by this record. The

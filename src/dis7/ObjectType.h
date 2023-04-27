@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // The unique designation of an environmental object. Section 6.2.64

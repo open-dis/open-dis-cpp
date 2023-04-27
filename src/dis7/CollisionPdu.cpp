@@ -1,4 +1,4 @@
-#include <dis7/CollisionPdu.h>
+#include "dis7/CollisionPdu.h"
 
 using namespace DIS;
 

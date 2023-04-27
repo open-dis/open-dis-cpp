@@ -1,9 +1,9 @@
 #pragma once
 
-#include <dis7/EntityID.h>
-#include <dis7/SimulationManagementFamilyPdu.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/EntityID.h"
+#include "dis7/SimulationManagementFamilyPdu.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // Section 7.5.3 The removal of an entity from an exercise shall be communicated

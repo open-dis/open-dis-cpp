@@ -1,7 +1,7 @@
 #pragma once
 
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // Unique designation of an attached or unattached intercom in an event or

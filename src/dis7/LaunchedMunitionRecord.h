@@ -1,9 +1,9 @@
 #pragma once
 
-#include <dis7/EventIdentifier.h>
-#include <dis7/Vector3Double.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/EventIdentifier.h"
+#include "dis7/Vector3Double.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // Identity of a communications node. Section 6.2.51

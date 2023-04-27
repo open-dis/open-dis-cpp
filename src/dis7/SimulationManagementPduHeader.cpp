@@ -1,4 +1,4 @@
-#include <dis7/SimulationManagementPduHeader.h>
+#include "dis7/SimulationManagementPduHeader.h"
 
 using namespace DIS;
 

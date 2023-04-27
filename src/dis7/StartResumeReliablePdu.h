@@ -1,9 +1,9 @@
 #pragma once
 
-#include <dis7/ClockTime.h>
-#include <dis7/SimulationManagementWithReliabilityFamilyPdu.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/ClockTime.h"
+#include "dis7/SimulationManagementWithReliabilityFamilyPdu.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // Section 5.3.12.3: Start resume simulation, relaible. COMPLETE

@@ -2,9 +2,9 @@
 
 #include <vector>
 
-#include <dis7/EightByteChunk.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/EightByteChunk.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // the variable datum type, the datum length, and the value for that variable

@@ -1,13 +1,13 @@
 #pragma once
 
-#include <dis7/EntityID.h>
-#include <dis7/EntityManagementFamilyPdu.h>
-#include <dis7/EntityType.h>
-#include <dis7/NamedLocationIdentification.h>
-#include <dis7/Relationship.h>
-#include <dis7/Vector3Float.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/EntityID.h"
+#include "dis7/EntityManagementFamilyPdu.h"
+#include "dis7/EntityType.h"
+#include "dis7/NamedLocationIdentification.h"
+#include "dis7/Relationship.h"
+#include "dis7/Vector3Float.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 //  The joining of two or more simulation entities is communicated by this PDU.

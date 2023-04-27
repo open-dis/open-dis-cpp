@@ -1,6 +1,6 @@
 #include <cstring>
 
-#include <dis7/EntityMarking.h>
+#include "dis7/EntityMarking.h"
 
 using namespace DIS;
 

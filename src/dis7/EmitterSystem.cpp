@@ -1,4 +1,4 @@
-#include <dis7/EmitterSystem.h>
+#include "dis7/EmitterSystem.h"
 
 using namespace DIS;
 

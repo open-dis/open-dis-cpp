@@ -1,9 +1,9 @@
 #pragma once
 
-#include <dis7/EntityID.h>
-#include <dis7/RadioCommunicationsFamilyPdu.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/EntityID.h"
+#include "dis7/RadioCommunicationsFamilyPdu.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 //  Communication of a receiver state. Section 7.7.4 COMPLETE

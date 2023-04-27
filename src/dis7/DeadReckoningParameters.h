@@ -1,8 +1,8 @@
 #pragma once
 
-#include <dis7/Vector3Float.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/Vector3Float.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // Not specified in the standard. This is used by the ESPDU

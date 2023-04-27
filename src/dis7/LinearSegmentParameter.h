@@ -1,9 +1,9 @@
 #pragma once
 
-#include <dis7/EulerAngles.h>
-#include <dis7/Vector3Double.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/EulerAngles.h"
+#include "dis7/Vector3Double.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // The specification of an individual segment of a linear segment synthetic

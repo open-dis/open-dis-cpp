@@ -2,12 +2,12 @@
 
 #include <vector>
 
-#include <dis7/BeamData.h>
-#include <dis7/EEFundamentalParameterData.h>
-#include <dis7/JammingTechnique.h>
-#include <dis7/TrackJamData.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/BeamData.h"
+#include "dis7/EEFundamentalParameterData.h"
+#include "dis7/JammingTechnique.h"
+#include "dis7/TrackJamData.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // Description of one electronic emission beam

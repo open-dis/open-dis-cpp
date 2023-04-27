@@ -1,4 +1,4 @@
-#include <dis7/JammingTechnique.h>
+#include "dis7/JammingTechnique.h"
 
 using namespace DIS;
 

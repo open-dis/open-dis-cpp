@@ -1,8 +1,8 @@
 #pragma once
 
-#include <dis7/EntityID.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/EntityID.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // Physical separation of an entity from another entity.  Section 6.2.93.6

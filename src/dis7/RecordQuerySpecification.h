@@ -2,9 +2,9 @@
 
 #include <vector>
 
-#include <dis7/FourByteChunk.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/FourByteChunk.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // The identification of the records being queried 6.2.71

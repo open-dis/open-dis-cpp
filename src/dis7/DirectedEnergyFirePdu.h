@@ -2,13 +2,13 @@
 
 #include <vector>
 
-#include <dis7/ClockTime.h>
-#include <dis7/EntityType.h>
-#include <dis7/StandardVariableSpecification.h>
-#include <dis7/Vector3Float.h>
-#include <dis7/WarfareFamilyPdu.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/ClockTime.h"
+#include "dis7/EntityType.h"
+#include "dis7/StandardVariableSpecification.h"
+#include "dis7/Vector3Float.h"
+#include "dis7/WarfareFamilyPdu.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // Firing of a directed energy weapon shall be communicated by issuing a

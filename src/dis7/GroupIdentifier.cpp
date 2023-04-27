@@ -1,4 +1,4 @@
-#include <dis7/GroupIdentifier.h>
+#include "dis7/GroupIdentifier.h"
 
 using namespace DIS;
 

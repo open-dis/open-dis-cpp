@@ -1,4 +1,4 @@
-#include <dis7/EntityType.h>
+#include "dis7/EntityType.h"
 
 using namespace DIS;
 

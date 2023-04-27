@@ -2,17 +2,17 @@
 
 #include <vector>
 
-#include <dis7/DeadReckoningParameters.h>
-#include <dis7/EntityID.h>
-#include <dis7/EntityInformationFamilyPdu.h>
-#include <dis7/EntityMarking.h>
-#include <dis7/EntityType.h>
-#include <dis7/EulerAngles.h>
-#include <dis7/VariableParameter.h>
-#include <dis7/Vector3Double.h>
-#include <dis7/Vector3Float.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/DeadReckoningParameters.h"
+#include "dis7/EntityID.h"
+#include "dis7/EntityInformationFamilyPdu.h"
+#include "dis7/EntityMarking.h"
+#include "dis7/EntityType.h"
+#include "dis7/EulerAngles.h"
+#include "dis7/VariableParameter.h"
+#include "dis7/Vector3Double.h"
+#include "dis7/Vector3Float.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // Represents the postion and state of one entity in the world. Section 7.2.2.

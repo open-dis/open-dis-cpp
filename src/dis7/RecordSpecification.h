@@ -2,9 +2,9 @@
 
 #include <vector>
 
-#include <dis7/RecordSpecificationElement.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/RecordSpecificationElement.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // This record shall specify the number of record sets contained in the Record

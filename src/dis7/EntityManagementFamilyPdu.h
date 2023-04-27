@@ -1,8 +1,8 @@
 #pragma once
 
-#include <dis7/Pdu.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/Pdu.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 //  Managment of grouping of PDUs, and more. Section 7.8

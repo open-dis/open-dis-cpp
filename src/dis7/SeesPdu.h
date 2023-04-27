@@ -2,12 +2,12 @@
 
 #include <vector>
 
-#include <dis7/DistributedEmissionsFamilyPdu.h>
-#include <dis7/EntityID.h>
-#include <dis7/PropulsionSystemData.h>
-#include <dis7/VectoringNozzleSystem.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/DistributedEmissionsFamilyPdu.h"
+#include "dis7/EntityID.h"
+#include "dis7/PropulsionSystemData.h"
+#include "dis7/VectoringNozzleSystem.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 //  SEES PDU, supplemental emissions entity state information. Section 7.6.6

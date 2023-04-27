@@ -1,8 +1,8 @@
 #pragma once
 
-#include <dis7/EntityType.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/EntityType.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // Unique designation of a group of entities contained in the isGroupOfPdu.

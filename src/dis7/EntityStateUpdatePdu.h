@@ -2,14 +2,14 @@
 
 #include <vector>
 
-#include <dis7/EntityID.h>
-#include <dis7/EntityInformationFamilyPdu.h>
-#include <dis7/EulerAngles.h>
-#include <dis7/VariableParameter.h>
-#include <dis7/Vector3Double.h>
-#include <dis7/Vector3Float.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/EntityID.h"
+#include "dis7/EntityInformationFamilyPdu.h"
+#include "dis7/EulerAngles.h"
+#include "dis7/VariableParameter.h"
+#include "dis7/Vector3Double.h"
+#include "dis7/Vector3Float.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // Nonstatic information about a particular entity may be communicated by

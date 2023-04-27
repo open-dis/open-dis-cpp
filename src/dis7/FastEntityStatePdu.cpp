@@ -1,6 +1,6 @@
 #include <cstring>
 
-#include <dis7/FastEntityStatePdu.h>
+#include "dis7/FastEntityStatePdu.h"
 
 using namespace DIS;
 

@@ -2,10 +2,10 @@
 
 #include <vector>
 
-#include <dis7/EntityInformationFamilyPdu.h>
-#include <dis7/VariableParameter.h>
-#include <dis7/opendis7_export.h>
-#include <dis7/utils/DataStream.h>
+#include "dis7/EntityInformationFamilyPdu.h"
+#include "dis7/VariableParameter.h"
+#include "dis7/opendis7_export.h"
+#include "dis7/utils/DataStream.h"
 
 namespace DIS {
 // Represents the postion and state of one entity in the world. This is
