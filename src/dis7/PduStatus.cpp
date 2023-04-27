@@ -6,9 +6,9 @@ PduStatus::PduStatus() : _pduStatus(0) {}
 
 PduStatus::~PduStatus() {}
 
-unsigned char PduStatus::getPduStatus() const { return _pduStatus; }
+uint8_t PduStatus::getPduStatus() const { return _pduStatus; }
 
-void PduStatus::setPduStatus(unsigned char pX) { _pduStatus = pX; }
+void PduStatus::setPduStatus(uint8_t pX) { _pduStatus = pX; }
 
 void PduStatus::marshal(DataStream& dataStream) const {
   dataStream << _pduStatus;

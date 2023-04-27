@@ -46,7 +46,7 @@ void IFFPdu::setRelativeAntennaLocation(const Vector3Float& pX) {
   _relativeAntennaLocation = pX;
 }
 
-unsigned int IFFPdu::getNumberOfIFFParameters() const {
+uint32_t IFFPdu::getNumberOfIFFParameters() const {
   return _numberOfIFFParameters;
 }
 
@@ -56,15 +56,15 @@ const SystemIdentifier& IFFPdu::getSystemID() const { return _systemID; }
 
 void IFFPdu::setSystemID(const SystemIdentifier& pX) { _systemID = pX; }
 
-unsigned char IFFPdu::getSystemDesignator() const { return _systemDesignator; }
+uint8_t IFFPdu::getSystemDesignator() const { return _systemDesignator; }
 
-void IFFPdu::setSystemDesignator(unsigned char pX) { _systemDesignator = pX; }
+void IFFPdu::setSystemDesignator(uint8_t pX) { _systemDesignator = pX; }
 
-unsigned char IFFPdu::getSystemSpecificData() const {
+uint8_t IFFPdu::getSystemSpecificData() const {
   return _systemSpecificData;
 }
 
-void IFFPdu::setSystemSpecificData(unsigned char pX) {
+void IFFPdu::setSystemSpecificData(uint8_t pX) {
   _systemSpecificData = pX;
 }
 
@@ -133,7 +133,7 @@ void IFFPdu::marshal(DataStream& dataStream) const {
   _layerHeader.marshal(dataStream);
   _beamData.marshal(dataStream);
   _secondaryOperationalData.marshal(dataStream);
-  dataStream << (unsigned char)_iffParameters.size();
+  dataStream << (uint8_t)_iffParameters.size();
   for (size_t idx = 0; idx < _iffParameters.size(); idx++) {
     IFFFundamentalParameterData x = _iffParameters[idx];
     x.marshal(dataStream);
@@ -212,7 +212,7 @@ int IFFPdu::getMarshalledSize() const {
       marshalSize + _secondaryOperationalData
                         .getMarshalledSize();  // _secondaryOperationalData
 
-  for (unsigned long long idx = 0; idx < _iffParameters.size(); idx++) {
+  for (uint64_t idx = 0; idx < _iffParameters.size(); idx++) {
     IFFFundamentalParameterData listElement = _iffParameters[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

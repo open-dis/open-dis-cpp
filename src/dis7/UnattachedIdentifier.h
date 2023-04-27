@@ -19,7 +19,7 @@ class OPENDIS7_EXPORT UnattachedIdentifier {
   SimulationAddress _simulationAddress;
 
   /** Reference number */
-  unsigned short _referenceNumber;
+  uint16_t _referenceNumber;
 
  public:
   UnattachedIdentifier();
@@ -32,8 +32,8 @@ class OPENDIS7_EXPORT UnattachedIdentifier {
   const SimulationAddress& getSimulationAddress() const;
   void setSimulationAddress(const SimulationAddress& pX);
 
-  unsigned short getReferenceNumber() const;
-  void setReferenceNumber(unsigned short pX);
+  uint16_t getReferenceNumber() const;
+  void setReferenceNumber(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

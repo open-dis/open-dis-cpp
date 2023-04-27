@@ -13,8 +13,8 @@ namespace DIS {
 
 class OPENDIS7_EXPORT UnsignedDISInteger {
  protected:
-  /** unsigned integer */
-  unsigned int _val;
+  /** uint32_teger */
+  uint32_t _val;
 
  public:
   UnsignedDISInteger();
@@ -23,8 +23,8 @@ class OPENDIS7_EXPORT UnsignedDISInteger {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getVal() const;
-  void setVal(unsigned int pX);
+  uint32_t getVal() const;
+  void setVal(uint32_t pX);
 
   virtual int getMarshalledSize() const;
 

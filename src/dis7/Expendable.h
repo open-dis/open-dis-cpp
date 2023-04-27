@@ -17,13 +17,13 @@ class OPENDIS7_EXPORT Expendable {
   /** Type of expendable */
   EntityType _expendable;
 
-  unsigned int _station;
+  uint32_t _station;
 
-  unsigned short _quantity;
+  uint16_t _quantity;
 
-  unsigned char _expendableStatus;
+  uint8_t _expendableStatus;
 
-  unsigned char _padding;
+  uint8_t _padding;
 
  public:
   Expendable();
@@ -36,17 +36,17 @@ class OPENDIS7_EXPORT Expendable {
   const EntityType& getExpendable() const;
   void setExpendable(const EntityType& pX);
 
-  unsigned int getStation() const;
-  void setStation(unsigned int pX);
+  uint32_t getStation() const;
+  void setStation(uint32_t pX);
 
-  unsigned short getQuantity() const;
-  void setQuantity(unsigned short pX);
+  uint16_t getQuantity() const;
+  void setQuantity(uint16_t pX);
 
-  unsigned char getExpendableStatus() const;
-  void setExpendableStatus(unsigned char pX);
+  uint8_t getExpendableStatus() const;
+  void setExpendableStatus(uint8_t pX);
 
-  unsigned char getPadding() const;
-  void setPadding(unsigned char pX);
+  uint8_t getPadding() const;
+  void setPadding(uint8_t pX);
 
   virtual int getMarshalledSize() const;
 

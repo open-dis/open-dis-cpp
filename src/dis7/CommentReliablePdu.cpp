@@ -14,11 +14,11 @@ CommentReliablePdu::~CommentReliablePdu() {
   _variableDatumRecords.clear();
 }
 
-unsigned int CommentReliablePdu::getNumberOfFixedDatumRecords() const {
+uint32_t CommentReliablePdu::getNumberOfFixedDatumRecords() const {
   return _fixedDatumRecords.size();
 }
 
-unsigned int CommentReliablePdu::getNumberOfVariableDatumRecords() const {
+uint32_t CommentReliablePdu::getNumberOfVariableDatumRecords() const {
   return _variableDatumRecords.size();
 }
 
@@ -53,8 +53,8 @@ void CommentReliablePdu::setVariableDatumRecords(
 void CommentReliablePdu::marshal(DataStream& dataStream) const {
   SimulationManagementWithReliabilityFamilyPdu::marshal(
       dataStream);  // Marshal information in superclass first
-  dataStream << (unsigned int)_fixedDatumRecords.size();
-  dataStream << (unsigned int)_variableDatumRecords.size();
+  dataStream << (uint32_t)_fixedDatumRecords.size();
+  dataStream << (uint32_t)_variableDatumRecords.size();
 
   for (size_t idx = 0; idx < _fixedDatumRecords.size(); idx++) {
     FixedDatum x = _fixedDatumRecords[idx];
@@ -114,12 +114,12 @@ int CommentReliablePdu::getMarshalledSize() const {
   marshalSize = marshalSize + 4;  // _numberOfFixedDatumRecords
   marshalSize = marshalSize + 4;  // _numberOfVariableDatumRecords
 
-  for (unsigned long long idx = 0; idx < _fixedDatumRecords.size(); idx++) {
+  for (uint64_t idx = 0; idx < _fixedDatumRecords.size(); idx++) {
     FixedDatum listElement = _fixedDatumRecords[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }
 
-  for (unsigned long long idx = 0; idx < _variableDatumRecords.size(); idx++) {
+  for (uint64_t idx = 0; idx < _variableDatumRecords.size(); idx++) {
     VariableDatum listElement = _variableDatumRecords[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

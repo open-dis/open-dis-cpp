@@ -19,39 +19,39 @@ DataQueryReliablePdu::~DataQueryReliablePdu() {
   _variableDatumRecords.clear();
 }
 
-unsigned char DataQueryReliablePdu::getRequiredReliabilityService() const {
+uint8_t DataQueryReliablePdu::getRequiredReliabilityService() const {
   return _requiredReliabilityService;
 }
 
-void DataQueryReliablePdu::setRequiredReliabilityService(unsigned char pX) {
+void DataQueryReliablePdu::setRequiredReliabilityService(uint8_t pX) {
   _requiredReliabilityService = pX;
 }
 
-unsigned short DataQueryReliablePdu::getPad1() const { return _pad1; }
+uint16_t DataQueryReliablePdu::getPad1() const { return _pad1; }
 
-void DataQueryReliablePdu::setPad1(unsigned short pX) { _pad1 = pX; }
+void DataQueryReliablePdu::setPad1(uint16_t pX) { _pad1 = pX; }
 
-unsigned char DataQueryReliablePdu::getPad2() const { return _pad2; }
+uint8_t DataQueryReliablePdu::getPad2() const { return _pad2; }
 
-void DataQueryReliablePdu::setPad2(unsigned char pX) { _pad2 = pX; }
+void DataQueryReliablePdu::setPad2(uint8_t pX) { _pad2 = pX; }
 
-unsigned int DataQueryReliablePdu::getRequestID() const { return _requestID; }
+uint32_t DataQueryReliablePdu::getRequestID() const { return _requestID; }
 
-void DataQueryReliablePdu::setRequestID(unsigned int pX) { _requestID = pX; }
+void DataQueryReliablePdu::setRequestID(uint32_t pX) { _requestID = pX; }
 
-unsigned int DataQueryReliablePdu::getTimeInterval() const {
+uint32_t DataQueryReliablePdu::getTimeInterval() const {
   return _timeInterval;
 }
 
-void DataQueryReliablePdu::setTimeInterval(unsigned int pX) {
+void DataQueryReliablePdu::setTimeInterval(uint32_t pX) {
   _timeInterval = pX;
 }
 
-unsigned int DataQueryReliablePdu::getNumberOfFixedDatumRecords() const {
+uint32_t DataQueryReliablePdu::getNumberOfFixedDatumRecords() const {
   return _fixedDatumRecords.size();
 }
 
-unsigned int DataQueryReliablePdu::getNumberOfVariableDatumRecords() const {
+uint32_t DataQueryReliablePdu::getNumberOfVariableDatumRecords() const {
   return _variableDatumRecords.size();
 }
 
@@ -91,8 +91,8 @@ void DataQueryReliablePdu::marshal(DataStream& dataStream) const {
   dataStream << _pad2;
   dataStream << _requestID;
   dataStream << _timeInterval;
-  dataStream << (unsigned int)_fixedDatumRecords.size();
-  dataStream << (unsigned int)_variableDatumRecords.size();
+  dataStream << (uint32_t)_fixedDatumRecords.size();
+  dataStream << (uint32_t)_variableDatumRecords.size();
 
   for (size_t idx = 0; idx < _fixedDatumRecords.size(); idx++) {
     FixedDatum x = _fixedDatumRecords[idx];
@@ -169,12 +169,12 @@ int DataQueryReliablePdu::getMarshalledSize() const {
   marshalSize = marshalSize + 4;  // _numberOfFixedDatumRecords
   marshalSize = marshalSize + 4;  // _numberOfVariableDatumRecords
 
-  for (unsigned long long idx = 0; idx < _fixedDatumRecords.size(); idx++) {
+  for (uint64_t idx = 0; idx < _fixedDatumRecords.size(); idx++) {
     FixedDatum listElement = _fixedDatumRecords[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }
 
-  for (unsigned long long idx = 0; idx < _variableDatumRecords.size(); idx++) {
+  for (uint64_t idx = 0; idx < _variableDatumRecords.size(); idx++) {
     VariableDatum listElement = _variableDatumRecords[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

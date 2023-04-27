@@ -21,19 +21,19 @@ class OPENDIS7_EXPORT GridAxis {
 
   /** The number of grid points along the Xi domain axis for the enviornmental
    * state data */
-  unsigned short _domainPointsXi;
+  uint16_t _domainPointsXi;
 
   /** interleaf factor along the domain axis. */
-  unsigned char _interleafFactor;
+  uint8_t _interleafFactor;
 
   /** type of grid axis */
-  unsigned char _axisType;
+  uint8_t _axisType;
 
   /** Number of grid locations along Xi axis */
-  unsigned short _numberOfPointsOnXiAxis;
+  uint16_t _numberOfPointsOnXiAxis;
 
   /** initial grid point for the current pdu */
-  unsigned short _initialIndex;
+  uint16_t _initialIndex;
 
  public:
   GridAxis();
@@ -48,20 +48,20 @@ class OPENDIS7_EXPORT GridAxis {
   double getDomainFinalXi() const;
   void setDomainFinalXi(double pX);
 
-  unsigned short getDomainPointsXi() const;
-  void setDomainPointsXi(unsigned short pX);
+  uint16_t getDomainPointsXi() const;
+  void setDomainPointsXi(uint16_t pX);
 
-  unsigned char getInterleafFactor() const;
-  void setInterleafFactor(unsigned char pX);
+  uint8_t getInterleafFactor() const;
+  void setInterleafFactor(uint8_t pX);
 
-  unsigned char getAxisType() const;
-  void setAxisType(unsigned char pX);
+  uint8_t getAxisType() const;
+  void setAxisType(uint8_t pX);
 
-  unsigned short getNumberOfPointsOnXiAxis() const;
-  void setNumberOfPointsOnXiAxis(unsigned short pX);
+  uint16_t getNumberOfPointsOnXiAxis() const;
+  void setNumberOfPointsOnXiAxis(uint16_t pX);
 
-  unsigned short getInitialIndex() const;
-  void setInitialIndex(unsigned short pX);
+  uint16_t getInitialIndex() const;
+  void setInitialIndex(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

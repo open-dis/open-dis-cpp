@@ -7,27 +7,27 @@ IntercomCommunicationsParameters::IntercomCommunicationsParameters()
 
 IntercomCommunicationsParameters::~IntercomCommunicationsParameters() {}
 
-unsigned short IntercomCommunicationsParameters::getRecordType() const {
+uint16_t IntercomCommunicationsParameters::getRecordType() const {
   return _recordType;
 }
 
-void IntercomCommunicationsParameters::setRecordType(unsigned short pX) {
+void IntercomCommunicationsParameters::setRecordType(uint16_t pX) {
   _recordType = pX;
 }
 
-unsigned short IntercomCommunicationsParameters::getRecordLength() const {
+uint16_t IntercomCommunicationsParameters::getRecordLength() const {
   return _recordLength;
 }
 
-void IntercomCommunicationsParameters::setRecordLength(unsigned short pX) {
+void IntercomCommunicationsParameters::setRecordLength(uint16_t pX) {
   _recordLength = pX;
 }
 
-unsigned int IntercomCommunicationsParameters::getRecordSpecificField() const {
+uint32_t IntercomCommunicationsParameters::getRecordSpecificField() const {
   return _recordSpecificField;
 }
 
-void IntercomCommunicationsParameters::setRecordSpecificField(unsigned int pX) {
+void IntercomCommunicationsParameters::setRecordSpecificField(uint32_t pX) {
   _recordSpecificField = pX;
 }
 

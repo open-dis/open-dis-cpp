@@ -48,13 +48,13 @@ float BeamAntennaPattern::getReferenceSystem() const {
 
 void BeamAntennaPattern::setReferenceSystem(float pX) { _referenceSystem = pX; }
 
-unsigned char BeamAntennaPattern::getPadding1() const { return _padding1; }
+uint8_t BeamAntennaPattern::getPadding1() const { return _padding1; }
 
-void BeamAntennaPattern::setPadding1(unsigned char pX) { _padding1 = pX; }
+void BeamAntennaPattern::setPadding1(uint8_t pX) { _padding1 = pX; }
 
-unsigned short BeamAntennaPattern::getPadding2() const { return _padding2; }
+uint16_t BeamAntennaPattern::getPadding2() const { return _padding2; }
 
-void BeamAntennaPattern::setPadding2(unsigned short pX) { _padding2 = pX; }
+void BeamAntennaPattern::setPadding2(uint16_t pX) { _padding2 = pX; }
 
 float BeamAntennaPattern::getEz() const { return _ez; }
 
@@ -68,9 +68,9 @@ float BeamAntennaPattern::getPhase() const { return _phase; }
 
 void BeamAntennaPattern::setPhase(float pX) { _phase = pX; }
 
-unsigned int BeamAntennaPattern::getPadding3() const { return _padding3; }
+uint32_t BeamAntennaPattern::getPadding3() const { return _padding3; }
 
-void BeamAntennaPattern::setPadding3(unsigned int pX) { _padding3 = pX; }
+void BeamAntennaPattern::setPadding3(uint32_t pX) { _padding3 = pX; }
 
 void BeamAntennaPattern::marshal(DataStream& dataStream) const {
   _beamDirection.marshal(dataStream);

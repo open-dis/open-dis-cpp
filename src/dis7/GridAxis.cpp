@@ -21,29 +21,29 @@ double GridAxis::getDomainFinalXi() const { return _domainFinalXi; }
 
 void GridAxis::setDomainFinalXi(double pX) { _domainFinalXi = pX; }
 
-unsigned short GridAxis::getDomainPointsXi() const { return _domainPointsXi; }
+uint16_t GridAxis::getDomainPointsXi() const { return _domainPointsXi; }
 
-void GridAxis::setDomainPointsXi(unsigned short pX) { _domainPointsXi = pX; }
+void GridAxis::setDomainPointsXi(uint16_t pX) { _domainPointsXi = pX; }
 
-unsigned char GridAxis::getInterleafFactor() const { return _interleafFactor; }
+uint8_t GridAxis::getInterleafFactor() const { return _interleafFactor; }
 
-void GridAxis::setInterleafFactor(unsigned char pX) { _interleafFactor = pX; }
+void GridAxis::setInterleafFactor(uint8_t pX) { _interleafFactor = pX; }
 
-unsigned char GridAxis::getAxisType() const { return _axisType; }
+uint8_t GridAxis::getAxisType() const { return _axisType; }
 
-void GridAxis::setAxisType(unsigned char pX) { _axisType = pX; }
+void GridAxis::setAxisType(uint8_t pX) { _axisType = pX; }
 
-unsigned short GridAxis::getNumberOfPointsOnXiAxis() const {
+uint16_t GridAxis::getNumberOfPointsOnXiAxis() const {
   return _numberOfPointsOnXiAxis;
 }
 
-void GridAxis::setNumberOfPointsOnXiAxis(unsigned short pX) {
+void GridAxis::setNumberOfPointsOnXiAxis(uint16_t pX) {
   _numberOfPointsOnXiAxis = pX;
 }
 
-unsigned short GridAxis::getInitialIndex() const { return _initialIndex; }
+uint16_t GridAxis::getInitialIndex() const { return _initialIndex; }
 
-void GridAxis::setInitialIndex(unsigned short pX) { _initialIndex = pX; }
+void GridAxis::setInitialIndex(uint16_t pX) { _initialIndex = pX; }
 
 void GridAxis::marshal(DataStream& dataStream) const {
   dataStream << _domainInitialXi;

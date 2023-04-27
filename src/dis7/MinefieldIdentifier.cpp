@@ -19,11 +19,11 @@ void MinefieldIdentifier::setSimulationAddress(const SimulationAddress& pX) {
   _simulationAddress = pX;
 }
 
-unsigned short MinefieldIdentifier::getMinefieldNumber() const {
+uint16_t MinefieldIdentifier::getMinefieldNumber() const {
   return _minefieldNumber;
 }
 
-void MinefieldIdentifier::setMinefieldNumber(unsigned short pX) {
+void MinefieldIdentifier::setMinefieldNumber(uint16_t pX) {
   _minefieldNumber = pX;
 }
 

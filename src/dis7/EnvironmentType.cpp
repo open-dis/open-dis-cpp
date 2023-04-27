@@ -13,33 +13,33 @@ EnvironmentType::EnvironmentType()
 
 EnvironmentType::~EnvironmentType() {}
 
-unsigned char EnvironmentType::getEntityKind() const { return _entityKind; }
+uint8_t EnvironmentType::getEntityKind() const { return _entityKind; }
 
-void EnvironmentType::setEntityKind(unsigned char pX) { _entityKind = pX; }
+void EnvironmentType::setEntityKind(uint8_t pX) { _entityKind = pX; }
 
-unsigned char EnvironmentType::getDomain() const { return _domain; }
+uint8_t EnvironmentType::getDomain() const { return _domain; }
 
-void EnvironmentType::setDomain(unsigned char pX) { _domain = pX; }
+void EnvironmentType::setDomain(uint8_t pX) { _domain = pX; }
 
-unsigned short EnvironmentType::getEntityClass() const { return _entityClass; }
+uint16_t EnvironmentType::getEntityClass() const { return _entityClass; }
 
-void EnvironmentType::setEntityClass(unsigned short pX) { _entityClass = pX; }
+void EnvironmentType::setEntityClass(uint16_t pX) { _entityClass = pX; }
 
-unsigned char EnvironmentType::getCategory() const { return _category; }
+uint8_t EnvironmentType::getCategory() const { return _category; }
 
-void EnvironmentType::setCategory(unsigned char pX) { _category = pX; }
+void EnvironmentType::setCategory(uint8_t pX) { _category = pX; }
 
-unsigned char EnvironmentType::getSubcategory() const { return _subcategory; }
+uint8_t EnvironmentType::getSubcategory() const { return _subcategory; }
 
-void EnvironmentType::setSubcategory(unsigned char pX) { _subcategory = pX; }
+void EnvironmentType::setSubcategory(uint8_t pX) { _subcategory = pX; }
 
-unsigned char EnvironmentType::getSpecific() const { return _specific; }
+uint8_t EnvironmentType::getSpecific() const { return _specific; }
 
-void EnvironmentType::setSpecific(unsigned char pX) { _specific = pX; }
+void EnvironmentType::setSpecific(uint8_t pX) { _specific = pX; }
 
-unsigned char EnvironmentType::getExtra() const { return _extra; }
+uint8_t EnvironmentType::getExtra() const { return _extra; }
 
-void EnvironmentType::setExtra(unsigned char pX) { _extra = pX; }
+void EnvironmentType::setExtra(uint8_t pX) { _extra = pX; }
 
 void EnvironmentType::marshal(DataStream& dataStream) const {
   dataStream << _entityKind;

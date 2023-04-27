@@ -14,13 +14,13 @@ namespace DIS {
 
 class OPENDIS7_EXPORT IntercomIdentifier {
  protected:
-  unsigned short _siteNumber;
+  uint16_t _siteNumber;
 
-  unsigned short _applicationNumber;
+  uint16_t _applicationNumber;
 
-  unsigned short _referenceNumber;
+  uint16_t _referenceNumber;
 
-  unsigned short _intercomNumber;
+  uint16_t _intercomNumber;
 
  public:
   IntercomIdentifier();
@@ -29,17 +29,17 @@ class OPENDIS7_EXPORT IntercomIdentifier {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getSiteNumber() const;
-  void setSiteNumber(unsigned short pX);
+  uint16_t getSiteNumber() const;
+  void setSiteNumber(uint16_t pX);
 
-  unsigned short getApplicationNumber() const;
-  void setApplicationNumber(unsigned short pX);
+  uint16_t getApplicationNumber() const;
+  void setApplicationNumber(uint16_t pX);
 
-  unsigned short getReferenceNumber() const;
-  void setReferenceNumber(unsigned short pX);
+  uint16_t getReferenceNumber() const;
+  void setReferenceNumber(uint16_t pX);
 
-  unsigned short getIntercomNumber() const;
-  void setIntercomNumber(unsigned short pX);
+  uint16_t getIntercomNumber() const;
+  void setIntercomNumber(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

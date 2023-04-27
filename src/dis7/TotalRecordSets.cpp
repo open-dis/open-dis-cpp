@@ -6,17 +6,17 @@ TotalRecordSets::TotalRecordSets() : _totalRecordSets(0), _padding(0) {}
 
 TotalRecordSets::~TotalRecordSets() {}
 
-unsigned short TotalRecordSets::getTotalRecordSets() const {
+uint16_t TotalRecordSets::getTotalRecordSets() const {
   return _totalRecordSets;
 }
 
-void TotalRecordSets::setTotalRecordSets(unsigned short pX) {
+void TotalRecordSets::setTotalRecordSets(uint16_t pX) {
   _totalRecordSets = pX;
 }
 
-unsigned short TotalRecordSets::getPadding() const { return _padding; }
+uint16_t TotalRecordSets::getPadding() const { return _padding; }
 
-void TotalRecordSets::setPadding(unsigned short pX) { _padding = pX; }
+void TotalRecordSets::setPadding(uint16_t pX) { _padding = pX; }
 
 void TotalRecordSets::marshal(DataStream& dataStream) const {
   dataStream << _totalRecordSets;

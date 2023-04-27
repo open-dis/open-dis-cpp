@@ -15,16 +15,16 @@ namespace DIS {
 class OPENDIS7_EXPORT RadioIdentifier {
  protected:
   /**  site */
-  unsigned short _siteNumber;
+  uint16_t _siteNumber;
 
   /** application number */
-  unsigned short _applicationNumber;
+  uint16_t _applicationNumber;
 
   /**  reference number */
-  unsigned short _referenceNumber;
+  uint16_t _referenceNumber;
 
   /**  Radio number */
-  unsigned short _radioNumber;
+  uint16_t _radioNumber;
 
  public:
   RadioIdentifier();
@@ -33,17 +33,17 @@ class OPENDIS7_EXPORT RadioIdentifier {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getSiteNumber() const;
-  void setSiteNumber(unsigned short pX);
+  uint16_t getSiteNumber() const;
+  void setSiteNumber(uint16_t pX);
 
-  unsigned short getApplicationNumber() const;
-  void setApplicationNumber(unsigned short pX);
+  uint16_t getApplicationNumber() const;
+  void setApplicationNumber(uint16_t pX);
 
-  unsigned short getReferenceNumber() const;
-  void setReferenceNumber(unsigned short pX);
+  uint16_t getReferenceNumber() const;
+  void setReferenceNumber(uint16_t pX);
 
-  unsigned short getRadioNumber() const;
-  void setRadioNumber(unsigned short pX);
+  uint16_t getRadioNumber() const;
+  void setRadioNumber(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

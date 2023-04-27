@@ -16,27 +16,27 @@ class OPENDIS7_EXPORT ArticulatedParts {
  protected:
   /** the identification of the Variable Parameter record. Enumeration from EBV
    */
-  unsigned char _recordType;
+  uint8_t _recordType;
 
   /** indicate the change of any parameter for any articulated part. Starts at
    * zero, incremented for each change  */
-  unsigned char _changeIndicator;
+  uint8_t _changeIndicator;
 
   /** the identification of the articulated part to which this articulation
    * parameter is attached. This field shall be specified by a 16-bit unsigned
    * integer. This field shall contain the value zero if the articulated part is
    * attached directly to the entity. */
-  unsigned short _partAttachedTo;
+  uint16_t _partAttachedTo;
 
   /** the type of parameter represented, 32 bit enumeration */
-  unsigned int _parameterType;
+  uint32_t _parameterType;
 
   /** This field shall specify the parameter value and shall be specified by a
 32-bit floating point number.  */
   float _parameterValue;
 
   /** 32 bits of unused padding */
-  unsigned int _padding;
+  uint32_t _padding;
 
  public:
   ArticulatedParts();
@@ -45,17 +45,17 @@ class OPENDIS7_EXPORT ArticulatedParts {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned char getRecordType() const;
-  void setRecordType(unsigned char pX);
+  uint8_t getRecordType() const;
+  void setRecordType(uint8_t pX);
 
-  unsigned char getChangeIndicator() const;
-  void setChangeIndicator(unsigned char pX);
+  uint8_t getChangeIndicator() const;
+  void setChangeIndicator(uint8_t pX);
 
-  unsigned short getPartAttachedTo() const;
-  void setPartAttachedTo(unsigned short pX);
+  uint16_t getPartAttachedTo() const;
+  void setPartAttachedTo(uint16_t pX);
 
-  unsigned int getParameterType() const;
-  void setParameterType(unsigned int pX);
+  uint32_t getParameterType() const;
+  void setParameterType(uint32_t pX);
 
   float getParameterValue() const;
   void setParameterValue(float pX);

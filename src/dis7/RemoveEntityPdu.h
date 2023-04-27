@@ -24,7 +24,7 @@ class OPENDIS7_EXPORT RemoveEntityPdu : public SimulationManagementFamilyPdu {
 
   /** This field shall identify the specific and unique start/resume request
    * being made by the SM */
-  unsigned int _requestID;
+  uint32_t _requestID;
 
  public:
   RemoveEntityPdu();
@@ -41,8 +41,8 @@ class OPENDIS7_EXPORT RemoveEntityPdu : public SimulationManagementFamilyPdu {
   const EntityID& getReceivingID() const;
   void setReceivingID(const EntityID& pX);
 
-  unsigned int getRequestID() const;
-  void setRequestID(unsigned int pX);
+  uint32_t getRequestID() const;
+  void setRequestID(uint32_t pX);
 
   virtual int getMarshalledSize() const;
 

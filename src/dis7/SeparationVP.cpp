@@ -13,29 +13,29 @@ SeparationVP::SeparationVP()
 
 SeparationVP::~SeparationVP() {}
 
-unsigned char SeparationVP::getRecordType() const { return _recordType; }
+uint8_t SeparationVP::getRecordType() const { return _recordType; }
 
-void SeparationVP::setRecordType(unsigned char pX) { _recordType = pX; }
+void SeparationVP::setRecordType(uint8_t pX) { _recordType = pX; }
 
-unsigned char SeparationVP::getReasonForSeparation() const {
+uint8_t SeparationVP::getReasonForSeparation() const {
   return _reasonForSeparation;
 }
 
-void SeparationVP::setReasonForSeparation(unsigned char pX) {
+void SeparationVP::setReasonForSeparation(uint8_t pX) {
   _reasonForSeparation = pX;
 }
 
-unsigned char SeparationVP::getPreEntityIndicator() const {
+uint8_t SeparationVP::getPreEntityIndicator() const {
   return _preEntityIndicator;
 }
 
-void SeparationVP::setPreEntityIndicator(unsigned char pX) {
+void SeparationVP::setPreEntityIndicator(uint8_t pX) {
   _preEntityIndicator = pX;
 }
 
-unsigned char SeparationVP::getPadding1() const { return _padding1; }
+uint8_t SeparationVP::getPadding1() const { return _padding1; }
 
-void SeparationVP::setPadding1(unsigned char pX) { _padding1 = pX; }
+void SeparationVP::setPadding1(uint8_t pX) { _padding1 = pX; }
 
 EntityID& SeparationVP::getParentEntityID() { return _parentEntityID; }
 
@@ -47,15 +47,15 @@ void SeparationVP::setParentEntityID(const EntityID& pX) {
   _parentEntityID = pX;
 }
 
-unsigned short SeparationVP::getPadding2() const { return _padding2; }
+uint16_t SeparationVP::getPadding2() const { return _padding2; }
 
-void SeparationVP::setPadding2(unsigned short pX) { _padding2 = pX; }
+void SeparationVP::setPadding2(uint16_t pX) { _padding2 = pX; }
 
-unsigned int SeparationVP::getStationLocation() const {
+uint32_t SeparationVP::getStationLocation() const {
   return _stationLocation;
 }
 
-void SeparationVP::setStationLocation(unsigned int pX) {
+void SeparationVP::setStationLocation(uint32_t pX) {
   _stationLocation = pX;
 }
 

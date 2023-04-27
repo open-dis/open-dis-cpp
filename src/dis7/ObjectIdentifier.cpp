@@ -18,11 +18,11 @@ void ObjectIdentifier::setSimulationAddress(const SimulationAddress& pX) {
   _simulationAddress = pX;
 }
 
-unsigned short ObjectIdentifier::getObjectNumber() const {
+uint16_t ObjectIdentifier::getObjectNumber() const {
   return _objectNumber;
 }
 
-void ObjectIdentifier::setObjectNumber(unsigned short pX) {
+void ObjectIdentifier::setObjectNumber(uint16_t pX) {
   _objectNumber = pX;
 }
 

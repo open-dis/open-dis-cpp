@@ -22,35 +22,35 @@ void MunitionReload::setMunitionType(const EntityType& pX) {
   _munitionType = pX;
 }
 
-unsigned int MunitionReload::getStation() const { return _station; }
+uint32_t MunitionReload::getStation() const { return _station; }
 
-void MunitionReload::setStation(unsigned int pX) { _station = pX; }
+void MunitionReload::setStation(uint32_t pX) { _station = pX; }
 
-unsigned short MunitionReload::getStandardQuantity() const {
+uint16_t MunitionReload::getStandardQuantity() const {
   return _standardQuantity;
 }
 
-void MunitionReload::setStandardQuantity(unsigned short pX) {
+void MunitionReload::setStandardQuantity(uint16_t pX) {
   _standardQuantity = pX;
 }
 
-unsigned short MunitionReload::getMaximumQuantity() const {
+uint16_t MunitionReload::getMaximumQuantity() const {
   return _maximumQuantity;
 }
 
-void MunitionReload::setMaximumQuantity(unsigned short pX) {
+void MunitionReload::setMaximumQuantity(uint16_t pX) {
   _maximumQuantity = pX;
 }
 
-unsigned short MunitionReload::getStationName() const { return _stationName; }
+uint16_t MunitionReload::getStationName() const { return _stationName; }
 
-void MunitionReload::setStationName(unsigned short pX) { _stationName = pX; }
+void MunitionReload::setStationName(uint16_t pX) { _stationName = pX; }
 
-unsigned short MunitionReload::getStationNumber() const {
+uint16_t MunitionReload::getStationNumber() const {
   return _stationNumber;
 }
 
-void MunitionReload::setStationNumber(unsigned short pX) {
+void MunitionReload::setStationNumber(uint16_t pX) {
   _stationNumber = pX;
 }
 

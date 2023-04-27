@@ -16,10 +16,10 @@ namespace DIS {
 class OPENDIS7_EXPORT LiveEntityPdu : public PduSuperclass {
  protected:
   /** Subprotocol used to decode the PDU. Section 13 of EBV. */
-  unsigned short _subprotocolNumber;
+  uint16_t _subprotocolNumber;
 
   /** zero-filled array of padding */
-  unsigned char _padding;
+  uint8_t _padding;
 
  public:
   LiveEntityPdu();
@@ -28,11 +28,11 @@ class OPENDIS7_EXPORT LiveEntityPdu : public PduSuperclass {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getSubprotocolNumber() const;
-  void setSubprotocolNumber(unsigned short pX);
+  uint16_t getSubprotocolNumber() const;
+  void setSubprotocolNumber(uint16_t pX);
 
-  unsigned char getPadding() const;
-  void setPadding(unsigned char pX);
+  uint8_t getPadding() const;
+  void setPadding(uint8_t pX);
 
   virtual int getMarshalledSize() const;
 

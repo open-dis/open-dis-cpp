@@ -15,10 +15,10 @@ namespace DIS {
 class OPENDIS7_EXPORT TotalRecordSets {
  protected:
   /** Total number of record sets */
-  unsigned short _totalRecordSets;
+  uint16_t _totalRecordSets;
 
   /** padding */
-  unsigned short _padding;
+  uint16_t _padding;
 
  public:
   TotalRecordSets();
@@ -27,11 +27,11 @@ class OPENDIS7_EXPORT TotalRecordSets {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getTotalRecordSets() const;
-  void setTotalRecordSets(unsigned short pX);
+  uint16_t getTotalRecordSets() const;
+  void setTotalRecordSets(uint16_t pX);
 
-  unsigned short getPadding() const;
-  void setPadding(unsigned short pX);
+  uint16_t getPadding() const;
+  void setPadding(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

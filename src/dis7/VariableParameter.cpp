@@ -11,9 +11,9 @@ VariableParameter::VariableParameter()
 
 VariableParameter::~VariableParameter() {}
 
-unsigned char VariableParameter::getRecordType() const { return _recordType; }
+uint8_t VariableParameter::getRecordType() const { return _recordType; }
 
-void VariableParameter::setRecordType(unsigned char pX) { _recordType = pX; }
+void VariableParameter::setRecordType(uint8_t pX) { _recordType = pX; }
 
 double VariableParameter::getVariableParameterFields1() const {
   return _variableParameterFields1;
@@ -23,27 +23,27 @@ void VariableParameter::setVariableParameterFields1(double pX) {
   _variableParameterFields1 = pX;
 }
 
-unsigned int VariableParameter::getVariableParameterFields2() const {
+uint32_t VariableParameter::getVariableParameterFields2() const {
   return _variableParameterFields2;
 }
 
-void VariableParameter::setVariableParameterFields2(unsigned int pX) {
+void VariableParameter::setVariableParameterFields2(uint32_t pX) {
   _variableParameterFields2 = pX;
 }
 
-unsigned short VariableParameter::getVariableParameterFields3() const {
+uint16_t VariableParameter::getVariableParameterFields3() const {
   return _variableParameterFields3;
 }
 
-void VariableParameter::setVariableParameterFields3(unsigned short pX) {
+void VariableParameter::setVariableParameterFields3(uint16_t pX) {
   _variableParameterFields3 = pX;
 }
 
-unsigned char VariableParameter::getVariableParameterFields4() const {
+uint8_t VariableParameter::getVariableParameterFields4() const {
   return _variableParameterFields4;
 }
 
-void VariableParameter::setVariableParameterFields4(unsigned char pX) {
+void VariableParameter::setVariableParameterFields4(uint8_t pX) {
   _variableParameterFields4 = pX;
 }
 

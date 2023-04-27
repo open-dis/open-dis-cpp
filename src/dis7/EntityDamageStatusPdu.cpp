@@ -27,15 +27,15 @@ void EntityDamageStatusPdu::setDamagedEntityID(const EntityID& pX) {
   _damagedEntityID = pX;
 }
 
-unsigned short EntityDamageStatusPdu::getPadding1() const { return _padding1; }
+uint16_t EntityDamageStatusPdu::getPadding1() const { return _padding1; }
 
-void EntityDamageStatusPdu::setPadding1(unsigned short pX) { _padding1 = pX; }
+void EntityDamageStatusPdu::setPadding1(uint16_t pX) { _padding1 = pX; }
 
-unsigned short EntityDamageStatusPdu::getPadding2() const { return _padding2; }
+uint16_t EntityDamageStatusPdu::getPadding2() const { return _padding2; }
 
-void EntityDamageStatusPdu::setPadding2(unsigned short pX) { _padding2 = pX; }
+void EntityDamageStatusPdu::setPadding2(uint16_t pX) { _padding2 = pX; }
 
-unsigned short EntityDamageStatusPdu::getNumberOfDamageDescription() const {
+uint16_t EntityDamageStatusPdu::getNumberOfDamageDescription() const {
   return _damageDescriptionRecords.size();
 }
 
@@ -60,7 +60,7 @@ void EntityDamageStatusPdu::marshal(DataStream& dataStream) const {
   _damagedEntityID.marshal(dataStream);
   dataStream << _padding1;
   dataStream << _padding2;
-  dataStream << (unsigned short)_damageDescriptionRecords.size();
+  dataStream << (uint16_t)_damageDescriptionRecords.size();
 
   for (size_t idx = 0; idx < _damageDescriptionRecords.size(); idx++) {
     DirectedEnergyDamage x = _damageDescriptionRecords[idx];
@@ -111,7 +111,7 @@ int EntityDamageStatusPdu::getMarshalledSize() const {
   marshalSize = marshalSize + 2;                           // _padding2
   marshalSize = marshalSize + 2;  // _numberOfDamageDescription
 
-  for (unsigned long long idx = 0; idx < _damageDescriptionRecords.size();
+  for (uint64_t idx = 0; idx < _damageDescriptionRecords.size();
        idx++) {
     DirectedEnergyDamage listElement = _damageDescriptionRecords[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();

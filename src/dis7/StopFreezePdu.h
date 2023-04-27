@@ -28,17 +28,17 @@ class OPENDIS7_EXPORT StopFreezePdu : public SimulationManagementFamilyPdu {
 
   /** Reason the simulation was stopped or frozen (see section 7 of
    * SISO-REF-010) represented by an 8-bit enumeration */
-  unsigned char _reason;
+  uint8_t _reason;
 
   /** Internal behavior of the entity(or simulation) and its appearance while
    * frozen to the other participants */
-  unsigned char _frozenBehavior;
+  uint8_t _frozenBehavior;
 
   /** padding */
-  short _padding1;
+  int16_t _padding1;
 
   /** Request ID that is unique */
-  unsigned int _requestID;
+  uint32_t _requestID;
 
  public:
   StopFreezePdu();
@@ -59,17 +59,17 @@ class OPENDIS7_EXPORT StopFreezePdu : public SimulationManagementFamilyPdu {
   const ClockTime& getRealWorldTime() const;
   void setRealWorldTime(const ClockTime& pX);
 
-  unsigned char getReason() const;
-  void setReason(unsigned char pX);
+  uint8_t getReason() const;
+  void setReason(uint8_t pX);
 
-  unsigned char getFrozenBehavior() const;
-  void setFrozenBehavior(unsigned char pX);
+  uint8_t getFrozenBehavior() const;
+  void setFrozenBehavior(uint8_t pX);
 
-  short getPadding1() const;
-  void setPadding1(short pX);
+  int16_t getPadding1() const;
+  void setPadding1(int16_t pX);
 
-  unsigned int getRequestID() const;
-  void setRequestID(unsigned int pX);
+  uint32_t getRequestID() const;
+  void setRequestID(uint32_t pX);
 
   virtual int getMarshalledSize() const;
 

@@ -17,10 +17,10 @@ namespace DIS {
 class OPENDIS7_EXPORT DataQueryDatumSpecification {
  protected:
   /** Number of fixed datums */
-  unsigned int _numberOfFixedDatums;
+  uint32_t _numberOfFixedDatums;
 
   /** Number of variable datums */
-  unsigned int _numberOfVariableDatums;
+  uint32_t _numberOfVariableDatums;
 
   /** variable length list fixed datum IDs */
   std::vector<UnsignedDISInteger> _fixedDatumIDList;
@@ -35,9 +35,9 @@ class OPENDIS7_EXPORT DataQueryDatumSpecification {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getNumberOfFixedDatums() const;
+  uint32_t getNumberOfFixedDatums() const;
 
-  unsigned int getNumberOfVariableDatums() const;
+  uint32_t getNumberOfVariableDatums() const;
 
   std::vector<UnsignedDISInteger>& getFixedDatumIDList();
   const std::vector<UnsignedDISInteger>& getFixedDatumIDList() const;

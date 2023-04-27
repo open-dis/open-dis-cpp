@@ -14,11 +14,11 @@ CommentPdu::~CommentPdu() {
   _variableDatums.clear();
 }
 
-unsigned int CommentPdu::getNumberOfFixedDatumRecords() const {
+uint32_t CommentPdu::getNumberOfFixedDatumRecords() const {
   return _fixedDatums.size();
 }
 
-unsigned int CommentPdu::getNumberOfVariableDatumRecords() const {
+uint32_t CommentPdu::getNumberOfVariableDatumRecords() const {
   return _variableDatums.size();
 }
 
@@ -47,8 +47,8 @@ void CommentPdu::setVariableDatums(const std::vector<VariableDatum>& pX) {
 void CommentPdu::marshal(DataStream& dataStream) const {
   SimulationManagementFamilyPdu::marshal(
       dataStream);  // Marshal information in superclass first
-  dataStream << (unsigned int)_fixedDatums.size();
-  dataStream << (unsigned int)_variableDatums.size();
+  dataStream << (uint32_t)_fixedDatums.size();
+  dataStream << (uint32_t)_variableDatums.size();
 
   for (size_t idx = 0; idx < _fixedDatums.size(); idx++) {
     FixedDatum x = _fixedDatums[idx];
@@ -105,12 +105,12 @@ int CommentPdu::getMarshalledSize() const {
   marshalSize = marshalSize + 4;  // _numberOfFixedDatumRecords
   marshalSize = marshalSize + 4;  // _numberOfVariableDatumRecords
 
-  for (unsigned long long idx = 0; idx < _fixedDatums.size(); idx++) {
+  for (uint64_t idx = 0; idx < _fixedDatums.size(); idx++) {
     FixedDatum listElement = _fixedDatums[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }
 
-  for (unsigned long long idx = 0; idx < _variableDatums.size(); idx++) {
+  for (uint64_t idx = 0; idx < _variableDatums.size(); idx++) {
     VariableDatum listElement = _variableDatums[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

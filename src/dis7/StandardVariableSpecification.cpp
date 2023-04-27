@@ -9,7 +9,7 @@ StandardVariableSpecification::~StandardVariableSpecification() {
   _standardVariables.clear();
 }
 
-unsigned short
+uint16_t
 StandardVariableSpecification::getNumberOfStandardVariableRecords() const {
   return _standardVariables.size();
 }
@@ -30,7 +30,7 @@ void StandardVariableSpecification::setStandardVariables(
 }
 
 void StandardVariableSpecification::marshal(DataStream& dataStream) const {
-  dataStream << (unsigned short)_standardVariables.size();
+  dataStream << (uint16_t)_standardVariables.size();
 
   for (size_t idx = 0; idx < _standardVariables.size(); idx++) {
     SimulationManagementPduHeader x = _standardVariables[idx];
@@ -66,7 +66,7 @@ int StandardVariableSpecification::getMarshalledSize() const {
 
   marshalSize = marshalSize + 2;  // _numberOfStandardVariableRecords
 
-  for (unsigned long long idx = 0; idx < _standardVariables.size(); idx++) {
+  for (uint64_t idx = 0; idx < _standardVariables.size(); idx++) {
     SimulationManagementPduHeader listElement = _standardVariables[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

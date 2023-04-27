@@ -17,25 +17,25 @@ const EntityType& Expendable::getExpendable() const { return _expendable; }
 
 void Expendable::setExpendable(const EntityType& pX) { _expendable = pX; }
 
-unsigned int Expendable::getStation() const { return _station; }
+uint32_t Expendable::getStation() const { return _station; }
 
-void Expendable::setStation(unsigned int pX) { _station = pX; }
+void Expendable::setStation(uint32_t pX) { _station = pX; }
 
-unsigned short Expendable::getQuantity() const { return _quantity; }
+uint16_t Expendable::getQuantity() const { return _quantity; }
 
-void Expendable::setQuantity(unsigned short pX) { _quantity = pX; }
+void Expendable::setQuantity(uint16_t pX) { _quantity = pX; }
 
-unsigned char Expendable::getExpendableStatus() const {
+uint8_t Expendable::getExpendableStatus() const {
   return _expendableStatus;
 }
 
-void Expendable::setExpendableStatus(unsigned char pX) {
+void Expendable::setExpendableStatus(uint8_t pX) {
   _expendableStatus = pX;
 }
 
-unsigned char Expendable::getPadding() const { return _padding; }
+uint8_t Expendable::getPadding() const { return _padding; }
 
-void Expendable::setPadding(unsigned char pX) { _padding = pX; }
+void Expendable::setPadding(uint8_t pX) { _padding = pX; }
 
 void Expendable::marshal(DataStream& dataStream) const {
   _expendable.marshal(dataStream);

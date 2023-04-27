@@ -33,47 +33,47 @@ int AttributePdu::getPadding1() const { return _padding1; }
 
 void AttributePdu::setPadding1(int pX) { _padding1 = pX; }
 
-short AttributePdu::getPadding2() const { return _padding2; }
+int16_t AttributePdu::getPadding2() const { return _padding2; }
 
-void AttributePdu::setPadding2(short pX) { _padding2 = pX; }
+void AttributePdu::setPadding2(int16_t pX) { _padding2 = pX; }
 
-unsigned char AttributePdu::getAttributeRecordPduType() const {
+uint8_t AttributePdu::getAttributeRecordPduType() const {
   return _attributeRecordPduType;
 }
 
-void AttributePdu::setAttributeRecordPduType(unsigned char pX) {
+void AttributePdu::setAttributeRecordPduType(uint8_t pX) {
   _attributeRecordPduType = pX;
 }
 
-unsigned char AttributePdu::getAttributeRecordProtocolVersion() const {
+uint8_t AttributePdu::getAttributeRecordProtocolVersion() const {
   return _attributeRecordProtocolVersion;
 }
 
-void AttributePdu::setAttributeRecordProtocolVersion(unsigned char pX) {
+void AttributePdu::setAttributeRecordProtocolVersion(uint8_t pX) {
   _attributeRecordProtocolVersion = pX;
 }
 
-unsigned int AttributePdu::getMasterAttributeRecordType() const {
+uint32_t AttributePdu::getMasterAttributeRecordType() const {
   return _masterAttributeRecordType;
 }
 
-void AttributePdu::setMasterAttributeRecordType(unsigned int pX) {
+void AttributePdu::setMasterAttributeRecordType(uint32_t pX) {
   _masterAttributeRecordType = pX;
 }
 
-unsigned char AttributePdu::getActionCode() const { return _actionCode; }
+uint8_t AttributePdu::getActionCode() const { return _actionCode; }
 
-void AttributePdu::setActionCode(unsigned char pX) { _actionCode = pX; }
+void AttributePdu::setActionCode(uint8_t pX) { _actionCode = pX; }
 
 char AttributePdu::getPadding3() const { return _padding3; }
 
 void AttributePdu::setPadding3(char pX) { _padding3 = pX; }
 
-unsigned short AttributePdu::getNumberAttributeRecordSet() const {
+uint16_t AttributePdu::getNumberAttributeRecordSet() const {
   return _numberAttributeRecordSet;
 }
 
-void AttributePdu::setNumberAttributeRecordSet(unsigned short pX) {
+void AttributePdu::setNumberAttributeRecordSet(uint16_t pX) {
   _numberAttributeRecordSet = pX;
 }
 

@@ -6,7 +6,7 @@ RecordQuerySpecification::RecordQuerySpecification() : _numberOfRecords(0) {}
 
 RecordQuerySpecification::~RecordQuerySpecification() { _records.clear(); }
 
-unsigned int RecordQuerySpecification::getNumberOfRecords() const {
+uint32_t RecordQuerySpecification::getNumberOfRecords() const {
   return _records.size();
 }
 
@@ -24,7 +24,7 @@ void RecordQuerySpecification::setRecords(
 }
 
 void RecordQuerySpecification::marshal(DataStream& dataStream) const {
-  dataStream << (unsigned int)_records.size();
+  dataStream << (uint32_t)_records.size();
 
   for (size_t idx = 0; idx < _records.size(); idx++) {
     FourByteChunk x = _records[idx];
@@ -59,7 +59,7 @@ int RecordQuerySpecification::getMarshalledSize() const {
 
   marshalSize = marshalSize + 4;  // _numberOfRecords
 
-  for (unsigned long long idx = 0; idx < _records.size(); idx++) {
+  for (uint64_t idx = 0; idx < _records.size(); idx++) {
     FourByteChunk listElement = _records[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

@@ -6,9 +6,9 @@ UnsignedDISInteger::UnsignedDISInteger() : _val(0) {}
 
 UnsignedDISInteger::~UnsignedDISInteger() {}
 
-unsigned int UnsignedDISInteger::getVal() const { return _val; }
+uint32_t UnsignedDISInteger::getVal() const { return _val; }
 
-void UnsignedDISInteger::setVal(unsigned int pX) { _val = pX; }
+void UnsignedDISInteger::setVal(uint32_t pX) { _val = pX; }
 
 void UnsignedDISInteger::marshal(DataStream& dataStream) const {
   dataStream << _val;

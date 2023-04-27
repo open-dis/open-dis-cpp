@@ -6,9 +6,9 @@ BeamStatus::BeamStatus() : _beamState(0) {}
 
 BeamStatus::~BeamStatus() {}
 
-unsigned char BeamStatus::getBeamState() const { return _beamState; }
+uint8_t BeamStatus::getBeamState() const { return _beamState; }
 
-void BeamStatus::setBeamState(unsigned char pX) { _beamState = pX; }
+void BeamStatus::setBeamState(uint8_t pX) { _beamState = pX; }
 
 void BeamStatus::marshal(DataStream& dataStream) const {
   dataStream << _beamState;

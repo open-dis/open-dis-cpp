@@ -22,17 +22,17 @@ class OPENDIS7_EXPORT Munition {
   EntityType _munitionType;
 
   /** the station or launcher to which the munition is assigned. See Annex I */
-  unsigned int _station;
+  uint32_t _station;
 
   /** the quantity remaining of this munition. */
-  unsigned short _quantity;
+  uint16_t _quantity;
 
   /**  the status of the munition. It shall be represented by an 8-bit
    * enumeration.  */
-  unsigned char _munitionStatus;
+  uint8_t _munitionStatus;
 
   /** padding  */
-  unsigned char _padding;
+  uint8_t _padding;
 
  public:
   Munition();
@@ -45,17 +45,17 @@ class OPENDIS7_EXPORT Munition {
   const EntityType& getMunitionType() const;
   void setMunitionType(const EntityType& pX);
 
-  unsigned int getStation() const;
-  void setStation(unsigned int pX);
+  uint32_t getStation() const;
+  void setStation(uint32_t pX);
 
-  unsigned short getQuantity() const;
-  void setQuantity(unsigned short pX);
+  uint16_t getQuantity() const;
+  void setQuantity(uint16_t pX);
 
-  unsigned char getMunitionStatus() const;
-  void setMunitionStatus(unsigned char pX);
+  uint8_t getMunitionStatus() const;
+  void setMunitionStatus(uint8_t pX);
 
-  unsigned char getPadding() const;
-  void setPadding(unsigned char pX);
+  uint8_t getPadding() const;
+  void setPadding(uint8_t pX);
 
   virtual int getMarshalledSize() const;
 

@@ -17,21 +17,21 @@ void MunitionDescriptor::setMunitionType(const EntityType& pX) {
   _munitionType = pX;
 }
 
-unsigned short MunitionDescriptor::getWarhead() const { return _warhead; }
+uint16_t MunitionDescriptor::getWarhead() const { return _warhead; }
 
-void MunitionDescriptor::setWarhead(unsigned short pX) { _warhead = pX; }
+void MunitionDescriptor::setWarhead(uint16_t pX) { _warhead = pX; }
 
-unsigned short MunitionDescriptor::getFuse() const { return _fuse; }
+uint16_t MunitionDescriptor::getFuse() const { return _fuse; }
 
-void MunitionDescriptor::setFuse(unsigned short pX) { _fuse = pX; }
+void MunitionDescriptor::setFuse(uint16_t pX) { _fuse = pX; }
 
-unsigned short MunitionDescriptor::getQuantity() const { return _quantity; }
+uint16_t MunitionDescriptor::getQuantity() const { return _quantity; }
 
-void MunitionDescriptor::setQuantity(unsigned short pX) { _quantity = pX; }
+void MunitionDescriptor::setQuantity(uint16_t pX) { _quantity = pX; }
 
-unsigned short MunitionDescriptor::getRate() const { return _rate; }
+uint16_t MunitionDescriptor::getRate() const { return _rate; }
 
-void MunitionDescriptor::setRate(unsigned short pX) { _rate = pX; }
+void MunitionDescriptor::setRate(uint16_t pX) { _rate = pX; }
 
 void MunitionDescriptor::marshal(DataStream& dataStream) const {
   _munitionType.marshal(dataStream);

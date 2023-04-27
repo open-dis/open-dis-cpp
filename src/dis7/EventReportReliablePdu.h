@@ -22,16 +22,16 @@ class OPENDIS7_EXPORT EventReportReliablePdu
     : public SimulationManagementWithReliabilityFamilyPdu {
  protected:
   /** Event type */
-  unsigned short _eventType;
+  uint16_t _eventType;
 
   /** padding */
-  unsigned int _pad1;
+  uint32_t _pad1;
 
   /** Fixed datum record count */
-  unsigned int _numberOfFixedDatumRecords;
+  uint32_t _numberOfFixedDatumRecords;
 
   /** variable datum record count */
-  unsigned int _numberOfVariableDatumRecords;
+  uint32_t _numberOfVariableDatumRecords;
 
   /** Fixed datum records */
   std::vector<FixedDatum> _fixedDatumRecords;
@@ -46,15 +46,15 @@ class OPENDIS7_EXPORT EventReportReliablePdu
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getEventType() const;
-  void setEventType(unsigned short pX);
+  uint16_t getEventType() const;
+  void setEventType(uint16_t pX);
 
-  unsigned int getPad1() const;
-  void setPad1(unsigned int pX);
+  uint32_t getPad1() const;
+  void setPad1(uint32_t pX);
 
-  unsigned int getNumberOfFixedDatumRecords() const;
+  uint32_t getNumberOfFixedDatumRecords() const;
 
-  unsigned int getNumberOfVariableDatumRecords() const;
+  uint32_t getNumberOfVariableDatumRecords() const;
 
   std::vector<FixedDatum>& getFixedDatumRecords();
   const std::vector<FixedDatum>& getFixedDatumRecords() const;

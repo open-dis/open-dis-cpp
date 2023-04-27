@@ -17,21 +17,21 @@ const EntityType& Munition::getMunitionType() const { return _munitionType; }
 
 void Munition::setMunitionType(const EntityType& pX) { _munitionType = pX; }
 
-unsigned int Munition::getStation() const { return _station; }
+uint32_t Munition::getStation() const { return _station; }
 
-void Munition::setStation(unsigned int pX) { _station = pX; }
+void Munition::setStation(uint32_t pX) { _station = pX; }
 
-unsigned short Munition::getQuantity() const { return _quantity; }
+uint16_t Munition::getQuantity() const { return _quantity; }
 
-void Munition::setQuantity(unsigned short pX) { _quantity = pX; }
+void Munition::setQuantity(uint16_t pX) { _quantity = pX; }
 
-unsigned char Munition::getMunitionStatus() const { return _munitionStatus; }
+uint8_t Munition::getMunitionStatus() const { return _munitionStatus; }
 
-void Munition::setMunitionStatus(unsigned char pX) { _munitionStatus = pX; }
+void Munition::setMunitionStatus(uint8_t pX) { _munitionStatus = pX; }
 
-unsigned char Munition::getPadding() const { return _padding; }
+uint8_t Munition::getPadding() const { return _padding; }
 
-void Munition::setPadding(unsigned char pX) { _padding = pX; }
+void Munition::setPadding(uint8_t pX) { _padding = pX; }
 
 void Munition::marshal(DataStream& dataStream) const {
   _munitionType.marshal(dataStream);

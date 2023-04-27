@@ -37,13 +37,13 @@ void RepairCompletePdu::setRepairingEntityID(const EntityID& pX) {
   _repairingEntityID = pX;
 }
 
-unsigned short RepairCompletePdu::getRepair() const { return _repair; }
+uint16_t RepairCompletePdu::getRepair() const { return _repair; }
 
-void RepairCompletePdu::setRepair(unsigned short pX) { _repair = pX; }
+void RepairCompletePdu::setRepair(uint16_t pX) { _repair = pX; }
 
-short RepairCompletePdu::getPadding4() const { return _padding4; }
+int16_t RepairCompletePdu::getPadding4() const { return _padding4; }
 
-void RepairCompletePdu::setPadding4(short pX) { _padding4 = pX; }
+void RepairCompletePdu::setPadding4(int16_t pX) { _padding4 = pX; }
 
 void RepairCompletePdu::marshal(DataStream& dataStream) const {
   LogisticsFamilyPdu::marshal(

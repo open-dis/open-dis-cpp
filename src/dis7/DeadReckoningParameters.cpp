@@ -14,21 +14,21 @@ DeadReckoningParameters::DeadReckoningParameters()
 
 DeadReckoningParameters::~DeadReckoningParameters() {}
 
-unsigned char DeadReckoningParameters::getDeadReckoningAlgorithm() const {
+uint8_t DeadReckoningParameters::getDeadReckoningAlgorithm() const {
   return _deadReckoningAlgorithm;
 }
 
-void DeadReckoningParameters::setDeadReckoningAlgorithm(unsigned char pX) {
+void DeadReckoningParameters::setDeadReckoningAlgorithm(uint8_t pX) {
   _deadReckoningAlgorithm = pX;
 }
 
-unsigned char* DeadReckoningParameters::getParameters() { return _parameters; }
+uint8_t* DeadReckoningParameters::getParameters() { return _parameters; }
 
-const unsigned char* DeadReckoningParameters::getParameters() const {
+const uint8_t* DeadReckoningParameters::getParameters() const {
   return _parameters;
 }
 
-void DeadReckoningParameters::setParameters(const unsigned char* x) {
+void DeadReckoningParameters::setParameters(const uint8_t* x) {
   for (int i = 0; i < 15; i++) {
     _parameters[i] = x[i];
   }
@@ -89,7 +89,7 @@ bool DeadReckoningParameters::operator==(
   if (!(_deadReckoningAlgorithm == rhs._deadReckoningAlgorithm))
     ivarsEqual = false;
 
-  for (unsigned char idx = 0; idx < 15; idx++) {
+  for (uint8_t idx = 0; idx < 15; idx++) {
     if (!(_parameters[idx] == rhs._parameters[idx])) ivarsEqual = false;
   }
 

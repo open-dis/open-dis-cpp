@@ -16,25 +16,25 @@ namespace DIS {
 class OPENDIS7_EXPORT EngineFuelReload {
  protected:
   /** standard quantity of fuel loaded */
-  unsigned int _standardQuantity;
+  uint32_t _standardQuantity;
 
   /** maximum quantity of fuel loaded */
-  unsigned int _maximumQuantity;
+  uint32_t _maximumQuantity;
 
   /** seconds normally required to to reload standard qty */
-  unsigned int _standardQuantityReloadTime;
+  uint32_t _standardQuantityReloadTime;
 
   /** seconds normally required to to reload maximum qty */
-  unsigned int _maximumQuantityReloadTime;
+  uint32_t _maximumQuantityReloadTime;
 
   /** Units of measure */
-  unsigned char _fuelMeasurmentUnits;
+  uint8_t _fuelMeasurmentUnits;
 
   /** fuel  location as related to the entity */
-  unsigned char _fuelLocation;
+  uint8_t _fuelLocation;
 
   /** padding */
-  unsigned char _padding;
+  uint8_t _padding;
 
  public:
   EngineFuelReload();
@@ -43,26 +43,26 @@ class OPENDIS7_EXPORT EngineFuelReload {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getStandardQuantity() const;
-  void setStandardQuantity(unsigned int pX);
+  uint32_t getStandardQuantity() const;
+  void setStandardQuantity(uint32_t pX);
 
-  unsigned int getMaximumQuantity() const;
-  void setMaximumQuantity(unsigned int pX);
+  uint32_t getMaximumQuantity() const;
+  void setMaximumQuantity(uint32_t pX);
 
-  unsigned int getStandardQuantityReloadTime() const;
-  void setStandardQuantityReloadTime(unsigned int pX);
+  uint32_t getStandardQuantityReloadTime() const;
+  void setStandardQuantityReloadTime(uint32_t pX);
 
-  unsigned int getMaximumQuantityReloadTime() const;
-  void setMaximumQuantityReloadTime(unsigned int pX);
+  uint32_t getMaximumQuantityReloadTime() const;
+  void setMaximumQuantityReloadTime(uint32_t pX);
 
-  unsigned char getFuelMeasurmentUnits() const;
-  void setFuelMeasurmentUnits(unsigned char pX);
+  uint8_t getFuelMeasurmentUnits() const;
+  void setFuelMeasurmentUnits(uint8_t pX);
 
-  unsigned char getFuelLocation() const;
-  void setFuelLocation(unsigned char pX);
+  uint8_t getFuelLocation() const;
+  void setFuelLocation(uint8_t pX);
 
-  unsigned char getPadding() const;
-  void setPadding(unsigned char pX);
+  uint8_t getPadding() const;
+  void setPadding(uint8_t pX);
 
   virtual int getMarshalledSize() const;
 

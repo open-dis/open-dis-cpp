@@ -21,11 +21,11 @@ void DirectedEnergyTargetEnergyDeposition::setTargetEntityID(
   _targetEntityID = pX;
 }
 
-unsigned short DirectedEnergyTargetEnergyDeposition::getPadding() const {
+uint16_t DirectedEnergyTargetEnergyDeposition::getPadding() const {
   return _padding;
 }
 
-void DirectedEnergyTargetEnergyDeposition::setPadding(unsigned short pX) {
+void DirectedEnergyTargetEnergyDeposition::setPadding(uint16_t pX) {
   _padding = pX;
 }
 

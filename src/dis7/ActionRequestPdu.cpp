@@ -36,19 +36,19 @@ const EntityID& ActionRequestPdu::getReceivingID() const {
 
 void ActionRequestPdu::setReceivingID(const EntityID& pX) { _receivingID = pX; }
 
-unsigned int ActionRequestPdu::getRequestID() const { return _requestID; }
+uint32_t ActionRequestPdu::getRequestID() const { return _requestID; }
 
-void ActionRequestPdu::setRequestID(unsigned int pX) { _requestID = pX; }
+void ActionRequestPdu::setRequestID(uint32_t pX) { _requestID = pX; }
 
-unsigned int ActionRequestPdu::getActionID() const { return _actionID; }
+uint32_t ActionRequestPdu::getActionID() const { return _actionID; }
 
-void ActionRequestPdu::setActionID(unsigned int pX) { _actionID = pX; }
+void ActionRequestPdu::setActionID(uint32_t pX) { _actionID = pX; }
 
-unsigned int ActionRequestPdu::getNumberOfFixedDatumRecords() const {
+uint32_t ActionRequestPdu::getNumberOfFixedDatumRecords() const {
   return _fixedDatums.size();
 }
 
-unsigned int ActionRequestPdu::getNumberOfVariableDatumRecords() const {
+uint32_t ActionRequestPdu::getNumberOfVariableDatumRecords() const {
   return _variableDatums.size();
 }
 
@@ -83,8 +83,8 @@ void ActionRequestPdu::marshal(DataStream& dataStream) const {
   _receivingID.marshal(dataStream);
   dataStream << _requestID;
   dataStream << _actionID;
-  dataStream << (unsigned int)_fixedDatums.size();
-  dataStream << (unsigned int)_variableDatums.size();
+  dataStream << (uint32_t)_fixedDatums.size();
+  dataStream << (uint32_t)_variableDatums.size();
 
   for (size_t idx = 0; idx < _fixedDatums.size(); idx++) {
     FixedDatum x = _fixedDatums[idx];
@@ -155,12 +155,12 @@ int ActionRequestPdu::getMarshalledSize() const {
   marshalSize = marshalSize + 4;  // _numberOfFixedDatumRecords
   marshalSize = marshalSize + 4;  // _numberOfVariableDatumRecords
 
-  for (unsigned long long idx = 0; idx < _fixedDatums.size(); idx++) {
+  for (uint64_t idx = 0; idx < _fixedDatums.size(); idx++) {
     FixedDatum listElement = _fixedDatums[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }
 
-  for (unsigned long long idx = 0; idx < _variableDatums.size(); idx++) {
+  for (uint64_t idx = 0; idx < _variableDatums.size(); idx++) {
     VariableDatum listElement = _variableDatums[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

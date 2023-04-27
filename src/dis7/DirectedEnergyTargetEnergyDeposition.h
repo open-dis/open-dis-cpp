@@ -18,7 +18,7 @@ class OPENDIS7_EXPORT DirectedEnergyTargetEnergyDeposition {
   EntityID _targetEntityID;
 
   /** padding */
-  unsigned short _padding;
+  uint16_t _padding;
 
   /** Peak irrandiance */
   float _peakIrradiance;
@@ -34,8 +34,8 @@ class OPENDIS7_EXPORT DirectedEnergyTargetEnergyDeposition {
   const EntityID& getTargetEntityID() const;
   void setTargetEntityID(const EntityID& pX);
 
-  unsigned short getPadding() const;
-  void setPadding(unsigned short pX);
+  uint16_t getPadding() const;
+  void setPadding(uint16_t pX);
 
   float getPeakIrradiance() const;
   void setPeakIrradiance(float pX);

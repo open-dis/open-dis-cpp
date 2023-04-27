@@ -18,11 +18,11 @@ class OPENDIS7_EXPORT NamedLocationIdentification {
    * the part entity is On Station, this field shall specify the representation
    * of the part’s location data fields. This field shall be specified by a
    * 16-bit enumeration  */
-  unsigned short _stationName;
+  uint16_t _stationName;
 
   /** the number of the particular wing station, cargo hold etc., at which the
    * part is attached.  */
-  unsigned short _stationNumber;
+  uint16_t _stationNumber;
 
  public:
   NamedLocationIdentification();
@@ -31,11 +31,11 @@ class OPENDIS7_EXPORT NamedLocationIdentification {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getStationName() const;
-  void setStationName(unsigned short pX);
+  uint16_t getStationName() const;
+  void setStationName(uint16_t pX);
 
-  unsigned short getStationNumber() const;
-  void setStationNumber(unsigned short pX);
+  uint16_t getStationNumber() const;
+  void setStationNumber(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

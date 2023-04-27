@@ -16,16 +16,16 @@ class OPENDIS7_EXPORT RemoveEntityReliablePdu
     : public SimulationManagementWithReliabilityFamilyPdu {
  protected:
   /** level of reliability service used for this transaction */
-  unsigned char _requiredReliabilityService;
+  uint8_t _requiredReliabilityService;
 
   /** padding */
-  unsigned short _pad1;
+  uint16_t _pad1;
 
   /** padding */
-  unsigned char _pad2;
+  uint8_t _pad2;
 
   /** Request ID */
-  unsigned int _requestID;
+  uint32_t _requestID;
 
  public:
   RemoveEntityReliablePdu();
@@ -34,17 +34,17 @@ class OPENDIS7_EXPORT RemoveEntityReliablePdu
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned char getRequiredReliabilityService() const;
-  void setRequiredReliabilityService(unsigned char pX);
+  uint8_t getRequiredReliabilityService() const;
+  void setRequiredReliabilityService(uint8_t pX);
 
-  unsigned short getPad1() const;
-  void setPad1(unsigned short pX);
+  uint16_t getPad1() const;
+  void setPad1(uint16_t pX);
 
-  unsigned char getPad2() const;
-  void setPad2(unsigned char pX);
+  uint8_t getPad2() const;
+  void setPad2(uint8_t pX);
 
-  unsigned int getRequestID() const;
-  void setRequestID(unsigned int pX);
+  uint32_t getRequestID() const;
+  void setRequestID(uint32_t pX);
 
   virtual int getMarshalledSize() const;
 

@@ -16,25 +16,25 @@ class OPENDIS7_EXPORT SeparationVP {
  protected:
   /** the identification of the Variable Parameter record. Enumeration from EBV
    */
-  unsigned char _recordType;
+  uint8_t _recordType;
 
   /** Reason for separation. EBV */
-  unsigned char _reasonForSeparation;
+  uint8_t _reasonForSeparation;
 
   /** Whether the entity existed prior to separation EBV */
-  unsigned char _preEntityIndicator;
+  uint8_t _preEntityIndicator;
 
   /** padding */
-  unsigned char _padding1;
+  uint8_t _padding1;
 
   /** ID of parent */
   EntityID _parentEntityID;
 
   /** padding */
-  unsigned short _padding2;
+  uint16_t _padding2;
 
   /** Station separated from */
-  unsigned int _stationLocation;
+  uint32_t _stationLocation;
 
  public:
   SeparationVP();
@@ -43,27 +43,27 @@ class OPENDIS7_EXPORT SeparationVP {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned char getRecordType() const;
-  void setRecordType(unsigned char pX);
+  uint8_t getRecordType() const;
+  void setRecordType(uint8_t pX);
 
-  unsigned char getReasonForSeparation() const;
-  void setReasonForSeparation(unsigned char pX);
+  uint8_t getReasonForSeparation() const;
+  void setReasonForSeparation(uint8_t pX);
 
-  unsigned char getPreEntityIndicator() const;
-  void setPreEntityIndicator(unsigned char pX);
+  uint8_t getPreEntityIndicator() const;
+  void setPreEntityIndicator(uint8_t pX);
 
-  unsigned char getPadding1() const;
-  void setPadding1(unsigned char pX);
+  uint8_t getPadding1() const;
+  void setPadding1(uint8_t pX);
 
   EntityID& getParentEntityID();
   const EntityID& getParentEntityID() const;
   void setParentEntityID(const EntityID& pX);
 
-  unsigned short getPadding2() const;
-  void setPadding2(unsigned short pX);
+  uint16_t getPadding2() const;
+  void setPadding2(uint16_t pX);
 
-  unsigned int getStationLocation() const;
-  void setStationLocation(unsigned int pX);
+  uint32_t getStationLocation() const;
+  void setStationLocation(uint32_t pX);
 
   virtual int getMarshalledSize() const;
 

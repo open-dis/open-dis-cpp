@@ -12,37 +12,37 @@ PduSuperclass::PduSuperclass()
 
 PduSuperclass::~PduSuperclass() {}
 
-unsigned char PduSuperclass::getProtocolVersion() const {
+uint8_t PduSuperclass::getProtocolVersion() const {
   return _protocolVersion;
 }
 
-void PduSuperclass::setProtocolVersion(unsigned char pX) {
+void PduSuperclass::setProtocolVersion(uint8_t pX) {
   _protocolVersion = pX;
 }
 
-unsigned char PduSuperclass::getExerciseID() const { return _exerciseID; }
+uint8_t PduSuperclass::getExerciseID() const { return _exerciseID; }
 
-void PduSuperclass::setExerciseID(unsigned char pX) { _exerciseID = pX; }
+void PduSuperclass::setExerciseID(uint8_t pX) { _exerciseID = pX; }
 
-unsigned char PduSuperclass::getPduType() const { return _pduType; }
+uint8_t PduSuperclass::getPduType() const { return _pduType; }
 
-void PduSuperclass::setPduType(unsigned char pX) { _pduType = pX; }
+void PduSuperclass::setPduType(uint8_t pX) { _pduType = pX; }
 
-unsigned char PduSuperclass::getProtocolFamily() const {
+uint8_t PduSuperclass::getProtocolFamily() const {
   return _protocolFamily;
 }
 
-void PduSuperclass::setProtocolFamily(unsigned char pX) {
+void PduSuperclass::setProtocolFamily(uint8_t pX) {
   _protocolFamily = pX;
 }
 
-unsigned int PduSuperclass::getTimestamp() const { return _timestamp; }
+uint32_t PduSuperclass::getTimestamp() const { return _timestamp; }
 
-void PduSuperclass::setTimestamp(unsigned int pX) { _timestamp = pX; }
+void PduSuperclass::setTimestamp(uint32_t pX) { _timestamp = pX; }
 
-unsigned short PduSuperclass::getLength() const { return _length; }
+uint16_t PduSuperclass::getLength() const { return _length; }
 
-void PduSuperclass::setLength(unsigned short pX) { _length = pX; }
+void PduSuperclass::setLength(uint16_t pX) { _length = pX; }
 
 void PduSuperclass::marshal(DataStream& dataStream) const {
   dataStream << _protocolVersion;

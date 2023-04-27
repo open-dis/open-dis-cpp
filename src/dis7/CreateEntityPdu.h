@@ -22,7 +22,7 @@ class OPENDIS7_EXPORT CreateEntityPdu : public SimulationManagementFamilyPdu {
   EntityID _receivingID;
 
   /** Identifier for the request.  See 6.2.75 */
-  unsigned int _requestID;
+  uint32_t _requestID;
 
  public:
   CreateEntityPdu();
@@ -39,8 +39,8 @@ class OPENDIS7_EXPORT CreateEntityPdu : public SimulationManagementFamilyPdu {
   const EntityID& getReceivingID() const;
   void setReceivingID(const EntityID& pX);
 
-  unsigned int getRequestID() const;
-  void setRequestID(unsigned int pX);
+  uint32_t getRequestID() const;
+  void setRequestID(uint32_t pX);
 
   virtual int getMarshalledSize() const;
 

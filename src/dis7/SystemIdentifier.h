@@ -14,16 +14,16 @@ namespace DIS {
 class OPENDIS7_EXPORT SystemIdentifier {
  protected:
   /** general type of emitting system, an enumeration */
-  unsigned short _systemType;
+  uint16_t _systemType;
 
   /** named type of system, an enumeration */
-  unsigned short _systemName;
+  uint16_t _systemName;
 
   /** mode of operation for the system, an enumeration */
-  unsigned char _systemMode;
+  uint8_t _systemMode;
 
   /** status of this PDU, see section 6.2.15 */
-  unsigned char _changeOptions;
+  uint8_t _changeOptions;
 
  public:
   SystemIdentifier();
@@ -32,17 +32,17 @@ class OPENDIS7_EXPORT SystemIdentifier {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getSystemType() const;
-  void setSystemType(unsigned short pX);
+  uint16_t getSystemType() const;
+  void setSystemType(uint16_t pX);
 
-  unsigned short getSystemName() const;
-  void setSystemName(unsigned short pX);
+  uint16_t getSystemName() const;
+  void setSystemName(uint16_t pX);
 
-  unsigned char getSystemMode() const;
-  void setSystemMode(unsigned char pX);
+  uint8_t getSystemMode() const;
+  void setSystemMode(uint8_t pX);
 
-  unsigned char getChangeOptions() const;
-  void setChangeOptions(unsigned char pX);
+  uint8_t getChangeOptions() const;
+  void setChangeOptions(uint8_t pX);
 
   virtual int getMarshalledSize() const;
 

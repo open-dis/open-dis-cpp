@@ -34,7 +34,7 @@ class OPENDIS7_EXPORT CollisionElasticPdu : public EntityInformationFamilyPdu {
   EventIdentifier _collisionEventID;
 
   /** some padding */
-  short _pad;
+  int16_t _pad;
 
   /** This field shall contain the velocity at the time the collision is
    * detected at the point the collision is detected. The velocity shall be
@@ -104,8 +104,8 @@ class OPENDIS7_EXPORT CollisionElasticPdu : public EntityInformationFamilyPdu {
   const EventIdentifier& getCollisionEventID() const;
   void setCollisionEventID(const EventIdentifier& pX);
 
-  short getPad() const;
-  void setPad(short pX);
+  int16_t getPad() const;
+  void setPad(int16_t pX);
 
   Vector3Float& getContactVelocity();
   const Vector3Float& getContactVelocity() const;

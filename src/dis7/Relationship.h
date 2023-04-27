@@ -15,11 +15,11 @@ class OPENDIS7_EXPORT Relationship {
  protected:
   /** the nature or purpose for joining of the part entity to the host entity
    * and shall be represented by a 16-bit enumeration */
-  unsigned short _nature;
+  uint16_t _nature;
 
   /** the position of the part entity with respect to the host entity and shall
    * be represented by a 16-bit enumeration */
-  unsigned short _position;
+  uint16_t _position;
 
  public:
   Relationship();
@@ -28,11 +28,11 @@ class OPENDIS7_EXPORT Relationship {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getNature() const;
-  void setNature(unsigned short pX);
+  uint16_t getNature() const;
+  void setNature(uint16_t pX);
 
-  unsigned short getPosition() const;
-  void setPosition(unsigned short pX);
+  uint16_t getPosition() const;
+  void setPosition(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

@@ -18,7 +18,7 @@ class OPENDIS7_EXPORT EventIdentifier {
   /** Site and application IDs */
   SimulationAddress _simulationAddress;
 
-  unsigned short _eventNumber;
+  uint16_t _eventNumber;
 
  public:
   EventIdentifier();
@@ -31,8 +31,8 @@ class OPENDIS7_EXPORT EventIdentifier {
   const SimulationAddress& getSimulationAddress() const;
   void setSimulationAddress(const SimulationAddress& pX);
 
-  unsigned short getEventNumber() const;
-  void setEventNumber(unsigned short pX);
+  uint16_t getEventNumber() const;
+  void setEventNumber(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

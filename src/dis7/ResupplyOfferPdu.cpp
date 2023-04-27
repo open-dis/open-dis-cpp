@@ -38,7 +38,7 @@ void ResupplyOfferPdu::setSupplyingEntityID(const EntityID& pX) {
   _supplyingEntityID = pX;
 }
 
-unsigned char ResupplyOfferPdu::getNumberOfSupplyTypes() const {
+uint8_t ResupplyOfferPdu::getNumberOfSupplyTypes() const {
   return _supplies.size();
 }
 
@@ -46,9 +46,9 @@ char ResupplyOfferPdu::getPadding1() const { return _padding1; }
 
 void ResupplyOfferPdu::setPadding1(char pX) { _padding1 = pX; }
 
-short ResupplyOfferPdu::getPadding2() const { return _padding2; }
+int16_t ResupplyOfferPdu::getPadding2() const { return _padding2; }
 
-void ResupplyOfferPdu::setPadding2(short pX) { _padding2 = pX; }
+void ResupplyOfferPdu::setPadding2(int16_t pX) { _padding2 = pX; }
 
 std::vector<SupplyQuantity>& ResupplyOfferPdu::getSupplies() {
   return _supplies;
@@ -67,7 +67,7 @@ void ResupplyOfferPdu::marshal(DataStream& dataStream) const {
       dataStream);  // Marshal information in superclass first
   _receivingEntityID.marshal(dataStream);
   _supplyingEntityID.marshal(dataStream);
-  dataStream << (unsigned char)_supplies.size();
+  dataStream << (uint8_t)_supplies.size();
   dataStream << _padding1;
   dataStream << _padding2;
 
@@ -123,7 +123,7 @@ int ResupplyOfferPdu::getMarshalledSize() const {
   marshalSize = marshalSize + 1;                         // _padding1
   marshalSize = marshalSize + 2;                         // _padding2
 
-  for (unsigned long long idx = 0; idx < _supplies.size(); idx++) {
+  for (uint64_t idx = 0; idx < _supplies.size(); idx++) {
     SupplyQuantity listElement = _supplies[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

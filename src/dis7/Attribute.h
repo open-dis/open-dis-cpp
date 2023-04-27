@@ -14,11 +14,11 @@ namespace DIS {
 
 class OPENDIS7_EXPORT Attribute {
  protected:
-  unsigned int _recordType;
+  uint32_t _recordType;
 
-  unsigned short _recordLength;
+  uint16_t _recordLength;
 
-  long long _recordSpecificFields;
+  int64_t _recordSpecificFields;
 
  public:
   Attribute();
@@ -27,14 +27,14 @@ class OPENDIS7_EXPORT Attribute {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getRecordType() const;
-  void setRecordType(unsigned int pX);
+  uint32_t getRecordType() const;
+  void setRecordType(uint32_t pX);
 
-  unsigned short getRecordLength() const;
-  void setRecordLength(unsigned short pX);
+  uint16_t getRecordLength() const;
+  void setRecordLength(uint16_t pX);
 
-  long long getRecordSpecificFields() const;
-  void setRecordSpecificFields(long long pX);
+  int64_t getRecordSpecificFields() const;
+  void setRecordSpecificFields(int64_t pX);
 
   virtual int getMarshalledSize() const;
 

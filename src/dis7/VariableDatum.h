@@ -19,17 +19,17 @@ class OPENDIS7_EXPORT VariableDatum {
  protected:
   /** Type of variable datum to be transmitted. 32 bit enumeration defined in
    * EBV */
-  unsigned int _variableDatumID;
+  uint32_t _variableDatumID;
 
   /** Length, in bits, of the variable datum. */
-  unsigned int _variableDatumLength;
+  uint32_t _variableDatumLength;
 
   /** Variable datum. This can be any number of bits long, depending on the
    * datum. */
-  unsigned int _variableDatumBits;
+  uint32_t _variableDatumBits;
 
   /** padding to put the record on a 64 bit boundary */
-  unsigned int _padding;
+  uint32_t _padding;
 
   // Variable Data
   std::vector<EightByteChunk> _variableDatums;
@@ -41,17 +41,17 @@ class OPENDIS7_EXPORT VariableDatum {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getVariableDatumID() const;
-  void setVariableDatumID(unsigned int pX);
+  uint32_t getVariableDatumID() const;
+  void setVariableDatumID(uint32_t pX);
 
-  unsigned int getVariableDatumLength() const;
-  void setVariableDatumLength(unsigned int pX);
+  uint32_t getVariableDatumLength() const;
+  void setVariableDatumLength(uint32_t pX);
 
-  unsigned int getVariableDatumBits() const;
-  void setVariableDatumBits(unsigned int pX);
+  uint32_t getVariableDatumBits() const;
+  void setVariableDatumBits(uint32_t pX);
 
-  unsigned int getPadding() const;
-  void setPadding(unsigned int pX);
+  uint32_t getPadding() const;
+  void setPadding(uint32_t pX);
 
   virtual int getMarshalledSize() const;
 

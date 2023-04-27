@@ -66,16 +66,16 @@ class OPENDIS7_EXPORT DirectedEnergyFirePdu : public WarfareFamilyPdu {
   char _pulseShape;
 
   /** padding, Section 7.3.4  */
-  unsigned char _padding1;
+  uint8_t _padding1;
 
   /** padding, Section 7.3.4  */
-  unsigned int _padding2;
+  uint32_t _padding2;
 
   /** padding, Section 7.3.4  */
-  unsigned short _padding3;
+  uint16_t _padding3;
 
   /** Field shall specify the number of DE records, Section 7.3.4  */
-  unsigned short _numberOfDERecords;
+  uint16_t _numberOfDERecords;
 
   /** Fields shall contain one or more DE records, records shall conform to the
    * variable record format (Section6.2.82), Section 7.3.4 */
@@ -124,16 +124,16 @@ class OPENDIS7_EXPORT DirectedEnergyFirePdu : public WarfareFamilyPdu {
   char getPulseShape() const;
   void setPulseShape(char pX);
 
-  unsigned char getPadding1() const;
-  void setPadding1(unsigned char pX);
+  uint8_t getPadding1() const;
+  void setPadding1(uint8_t pX);
 
-  unsigned int getPadding2() const;
-  void setPadding2(unsigned int pX);
+  uint32_t getPadding2() const;
+  void setPadding2(uint32_t pX);
 
-  unsigned short getPadding3() const;
-  void setPadding3(unsigned short pX);
+  uint16_t getPadding3() const;
+  void setPadding3(uint16_t pX);
 
-  unsigned short getNumberOfDERecords() const;
+  uint16_t getNumberOfDERecords() const;
 
   std::vector<StandardVariableSpecification>& getDERecords();
   const std::vector<StandardVariableSpecification>& getDERecords() const;

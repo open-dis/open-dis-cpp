@@ -19,7 +19,7 @@ class OPENDIS7_EXPORT RadioCommunicationsFamilyPdu : public Pdu {
   EntityID _entityId;
 
   /** particular radio within an entity */
-  unsigned short _radioId;
+  uint16_t _radioId;
 
  public:
   RadioCommunicationsFamilyPdu();
@@ -32,8 +32,8 @@ class OPENDIS7_EXPORT RadioCommunicationsFamilyPdu : public Pdu {
   const EntityID& getEntityId() const;
   void setEntityId(const EntityID& pX);
 
-  unsigned short getRadioId() const;
-  void setRadioId(unsigned short pX);
+  uint16_t getRadioId() const;
+  void setRadioId(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

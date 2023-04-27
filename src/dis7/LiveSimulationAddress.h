@@ -18,11 +18,11 @@ class OPENDIS7_EXPORT LiveSimulationAddress {
    * have multiple sites associated with it. The Site Number is the first
    * component of the Live Simulation Address, which defines a live simulation.
    */
-  unsigned char _liveSiteNumber;
+  uint8_t _liveSiteNumber;
 
   /** An application associated with a live site is termed a live application.
    * Each live application participating in an event  */
-  unsigned short _liveApplicationNumber;
+  uint16_t _liveApplicationNumber;
 
  public:
   LiveSimulationAddress();
@@ -31,11 +31,11 @@ class OPENDIS7_EXPORT LiveSimulationAddress {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned char getLiveSiteNumber() const;
-  void setLiveSiteNumber(unsigned char pX);
+  uint8_t getLiveSiteNumber() const;
+  void setLiveSiteNumber(uint8_t pX);
 
-  unsigned short getLiveApplicationNumber() const;
-  void setLiveApplicationNumber(unsigned short pX);
+  uint16_t getLiveApplicationNumber() const;
+  void setLiveApplicationNumber(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

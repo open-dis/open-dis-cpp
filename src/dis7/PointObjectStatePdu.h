@@ -29,13 +29,13 @@ class OPENDIS7_EXPORT PointObjectStatePdu
   EntityID _referencedObjectID;
 
   /** unique update number of each state transition of an object */
-  unsigned short _updateNumber;
+  uint16_t _updateNumber;
 
   /** force ID */
-  unsigned char _forceID;
+  uint8_t _forceID;
 
   /** modifications */
-  unsigned char _modifications;
+  uint8_t _modifications;
 
   /** Object type */
   ObjectType _objectType;
@@ -56,7 +56,7 @@ class OPENDIS7_EXPORT PointObjectStatePdu
   SimulationAddress _receivingID;
 
   /** padding */
-  unsigned int _pad2;
+  uint32_t _pad2;
 
  public:
   PointObjectStatePdu();
@@ -73,14 +73,14 @@ class OPENDIS7_EXPORT PointObjectStatePdu
   const EntityID& getReferencedObjectID() const;
   void setReferencedObjectID(const EntityID& pX);
 
-  unsigned short getUpdateNumber() const;
-  void setUpdateNumber(unsigned short pX);
+  uint16_t getUpdateNumber() const;
+  void setUpdateNumber(uint16_t pX);
 
-  unsigned char getForceID() const;
-  void setForceID(unsigned char pX);
+  uint8_t getForceID() const;
+  void setForceID(uint8_t pX);
 
-  unsigned char getModifications() const;
-  void setModifications(unsigned char pX);
+  uint8_t getModifications() const;
+  void setModifications(uint8_t pX);
 
   ObjectType& getObjectType();
   const ObjectType& getObjectType() const;
@@ -105,8 +105,8 @@ class OPENDIS7_EXPORT PointObjectStatePdu
   const SimulationAddress& getReceivingID() const;
   void setReceivingID(const SimulationAddress& pX);
 
-  unsigned int getPad2() const;
-  void setPad2(unsigned int pX);
+  uint32_t getPad2() const;
+  void setPad2(uint32_t pX);
 
   virtual int getMarshalledSize() const;
 

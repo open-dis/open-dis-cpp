@@ -26,13 +26,13 @@ class OPENDIS7_EXPORT IFFFundamentalParameterData {
   float _pulseWidth;
 
   /** Burst length */
-  unsigned int _burstLength;
+  uint32_t _burstLength;
 
   /** Applicable modes enumeration */
-  unsigned char _applicableModes;
+  uint8_t _applicableModes;
 
   /** System-specific data */
-  unsigned char _systemSpecificData[3];
+  uint8_t _systemSpecificData[3];
 
  public:
   IFFFundamentalParameterData();
@@ -53,15 +53,15 @@ class OPENDIS7_EXPORT IFFFundamentalParameterData {
   float getPulseWidth() const;
   void setPulseWidth(float pX);
 
-  unsigned int getBurstLength() const;
-  void setBurstLength(unsigned int pX);
+  uint32_t getBurstLength() const;
+  void setBurstLength(uint32_t pX);
 
-  unsigned char getApplicableModes() const;
-  void setApplicableModes(unsigned char pX);
+  uint8_t getApplicableModes() const;
+  void setApplicableModes(uint8_t pX);
 
-  unsigned char* getSystemSpecificData();
-  const unsigned char* getSystemSpecificData() const;
-  void setSystemSpecificData(const unsigned char* pX);
+  uint8_t* getSystemSpecificData();
+  const uint8_t* getSystemSpecificData() const;
+  void setSystemSpecificData(const uint8_t* pX);
 
   virtual int getMarshalledSize() const;
 

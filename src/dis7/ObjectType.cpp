@@ -7,21 +7,21 @@ ObjectType::ObjectType()
 
 ObjectType::~ObjectType() {}
 
-unsigned char ObjectType::getDomain() const { return _domain; }
+uint8_t ObjectType::getDomain() const { return _domain; }
 
-void ObjectType::setDomain(unsigned char pX) { _domain = pX; }
+void ObjectType::setDomain(uint8_t pX) { _domain = pX; }
 
-unsigned char ObjectType::getObjectKind() const { return _objectKind; }
+uint8_t ObjectType::getObjectKind() const { return _objectKind; }
 
-void ObjectType::setObjectKind(unsigned char pX) { _objectKind = pX; }
+void ObjectType::setObjectKind(uint8_t pX) { _objectKind = pX; }
 
-unsigned char ObjectType::getCategory() const { return _category; }
+uint8_t ObjectType::getCategory() const { return _category; }
 
-void ObjectType::setCategory(unsigned char pX) { _category = pX; }
+void ObjectType::setCategory(uint8_t pX) { _category = pX; }
 
-unsigned char ObjectType::getSubcategory() const { return _subcategory; }
+uint8_t ObjectType::getSubcategory() const { return _subcategory; }
 
-void ObjectType::setSubcategory(unsigned char pX) { _subcategory = pX; }
+void ObjectType::setSubcategory(uint8_t pX) { _subcategory = pX; }
 
 void ObjectType::marshal(DataStream& dataStream) const {
   dataStream << _domain;

@@ -30,25 +30,25 @@ class OPENDIS7_EXPORT ArealObjectStatePdu
   EntityID _referencedObjectID;
 
   /** unique update number of each state transition of an object */
-  unsigned short _updateNumber;
+  uint16_t _updateNumber;
 
   /** force ID */
-  unsigned char _forceID;
+  uint8_t _forceID;
 
   /** modifications enumeration */
-  unsigned char _modifications;
+  uint8_t _modifications;
 
   /** Object type */
   EntityType _objectType;
 
   /** Object appearance */
-  unsigned int _specificObjectAppearance;
+  uint32_t _specificObjectAppearance;
 
   /** Object appearance */
-  unsigned short _generalObjectAppearance;
+  uint16_t _generalObjectAppearance;
 
   /** Number of points */
-  unsigned short _numberOfPoints;
+  uint16_t _numberOfPoints;
 
   /** requesterID */
   SimulationAddress _requesterID;
@@ -74,26 +74,26 @@ class OPENDIS7_EXPORT ArealObjectStatePdu
   const EntityID& getReferencedObjectID() const;
   void setReferencedObjectID(const EntityID& pX);
 
-  unsigned short getUpdateNumber() const;
-  void setUpdateNumber(unsigned short pX);
+  uint16_t getUpdateNumber() const;
+  void setUpdateNumber(uint16_t pX);
 
-  unsigned char getForceID() const;
-  void setForceID(unsigned char pX);
+  uint8_t getForceID() const;
+  void setForceID(uint8_t pX);
 
-  unsigned char getModifications() const;
-  void setModifications(unsigned char pX);
+  uint8_t getModifications() const;
+  void setModifications(uint8_t pX);
 
   EntityType& getObjectType();
   const EntityType& getObjectType() const;
   void setObjectType(const EntityType& pX);
 
-  unsigned int getSpecificObjectAppearance() const;
-  void setSpecificObjectAppearance(unsigned int pX);
+  uint32_t getSpecificObjectAppearance() const;
+  void setSpecificObjectAppearance(uint32_t pX);
 
-  unsigned short getGeneralObjectAppearance() const;
-  void setGeneralObjectAppearance(unsigned short pX);
+  uint16_t getGeneralObjectAppearance() const;
+  void setGeneralObjectAppearance(uint16_t pX);
 
-  unsigned short getNumberOfPoints() const;
+  uint16_t getNumberOfPoints() const;
 
   SimulationAddress& getRequesterID();
   const SimulationAddress& getRequesterID() const;

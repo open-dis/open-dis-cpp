@@ -7,19 +7,19 @@ Attribute::Attribute()
 
 Attribute::~Attribute() {}
 
-unsigned int Attribute::getRecordType() const { return _recordType; }
+uint32_t Attribute::getRecordType() const { return _recordType; }
 
-void Attribute::setRecordType(unsigned int pX) { _recordType = pX; }
+void Attribute::setRecordType(uint32_t pX) { _recordType = pX; }
 
-unsigned short Attribute::getRecordLength() const { return _recordLength; }
+uint16_t Attribute::getRecordLength() const { return _recordLength; }
 
-void Attribute::setRecordLength(unsigned short pX) { _recordLength = pX; }
+void Attribute::setRecordLength(uint16_t pX) { _recordLength = pX; }
 
-long long Attribute::getRecordSpecificFields() const {
+int64_t Attribute::getRecordSpecificFields() const {
   return _recordSpecificFields;
 }
 
-void Attribute::setRecordSpecificFields(long long pX) {
+void Attribute::setRecordSpecificFields(int64_t pX) {
   _recordSpecificFields = pX;
 }
 

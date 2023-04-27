@@ -15,17 +15,17 @@ namespace DIS {
 
 class OPENDIS7_EXPORT IOCommunicationsNode {
  protected:
-  unsigned int _recordType;
+  uint32_t _recordType;
 
-  unsigned short _recordLength;
+  uint16_t _recordLength;
 
-  unsigned char _communcationsNodeType;
+  uint8_t _communcationsNodeType;
 
-  unsigned char _padding;
+  uint8_t _padding;
 
   EntityID _communicationsNode;
 
-  unsigned short _elementID;
+  uint16_t _elementID;
 
  public:
   IOCommunicationsNode();
@@ -34,24 +34,24 @@ class OPENDIS7_EXPORT IOCommunicationsNode {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getRecordType() const;
-  void setRecordType(unsigned int pX);
+  uint32_t getRecordType() const;
+  void setRecordType(uint32_t pX);
 
-  unsigned short getRecordLength() const;
-  void setRecordLength(unsigned short pX);
+  uint16_t getRecordLength() const;
+  void setRecordLength(uint16_t pX);
 
-  unsigned char getCommuncationsNodeType() const;
-  void setCommuncationsNodeType(unsigned char pX);
+  uint8_t getCommuncationsNodeType() const;
+  void setCommuncationsNodeType(uint8_t pX);
 
-  unsigned char getPadding() const;
-  void setPadding(unsigned char pX);
+  uint8_t getPadding() const;
+  void setPadding(uint8_t pX);
 
   EntityID& getCommunicationsNode();
   const EntityID& getCommunicationsNode() const;
   void setCommunicationsNode(const EntityID& pX);
 
-  unsigned short getElementID() const;
-  void setElementID(unsigned short pX);
+  uint16_t getElementID() const;
+  void setElementID(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

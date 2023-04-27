@@ -14,23 +14,23 @@ namespace DIS {
 
 class OPENDIS7_EXPORT IOEffect {
  protected:
-  unsigned int _recordType;
+  uint32_t _recordType;
 
-  unsigned short _recordLength;
+  uint16_t _recordLength;
 
-  unsigned char _ioStatus;
+  uint8_t _ioStatus;
 
-  unsigned char _ioLinkType;
+  uint8_t _ioLinkType;
 
   EntityID _ioEffect;
 
-  unsigned char _ioEffectDutyCycle;
+  uint8_t _ioEffectDutyCycle;
 
-  unsigned short _ioEffectDuration;
+  uint16_t _ioEffectDuration;
 
-  unsigned short _ioProcess;
+  uint16_t _ioProcess;
 
-  unsigned short _padding;
+  uint16_t _padding;
 
  public:
   IOEffect();
@@ -39,33 +39,33 @@ class OPENDIS7_EXPORT IOEffect {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getRecordType() const;
-  void setRecordType(unsigned int pX);
+  uint32_t getRecordType() const;
+  void setRecordType(uint32_t pX);
 
-  unsigned short getRecordLength() const;
-  void setRecordLength(unsigned short pX);
+  uint16_t getRecordLength() const;
+  void setRecordLength(uint16_t pX);
 
-  unsigned char getIoStatus() const;
-  void setIoStatus(unsigned char pX);
+  uint8_t getIoStatus() const;
+  void setIoStatus(uint8_t pX);
 
-  unsigned char getIoLinkType() const;
-  void setIoLinkType(unsigned char pX);
+  uint8_t getIoLinkType() const;
+  void setIoLinkType(uint8_t pX);
 
   EntityID& getIoEffect();
   const EntityID& getIoEffect() const;
   void setIoEffect(const EntityID& pX);
 
-  unsigned char getIoEffectDutyCycle() const;
-  void setIoEffectDutyCycle(unsigned char pX);
+  uint8_t getIoEffectDutyCycle() const;
+  void setIoEffectDutyCycle(uint8_t pX);
 
-  unsigned short getIoEffectDuration() const;
-  void setIoEffectDuration(unsigned short pX);
+  uint16_t getIoEffectDuration() const;
+  void setIoEffectDuration(uint16_t pX);
 
-  unsigned short getIoProcess() const;
-  void setIoProcess(unsigned short pX);
+  uint16_t getIoProcess() const;
+  void setIoProcess(uint16_t pX);
 
-  unsigned short getPadding() const;
-  void setPadding(unsigned short pX);
+  uint16_t getPadding() const;
+  void setPadding(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

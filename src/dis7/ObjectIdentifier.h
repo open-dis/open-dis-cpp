@@ -18,7 +18,7 @@ class OPENDIS7_EXPORT ObjectIdentifier {
   SimulationAddress _simulationAddress;
 
   /**  */
-  unsigned short _objectNumber;
+  uint16_t _objectNumber;
 
  public:
   ObjectIdentifier();
@@ -31,8 +31,8 @@ class OPENDIS7_EXPORT ObjectIdentifier {
   const SimulationAddress& getSimulationAddress() const;
   void setSimulationAddress(const SimulationAddress& pX);
 
-  unsigned short getObjectNumber() const;
-  void setObjectNumber(unsigned short pX);
+  uint16_t getObjectNumber() const;
+  void setObjectNumber(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

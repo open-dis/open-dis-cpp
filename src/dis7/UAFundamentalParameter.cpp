@@ -12,20 +12,20 @@ UAFundamentalParameter::UAFundamentalParameter()
 
 UAFundamentalParameter::~UAFundamentalParameter() {}
 
-unsigned short UAFundamentalParameter::getActiveEmissionParameterIndex() const {
+uint16_t UAFundamentalParameter::getActiveEmissionParameterIndex() const {
   return _activeEmissionParameterIndex;
 }
 
 void UAFundamentalParameter::setActiveEmissionParameterIndex(
-    unsigned short pX) {
+    uint16_t pX) {
   _activeEmissionParameterIndex = pX;
 }
 
-unsigned short UAFundamentalParameter::getScanPattern() const {
+uint16_t UAFundamentalParameter::getScanPattern() const {
   return _scanPattern;
 }
 
-void UAFundamentalParameter::setScanPattern(unsigned short pX) {
+void UAFundamentalParameter::setScanPattern(uint16_t pX) {
   _scanPattern = pX;
 }
 

@@ -19,10 +19,10 @@ class OPENDIS7_EXPORT TrackJamData {
   EntityID _entityID;
 
   /** Emitter system associated with the entity */
-  unsigned char _emitterNumber;
+  uint8_t _emitterNumber;
 
   /** Beam associated with the entity */
-  unsigned char _beamNumber;
+  uint8_t _beamNumber;
 
  public:
   TrackJamData();
@@ -35,11 +35,11 @@ class OPENDIS7_EXPORT TrackJamData {
   const EntityID& getEntityID() const;
   void setEntityID(const EntityID& pX);
 
-  unsigned char getEmitterNumber() const;
-  void setEmitterNumber(unsigned char pX);
+  uint8_t getEmitterNumber() const;
+  void setEmitterNumber(uint8_t pX);
 
-  unsigned char getBeamNumber() const;
-  void setBeamNumber(unsigned char pX);
+  uint8_t getBeamNumber() const;
+  void setBeamNumber(uint8_t pX);
 
   virtual int getMarshalledSize() const;
 

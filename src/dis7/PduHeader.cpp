@@ -14,37 +14,37 @@ PduHeader::PduHeader()
 
 PduHeader::~PduHeader() {}
 
-unsigned char PduHeader::getProtocolVersion() const { return _protocolVersion; }
+uint8_t PduHeader::getProtocolVersion() const { return _protocolVersion; }
 
-void PduHeader::setProtocolVersion(unsigned char pX) { _protocolVersion = pX; }
+void PduHeader::setProtocolVersion(uint8_t pX) { _protocolVersion = pX; }
 
-unsigned char PduHeader::getExerciseID() const { return _exerciseID; }
+uint8_t PduHeader::getExerciseID() const { return _exerciseID; }
 
-void PduHeader::setExerciseID(unsigned char pX) { _exerciseID = pX; }
+void PduHeader::setExerciseID(uint8_t pX) { _exerciseID = pX; }
 
-unsigned char PduHeader::getPduType() const { return _pduType; }
+uint8_t PduHeader::getPduType() const { return _pduType; }
 
-void PduHeader::setPduType(unsigned char pX) { _pduType = pX; }
+void PduHeader::setPduType(uint8_t pX) { _pduType = pX; }
 
-unsigned char PduHeader::getProtocolFamily() const { return _protocolFamily; }
+uint8_t PduHeader::getProtocolFamily() const { return _protocolFamily; }
 
-void PduHeader::setProtocolFamily(unsigned char pX) { _protocolFamily = pX; }
+void PduHeader::setProtocolFamily(uint8_t pX) { _protocolFamily = pX; }
 
-unsigned int PduHeader::getTimestamp() const { return _timestamp; }
+uint32_t PduHeader::getTimestamp() const { return _timestamp; }
 
-void PduHeader::setTimestamp(unsigned int pX) { _timestamp = pX; }
+void PduHeader::setTimestamp(uint32_t pX) { _timestamp = pX; }
 
-unsigned char PduHeader::getPduLength() const { return _pduLength; }
+uint8_t PduHeader::getPduLength() const { return _pduLength; }
 
-void PduHeader::setPduLength(unsigned char pX) { _pduLength = pX; }
+void PduHeader::setPduLength(uint8_t pX) { _pduLength = pX; }
 
-unsigned short PduHeader::getPduStatus() const { return _pduStatus; }
+uint16_t PduHeader::getPduStatus() const { return _pduStatus; }
 
-void PduHeader::setPduStatus(unsigned short pX) { _pduStatus = pX; }
+void PduHeader::setPduStatus(uint16_t pX) { _pduStatus = pX; }
 
-unsigned char PduHeader::getPadding() const { return _padding; }
+uint8_t PduHeader::getPadding() const { return _padding; }
 
-void PduHeader::setPadding(unsigned char pX) { _padding = pX; }
+void PduHeader::setPadding(uint8_t pX) { _padding = pX; }
 
 void PduHeader::marshal(DataStream& dataStream) const {
   dataStream << _protocolVersion;

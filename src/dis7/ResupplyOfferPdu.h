@@ -28,13 +28,13 @@ class OPENDIS7_EXPORT ResupplyOfferPdu : public LogisticsFamilyPdu {
   EntityID _supplyingEntityID;
 
   /** How many supplies types are being offered, Section 7.4.3 */
-  unsigned char _numberOfSupplyTypes;
+  uint8_t _numberOfSupplyTypes;
 
   /** padding */
   char _padding1;
 
   /** padding */
-  short _padding2;
+  int16_t _padding2;
 
   /** A Reord that Specifies the type of supply and the amount of that supply
    * for each of the supply types in numberOfSupplyTypes (see 6.2.85),
@@ -56,13 +56,13 @@ class OPENDIS7_EXPORT ResupplyOfferPdu : public LogisticsFamilyPdu {
   const EntityID& getSupplyingEntityID() const;
   void setSupplyingEntityID(const EntityID& pX);
 
-  unsigned char getNumberOfSupplyTypes() const;
+  uint8_t getNumberOfSupplyTypes() const;
 
   char getPadding1() const;
   void setPadding1(char pX);
 
-  short getPadding2() const;
-  void setPadding2(short pX);
+  int16_t getPadding2() const;
+  void setPadding2(int16_t pX);
 
   std::vector<SupplyQuantity>& getSupplies();
   const std::vector<SupplyQuantity>& getSupplies() const;

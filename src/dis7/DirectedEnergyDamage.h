@@ -18,13 +18,13 @@ namespace DIS {
 class OPENDIS7_EXPORT DirectedEnergyDamage {
  protected:
   /** DE Record Type. */
-  unsigned int _recordType;
+  uint32_t _recordType;
 
   /** DE Record Length (bytes). */
-  unsigned short _recordLength;
+  uint16_t _recordLength;
 
   /** padding. */
-  unsigned short _padding;
+  uint16_t _padding;
 
   /** location of damage, relative to center of entity */
   Vector3Float _damageLocation;
@@ -37,23 +37,23 @@ class OPENDIS7_EXPORT DirectedEnergyDamage {
   float _temperature;
 
   /** enumeration */
-  unsigned char _componentIdentification;
+  uint8_t _componentIdentification;
 
   /** enumeration */
-  unsigned char _componentDamageStatus;
+  uint8_t _componentDamageStatus;
 
   /** enumeration */
-  unsigned char _componentVisualDamageStatus;
+  uint8_t _componentVisualDamageStatus;
 
   /** enumeration */
-  unsigned char _componentVisualSmokeColor;
+  uint8_t _componentVisualSmokeColor;
 
   /** For any component damage resulting this field shall be set to the fire
    * event ID from that PDU. */
   EventIdentifier _fireEventID;
 
   /** padding */
-  unsigned short _padding2;
+  uint16_t _padding2;
 
  public:
   DirectedEnergyDamage();
@@ -62,14 +62,14 @@ class OPENDIS7_EXPORT DirectedEnergyDamage {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getRecordType() const;
-  void setRecordType(unsigned int pX);
+  uint32_t getRecordType() const;
+  void setRecordType(uint32_t pX);
 
-  unsigned short getRecordLength() const;
-  void setRecordLength(unsigned short pX);
+  uint16_t getRecordLength() const;
+  void setRecordLength(uint16_t pX);
 
-  unsigned short getPadding() const;
-  void setPadding(unsigned short pX);
+  uint16_t getPadding() const;
+  void setPadding(uint16_t pX);
 
   Vector3Float& getDamageLocation();
   const Vector3Float& getDamageLocation() const;
@@ -81,24 +81,24 @@ class OPENDIS7_EXPORT DirectedEnergyDamage {
   float getTemperature() const;
   void setTemperature(float pX);
 
-  unsigned char getComponentIdentification() const;
-  void setComponentIdentification(unsigned char pX);
+  uint8_t getComponentIdentification() const;
+  void setComponentIdentification(uint8_t pX);
 
-  unsigned char getComponentDamageStatus() const;
-  void setComponentDamageStatus(unsigned char pX);
+  uint8_t getComponentDamageStatus() const;
+  void setComponentDamageStatus(uint8_t pX);
 
-  unsigned char getComponentVisualDamageStatus() const;
-  void setComponentVisualDamageStatus(unsigned char pX);
+  uint8_t getComponentVisualDamageStatus() const;
+  void setComponentVisualDamageStatus(uint8_t pX);
 
-  unsigned char getComponentVisualSmokeColor() const;
-  void setComponentVisualSmokeColor(unsigned char pX);
+  uint8_t getComponentVisualSmokeColor() const;
+  void setComponentVisualSmokeColor(uint8_t pX);
 
   EventIdentifier& getFireEventID();
   const EventIdentifier& getFireEventID() const;
   void setFireEventID(const EventIdentifier& pX);
 
-  unsigned short getPadding2() const;
-  void setPadding2(unsigned short pX);
+  uint16_t getPadding2() const;
+  void setPadding2(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

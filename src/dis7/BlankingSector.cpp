@@ -16,29 +16,29 @@ BlankingSector::BlankingSector()
 
 BlankingSector::~BlankingSector() {}
 
-unsigned int BlankingSector::getRecordType() const { return _recordType; }
+uint32_t BlankingSector::getRecordType() const { return _recordType; }
 
-void BlankingSector::setRecordType(unsigned int pX) { _recordType = pX; }
+void BlankingSector::setRecordType(uint32_t pX) { _recordType = pX; }
 
-unsigned short BlankingSector::getRecordLength() const { return _recordLength; }
+uint16_t BlankingSector::getRecordLength() const { return _recordLength; }
 
-void BlankingSector::setRecordLength(unsigned short pX) { _recordLength = pX; }
+void BlankingSector::setRecordLength(uint16_t pX) { _recordLength = pX; }
 
-unsigned char BlankingSector::getEmitterNumber() const {
+uint8_t BlankingSector::getEmitterNumber() const {
   return _emitterNumber;
 }
 
-void BlankingSector::setEmitterNumber(unsigned char pX) { _emitterNumber = pX; }
+void BlankingSector::setEmitterNumber(uint8_t pX) { _emitterNumber = pX; }
 
-unsigned char BlankingSector::getBeamNumber() const { return _beamNumber; }
+uint8_t BlankingSector::getBeamNumber() const { return _beamNumber; }
 
-void BlankingSector::setBeamNumber(unsigned char pX) { _beamNumber = pX; }
+void BlankingSector::setBeamNumber(uint8_t pX) { _beamNumber = pX; }
 
-unsigned char BlankingSector::getStateIndicator() const {
+uint8_t BlankingSector::getStateIndicator() const {
   return _stateIndicator;
 }
 
-void BlankingSector::setStateIndicator(unsigned char pX) {
+void BlankingSector::setStateIndicator(uint8_t pX) {
   _stateIndicator = pX;
 }
 

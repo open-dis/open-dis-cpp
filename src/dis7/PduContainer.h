@@ -17,7 +17,7 @@ namespace DIS {
 class OPENDIS7_EXPORT PduContainer {
  protected:
   /** Number of PDUs in the container list */
-  unsigned int _numberOfPdus;
+  uint32_t _numberOfPdus;
 
   /** record sets */
   std::vector<Pdu> _pdus;
@@ -29,7 +29,7 @@ class OPENDIS7_EXPORT PduContainer {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getNumberOfPdus() const;
+  uint32_t getNumberOfPdus() const;
 
   std::vector<Pdu>& getPdus();
   const std::vector<Pdu>& getPdus() const;

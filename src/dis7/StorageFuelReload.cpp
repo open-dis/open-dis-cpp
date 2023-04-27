@@ -14,61 +14,61 @@ StorageFuelReload::StorageFuelReload()
 
 StorageFuelReload::~StorageFuelReload() {}
 
-unsigned int StorageFuelReload::getStandardQuantity() const {
+uint32_t StorageFuelReload::getStandardQuantity() const {
   return _standardQuantity;
 }
 
-void StorageFuelReload::setStandardQuantity(unsigned int pX) {
+void StorageFuelReload::setStandardQuantity(uint32_t pX) {
   _standardQuantity = pX;
 }
 
-unsigned int StorageFuelReload::getMaximumQuantity() const {
+uint32_t StorageFuelReload::getMaximumQuantity() const {
   return _maximumQuantity;
 }
 
-void StorageFuelReload::setMaximumQuantity(unsigned int pX) {
+void StorageFuelReload::setMaximumQuantity(uint32_t pX) {
   _maximumQuantity = pX;
 }
 
-unsigned char StorageFuelReload::getStandardQuantityReloadTime() const {
+uint8_t StorageFuelReload::getStandardQuantityReloadTime() const {
   return _standardQuantityReloadTime;
 }
 
-void StorageFuelReload::setStandardQuantityReloadTime(unsigned char pX) {
+void StorageFuelReload::setStandardQuantityReloadTime(uint8_t pX) {
   _standardQuantityReloadTime = pX;
 }
 
-unsigned char StorageFuelReload::getMaximumQuantityReloadTime() const {
+uint8_t StorageFuelReload::getMaximumQuantityReloadTime() const {
   return _maximumQuantityReloadTime;
 }
 
-void StorageFuelReload::setMaximumQuantityReloadTime(unsigned char pX) {
+void StorageFuelReload::setMaximumQuantityReloadTime(uint8_t pX) {
   _maximumQuantityReloadTime = pX;
 }
 
-unsigned char StorageFuelReload::getFuelMeasurementUnits() const {
+uint8_t StorageFuelReload::getFuelMeasurementUnits() const {
   return _fuelMeasurementUnits;
 }
 
-void StorageFuelReload::setFuelMeasurementUnits(unsigned char pX) {
+void StorageFuelReload::setFuelMeasurementUnits(uint8_t pX) {
   _fuelMeasurementUnits = pX;
 }
 
-unsigned char StorageFuelReload::getFuelType() const { return _fuelType; }
+uint8_t StorageFuelReload::getFuelType() const { return _fuelType; }
 
-void StorageFuelReload::setFuelType(unsigned char pX) { _fuelType = pX; }
+void StorageFuelReload::setFuelType(uint8_t pX) { _fuelType = pX; }
 
-unsigned char StorageFuelReload::getFuelLocation() const {
+uint8_t StorageFuelReload::getFuelLocation() const {
   return _fuelLocation;
 }
 
-void StorageFuelReload::setFuelLocation(unsigned char pX) {
+void StorageFuelReload::setFuelLocation(uint8_t pX) {
   _fuelLocation = pX;
 }
 
-unsigned char StorageFuelReload::getPadding() const { return _padding; }
+uint8_t StorageFuelReload::getPadding() const { return _padding; }
 
-void StorageFuelReload::setPadding(unsigned char pX) { _padding = pX; }
+void StorageFuelReload::setPadding(uint8_t pX) { _padding = pX; }
 
 void StorageFuelReload::marshal(DataStream& dataStream) const {
   dataStream << _standardQuantity;

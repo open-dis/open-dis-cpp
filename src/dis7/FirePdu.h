@@ -31,8 +31,8 @@ class OPENDIS7_EXPORT FirePdu : public WarfareFamilyPdu {
   EventIdentifier _eventID;
 
   /** This field shall identify the fire mission (see 5.4.3.3). This field shall
-   * be representedby a 32-bit unsigned integer. */
-  unsigned int _fireMissionIndex;
+   * be representedby a 32-bit uint32_teger. */
+  uint32_t _fireMissionIndex;
 
   /** This field shall specify the location, in world coordinates, from which
    * the munition was launched, and shall be represented by a World Coordinates
@@ -74,8 +74,8 @@ class OPENDIS7_EXPORT FirePdu : public WarfareFamilyPdu {
   const EventIdentifier& getEventID() const;
   void setEventID(const EventIdentifier& pX);
 
-  unsigned int getFireMissionIndex() const;
-  void setFireMissionIndex(unsigned int pX);
+  uint32_t getFireMissionIndex() const;
+  void setFireMissionIndex(uint32_t pX);
 
   Vector3Double& getLocationInWorldCoordinates();
   const Vector3Double& getLocationInWorldCoordinates() const;

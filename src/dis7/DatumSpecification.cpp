@@ -10,11 +10,11 @@ DatumSpecification::~DatumSpecification() {
   _variableDatumIDList.clear();
 }
 
-unsigned int DatumSpecification::getNumberOfFixedDatums() const {
+uint32_t DatumSpecification::getNumberOfFixedDatums() const {
   return _fixedDatumIDList.size();
 }
 
-unsigned int DatumSpecification::getNumberOfVariableDatums() const {
+uint32_t DatumSpecification::getNumberOfVariableDatums() const {
   return _variableDatumIDList.size();
 }
 
@@ -46,8 +46,8 @@ void DatumSpecification::setVariableDatumIDList(
 }
 
 void DatumSpecification::marshal(DataStream& dataStream) const {
-  dataStream << (unsigned int)_fixedDatumIDList.size();
-  dataStream << (unsigned int)_variableDatumIDList.size();
+  dataStream << (uint32_t)_fixedDatumIDList.size();
+  dataStream << (uint32_t)_variableDatumIDList.size();
 
   for (size_t idx = 0; idx < _fixedDatumIDList.size(); idx++) {
     FixedDatum x = _fixedDatumIDList[idx];
@@ -101,12 +101,12 @@ int DatumSpecification::getMarshalledSize() const {
   marshalSize = marshalSize + 4;  // _numberOfFixedDatums
   marshalSize = marshalSize + 4;  // _numberOfVariableDatums
 
-  for (unsigned long long idx = 0; idx < _fixedDatumIDList.size(); idx++) {
+  for (uint64_t idx = 0; idx < _fixedDatumIDList.size(); idx++) {
     FixedDatum listElement = _fixedDatumIDList[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }
 
-  for (unsigned long long idx = 0; idx < _variableDatumIDList.size(); idx++) {
+  for (uint64_t idx = 0; idx < _variableDatumIDList.size(); idx++) {
     VariableDatum listElement = _variableDatumIDList[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

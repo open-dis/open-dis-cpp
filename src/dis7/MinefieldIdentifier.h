@@ -18,7 +18,7 @@ class OPENDIS7_EXPORT MinefieldIdentifier {
   SimulationAddress _simulationAddress;
 
   /**  */
-  unsigned short _minefieldNumber;
+  uint16_t _minefieldNumber;
 
  public:
   MinefieldIdentifier();
@@ -31,8 +31,8 @@ class OPENDIS7_EXPORT MinefieldIdentifier {
   const SimulationAddress& getSimulationAddress() const;
   void setSimulationAddress(const SimulationAddress& pX);
 
-  unsigned short getMinefieldNumber() const;
-  void setMinefieldNumber(unsigned short pX);
+  uint16_t getMinefieldNumber() const;
+  void setMinefieldNumber(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

@@ -11,29 +11,29 @@ EngineFuel::EngineFuel()
 
 EngineFuel::~EngineFuel() {}
 
-unsigned int EngineFuel::getFuelQuantity() const { return _fuelQuantity; }
+uint32_t EngineFuel::getFuelQuantity() const { return _fuelQuantity; }
 
-void EngineFuel::setFuelQuantity(unsigned int pX) { _fuelQuantity = pX; }
+void EngineFuel::setFuelQuantity(uint32_t pX) { _fuelQuantity = pX; }
 
-unsigned char EngineFuel::getFuelMeasurementUnits() const {
+uint8_t EngineFuel::getFuelMeasurementUnits() const {
   return _fuelMeasurementUnits;
 }
 
-void EngineFuel::setFuelMeasurementUnits(unsigned char pX) {
+void EngineFuel::setFuelMeasurementUnits(uint8_t pX) {
   _fuelMeasurementUnits = pX;
 }
 
-unsigned char EngineFuel::getFuelType() const { return _fuelType; }
+uint8_t EngineFuel::getFuelType() const { return _fuelType; }
 
-void EngineFuel::setFuelType(unsigned char pX) { _fuelType = pX; }
+void EngineFuel::setFuelType(uint8_t pX) { _fuelType = pX; }
 
-unsigned char EngineFuel::getFuelLocation() const { return _fuelLocation; }
+uint8_t EngineFuel::getFuelLocation() const { return _fuelLocation; }
 
-void EngineFuel::setFuelLocation(unsigned char pX) { _fuelLocation = pX; }
+void EngineFuel::setFuelLocation(uint8_t pX) { _fuelLocation = pX; }
 
-unsigned char EngineFuel::getPadding() const { return _padding; }
+uint8_t EngineFuel::getPadding() const { return _padding; }
 
-void EngineFuel::setPadding(unsigned char pX) { _padding = pX; }
+void EngineFuel::setPadding(uint8_t pX) { _padding = pX; }
 
 void EngineFuel::marshal(DataStream& dataStream) const {
   dataStream << _fuelQuantity;

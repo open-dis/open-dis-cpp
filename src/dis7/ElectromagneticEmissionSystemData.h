@@ -1,5 +1,7 @@
 #pragma once
 
+#include <vector>
+
 #include "dis7/ElectromagneticEmissionBeamData.h"
 #include "dis7/EmitterSystem.h"
 #include "dis7/Vector3Float.h"
@@ -22,14 +24,14 @@ class OPENDIS7_EXPORT ElectromagneticEmissionSystemData {
  protected:
   /**  this field shall specify the length of this emitter system's data in
    * 32-bit words. */
-  unsigned char _systemDataLength;
+  uint8_t _systemDataLength;
 
   /** the number of beams being described in the current PDU for the emitter
    * system being described.  */
-  unsigned char _numberOfBeams;
+  uint8_t _numberOfBeams;
 
   /* padding. */
-  unsigned short _emissionsPadding2;
+  uint16_t _emissionsPadding2;
 
   /**  information about a particular emitter system and shall be represented by
    * an Emitter System record (see 6.2.23). */
@@ -49,13 +51,13 @@ class OPENDIS7_EXPORT ElectromagneticEmissionSystemData {
   ElectromagneticEmissionSystemData();
   virtual ~ElectromagneticEmissionSystemData();
 
-  unsigned char getSystemDataLength() const;
-  void setSystemDataLength(unsigned char pX);
+  uint8_t getSystemDataLength() const;
+  void setSystemDataLength(uint8_t pX);
 
-  unsigned char getNumberOfBeams() const;
+  uint8_t getNumberOfBeams() const;
 
-  unsigned short getEmissionsPadding2() const;
-  void setEmissionsPadding2(unsigned short pX);
+  uint16_t getEmissionsPadding2() const;
+  void setEmissionsPadding2(uint16_t pX);
 
   EmitterSystem& getEmitterSystem();
   const EmitterSystem& getEmitterSystem() const;

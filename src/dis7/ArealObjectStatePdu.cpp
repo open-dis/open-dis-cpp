@@ -38,23 +38,23 @@ void ArealObjectStatePdu::setReferencedObjectID(const EntityID& pX) {
   _referencedObjectID = pX;
 }
 
-unsigned short ArealObjectStatePdu::getUpdateNumber() const {
+uint16_t ArealObjectStatePdu::getUpdateNumber() const {
   return _updateNumber;
 }
 
-void ArealObjectStatePdu::setUpdateNumber(unsigned short pX) {
+void ArealObjectStatePdu::setUpdateNumber(uint16_t pX) {
   _updateNumber = pX;
 }
 
-unsigned char ArealObjectStatePdu::getForceID() const { return _forceID; }
+uint8_t ArealObjectStatePdu::getForceID() const { return _forceID; }
 
-void ArealObjectStatePdu::setForceID(unsigned char pX) { _forceID = pX; }
+void ArealObjectStatePdu::setForceID(uint8_t pX) { _forceID = pX; }
 
-unsigned char ArealObjectStatePdu::getModifications() const {
+uint8_t ArealObjectStatePdu::getModifications() const {
   return _modifications;
 }
 
-void ArealObjectStatePdu::setModifications(unsigned char pX) {
+void ArealObjectStatePdu::setModifications(uint8_t pX) {
   _modifications = pX;
 }
 
@@ -68,23 +68,23 @@ void ArealObjectStatePdu::setObjectType(const EntityType& pX) {
   _objectType = pX;
 }
 
-unsigned int ArealObjectStatePdu::getSpecificObjectAppearance() const {
+uint32_t ArealObjectStatePdu::getSpecificObjectAppearance() const {
   return _specificObjectAppearance;
 }
 
-void ArealObjectStatePdu::setSpecificObjectAppearance(unsigned int pX) {
+void ArealObjectStatePdu::setSpecificObjectAppearance(uint32_t pX) {
   _specificObjectAppearance = pX;
 }
 
-unsigned short ArealObjectStatePdu::getGeneralObjectAppearance() const {
+uint16_t ArealObjectStatePdu::getGeneralObjectAppearance() const {
   return _generalObjectAppearance;
 }
 
-void ArealObjectStatePdu::setGeneralObjectAppearance(unsigned short pX) {
+void ArealObjectStatePdu::setGeneralObjectAppearance(uint16_t pX) {
   _generalObjectAppearance = pX;
 }
 
-unsigned short ArealObjectStatePdu::getNumberOfPoints() const {
+uint16_t ArealObjectStatePdu::getNumberOfPoints() const {
   return _objectLocation.size();
 }
 
@@ -137,7 +137,7 @@ void ArealObjectStatePdu::marshal(DataStream& dataStream) const {
   _objectType.marshal(dataStream);
   dataStream << _specificObjectAppearance;
   dataStream << _generalObjectAppearance;
-  dataStream << (unsigned short)_objectLocation.size();
+  dataStream << (uint16_t)_objectLocation.size();
   _requesterID.marshal(dataStream);
   _receivingID.marshal(dataStream);
 
@@ -212,7 +212,7 @@ int ArealObjectStatePdu::getMarshalledSize() const {
   marshalSize = marshalSize + _requesterID.getMarshalledSize();  // _requesterID
   marshalSize = marshalSize + _receivingID.getMarshalledSize();  // _receivingID
 
-  for (unsigned long long idx = 0; idx < _objectLocation.size(); idx++) {
+  for (uint64_t idx = 0; idx < _objectLocation.size(); idx++) {
     Vector3Double listElement = _objectLocation[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

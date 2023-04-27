@@ -12,13 +12,13 @@ const EntityID& TrackJamData::getEntityID() const { return _entityID; }
 
 void TrackJamData::setEntityID(const EntityID& pX) { _entityID = pX; }
 
-unsigned char TrackJamData::getEmitterNumber() const { return _emitterNumber; }
+uint8_t TrackJamData::getEmitterNumber() const { return _emitterNumber; }
 
-void TrackJamData::setEmitterNumber(unsigned char pX) { _emitterNumber = pX; }
+void TrackJamData::setEmitterNumber(uint8_t pX) { _emitterNumber = pX; }
 
-unsigned char TrackJamData::getBeamNumber() const { return _beamNumber; }
+uint8_t TrackJamData::getBeamNumber() const { return _beamNumber; }
 
-void TrackJamData::setBeamNumber(unsigned char pX) { _beamNumber = pX; }
+void TrackJamData::setBeamNumber(uint8_t pX) { _beamNumber = pX; }
 
 void TrackJamData::marshal(DataStream& dataStream) const {
   _entityID.marshal(dataStream);

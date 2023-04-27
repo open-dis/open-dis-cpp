@@ -6,15 +6,15 @@ SimulationAddress::SimulationAddress() : _site(0), _application(0) {}
 
 SimulationAddress::~SimulationAddress() {}
 
-unsigned short SimulationAddress::getSite() const { return _site; }
+uint16_t SimulationAddress::getSite() const { return _site; }
 
-void SimulationAddress::setSite(unsigned short pX) { _site = pX; }
+void SimulationAddress::setSite(uint16_t pX) { _site = pX; }
 
-unsigned short SimulationAddress::getApplication() const {
+uint16_t SimulationAddress::getApplication() const {
   return _application;
 }
 
-void SimulationAddress::setApplication(unsigned short pX) { _application = pX; }
+void SimulationAddress::setApplication(uint16_t pX) { _application = pX; }
 
 void SimulationAddress::marshal(DataStream& dataStream) const {
   dataStream << _site;

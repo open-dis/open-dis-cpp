@@ -7,17 +7,17 @@ LiveEntityPdu::LiveEntityPdu()
 
 LiveEntityPdu::~LiveEntityPdu() {}
 
-unsigned short LiveEntityPdu::getSubprotocolNumber() const {
+uint16_t LiveEntityPdu::getSubprotocolNumber() const {
   return _subprotocolNumber;
 }
 
-void LiveEntityPdu::setSubprotocolNumber(unsigned short pX) {
+void LiveEntityPdu::setSubprotocolNumber(uint16_t pX) {
   _subprotocolNumber = pX;
 }
 
-unsigned char LiveEntityPdu::getPadding() const { return _padding; }
+uint8_t LiveEntityPdu::getPadding() const { return _padding; }
 
-void LiveEntityPdu::setPadding(unsigned char pX) { _padding = pX; }
+void LiveEntityPdu::setPadding(uint8_t pX) { _padding = pX; }
 
 void LiveEntityPdu::marshal(DataStream& dataStream) const {
   PduSuperclass::marshal(

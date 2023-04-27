@@ -19,11 +19,11 @@ void MineEntityIdentifier::setSimulationAddress(const SimulationAddress& pX) {
   _simulationAddress = pX;
 }
 
-unsigned short MineEntityIdentifier::getMineEntityNumber() const {
+uint16_t MineEntityIdentifier::getMineEntityNumber() const {
   return _mineEntityNumber;
 }
 
-void MineEntityIdentifier::setMineEntityNumber(unsigned short pX) {
+void MineEntityIdentifier::setMineEntityNumber(uint16_t pX) {
   _mineEntityNumber = pX;
 }
 

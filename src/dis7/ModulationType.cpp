@@ -7,29 +7,29 @@ ModulationType::ModulationType()
 
 ModulationType::~ModulationType() {}
 
-unsigned short ModulationType::getSpreadSpectrum() const {
+uint16_t ModulationType::getSpreadSpectrum() const {
   return _spreadSpectrum;
 }
 
-void ModulationType::setSpreadSpectrum(unsigned short pX) {
+void ModulationType::setSpreadSpectrum(uint16_t pX) {
   _spreadSpectrum = pX;
 }
 
-unsigned short ModulationType::getMajorModulation() const {
+uint16_t ModulationType::getMajorModulation() const {
   return _majorModulation;
 }
 
-void ModulationType::setMajorModulation(unsigned short pX) {
+void ModulationType::setMajorModulation(uint16_t pX) {
   _majorModulation = pX;
 }
 
-unsigned short ModulationType::getDetail() const { return _detail; }
+uint16_t ModulationType::getDetail() const { return _detail; }
 
-void ModulationType::setDetail(unsigned short pX) { _detail = pX; }
+void ModulationType::setDetail(uint16_t pX) { _detail = pX; }
 
-unsigned short ModulationType::getRadioSystem() const { return _radioSystem; }
+uint16_t ModulationType::getRadioSystem() const { return _radioSystem; }
 
-void ModulationType::setRadioSystem(unsigned short pX) { _radioSystem = pX; }
+void ModulationType::setRadioSystem(uint16_t pX) { _radioSystem = pX; }
 
 void ModulationType::marshal(DataStream& dataStream) const {
   dataStream << _spreadSpectrum;

@@ -10,29 +10,29 @@ RadioIdentifier::RadioIdentifier()
 
 RadioIdentifier::~RadioIdentifier() {}
 
-unsigned short RadioIdentifier::getSiteNumber() const { return _siteNumber; }
+uint16_t RadioIdentifier::getSiteNumber() const { return _siteNumber; }
 
-void RadioIdentifier::setSiteNumber(unsigned short pX) { _siteNumber = pX; }
+void RadioIdentifier::setSiteNumber(uint16_t pX) { _siteNumber = pX; }
 
-unsigned short RadioIdentifier::getApplicationNumber() const {
+uint16_t RadioIdentifier::getApplicationNumber() const {
   return _applicationNumber;
 }
 
-void RadioIdentifier::setApplicationNumber(unsigned short pX) {
+void RadioIdentifier::setApplicationNumber(uint16_t pX) {
   _applicationNumber = pX;
 }
 
-unsigned short RadioIdentifier::getReferenceNumber() const {
+uint16_t RadioIdentifier::getReferenceNumber() const {
   return _referenceNumber;
 }
 
-void RadioIdentifier::setReferenceNumber(unsigned short pX) {
+void RadioIdentifier::setReferenceNumber(uint16_t pX) {
   _referenceNumber = pX;
 }
 
-unsigned short RadioIdentifier::getRadioNumber() const { return _radioNumber; }
+uint16_t RadioIdentifier::getRadioNumber() const { return _radioNumber; }
 
-void RadioIdentifier::setRadioNumber(unsigned short pX) { _radioNumber = pX; }
+void RadioIdentifier::setRadioNumber(uint16_t pX) { _radioNumber = pX; }
 
 void RadioIdentifier::marshal(DataStream& dataStream) const {
   dataStream << _siteNumber;

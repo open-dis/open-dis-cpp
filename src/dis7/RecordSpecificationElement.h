@@ -16,27 +16,27 @@ class OPENDIS7_EXPORT RecordSpecificationElement {
  protected:
   /** the data structure used to convey the parameter values of the record for
    * each record. 32 bit enumeration. */
-  unsigned int _recordID;
+  uint32_t _recordID;
 
   /** the serial number of the first record in the block of records */
-  unsigned int _recordSetSerialNumber;
+  uint32_t _recordSetSerialNumber;
 
   /**  the length, in bits, of the record. Note, bits, not bytes. */
-  unsigned short _recordLength;
+  uint16_t _recordLength;
 
   /**  the number of records included in the record set  */
-  unsigned short _recordCount;
+  uint16_t _recordCount;
 
   /** the concatenated records of the format specified by the Record ID field.
    * The length of this field is the Record Length multiplied by the Record
    * Count, in units of bits. ^^^This is wrong--variable sized data records, bit
    * values. THis MUST be patched after generation. */
-  unsigned short _recordValues;
+  uint16_t _recordValues;
 
   /** Padding of 0 to 31 unused bits as required for 32-bit alignment of the
    * Record Set field. ^^^This is wrong--variable sized padding. MUST be patched
    * post-code generation */
-  unsigned char _pad4;
+  uint8_t _pad4;
 
  public:
   RecordSpecificationElement();
@@ -45,23 +45,23 @@ class OPENDIS7_EXPORT RecordSpecificationElement {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getRecordID() const;
-  void setRecordID(unsigned int pX);
+  uint32_t getRecordID() const;
+  void setRecordID(uint32_t pX);
 
-  unsigned int getRecordSetSerialNumber() const;
-  void setRecordSetSerialNumber(unsigned int pX);
+  uint32_t getRecordSetSerialNumber() const;
+  void setRecordSetSerialNumber(uint32_t pX);
 
-  unsigned short getRecordLength() const;
-  void setRecordLength(unsigned short pX);
+  uint16_t getRecordLength() const;
+  void setRecordLength(uint16_t pX);
 
-  unsigned short getRecordCount() const;
-  void setRecordCount(unsigned short pX);
+  uint16_t getRecordCount() const;
+  void setRecordCount(uint16_t pX);
 
-  unsigned short getRecordValues() const;
-  void setRecordValues(unsigned short pX);
+  uint16_t getRecordValues() const;
+  void setRecordValues(uint16_t pX);
 
-  unsigned char getPad4() const;
-  void setPad4(unsigned char pX);
+  uint8_t getPad4() const;
+  void setPad4(uint8_t pX);
 
   virtual int getMarshalledSize() const;
 

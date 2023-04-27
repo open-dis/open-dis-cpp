@@ -24,7 +24,7 @@ class OPENDIS7_EXPORT SimulationIdentifier {
 
   /** This field shall be set to zero as there is no reference number associated
    * with a Simulation Identifier. */
-  unsigned short _referenceNumber;
+  uint16_t _referenceNumber;
 
  public:
   SimulationIdentifier();
@@ -37,8 +37,8 @@ class OPENDIS7_EXPORT SimulationIdentifier {
   const SimulationAddress& getSimulationAddress() const;
   void setSimulationAddress(const SimulationAddress& pX);
 
-  unsigned short getReferenceNumber() const;
-  void setReferenceNumber(unsigned short pX);
+  uint16_t getReferenceNumber() const;
+  void setReferenceNumber(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

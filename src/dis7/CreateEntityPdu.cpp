@@ -28,9 +28,9 @@ const EntityID& CreateEntityPdu::getReceivingID() const { return _receivingID; }
 
 void CreateEntityPdu::setReceivingID(const EntityID& pX) { _receivingID = pX; }
 
-unsigned int CreateEntityPdu::getRequestID() const { return _requestID; }
+uint32_t CreateEntityPdu::getRequestID() const { return _requestID; }
 
-void CreateEntityPdu::setRequestID(unsigned int pX) { _requestID = pX; }
+void CreateEntityPdu::setRequestID(uint32_t pX) { _requestID = pX; }
 
 void CreateEntityPdu::marshal(DataStream& dataStream) const {
   SimulationManagementFamilyPdu::marshal(

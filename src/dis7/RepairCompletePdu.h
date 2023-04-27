@@ -23,10 +23,10 @@ class OPENDIS7_EXPORT RepairCompletePdu : public LogisticsFamilyPdu {
   EntityID _repairingEntityID;
 
   /** Enumeration for type of repair.  See 6.2.74 */
-  unsigned short _repair;
+  uint16_t _repair;
 
   /** padding, number prevents conflict with superclass ivar name */
-  short _padding4;
+  int16_t _padding4;
 
  public:
   RepairCompletePdu();
@@ -43,11 +43,11 @@ class OPENDIS7_EXPORT RepairCompletePdu : public LogisticsFamilyPdu {
   const EntityID& getRepairingEntityID() const;
   void setRepairingEntityID(const EntityID& pX);
 
-  unsigned short getRepair() const;
-  void setRepair(unsigned short pX);
+  uint16_t getRepair() const;
+  void setRepair(uint16_t pX);
 
-  short getPadding4() const;
-  void setPadding4(short pX);
+  int16_t getPadding4() const;
+  void setPadding4(int16_t pX);
 
   virtual int getMarshalledSize() const;
 

@@ -12,25 +12,25 @@ AcknowledgeReliablePdu::AcknowledgeReliablePdu()
 
 AcknowledgeReliablePdu::~AcknowledgeReliablePdu() {}
 
-unsigned short AcknowledgeReliablePdu::getAcknowledgeFlag() const {
+uint16_t AcknowledgeReliablePdu::getAcknowledgeFlag() const {
   return _acknowledgeFlag;
 }
 
-void AcknowledgeReliablePdu::setAcknowledgeFlag(unsigned short pX) {
+void AcknowledgeReliablePdu::setAcknowledgeFlag(uint16_t pX) {
   _acknowledgeFlag = pX;
 }
 
-unsigned short AcknowledgeReliablePdu::getResponseFlag() const {
+uint16_t AcknowledgeReliablePdu::getResponseFlag() const {
   return _responseFlag;
 }
 
-void AcknowledgeReliablePdu::setResponseFlag(unsigned short pX) {
+void AcknowledgeReliablePdu::setResponseFlag(uint16_t pX) {
   _responseFlag = pX;
 }
 
-unsigned int AcknowledgeReliablePdu::getRequestID() const { return _requestID; }
+uint32_t AcknowledgeReliablePdu::getRequestID() const { return _requestID; }
 
-void AcknowledgeReliablePdu::setRequestID(unsigned int pX) { _requestID = pX; }
+void AcknowledgeReliablePdu::setRequestID(uint32_t pX) { _requestID = pX; }
 
 void AcknowledgeReliablePdu::marshal(DataStream& dataStream) const {
   SimulationManagementWithReliabilityFamilyPdu::marshal(

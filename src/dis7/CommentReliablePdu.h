@@ -21,10 +21,10 @@ class OPENDIS7_EXPORT CommentReliablePdu
     : public SimulationManagementWithReliabilityFamilyPdu {
  protected:
   /** Fixed datum record count */
-  unsigned int _numberOfFixedDatumRecords;
+  uint32_t _numberOfFixedDatumRecords;
 
   /** variable datum record count */
-  unsigned int _numberOfVariableDatumRecords;
+  uint32_t _numberOfVariableDatumRecords;
 
   /** Fixed datum records */
   std::vector<FixedDatum> _fixedDatumRecords;
@@ -39,9 +39,9 @@ class OPENDIS7_EXPORT CommentReliablePdu
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getNumberOfFixedDatumRecords() const;
+  uint32_t getNumberOfFixedDatumRecords() const;
 
-  unsigned int getNumberOfVariableDatumRecords() const;
+  uint32_t getNumberOfVariableDatumRecords() const;
 
   std::vector<FixedDatum>& getFixedDatumRecords();
   const std::vector<FixedDatum>& getFixedDatumRecords() const;

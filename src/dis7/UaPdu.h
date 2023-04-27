@@ -40,23 +40,23 @@ class OPENDIS7_EXPORT UaPdu : public DistributedEmissionsFamilyPdu {
    * The indicated database record (or  file) shall define all noise generated
    * as a function of propulsion plant configurations and associated
    * auxiliaries. */
-  unsigned short _passiveParameterIndex;
+  uint16_t _passiveParameterIndex;
 
   /** This field shall specify the entity propulsion plant configuration. This
    * field is used to determine the passive signature characteristics of an
    * entity. */
-  unsigned char _propulsionPlantConfiguration;
+  uint8_t _propulsionPlantConfiguration;
 
   /**  This field shall represent the number of shafts on a platform */
-  unsigned char _numberOfShafts;
+  uint8_t _numberOfShafts;
 
   /** This field shall indicate the number of APAs described in the current UA
    * PDU */
-  unsigned char _numberOfAPAs;
+  uint8_t _numberOfAPAs;
 
   /** This field shall specify the number of UA emitter systems being described
    * in the current UA PDU */
-  unsigned char _numberOfUAEmitterSystems;
+  uint8_t _numberOfUAEmitterSystems;
 
   /** shaft RPM values. THIS IS WRONG. It has the wrong class in the list. */
   std::vector<Vector3Float> _shaftRPMs;
@@ -88,17 +88,17 @@ class OPENDIS7_EXPORT UaPdu : public DistributedEmissionsFamilyPdu {
   char getPad() const;
   void setPad(char pX);
 
-  unsigned short getPassiveParameterIndex() const;
-  void setPassiveParameterIndex(unsigned short pX);
+  uint16_t getPassiveParameterIndex() const;
+  void setPassiveParameterIndex(uint16_t pX);
 
-  unsigned char getPropulsionPlantConfiguration() const;
-  void setPropulsionPlantConfiguration(unsigned char pX);
+  uint8_t getPropulsionPlantConfiguration() const;
+  void setPropulsionPlantConfiguration(uint8_t pX);
 
-  unsigned char getNumberOfShafts() const;
+  uint8_t getNumberOfShafts() const;
 
-  unsigned char getNumberOfAPAs() const;
+  uint8_t getNumberOfAPAs() const;
 
-  unsigned char getNumberOfUAEmitterSystems() const;
+  uint8_t getNumberOfUAEmitterSystems() const;
 
   std::vector<Vector3Float>& getShaftRPMs();
   const std::vector<Vector3Float>& getShaftRPMs() const;

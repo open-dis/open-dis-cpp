@@ -24,14 +24,14 @@ class OPENDIS7_EXPORT EntityDamageStatusPdu : public WarfareFamilyPdu {
   EntityID _damagedEntityID;
 
   /** Padding. */
-  unsigned short _padding1;
+  uint16_t _padding1;
 
   /** Padding. */
-  unsigned short _padding2;
+  uint16_t _padding2;
 
   /** field shall specify the number of Damage Description records,
    * Section 7.3.5 */
-  unsigned short _numberOfDamageDescription;
+  uint16_t _numberOfDamageDescription;
 
   /** Fields shall contain one or more Damage Description records (see 6.2.17)
    * and may contain other Standard Variable records, Section 7.3.5 */
@@ -48,13 +48,13 @@ class OPENDIS7_EXPORT EntityDamageStatusPdu : public WarfareFamilyPdu {
   const EntityID& getDamagedEntityID() const;
   void setDamagedEntityID(const EntityID& pX);
 
-  unsigned short getPadding1() const;
-  void setPadding1(unsigned short pX);
+  uint16_t getPadding1() const;
+  void setPadding1(uint16_t pX);
 
-  unsigned short getPadding2() const;
-  void setPadding2(unsigned short pX);
+  uint16_t getPadding2() const;
+  void setPadding2(uint16_t pX);
 
-  unsigned short getNumberOfDamageDescription() const;
+  uint16_t getNumberOfDamageDescription() const;
 
   std::vector<DirectedEnergyDamage>& getDamageDescriptionRecords();
   const std::vector<DirectedEnergyDamage>& getDamageDescriptionRecords() const;

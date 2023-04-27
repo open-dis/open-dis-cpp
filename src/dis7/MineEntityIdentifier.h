@@ -19,7 +19,7 @@ class OPENDIS7_EXPORT MineEntityIdentifier {
   SimulationAddress _simulationAddress;
 
   /**  */
-  unsigned short _mineEntityNumber;
+  uint16_t _mineEntityNumber;
 
  public:
   MineEntityIdentifier();
@@ -32,8 +32,8 @@ class OPENDIS7_EXPORT MineEntityIdentifier {
   const SimulationAddress& getSimulationAddress() const;
   void setSimulationAddress(const SimulationAddress& pX);
 
-  unsigned short getMineEntityNumber() const;
-  void setMineEntityNumber(unsigned short pX);
+  uint16_t getMineEntityNumber() const;
+  void setMineEntityNumber(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

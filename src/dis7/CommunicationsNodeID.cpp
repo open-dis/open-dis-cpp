@@ -12,9 +12,9 @@ const EntityID& CommunicationsNodeID::getEntityID() const { return _entityID; }
 
 void CommunicationsNodeID::setEntityID(const EntityID& pX) { _entityID = pX; }
 
-unsigned short CommunicationsNodeID::getElementID() const { return _elementID; }
+uint16_t CommunicationsNodeID::getElementID() const { return _elementID; }
 
-void CommunicationsNodeID::setElementID(unsigned short pX) { _elementID = pX; }
+void CommunicationsNodeID::setElementID(uint16_t pX) { _elementID = pX; }
 
 void CommunicationsNodeID::marshal(DataStream& dataStream) const {
   _entityID.marshal(dataStream);

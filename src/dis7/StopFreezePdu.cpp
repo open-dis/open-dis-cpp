@@ -42,25 +42,25 @@ void StopFreezePdu::setRealWorldTime(const ClockTime& pX) {
   _realWorldTime = pX;
 }
 
-unsigned char StopFreezePdu::getReason() const { return _reason; }
+uint8_t StopFreezePdu::getReason() const { return _reason; }
 
-void StopFreezePdu::setReason(unsigned char pX) { _reason = pX; }
+void StopFreezePdu::setReason(uint8_t pX) { _reason = pX; }
 
-unsigned char StopFreezePdu::getFrozenBehavior() const {
+uint8_t StopFreezePdu::getFrozenBehavior() const {
   return _frozenBehavior;
 }
 
-void StopFreezePdu::setFrozenBehavior(unsigned char pX) {
+void StopFreezePdu::setFrozenBehavior(uint8_t pX) {
   _frozenBehavior = pX;
 }
 
-short StopFreezePdu::getPadding1() const { return _padding1; }
+int16_t StopFreezePdu::getPadding1() const { return _padding1; }
 
-void StopFreezePdu::setPadding1(short pX) { _padding1 = pX; }
+void StopFreezePdu::setPadding1(int16_t pX) { _padding1 = pX; }
 
-unsigned int StopFreezePdu::getRequestID() const { return _requestID; }
+uint32_t StopFreezePdu::getRequestID() const { return _requestID; }
 
-void StopFreezePdu::setRequestID(unsigned int pX) { _requestID = pX; }
+void StopFreezePdu::setRequestID(uint32_t pX) { _requestID = pX; }
 
 void StopFreezePdu::marshal(DataStream& dataStream) const {
   SimulationManagementFamilyPdu::marshal(

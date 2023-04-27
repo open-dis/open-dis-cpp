@@ -18,9 +18,9 @@ void EventIdentifier::setSimulationAddress(const SimulationAddress& pX) {
   _simulationAddress = pX;
 }
 
-unsigned short EventIdentifier::getEventNumber() const { return _eventNumber; }
+uint16_t EventIdentifier::getEventNumber() const { return _eventNumber; }
 
-void EventIdentifier::setEventNumber(unsigned short pX) { _eventNumber = pX; }
+void EventIdentifier::setEventNumber(uint16_t pX) { _eventNumber = pX; }
 
 void EventIdentifier::marshal(DataStream& dataStream) const {
   _simulationAddress.marshal(dataStream);

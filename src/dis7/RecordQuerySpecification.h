@@ -16,7 +16,7 @@ namespace DIS {
 
 class OPENDIS7_EXPORT RecordQuerySpecification {
  protected:
-  unsigned int _numberOfRecords;
+  uint32_t _numberOfRecords;
 
   /** variable length list of 32 bit records */
   std::vector<FourByteChunk> _records;
@@ -28,7 +28,7 @@ class OPENDIS7_EXPORT RecordQuerySpecification {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getNumberOfRecords() const;
+  uint32_t getNumberOfRecords() const;
 
   std::vector<FourByteChunk>& getRecords();
   const std::vector<FourByteChunk>& getRecords() const;

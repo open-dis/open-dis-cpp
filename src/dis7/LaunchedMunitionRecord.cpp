@@ -25,9 +25,9 @@ void LaunchedMunitionRecord::setFireEventID(const EventIdentifier& pX) {
   _fireEventID = pX;
 }
 
-unsigned short LaunchedMunitionRecord::getPadding() const { return _padding; }
+uint16_t LaunchedMunitionRecord::getPadding() const { return _padding; }
 
-void LaunchedMunitionRecord::setPadding(unsigned short pX) { _padding = pX; }
+void LaunchedMunitionRecord::setPadding(uint16_t pX) { _padding = pX; }
 
 EventIdentifier& LaunchedMunitionRecord::getFiringEntityID() {
   return _firingEntityID;
@@ -41,9 +41,9 @@ void LaunchedMunitionRecord::setFiringEntityID(const EventIdentifier& pX) {
   _firingEntityID = pX;
 }
 
-unsigned short LaunchedMunitionRecord::getPadding2() const { return _padding2; }
+uint16_t LaunchedMunitionRecord::getPadding2() const { return _padding2; }
 
-void LaunchedMunitionRecord::setPadding2(unsigned short pX) { _padding2 = pX; }
+void LaunchedMunitionRecord::setPadding2(uint16_t pX) { _padding2 = pX; }
 
 EventIdentifier& LaunchedMunitionRecord::getTargetEntityID() {
   return _targetEntityID;
@@ -57,9 +57,9 @@ void LaunchedMunitionRecord::setTargetEntityID(const EventIdentifier& pX) {
   _targetEntityID = pX;
 }
 
-unsigned short LaunchedMunitionRecord::getPadding3() const { return _padding3; }
+uint16_t LaunchedMunitionRecord::getPadding3() const { return _padding3; }
 
-void LaunchedMunitionRecord::setPadding3(unsigned short pX) { _padding3 = pX; }
+void LaunchedMunitionRecord::setPadding3(uint16_t pX) { _padding3 = pX; }
 
 Vector3Double& LaunchedMunitionRecord::getTargetLocation() {
   return _targetLocation;

@@ -17,13 +17,13 @@ namespace DIS {
 class OPENDIS7_EXPORT DirectedEnergyPrecisionAimpoint {
  protected:
   /** Type of Record */
-  unsigned int _recordType;
+  uint32_t _recordType;
 
   /** Length of Record */
-  unsigned short _recordLength;
+  uint16_t _recordLength;
 
   /** Padding */
-  unsigned short _padding;
+  uint16_t _padding;
 
   /** Position of Target Spot in World Coordinates. */
   Vector3Double _targetSpotLocation;
@@ -41,10 +41,10 @@ class OPENDIS7_EXPORT DirectedEnergyPrecisionAimpoint {
   EntityID _targetEntityID;
 
   /** Target Component ID ENUM, same as in DamageDescriptionRecord. */
-  unsigned char _targetComponentID;
+  uint8_t _targetComponentID;
 
   /** Spot Shape ENUM. */
-  unsigned char _SpotShape;
+  uint8_t _SpotShape;
 
   /** Beam Spot Cross Section Semi-Major Axis. */
   float _BeamSpotXSecSemiMajorAxis;
@@ -62,14 +62,14 @@ class OPENDIS7_EXPORT DirectedEnergyPrecisionAimpoint {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getRecordType() const;
-  void setRecordType(unsigned int pX);
+  uint32_t getRecordType() const;
+  void setRecordType(uint32_t pX);
 
-  unsigned short getRecordLength() const;
-  void setRecordLength(unsigned short pX);
+  uint16_t getRecordLength() const;
+  void setRecordLength(uint16_t pX);
 
-  unsigned short getPadding() const;
-  void setPadding(unsigned short pX);
+  uint16_t getPadding() const;
+  void setPadding(uint16_t pX);
 
   Vector3Double& getTargetSpotLocation();
   const Vector3Double& getTargetSpotLocation() const;
@@ -91,11 +91,11 @@ class OPENDIS7_EXPORT DirectedEnergyPrecisionAimpoint {
   const EntityID& getTargetEntityID() const;
   void setTargetEntityID(const EntityID& pX);
 
-  unsigned char getTargetComponentID() const;
-  void setTargetComponentID(unsigned char pX);
+  uint8_t getTargetComponentID() const;
+  void setTargetComponentID(uint8_t pX);
 
-  unsigned char getSpotShape() const;
-  void setSpotShape(unsigned char pX);
+  uint8_t getSpotShape() const;
+  void setSpotShape(uint8_t pX);
 
   float getBeamSpotXSecSemiMajorAxis() const;
   void setBeamSpotXSecSemiMajorAxis(float pX);

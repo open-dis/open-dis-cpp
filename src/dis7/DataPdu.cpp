@@ -16,19 +16,19 @@ DataPdu::~DataPdu() {
   _variableDatums.clear();
 }
 
-unsigned int DataPdu::getRequestID() const { return _requestID; }
+uint32_t DataPdu::getRequestID() const { return _requestID; }
 
-void DataPdu::setRequestID(unsigned int pX) { _requestID = pX; }
+void DataPdu::setRequestID(uint32_t pX) { _requestID = pX; }
 
-unsigned int DataPdu::getPadding1() const { return _padding1; }
+uint32_t DataPdu::getPadding1() const { return _padding1; }
 
-void DataPdu::setPadding1(unsigned int pX) { _padding1 = pX; }
+void DataPdu::setPadding1(uint32_t pX) { _padding1 = pX; }
 
-unsigned int DataPdu::getNumberOfFixedDatumRecords() const {
+uint32_t DataPdu::getNumberOfFixedDatumRecords() const {
   return _fixedDatums.size();
 }
 
-unsigned int DataPdu::getNumberOfVariableDatumRecords() const {
+uint32_t DataPdu::getNumberOfVariableDatumRecords() const {
   return _variableDatums.size();
 }
 
@@ -59,8 +59,8 @@ void DataPdu::marshal(DataStream& dataStream) const {
       dataStream);  // Marshal information in superclass first
   dataStream << _requestID;
   dataStream << _padding1;
-  dataStream << (unsigned int)_fixedDatums.size();
-  dataStream << (unsigned int)_variableDatums.size();
+  dataStream << (uint32_t)_fixedDatums.size();
+  dataStream << (uint32_t)_variableDatums.size();
 
   for (size_t idx = 0; idx < _fixedDatums.size(); idx++) {
     FixedDatum x = _fixedDatums[idx];
@@ -124,12 +124,12 @@ int DataPdu::getMarshalledSize() const {
   marshalSize = marshalSize + 4;  // _numberOfFixedDatumRecords
   marshalSize = marshalSize + 4;  // _numberOfVariableDatumRecords
 
-  for (unsigned long long idx = 0; idx < _fixedDatums.size(); idx++) {
+  for (uint64_t idx = 0; idx < _fixedDatums.size(); idx++) {
     FixedDatum listElement = _fixedDatums[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }
 
-  for (unsigned long long idx = 0; idx < _variableDatums.size(); idx++) {
+  for (uint64_t idx = 0; idx < _variableDatums.size(); idx++) {
     VariableDatum listElement = _variableDatums[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

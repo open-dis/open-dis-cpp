@@ -58,99 +58,99 @@ FastEntityStatePdu::FastEntityStatePdu()
 
 FastEntityStatePdu::~FastEntityStatePdu() { _variableParameters.clear(); }
 
-unsigned short FastEntityStatePdu::getSite() const { return _site; }
+uint16_t FastEntityStatePdu::getSite() const { return _site; }
 
-void FastEntityStatePdu::setSite(unsigned short pX) { _site = pX; }
+void FastEntityStatePdu::setSite(uint16_t pX) { _site = pX; }
 
-unsigned short FastEntityStatePdu::getApplication() const {
+uint16_t FastEntityStatePdu::getApplication() const {
   return _application;
 }
 
-void FastEntityStatePdu::setApplication(unsigned short pX) {
+void FastEntityStatePdu::setApplication(uint16_t pX) {
   _application = pX;
 }
 
-unsigned short FastEntityStatePdu::getEntity() const { return _entity; }
+uint16_t FastEntityStatePdu::getEntity() const { return _entity; }
 
-void FastEntityStatePdu::setEntity(unsigned short pX) { _entity = pX; }
+void FastEntityStatePdu::setEntity(uint16_t pX) { _entity = pX; }
 
-unsigned char FastEntityStatePdu::getForceId() const { return _forceId; }
+uint8_t FastEntityStatePdu::getForceId() const { return _forceId; }
 
-void FastEntityStatePdu::setForceId(unsigned char pX) { _forceId = pX; }
+void FastEntityStatePdu::setForceId(uint8_t pX) { _forceId = pX; }
 
 char FastEntityStatePdu::getNumberOfVariableParameters() const {
   return _variableParameters.size();
 }
 
-unsigned char FastEntityStatePdu::getEntityKind() const { return _entityKind; }
+uint8_t FastEntityStatePdu::getEntityKind() const { return _entityKind; }
 
-void FastEntityStatePdu::setEntityKind(unsigned char pX) { _entityKind = pX; }
+void FastEntityStatePdu::setEntityKind(uint8_t pX) { _entityKind = pX; }
 
-unsigned char FastEntityStatePdu::getDomain() const { return _domain; }
+uint8_t FastEntityStatePdu::getDomain() const { return _domain; }
 
-void FastEntityStatePdu::setDomain(unsigned char pX) { _domain = pX; }
+void FastEntityStatePdu::setDomain(uint8_t pX) { _domain = pX; }
 
-unsigned short FastEntityStatePdu::getCountry() const { return _country; }
+uint16_t FastEntityStatePdu::getCountry() const { return _country; }
 
-void FastEntityStatePdu::setCountry(unsigned short pX) { _country = pX; }
+void FastEntityStatePdu::setCountry(uint16_t pX) { _country = pX; }
 
-unsigned char FastEntityStatePdu::getCategory() const { return _category; }
+uint8_t FastEntityStatePdu::getCategory() const { return _category; }
 
-void FastEntityStatePdu::setCategory(unsigned char pX) { _category = pX; }
+void FastEntityStatePdu::setCategory(uint8_t pX) { _category = pX; }
 
-unsigned char FastEntityStatePdu::getSubcategory() const {
+uint8_t FastEntityStatePdu::getSubcategory() const {
   return _subcategory;
 }
 
-void FastEntityStatePdu::setSubcategory(unsigned char pX) { _subcategory = pX; }
+void FastEntityStatePdu::setSubcategory(uint8_t pX) { _subcategory = pX; }
 
-unsigned char FastEntityStatePdu::getSpecific() const { return _specific; }
+uint8_t FastEntityStatePdu::getSpecific() const { return _specific; }
 
-void FastEntityStatePdu::setSpecific(unsigned char pX) { _specific = pX; }
+void FastEntityStatePdu::setSpecific(uint8_t pX) { _specific = pX; }
 
-unsigned char FastEntityStatePdu::getExtra() const { return _extra; }
+uint8_t FastEntityStatePdu::getExtra() const { return _extra; }
 
-void FastEntityStatePdu::setExtra(unsigned char pX) { _extra = pX; }
+void FastEntityStatePdu::setExtra(uint8_t pX) { _extra = pX; }
 
-unsigned char FastEntityStatePdu::getAltEntityKind() const {
+uint8_t FastEntityStatePdu::getAltEntityKind() const {
   return _altEntityKind;
 }
 
-void FastEntityStatePdu::setAltEntityKind(unsigned char pX) {
+void FastEntityStatePdu::setAltEntityKind(uint8_t pX) {
   _altEntityKind = pX;
 }
 
-unsigned char FastEntityStatePdu::getAltDomain() const { return _altDomain; }
+uint8_t FastEntityStatePdu::getAltDomain() const { return _altDomain; }
 
-void FastEntityStatePdu::setAltDomain(unsigned char pX) { _altDomain = pX; }
+void FastEntityStatePdu::setAltDomain(uint8_t pX) { _altDomain = pX; }
 
-unsigned short FastEntityStatePdu::getAltCountry() const { return _altCountry; }
+uint16_t FastEntityStatePdu::getAltCountry() const { return _altCountry; }
 
-void FastEntityStatePdu::setAltCountry(unsigned short pX) { _altCountry = pX; }
+void FastEntityStatePdu::setAltCountry(uint16_t pX) { _altCountry = pX; }
 
-unsigned char FastEntityStatePdu::getAltCategory() const {
+uint8_t FastEntityStatePdu::getAltCategory() const {
   return _altCategory;
 }
 
-void FastEntityStatePdu::setAltCategory(unsigned char pX) { _altCategory = pX; }
+void FastEntityStatePdu::setAltCategory(uint8_t pX) { _altCategory = pX; }
 
-unsigned char FastEntityStatePdu::getAltSubcategory() const {
+uint8_t FastEntityStatePdu::getAltSubcategory() const {
   return _altSubcategory;
 }
 
-void FastEntityStatePdu::setAltSubcategory(unsigned char pX) {
+void FastEntityStatePdu::setAltSubcategory(uint8_t pX) {
   _altSubcategory = pX;
 }
 
-unsigned char FastEntityStatePdu::getAltSpecific() const {
+uint8_t FastEntityStatePdu::getAltSpecific() const {
   return _altSpecific;
 }
 
-void FastEntityStatePdu::setAltSpecific(unsigned char pX) { _altSpecific = pX; }
+void FastEntityStatePdu::setAltSpecific(uint8_t pX) { _altSpecific = pX; }
 
-unsigned char FastEntityStatePdu::getAltExtra() const { return _altExtra; }
+uint8_t FastEntityStatePdu::getAltExtra() const { return _altExtra; }
 
-void FastEntityStatePdu::setAltExtra(unsigned char pX) { _altExtra = pX; }
+void FastEntityStatePdu::setAltExtra(uint8_t pX) { _altExtra = pX; }
 
 float FastEntityStatePdu::getXVelocity() const { return _xVelocity; }
 
@@ -194,11 +194,11 @@ int FastEntityStatePdu::getEntityAppearance() const {
 
 void FastEntityStatePdu::setEntityAppearance(int pX) { _entityAppearance = pX; }
 
-unsigned char FastEntityStatePdu::getDeadReckoningAlgorithm() const {
+uint8_t FastEntityStatePdu::getDeadReckoningAlgorithm() const {
   return _deadReckoningAlgorithm;
 }
 
-void FastEntityStatePdu::setDeadReckoningAlgorithm(unsigned char pX) {
+void FastEntityStatePdu::setDeadReckoningAlgorithm(uint8_t pX) {
   _deadReckoningAlgorithm = pX;
 }
 
@@ -437,7 +437,7 @@ bool FastEntityStatePdu::operator==(const FastEntityStatePdu& rhs) const {
   if (!(_deadReckoningAlgorithm == rhs._deadReckoningAlgorithm))
     ivarsEqual = false;
 
-  for (unsigned char idx = 0; idx < 15; idx++) {
+  for (uint8_t idx = 0; idx < 15; idx++) {
     if (!(_otherParameters[idx] == rhs._otherParameters[idx]))
       ivarsEqual = false;
   }
@@ -449,7 +449,7 @@ bool FastEntityStatePdu::operator==(const FastEntityStatePdu& rhs) const {
   if (!(_yAngularVelocity == rhs._yAngularVelocity)) ivarsEqual = false;
   if (!(_zAngularVelocity == rhs._zAngularVelocity)) ivarsEqual = false;
 
-  for (unsigned char idx = 0; idx < 12; idx++) {
+  for (uint8_t idx = 0; idx < 12; idx++) {
     if (!(_marking[idx] == rhs._marking[idx])) ivarsEqual = false;
   }
 
@@ -507,7 +507,7 @@ int FastEntityStatePdu::getMarshalledSize() const {
   marshalSize = marshalSize + 12 * 1;  // _marking
   marshalSize = marshalSize + 4;       // _capabilities
 
-  for (unsigned long long idx = 0; idx < _variableParameters.size(); idx++) {
+  for (uint64_t idx = 0; idx < _variableParameters.size(); idx++) {
     VariableParameter listElement = _variableParameters[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

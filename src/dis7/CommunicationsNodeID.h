@@ -16,7 +16,7 @@ class OPENDIS7_EXPORT CommunicationsNodeID {
  protected:
   EntityID _entityID;
 
-  unsigned short _elementID;
+  uint16_t _elementID;
 
  public:
   CommunicationsNodeID();
@@ -29,8 +29,8 @@ class OPENDIS7_EXPORT CommunicationsNodeID {
   const EntityID& getEntityID() const;
   void setEntityID(const EntityID& pX);
 
-  unsigned short getElementID() const;
-  void setElementID(unsigned short pX);
+  uint16_t getElementID() const;
+  void setElementID(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

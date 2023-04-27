@@ -10,31 +10,31 @@ IntercomIdentifier::IntercomIdentifier()
 
 IntercomIdentifier::~IntercomIdentifier() {}
 
-unsigned short IntercomIdentifier::getSiteNumber() const { return _siteNumber; }
+uint16_t IntercomIdentifier::getSiteNumber() const { return _siteNumber; }
 
-void IntercomIdentifier::setSiteNumber(unsigned short pX) { _siteNumber = pX; }
+void IntercomIdentifier::setSiteNumber(uint16_t pX) { _siteNumber = pX; }
 
-unsigned short IntercomIdentifier::getApplicationNumber() const {
+uint16_t IntercomIdentifier::getApplicationNumber() const {
   return _applicationNumber;
 }
 
-void IntercomIdentifier::setApplicationNumber(unsigned short pX) {
+void IntercomIdentifier::setApplicationNumber(uint16_t pX) {
   _applicationNumber = pX;
 }
 
-unsigned short IntercomIdentifier::getReferenceNumber() const {
+uint16_t IntercomIdentifier::getReferenceNumber() const {
   return _referenceNumber;
 }
 
-void IntercomIdentifier::setReferenceNumber(unsigned short pX) {
+void IntercomIdentifier::setReferenceNumber(uint16_t pX) {
   _referenceNumber = pX;
 }
 
-unsigned short IntercomIdentifier::getIntercomNumber() const {
+uint16_t IntercomIdentifier::getIntercomNumber() const {
   return _intercomNumber;
 }
 
-void IntercomIdentifier::setIntercomNumber(unsigned short pX) {
+void IntercomIdentifier::setIntercomNumber(uint16_t pX) {
   _intercomNumber = pX;
 }
 

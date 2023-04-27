@@ -17,10 +17,10 @@ namespace DIS {
 class OPENDIS7_EXPORT ClockTime {
  protected:
   /** Hours in UTC */
-  unsigned int _hour;
+  uint32_t _hour;
 
   /** Time past the hour */
-  unsigned int _timePastHour;
+  uint32_t _timePastHour;
 
  public:
   ClockTime();
@@ -29,11 +29,11 @@ class OPENDIS7_EXPORT ClockTime {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getHour() const;
-  void setHour(unsigned int pX);
+  uint32_t getHour() const;
+  void setHour(uint32_t pX);
 
-  unsigned int getTimePastHour() const;
-  void setTimePastHour(unsigned int pX);
+  uint32_t getTimePastHour() const;
+  void setTimePastHour(uint32_t pX);
 
   virtual int getMarshalledSize() const;
 

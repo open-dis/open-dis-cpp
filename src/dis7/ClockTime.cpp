@@ -6,13 +6,13 @@ ClockTime::ClockTime() : _hour(0), _timePastHour(0) {}
 
 ClockTime::~ClockTime() {}
 
-unsigned int ClockTime::getHour() const { return _hour; }
+uint32_t ClockTime::getHour() const { return _hour; }
 
-void ClockTime::setHour(unsigned int pX) { _hour = pX; }
+void ClockTime::setHour(uint32_t pX) { _hour = pX; }
 
-unsigned int ClockTime::getTimePastHour() const { return _timePastHour; }
+uint32_t ClockTime::getTimePastHour() const { return _timePastHour; }
 
-void ClockTime::setTimePastHour(unsigned int pX) { _timePastHour = pX; }
+void ClockTime::setTimePastHour(uint32_t pX) { _timePastHour = pX; }
 
 void ClockTime::marshal(DataStream& dataStream) const {
   dataStream << _hour;

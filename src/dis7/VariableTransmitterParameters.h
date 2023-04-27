@@ -14,10 +14,10 @@ namespace DIS {
 class OPENDIS7_EXPORT VariableTransmitterParameters {
  protected:
   /** Type of VTP. Enumeration from EBV */
-  unsigned int _recordType;
+  uint32_t _recordType;
 
   /** Length, in bytes */
-  unsigned int _recordLength;
+  uint32_t _recordLength;
 
  public:
   VariableTransmitterParameters();
@@ -26,11 +26,11 @@ class OPENDIS7_EXPORT VariableTransmitterParameters {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getRecordType() const;
-  void setRecordType(unsigned int pX);
+  uint32_t getRecordType() const;
+  void setRecordType(uint32_t pX);
 
-  unsigned int getRecordLength() const;
-  void setRecordLength(unsigned int pX);
+  uint32_t getRecordLength() const;
+  void setRecordLength(uint32_t pX);
 
   virtual int getMarshalledSize() const;
 

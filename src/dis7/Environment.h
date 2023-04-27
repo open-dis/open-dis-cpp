@@ -14,16 +14,16 @@ namespace DIS {
 class OPENDIS7_EXPORT Environment {
  protected:
   /** type */
-  unsigned int _environmentType;
+  uint32_t _environmentType;
 
   /** length, in bits, of the record */
-  unsigned short _length;
+  uint16_t _length;
 
   /** identifies the sequntially numbered record index */
-  unsigned char _index;
+  uint8_t _index;
 
   /** padding */
-  unsigned char _padding;
+  uint8_t _padding;
 
  public:
   Environment();
@@ -32,17 +32,17 @@ class OPENDIS7_EXPORT Environment {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getEnvironmentType() const;
-  void setEnvironmentType(unsigned int pX);
+  uint32_t getEnvironmentType() const;
+  void setEnvironmentType(uint32_t pX);
 
-  unsigned short getLength() const;
-  void setLength(unsigned short pX);
+  uint16_t getLength() const;
+  void setLength(uint16_t pX);
 
-  unsigned char getIndex() const;
-  void setIndex(unsigned char pX);
+  uint8_t getIndex() const;
+  void setIndex(uint8_t pX);
 
-  unsigned char getPadding() const;
-  void setPadding(unsigned char pX);
+  uint8_t getPadding() const;
+  void setPadding(uint8_t pX);
 
   virtual int getMarshalledSize() const;
 

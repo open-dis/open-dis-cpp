@@ -27,11 +27,11 @@ const EntityID& EntityStatePdu::getEntityID() const { return _entityID; }
 
 void EntityStatePdu::setEntityID(const EntityID& pX) { _entityID = pX; }
 
-unsigned char EntityStatePdu::getForceId() const { return _forceId; }
+uint8_t EntityStatePdu::getForceId() const { return _forceId; }
 
-void EntityStatePdu::setForceId(unsigned char pX) { _forceId = pX; }
+void EntityStatePdu::setForceId(uint8_t pX) { _forceId = pX; }
 
-unsigned char EntityStatePdu::getNumberOfVariableParameters() const {
+uint8_t EntityStatePdu::getNumberOfVariableParameters() const {
   return _variableParameters.size();
 }
 
@@ -87,11 +87,11 @@ void EntityStatePdu::setEntityOrientation(const EulerAngles& pX) {
   _entityOrientation = pX;
 }
 
-unsigned int EntityStatePdu::getEntityAppearance() const {
+uint32_t EntityStatePdu::getEntityAppearance() const {
   return _entityAppearance;
 }
 
-void EntityStatePdu::setEntityAppearance(unsigned int pX) {
+void EntityStatePdu::setEntityAppearance(uint32_t pX) {
   _entityAppearance = pX;
 }
 
@@ -115,9 +115,9 @@ const EntityMarking& EntityStatePdu::getMarking() const { return _marking; }
 
 void EntityStatePdu::setMarking(const EntityMarking& pX) { _marking = pX; }
 
-unsigned int EntityStatePdu::getCapabilities() const { return _capabilities; }
+uint32_t EntityStatePdu::getCapabilities() const { return _capabilities; }
 
-void EntityStatePdu::setCapabilities(unsigned int pX) { _capabilities = pX; }
+void EntityStatePdu::setCapabilities(uint32_t pX) { _capabilities = pX; }
 
 std::vector<VariableParameter>& EntityStatePdu::getVariableParameters() {
   return _variableParameters;
@@ -138,7 +138,7 @@ void EntityStatePdu::marshal(DataStream& dataStream) const {
       dataStream);  // Marshal information in superclass first
   _entityID.marshal(dataStream);
   dataStream << _forceId;
-  dataStream << (unsigned char)_variableParameters.size();
+  dataStream << (uint8_t)_variableParameters.size();
   _entityType.marshal(dataStream);
   _alternativeEntityType.marshal(dataStream);
   _entityLinearVelocity.marshal(dataStream);
@@ -231,7 +231,7 @@ int EntityStatePdu::getMarshalledSize() const {
   marshalSize = marshalSize + _marking.getMarshalledSize();  // _marking
   marshalSize = marshalSize + 4;                             // _capabilities
 
-  for (unsigned long long idx = 0; idx < _variableParameters.size(); idx++) {
+  for (uint64_t idx = 0; idx < _variableParameters.size(); idx++) {
     VariableParameter listElement = _variableParameters[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

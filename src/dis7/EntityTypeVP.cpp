@@ -11,15 +11,15 @@ EntityTypeVP::EntityTypeVP()
 
 EntityTypeVP::~EntityTypeVP() {}
 
-unsigned char EntityTypeVP::getRecordType() const { return _recordType; }
+uint8_t EntityTypeVP::getRecordType() const { return _recordType; }
 
-void EntityTypeVP::setRecordType(unsigned char pX) { _recordType = pX; }
+void EntityTypeVP::setRecordType(uint8_t pX) { _recordType = pX; }
 
-unsigned char EntityTypeVP::getChangeIndicator() const {
+uint8_t EntityTypeVP::getChangeIndicator() const {
   return _changeIndicator;
 }
 
-void EntityTypeVP::setChangeIndicator(unsigned char pX) {
+void EntityTypeVP::setChangeIndicator(uint8_t pX) {
   _changeIndicator = pX;
 }
 
@@ -29,13 +29,13 @@ const EntityType& EntityTypeVP::getEntityType() const { return _entityType; }
 
 void EntityTypeVP::setEntityType(const EntityType& pX) { _entityType = pX; }
 
-unsigned short EntityTypeVP::getPadding() const { return _padding; }
+uint16_t EntityTypeVP::getPadding() const { return _padding; }
 
-void EntityTypeVP::setPadding(unsigned short pX) { _padding = pX; }
+void EntityTypeVP::setPadding(uint16_t pX) { _padding = pX; }
 
-unsigned int EntityTypeVP::getPadding1() const { return _padding1; }
+uint32_t EntityTypeVP::getPadding1() const { return _padding1; }
 
-void EntityTypeVP::setPadding1(unsigned int pX) { _padding1 = pX; }
+void EntityTypeVP::setPadding1(uint32_t pX) { _padding1 = pX; }
 
 void EntityTypeVP::marshal(DataStream& dataStream) const {
   dataStream << _recordType;

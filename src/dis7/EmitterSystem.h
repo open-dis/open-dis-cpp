@@ -15,13 +15,13 @@ namespace DIS {
 class OPENDIS7_EXPORT EmitterSystem {
  protected:
   /** Name of the emitter, 16 bit enumeration */
-  unsigned short _emitterName;
+  uint16_t _emitterName;
 
   /** function of the emitter, 8 bit enumeration */
-  unsigned char _function;
+  uint8_t _function;
 
   /** emitter ID, 8 bit enumeration */
-  unsigned char _emitterIdNumber;
+  uint8_t _emitterIdNumber;
 
  public:
   EmitterSystem();
@@ -30,14 +30,14 @@ class OPENDIS7_EXPORT EmitterSystem {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getEmitterName() const;
-  void setEmitterName(unsigned short pX);
+  uint16_t getEmitterName() const;
+  void setEmitterName(uint16_t pX);
 
-  unsigned char getFunction() const;
-  void setFunction(unsigned char pX);
+  uint8_t getFunction() const;
+  void setFunction(uint8_t pX);
 
-  unsigned char getEmitterIdNumber() const;
-  void setEmitterIdNumber(unsigned char pX);
+  uint8_t getEmitterIdNumber() const;
+  void setEmitterIdNumber(uint8_t pX);
 
   virtual int getMarshalledSize() const;
 

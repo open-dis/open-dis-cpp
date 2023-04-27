@@ -15,21 +15,21 @@ IOEffect::IOEffect()
 
 IOEffect::~IOEffect() {}
 
-unsigned int IOEffect::getRecordType() const { return _recordType; }
+uint32_t IOEffect::getRecordType() const { return _recordType; }
 
-void IOEffect::setRecordType(unsigned int pX) { _recordType = pX; }
+void IOEffect::setRecordType(uint32_t pX) { _recordType = pX; }
 
-unsigned short IOEffect::getRecordLength() const { return _recordLength; }
+uint16_t IOEffect::getRecordLength() const { return _recordLength; }
 
-void IOEffect::setRecordLength(unsigned short pX) { _recordLength = pX; }
+void IOEffect::setRecordLength(uint16_t pX) { _recordLength = pX; }
 
-unsigned char IOEffect::getIoStatus() const { return _ioStatus; }
+uint8_t IOEffect::getIoStatus() const { return _ioStatus; }
 
-void IOEffect::setIoStatus(unsigned char pX) { _ioStatus = pX; }
+void IOEffect::setIoStatus(uint8_t pX) { _ioStatus = pX; }
 
-unsigned char IOEffect::getIoLinkType() const { return _ioLinkType; }
+uint8_t IOEffect::getIoLinkType() const { return _ioLinkType; }
 
-void IOEffect::setIoLinkType(unsigned char pX) { _ioLinkType = pX; }
+void IOEffect::setIoLinkType(uint8_t pX) { _ioLinkType = pX; }
 
 EntityID& IOEffect::getIoEffect() { return _ioEffect; }
 
@@ -37,29 +37,29 @@ const EntityID& IOEffect::getIoEffect() const { return _ioEffect; }
 
 void IOEffect::setIoEffect(const EntityID& pX) { _ioEffect = pX; }
 
-unsigned char IOEffect::getIoEffectDutyCycle() const {
+uint8_t IOEffect::getIoEffectDutyCycle() const {
   return _ioEffectDutyCycle;
 }
 
-void IOEffect::setIoEffectDutyCycle(unsigned char pX) {
+void IOEffect::setIoEffectDutyCycle(uint8_t pX) {
   _ioEffectDutyCycle = pX;
 }
 
-unsigned short IOEffect::getIoEffectDuration() const {
+uint16_t IOEffect::getIoEffectDuration() const {
   return _ioEffectDuration;
 }
 
-void IOEffect::setIoEffectDuration(unsigned short pX) {
+void IOEffect::setIoEffectDuration(uint16_t pX) {
   _ioEffectDuration = pX;
 }
 
-unsigned short IOEffect::getIoProcess() const { return _ioProcess; }
+uint16_t IOEffect::getIoProcess() const { return _ioProcess; }
 
-void IOEffect::setIoProcess(unsigned short pX) { _ioProcess = pX; }
+void IOEffect::setIoProcess(uint16_t pX) { _ioProcess = pX; }
 
-unsigned short IOEffect::getPadding() const { return _padding; }
+uint16_t IOEffect::getPadding() const { return _padding; }
 
-void IOEffect::setPadding(unsigned short pX) { _padding = pX; }
+void IOEffect::setPadding(uint16_t pX) { _padding = pX; }
 
 void IOEffect::marshal(DataStream& dataStream) const {
   dataStream << _recordType;

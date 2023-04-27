@@ -16,22 +16,22 @@ namespace DIS {
 class OPENDIS7_EXPORT EnvironmentGeneral {
  protected:
   /** Record type */
-  unsigned int _environmentType;
+  uint32_t _environmentType;
 
   /** length, in bits */
-  unsigned char _length;
+  uint8_t _length;
 
   /** Identify the sequentially numbered record index */
-  unsigned char _index;
+  uint8_t _index;
 
   /** padding */
-  unsigned char _padding1;
+  uint8_t _padding1;
 
   /** Geometry or state record */
-  unsigned char _geometry;
+  uint8_t _geometry;
 
   /** padding to bring the total size up to a 64 bit boundry */
-  unsigned char _padding2;
+  uint8_t _padding2;
 
  public:
   EnvironmentGeneral();
@@ -40,23 +40,23 @@ class OPENDIS7_EXPORT EnvironmentGeneral {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getEnvironmentType() const;
-  void setEnvironmentType(unsigned int pX);
+  uint32_t getEnvironmentType() const;
+  void setEnvironmentType(uint32_t pX);
 
-  unsigned char getLength() const;
-  void setLength(unsigned char pX);
+  uint8_t getLength() const;
+  void setLength(uint8_t pX);
 
-  unsigned char getIndex() const;
-  void setIndex(unsigned char pX);
+  uint8_t getIndex() const;
+  void setIndex(uint8_t pX);
 
-  unsigned char getPadding1() const;
-  void setPadding1(unsigned char pX);
+  uint8_t getPadding1() const;
+  void setPadding1(uint8_t pX);
 
-  unsigned char getGeometry() const;
-  void setGeometry(unsigned char pX);
+  uint8_t getGeometry() const;
+  void setGeometry(uint8_t pX);
 
-  unsigned char getPadding2() const;
-  void setPadding2(unsigned char pX);
+  uint8_t getPadding2() const;
+  void setPadding2(uint8_t pX);
 
   virtual int getMarshalledSize() const;
 

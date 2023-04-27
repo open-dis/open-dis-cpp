@@ -34,19 +34,19 @@ void MinefieldStatePdu::setMinefieldID(const MinefieldIdentifier& pX) {
   _minefieldID = pX;
 }
 
-unsigned short MinefieldStatePdu::getMinefieldSequence() const {
+uint16_t MinefieldStatePdu::getMinefieldSequence() const {
   return _minefieldSequence;
 }
 
-void MinefieldStatePdu::setMinefieldSequence(unsigned short pX) {
+void MinefieldStatePdu::setMinefieldSequence(uint16_t pX) {
   _minefieldSequence = pX;
 }
 
-unsigned char MinefieldStatePdu::getForceID() const { return _forceID; }
+uint8_t MinefieldStatePdu::getForceID() const { return _forceID; }
 
-void MinefieldStatePdu::setForceID(unsigned char pX) { _forceID = pX; }
+void MinefieldStatePdu::setForceID(uint8_t pX) { _forceID = pX; }
 
-unsigned char MinefieldStatePdu::getNumberOfPerimeterPoints() const {
+uint8_t MinefieldStatePdu::getNumberOfPerimeterPoints() const {
   return _perimeterPoints.size();
 }
 
@@ -60,7 +60,7 @@ void MinefieldStatePdu::setMinefieldType(const EntityType& pX) {
   _minefieldType = pX;
 }
 
-unsigned short MinefieldStatePdu::getNumberOfMineTypes() const {
+uint16_t MinefieldStatePdu::getNumberOfMineTypes() const {
   return _mineType.size();
 }
 
@@ -88,15 +88,15 @@ void MinefieldStatePdu::setMinefieldOrientation(const EulerAngles& pX) {
   _minefieldOrientation = pX;
 }
 
-unsigned short MinefieldStatePdu::getAppearance() const { return _appearance; }
+uint16_t MinefieldStatePdu::getAppearance() const { return _appearance; }
 
-void MinefieldStatePdu::setAppearance(unsigned short pX) { _appearance = pX; }
+void MinefieldStatePdu::setAppearance(uint16_t pX) { _appearance = pX; }
 
-unsigned short MinefieldStatePdu::getProtocolMode() const {
+uint16_t MinefieldStatePdu::getProtocolMode() const {
   return _protocolMode;
 }
 
-void MinefieldStatePdu::setProtocolMode(unsigned short pX) {
+void MinefieldStatePdu::setProtocolMode(uint16_t pX) {
   _protocolMode = pX;
 }
 
@@ -129,9 +129,9 @@ void MinefieldStatePdu::marshal(DataStream& dataStream) const {
   _minefieldID.marshal(dataStream);
   dataStream << _minefieldSequence;
   dataStream << _forceID;
-  dataStream << (unsigned char)_perimeterPoints.size();
+  dataStream << (uint8_t)_perimeterPoints.size();
   _minefieldType.marshal(dataStream);
-  dataStream << (unsigned short)_mineType.size();
+  dataStream << (uint16_t)_mineType.size();
   _minefieldLocation.marshal(dataStream);
   _minefieldOrientation.marshal(dataStream);
   dataStream << _appearance;
@@ -222,12 +222,12 @@ int MinefieldStatePdu::getMarshalledSize() const {
   marshalSize = marshalSize + 2;                  // _appearance
   marshalSize = marshalSize + 2;                  // _protocolMode
 
-  for (unsigned long long idx = 0; idx < _perimeterPoints.size(); idx++) {
+  for (uint64_t idx = 0; idx < _perimeterPoints.size(); idx++) {
     Vector2Float listElement = _perimeterPoints[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }
 
-  for (unsigned long long idx = 0; idx < _mineType.size(); idx++) {
+  for (uint64_t idx = 0; idx < _mineType.size(); idx++) {
     EntityType listElement = _mineType[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

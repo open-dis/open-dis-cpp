@@ -14,13 +14,13 @@ namespace DIS {
 class OPENDIS7_EXPORT IntercomCommunicationsParameters {
  protected:
   /** Type of intercom parameters record */
-  unsigned short _recordType;
+  uint16_t _recordType;
 
   /** length of record */
-  unsigned short _recordLength;
+  uint16_t _recordLength;
 
   /** This is a placeholder. */
-  unsigned int _recordSpecificField;
+  uint32_t _recordSpecificField;
 
  public:
   IntercomCommunicationsParameters();
@@ -29,14 +29,14 @@ class OPENDIS7_EXPORT IntercomCommunicationsParameters {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getRecordType() const;
-  void setRecordType(unsigned short pX);
+  uint16_t getRecordType() const;
+  void setRecordType(uint16_t pX);
 
-  unsigned short getRecordLength() const;
-  void setRecordLength(unsigned short pX);
+  uint16_t getRecordLength() const;
+  void setRecordLength(uint16_t pX);
 
-  unsigned int getRecordSpecificField() const;
-  void setRecordSpecificField(unsigned int pX);
+  uint32_t getRecordSpecificField() const;
+  void setRecordSpecificField(uint32_t pX);
 
   virtual int getMarshalledSize() const;
 

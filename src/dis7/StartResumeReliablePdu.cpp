@@ -37,25 +37,25 @@ void StartResumeReliablePdu::setSimulationTime(const ClockTime& pX) {
   _simulationTime = pX;
 }
 
-unsigned char StartResumeReliablePdu::getRequiredReliabilityService() const {
+uint8_t StartResumeReliablePdu::getRequiredReliabilityService() const {
   return _requiredReliabilityService;
 }
 
-void StartResumeReliablePdu::setRequiredReliabilityService(unsigned char pX) {
+void StartResumeReliablePdu::setRequiredReliabilityService(uint8_t pX) {
   _requiredReliabilityService = pX;
 }
 
-unsigned short StartResumeReliablePdu::getPad1() const { return _pad1; }
+uint16_t StartResumeReliablePdu::getPad1() const { return _pad1; }
 
-void StartResumeReliablePdu::setPad1(unsigned short pX) { _pad1 = pX; }
+void StartResumeReliablePdu::setPad1(uint16_t pX) { _pad1 = pX; }
 
-unsigned char StartResumeReliablePdu::getPad2() const { return _pad2; }
+uint8_t StartResumeReliablePdu::getPad2() const { return _pad2; }
 
-void StartResumeReliablePdu::setPad2(unsigned char pX) { _pad2 = pX; }
+void StartResumeReliablePdu::setPad2(uint8_t pX) { _pad2 = pX; }
 
-unsigned int StartResumeReliablePdu::getRequestID() const { return _requestID; }
+uint32_t StartResumeReliablePdu::getRequestID() const { return _requestID; }
 
-void StartResumeReliablePdu::setRequestID(unsigned int pX) { _requestID = pX; }
+void StartResumeReliablePdu::setRequestID(uint32_t pX) { _requestID = pX; }
 
 void StartResumeReliablePdu::marshal(DataStream& dataStream) const {
   SimulationManagementWithReliabilityFamilyPdu::marshal(

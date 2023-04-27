@@ -34,13 +34,13 @@ class OPENDIS7_EXPORT IFFPdu : public DistributedEmissionsFamilyPdu {
   Vector3Float _relativeAntennaLocation;
 
   /** How many iff parameters are in the variable length list */
-  unsigned int _numberOfIFFParameters;
+  uint32_t _numberOfIFFParameters;
 
   SystemIdentifier _systemID;
 
-  unsigned char _systemDesignator;
+  uint8_t _systemDesignator;
 
-  unsigned char _systemSpecificData;
+  uint8_t _systemSpecificData;
 
   FundamentalOperationalData _fundamentalOperationalData;
 
@@ -71,17 +71,17 @@ class OPENDIS7_EXPORT IFFPdu : public DistributedEmissionsFamilyPdu {
   const Vector3Float& getRelativeAntennaLocation() const;
   void setRelativeAntennaLocation(const Vector3Float& pX);
 
-  unsigned int getNumberOfIFFParameters() const;
+  uint32_t getNumberOfIFFParameters() const;
 
   SystemIdentifier& getSystemID();
   const SystemIdentifier& getSystemID() const;
   void setSystemID(const SystemIdentifier& pX);
 
-  unsigned char getSystemDesignator() const;
-  void setSystemDesignator(unsigned char pX);
+  uint8_t getSystemDesignator() const;
+  void setSystemDesignator(uint8_t pX);
 
-  unsigned char getSystemSpecificData() const;
-  void setSystemSpecificData(unsigned char pX);
+  uint8_t getSystemSpecificData() const;
+  void setSystemSpecificData(uint8_t pX);
 
   FundamentalOperationalData& getFundamentalOperationalData();
   const FundamentalOperationalData& getFundamentalOperationalData() const;

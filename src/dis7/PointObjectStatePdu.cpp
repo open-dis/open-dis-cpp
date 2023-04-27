@@ -39,23 +39,23 @@ void PointObjectStatePdu::setReferencedObjectID(const EntityID& pX) {
   _referencedObjectID = pX;
 }
 
-unsigned short PointObjectStatePdu::getUpdateNumber() const {
+uint16_t PointObjectStatePdu::getUpdateNumber() const {
   return _updateNumber;
 }
 
-void PointObjectStatePdu::setUpdateNumber(unsigned short pX) {
+void PointObjectStatePdu::setUpdateNumber(uint16_t pX) {
   _updateNumber = pX;
 }
 
-unsigned char PointObjectStatePdu::getForceID() const { return _forceID; }
+uint8_t PointObjectStatePdu::getForceID() const { return _forceID; }
 
-void PointObjectStatePdu::setForceID(unsigned char pX) { _forceID = pX; }
+void PointObjectStatePdu::setForceID(uint8_t pX) { _forceID = pX; }
 
-unsigned char PointObjectStatePdu::getModifications() const {
+uint8_t PointObjectStatePdu::getModifications() const {
   return _modifications;
 }
 
-void PointObjectStatePdu::setModifications(unsigned char pX) {
+void PointObjectStatePdu::setModifications(uint8_t pX) {
   _modifications = pX;
 }
 
@@ -125,9 +125,9 @@ void PointObjectStatePdu::setReceivingID(const SimulationAddress& pX) {
   _receivingID = pX;
 }
 
-unsigned int PointObjectStatePdu::getPad2() const { return _pad2; }
+uint32_t PointObjectStatePdu::getPad2() const { return _pad2; }
 
-void PointObjectStatePdu::setPad2(unsigned int pX) { _pad2 = pX; }
+void PointObjectStatePdu::setPad2(uint32_t pX) { _pad2 = pX; }
 
 void PointObjectStatePdu::marshal(DataStream& dataStream) const {
   SyntheticEnvironmentFamilyPdu::marshal(

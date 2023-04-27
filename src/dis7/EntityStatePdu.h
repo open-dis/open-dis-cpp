@@ -29,11 +29,11 @@ class OPENDIS7_EXPORT EntityStatePdu : public EntityInformationFamilyPdu {
   EntityID _entityID;
 
   /** What force this entity is affiliated with, eg red, blue, neutral, etc */
-  unsigned char _forceId;
+  uint8_t _forceId;
 
   /** How many variable parameters are in the variable length list. In earlier
    * versions of DIS these were known as articulation parameters */
-  unsigned char _numberOfVariableParameters;
+  uint8_t _numberOfVariableParameters;
 
   /** Describes the type of entity in the world */
   EntityType _entityType;
@@ -51,7 +51,7 @@ class OPENDIS7_EXPORT EntityStatePdu : public EntityInformationFamilyPdu {
 
   /** a series of bit flags that are used to help draw the entity, such as
    * smoking, on fire, etc. */
-  unsigned int _entityAppearance;
+  uint32_t _entityAppearance;
 
   /** parameters used for dead reckoning */
   DeadReckoningParameters _deadReckoningParameters;
@@ -61,7 +61,7 @@ class OPENDIS7_EXPORT EntityStatePdu : public EntityInformationFamilyPdu {
   EntityMarking _marking;
 
   /** a series of bit flags */
-  unsigned int _capabilities;
+  uint32_t _capabilities;
 
   /** variable length list of variable parameters. In earlier DIS versions this
    * was articulation parameters. */
@@ -78,10 +78,10 @@ class OPENDIS7_EXPORT EntityStatePdu : public EntityInformationFamilyPdu {
   const EntityID& getEntityID() const;
   void setEntityID(const EntityID& pX);
 
-  unsigned char getForceId() const;
-  void setForceId(unsigned char pX);
+  uint8_t getForceId() const;
+  void setForceId(uint8_t pX);
 
-  unsigned char getNumberOfVariableParameters() const;
+  uint8_t getNumberOfVariableParameters() const;
 
   EntityType& getEntityType();
   const EntityType& getEntityType() const;
@@ -103,8 +103,8 @@ class OPENDIS7_EXPORT EntityStatePdu : public EntityInformationFamilyPdu {
   const EulerAngles& getEntityOrientation() const;
   void setEntityOrientation(const EulerAngles& pX);
 
-  unsigned int getEntityAppearance() const;
-  void setEntityAppearance(unsigned int pX);
+  uint32_t getEntityAppearance() const;
+  void setEntityAppearance(uint32_t pX);
 
   DeadReckoningParameters& getDeadReckoningParameters();
   const DeadReckoningParameters& getDeadReckoningParameters() const;
@@ -114,8 +114,8 @@ class OPENDIS7_EXPORT EntityStatePdu : public EntityInformationFamilyPdu {
   const EntityMarking& getMarking() const;
   void setMarking(const EntityMarking& pX);
 
-  unsigned int getCapabilities() const;
-  void setCapabilities(unsigned int pX);
+  uint32_t getCapabilities() const;
+  void setCapabilities(uint32_t pX);
 
   std::vector<VariableParameter>& getVariableParameters();
   const std::vector<VariableParameter>& getVariableParameters() const;

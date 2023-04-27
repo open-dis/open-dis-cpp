@@ -15,25 +15,25 @@ class OPENDIS7_EXPORT AggregateType {
  protected:
   /** Grouping criterion used to group the aggregate. Enumeration from EBV
    * document */
-  unsigned char _aggregateKind;
+  uint8_t _aggregateKind;
 
   /** Domain of entity (air, surface, subsurface, space, etc) Zero means domain
    * does not apply. */
-  unsigned char _domain;
+  uint8_t _domain;
 
   /** country to which the design of the entity is attributed */
-  unsigned short _country;
+  uint16_t _country;
 
   /** category of entity */
-  unsigned char _category;
+  uint8_t _category;
 
   /** subcategory of entity */
-  unsigned char _subcategory;
+  uint8_t _subcategory;
 
   /** specific info based on subcategory field */
-  unsigned char _specific;
+  uint8_t _specific;
 
-  unsigned char _extra;
+  uint8_t _extra;
 
  public:
   AggregateType();
@@ -42,26 +42,26 @@ class OPENDIS7_EXPORT AggregateType {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned char getAggregateKind() const;
-  void setAggregateKind(unsigned char pX);
+  uint8_t getAggregateKind() const;
+  void setAggregateKind(uint8_t pX);
 
-  unsigned char getDomain() const;
-  void setDomain(unsigned char pX);
+  uint8_t getDomain() const;
+  void setDomain(uint8_t pX);
 
-  unsigned short getCountry() const;
-  void setCountry(unsigned short pX);
+  uint16_t getCountry() const;
+  void setCountry(uint16_t pX);
 
-  unsigned char getCategory() const;
-  void setCategory(unsigned char pX);
+  uint8_t getCategory() const;
+  void setCategory(uint8_t pX);
 
-  unsigned char getSubcategory() const;
-  void setSubcategory(unsigned char pX);
+  uint8_t getSubcategory() const;
+  void setSubcategory(uint8_t pX);
 
-  unsigned char getSpecific() const;
-  void setSpecific(unsigned char pX);
+  uint8_t getSpecific() const;
+  void setSpecific(uint8_t pX);
 
-  unsigned char getExtra() const;
-  void setExtra(unsigned char pX);
+  uint8_t getExtra() const;
+  void setExtra(uint8_t pX);
 
   virtual int getMarshalledSize() const;
 

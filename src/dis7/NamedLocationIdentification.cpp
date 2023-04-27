@@ -7,19 +7,19 @@ NamedLocationIdentification::NamedLocationIdentification()
 
 NamedLocationIdentification::~NamedLocationIdentification() {}
 
-unsigned short NamedLocationIdentification::getStationName() const {
+uint16_t NamedLocationIdentification::getStationName() const {
   return _stationName;
 }
 
-void NamedLocationIdentification::setStationName(unsigned short pX) {
+void NamedLocationIdentification::setStationName(uint16_t pX) {
   _stationName = pX;
 }
 
-unsigned short NamedLocationIdentification::getStationNumber() const {
+uint16_t NamedLocationIdentification::getStationNumber() const {
   return _stationNumber;
 }
 
-void NamedLocationIdentification::setStationNumber(unsigned short pX) {
+void NamedLocationIdentification::setStationNumber(uint16_t pX) {
   _stationNumber = pX;
 }
 

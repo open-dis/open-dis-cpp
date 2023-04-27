@@ -17,12 +17,12 @@ class OPENDIS7_EXPORT SimulationAddress {
   /** A site is defined as a facility, installation, organizational unit or a
    * geographic location that has one or more simulation applications capable of
    * participating in a distributed event.  */
-  unsigned short _site;
+  uint16_t _site;
 
   /** An application is defined as a software program that is used to generate
    * and process distributed simulation data including live, virtual and
    * constructive data. */
-  unsigned short _application;
+  uint16_t _application;
 
  public:
   SimulationAddress();
@@ -31,11 +31,11 @@ class OPENDIS7_EXPORT SimulationAddress {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getSite() const;
-  void setSite(unsigned short pX);
+  uint16_t getSite() const;
+  void setSite(uint16_t pX);
 
-  unsigned short getApplication() const;
-  void setApplication(unsigned short pX);
+  uint16_t getApplication() const;
+  void setApplication(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

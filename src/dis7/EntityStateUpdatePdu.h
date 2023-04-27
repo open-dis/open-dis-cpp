@@ -30,8 +30,8 @@ class OPENDIS7_EXPORT EntityStateUpdatePdu : public EntityInformationFamilyPdu {
   char _padding1;
 
   /** This field shall specify the number of variable parameters present. This
-   * field shall be represented by an 8-bit unsigned integer (see Annex I). */
-  unsigned char _numberOfVariableParameters;
+   * field shall be represented by an 8-bit uint32_teger (see Annex I). */
+  uint8_t _numberOfVariableParameters;
 
   /** This field shall specify an entity’s linear velocity. The coordinate
    * system for an entity’s linear velocity depends on the dead reckoning
@@ -51,7 +51,7 @@ class OPENDIS7_EXPORT EntityStateUpdatePdu : public EntityInformationFamilyPdu {
   /** This field shall specify the dynamic changes to the entity’s appearance
    * attributes. This field shall be represented by an Entity Appearance record
    * (see 6.2.26). */
-  unsigned int _entityAppearance;
+  uint32_t _entityAppearance;
 
   /** This field shall specify the parameter values for each Variable Parameter
    * record that is included (see 6.2.93 and Annex I). */
@@ -71,7 +71,7 @@ class OPENDIS7_EXPORT EntityStateUpdatePdu : public EntityInformationFamilyPdu {
   char getPadding1() const;
   void setPadding1(char pX);
 
-  unsigned char getNumberOfVariableParameters() const;
+  uint8_t getNumberOfVariableParameters() const;
 
   Vector3Float& getEntityLinearVelocity();
   const Vector3Float& getEntityLinearVelocity() const;
@@ -85,8 +85,8 @@ class OPENDIS7_EXPORT EntityStateUpdatePdu : public EntityInformationFamilyPdu {
   const EulerAngles& getEntityOrientation() const;
   void setEntityOrientation(const EulerAngles& pX);
 
-  unsigned int getEntityAppearance() const;
-  void setEntityAppearance(unsigned int pX);
+  uint32_t getEntityAppearance() const;
+  void setEntityAppearance(uint32_t pX);
 
   std::vector<VariableParameter>& getVariableParameters();
   const std::vector<VariableParameter>& getVariableParameters() const;

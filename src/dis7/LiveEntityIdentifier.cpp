@@ -21,11 +21,11 @@ void LiveEntityIdentifier::setLiveSimulationAddress(
   _liveSimulationAddress = pX;
 }
 
-unsigned short LiveEntityIdentifier::getEntityNumber() const {
+uint16_t LiveEntityIdentifier::getEntityNumber() const {
   return _entityNumber;
 }
 
-void LiveEntityIdentifier::setEntityNumber(unsigned short pX) {
+void LiveEntityIdentifier::setEntityNumber(uint16_t pX) {
   _entityNumber = pX;
 }
 

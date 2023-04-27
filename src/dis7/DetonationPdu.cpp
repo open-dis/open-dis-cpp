@@ -74,21 +74,21 @@ void DetonationPdu::setLocationOfEntityCoordinates(const Vector3Float& pX) {
   _locationOfEntityCoordinates = pX;
 }
 
-unsigned char DetonationPdu::getDetonationResult() const {
+uint8_t DetonationPdu::getDetonationResult() const {
   return _detonationResult;
 }
 
-void DetonationPdu::setDetonationResult(unsigned char pX) {
+void DetonationPdu::setDetonationResult(uint8_t pX) {
   _detonationResult = pX;
 }
 
-unsigned char DetonationPdu::getNumberOfVariableParameters() const {
+uint8_t DetonationPdu::getNumberOfVariableParameters() const {
   return _variableParameters.size();
 }
 
-unsigned short DetonationPdu::getPad() const { return _pad; }
+uint16_t DetonationPdu::getPad() const { return _pad; }
 
-void DetonationPdu::setPad(unsigned short pX) { _pad = pX; }
+void DetonationPdu::setPad(uint16_t pX) { _pad = pX; }
 
 std::vector<VariableParameter>& DetonationPdu::getVariableParameters() {
   return _variableParameters;
@@ -114,7 +114,7 @@ void DetonationPdu::marshal(DataStream& dataStream) const {
   _descriptor.marshal(dataStream);
   _locationOfEntityCoordinates.marshal(dataStream);
   dataStream << _detonationResult;
-  dataStream << (unsigned char)_variableParameters.size();
+  dataStream << (uint8_t)_variableParameters.size();
   dataStream << _pad;
 
   for (size_t idx = 0; idx < _variableParameters.size(); idx++) {
@@ -187,7 +187,7 @@ int DetonationPdu::getMarshalledSize() const {
   marshalSize = marshalSize + 1;               // _numberOfVariableParameters
   marshalSize = marshalSize + 2;               // _pad
 
-  for (unsigned long long idx = 0; idx < _variableParameters.size(); idx++) {
+  for (uint64_t idx = 0; idx < _variableParameters.size(); idx++) {
     VariableParameter listElement = _variableParameters[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

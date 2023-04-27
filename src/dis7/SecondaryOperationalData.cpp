@@ -9,29 +9,29 @@ SecondaryOperationalData::SecondaryOperationalData()
 
 SecondaryOperationalData::~SecondaryOperationalData() {}
 
-unsigned char SecondaryOperationalData::getOperationalData1() const {
+uint8_t SecondaryOperationalData::getOperationalData1() const {
   return _operationalData1;
 }
 
-void SecondaryOperationalData::setOperationalData1(unsigned char pX) {
+void SecondaryOperationalData::setOperationalData1(uint8_t pX) {
   _operationalData1 = pX;
 }
 
-unsigned char SecondaryOperationalData::getOperationalData2() const {
+uint8_t SecondaryOperationalData::getOperationalData2() const {
   return _operationalData2;
 }
 
-void SecondaryOperationalData::setOperationalData2(unsigned char pX) {
+void SecondaryOperationalData::setOperationalData2(uint8_t pX) {
   _operationalData2 = pX;
 }
 
-unsigned short
+uint16_t
 SecondaryOperationalData::getNumberOfIFFFundamentalParameterRecords() const {
   return _numberOfIFFFundamentalParameterRecords;
 }
 
 void SecondaryOperationalData::setNumberOfIFFFundamentalParameterRecords(
-    unsigned short pX) {
+    uint16_t pX) {
   _numberOfIFFFundamentalParameterRecords = pX;
 }
 

@@ -21,7 +21,7 @@ class OPENDIS7_EXPORT AggregateIdentifier {
   SimulationAddress _simulationAddress;
 
   /** the aggregate ID */
-  unsigned short _aggregateID;
+  uint16_t _aggregateID;
 
  public:
   AggregateIdentifier();
@@ -34,8 +34,8 @@ class OPENDIS7_EXPORT AggregateIdentifier {
   const SimulationAddress& getSimulationAddress() const;
   void setSimulationAddress(const SimulationAddress& pX);
 
-  unsigned short getAggregateID() const;
-  void setAggregateID(unsigned short pX);
+  uint16_t getAggregateID() const;
+  void setAggregateID(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

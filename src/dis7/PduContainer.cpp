@@ -6,7 +6,7 @@ PduContainer::PduContainer() : _numberOfPdus(0) {}
 
 PduContainer::~PduContainer() { _pdus.clear(); }
 
-unsigned int PduContainer::getNumberOfPdus() const { return _pdus.size(); }
+uint32_t PduContainer::getNumberOfPdus() const { return _pdus.size(); }
 
 std::vector<Pdu>& PduContainer::getPdus() { return _pdus; }
 
@@ -49,7 +49,7 @@ int PduContainer::getMarshalledSize() const {
 
   marshalSize = marshalSize + 4;  // _numberOfPdus
 
-  for (unsigned long long idx = 0; idx < _pdus.size(); idx++) {
+  for (uint64_t idx = 0; idx < _pdus.size(); idx++) {
     Pdu listElement = _pdus[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

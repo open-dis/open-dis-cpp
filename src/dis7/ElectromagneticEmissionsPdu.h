@@ -33,14 +33,14 @@ class OPENDIS7_EXPORT ElectromagneticEmissionsPdu
    * state update or just data that has changed since issuance of the last
    * Electromagnetic Emission PDU [relative to the identified entity and
    * emission system(s)]. */
-  unsigned char _stateUpdateIndicator;
+  uint8_t _stateUpdateIndicator;
 
   /** This field shall specify the number of emission systems being described in
    * the current PDU. */
-  unsigned char _numberOfSystems;
+  uint8_t _numberOfSystems;
 
   /** padding */
-  unsigned short _paddingForEmissionsPdu;
+  uint16_t _paddingForEmissionsPdu;
 
   std::vector<ElectromagneticEmissionSystemData> _systems;
 
@@ -59,13 +59,13 @@ class OPENDIS7_EXPORT ElectromagneticEmissionsPdu
   const EventIdentifier& getEventID() const;
   void setEventID(const EventIdentifier& pX);
 
-  unsigned char getStateUpdateIndicator() const;
-  void setStateUpdateIndicator(unsigned char pX);
+  uint8_t getStateUpdateIndicator() const;
+  void setStateUpdateIndicator(uint8_t pX);
 
-  unsigned char getNumberOfSystems() const;
+  uint8_t getNumberOfSystems() const;
 
-  unsigned short getPaddingForEmissionsPdu() const;
-  void setPaddingForEmissionsPdu(unsigned short pX);
+  uint16_t getPaddingForEmissionsPdu() const;
+  void setPaddingForEmissionsPdu(uint16_t pX);
 
   std::vector<ElectromagneticEmissionSystemData>& getSystems();
   const std::vector<ElectromagneticEmissionSystemData>& getSystems() const;

@@ -18,7 +18,7 @@ class OPENDIS7_EXPORT ExpendableDescriptor {
   EntityType _expendableType;
 
   /** Padding */
-  long long _padding;
+  int64_t _padding;
 
  public:
   ExpendableDescriptor();
@@ -31,8 +31,8 @@ class OPENDIS7_EXPORT ExpendableDescriptor {
   const EntityType& getExpendableType() const;
   void setExpendableType(const EntityType& pX);
 
-  long long getPadding() const;
-  void setPadding(long long pX);
+  int64_t getPadding() const;
+  void setPadding(int64_t pX);
 
   virtual int getMarshalledSize() const;
 

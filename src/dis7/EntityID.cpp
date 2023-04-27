@@ -18,9 +18,9 @@ void EntityID::setSimulationAddress(const SimulationAddress& pX) {
   _simulationAddress = pX;
 }
 
-unsigned short EntityID::getEntityNumber() const { return _entityNumber; }
+uint16_t EntityID::getEntityNumber() const { return _entityNumber; }
 
-void EntityID::setEntityNumber(unsigned short pX) { _entityNumber = pX; }
+void EntityID::setEntityNumber(uint16_t pX) { _entityNumber = pX; }
 
 void EntityID::marshal(DataStream& dataStream) const {
   _simulationAddress.marshal(dataStream);

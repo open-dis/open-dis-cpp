@@ -15,11 +15,11 @@ namespace DIS {
 class OPENDIS7_EXPORT UAFundamentalParameter {
  protected:
   /** Which database record shall be used. An enumeration from EBV document */
-  unsigned short _activeEmissionParameterIndex;
+  uint16_t _activeEmissionParameterIndex;
 
   /** The type of scan pattern, If not used, zero. An enumeration from EBV
    * document */
-  unsigned short _scanPattern;
+  uint16_t _scanPattern;
 
   /** center azimuth bearing of th emain beam. In radians. */
   float _beamCenterAzimuthHorizontal;
@@ -43,11 +43,11 @@ class OPENDIS7_EXPORT UAFundamentalParameter {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getActiveEmissionParameterIndex() const;
-  void setActiveEmissionParameterIndex(unsigned short pX);
+  uint16_t getActiveEmissionParameterIndex() const;
+  void setActiveEmissionParameterIndex(uint16_t pX);
 
-  unsigned short getScanPattern() const;
-  void setScanPattern(unsigned short pX);
+  uint16_t getScanPattern() const;
+  void setScanPattern(uint16_t pX);
 
   float getBeamCenterAzimuthHorizontal() const;
   void setBeamCenterAzimuthHorizontal(float pX);

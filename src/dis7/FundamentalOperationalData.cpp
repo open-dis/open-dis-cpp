@@ -16,83 +16,83 @@ FundamentalOperationalData::FundamentalOperationalData()
 
 FundamentalOperationalData::~FundamentalOperationalData() {}
 
-unsigned char FundamentalOperationalData::getSystemStatus() const {
+uint8_t FundamentalOperationalData::getSystemStatus() const {
   return _systemStatus;
 }
 
-void FundamentalOperationalData::setSystemStatus(unsigned char pX) {
+void FundamentalOperationalData::setSystemStatus(uint8_t pX) {
   _systemStatus = pX;
 }
 
-unsigned char FundamentalOperationalData::getDataField1() const {
+uint8_t FundamentalOperationalData::getDataField1() const {
   return _dataField1;
 }
 
-void FundamentalOperationalData::setDataField1(unsigned char pX) {
+void FundamentalOperationalData::setDataField1(uint8_t pX) {
   _dataField1 = pX;
 }
 
-unsigned char FundamentalOperationalData::getInformationLayers() const {
+uint8_t FundamentalOperationalData::getInformationLayers() const {
   return _informationLayers;
 }
 
-void FundamentalOperationalData::setInformationLayers(unsigned char pX) {
+void FundamentalOperationalData::setInformationLayers(uint8_t pX) {
   _informationLayers = pX;
 }
 
-unsigned char FundamentalOperationalData::getDataField2() const {
+uint8_t FundamentalOperationalData::getDataField2() const {
   return _dataField2;
 }
 
-void FundamentalOperationalData::setDataField2(unsigned char pX) {
+void FundamentalOperationalData::setDataField2(uint8_t pX) {
   _dataField2 = pX;
 }
 
-unsigned short FundamentalOperationalData::getParameter1() const {
+uint16_t FundamentalOperationalData::getParameter1() const {
   return _parameter1;
 }
 
-void FundamentalOperationalData::setParameter1(unsigned short pX) {
+void FundamentalOperationalData::setParameter1(uint16_t pX) {
   _parameter1 = pX;
 }
 
-unsigned short FundamentalOperationalData::getParameter2() const {
+uint16_t FundamentalOperationalData::getParameter2() const {
   return _parameter2;
 }
 
-void FundamentalOperationalData::setParameter2(unsigned short pX) {
+void FundamentalOperationalData::setParameter2(uint16_t pX) {
   _parameter2 = pX;
 }
 
-unsigned short FundamentalOperationalData::getParameter3() const {
+uint16_t FundamentalOperationalData::getParameter3() const {
   return _parameter3;
 }
 
-void FundamentalOperationalData::setParameter3(unsigned short pX) {
+void FundamentalOperationalData::setParameter3(uint16_t pX) {
   _parameter3 = pX;
 }
 
-unsigned short FundamentalOperationalData::getParameter4() const {
+uint16_t FundamentalOperationalData::getParameter4() const {
   return _parameter4;
 }
 
-void FundamentalOperationalData::setParameter4(unsigned short pX) {
+void FundamentalOperationalData::setParameter4(uint16_t pX) {
   _parameter4 = pX;
 }
 
-unsigned short FundamentalOperationalData::getParameter5() const {
+uint16_t FundamentalOperationalData::getParameter5() const {
   return _parameter5;
 }
 
-void FundamentalOperationalData::setParameter5(unsigned short pX) {
+void FundamentalOperationalData::setParameter5(uint16_t pX) {
   _parameter5 = pX;
 }
 
-unsigned short FundamentalOperationalData::getParameter6() const {
+uint16_t FundamentalOperationalData::getParameter6() const {
   return _parameter6;
 }
 
-void FundamentalOperationalData::setParameter6(unsigned short pX) {
+void FundamentalOperationalData::setParameter6(uint16_t pX) {
   _parameter6 = pX;
 }
 

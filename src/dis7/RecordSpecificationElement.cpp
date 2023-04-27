@@ -12,49 +12,49 @@ RecordSpecificationElement::RecordSpecificationElement()
 
 RecordSpecificationElement::~RecordSpecificationElement() {}
 
-unsigned int RecordSpecificationElement::getRecordID() const {
+uint32_t RecordSpecificationElement::getRecordID() const {
   return _recordID;
 }
 
-void RecordSpecificationElement::setRecordID(unsigned int pX) {
+void RecordSpecificationElement::setRecordID(uint32_t pX) {
   _recordID = pX;
 }
 
-unsigned int RecordSpecificationElement::getRecordSetSerialNumber() const {
+uint32_t RecordSpecificationElement::getRecordSetSerialNumber() const {
   return _recordSetSerialNumber;
 }
 
-void RecordSpecificationElement::setRecordSetSerialNumber(unsigned int pX) {
+void RecordSpecificationElement::setRecordSetSerialNumber(uint32_t pX) {
   _recordSetSerialNumber = pX;
 }
 
-unsigned short RecordSpecificationElement::getRecordLength() const {
+uint16_t RecordSpecificationElement::getRecordLength() const {
   return _recordLength;
 }
 
-void RecordSpecificationElement::setRecordLength(unsigned short pX) {
+void RecordSpecificationElement::setRecordLength(uint16_t pX) {
   _recordLength = pX;
 }
 
-unsigned short RecordSpecificationElement::getRecordCount() const {
+uint16_t RecordSpecificationElement::getRecordCount() const {
   return _recordCount;
 }
 
-void RecordSpecificationElement::setRecordCount(unsigned short pX) {
+void RecordSpecificationElement::setRecordCount(uint16_t pX) {
   _recordCount = pX;
 }
 
-unsigned short RecordSpecificationElement::getRecordValues() const {
+uint16_t RecordSpecificationElement::getRecordValues() const {
   return _recordValues;
 }
 
-void RecordSpecificationElement::setRecordValues(unsigned short pX) {
+void RecordSpecificationElement::setRecordValues(uint16_t pX) {
   _recordValues = pX;
 }
 
-unsigned char RecordSpecificationElement::getPad4() const { return _pad4; }
+uint8_t RecordSpecificationElement::getPad4() const { return _pad4; }
 
-void RecordSpecificationElement::setPad4(unsigned char pX) { _pad4 = pX; }
+void RecordSpecificationElement::setPad4(uint8_t pX) { _pad4 = pX; }
 
 void RecordSpecificationElement::marshal(DataStream& dataStream) const {
   dataStream << _recordID;

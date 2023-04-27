@@ -22,10 +22,10 @@ class OPENDIS7_EXPORT RepairResponsePdu : public LogisticsFamilyPdu {
   EntityID _repairingEntityID;
 
   /** Result of repair operation */
-  unsigned char _repairResult;
+  uint8_t _repairResult;
 
   /** padding */
-  short _padding1;
+  int16_t _padding1;
 
   /** padding */
   char _padding2;
@@ -45,11 +45,11 @@ class OPENDIS7_EXPORT RepairResponsePdu : public LogisticsFamilyPdu {
   const EntityID& getRepairingEntityID() const;
   void setRepairingEntityID(const EntityID& pX);
 
-  unsigned char getRepairResult() const;
-  void setRepairResult(unsigned char pX);
+  uint8_t getRepairResult() const;
+  void setRepairResult(uint8_t pX);
 
-  short getPadding1() const;
-  void setPadding1(short pX);
+  int16_t getPadding1() const;
+  void setPadding1(int16_t pX);
 
   char getPadding2() const;
   void setPadding2(char pX);

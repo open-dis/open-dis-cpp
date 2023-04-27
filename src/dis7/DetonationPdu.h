@@ -45,13 +45,13 @@ class OPENDIS7_EXPORT DetonationPdu : public WarfareFamilyPdu {
   Vector3Float _locationOfEntityCoordinates;
 
   /** result of the detonation, Section 7.3.3  */
-  unsigned char _detonationResult;
+  uint8_t _detonationResult;
 
   /** How many articulation parameters we have, Section 7.3.3  */
-  unsigned char _numberOfVariableParameters;
+  uint8_t _numberOfVariableParameters;
 
   /** padding */
-  unsigned short _pad;
+  uint16_t _pad;
 
   /** specify the parameter values for each Variable Parameter record,
    * Section 7.3.3  */
@@ -88,13 +88,13 @@ class OPENDIS7_EXPORT DetonationPdu : public WarfareFamilyPdu {
   const Vector3Float& getLocationOfEntityCoordinates() const;
   void setLocationOfEntityCoordinates(const Vector3Float& pX);
 
-  unsigned char getDetonationResult() const;
-  void setDetonationResult(unsigned char pX);
+  uint8_t getDetonationResult() const;
+  void setDetonationResult(uint8_t pX);
 
-  unsigned char getNumberOfVariableParameters() const;
+  uint8_t getNumberOfVariableParameters() const;
 
-  unsigned short getPad() const;
-  void setPad(unsigned short pX);
+  uint16_t getPad() const;
+  void setPad(uint16_t pX);
 
   std::vector<VariableParameter>& getVariableParameters();
   const std::vector<VariableParameter>& getVariableParameters() const;

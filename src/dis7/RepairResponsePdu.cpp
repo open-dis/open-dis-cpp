@@ -38,17 +38,17 @@ void RepairResponsePdu::setRepairingEntityID(const EntityID& pX) {
   _repairingEntityID = pX;
 }
 
-unsigned char RepairResponsePdu::getRepairResult() const {
+uint8_t RepairResponsePdu::getRepairResult() const {
   return _repairResult;
 }
 
-void RepairResponsePdu::setRepairResult(unsigned char pX) {
+void RepairResponsePdu::setRepairResult(uint8_t pX) {
   _repairResult = pX;
 }
 
-short RepairResponsePdu::getPadding1() const { return _padding1; }
+int16_t RepairResponsePdu::getPadding1() const { return _padding1; }
 
-void RepairResponsePdu::setPadding1(short pX) { _padding1 = pX; }
+void RepairResponsePdu::setPadding1(int16_t pX) { _padding1 = pX; }
 
 char RepairResponsePdu::getPadding2() const { return _padding2; }
 

@@ -11,35 +11,35 @@ AttachedParts::AttachedParts()
 
 AttachedParts::~AttachedParts() {}
 
-unsigned char AttachedParts::getRecordType() const { return _recordType; }
+uint8_t AttachedParts::getRecordType() const { return _recordType; }
 
-void AttachedParts::setRecordType(unsigned char pX) { _recordType = pX; }
+void AttachedParts::setRecordType(uint8_t pX) { _recordType = pX; }
 
-unsigned char AttachedParts::getDetachedIndicator() const {
+uint8_t AttachedParts::getDetachedIndicator() const {
   return _detachedIndicator;
 }
 
-void AttachedParts::setDetachedIndicator(unsigned char pX) {
+void AttachedParts::setDetachedIndicator(uint8_t pX) {
   _detachedIndicator = pX;
 }
 
-unsigned short AttachedParts::getPartAttachedTo() const {
+uint16_t AttachedParts::getPartAttachedTo() const {
   return _partAttachedTo;
 }
 
-void AttachedParts::setPartAttachedTo(unsigned short pX) {
+void AttachedParts::setPartAttachedTo(uint16_t pX) {
   _partAttachedTo = pX;
 }
 
-unsigned int AttachedParts::getParameterType() const { return _parameterType; }
+uint32_t AttachedParts::getParameterType() const { return _parameterType; }
 
-void AttachedParts::setParameterType(unsigned int pX) { _parameterType = pX; }
+void AttachedParts::setParameterType(uint32_t pX) { _parameterType = pX; }
 
-unsigned long long AttachedParts::getAttachedPartType() const {
+uint64_t AttachedParts::getAttachedPartType() const {
   return _attachedPartType;
 }
 
-void AttachedParts::setAttachedPartType(unsigned long long pX) {
+void AttachedParts::setAttachedPartType(uint64_t pX) {
   _attachedPartType = pX;
 }
 

@@ -18,10 +18,10 @@ class OPENDIS7_EXPORT ExplosionDescriptor {
   EntityType _explodingObject;
 
   /** Material that exploded. Can be grain dust, tnt, gasoline, etc. */
-  unsigned short _explosiveMaterial;
+  uint16_t _explosiveMaterial;
 
   /** padding */
-  unsigned short _padding;
+  uint16_t _padding;
 
   /** Force of explosion, in equivalent KG of TNT */
   float _explosiveForce;
@@ -37,11 +37,11 @@ class OPENDIS7_EXPORT ExplosionDescriptor {
   const EntityType& getExplodingObject() const;
   void setExplodingObject(const EntityType& pX);
 
-  unsigned short getExplosiveMaterial() const;
-  void setExplosiveMaterial(unsigned short pX);
+  uint16_t getExplosiveMaterial() const;
+  void setExplosiveMaterial(uint16_t pX);
 
-  unsigned short getPadding() const;
-  void setPadding(unsigned short pX);
+  uint16_t getPadding() const;
+  void setPadding(uint16_t pX);
 
   float getExplosiveForce() const;
   void setExplosiveForce(float pX);

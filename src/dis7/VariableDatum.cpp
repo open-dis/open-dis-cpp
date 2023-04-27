@@ -10,37 +10,37 @@ VariableDatum::VariableDatum()
 
 VariableDatum::~VariableDatum() {}
 
-unsigned int VariableDatum::getVariableDatumID() const {
+uint32_t VariableDatum::getVariableDatumID() const {
   return _variableDatumID;
 }
 
-void VariableDatum::setVariableDatumID(unsigned int pX) {
+void VariableDatum::setVariableDatumID(uint32_t pX) {
   _variableDatumID = pX;
 }
 
-unsigned int VariableDatum::getVariableDatumLength() const {
+uint32_t VariableDatum::getVariableDatumLength() const {
   return _variableDatumLength;
 }
 
-void VariableDatum::setVariableDatumLength(unsigned int pX) {
+void VariableDatum::setVariableDatumLength(uint32_t pX) {
   _variableDatumLength = pX;
 }
 
-unsigned int VariableDatum::getVariableDatumBits() const {
+uint32_t VariableDatum::getVariableDatumBits() const {
   return _variableDatumBits;
 }
 
-void VariableDatum::setVariableDatumBits(unsigned int pX) {
+void VariableDatum::setVariableDatumBits(uint32_t pX) {
   _variableDatumBits = pX;
 }
 
-unsigned int VariableDatum::getPadding() const { return _padding; }
+uint32_t VariableDatum::getPadding() const { return _padding; }
 
-void VariableDatum::setPadding(unsigned int pX) { _padding = pX; }
+void VariableDatum::setPadding(uint32_t pX) { _padding = pX; }
 
 void VariableDatum::marshal(DataStream& dataStream) const {
   dataStream << _variableDatumID;
-  dataStream << (unsigned int)_variableDatums.size() * 64;
+  dataStream << (uint32_t)_variableDatums.size() * 64;
 
   for (size_t idx = 0; idx < _variableDatums.size(); idx++) {
     EightByteChunk x = _variableDatums[idx];

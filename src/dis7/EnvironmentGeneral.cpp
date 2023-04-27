@@ -12,33 +12,33 @@ EnvironmentGeneral::EnvironmentGeneral()
 
 EnvironmentGeneral::~EnvironmentGeneral() {}
 
-unsigned int EnvironmentGeneral::getEnvironmentType() const {
+uint32_t EnvironmentGeneral::getEnvironmentType() const {
   return _environmentType;
 }
 
-void EnvironmentGeneral::setEnvironmentType(unsigned int pX) {
+void EnvironmentGeneral::setEnvironmentType(uint32_t pX) {
   _environmentType = pX;
 }
 
-unsigned char EnvironmentGeneral::getLength() const { return _length; }
+uint8_t EnvironmentGeneral::getLength() const { return _length; }
 
-void EnvironmentGeneral::setLength(unsigned char pX) { _length = pX; }
+void EnvironmentGeneral::setLength(uint8_t pX) { _length = pX; }
 
-unsigned char EnvironmentGeneral::getIndex() const { return _index; }
+uint8_t EnvironmentGeneral::getIndex() const { return _index; }
 
-void EnvironmentGeneral::setIndex(unsigned char pX) { _index = pX; }
+void EnvironmentGeneral::setIndex(uint8_t pX) { _index = pX; }
 
-unsigned char EnvironmentGeneral::getPadding1() const { return _padding1; }
+uint8_t EnvironmentGeneral::getPadding1() const { return _padding1; }
 
-void EnvironmentGeneral::setPadding1(unsigned char pX) { _padding1 = pX; }
+void EnvironmentGeneral::setPadding1(uint8_t pX) { _padding1 = pX; }
 
-unsigned char EnvironmentGeneral::getGeometry() const { return _geometry; }
+uint8_t EnvironmentGeneral::getGeometry() const { return _geometry; }
 
-void EnvironmentGeneral::setGeometry(unsigned char pX) { _geometry = pX; }
+void EnvironmentGeneral::setGeometry(uint8_t pX) { _geometry = pX; }
 
-unsigned char EnvironmentGeneral::getPadding2() const { return _padding2; }
+uint8_t EnvironmentGeneral::getPadding2() const { return _padding2; }
 
-void EnvironmentGeneral::setPadding2(unsigned char pX) { _padding2 = pX; }
+void EnvironmentGeneral::setPadding2(uint8_t pX) { _padding2 = pX; }
 
 void EnvironmentGeneral::marshal(DataStream& dataStream) const {
   dataStream << _environmentType;

@@ -16,35 +16,35 @@ LinearSegmentParameter::LinearSegmentParameter()
 
 LinearSegmentParameter::~LinearSegmentParameter() {}
 
-unsigned char LinearSegmentParameter::getSegmentNumber() const {
+uint8_t LinearSegmentParameter::getSegmentNumber() const {
   return _segmentNumber;
 }
 
-void LinearSegmentParameter::setSegmentNumber(unsigned char pX) {
+void LinearSegmentParameter::setSegmentNumber(uint8_t pX) {
   _segmentNumber = pX;
 }
 
-unsigned char LinearSegmentParameter::getSegmentModification() const {
+uint8_t LinearSegmentParameter::getSegmentModification() const {
   return _segmentModification;
 }
 
-void LinearSegmentParameter::setSegmentModification(unsigned char pX) {
+void LinearSegmentParameter::setSegmentModification(uint8_t pX) {
   _segmentModification = pX;
 }
 
-unsigned short LinearSegmentParameter::getGeneralSegmentAppearance() const {
+uint16_t LinearSegmentParameter::getGeneralSegmentAppearance() const {
   return _generalSegmentAppearance;
 }
 
-void LinearSegmentParameter::setGeneralSegmentAppearance(unsigned short pX) {
+void LinearSegmentParameter::setGeneralSegmentAppearance(uint16_t pX) {
   _generalSegmentAppearance = pX;
 }
 
-unsigned short LinearSegmentParameter::getSpecificSegmentAppearance() const {
+uint16_t LinearSegmentParameter::getSpecificSegmentAppearance() const {
   return _specificSegmentAppearance;
 }
 
-void LinearSegmentParameter::setSpecificSegmentAppearance(unsigned short pX) {
+void LinearSegmentParameter::setSpecificSegmentAppearance(uint16_t pX) {
   _specificSegmentAppearance = pX;
 }
 
@@ -72,35 +72,35 @@ void LinearSegmentParameter::setSegmentOrientation(const EulerAngles& pX) {
   _segmentOrientation = pX;
 }
 
-unsigned short LinearSegmentParameter::getSegmentLength() const {
+uint16_t LinearSegmentParameter::getSegmentLength() const {
   return _segmentLength;
 }
 
-void LinearSegmentParameter::setSegmentLength(unsigned short pX) {
+void LinearSegmentParameter::setSegmentLength(uint16_t pX) {
   _segmentLength = pX;
 }
 
-unsigned short LinearSegmentParameter::getSegmentWidth() const {
+uint16_t LinearSegmentParameter::getSegmentWidth() const {
   return _segmentWidth;
 }
 
-void LinearSegmentParameter::setSegmentWidth(unsigned short pX) {
+void LinearSegmentParameter::setSegmentWidth(uint16_t pX) {
   _segmentWidth = pX;
 }
 
-unsigned short LinearSegmentParameter::getSegmentHeight() const {
+uint16_t LinearSegmentParameter::getSegmentHeight() const {
   return _segmentHeight;
 }
 
-void LinearSegmentParameter::setSegmentHeight(unsigned short pX) {
+void LinearSegmentParameter::setSegmentHeight(uint16_t pX) {
   _segmentHeight = pX;
 }
 
-unsigned short LinearSegmentParameter::getSegmentDepth() const {
+uint16_t LinearSegmentParameter::getSegmentDepth() const {
   return _segmentDepth;
 }
 
-void LinearSegmentParameter::setSegmentDepth(unsigned short pX) {
+void LinearSegmentParameter::setSegmentDepth(uint16_t pX) {
   _segmentDepth = pX;
 }
 

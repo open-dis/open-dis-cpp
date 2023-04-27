@@ -18,9 +18,9 @@ void GroupIdentifier::setSimulationAddress(const EntityType& pX) {
   _simulationAddress = pX;
 }
 
-unsigned short GroupIdentifier::getGroupNumber() const { return _groupNumber; }
+uint16_t GroupIdentifier::getGroupNumber() const { return _groupNumber; }
 
-void GroupIdentifier::setGroupNumber(unsigned short pX) { _groupNumber = pX; }
+void GroupIdentifier::setGroupNumber(uint16_t pX) { _groupNumber = pX; }
 
 void GroupIdentifier::marshal(DataStream& dataStream) const {
   _simulationAddress.marshal(dataStream);

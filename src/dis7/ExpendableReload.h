@@ -17,15 +17,15 @@ class OPENDIS7_EXPORT ExpendableReload {
   /** Type of expendable */
   EntityType _expendable;
 
-  unsigned int _station;
+  uint32_t _station;
 
-  unsigned short _standardQuantity;
+  uint16_t _standardQuantity;
 
-  unsigned short _maximumQuantity;
+  uint16_t _maximumQuantity;
 
-  unsigned int _standardQuantityReloadTime;
+  uint32_t _standardQuantityReloadTime;
 
-  unsigned int _maximumQuantityReloadTime;
+  uint32_t _maximumQuantityReloadTime;
 
  public:
   ExpendableReload();
@@ -38,20 +38,20 @@ class OPENDIS7_EXPORT ExpendableReload {
   const EntityType& getExpendable() const;
   void setExpendable(const EntityType& pX);
 
-  unsigned int getStation() const;
-  void setStation(unsigned int pX);
+  uint32_t getStation() const;
+  void setStation(uint32_t pX);
 
-  unsigned short getStandardQuantity() const;
-  void setStandardQuantity(unsigned short pX);
+  uint16_t getStandardQuantity() const;
+  void setStandardQuantity(uint16_t pX);
 
-  unsigned short getMaximumQuantity() const;
-  void setMaximumQuantity(unsigned short pX);
+  uint16_t getMaximumQuantity() const;
+  void setMaximumQuantity(uint16_t pX);
 
-  unsigned int getStandardQuantityReloadTime() const;
-  void setStandardQuantityReloadTime(unsigned int pX);
+  uint32_t getStandardQuantityReloadTime() const;
+  void setStandardQuantityReloadTime(uint32_t pX);
 
-  unsigned int getMaximumQuantityReloadTime() const;
-  void setMaximumQuantityReloadTime(unsigned int pX);
+  uint32_t getMaximumQuantityReloadTime() const;
+  void setMaximumQuantityReloadTime(uint32_t pX);
 
   virtual int getMarshalledSize() const;
 

@@ -18,21 +18,21 @@ DirectedEnergyDamage::DirectedEnergyDamage()
 
 DirectedEnergyDamage::~DirectedEnergyDamage() {}
 
-unsigned int DirectedEnergyDamage::getRecordType() const { return _recordType; }
+uint32_t DirectedEnergyDamage::getRecordType() const { return _recordType; }
 
-void DirectedEnergyDamage::setRecordType(unsigned int pX) { _recordType = pX; }
+void DirectedEnergyDamage::setRecordType(uint32_t pX) { _recordType = pX; }
 
-unsigned short DirectedEnergyDamage::getRecordLength() const {
+uint16_t DirectedEnergyDamage::getRecordLength() const {
   return _recordLength;
 }
 
-void DirectedEnergyDamage::setRecordLength(unsigned short pX) {
+void DirectedEnergyDamage::setRecordLength(uint16_t pX) {
   _recordLength = pX;
 }
 
-unsigned short DirectedEnergyDamage::getPadding() const { return _padding; }
+uint16_t DirectedEnergyDamage::getPadding() const { return _padding; }
 
-void DirectedEnergyDamage::setPadding(unsigned short pX) { _padding = pX; }
+void DirectedEnergyDamage::setPadding(uint16_t pX) { _padding = pX; }
 
 Vector3Float& DirectedEnergyDamage::getDamageLocation() {
   return _damageLocation;
@@ -56,35 +56,35 @@ float DirectedEnergyDamage::getTemperature() const { return _temperature; }
 
 void DirectedEnergyDamage::setTemperature(float pX) { _temperature = pX; }
 
-unsigned char DirectedEnergyDamage::getComponentIdentification() const {
+uint8_t DirectedEnergyDamage::getComponentIdentification() const {
   return _componentIdentification;
 }
 
-void DirectedEnergyDamage::setComponentIdentification(unsigned char pX) {
+void DirectedEnergyDamage::setComponentIdentification(uint8_t pX) {
   _componentIdentification = pX;
 }
 
-unsigned char DirectedEnergyDamage::getComponentDamageStatus() const {
+uint8_t DirectedEnergyDamage::getComponentDamageStatus() const {
   return _componentDamageStatus;
 }
 
-void DirectedEnergyDamage::setComponentDamageStatus(unsigned char pX) {
+void DirectedEnergyDamage::setComponentDamageStatus(uint8_t pX) {
   _componentDamageStatus = pX;
 }
 
-unsigned char DirectedEnergyDamage::getComponentVisualDamageStatus() const {
+uint8_t DirectedEnergyDamage::getComponentVisualDamageStatus() const {
   return _componentVisualDamageStatus;
 }
 
-void DirectedEnergyDamage::setComponentVisualDamageStatus(unsigned char pX) {
+void DirectedEnergyDamage::setComponentVisualDamageStatus(uint8_t pX) {
   _componentVisualDamageStatus = pX;
 }
 
-unsigned char DirectedEnergyDamage::getComponentVisualSmokeColor() const {
+uint8_t DirectedEnergyDamage::getComponentVisualSmokeColor() const {
   return _componentVisualSmokeColor;
 }
 
-void DirectedEnergyDamage::setComponentVisualSmokeColor(unsigned char pX) {
+void DirectedEnergyDamage::setComponentVisualSmokeColor(uint8_t pX) {
   _componentVisualSmokeColor = pX;
 }
 
@@ -98,9 +98,9 @@ void DirectedEnergyDamage::setFireEventID(const EventIdentifier& pX) {
   _fireEventID = pX;
 }
 
-unsigned short DirectedEnergyDamage::getPadding2() const { return _padding2; }
+uint16_t DirectedEnergyDamage::getPadding2() const { return _padding2; }
 
-void DirectedEnergyDamage::setPadding2(unsigned short pX) { _padding2 = pX; }
+void DirectedEnergyDamage::setPadding2(uint16_t pX) { _padding2 = pX; }
 
 void DirectedEnergyDamage::marshal(DataStream& dataStream) const {
   dataStream << _recordType;

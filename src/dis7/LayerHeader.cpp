@@ -7,21 +7,21 @@ LayerHeader::LayerHeader()
 
 LayerHeader::~LayerHeader() {}
 
-unsigned char LayerHeader::getLayerNumber() const { return _layerNumber; }
+uint8_t LayerHeader::getLayerNumber() const { return _layerNumber; }
 
-void LayerHeader::setLayerNumber(unsigned char pX) { _layerNumber = pX; }
+void LayerHeader::setLayerNumber(uint8_t pX) { _layerNumber = pX; }
 
-unsigned char LayerHeader::getLayerSpecificInformation() const {
+uint8_t LayerHeader::getLayerSpecificInformation() const {
   return _layerSpecificInformation;
 }
 
-void LayerHeader::setLayerSpecificInformation(unsigned char pX) {
+void LayerHeader::setLayerSpecificInformation(uint8_t pX) {
   _layerSpecificInformation = pX;
 }
 
-unsigned short LayerHeader::getLength() const { return _length; }
+uint16_t LayerHeader::getLength() const { return _length; }
 
-void LayerHeader::setLength(unsigned short pX) { _length = pX; }
+void LayerHeader::setLength(uint16_t pX) { _length = pX; }
 
 void LayerHeader::marshal(DataStream& dataStream) const {
   dataStream << _layerNumber;

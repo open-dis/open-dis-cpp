@@ -22,35 +22,35 @@ const EntityID& IntercomSignalPdu::getEntityID() const { return _entityID; }
 
 void IntercomSignalPdu::setEntityID(const EntityID& pX) { _entityID = pX; }
 
-unsigned short IntercomSignalPdu::getCommunicationsDeviceID() const {
+uint16_t IntercomSignalPdu::getCommunicationsDeviceID() const {
   return _communicationsDeviceID;
 }
 
-void IntercomSignalPdu::setCommunicationsDeviceID(unsigned short pX) {
+void IntercomSignalPdu::setCommunicationsDeviceID(uint16_t pX) {
   _communicationsDeviceID = pX;
 }
 
-unsigned short IntercomSignalPdu::getEncodingScheme() const {
+uint16_t IntercomSignalPdu::getEncodingScheme() const {
   return _encodingScheme;
 }
 
-void IntercomSignalPdu::setEncodingScheme(unsigned short pX) {
+void IntercomSignalPdu::setEncodingScheme(uint16_t pX) {
   _encodingScheme = pX;
 }
 
-unsigned short IntercomSignalPdu::getTdlType() const { return _tdlType; }
+uint16_t IntercomSignalPdu::getTdlType() const { return _tdlType; }
 
-void IntercomSignalPdu::setTdlType(unsigned short pX) { _tdlType = pX; }
+void IntercomSignalPdu::setTdlType(uint16_t pX) { _tdlType = pX; }
 
-unsigned int IntercomSignalPdu::getSampleRate() const { return _sampleRate; }
+uint32_t IntercomSignalPdu::getSampleRate() const { return _sampleRate; }
 
-void IntercomSignalPdu::setSampleRate(unsigned int pX) { _sampleRate = pX; }
+void IntercomSignalPdu::setSampleRate(uint32_t pX) { _sampleRate = pX; }
 
-unsigned short IntercomSignalPdu::getDataLength() const { return _data.size(); }
+uint16_t IntercomSignalPdu::getDataLength() const { return _data.size(); }
 
-unsigned short IntercomSignalPdu::getSamples() const { return _samples; }
+uint16_t IntercomSignalPdu::getSamples() const { return _samples; }
 
-void IntercomSignalPdu::setSamples(unsigned short pX) { _samples = pX; }
+void IntercomSignalPdu::setSamples(uint16_t pX) { _samples = pX; }
 
 std::vector<uint8_t>& IntercomSignalPdu::getData() { return _data; }
 
@@ -66,7 +66,7 @@ void IntercomSignalPdu::marshal(DataStream& dataStream) const {
   dataStream << _encodingScheme;
   dataStream << _tdlType;
   dataStream << _sampleRate;
-  dataStream << (unsigned short)_data.size();
+  dataStream << (uint16_t)_data.size();
   dataStream << _samples;
 
   for (auto& byte : _data) {

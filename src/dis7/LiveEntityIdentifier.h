@@ -19,7 +19,7 @@ class OPENDIS7_EXPORT LiveEntityIdentifier {
   LiveSimulationAddress _liveSimulationAddress;
 
   /** Live entity number  */
-  unsigned short _entityNumber;
+  uint16_t _entityNumber;
 
  public:
   LiveEntityIdentifier();
@@ -32,8 +32,8 @@ class OPENDIS7_EXPORT LiveEntityIdentifier {
   const LiveSimulationAddress& getLiveSimulationAddress() const;
   void setLiveSimulationAddress(const LiveSimulationAddress& pX);
 
-  unsigned short getEntityNumber() const;
-  void setEntityNumber(unsigned short pX);
+  uint16_t getEntityNumber() const;
+  void setEntityNumber(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

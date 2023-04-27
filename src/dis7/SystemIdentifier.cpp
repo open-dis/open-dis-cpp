@@ -7,23 +7,23 @@ SystemIdentifier::SystemIdentifier()
 
 SystemIdentifier::~SystemIdentifier() {}
 
-unsigned short SystemIdentifier::getSystemType() const { return _systemType; }
+uint16_t SystemIdentifier::getSystemType() const { return _systemType; }
 
-void SystemIdentifier::setSystemType(unsigned short pX) { _systemType = pX; }
+void SystemIdentifier::setSystemType(uint16_t pX) { _systemType = pX; }
 
-unsigned short SystemIdentifier::getSystemName() const { return _systemName; }
+uint16_t SystemIdentifier::getSystemName() const { return _systemName; }
 
-void SystemIdentifier::setSystemName(unsigned short pX) { _systemName = pX; }
+void SystemIdentifier::setSystemName(uint16_t pX) { _systemName = pX; }
 
-unsigned char SystemIdentifier::getSystemMode() const { return _systemMode; }
+uint8_t SystemIdentifier::getSystemMode() const { return _systemMode; }
 
-void SystemIdentifier::setSystemMode(unsigned char pX) { _systemMode = pX; }
+void SystemIdentifier::setSystemMode(uint8_t pX) { _systemMode = pX; }
 
-unsigned char SystemIdentifier::getChangeOptions() const {
+uint8_t SystemIdentifier::getChangeOptions() const {
   return _changeOptions;
 }
 
-void SystemIdentifier::setChangeOptions(unsigned char pX) {
+void SystemIdentifier::setChangeOptions(uint8_t pX) {
   _changeOptions = pX;
 }
 

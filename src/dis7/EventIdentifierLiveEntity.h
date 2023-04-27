@@ -14,11 +14,11 @@ namespace DIS {
 
 class OPENDIS7_EXPORT EventIdentifierLiveEntity {
  protected:
-  unsigned char _siteNumber;
+  uint8_t _siteNumber;
 
-  unsigned char _applicationNumber;
+  uint8_t _applicationNumber;
 
-  unsigned short _eventNumber;
+  uint16_t _eventNumber;
 
  public:
   EventIdentifierLiveEntity();
@@ -27,14 +27,14 @@ class OPENDIS7_EXPORT EventIdentifierLiveEntity {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned char getSiteNumber() const;
-  void setSiteNumber(unsigned char pX);
+  uint8_t getSiteNumber() const;
+  void setSiteNumber(uint8_t pX);
 
-  unsigned char getApplicationNumber() const;
-  void setApplicationNumber(unsigned char pX);
+  uint8_t getApplicationNumber() const;
+  void setApplicationNumber(uint8_t pX);
 
-  unsigned short getEventNumber() const;
-  void setEventNumber(unsigned short pX);
+  uint16_t getEventNumber() const;
+  void setEventNumber(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

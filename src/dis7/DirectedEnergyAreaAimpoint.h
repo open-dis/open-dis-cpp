@@ -18,19 +18,19 @@ namespace DIS {
 class OPENDIS7_EXPORT DirectedEnergyAreaAimpoint {
  protected:
   /** Type of Record */
-  unsigned int _recordType;
+  uint32_t _recordType;
 
   /** Length of Record */
-  unsigned short _recordLength;
+  uint16_t _recordLength;
 
   /** Padding */
-  unsigned short _padding;
+  uint16_t _padding;
 
   /** Number of beam antenna pattern records */
-  unsigned short _beamAntennaPatternRecordCount;
+  uint16_t _beamAntennaPatternRecordCount;
 
   /** Number of DE target energy depositon records */
-  unsigned short _directedEnergyTargetEnergyDepositionRecordCount;
+  uint16_t _directedEnergyTargetEnergyDepositionRecordCount;
 
   /** list of beam antenna records. See 6.2.9.2 */
   std::vector<BeamAntennaPattern> _beamAntennaParameterList;
@@ -46,18 +46,18 @@ class OPENDIS7_EXPORT DirectedEnergyAreaAimpoint {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getRecordType() const;
-  void setRecordType(unsigned int pX);
+  uint32_t getRecordType() const;
+  void setRecordType(uint32_t pX);
 
-  unsigned short getRecordLength() const;
-  void setRecordLength(unsigned short pX);
+  uint16_t getRecordLength() const;
+  void setRecordLength(uint16_t pX);
 
-  unsigned short getPadding() const;
-  void setPadding(unsigned short pX);
+  uint16_t getPadding() const;
+  void setPadding(uint16_t pX);
 
-  unsigned short getBeamAntennaPatternRecordCount() const;
+  uint16_t getBeamAntennaPatternRecordCount() const;
 
-  unsigned short getDirectedEnergyTargetEnergyDepositionRecordCount() const;
+  uint16_t getDirectedEnergyTargetEnergyDepositionRecordCount() const;
 
   std::vector<BeamAntennaPattern>& getBeamAntennaParameterList();
   const std::vector<BeamAntennaPattern>& getBeamAntennaParameterList() const;

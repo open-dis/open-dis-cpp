@@ -19,7 +19,7 @@ class OPENDIS7_EXPORT EntityID {
   SimulationAddress _simulationAddress;
 
   /** Entity number */
-  unsigned short _entityNumber;
+  uint16_t _entityNumber;
 
  public:
   EntityID();
@@ -32,8 +32,8 @@ class OPENDIS7_EXPORT EntityID {
   const SimulationAddress& getSimulationAddress() const;
   void setSimulationAddress(const SimulationAddress& pX);
 
-  unsigned short getEntityNumber() const;
-  void setEntityNumber(unsigned short pX);
+  uint16_t getEntityNumber() const;
+  void setEntityNumber(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

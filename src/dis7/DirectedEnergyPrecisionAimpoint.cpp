@@ -19,27 +19,27 @@ DirectedEnergyPrecisionAimpoint::DirectedEnergyPrecisionAimpoint()
 
 DirectedEnergyPrecisionAimpoint::~DirectedEnergyPrecisionAimpoint() {}
 
-unsigned int DirectedEnergyPrecisionAimpoint::getRecordType() const {
+uint32_t DirectedEnergyPrecisionAimpoint::getRecordType() const {
   return _recordType;
 }
 
-void DirectedEnergyPrecisionAimpoint::setRecordType(unsigned int pX) {
+void DirectedEnergyPrecisionAimpoint::setRecordType(uint32_t pX) {
   _recordType = pX;
 }
 
-unsigned short DirectedEnergyPrecisionAimpoint::getRecordLength() const {
+uint16_t DirectedEnergyPrecisionAimpoint::getRecordLength() const {
   return _recordLength;
 }
 
-void DirectedEnergyPrecisionAimpoint::setRecordLength(unsigned short pX) {
+void DirectedEnergyPrecisionAimpoint::setRecordLength(uint16_t pX) {
   _recordLength = pX;
 }
 
-unsigned short DirectedEnergyPrecisionAimpoint::getPadding() const {
+uint16_t DirectedEnergyPrecisionAimpoint::getPadding() const {
   return _padding;
 }
 
-void DirectedEnergyPrecisionAimpoint::setPadding(unsigned short pX) {
+void DirectedEnergyPrecisionAimpoint::setPadding(uint16_t pX) {
   _padding = pX;
 }
 
@@ -111,19 +111,19 @@ void DirectedEnergyPrecisionAimpoint::setTargetEntityID(const EntityID& pX) {
   _targetEntityID = pX;
 }
 
-unsigned char DirectedEnergyPrecisionAimpoint::getTargetComponentID() const {
+uint8_t DirectedEnergyPrecisionAimpoint::getTargetComponentID() const {
   return _targetComponentID;
 }
 
-void DirectedEnergyPrecisionAimpoint::setTargetComponentID(unsigned char pX) {
+void DirectedEnergyPrecisionAimpoint::setTargetComponentID(uint8_t pX) {
   _targetComponentID = pX;
 }
 
-unsigned char DirectedEnergyPrecisionAimpoint::getSpotShape() const {
+uint8_t DirectedEnergyPrecisionAimpoint::getSpotShape() const {
   return _SpotShape;
 }
 
-void DirectedEnergyPrecisionAimpoint::setSpotShape(unsigned char pX) {
+void DirectedEnergyPrecisionAimpoint::setSpotShape(uint8_t pX) {
   _SpotShape = pX;
 }
 

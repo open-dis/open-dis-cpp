@@ -2,10 +2,7 @@
 
 using namespace DIS;
 
-SyntheticEnvironmentFamilyPdu::SyntheticEnvironmentFamilyPdu()
-    : Pdu()
-
-{
+SyntheticEnvironmentFamilyPdu::SyntheticEnvironmentFamilyPdu() : Pdu() {
   setProtocolFamily(9);
 }
 

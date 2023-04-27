@@ -13,27 +13,27 @@ RemoveEntityReliablePdu::RemoveEntityReliablePdu()
 
 RemoveEntityReliablePdu::~RemoveEntityReliablePdu() {}
 
-unsigned char RemoveEntityReliablePdu::getRequiredReliabilityService() const {
+uint8_t RemoveEntityReliablePdu::getRequiredReliabilityService() const {
   return _requiredReliabilityService;
 }
 
-void RemoveEntityReliablePdu::setRequiredReliabilityService(unsigned char pX) {
+void RemoveEntityReliablePdu::setRequiredReliabilityService(uint8_t pX) {
   _requiredReliabilityService = pX;
 }
 
-unsigned short RemoveEntityReliablePdu::getPad1() const { return _pad1; }
+uint16_t RemoveEntityReliablePdu::getPad1() const { return _pad1; }
 
-void RemoveEntityReliablePdu::setPad1(unsigned short pX) { _pad1 = pX; }
+void RemoveEntityReliablePdu::setPad1(uint16_t pX) { _pad1 = pX; }
 
-unsigned char RemoveEntityReliablePdu::getPad2() const { return _pad2; }
+uint8_t RemoveEntityReliablePdu::getPad2() const { return _pad2; }
 
-void RemoveEntityReliablePdu::setPad2(unsigned char pX) { _pad2 = pX; }
+void RemoveEntityReliablePdu::setPad2(uint8_t pX) { _pad2 = pX; }
 
-unsigned int RemoveEntityReliablePdu::getRequestID() const {
+uint32_t RemoveEntityReliablePdu::getRequestID() const {
   return _requestID;
 }
 
-void RemoveEntityReliablePdu::setRequestID(unsigned int pX) { _requestID = pX; }
+void RemoveEntityReliablePdu::setRequestID(uint32_t pX) { _requestID = pX; }
 
 void RemoveEntityReliablePdu::marshal(DataStream& dataStream) const {
   SimulationManagementWithReliabilityFamilyPdu::marshal(

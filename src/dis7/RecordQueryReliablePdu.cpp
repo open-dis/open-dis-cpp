@@ -16,39 +16,39 @@ RecordQueryReliablePdu::RecordQueryReliablePdu()
 
 RecordQueryReliablePdu::~RecordQueryReliablePdu() { _recordIDs.clear(); }
 
-unsigned int RecordQueryReliablePdu::getRequestID() const { return _requestID; }
+uint32_t RecordQueryReliablePdu::getRequestID() const { return _requestID; }
 
-void RecordQueryReliablePdu::setRequestID(unsigned int pX) { _requestID = pX; }
+void RecordQueryReliablePdu::setRequestID(uint32_t pX) { _requestID = pX; }
 
-unsigned char RecordQueryReliablePdu::getRequiredReliabilityService() const {
+uint8_t RecordQueryReliablePdu::getRequiredReliabilityService() const {
   return _requiredReliabilityService;
 }
 
-void RecordQueryReliablePdu::setRequiredReliabilityService(unsigned char pX) {
+void RecordQueryReliablePdu::setRequiredReliabilityService(uint8_t pX) {
   _requiredReliabilityService = pX;
 }
 
-unsigned short RecordQueryReliablePdu::getPad1() const { return _pad1; }
+uint16_t RecordQueryReliablePdu::getPad1() const { return _pad1; }
 
-void RecordQueryReliablePdu::setPad1(unsigned short pX) { _pad1 = pX; }
+void RecordQueryReliablePdu::setPad1(uint16_t pX) { _pad1 = pX; }
 
-unsigned char RecordQueryReliablePdu::getPad2() const { return _pad2; }
+uint8_t RecordQueryReliablePdu::getPad2() const { return _pad2; }
 
-void RecordQueryReliablePdu::setPad2(unsigned char pX) { _pad2 = pX; }
+void RecordQueryReliablePdu::setPad2(uint8_t pX) { _pad2 = pX; }
 
-unsigned short RecordQueryReliablePdu::getEventType() const {
+uint16_t RecordQueryReliablePdu::getEventType() const {
   return _eventType;
 }
 
-void RecordQueryReliablePdu::setEventType(unsigned short pX) {
+void RecordQueryReliablePdu::setEventType(uint16_t pX) {
   _eventType = pX;
 }
 
-unsigned int RecordQueryReliablePdu::getTime() const { return _time; }
+uint32_t RecordQueryReliablePdu::getTime() const { return _time; }
 
-void RecordQueryReliablePdu::setTime(unsigned int pX) { _time = pX; }
+void RecordQueryReliablePdu::setTime(uint32_t pX) { _time = pX; }
 
-unsigned int RecordQueryReliablePdu::getNumberOfRecords() const {
+uint32_t RecordQueryReliablePdu::getNumberOfRecords() const {
   return _recordIDs.size();
 }
 
@@ -74,7 +74,7 @@ void RecordQueryReliablePdu::marshal(DataStream& dataStream) const {
   dataStream << _pad2;
   dataStream << _eventType;
   dataStream << _time;
-  dataStream << (unsigned int)_recordIDs.size();
+  dataStream << (uint32_t)_recordIDs.size();
 
   for (size_t idx = 0; idx < _recordIDs.size(); idx++) {
     FourByteChunk x = _recordIDs[idx];
@@ -135,7 +135,7 @@ int RecordQueryReliablePdu::getMarshalledSize() const {
   marshalSize = marshalSize + 4;  // _time
   marshalSize = marshalSize + 4;  // _numberOfRecords
 
-  for (unsigned long long idx = 0; idx < _recordIDs.size(); idx++) {
+  for (uint64_t idx = 0; idx < _recordIDs.size(); idx++) {
     FourByteChunk listElement = _recordIDs[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

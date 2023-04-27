@@ -19,11 +19,11 @@ void AggregateIdentifier::setSimulationAddress(const SimulationAddress& pX) {
   _simulationAddress = pX;
 }
 
-unsigned short AggregateIdentifier::getAggregateID() const {
+uint16_t AggregateIdentifier::getAggregateID() const {
   return _aggregateID;
 }
 
-void AggregateIdentifier::setAggregateID(unsigned short pX) {
+void AggregateIdentifier::setAggregateID(uint16_t pX) {
   _aggregateID = pX;
 }
 

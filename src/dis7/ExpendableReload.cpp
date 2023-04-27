@@ -20,39 +20,39 @@ const EntityType& ExpendableReload::getExpendable() const {
 
 void ExpendableReload::setExpendable(const EntityType& pX) { _expendable = pX; }
 
-unsigned int ExpendableReload::getStation() const { return _station; }
+uint32_t ExpendableReload::getStation() const { return _station; }
 
-void ExpendableReload::setStation(unsigned int pX) { _station = pX; }
+void ExpendableReload::setStation(uint32_t pX) { _station = pX; }
 
-unsigned short ExpendableReload::getStandardQuantity() const {
+uint16_t ExpendableReload::getStandardQuantity() const {
   return _standardQuantity;
 }
 
-void ExpendableReload::setStandardQuantity(unsigned short pX) {
+void ExpendableReload::setStandardQuantity(uint16_t pX) {
   _standardQuantity = pX;
 }
 
-unsigned short ExpendableReload::getMaximumQuantity() const {
+uint16_t ExpendableReload::getMaximumQuantity() const {
   return _maximumQuantity;
 }
 
-void ExpendableReload::setMaximumQuantity(unsigned short pX) {
+void ExpendableReload::setMaximumQuantity(uint16_t pX) {
   _maximumQuantity = pX;
 }
 
-unsigned int ExpendableReload::getStandardQuantityReloadTime() const {
+uint32_t ExpendableReload::getStandardQuantityReloadTime() const {
   return _standardQuantityReloadTime;
 }
 
-void ExpendableReload::setStandardQuantityReloadTime(unsigned int pX) {
+void ExpendableReload::setStandardQuantityReloadTime(uint32_t pX) {
   _standardQuantityReloadTime = pX;
 }
 
-unsigned int ExpendableReload::getMaximumQuantityReloadTime() const {
+uint32_t ExpendableReload::getMaximumQuantityReloadTime() const {
   return _maximumQuantityReloadTime;
 }
 
-void ExpendableReload::setMaximumQuantityReloadTime(unsigned int pX) {
+void ExpendableReload::setMaximumQuantityReloadTime(uint32_t pX) {
   _maximumQuantityReloadTime = pX;
 }
 

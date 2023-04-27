@@ -14,13 +14,13 @@ namespace DIS {
 class OPENDIS7_EXPORT AcousticEmitter {
  protected:
   /** the system for a particular UA emitter, and an enumeration */
-  unsigned short _acousticName;
+  uint16_t _acousticName;
 
   /** The function of the acoustic system */
-  unsigned char _function;
+  uint8_t _function;
 
   /** The UA emitter identification number relative to a specific system */
-  unsigned char _acousticIdNumber;
+  uint8_t _acousticIdNumber;
 
  public:
   AcousticEmitter();
@@ -29,14 +29,14 @@ class OPENDIS7_EXPORT AcousticEmitter {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getAcousticName() const;
-  void setAcousticName(unsigned short pX);
+  uint16_t getAcousticName() const;
+  void setAcousticName(uint16_t pX);
 
-  unsigned char getFunction() const;
-  void setFunction(unsigned char pX);
+  uint8_t getFunction() const;
+  void setFunction(uint8_t pX);
 
-  unsigned char getAcousticIdNumber() const;
-  void setAcousticIdNumber(unsigned char pX);
+  uint8_t getAcousticIdNumber() const;
+  void setAcousticIdNumber(uint8_t pX);
 
   virtual int getMarshalledSize() const;
 

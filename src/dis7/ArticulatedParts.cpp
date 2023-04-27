@@ -12,31 +12,31 @@ ArticulatedParts::ArticulatedParts()
 
 ArticulatedParts::~ArticulatedParts() {}
 
-unsigned char ArticulatedParts::getRecordType() const { return _recordType; }
+uint8_t ArticulatedParts::getRecordType() const { return _recordType; }
 
-void ArticulatedParts::setRecordType(unsigned char pX) { _recordType = pX; }
+void ArticulatedParts::setRecordType(uint8_t pX) { _recordType = pX; }
 
-unsigned char ArticulatedParts::getChangeIndicator() const {
+uint8_t ArticulatedParts::getChangeIndicator() const {
   return _changeIndicator;
 }
 
-void ArticulatedParts::setChangeIndicator(unsigned char pX) {
+void ArticulatedParts::setChangeIndicator(uint8_t pX) {
   _changeIndicator = pX;
 }
 
-unsigned short ArticulatedParts::getPartAttachedTo() const {
+uint16_t ArticulatedParts::getPartAttachedTo() const {
   return _partAttachedTo;
 }
 
-void ArticulatedParts::setPartAttachedTo(unsigned short pX) {
+void ArticulatedParts::setPartAttachedTo(uint16_t pX) {
   _partAttachedTo = pX;
 }
 
-unsigned int ArticulatedParts::getParameterType() const {
+uint32_t ArticulatedParts::getParameterType() const {
   return _parameterType;
 }
 
-void ArticulatedParts::setParameterType(unsigned int pX) {
+void ArticulatedParts::setParameterType(uint32_t pX) {
   _parameterType = pX;
 }
 

@@ -6,7 +6,7 @@ RecordSpecification::RecordSpecification() : _numberOfRecordSets(0) {}
 
 RecordSpecification::~RecordSpecification() { _recordSets.clear(); }
 
-unsigned int RecordSpecification::getNumberOfRecordSets() const {
+uint32_t RecordSpecification::getNumberOfRecordSets() const {
   return _recordSets.size();
 }
 
@@ -25,7 +25,7 @@ void RecordSpecification::setRecordSets(
 }
 
 void RecordSpecification::marshal(DataStream& dataStream) const {
-  dataStream << (unsigned int)_recordSets.size();
+  dataStream << (uint32_t)_recordSets.size();
 
   for (size_t idx = 0; idx < _recordSets.size(); idx++) {
     RecordSpecificationElement x = _recordSets[idx];
@@ -59,7 +59,7 @@ int RecordSpecification::getMarshalledSize() const {
 
   marshalSize = marshalSize + 4;  // _numberOfRecordSets
 
-  for (unsigned long long idx = 0; idx < _recordSets.size(); idx++) {
+  for (uint64_t idx = 0; idx < _recordSets.size(); idx++) {
     RecordSpecificationElement listElement = _recordSets[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

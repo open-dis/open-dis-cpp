@@ -11,29 +11,29 @@ StorageFuel::StorageFuel()
 
 StorageFuel::~StorageFuel() {}
 
-unsigned int StorageFuel::getFuelQuantity() const { return _fuelQuantity; }
+uint32_t StorageFuel::getFuelQuantity() const { return _fuelQuantity; }
 
-void StorageFuel::setFuelQuantity(unsigned int pX) { _fuelQuantity = pX; }
+void StorageFuel::setFuelQuantity(uint32_t pX) { _fuelQuantity = pX; }
 
-unsigned char StorageFuel::getFuelMeasurementUnits() const {
+uint8_t StorageFuel::getFuelMeasurementUnits() const {
   return _fuelMeasurementUnits;
 }
 
-void StorageFuel::setFuelMeasurementUnits(unsigned char pX) {
+void StorageFuel::setFuelMeasurementUnits(uint8_t pX) {
   _fuelMeasurementUnits = pX;
 }
 
-unsigned char StorageFuel::getFuelType() const { return _fuelType; }
+uint8_t StorageFuel::getFuelType() const { return _fuelType; }
 
-void StorageFuel::setFuelType(unsigned char pX) { _fuelType = pX; }
+void StorageFuel::setFuelType(uint8_t pX) { _fuelType = pX; }
 
-unsigned char StorageFuel::getFuelLocation() const { return _fuelLocation; }
+uint8_t StorageFuel::getFuelLocation() const { return _fuelLocation; }
 
-void StorageFuel::setFuelLocation(unsigned char pX) { _fuelLocation = pX; }
+void StorageFuel::setFuelLocation(uint8_t pX) { _fuelLocation = pX; }
 
-unsigned char StorageFuel::getPadding() const { return _padding; }
+uint8_t StorageFuel::getPadding() const { return _padding; }
 
-void StorageFuel::setPadding(unsigned char pX) { _padding = pX; }
+void StorageFuel::setPadding(uint8_t pX) { _padding = pX; }
 
 void StorageFuel::marshal(DataStream& dataStream) const {
   dataStream << _fuelQuantity;

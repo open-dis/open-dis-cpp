@@ -10,11 +10,11 @@ DataQueryDatumSpecification::~DataQueryDatumSpecification() {
   _variableDatumIDList.clear();
 }
 
-unsigned int DataQueryDatumSpecification::getNumberOfFixedDatums() const {
+uint32_t DataQueryDatumSpecification::getNumberOfFixedDatums() const {
   return _fixedDatumIDList.size();
 }
 
-unsigned int DataQueryDatumSpecification::getNumberOfVariableDatums() const {
+uint32_t DataQueryDatumSpecification::getNumberOfVariableDatums() const {
   return _variableDatumIDList.size();
 }
 
@@ -49,8 +49,8 @@ void DataQueryDatumSpecification::setVariableDatumIDList(
 }
 
 void DataQueryDatumSpecification::marshal(DataStream& dataStream) const {
-  dataStream << (unsigned int)_fixedDatumIDList.size();
-  dataStream << (unsigned int)_variableDatumIDList.size();
+  dataStream << (uint32_t)_fixedDatumIDList.size();
+  dataStream << (uint32_t)_variableDatumIDList.size();
 
   for (size_t idx = 0; idx < _fixedDatumIDList.size(); idx++) {
     UnsignedDISInteger x = _fixedDatumIDList[idx];
@@ -105,12 +105,12 @@ int DataQueryDatumSpecification::getMarshalledSize() const {
   marshalSize = marshalSize + 4;  // _numberOfFixedDatums
   marshalSize = marshalSize + 4;  // _numberOfVariableDatums
 
-  for (unsigned long long idx = 0; idx < _fixedDatumIDList.size(); idx++) {
+  for (uint64_t idx = 0; idx < _fixedDatumIDList.size(); idx++) {
     UnsignedDISInteger listElement = _fixedDatumIDList[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }
 
-  for (unsigned long long idx = 0; idx < _variableDatumIDList.size(); idx++) {
+  for (uint64_t idx = 0; idx < _variableDatumIDList.size(); idx++) {
     UnsignedDISInteger listElement = _variableDatumIDList[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

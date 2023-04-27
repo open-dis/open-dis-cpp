@@ -15,7 +15,7 @@ namespace DIS {
 class OPENDIS7_EXPORT EntityMarking {
  protected:
   /** The character set */
-  unsigned char _characterSet;
+  uint8_t _characterSet;
 
   /** The characters */
   char _characters[11];
@@ -27,8 +27,8 @@ class OPENDIS7_EXPORT EntityMarking {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned char getCharacterSet() const;
-  void setCharacterSet(unsigned char pX);
+  uint8_t getCharacterSet() const;
+  void setCharacterSet(uint8_t pX);
 
   char* getCharacters();
   const char* getCharacters() const;

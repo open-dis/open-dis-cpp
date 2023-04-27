@@ -20,18 +20,18 @@ namespace DIS {
 class OPENDIS7_EXPORT ElectromagneticEmissionBeamData {
  protected:
   /** This field shall specify the length of this beams data in 32 bit words */
-  unsigned char _beamDataLength;
+  uint8_t _beamDataLength;
 
   /** This field shall specify a unique emitter database number assigned to
    * differentiate between otherwise similar or identical emitter beams within
    * an emitter system. */
-  unsigned char _beamIDNumber;
+  uint8_t _beamIDNumber;
 
   /** This field shall specify a Beam Parameter Index number that shall be used
    * by receiving entities in conjunction with the Emitter Name field to provide
    * a pointer to the stored database parameters required to regenerate the
    * beam.  */
-  unsigned short _beamParameterIndex;
+  uint16_t _beamParameterIndex;
 
   /** Fundamental parameter data such as frequency range, erp, pulse width, etc.
    */
@@ -41,16 +41,16 @@ class OPENDIS7_EXPORT ElectromagneticEmissionBeamData {
   BeamData _beamData;
 
   /** beam function of a particular beam */
-  unsigned char _beamFunction;
+  uint8_t _beamFunction;
 
   /** Number of track/jam targets */
-  unsigned char _numberOfTrackJamTargets;
+  uint8_t _numberOfTrackJamTargets;
 
   /** wheher or not the receiving simulation apps can assume all the targets in
    * the scan pattern are being tracked/jammed */
-  unsigned char _highDensityTrackJam;
+  uint8_t _highDensityTrackJam;
 
-  unsigned char _beamStatus;
+  uint8_t _beamStatus;
 
   /** Contains Jamming Mode Sequence */
   JammingTechnique _jammingTechnique;
@@ -65,14 +65,14 @@ class OPENDIS7_EXPORT ElectromagneticEmissionBeamData {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned char getBeamDataLength() const;
-  void setBeamDataLength(unsigned char pX);
+  uint8_t getBeamDataLength() const;
+  void setBeamDataLength(uint8_t pX);
 
-  unsigned char getBeamIDNumber() const;
-  void setBeamIDNumber(unsigned char pX);
+  uint8_t getBeamIDNumber() const;
+  void setBeamIDNumber(uint8_t pX);
 
-  unsigned short getBeamParameterIndex() const;
-  void setBeamParameterIndex(unsigned short pX);
+  uint16_t getBeamParameterIndex() const;
+  void setBeamParameterIndex(uint16_t pX);
 
   EEFundamentalParameterData& getFundamentalParameterData();
   const EEFundamentalParameterData& getFundamentalParameterData() const;
@@ -82,16 +82,16 @@ class OPENDIS7_EXPORT ElectromagneticEmissionBeamData {
   const BeamData& getBeamData() const;
   void setBeamData(const BeamData& pX);
 
-  unsigned char getBeamFunction() const;
-  void setBeamFunction(unsigned char pX);
+  uint8_t getBeamFunction() const;
+  void setBeamFunction(uint8_t pX);
 
-  unsigned char getNumberOfTrackJamTargets() const;
+  uint8_t getNumberOfTrackJamTargets() const;
 
-  unsigned char getHighDensityTrackJam() const;
-  void setHighDensityTrackJam(unsigned char pX);
+  uint8_t getHighDensityTrackJam() const;
+  void setHighDensityTrackJam(uint8_t pX);
 
-  unsigned char getBeamStatus() const;
-  void setBeamStatus(unsigned char pX);
+  uint8_t getBeamStatus() const;
+  void setBeamStatus(uint8_t pX);
 
   JammingTechnique& getJammingTechnique();
   const JammingTechnique& getJammingTechnique() const;

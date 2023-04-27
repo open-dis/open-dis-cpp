@@ -13,55 +13,55 @@ EngineFuelReload::EngineFuelReload()
 
 EngineFuelReload::~EngineFuelReload() {}
 
-unsigned int EngineFuelReload::getStandardQuantity() const {
+uint32_t EngineFuelReload::getStandardQuantity() const {
   return _standardQuantity;
 }
 
-void EngineFuelReload::setStandardQuantity(unsigned int pX) {
+void EngineFuelReload::setStandardQuantity(uint32_t pX) {
   _standardQuantity = pX;
 }
 
-unsigned int EngineFuelReload::getMaximumQuantity() const {
+uint32_t EngineFuelReload::getMaximumQuantity() const {
   return _maximumQuantity;
 }
 
-void EngineFuelReload::setMaximumQuantity(unsigned int pX) {
+void EngineFuelReload::setMaximumQuantity(uint32_t pX) {
   _maximumQuantity = pX;
 }
 
-unsigned int EngineFuelReload::getStandardQuantityReloadTime() const {
+uint32_t EngineFuelReload::getStandardQuantityReloadTime() const {
   return _standardQuantityReloadTime;
 }
 
-void EngineFuelReload::setStandardQuantityReloadTime(unsigned int pX) {
+void EngineFuelReload::setStandardQuantityReloadTime(uint32_t pX) {
   _standardQuantityReloadTime = pX;
 }
 
-unsigned int EngineFuelReload::getMaximumQuantityReloadTime() const {
+uint32_t EngineFuelReload::getMaximumQuantityReloadTime() const {
   return _maximumQuantityReloadTime;
 }
 
-void EngineFuelReload::setMaximumQuantityReloadTime(unsigned int pX) {
+void EngineFuelReload::setMaximumQuantityReloadTime(uint32_t pX) {
   _maximumQuantityReloadTime = pX;
 }
 
-unsigned char EngineFuelReload::getFuelMeasurmentUnits() const {
+uint8_t EngineFuelReload::getFuelMeasurmentUnits() const {
   return _fuelMeasurmentUnits;
 }
 
-void EngineFuelReload::setFuelMeasurmentUnits(unsigned char pX) {
+void EngineFuelReload::setFuelMeasurmentUnits(uint8_t pX) {
   _fuelMeasurmentUnits = pX;
 }
 
-unsigned char EngineFuelReload::getFuelLocation() const {
+uint8_t EngineFuelReload::getFuelLocation() const {
   return _fuelLocation;
 }
 
-void EngineFuelReload::setFuelLocation(unsigned char pX) { _fuelLocation = pX; }
+void EngineFuelReload::setFuelLocation(uint8_t pX) { _fuelLocation = pX; }
 
-unsigned char EngineFuelReload::getPadding() const { return _padding; }
+uint8_t EngineFuelReload::getPadding() const { return _padding; }
 
-void EngineFuelReload::setPadding(unsigned char pX) { _padding = pX; }
+void EngineFuelReload::setPadding(uint8_t pX) { _padding = pX; }
 
 void EngineFuelReload::marshal(DataStream& dataStream) const {
   dataStream << _standardQuantity;

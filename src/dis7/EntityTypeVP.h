@@ -16,19 +16,19 @@ class OPENDIS7_EXPORT EntityTypeVP {
  protected:
   /** the identification of the Variable Parameter record. Enumeration from EBV
    */
-  unsigned char _recordType;
+  uint8_t _recordType;
 
   /** Indicates if this VP has changed since last issuance */
-  unsigned char _changeIndicator;
+  uint8_t _changeIndicator;
 
   /**  */
   EntityType _entityType;
 
   /** padding */
-  unsigned short _padding;
+  uint16_t _padding;
 
   /** padding */
-  unsigned int _padding1;
+  uint32_t _padding1;
 
  public:
   EntityTypeVP();
@@ -37,21 +37,21 @@ class OPENDIS7_EXPORT EntityTypeVP {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned char getRecordType() const;
-  void setRecordType(unsigned char pX);
+  uint8_t getRecordType() const;
+  void setRecordType(uint8_t pX);
 
-  unsigned char getChangeIndicator() const;
-  void setChangeIndicator(unsigned char pX);
+  uint8_t getChangeIndicator() const;
+  void setChangeIndicator(uint8_t pX);
 
   EntityType& getEntityType();
   const EntityType& getEntityType() const;
   void setEntityType(const EntityType& pX);
 
-  unsigned short getPadding() const;
-  void setPadding(unsigned short pX);
+  uint16_t getPadding() const;
+  void setPadding(uint16_t pX);
 
-  unsigned int getPadding1() const;
-  void setPadding1(unsigned int pX);
+  uint32_t getPadding1() const;
+  void setPadding1(uint32_t pX);
 
   virtual int getMarshalledSize() const;
 

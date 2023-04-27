@@ -26,13 +26,13 @@ class OPENDIS7_EXPORT ServiceRequestPdu : public LogisticsFamilyPdu {
   EntityID _servicingEntityID;
 
   /** Type of service requested, Section 7.4.2 */
-  unsigned char _serviceTypeRequested;
+  uint8_t _serviceTypeRequested;
 
   /** How many requested, Section 7.4.2 */
-  unsigned char _numberOfSupplyTypes;
+  uint8_t _numberOfSupplyTypes;
 
   /** padding */
-  short _serviceRequestPadding;
+  int16_t _serviceRequestPadding;
 
   std::vector<SupplyQuantity> _supplies;
 
@@ -51,13 +51,13 @@ class OPENDIS7_EXPORT ServiceRequestPdu : public LogisticsFamilyPdu {
   const EntityID& getServicingEntityID() const;
   void setServicingEntityID(const EntityID& pX);
 
-  unsigned char getServiceTypeRequested() const;
-  void setServiceTypeRequested(unsigned char pX);
+  uint8_t getServiceTypeRequested() const;
+  void setServiceTypeRequested(uint8_t pX);
 
-  unsigned char getNumberOfSupplyTypes() const;
+  uint8_t getNumberOfSupplyTypes() const;
 
-  short getServiceRequestPadding() const;
-  void setServiceRequestPadding(short pX);
+  int16_t getServiceRequestPadding() const;
+  void setServiceRequestPadding(int16_t pX);
 
   std::vector<SupplyQuantity>& getSupplies();
   const std::vector<SupplyQuantity>& getSupplies() const;

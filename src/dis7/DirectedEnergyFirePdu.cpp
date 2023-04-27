@@ -104,19 +104,19 @@ char DirectedEnergyFirePdu::getPulseShape() const { return _pulseShape; }
 
 void DirectedEnergyFirePdu::setPulseShape(char pX) { _pulseShape = pX; }
 
-unsigned char DirectedEnergyFirePdu::getPadding1() const { return _padding1; }
+uint8_t DirectedEnergyFirePdu::getPadding1() const { return _padding1; }
 
-void DirectedEnergyFirePdu::setPadding1(unsigned char pX) { _padding1 = pX; }
+void DirectedEnergyFirePdu::setPadding1(uint8_t pX) { _padding1 = pX; }
 
-unsigned int DirectedEnergyFirePdu::getPadding2() const { return _padding2; }
+uint32_t DirectedEnergyFirePdu::getPadding2() const { return _padding2; }
 
-void DirectedEnergyFirePdu::setPadding2(unsigned int pX) { _padding2 = pX; }
+void DirectedEnergyFirePdu::setPadding2(uint32_t pX) { _padding2 = pX; }
 
-unsigned short DirectedEnergyFirePdu::getPadding3() const { return _padding3; }
+uint16_t DirectedEnergyFirePdu::getPadding3() const { return _padding3; }
 
-void DirectedEnergyFirePdu::setPadding3(unsigned short pX) { _padding3 = pX; }
+void DirectedEnergyFirePdu::setPadding3(uint16_t pX) { _padding3 = pX; }
 
-unsigned short DirectedEnergyFirePdu::getNumberOfDERecords() const {
+uint16_t DirectedEnergyFirePdu::getNumberOfDERecords() const {
   return _dERecords.size();
 }
 
@@ -152,7 +152,7 @@ void DirectedEnergyFirePdu::marshal(DataStream& dataStream) const {
   dataStream << _padding1;
   dataStream << _padding2;
   dataStream << _padding3;
-  dataStream << (unsigned short)_dERecords.size();
+  dataStream << (uint16_t)_dERecords.size();
 
   for (size_t idx = 0; idx < _dERecords.size(); idx++) {
     StandardVariableSpecification x = _dERecords[idx];
@@ -240,7 +240,7 @@ int DirectedEnergyFirePdu::getMarshalledSize() const {
   marshalSize = marshalSize + 2;  // _padding3
   marshalSize = marshalSize + 2;  // _numberOfDERecords
 
-  for (unsigned long long idx = 0; idx < _dERecords.size(); idx++) {
+  for (uint64_t idx = 0; idx < _dERecords.size(); idx++) {
     StandardVariableSpecification listElement = _dERecords[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

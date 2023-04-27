@@ -19,7 +19,7 @@ class OPENDIS7_EXPORT GroupIdentifier {
   EntityType _simulationAddress;
 
   /** group number */
-  unsigned short _groupNumber;
+  uint16_t _groupNumber;
 
  public:
   GroupIdentifier();
@@ -32,8 +32,8 @@ class OPENDIS7_EXPORT GroupIdentifier {
   const EntityType& getSimulationAddress() const;
   void setSimulationAddress(const EntityType& pX);
 
-  unsigned short getGroupNumber() const;
-  void setGroupNumber(unsigned short pX);
+  uint16_t getGroupNumber() const;
+  void setGroupNumber(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

@@ -7,19 +7,19 @@ LiveSimulationAddress::LiveSimulationAddress()
 
 LiveSimulationAddress::~LiveSimulationAddress() {}
 
-unsigned char LiveSimulationAddress::getLiveSiteNumber() const {
+uint8_t LiveSimulationAddress::getLiveSiteNumber() const {
   return _liveSiteNumber;
 }
 
-void LiveSimulationAddress::setLiveSiteNumber(unsigned char pX) {
+void LiveSimulationAddress::setLiveSiteNumber(uint8_t pX) {
   _liveSiteNumber = pX;
 }
 
-unsigned short LiveSimulationAddress::getLiveApplicationNumber() const {
+uint16_t LiveSimulationAddress::getLiveApplicationNumber() const {
   return _liveApplicationNumber;
 }
 
-void LiveSimulationAddress::setLiveApplicationNumber(unsigned short pX) {
+void LiveSimulationAddress::setLiveApplicationNumber(uint16_t pX) {
   _liveApplicationNumber = pX;
 }
 

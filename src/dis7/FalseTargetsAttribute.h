@@ -18,19 +18,19 @@ namespace DIS {
 
 class OPENDIS7_EXPORT FalseTargetsAttribute {
  protected:
-  unsigned int _recordType;
+  uint32_t _recordType;
 
-  unsigned short _recordLength;
+  uint16_t _recordLength;
 
-  unsigned short _padding;
+  uint16_t _padding;
 
-  unsigned char _emitterNumber;
+  uint8_t _emitterNumber;
 
-  unsigned char _beamNumber;
+  uint8_t _beamNumber;
 
-  unsigned char _stateIndicator;
+  uint8_t _stateIndicator;
 
-  unsigned char _padding2;
+  uint8_t _padding2;
 
   float _falseTargetCount;
 
@@ -44,7 +44,7 @@ class OPENDIS7_EXPORT FalseTargetsAttribute {
 
   float _echoSpacing;
 
-  unsigned int _padding3;
+  uint32_t _padding3;
 
  public:
   FalseTargetsAttribute();
@@ -53,26 +53,26 @@ class OPENDIS7_EXPORT FalseTargetsAttribute {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getRecordType() const;
-  void setRecordType(unsigned int pX);
+  uint32_t getRecordType() const;
+  void setRecordType(uint32_t pX);
 
-  unsigned short getRecordLength() const;
-  void setRecordLength(unsigned short pX);
+  uint16_t getRecordLength() const;
+  void setRecordLength(uint16_t pX);
 
-  unsigned short getPadding() const;
-  void setPadding(unsigned short pX);
+  uint16_t getPadding() const;
+  void setPadding(uint16_t pX);
 
-  unsigned char getEmitterNumber() const;
-  void setEmitterNumber(unsigned char pX);
+  uint8_t getEmitterNumber() const;
+  void setEmitterNumber(uint8_t pX);
 
-  unsigned char getBeamNumber() const;
-  void setBeamNumber(unsigned char pX);
+  uint8_t getBeamNumber() const;
+  void setBeamNumber(uint8_t pX);
 
-  unsigned char getStateIndicator() const;
-  void setStateIndicator(unsigned char pX);
+  uint8_t getStateIndicator() const;
+  void setStateIndicator(uint8_t pX);
 
-  unsigned char getPadding2() const;
-  void setPadding2(unsigned char pX);
+  uint8_t getPadding2() const;
+  void setPadding2(uint8_t pX);
 
   float getFalseTargetCount() const;
   void setFalseTargetCount(float pX);
@@ -92,8 +92,8 @@ class OPENDIS7_EXPORT FalseTargetsAttribute {
   float getEchoSpacing() const;
   void setEchoSpacing(float pX);
 
-  unsigned int getPadding3() const;
-  void setPadding3(unsigned int pX);
+  uint32_t getPadding3() const;
+  void setPadding3(uint32_t pX);
 
   virtual int getMarshalledSize() const;
 

@@ -17,15 +17,15 @@ class OPENDIS7_EXPORT LaunchedMunitionRecord {
  protected:
   EventIdentifier _fireEventID;
 
-  unsigned short _padding;
+  uint16_t _padding;
 
   EventIdentifier _firingEntityID;
 
-  unsigned short _padding2;
+  uint16_t _padding2;
 
   EventIdentifier _targetEntityID;
 
-  unsigned short _padding3;
+  uint16_t _padding3;
 
   Vector3Double _targetLocation;
 
@@ -40,22 +40,22 @@ class OPENDIS7_EXPORT LaunchedMunitionRecord {
   const EventIdentifier& getFireEventID() const;
   void setFireEventID(const EventIdentifier& pX);
 
-  unsigned short getPadding() const;
-  void setPadding(unsigned short pX);
+  uint16_t getPadding() const;
+  void setPadding(uint16_t pX);
 
   EventIdentifier& getFiringEntityID();
   const EventIdentifier& getFiringEntityID() const;
   void setFiringEntityID(const EventIdentifier& pX);
 
-  unsigned short getPadding2() const;
-  void setPadding2(unsigned short pX);
+  uint16_t getPadding2() const;
+  void setPadding2(uint16_t pX);
 
   EventIdentifier& getTargetEntityID();
   const EventIdentifier& getTargetEntityID() const;
   void setTargetEntityID(const EventIdentifier& pX);
 
-  unsigned short getPadding3() const;
-  void setPadding3(unsigned short pX);
+  uint16_t getPadding3() const;
+  void setPadding3(uint16_t pX);
 
   Vector3Double& getTargetLocation();
   const Vector3Double& getTargetLocation() const;

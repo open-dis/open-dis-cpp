@@ -17,21 +17,21 @@ namespace DIS {
 class OPENDIS7_EXPORT LinearSegmentParameter {
  protected:
   /** the individual segment of the linear segment  */
-  unsigned char _segmentNumber;
+  uint8_t _segmentNumber;
 
   /**  whether a modification has been made to the point object’s location or
    * orientation */
-  unsigned char _segmentModification;
+  uint8_t _segmentModification;
 
   /** general dynamic appearance attributes of the segment. This record shall be
    * defined as a 16-bit record of enumerations. The values defined for this
    * record are included in Section 12 of SISO-REF-010. */
-  unsigned short _generalSegmentAppearance;
+  uint16_t _generalSegmentAppearance;
 
   /** This field shall specify specific dynamic appearance attributes of the
    * segment. This record shall be defined as a 32-bit record of enumerations.
    */
-  unsigned short _specificSegmentAppearance;
+  uint16_t _specificSegmentAppearance;
 
   /** This field shall specify the location of the linear segment in the
    * simulated world and shall be represented by a World Coordinates record  */
@@ -43,20 +43,20 @@ class OPENDIS7_EXPORT LinearSegmentParameter {
 
   /** length of the linear segment, in meters, extending in the positive X
    * direction */
-  unsigned short _segmentLength;
+  uint16_t _segmentLength;
 
   /** The total width of the linear segment, in meters, shall be specified by a
-   * 16-bit unsigned integer. One-half of the width shall extend in the positive
+   * 16-bit uint32_teger. One-half of the width shall extend in the positive
    * Y direction, and one-half of the width shall extend in the negative Y
    * direction. */
-  unsigned short _segmentWidth;
+  uint16_t _segmentWidth;
 
   /** The height of the linear segment, in meters, above ground shall be
-   * specified by a 16-bit unsigned integer. */
-  unsigned short _segmentHeight;
+   * specified by a 16-bit uint32_teger. */
+  uint16_t _segmentHeight;
 
   /** The depth of the linear segment, in meters, below ground level  */
-  unsigned short _segmentDepth;
+  uint16_t _segmentDepth;
 
  public:
   LinearSegmentParameter();
@@ -65,17 +65,17 @@ class OPENDIS7_EXPORT LinearSegmentParameter {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned char getSegmentNumber() const;
-  void setSegmentNumber(unsigned char pX);
+  uint8_t getSegmentNumber() const;
+  void setSegmentNumber(uint8_t pX);
 
-  unsigned char getSegmentModification() const;
-  void setSegmentModification(unsigned char pX);
+  uint8_t getSegmentModification() const;
+  void setSegmentModification(uint8_t pX);
 
-  unsigned short getGeneralSegmentAppearance() const;
-  void setGeneralSegmentAppearance(unsigned short pX);
+  uint16_t getGeneralSegmentAppearance() const;
+  void setGeneralSegmentAppearance(uint16_t pX);
 
-  unsigned short getSpecificSegmentAppearance() const;
-  void setSpecificSegmentAppearance(unsigned short pX);
+  uint16_t getSpecificSegmentAppearance() const;
+  void setSpecificSegmentAppearance(uint16_t pX);
 
   Vector3Double& getSegmentLocation();
   const Vector3Double& getSegmentLocation() const;
@@ -85,17 +85,17 @@ class OPENDIS7_EXPORT LinearSegmentParameter {
   const EulerAngles& getSegmentOrientation() const;
   void setSegmentOrientation(const EulerAngles& pX);
 
-  unsigned short getSegmentLength() const;
-  void setSegmentLength(unsigned short pX);
+  uint16_t getSegmentLength() const;
+  void setSegmentLength(uint16_t pX);
 
-  unsigned short getSegmentWidth() const;
-  void setSegmentWidth(unsigned short pX);
+  uint16_t getSegmentWidth() const;
+  void setSegmentWidth(uint16_t pX);
 
-  unsigned short getSegmentHeight() const;
-  void setSegmentHeight(unsigned short pX);
+  uint16_t getSegmentHeight() const;
+  void setSegmentHeight(uint16_t pX);
 
-  unsigned short getSegmentDepth() const;
-  void setSegmentDepth(unsigned short pX);
+  uint16_t getSegmentDepth() const;
+  void setSegmentDepth(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

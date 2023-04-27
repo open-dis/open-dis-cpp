@@ -21,9 +21,9 @@ namespace DIS {
 
 class OPENDIS7_EXPORT Association {
  protected:
-  unsigned char _associationType;
+  uint8_t _associationType;
 
-  unsigned char _padding4;
+  uint8_t _padding4;
 
   /** identity of associated entity. If none, NO_SPECIFIC_ENTITY */
   EntityID _associatedEntityID;
@@ -38,11 +38,11 @@ class OPENDIS7_EXPORT Association {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned char getAssociationType() const;
-  void setAssociationType(unsigned char pX);
+  uint8_t getAssociationType() const;
+  void setAssociationType(uint8_t pX);
 
-  unsigned char getPadding4() const;
-  void setPadding4(unsigned char pX);
+  uint8_t getPadding4() const;
+  void setPadding4(uint8_t pX);
 
   EntityID& getAssociatedEntityID();
   const EntityID& getAssociatedEntityID() const;

@@ -32,9 +32,9 @@ const EventIdentifier& FirePdu::getEventID() const { return _eventID; }
 
 void FirePdu::setEventID(const EventIdentifier& pX) { _eventID = pX; }
 
-unsigned int FirePdu::getFireMissionIndex() const { return _fireMissionIndex; }
+uint32_t FirePdu::getFireMissionIndex() const { return _fireMissionIndex; }
 
-void FirePdu::setFireMissionIndex(unsigned int pX) { _fireMissionIndex = pX; }
+void FirePdu::setFireMissionIndex(uint32_t pX) { _fireMissionIndex = pX; }
 
 Vector3Double& FirePdu::getLocationInWorldCoordinates() {
   return _locationInWorldCoordinates;

@@ -15,19 +15,19 @@ class OPENDIS7_EXPORT ModulationType {
  protected:
   /** This field shall indicate the spread spectrum technique or combination of
    * spread spectrum techniques in use. Bt field. */
-  unsigned short _spreadSpectrum;
+  uint16_t _spreadSpectrum;
 
   /** the major classification of the modulation type.  */
-  unsigned short _majorModulation;
+  uint16_t _majorModulation;
 
   /** provide certain detailed information depending upon the major modulation
    * type */
-  unsigned short _detail;
+  uint16_t _detail;
 
   /** the radio system associated with this Transmitter PDU and shall be used as
    * the basis to interpret other fields whose values depend on a specific radio
    * system. */
-  unsigned short _radioSystem;
+  uint16_t _radioSystem;
 
  public:
   ModulationType();
@@ -36,17 +36,17 @@ class OPENDIS7_EXPORT ModulationType {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getSpreadSpectrum() const;
-  void setSpreadSpectrum(unsigned short pX);
+  uint16_t getSpreadSpectrum() const;
+  void setSpreadSpectrum(uint16_t pX);
 
-  unsigned short getMajorModulation() const;
-  void setMajorModulation(unsigned short pX);
+  uint16_t getMajorModulation() const;
+  void setMajorModulation(uint16_t pX);
 
-  unsigned short getDetail() const;
-  void setDetail(unsigned short pX);
+  uint16_t getDetail() const;
+  void setDetail(uint16_t pX);
 
-  unsigned short getRadioSystem() const;
-  void setRadioSystem(unsigned short pX);
+  uint16_t getRadioSystem() const;
+  void setRadioSystem(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

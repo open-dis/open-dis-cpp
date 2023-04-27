@@ -16,23 +16,23 @@ EventReportReliablePdu::~EventReportReliablePdu() {
   _variableDatumRecords.clear();
 }
 
-unsigned short EventReportReliablePdu::getEventType() const {
+uint16_t EventReportReliablePdu::getEventType() const {
   return _eventType;
 }
 
-void EventReportReliablePdu::setEventType(unsigned short pX) {
+void EventReportReliablePdu::setEventType(uint16_t pX) {
   _eventType = pX;
 }
 
-unsigned int EventReportReliablePdu::getPad1() const { return _pad1; }
+uint32_t EventReportReliablePdu::getPad1() const { return _pad1; }
 
-void EventReportReliablePdu::setPad1(unsigned int pX) { _pad1 = pX; }
+void EventReportReliablePdu::setPad1(uint32_t pX) { _pad1 = pX; }
 
-unsigned int EventReportReliablePdu::getNumberOfFixedDatumRecords() const {
+uint32_t EventReportReliablePdu::getNumberOfFixedDatumRecords() const {
   return _fixedDatumRecords.size();
 }
 
-unsigned int EventReportReliablePdu::getNumberOfVariableDatumRecords() const {
+uint32_t EventReportReliablePdu::getNumberOfVariableDatumRecords() const {
   return _variableDatumRecords.size();
 }
 
@@ -69,8 +69,8 @@ void EventReportReliablePdu::marshal(DataStream& dataStream) const {
       dataStream);  // Marshal information in superclass first
   dataStream << _eventType;
   dataStream << _pad1;
-  dataStream << (unsigned int)_fixedDatumRecords.size();
-  dataStream << (unsigned int)_variableDatumRecords.size();
+  dataStream << (uint32_t)_fixedDatumRecords.size();
+  dataStream << (uint32_t)_variableDatumRecords.size();
 
   for (size_t idx = 0; idx < _fixedDatumRecords.size(); idx++) {
     FixedDatum x = _fixedDatumRecords[idx];
@@ -138,12 +138,12 @@ int EventReportReliablePdu::getMarshalledSize() const {
   marshalSize = marshalSize + 4;  // _numberOfFixedDatumRecords
   marshalSize = marshalSize + 4;  // _numberOfVariableDatumRecords
 
-  for (unsigned long long idx = 0; idx < _fixedDatumRecords.size(); idx++) {
+  for (uint64_t idx = 0; idx < _fixedDatumRecords.size(); idx++) {
     FixedDatum listElement = _fixedDatumRecords[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }
 
-  for (unsigned long long idx = 0; idx < _variableDatumRecords.size(); idx++) {
+  for (uint64_t idx = 0; idx < _variableDatumRecords.size(); idx++) {
     VariableDatum listElement = _variableDatumRecords[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

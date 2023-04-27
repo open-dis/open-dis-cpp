@@ -30,21 +30,21 @@ const EntityID& AcknowledgePdu::getReceivingID() const { return _receivingID; }
 
 void AcknowledgePdu::setReceivingID(const EntityID& pX) { _receivingID = pX; }
 
-unsigned short AcknowledgePdu::getAcknowledgeFlag() const {
+uint16_t AcknowledgePdu::getAcknowledgeFlag() const {
   return _acknowledgeFlag;
 }
 
-void AcknowledgePdu::setAcknowledgeFlag(unsigned short pX) {
+void AcknowledgePdu::setAcknowledgeFlag(uint16_t pX) {
   _acknowledgeFlag = pX;
 }
 
-unsigned short AcknowledgePdu::getResponseFlag() const { return _responseFlag; }
+uint16_t AcknowledgePdu::getResponseFlag() const { return _responseFlag; }
 
-void AcknowledgePdu::setResponseFlag(unsigned short pX) { _responseFlag = pX; }
+void AcknowledgePdu::setResponseFlag(uint16_t pX) { _responseFlag = pX; }
 
-unsigned int AcknowledgePdu::getRequestID() const { return _requestID; }
+uint32_t AcknowledgePdu::getRequestID() const { return _requestID; }
 
-void AcknowledgePdu::setRequestID(unsigned int pX) { _requestID = pX; }
+void AcknowledgePdu::setRequestID(uint32_t pX) { _requestID = pX; }
 
 void AcknowledgePdu::marshal(DataStream& dataStream) const {
   SimulationManagementFamilyPdu::marshal(

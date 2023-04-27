@@ -28,9 +28,9 @@ const EntityID& RemoveEntityPdu::getReceivingID() const { return _receivingID; }
 
 void RemoveEntityPdu::setReceivingID(const EntityID& pX) { _receivingID = pX; }
 
-unsigned int RemoveEntityPdu::getRequestID() const { return _requestID; }
+uint32_t RemoveEntityPdu::getRequestID() const { return _requestID; }
 
-void RemoveEntityPdu::setRequestID(unsigned int pX) { _requestID = pX; }
+void RemoveEntityPdu::setRequestID(uint32_t pX) { _requestID = pX; }
 
 void RemoveEntityPdu::marshal(DataStream& dataStream) const {
   SimulationManagementFamilyPdu::marshal(

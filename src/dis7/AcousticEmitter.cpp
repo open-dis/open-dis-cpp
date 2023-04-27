@@ -7,21 +7,21 @@ AcousticEmitter::AcousticEmitter()
 
 AcousticEmitter::~AcousticEmitter() {}
 
-unsigned short AcousticEmitter::getAcousticName() const {
+uint16_t AcousticEmitter::getAcousticName() const {
   return _acousticName;
 }
 
-void AcousticEmitter::setAcousticName(unsigned short pX) { _acousticName = pX; }
+void AcousticEmitter::setAcousticName(uint16_t pX) { _acousticName = pX; }
 
-unsigned char AcousticEmitter::getFunction() const { return _function; }
+uint8_t AcousticEmitter::getFunction() const { return _function; }
 
-void AcousticEmitter::setFunction(unsigned char pX) { _function = pX; }
+void AcousticEmitter::setFunction(uint8_t pX) { _function = pX; }
 
-unsigned char AcousticEmitter::getAcousticIdNumber() const {
+uint8_t AcousticEmitter::getAcousticIdNumber() const {
   return _acousticIdNumber;
 }
 
-void AcousticEmitter::setAcousticIdNumber(unsigned char pX) {
+void AcousticEmitter::setAcousticIdNumber(uint8_t pX) {
   _acousticIdNumber = pX;
 }
 

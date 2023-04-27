@@ -7,19 +7,19 @@ VariableTransmitterParameters::VariableTransmitterParameters()
 
 VariableTransmitterParameters::~VariableTransmitterParameters() {}
 
-unsigned int VariableTransmitterParameters::getRecordType() const {
+uint32_t VariableTransmitterParameters::getRecordType() const {
   return _recordType;
 }
 
-void VariableTransmitterParameters::setRecordType(unsigned int pX) {
+void VariableTransmitterParameters::setRecordType(uint32_t pX) {
   _recordType = pX;
 }
 
-unsigned int VariableTransmitterParameters::getRecordLength() const {
+uint32_t VariableTransmitterParameters::getRecordLength() const {
   return _recordLength;
 }
 
-void VariableTransmitterParameters::setRecordLength(unsigned int pX) {
+void VariableTransmitterParameters::setRecordLength(uint32_t pX) {
   _recordLength = pX;
 }
 

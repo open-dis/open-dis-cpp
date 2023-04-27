@@ -13,17 +13,17 @@ const EntityID& OwnershipStatus::getEntityId() const { return _entityId; }
 
 void OwnershipStatus::setEntityId(const EntityID& pX) { _entityId = pX; }
 
-unsigned char OwnershipStatus::getOwnershipStatus() const {
+uint8_t OwnershipStatus::getOwnershipStatus() const {
   return _ownershipStatus;
 }
 
-void OwnershipStatus::setOwnershipStatus(unsigned char pX) {
+void OwnershipStatus::setOwnershipStatus(uint8_t pX) {
   _ownershipStatus = pX;
 }
 
-unsigned char OwnershipStatus::getPadding() const { return _padding; }
+uint8_t OwnershipStatus::getPadding() const { return _padding; }
 
-void OwnershipStatus::setPadding(unsigned char pX) { _padding = pX; }
+void OwnershipStatus::setPadding(uint8_t pX) { _padding = pX; }
 
 void OwnershipStatus::marshal(DataStream& dataStream) const {
   _entityId.marshal(dataStream);

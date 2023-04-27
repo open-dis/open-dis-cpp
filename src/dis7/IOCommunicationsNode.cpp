@@ -12,29 +12,29 @@ IOCommunicationsNode::IOCommunicationsNode()
 
 IOCommunicationsNode::~IOCommunicationsNode() {}
 
-unsigned int IOCommunicationsNode::getRecordType() const { return _recordType; }
+uint32_t IOCommunicationsNode::getRecordType() const { return _recordType; }
 
-void IOCommunicationsNode::setRecordType(unsigned int pX) { _recordType = pX; }
+void IOCommunicationsNode::setRecordType(uint32_t pX) { _recordType = pX; }
 
-unsigned short IOCommunicationsNode::getRecordLength() const {
+uint16_t IOCommunicationsNode::getRecordLength() const {
   return _recordLength;
 }
 
-void IOCommunicationsNode::setRecordLength(unsigned short pX) {
+void IOCommunicationsNode::setRecordLength(uint16_t pX) {
   _recordLength = pX;
 }
 
-unsigned char IOCommunicationsNode::getCommuncationsNodeType() const {
+uint8_t IOCommunicationsNode::getCommuncationsNodeType() const {
   return _communcationsNodeType;
 }
 
-void IOCommunicationsNode::setCommuncationsNodeType(unsigned char pX) {
+void IOCommunicationsNode::setCommuncationsNodeType(uint8_t pX) {
   _communcationsNodeType = pX;
 }
 
-unsigned char IOCommunicationsNode::getPadding() const { return _padding; }
+uint8_t IOCommunicationsNode::getPadding() const { return _padding; }
 
-void IOCommunicationsNode::setPadding(unsigned char pX) { _padding = pX; }
+void IOCommunicationsNode::setPadding(uint8_t pX) { _padding = pX; }
 
 EntityID& IOCommunicationsNode::getCommunicationsNode() {
   return _communicationsNode;
@@ -48,9 +48,9 @@ void IOCommunicationsNode::setCommunicationsNode(const EntityID& pX) {
   _communicationsNode = pX;
 }
 
-unsigned short IOCommunicationsNode::getElementID() const { return _elementID; }
+uint16_t IOCommunicationsNode::getElementID() const { return _elementID; }
 
-void IOCommunicationsNode::setElementID(unsigned short pX) { _elementID = pX; }
+void IOCommunicationsNode::setElementID(uint16_t pX) { _elementID = pX; }
 
 void IOCommunicationsNode::marshal(DataStream& dataStream) const {
   dataStream << _recordType;

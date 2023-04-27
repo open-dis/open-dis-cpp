@@ -7,23 +7,23 @@ Environment::Environment()
 
 Environment::~Environment() {}
 
-unsigned int Environment::getEnvironmentType() const {
+uint32_t Environment::getEnvironmentType() const {
   return _environmentType;
 }
 
-void Environment::setEnvironmentType(unsigned int pX) { _environmentType = pX; }
+void Environment::setEnvironmentType(uint32_t pX) { _environmentType = pX; }
 
-unsigned short Environment::getLength() const { return _length; }
+uint16_t Environment::getLength() const { return _length; }
 
-void Environment::setLength(unsigned short pX) { _length = pX; }
+void Environment::setLength(uint16_t pX) { _length = pX; }
 
-unsigned char Environment::getIndex() const { return _index; }
+uint8_t Environment::getIndex() const { return _index; }
 
-void Environment::setIndex(unsigned char pX) { _index = pX; }
+void Environment::setIndex(uint8_t pX) { _index = pX; }
 
-unsigned char Environment::getPadding() const { return _padding; }
+uint8_t Environment::getPadding() const { return _padding; }
 
-void Environment::setPadding(unsigned char pX) { _padding = pX; }
+void Environment::setPadding(uint8_t pX) { _padding = pX; }
 
 void Environment::marshal(DataStream& dataStream) const {
   dataStream << _environmentType;

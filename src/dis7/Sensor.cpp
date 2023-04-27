@@ -12,31 +12,31 @@ Sensor::Sensor()
 
 Sensor::~Sensor() {}
 
-unsigned char Sensor::getSensorTypeSource() const { return _sensorTypeSource; }
+uint8_t Sensor::getSensorTypeSource() const { return _sensorTypeSource; }
 
-void Sensor::setSensorTypeSource(unsigned char pX) { _sensorTypeSource = pX; }
+void Sensor::setSensorTypeSource(uint8_t pX) { _sensorTypeSource = pX; }
 
-unsigned char Sensor::getSensorOnOffStatus() const {
+uint8_t Sensor::getSensorOnOffStatus() const {
   return _sensorOnOffStatus;
 }
 
-void Sensor::setSensorOnOffStatus(unsigned char pX) { _sensorOnOffStatus = pX; }
+void Sensor::setSensorOnOffStatus(uint8_t pX) { _sensorOnOffStatus = pX; }
 
-unsigned short Sensor::getSensorType() const { return _sensorType; }
+uint16_t Sensor::getSensorType() const { return _sensorType; }
 
-void Sensor::setSensorType(unsigned short pX) { _sensorType = pX; }
+void Sensor::setSensorType(uint16_t pX) { _sensorType = pX; }
 
-unsigned int Sensor::getStation() const { return _station; }
+uint32_t Sensor::getStation() const { return _station; }
 
-void Sensor::setStation(unsigned int pX) { _station = pX; }
+void Sensor::setStation(uint32_t pX) { _station = pX; }
 
-unsigned short Sensor::getQuantity() const { return _quantity; }
+uint16_t Sensor::getQuantity() const { return _quantity; }
 
-void Sensor::setQuantity(unsigned short pX) { _quantity = pX; }
+void Sensor::setQuantity(uint16_t pX) { _quantity = pX; }
 
-unsigned short Sensor::getPadding() const { return _padding; }
+uint16_t Sensor::getPadding() const { return _padding; }
 
-void Sensor::setPadding(unsigned short pX) { _padding = pX; }
+void Sensor::setPadding(uint16_t pX) { _padding = pX; }
 
 void Sensor::marshal(DataStream& dataStream) const {
   dataStream << _sensorTypeSource;

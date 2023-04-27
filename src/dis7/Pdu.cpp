@@ -6,13 +6,13 @@ Pdu::Pdu() : PduSuperclass(), _pduStatus(0), _padding(0) {}
 
 Pdu::~Pdu() {}
 
-unsigned char Pdu::getPduStatus() const { return _pduStatus; }
+uint8_t Pdu::getPduStatus() const { return _pduStatus; }
 
-void Pdu::setPduStatus(unsigned char pX) { _pduStatus = pX; }
+void Pdu::setPduStatus(uint8_t pX) { _pduStatus = pX; }
 
-unsigned char Pdu::getPadding() const { return _padding; }
+uint8_t Pdu::getPadding() const { return _padding; }
 
-void Pdu::setPadding(unsigned char pX) { _padding = pX; }
+void Pdu::setPadding(uint8_t pX) { _padding = pX; }
 
 void Pdu::marshal(DataStream& dataStream) const {
   PduSuperclass::marshal(

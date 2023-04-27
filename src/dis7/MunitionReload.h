@@ -20,22 +20,22 @@ class OPENDIS7_EXPORT MunitionReload {
   EntityType _munitionType;
 
   /** the station or launcher to which the munition is assigned. See Annex I */
-  unsigned int _station;
+  uint32_t _station;
 
   /** the standard quantity of this munition type normally loaded at this
    * station/launcher if a station/launcher is specified. */
-  unsigned short _standardQuantity;
+  uint16_t _standardQuantity;
 
   /** the maximum quantity of this munition type that this station/launcher is
    * capable of holding when a station/launcher is specified  */
-  unsigned short _maximumQuantity;
+  uint16_t _maximumQuantity;
 
   /** the station name within the host at which the part entity is located. */
-  unsigned short _stationName;
+  uint16_t _stationName;
 
   /** the number of the particular wing station, cargo hold etc., at which the
    * part is attached. */
-  unsigned short _stationNumber;
+  uint16_t _stationNumber;
 
  public:
   MunitionReload();
@@ -48,20 +48,20 @@ class OPENDIS7_EXPORT MunitionReload {
   const EntityType& getMunitionType() const;
   void setMunitionType(const EntityType& pX);
 
-  unsigned int getStation() const;
-  void setStation(unsigned int pX);
+  uint32_t getStation() const;
+  void setStation(uint32_t pX);
 
-  unsigned short getStandardQuantity() const;
-  void setStandardQuantity(unsigned short pX);
+  uint16_t getStandardQuantity() const;
+  void setStandardQuantity(uint16_t pX);
 
-  unsigned short getMaximumQuantity() const;
-  void setMaximumQuantity(unsigned short pX);
+  uint16_t getMaximumQuantity() const;
+  void setMaximumQuantity(uint16_t pX);
 
-  unsigned short getStationName() const;
-  void setStationName(unsigned short pX);
+  uint16_t getStationName() const;
+  void setStationName(uint16_t pX);
 
-  unsigned short getStationNumber() const;
-  void setStationNumber(unsigned short pX);
+  uint16_t getStationNumber() const;
+  void setStationNumber(uint16_t pX);
 
   virtual int getMarshalledSize() const;
 

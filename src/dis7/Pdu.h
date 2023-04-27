@@ -16,10 +16,10 @@ class OPENDIS7_EXPORT Pdu : public PduSuperclass {
  protected:
   /** PDU Status Record. Described in 6.2.67. This field is not present in
    * earlier DIS versions  */
-  unsigned char _pduStatus;
+  uint8_t _pduStatus;
 
   /** zero-filled array of padding */
-  unsigned char _padding;
+  uint8_t _padding;
 
  public:
   Pdu();
@@ -28,11 +28,11 @@ class OPENDIS7_EXPORT Pdu : public PduSuperclass {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned char getPduStatus() const;
-  void setPduStatus(unsigned char pX);
+  uint8_t getPduStatus() const;
+  void setPduStatus(uint8_t pX);
 
-  unsigned char getPadding() const;
-  void setPadding(unsigned char pX);
+  uint8_t getPadding() const;
+  void setPadding(uint8_t pX);
 
   virtual int getMarshalledSize() const;
 

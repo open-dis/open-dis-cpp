@@ -18,9 +18,9 @@ void ExpendableDescriptor::setExpendableType(const EntityType& pX) {
   _expendableType = pX;
 }
 
-long long ExpendableDescriptor::getPadding() const { return _padding; }
+int64_t ExpendableDescriptor::getPadding() const { return _padding; }
 
-void ExpendableDescriptor::setPadding(long long pX) { _padding = pX; }
+void ExpendableDescriptor::setPadding(int64_t pX) { _padding = pX; }
 
 void ExpendableDescriptor::marshal(DataStream& dataStream) const {
   _expendableType.marshal(dataStream);

@@ -18,31 +18,31 @@ SetDataReliablePdu::~SetDataReliablePdu() {
   _variableDatumRecords.clear();
 }
 
-unsigned char SetDataReliablePdu::getRequiredReliabilityService() const {
+uint8_t SetDataReliablePdu::getRequiredReliabilityService() const {
   return _requiredReliabilityService;
 }
 
-void SetDataReliablePdu::setRequiredReliabilityService(unsigned char pX) {
+void SetDataReliablePdu::setRequiredReliabilityService(uint8_t pX) {
   _requiredReliabilityService = pX;
 }
 
-unsigned short SetDataReliablePdu::getPad1() const { return _pad1; }
+uint16_t SetDataReliablePdu::getPad1() const { return _pad1; }
 
-void SetDataReliablePdu::setPad1(unsigned short pX) { _pad1 = pX; }
+void SetDataReliablePdu::setPad1(uint16_t pX) { _pad1 = pX; }
 
-unsigned char SetDataReliablePdu::getPad2() const { return _pad2; }
+uint8_t SetDataReliablePdu::getPad2() const { return _pad2; }
 
-void SetDataReliablePdu::setPad2(unsigned char pX) { _pad2 = pX; }
+void SetDataReliablePdu::setPad2(uint8_t pX) { _pad2 = pX; }
 
-unsigned int SetDataReliablePdu::getRequestID() const { return _requestID; }
+uint32_t SetDataReliablePdu::getRequestID() const { return _requestID; }
 
-void SetDataReliablePdu::setRequestID(unsigned int pX) { _requestID = pX; }
+void SetDataReliablePdu::setRequestID(uint32_t pX) { _requestID = pX; }
 
-unsigned int SetDataReliablePdu::getNumberOfFixedDatumRecords() const {
+uint32_t SetDataReliablePdu::getNumberOfFixedDatumRecords() const {
   return _fixedDatumRecords.size();
 }
 
-unsigned int SetDataReliablePdu::getNumberOfVariableDatumRecords() const {
+uint32_t SetDataReliablePdu::getNumberOfVariableDatumRecords() const {
   return _variableDatumRecords.size();
 }
 
@@ -81,8 +81,8 @@ void SetDataReliablePdu::marshal(DataStream& dataStream) const {
   dataStream << _pad1;
   dataStream << _pad2;
   dataStream << _requestID;
-  dataStream << (unsigned int)_fixedDatumRecords.size();
-  dataStream << (unsigned int)_variableDatumRecords.size();
+  dataStream << (uint32_t)_fixedDatumRecords.size();
+  dataStream << (uint32_t)_variableDatumRecords.size();
 
   for (size_t idx = 0; idx < _fixedDatumRecords.size(); idx++) {
     FixedDatum x = _fixedDatumRecords[idx];
@@ -156,12 +156,12 @@ int SetDataReliablePdu::getMarshalledSize() const {
   marshalSize = marshalSize + 4;  // _numberOfFixedDatumRecords
   marshalSize = marshalSize + 4;  // _numberOfVariableDatumRecords
 
-  for (unsigned long long idx = 0; idx < _fixedDatumRecords.size(); idx++) {
+  for (uint64_t idx = 0; idx < _fixedDatumRecords.size(); idx++) {
     FixedDatum listElement = _fixedDatumRecords[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }
 
-  for (unsigned long long idx = 0; idx < _variableDatumRecords.size(); idx++) {
+  for (uint64_t idx = 0; idx < _variableDatumRecords.size(); idx++) {
     VariableDatum listElement = _variableDatumRecords[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

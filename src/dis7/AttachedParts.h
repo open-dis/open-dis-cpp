@@ -15,23 +15,23 @@ class OPENDIS7_EXPORT AttachedParts {
  protected:
   /** the identification of the Variable Parameter record. Enumeration from EBV
    */
-  unsigned char _recordType;
+  uint8_t _recordType;
 
   /** 0 = attached, 1 = detached. See I.2.3.1 for state transition diagram */
-  unsigned char _detachedIndicator;
+  uint8_t _detachedIndicator;
 
   /** the identification of the articulated part to which this articulation
    * parameter is attached. This field shall be specified by a 16-bit unsigned
    * integer. This field shall contain the value zero if the articulated part is
    * attached directly to the entity. */
-  unsigned short _partAttachedTo;
+  uint16_t _partAttachedTo;
 
   /** The location or station to which the part is attached */
-  unsigned int _parameterType;
+  uint32_t _parameterType;
 
   /** The definition of the 64 bits shall be determined based on the type of
    * parameter specified in the Parameter Type field  */
-  unsigned long long _attachedPartType;
+  uint64_t _attachedPartType;
 
  public:
   AttachedParts();
@@ -40,20 +40,20 @@ class OPENDIS7_EXPORT AttachedParts {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned char getRecordType() const;
-  void setRecordType(unsigned char pX);
+  uint8_t getRecordType() const;
+  void setRecordType(uint8_t pX);
 
-  unsigned char getDetachedIndicator() const;
-  void setDetachedIndicator(unsigned char pX);
+  uint8_t getDetachedIndicator() const;
+  void setDetachedIndicator(uint8_t pX);
 
-  unsigned short getPartAttachedTo() const;
-  void setPartAttachedTo(unsigned short pX);
+  uint16_t getPartAttachedTo() const;
+  void setPartAttachedTo(uint16_t pX);
 
-  unsigned int getParameterType() const;
-  void setParameterType(unsigned int pX);
+  uint32_t getParameterType() const;
+  void setParameterType(uint32_t pX);
 
-  unsigned long long getAttachedPartType() const;
-  void setAttachedPartType(unsigned long long pX);
+  uint64_t getAttachedPartType() const;
+  void setAttachedPartType(uint64_t pX);
 
   virtual int getMarshalledSize() const;
 

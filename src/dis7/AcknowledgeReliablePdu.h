@@ -17,13 +17,13 @@ class OPENDIS7_EXPORT AcknowledgeReliablePdu
     : public SimulationManagementWithReliabilityFamilyPdu {
  protected:
   /** ack flags */
-  unsigned short _acknowledgeFlag;
+  uint16_t _acknowledgeFlag;
 
   /** response flags */
-  unsigned short _responseFlag;
+  uint16_t _responseFlag;
 
   /** Request ID */
-  unsigned int _requestID;
+  uint32_t _requestID;
 
  public:
   AcknowledgeReliablePdu();
@@ -32,14 +32,14 @@ class OPENDIS7_EXPORT AcknowledgeReliablePdu
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getAcknowledgeFlag() const;
-  void setAcknowledgeFlag(unsigned short pX);
+  uint16_t getAcknowledgeFlag() const;
+  void setAcknowledgeFlag(uint16_t pX);
 
-  unsigned short getResponseFlag() const;
-  void setResponseFlag(unsigned short pX);
+  uint16_t getResponseFlag() const;
+  void setResponseFlag(uint16_t pX);
 
-  unsigned int getRequestID() const;
-  void setRequestID(unsigned int pX);
+  uint32_t getRequestID() const;
+  void setRequestID(uint32_t pX);
 
   virtual int getMarshalledSize() const;
 

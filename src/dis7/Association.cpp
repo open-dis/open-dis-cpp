@@ -10,17 +10,17 @@ Association::Association()
 
 Association::~Association() {}
 
-unsigned char Association::getAssociationType() const {
+uint8_t Association::getAssociationType() const {
   return _associationType;
 }
 
-void Association::setAssociationType(unsigned char pX) {
+void Association::setAssociationType(uint8_t pX) {
   _associationType = pX;
 }
 
-unsigned char Association::getPadding4() const { return _padding4; }
+uint8_t Association::getPadding4() const { return _padding4; }
 
-void Association::setPadding4(unsigned char pX) { _padding4 = pX; }
+void Association::setPadding4(uint8_t pX) { _padding4 = pX; }
 
 EntityID& Association::getAssociatedEntityID() { return _associatedEntityID; }
 

@@ -44,9 +44,9 @@ const EventIdentifier& CollisionPdu::getEventID() const { return _eventID; }
 
 void CollisionPdu::setEventID(const EventIdentifier& pX) { _eventID = pX; }
 
-unsigned char CollisionPdu::getCollisionType() const { return _collisionType; }
+uint8_t CollisionPdu::getCollisionType() const { return _collisionType; }
 
-void CollisionPdu::setCollisionType(unsigned char pX) { _collisionType = pX; }
+void CollisionPdu::setCollisionType(uint8_t pX) { _collisionType = pX; }
 
 char CollisionPdu::getPad() const { return _pad; }
 

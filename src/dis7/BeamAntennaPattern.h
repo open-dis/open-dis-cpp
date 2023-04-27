@@ -28,9 +28,9 @@ class OPENDIS7_EXPORT BeamAntennaPattern {
 
   float _referenceSystem;
 
-  unsigned char _padding1;
+  uint8_t _padding1;
 
-  unsigned short _padding2;
+  uint16_t _padding2;
 
   /** This field shall specify the magnitude of the Z-component (in beam
    * coordinates) of the Electrical field at some arbitrary single point in the
@@ -50,7 +50,7 @@ class OPENDIS7_EXPORT BeamAntennaPattern {
   float _phase;
 
   /** padding */
-  unsigned int _padding3;
+  uint32_t _padding3;
 
  public:
   BeamAntennaPattern();
@@ -72,11 +72,11 @@ class OPENDIS7_EXPORT BeamAntennaPattern {
   float getReferenceSystem() const;
   void setReferenceSystem(float pX);
 
-  unsigned char getPadding1() const;
-  void setPadding1(unsigned char pX);
+  uint8_t getPadding1() const;
+  void setPadding1(uint8_t pX);
 
-  unsigned short getPadding2() const;
-  void setPadding2(unsigned short pX);
+  uint16_t getPadding2() const;
+  void setPadding2(uint16_t pX);
 
   float getEz() const;
   void setEz(float pX);
@@ -87,8 +87,8 @@ class OPENDIS7_EXPORT BeamAntennaPattern {
   float getPhase() const;
   void setPhase(float pX);
 
-  unsigned int getPadding3() const;
-  void setPadding3(unsigned int pX);
+  uint32_t getPadding3() const;
+  void setPadding3(uint32_t pX);
 
   virtual int getMarshalledSize() const;
 

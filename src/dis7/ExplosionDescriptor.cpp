@@ -22,17 +22,17 @@ void ExplosionDescriptor::setExplodingObject(const EntityType& pX) {
   _explodingObject = pX;
 }
 
-unsigned short ExplosionDescriptor::getExplosiveMaterial() const {
+uint16_t ExplosionDescriptor::getExplosiveMaterial() const {
   return _explosiveMaterial;
 }
 
-void ExplosionDescriptor::setExplosiveMaterial(unsigned short pX) {
+void ExplosionDescriptor::setExplosiveMaterial(uint16_t pX) {
   _explosiveMaterial = pX;
 }
 
-unsigned short ExplosionDescriptor::getPadding() const { return _padding; }
+uint16_t ExplosionDescriptor::getPadding() const { return _padding; }
 
-void ExplosionDescriptor::setPadding(unsigned short pX) { _padding = pX; }
+void ExplosionDescriptor::setPadding(uint16_t pX) { _padding = pX; }
 
 float ExplosionDescriptor::getExplosiveForce() const { return _explosiveForce; }
 

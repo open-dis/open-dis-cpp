@@ -19,11 +19,11 @@ void UnattachedIdentifier::setSimulationAddress(const SimulationAddress& pX) {
   _simulationAddress = pX;
 }
 
-unsigned short UnattachedIdentifier::getReferenceNumber() const {
+uint16_t UnattachedIdentifier::getReferenceNumber() const {
   return _referenceNumber;
 }
 
-void UnattachedIdentifier::setReferenceNumber(unsigned short pX) {
+void UnattachedIdentifier::setReferenceNumber(uint16_t pX) {
   _referenceNumber = pX;
 }
 

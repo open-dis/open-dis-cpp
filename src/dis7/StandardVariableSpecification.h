@@ -18,7 +18,7 @@ namespace DIS {
 class OPENDIS7_EXPORT StandardVariableSpecification {
  protected:
   /** Number of static variable records */
-  unsigned short _numberOfStandardVariableRecords;
+  uint16_t _numberOfStandardVariableRecords;
 
   /** variable length list of standard variables, The class type and length here
    * are WRONG and will cause the incorrect serialization of any class in whihc
@@ -32,7 +32,7 @@ class OPENDIS7_EXPORT StandardVariableSpecification {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned short getNumberOfStandardVariableRecords() const;
+  uint16_t getNumberOfStandardVariableRecords() const;
 
   std::vector<SimulationManagementPduHeader>& getStandardVariables();
   const std::vector<SimulationManagementPduHeader>& getStandardVariables()

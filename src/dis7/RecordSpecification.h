@@ -18,7 +18,7 @@ namespace DIS {
 class OPENDIS7_EXPORT RecordSpecification {
  protected:
   /** The number of record sets */
-  unsigned int _numberOfRecordSets;
+  uint32_t _numberOfRecordSets;
 
   /** variable length list record specifications. */
   std::vector<RecordSpecificationElement> _recordSets;
@@ -30,7 +30,7 @@ class OPENDIS7_EXPORT RecordSpecification {
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
 
-  unsigned int getNumberOfRecordSets() const;
+  uint32_t getNumberOfRecordSets() const;
 
   std::vector<RecordSpecificationElement>& getRecordSets();
   const std::vector<RecordSpecificationElement>& getRecordSets() const;

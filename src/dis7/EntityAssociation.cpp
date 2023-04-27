@@ -15,31 +15,31 @@ EntityAssociation::EntityAssociation()
 
 EntityAssociation::~EntityAssociation() {}
 
-unsigned char EntityAssociation::getRecordType() const { return _recordType; }
+uint8_t EntityAssociation::getRecordType() const { return _recordType; }
 
-void EntityAssociation::setRecordType(unsigned char pX) { _recordType = pX; }
+void EntityAssociation::setRecordType(uint8_t pX) { _recordType = pX; }
 
-unsigned char EntityAssociation::getChangeIndicator() const {
+uint8_t EntityAssociation::getChangeIndicator() const {
   return _changeIndicator;
 }
 
-void EntityAssociation::setChangeIndicator(unsigned char pX) {
+void EntityAssociation::setChangeIndicator(uint8_t pX) {
   _changeIndicator = pX;
 }
 
-unsigned char EntityAssociation::getAssociationStatus() const {
+uint8_t EntityAssociation::getAssociationStatus() const {
   return _associationStatus;
 }
 
-void EntityAssociation::setAssociationStatus(unsigned char pX) {
+void EntityAssociation::setAssociationStatus(uint8_t pX) {
   _associationStatus = pX;
 }
 
-unsigned char EntityAssociation::getAssociationType() const {
+uint8_t EntityAssociation::getAssociationType() const {
   return _associationType;
 }
 
-void EntityAssociation::setAssociationType(unsigned char pX) {
+void EntityAssociation::setAssociationType(uint8_t pX) {
   _associationType = pX;
 }
 
@@ -49,35 +49,35 @@ const EntityID& EntityAssociation::getEntityID() const { return _entityID; }
 
 void EntityAssociation::setEntityID(const EntityID& pX) { _entityID = pX; }
 
-unsigned short EntityAssociation::getOwsSttionLocation() const {
+uint16_t EntityAssociation::getOwsSttionLocation() const {
   return _owsSttionLocation;
 }
 
-void EntityAssociation::setOwsSttionLocation(unsigned short pX) {
+void EntityAssociation::setOwsSttionLocation(uint16_t pX) {
   _owsSttionLocation = pX;
 }
 
-unsigned short EntityAssociation::getPhysicalConnectionType() const {
+uint16_t EntityAssociation::getPhysicalConnectionType() const {
   return _physicalConnectionType;
 }
 
-void EntityAssociation::setPhysicalConnectionType(unsigned short pX) {
+void EntityAssociation::setPhysicalConnectionType(uint16_t pX) {
   _physicalConnectionType = pX;
 }
 
-unsigned char EntityAssociation::getGroupMemberType() const {
+uint8_t EntityAssociation::getGroupMemberType() const {
   return _groupMemberType;
 }
 
-void EntityAssociation::setGroupMemberType(unsigned char pX) {
+void EntityAssociation::setGroupMemberType(uint8_t pX) {
   _groupMemberType = pX;
 }
 
-unsigned short EntityAssociation::getGroupNumber() const {
+uint16_t EntityAssociation::getGroupNumber() const {
   return _groupNumber;
 }
 
-void EntityAssociation::setGroupNumber(unsigned short pX) { _groupNumber = pX; }
+void EntityAssociation::setGroupNumber(uint16_t pX) { _groupNumber = pX; }
 
 void EntityAssociation::marshal(DataStream& dataStream) const {
   dataStream << _recordType;

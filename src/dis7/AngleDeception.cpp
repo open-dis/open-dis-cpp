@@ -22,39 +22,39 @@ AngleDeception::AngleDeception()
 
 AngleDeception::~AngleDeception() {}
 
-unsigned int AngleDeception::getRecordType() const { return _recordType; }
+uint32_t AngleDeception::getRecordType() const { return _recordType; }
 
-void AngleDeception::setRecordType(unsigned int pX) { _recordType = pX; }
+void AngleDeception::setRecordType(uint32_t pX) { _recordType = pX; }
 
-unsigned short AngleDeception::getRecordLength() const { return _recordLength; }
+uint16_t AngleDeception::getRecordLength() const { return _recordLength; }
 
-void AngleDeception::setRecordLength(unsigned short pX) { _recordLength = pX; }
+void AngleDeception::setRecordLength(uint16_t pX) { _recordLength = pX; }
 
-unsigned short AngleDeception::getPadding() const { return _padding; }
+uint16_t AngleDeception::getPadding() const { return _padding; }
 
-void AngleDeception::setPadding(unsigned short pX) { _padding = pX; }
+void AngleDeception::setPadding(uint16_t pX) { _padding = pX; }
 
-unsigned char AngleDeception::getEmitterNumber() const {
+uint8_t AngleDeception::getEmitterNumber() const {
   return _emitterNumber;
 }
 
-void AngleDeception::setEmitterNumber(unsigned char pX) { _emitterNumber = pX; }
+void AngleDeception::setEmitterNumber(uint8_t pX) { _emitterNumber = pX; }
 
-unsigned char AngleDeception::getBeamNumber() const { return _beamNumber; }
+uint8_t AngleDeception::getBeamNumber() const { return _beamNumber; }
 
-void AngleDeception::setBeamNumber(unsigned char pX) { _beamNumber = pX; }
+void AngleDeception::setBeamNumber(uint8_t pX) { _beamNumber = pX; }
 
-unsigned char AngleDeception::getStateIndicator() const {
+uint8_t AngleDeception::getStateIndicator() const {
   return _stateIndicator;
 }
 
-void AngleDeception::setStateIndicator(unsigned char pX) {
+void AngleDeception::setStateIndicator(uint8_t pX) {
   _stateIndicator = pX;
 }
 
-unsigned int AngleDeception::getPadding2() const { return _padding2; }
+uint32_t AngleDeception::getPadding2() const { return _padding2; }
 
-void AngleDeception::setPadding2(unsigned int pX) { _padding2 = pX; }
+void AngleDeception::setPadding2(uint32_t pX) { _padding2 = pX; }
 
 float AngleDeception::getAzimuthOffset() const { return _azimuthOffset; }
 
@@ -98,9 +98,9 @@ void AngleDeception::setElevationPullAcceleration(float pX) {
   _elevationPullAcceleration = pX;
 }
 
-unsigned int AngleDeception::getPadding3() const { return _padding3; }
+uint32_t AngleDeception::getPadding3() const { return _padding3; }
 
-void AngleDeception::setPadding3(unsigned int pX) { _padding3 = pX; }
+void AngleDeception::setPadding3(uint32_t pX) { _padding3 = pX; }
 
 void AngleDeception::marshal(DataStream& dataStream) const {
   dataStream << _recordType;

@@ -26,19 +26,19 @@ class OPENDIS7_EXPORT MinefieldStatePdu : public MinefieldFamilyPdu {
   MinefieldIdentifier _minefieldID;
 
   /** Minefield sequence */
-  unsigned short _minefieldSequence;
+  uint16_t _minefieldSequence;
 
   /** force ID */
-  unsigned char _forceID;
+  uint8_t _forceID;
 
   /** Number of permieter points */
-  unsigned char _numberOfPerimeterPoints;
+  uint8_t _numberOfPerimeterPoints;
 
   /** type of minefield */
   EntityType _minefieldType;
 
   /** how many mine types */
-  unsigned short _numberOfMineTypes;
+  uint16_t _numberOfMineTypes;
 
   /** location of center of minefield in world coords */
   Vector3Double _minefieldLocation;
@@ -47,10 +47,10 @@ class OPENDIS7_EXPORT MinefieldStatePdu : public MinefieldFamilyPdu {
   EulerAngles _minefieldOrientation;
 
   /** appearance bitflags */
-  unsigned short _appearance;
+  uint16_t _appearance;
 
   /** protocolMode. First two bits are the protocol mode, 14 bits reserved. */
-  unsigned short _protocolMode;
+  uint16_t _protocolMode;
 
   /** perimeter points for the minefield */
   std::vector<Vector2Float> _perimeterPoints;
@@ -69,19 +69,19 @@ class OPENDIS7_EXPORT MinefieldStatePdu : public MinefieldFamilyPdu {
   const MinefieldIdentifier& getMinefieldID() const;
   void setMinefieldID(const MinefieldIdentifier& pX);
 
-  unsigned short getMinefieldSequence() const;
-  void setMinefieldSequence(unsigned short pX);
+  uint16_t getMinefieldSequence() const;
+  void setMinefieldSequence(uint16_t pX);
 
-  unsigned char getForceID() const;
-  void setForceID(unsigned char pX);
+  uint8_t getForceID() const;
+  void setForceID(uint8_t pX);
 
-  unsigned char getNumberOfPerimeterPoints() const;
+  uint8_t getNumberOfPerimeterPoints() const;
 
   EntityType& getMinefieldType();
   const EntityType& getMinefieldType() const;
   void setMinefieldType(const EntityType& pX);
 
-  unsigned short getNumberOfMineTypes() const;
+  uint16_t getNumberOfMineTypes() const;
 
   Vector3Double& getMinefieldLocation();
   const Vector3Double& getMinefieldLocation() const;
@@ -91,11 +91,11 @@ class OPENDIS7_EXPORT MinefieldStatePdu : public MinefieldFamilyPdu {
   const EulerAngles& getMinefieldOrientation() const;
   void setMinefieldOrientation(const EulerAngles& pX);
 
-  unsigned short getAppearance() const;
-  void setAppearance(unsigned short pX);
+  uint16_t getAppearance() const;
+  void setAppearance(uint16_t pX);
 
-  unsigned short getProtocolMode() const;
-  void setProtocolMode(unsigned short pX);
+  uint16_t getProtocolMode() const;
+  void setProtocolMode(uint16_t pX);
 
   std::vector<Vector2Float>& getPerimeterPoints();
   const std::vector<Vector2Float>& getPerimeterPoints() const;
