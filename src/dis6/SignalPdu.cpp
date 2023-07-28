@@ -4,7 +4,8 @@ using namespace DIS;
 
 SignalPdu::SignalPdu()
     : RadioCommunicationsFamilyPdu(), _encodingScheme(0), _tdlType(0),
-      _sampleRate(0), _dataLength(0), _samples(0) {
+      _sampleRate(0), _dataLength(0), _samples(0)
+{
   setPduType(26);
 }
 
@@ -22,7 +23,9 @@ unsigned int SignalPdu::getSampleRate() const { return _sampleRate; }
 
 void SignalPdu::setSampleRate(unsigned int pX) { _sampleRate = pX; }
 
-short SignalPdu::getDataLength() const { return _data.size(); }
+short SignalPdu::getDataLength() const { return _dataLength; }
+
+void SignalPdu::setDataLength(short pX) { _dataLength = pX; }
 
 short SignalPdu::getSamples() const { return _samples; }
 
@@ -34,20 +37,23 @@ const std::vector<uint8_t> &SignalPdu::getData() const { return _data; }
 
 void SignalPdu::setData(const std::vector<uint8_t> &pX) { _data = pX; }
 
-void SignalPdu::marshal(DataStream &dataStream) const {
+void SignalPdu::marshal(DataStream &dataStream) const
+{
   RadioCommunicationsFamilyPdu::marshal(
       dataStream); // Marshal information in superclass first
   dataStream << _encodingScheme;
   dataStream << _tdlType;
   dataStream << _sampleRate;
-  dataStream << (short)_data.size();
+  dataStream << (short)_dataLength;
   dataStream << _samples;
-  for (auto byte : _data) {
+  for (auto byte : _data)
+  {
     dataStream << byte;
   }
 }
 
-void SignalPdu::unmarshal(DataStream &dataStream) {
+void SignalPdu::unmarshal(DataStream &dataStream)
+{
   RadioCommunicationsFamilyPdu::unmarshal(
       dataStream); // unmarshal information in superclass first
   dataStream >> _encodingScheme;
@@ -57,14 +63,17 @@ void SignalPdu::unmarshal(DataStream &dataStream) {
   dataStream >> _samples;
 
   _data.clear();
-  for (auto idx = 0; idx < _dataLength; ++idx) {
+  const int dataLengthBytes = (_dataLength + 7) / 8; // bits to bytes
+  for (auto idx = 0; idx < dataLengthBytes; ++idx)
+  {
     uint8_t x;
     dataStream >> x;
     _data.push_back(x);
   }
 }
 
-bool SignalPdu::operator==(const SignalPdu &rhs) const {
+bool SignalPdu::operator==(const SignalPdu &rhs) const
+{
   auto ivarsEqual = true;
 
   ivarsEqual = RadioCommunicationsFamilyPdu::operator==(rhs) &&
@@ -75,7 +84,8 @@ bool SignalPdu::operator==(const SignalPdu &rhs) const {
   return ivarsEqual;
 }
 
-int SignalPdu::getMarshalledSize() const {
+int SignalPdu::getMarshalledSize() const
+{
   auto marshalSize = 0;
 
   marshalSize = RadioCommunicationsFamilyPdu::getMarshalledSize();
