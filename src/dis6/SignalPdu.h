@@ -6,66 +6,69 @@
 #include <cstdint>
 #include <vector>
 
-namespace DIS {
-// Section 5.3.8.2. Detailed information about a radio transmitter. This PDU
-// requires        manually written code to complete. The encodingScheme field
-// can be used in multiple        ways, which requires hand-written code to
-// finish. UNFINISHED
+namespace DIS
+{
+  // Section 5.3.8.2. Detailed information about a radio transmitter. This PDU
+  // requires        manually written code to complete. The encodingScheme field
+  // can be used in multiple        ways, which requires hand-written code to
+  // finish. UNFINISHED
 
-// Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
-// rights reserved.
-//
-// @author DMcG, jkg
+  // Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
+  // rights reserved.
+  //
+  // @author DMcG, jkg
 
-class OPENDIS6_EXPORT SignalPdu : public RadioCommunicationsFamilyPdu {
-protected:
-  /** encoding scheme used, and enumeration */
-  unsigned short _encodingScheme;
+  class OPENDIS6_EXPORT SignalPdu : public RadioCommunicationsFamilyPdu
+  {
+  protected:
+    /** encoding scheme used, and enumeration */
+    unsigned short _encodingScheme;
 
-  /** tdl type */
-  unsigned short _tdlType;
+    /** tdl type */
+    unsigned short _tdlType;
 
-  /** sample rate */
-  unsigned int _sampleRate;
+    /** sample rate */
+    unsigned int _sampleRate;
 
-  /** length od data */
-  short _dataLength;
+    /** length od data */
+    short _dataLength;
 
-  /** number of samples */
-  short _samples;
+    /** number of samples */
+    short _samples;
 
-  /** list of eight bit values */
-  std::vector<uint8_t> _data;
+    /** list of eight bit values */
+    std::vector<uint8_t> _data;
 
-public:
-  SignalPdu();
-  virtual ~SignalPdu();
+  public:
+    SignalPdu();
+    virtual ~SignalPdu();
 
-  virtual void marshal(DataStream &dataStream) const;
-  virtual void unmarshal(DataStream &dataStream);
+    virtual void marshal(DataStream &dataStream) const;
+    virtual void unmarshal(DataStream &dataStream);
 
-  unsigned short getEncodingScheme() const;
-  void setEncodingScheme(unsigned short pX);
+    unsigned short getEncodingScheme() const;
+    void setEncodingScheme(unsigned short pX);
 
-  unsigned short getTdlType() const;
-  void setTdlType(unsigned short pX);
+    unsigned short getTdlType() const;
+    void setTdlType(unsigned short pX);
 
-  unsigned int getSampleRate() const;
-  void setSampleRate(unsigned int pX);
+    unsigned int getSampleRate() const;
+    void setSampleRate(unsigned int pX);
 
-  short getDataLength() const;
+    short getDataLength() const;
+    void setDataLength(short pX);
 
-  short getSamples() const;
-  void setSamples(short pX);
+    short getSamples() const;
+    void setSamples(short pX);
 
-  std::vector<uint8_t> &getData();
-  const std::vector<uint8_t> &getData() const;
-  void setData(const std::vector<uint8_t> &pX);
+    std::vector<uint8_t> &getData();
+    const std::vector<uint8_t> &getData() const;
+    void setData(const std::vector<uint8_t> &pX);
 
-  virtual int getMarshalledSize() const;
+    virtual int getMarshalledSize() const;
 
-  bool operator==(const SignalPdu &rhs) const;
-};
+    bool operator==(const SignalPdu &rhs) const;
+  };
 } // namespace DIS
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
