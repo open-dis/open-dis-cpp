@@ -1,8 +1,8 @@
-#include "dis6/UaPdu.h"
+#include "dis6/distributed_emissions/UnderwaterAcousticsPdu.h"
 
 using namespace DIS;
 
-UaPdu::UaPdu()
+UnderwaterAcousticsPdu::UnderwaterAcousticsPdu()
     : DistributedEmissionsFamilyPdu(),
       _emittingEntityID(),
       _eventID(),
@@ -16,82 +16,108 @@ UaPdu::UaPdu()
   setPduType(29);
 }
 
-UaPdu::~UaPdu() {
+UnderwaterAcousticsPdu::~UnderwaterAcousticsPdu() {
   _shaftRPMs.clear();
   _apaData.clear();
   _emitterSystems.clear();
 }
 
-EntityID& UaPdu::getEmittingEntityID() { return _emittingEntityID; }
+EntityID& UnderwaterAcousticsPdu::getEmittingEntityID() {
+  return _emittingEntityID;
+}
 
-const EntityID& UaPdu::getEmittingEntityID() const { return _emittingEntityID; }
+const EntityID& UnderwaterAcousticsPdu::getEmittingEntityID() const {
+  return _emittingEntityID;
+}
 
-void UaPdu::setEmittingEntityID(const EntityID& pX) { _emittingEntityID = pX; }
+void UnderwaterAcousticsPdu::setEmittingEntityID(const EntityID& pX) {
+  _emittingEntityID = pX;
+}
 
-EventID& UaPdu::getEventID() { return _eventID; }
+EventID& UnderwaterAcousticsPdu::getEventID() { return _eventID; }
 
-const EventID& UaPdu::getEventID() const { return _eventID; }
+const EventID& UnderwaterAcousticsPdu::getEventID() const { return _eventID; }
 
-void UaPdu::setEventID(const EventID& pX) { _eventID = pX; }
+void UnderwaterAcousticsPdu::setEventID(const EventID& pX) { _eventID = pX; }
 
-char UaPdu::getStateChangeIndicator() const { return _stateChangeIndicator; }
+char UnderwaterAcousticsPdu::getStateChangeIndicator() const {
+  return _stateChangeIndicator;
+}
 
-void UaPdu::setStateChangeIndicator(char pX) { _stateChangeIndicator = pX; }
+void UnderwaterAcousticsPdu::setStateChangeIndicator(char pX) {
+  _stateChangeIndicator = pX;
+}
 
-char UaPdu::getPad() const { return _pad; }
+char UnderwaterAcousticsPdu::getPad() const { return _pad; }
 
-void UaPdu::setPad(char pX) { _pad = pX; }
+void UnderwaterAcousticsPdu::setPad(char pX) { _pad = pX; }
 
-uint16_t UaPdu::getPassiveParameterIndex() const {
+uint16_t UnderwaterAcousticsPdu::getPassiveParameterIndex() const {
   return _passiveParameterIndex;
 }
 
-void UaPdu::setPassiveParameterIndex(uint16_t pX) {
+void UnderwaterAcousticsPdu::setPassiveParameterIndex(uint16_t pX) {
   _passiveParameterIndex = pX;
 }
 
-uint8_t UaPdu::getPropulsionPlantConfiguration() const {
+uint8_t UnderwaterAcousticsPdu::getPropulsionPlantConfiguration() const {
   return _propulsionPlantConfiguration;
 }
 
-void UaPdu::setPropulsionPlantConfiguration(uint8_t pX) {
+void UnderwaterAcousticsPdu::setPropulsionPlantConfiguration(uint8_t pX) {
   _propulsionPlantConfiguration = pX;
 }
 
-uint8_t UaPdu::getNumberOfShafts() const { return _shaftRPMs.size(); }
+uint8_t UnderwaterAcousticsPdu::getNumberOfShafts() const {
+  return _shaftRPMs.size();
+}
 
-uint8_t UaPdu::getNumberOfAPAs() const { return _apaData.size(); }
+uint8_t UnderwaterAcousticsPdu::getNumberOfAPAs() const {
+  return _apaData.size();
+}
 
-uint8_t UaPdu::getNumberOfUAEmitterSystems() const {
+uint8_t UnderwaterAcousticsPdu::getNumberOfUAEmitterSystems() const {
   return _emitterSystems.size();
 }
 
-std::vector<ShaftRPMs>& UaPdu::getShaftRPMs() { return _shaftRPMs; }
+std::vector<ShaftRPMs>& UnderwaterAcousticsPdu::getShaftRPMs() {
+  return _shaftRPMs;
+}
 
-const std::vector<ShaftRPMs>& UaPdu::getShaftRPMs() const { return _shaftRPMs; }
+const std::vector<ShaftRPMs>& UnderwaterAcousticsPdu::getShaftRPMs() const {
+  return _shaftRPMs;
+}
 
-void UaPdu::setShaftRPMs(const std::vector<ShaftRPMs>& pX) { _shaftRPMs = pX; }
+void UnderwaterAcousticsPdu::setShaftRPMs(const std::vector<ShaftRPMs>& pX) {
+  _shaftRPMs = pX;
+}
 
-std::vector<ApaData>& UaPdu::getApaData() { return _apaData; }
+std::vector<ApaData>& UnderwaterAcousticsPdu::getApaData() { return _apaData; }
 
-const std::vector<ApaData>& UaPdu::getApaData() const { return _apaData; }
+const std::vector<ApaData>& UnderwaterAcousticsPdu::getApaData() const {
+  return _apaData;
+}
 
-void UaPdu::setApaData(const std::vector<ApaData>& pX) { _apaData = pX; }
+void UnderwaterAcousticsPdu::setApaData(const std::vector<ApaData>& pX) {
+  _apaData = pX;
+}
 
-std::vector<AcousticEmitterSystemData>& UaPdu::getEmitterSystems() {
+std::vector<AcousticEmitterSystemData>&
+UnderwaterAcousticsPdu::getEmitterSystems() {
   return _emitterSystems;
 }
 
-const std::vector<AcousticEmitterSystemData>& UaPdu::getEmitterSystems() const {
+const std::vector<AcousticEmitterSystemData>&
+UnderwaterAcousticsPdu::getEmitterSystems() const {
   return _emitterSystems;
 }
 
-void UaPdu::setEmitterSystems(
+void UnderwaterAcousticsPdu::setEmitterSystems(
     const std::vector<AcousticEmitterSystemData>& pX) {
   _emitterSystems = pX;
 }
 
-void UaPdu::marshal(DataStream& dataStream) const {
+void UnderwaterAcousticsPdu::marshal(DataStream& dataStream) const {
   DistributedEmissionsFamilyPdu::marshal(
       dataStream);  // Marshal information in superclass first
   _emittingEntityID.marshal(dataStream);
@@ -120,7 +146,7 @@ void UaPdu::marshal(DataStream& dataStream) const {
   }
 }
 
-void UaPdu::unmarshal(DataStream& dataStream) {
+void UnderwaterAcousticsPdu::unmarshal(DataStream& dataStream) {
   DistributedEmissionsFamilyPdu::unmarshal(
       dataStream);  // unmarshal information in superclass first
   _emittingEntityID.unmarshal(dataStream);
@@ -155,7 +181,8 @@ void UaPdu::unmarshal(DataStream& dataStream) {
   }
 }
 
-bool UaPdu::operator==(const UaPdu& rhs) const {
+bool UnderwaterAcousticsPdu::operator==(
+    const UnderwaterAcousticsPdu& rhs) const {
   bool ivarsEqual = true;
 
   ivarsEqual = DistributedEmissionsFamilyPdu::operator==(rhs);
@@ -184,7 +211,7 @@ bool UaPdu::operator==(const UaPdu& rhs) const {
   return ivarsEqual;
 }
 
-int UaPdu::getMarshalledSize() const {
+int UnderwaterAcousticsPdu::getMarshalledSize() const {
   int marshalSize = 0;
 
   marshalSize = DistributedEmissionsFamilyPdu::getMarshalledSize();

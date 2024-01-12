@@ -21,7 +21,8 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT UaPdu : public DistributedEmissionsFamilyPdu {
+class OPENDIS6_EXPORT UnderwaterAcousticsPdu
+    : public DistributedEmissionsFamilyPdu {
  protected:
   /** ID of the entity that is the source of the emission */
   EntityID _emittingEntityID;
@@ -69,8 +70,8 @@ class OPENDIS6_EXPORT UaPdu : public DistributedEmissionsFamilyPdu {
   std::vector<AcousticEmitterSystemData> _emitterSystems;
 
  public:
-  UaPdu();
-  virtual ~UaPdu();
+  UnderwaterAcousticsPdu();
+  virtual ~UnderwaterAcousticsPdu();
 
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
@@ -115,7 +116,7 @@ class OPENDIS6_EXPORT UaPdu : public DistributedEmissionsFamilyPdu {
 
   virtual int getMarshalledSize() const;
 
-  bool operator==(const UaPdu& rhs) const;
+  bool operator==(const UnderwaterAcousticsPdu& rhs) const;
 };
 }  // namespace DIS
 

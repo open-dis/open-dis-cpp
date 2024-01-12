@@ -1,5 +1,16 @@
 add_subdirectory(utils)
 
+add_subdirectory(distributed_emissions)
+add_subdirectory(entity_information)
+add_subdirectory(entity_management)
+add_subdirectory(logistics)
+add_subdirectory(minefield)
+add_subdirectory(radio_communications)
+add_subdirectory(simulation_management)
+add_subdirectory(simulation_management_with_reliability)
+add_subdirectory(synthetic_environment)
+add_subdirectory(warfare)
+
 # Create list of all headers
 set(dis6_hdr
   AcknowledgePdu.h

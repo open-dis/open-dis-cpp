@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdint>
 #include "dis6/SimulationManagementFamilyPdu.h"
 #include "dis6/opendis6_export.h"
 #include "dis6/utils/DataStream.h"

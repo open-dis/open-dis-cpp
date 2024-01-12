@@ -10,9 +10,7 @@ uint16_t SimulationAddress::getSite() const { return _site; }
 
 void SimulationAddress::setSite(uint16_t pX) { _site = pX; }
 
-uint16_t SimulationAddress::getApplication() const {
-  return _application;
-}
+uint16_t SimulationAddress::getApplication() const { return _application; }
 
 void SimulationAddress::setApplication(uint16_t pX) { _application = pX; }
 
