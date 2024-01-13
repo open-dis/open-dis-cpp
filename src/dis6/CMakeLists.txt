@@ -20,37 +20,25 @@ set(dis6_hdr
   AcousticEmitterSystemData.h
   AggregateID.h
   AggregateMarking.h
-  AggregateStatePdu.h
   AggregateType.h
   AngularVelocityVector.h
   AntennaLocation.h
   ApaData.h
-  ArealObjectStatePdu.h
   ArticulationParameter.h
   BeamAntennaPattern.h
   BeamData.h
   BurstDescriptor.h
-  CollisionElasticPdu.h
-  CollisionPdu.h
   EightByteChunk.h
-  EntityStateUpdatePdu.h
   Environment.h
-  EnvironmentalProcessPdu.h
   EventID.h
-  FastEntityStatePdu.h
   FixedDatum.h
   FourByteChunk.h
   GridAxisRecord.h
   GridAxisRecordRepresentation0.h
   GridAxisRecordRepresentation1.h
   GridAxisRecordRepresentation2.h
-  GriddedDataPdu.h
-  IsGroupOfPdu.h
-  IsPartOfPdu.h
   LayerHeader.h
-  LinearObjectStatePdu.h
   LinearSegmentParameter.h
-  LogisticsPdu.h
   Marking.h
   ModulationType.h
   NamedLocation.h
@@ -58,18 +46,14 @@ set(dis6_hdr
   Orientation.h
   PduContainer.h
   Point.h
-  PointObjectStatePdu.h
   PropulsionSystemData.h
   RecordSet.h
   Relationship.h
-  ServiceRequestPdu.h
   ShaftRPMs.h
   SixByteChunk.h
   SphericalHarmonicAntennaPattern.h
   SupplyQuantity.h
-  symbolic_names.h
   SystemID.h
-  TransferControlRequestPdu.h
   TwoByteChunk.h
   VariableDatum.h
   VectoringNozzleSystemData.h
@@ -84,37 +68,25 @@ set(dis6_src
   AcousticEmitterSystemData.cpp
   AggregateID.cpp
   AggregateMarking.cpp
-  AggregateStatePdu.cpp
   AggregateType.cpp
   AngularVelocityVector.cpp
   AntennaLocation.cpp
   ApaData.cpp
-  ArealObjectStatePdu.cpp
   ArticulationParameter.cpp
   BeamAntennaPattern.cpp
   BeamData.cpp
   BurstDescriptor.cpp
-  CollisionElasticPdu.cpp
-  CollisionPdu.cpp
   EightByteChunk.cpp
-  EntityStateUpdatePdu.cpp
   Environment.cpp
-  EnvironmentalProcessPdu.cpp
   EventID.cpp
-  FastEntityStatePdu.cpp
   FixedDatum.cpp
   FourByteChunk.cpp
   GridAxisRecord.cpp
   GridAxisRecordRepresentation0.cpp
   GridAxisRecordRepresentation1.cpp
   GridAxisRecordRepresentation2.cpp
-  GriddedDataPdu.cpp
-  IsGroupOfPdu.cpp
-  IsPartOfPdu.cpp
   LayerHeader.cpp
-  LinearObjectStatePdu.cpp
   LinearSegmentParameter.cpp
-  LogisticsPdu.cpp
   Marking.cpp
   ModulationType.cpp
   NamedLocation.cpp
@@ -122,17 +94,14 @@ set(dis6_src
   Orientation.cpp
   PduContainer.cpp
   Point.cpp
-  PointObjectStatePdu.cpp
   PropulsionSystemData.cpp
   RecordSet.cpp
   Relationship.cpp
-  ServiceRequestPdu.cpp
   ShaftRPMs.cpp
   SixByteChunk.cpp
   SphericalHarmonicAntennaPattern.cpp
   SupplyQuantity.cpp
   SystemID.cpp
-  TransferControlRequestPdu.cpp
   TwoByteChunk.cpp
   VariableDatum.cpp
   VectoringNozzleSystemData.cpp
