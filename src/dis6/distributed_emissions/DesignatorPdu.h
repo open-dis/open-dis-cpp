@@ -1,10 +1,10 @@
 #pragma once
 
-#include "dis6/DistributedEmissionsFamilyPdu.h"
 #include "dis6/EntityID.h"
 #include "dis6/Vector3Double.h"
 #include "dis6/Vector3Float.h"
-#include "dis6/opendis6_export.h"
+#include "dis6/distributed_emissions/DistributedEmissionsFamilyPdu.h"
+#include "dis6/distributed_emissions/opendis6_export.h"
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {

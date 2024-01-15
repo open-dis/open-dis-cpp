@@ -1,4 +1,4 @@
-#include "dis6/DesignatorPdu.h"
+#include "dis6/distributed_emissions/DesignatorPdu.h"
 
 using namespace DIS;
 
@@ -47,13 +47,9 @@ void DesignatorPdu::setDesignatedEntityID(const EntityID& pX) {
   _designatedEntityID = pX;
 }
 
-uint16_t DesignatorPdu::getDesignatorCode() const {
-  return _designatorCode;
-}
+uint16_t DesignatorPdu::getDesignatorCode() const { return _designatorCode; }
 
-void DesignatorPdu::setDesignatorCode(uint16_t pX) {
-  _designatorCode = pX;
-}
+void DesignatorPdu::setDesignatorCode(uint16_t pX) { _designatorCode = pX; }
 
 float DesignatorPdu::getDesignatorPower() const { return _designatorPower; }
 
