@@ -1,4 +1,4 @@
-#include "dis6/RecordSet.h"
+#include "dis6/common/RecordSet.h"
 
 using namespace DIS;
 

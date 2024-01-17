@@ -1,4 +1,4 @@
-#include "dis6/EightByteChunk.h"
+#include "dis6/common/EightByteChunk.h"
 
 using namespace DIS;
 

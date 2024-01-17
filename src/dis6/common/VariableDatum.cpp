@@ -1,6 +1,4 @@
-#include <iostream>
-
-#include "dis6/VariableDatum.h"
+#include "dis6/common/VariableDatum.h"
 
 using namespace DIS;
 
@@ -15,13 +13,9 @@ VariableDatum::~VariableDatum() {
   // delete [] _variableDatums;
 }
 
-uint32_t VariableDatum::getVariableDatumID() const {
-  return _variableDatumID;
-}
+uint32_t VariableDatum::getVariableDatumID() const { return _variableDatumID; }
 
-void VariableDatum::setVariableDatumID(uint32_t pX) {
-  _variableDatumID = pX;
-}
+void VariableDatum::setVariableDatumID(uint32_t pX) { _variableDatumID = pX; }
 
 uint32_t VariableDatum::getVariableDatumLength() const {
   return _variableDatumLength;
@@ -41,8 +35,7 @@ const char* VariableDatum::getVariableDatums() const {
   return _variableDatums.data();
 }
 
-void VariableDatum::setVariableDatums(const char* x,
-                                      const uint32_t length) {
+void VariableDatum::setVariableDatums(const char* x, const uint32_t length) {
   // convert and store length as bits
   _variableDatumLength = length * 8;
 
@@ -82,9 +75,6 @@ void VariableDatum::unmarshal(DataStream& dataStream) {
   if (byteLength % 8 > 0) chunks++;
   _arrayLength = chunks * 8;
 
-  // std::cout << "Variable datum #" << (int)_variableDatumID << " arrayLength="
-  // << (int)_arrayLength << " ";
-
   // .resize() might (theoretically) throw. want to catch? : what to do? zombie
   // datum?
   if (_variableDatums.size() < _arrayLength)
@@ -92,14 +82,10 @@ void VariableDatum::unmarshal(DataStream& dataStream) {
 
   for (uint32_t idx = 0; idx < _arrayLength; idx++) {
     dataStream >> _variableDatums[idx];
-    // std::cout << (int)_variableDatums[idx] << " ";
   }
-  // std::cout << std::endl;
   for (uint64_t idx = _arrayLength; idx < _variableDatums.size(); idx++) {
     _variableDatums[idx] = 0;
   }
-  // std::cout << " Created and copied data to new _variableDatums array" <<
-  // std::endl;
 }
 
 bool VariableDatum::operator==(const VariableDatum& rhs) const {

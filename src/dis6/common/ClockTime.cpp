@@ -1,4 +1,4 @@
-#include "dis6/ClockTime.h"
+#include "dis6/common/ClockTime.h"
 
 using namespace DIS;
 

@@ -1,4 +1,4 @@
-#include "dis6/EventID.h"
+#include "dis6/common/EventID.h"
 
 using namespace DIS;
 

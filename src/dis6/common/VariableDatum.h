@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include "dis6/opendis6_export.h"
+#include "dis6/common/opendis6_export.h"
 #include "dis6/utils/DataStream.h"
 
 // length in bytes for the variable data. This should be a dynamically allocated

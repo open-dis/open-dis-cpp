@@ -1,4 +1,4 @@
-#include "dis6/Vector3Double.h"
+#include "dis6/common/Vector3Double.h"
 
 using namespace DIS;
 
