@@ -1,9 +1,10 @@
 #pragma once
 
-#include "dis6/common/opendis6_export.h"
+#include <cstdint>
+
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // Section 5.2.5. Articulation parameters for  movable parts and attached parts
 // of an entity. Specifes wether or not a change has occured,  the part
 // identifcation of the articulated part to which it is attached, and the type
@@ -14,45 +15,45 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT ArticulationParameter {
+class ArticulationParameter {
  protected:
-  uint8_t _parameterTypeDesignator;
+  uint8_t parameter_type_designator_;
 
-  uint8_t _changeIndicator;
+  uint8_t change_indicator_;
 
-  uint16_t _partAttachedTo;
+  uint16_t part_attached_to_;
 
-  int _parameterType;
+  int parameter_type_;
 
-  double _parameterValue;
+  double parameter_value_;
 
  public:
   ArticulationParameter();
   virtual ~ArticulationParameter();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void Marshal(DataStream& dataStream) const;
+  virtual void Unmarshal(DataStream& dataStream);
 
-  uint8_t getParameterTypeDesignator() const;
-  void setParameterTypeDesignator(uint8_t pX);
+  [[nodiscard]] uint8_t GetParameterTypeDesignator() const;
+  void SetParameterTypeDesignator(uint8_t pX);
 
-  uint8_t getChangeIndicator() const;
-  void setChangeIndicator(uint8_t pX);
+  [[nodiscard]] uint8_t GetChangeIndicator() const;
+  void SetChangeIndicator(uint8_t pX);
 
-  uint16_t getPartAttachedTo() const;
-  void setPartAttachedTo(uint16_t pX);
+  [[nodiscard]] uint16_t GetPartAttachedTo() const;
+  void SetPartAttachedTo(uint16_t pX);
 
-  int getParameterType() const;
-  void setParameterType(int pX);
+  [[nodiscard]] int GetParameterType() const;
+  void SetParameterType(int pX);
 
-  double getParameterValue() const;
-  void setParameterValue(double pX);
+  [[nodiscard]] double GetParameterValue() const;
+  void SetParameterValue(double pX);
 
-  virtual int getMarshalledSize() const;
+  [[nodiscard]] virtual int GetMarshalledSize() const;
 
   bool operator==(const ArticulationParameter& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

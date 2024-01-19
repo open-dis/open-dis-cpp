@@ -1,4 +1,4 @@
-#include "dis6/AcousticBeamData.h"
+#include "dis6/distribued_emissions/AcousticBeamData.h"
 
 using namespace DIS;
 
@@ -10,17 +10,11 @@ AcousticBeamData::AcousticBeamData()
 
 AcousticBeamData::~AcousticBeamData() {}
 
-uint16_t AcousticBeamData::getBeamDataLength() const {
-  return _beamDataLength;
-}
+uint16_t AcousticBeamData::getBeamDataLength() const { return _beamDataLength; }
 
-void AcousticBeamData::setBeamDataLength(uint16_t pX) {
-  _beamDataLength = pX;
-}
+void AcousticBeamData::setBeamDataLength(uint16_t pX) { _beamDataLength = pX; }
 
-uint8_t AcousticBeamData::getBeamIDNumber() const {
-  return _beamIDNumber;
-}
+uint8_t AcousticBeamData::getBeamIDNumber() const { return _beamIDNumber; }
 
 void AcousticBeamData::setBeamIDNumber(uint8_t pX) { _beamIDNumber = pX; }
 

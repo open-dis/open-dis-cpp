@@ -1,4 +1,4 @@
-#include "dis6/DetonationPdu.h"
+#include "dis6/warfare/DetonationPdu.h"
 
 using namespace DIS;
 
@@ -72,13 +72,9 @@ void DetonationPdu::setLocationInEntityCoordinates(const Vector3Float& pX) {
   _locationInEntityCoordinates = pX;
 }
 
-uint8_t DetonationPdu::getDetonationResult() const {
-  return _detonationResult;
-}
+uint8_t DetonationPdu::getDetonationResult() const { return _detonationResult; }
 
-void DetonationPdu::setDetonationResult(uint8_t pX) {
-  _detonationResult = pX;
-}
+void DetonationPdu::setDetonationResult(uint8_t pX) { _detonationResult = pX; }
 
 uint8_t DetonationPdu::getNumberOfArticulationParameters() const {
   return _articulationParameters.size();
@@ -185,8 +181,7 @@ int DetonationPdu::getMarshalledSize() const {
   marshalSize = marshalSize + 1;  // _numberOfArticulationParameters
   marshalSize = marshalSize + 2;  // _pad
 
-  for (uint64_t idx = 0; idx < _articulationParameters.size();
-       idx++) {
+  for (uint64_t idx = 0; idx < _articulationParameters.size(); idx++) {
     ArticulationParameter listElement = _articulationParameters[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }

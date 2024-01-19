@@ -1,7 +1,7 @@
 #pragma once
 
-#include "dis6/AcousticBeamFundamentalParameter.h"
-#include "dis6/opendis6_export.h"
+#include "dis6/distributed_emissions/AcousticBeamFundamentalParameter.h"
+#include "dis6/distributed_emissions/opendis6_export.h"
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
