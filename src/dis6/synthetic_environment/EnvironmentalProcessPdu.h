@@ -6,7 +6,7 @@
 #include "dis6/EntityType.h"
 #include "dis6/Environment.h"
 #include "dis6/SyntheticEnvironmentFamilyPdu.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -19,7 +19,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT EnvironmentalProcessPdu
+class EnvironmentalProcessPdu
     : public SyntheticEnvironmentFamilyPdu {
  protected:
   /** Environmental process ID */

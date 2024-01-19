@@ -1,6 +1,6 @@
 #pragma once
 
-#include "dis6/common/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -12,7 +12,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT Orientation {
+class Orientation {
  protected:
   float _psi;
 

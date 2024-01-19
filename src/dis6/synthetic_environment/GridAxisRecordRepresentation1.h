@@ -4,7 +4,7 @@
 
 #include "dis6/GridAxisRecord.h"
 #include "dis6/TwoByteChunk.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -15,7 +15,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT GridAxisRecordRepresentation1 : public GridAxisRecord {
+class GridAxisRecordRepresentation1 : public GridAxisRecord {
  protected:
   /** constant scale factor */
   float _fieldScale;

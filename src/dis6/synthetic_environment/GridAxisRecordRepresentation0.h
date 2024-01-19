@@ -4,7 +4,7 @@
 #include <vector>
 
 #include "dis6/GridAxisRecord.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -15,7 +15,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT GridAxisRecordRepresentation0 : public GridAxisRecord {
+class GridAxisRecordRepresentation0 : public GridAxisRecord {
  protected:
   /** number of bytes of environmental state data */
   uint16_t _numberOfBytes;

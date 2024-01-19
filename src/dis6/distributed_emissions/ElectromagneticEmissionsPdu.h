@@ -6,7 +6,7 @@
 #include "dis6/ElectromagneticEmissionSystemData.h"
 #include "dis6/EntityID.h"
 #include "dis6/EventID.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -19,7 +19,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT ElectromagneticEmissionsPdu
+class ElectromagneticEmissionsPdu
     : public DistributedEmissionsFamilyPdu {
  protected:
   /** ID of the entity emitting */

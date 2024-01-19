@@ -1,8 +1,6 @@
-#include <iostream>  // for debug output
+#include "dis6/util/DataStream.h"
 
-#include <dis6/utils/DataStream.h>
-
-using namespace DIS;
+namespace dis {
 
 DataStream::DataStream(Endian stream)
     : _buffer(),
@@ -223,3 +221,5 @@ DataStream& DataStream::operator>>(int16_t& d) {
   ReadAlgorithm(d);
   return *this;
 }
+
+}  // namespace dis

@@ -7,7 +7,7 @@
 #include "dis6/RadioEntityType.h"
 #include "dis6/Vector3Double.h"
 #include "dis6/Vector3Float.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -20,7 +20,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT TransmitterPdu : public RadioCommunicationsFamilyPdu {
+class TransmitterPdu : public RadioCommunicationsFamilyPdu {
  protected:
   /** linear accelleration of entity */
   RadioEntityType _radioEntityType;

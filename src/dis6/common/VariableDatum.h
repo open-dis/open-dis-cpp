@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include "dis6/common/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 // length in bytes for the variable data. This should be a dynamically allocated
@@ -17,7 +17,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT VariableDatum {
+class VariableDatum {
  protected:
   /** ID of the variable datum */
   uint32_t _variableDatumID;

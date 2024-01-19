@@ -12,7 +12,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT AcousticBeamData {
+class AcousticBeamData {
  protected:
   /** beam data length */
   uint16_t _beamDataLength;

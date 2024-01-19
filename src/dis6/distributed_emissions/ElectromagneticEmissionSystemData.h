@@ -5,7 +5,7 @@
 #include "dis6/ElectromagneticEmissionBeamData.h"
 #include "dis6/EmitterSystem.h"
 #include "dis6/Vector3Float.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -16,7 +16,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT ElectromagneticEmissionSystemData {
+class ElectromagneticEmissionSystemData {
  protected:
   /** This field shall specify the length of this emitter system�s data
    * (including beam data and its track/jam information) in 32-bit words. The

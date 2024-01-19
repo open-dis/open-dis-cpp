@@ -6,7 +6,7 @@
 #include "dis6/FundamentalParameterDataIff.h"
 #include "dis6/IffAtcNavAidsLayer1Pdu.h"
 #include "dis6/LayerHeader.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -19,7 +19,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT IffAtcNavAidsLayer2Pdu : public IffAtcNavAidsLayer1Pdu {
+class IffAtcNavAidsLayer2Pdu : public IffAtcNavAidsLayer1Pdu {
  protected:
   /** layer header */
   LayerHeader _layerHeader;

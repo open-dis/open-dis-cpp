@@ -11,7 +11,7 @@
 #include "dis6/VariableDatum.h"
 #include "dis6/Vector3Double.h"
 #include "dis6/Vector3Float.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -26,7 +26,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT AggregateStatePdu : public EntityManagementFamilyPdu {
+class AggregateStatePdu : public EntityManagementFamilyPdu {
  protected:
   /** ID of aggregated entities */
   EntityID _aggregateID;

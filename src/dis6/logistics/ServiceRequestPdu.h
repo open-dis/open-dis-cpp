@@ -5,7 +5,7 @@
 #include "dis6/EntityID.h"
 #include "dis6/LogisticsFamilyPdu.h"
 #include "dis6/SupplyQuantity.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -16,7 +16,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT ServiceRequestPdu : public LogisticsFamilyPdu {
+class ServiceRequestPdu : public LogisticsFamilyPdu {
  protected:
   /** Entity that is requesting service */
   EntityID _requestingEntityID;

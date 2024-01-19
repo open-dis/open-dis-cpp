@@ -1,6 +1,6 @@
 #pragma once
 
-#include "dis6/common/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -12,7 +12,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT Pdu {
+class Pdu {
  protected:
   /** The version of the protocol. 5=DIS-1995, 6=DIS-1998. */
   uint8_t _protocolVersion;

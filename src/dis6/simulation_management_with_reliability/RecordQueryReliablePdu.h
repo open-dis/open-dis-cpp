@@ -4,7 +4,7 @@
 
 #include "dis6/FourByteChunk.h"
 #include "dis6/SimulationManagementWithReliabilityFamilyPdu.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -16,7 +16,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT RecordQueryReliablePdu
+class RecordQueryReliablePdu
     : public SimulationManagementWithReliabilityFamilyPdu {
  protected:
   /** request ID */

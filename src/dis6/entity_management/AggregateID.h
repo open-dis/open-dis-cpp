@@ -1,6 +1,6 @@
 #pragma once
 
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -13,7 +13,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT AggregateID {
+class AggregateID {
  protected:
   /** The site ID */
   uint16_t _site;

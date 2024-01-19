@@ -2,7 +2,7 @@
 
 #include "dis6/EntityID.h"
 #include "dis6/Pdu.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -14,7 +14,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT WarfareFamilyPdu : public Pdu {
+class WarfareFamilyPdu : public Pdu {
  protected:
   /** ID of the entity that shot */
   EntityID _firingEntityID;

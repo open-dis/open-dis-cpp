@@ -6,7 +6,7 @@
 #include "dis6/SimulationAddress.h"
 #include "dis6/SyntheticEnvironmentFamilyPdu.h"
 #include "dis6/Vector3Double.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -19,7 +19,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT PointObjectStatePdu
+class PointObjectStatePdu
     : public SyntheticEnvironmentFamilyPdu {
  protected:
   /** Object in synthetic environment */

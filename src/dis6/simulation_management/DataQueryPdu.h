@@ -5,7 +5,7 @@
 #include "dis6/FixedDatum.h"
 #include "dis6/SimulationManagementFamilyPdu.h"
 #include "dis6/VariableDatum.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -16,7 +16,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT DataQueryPdu : public SimulationManagementFamilyPdu {
+class DataQueryPdu : public SimulationManagementFamilyPdu {
  protected:
   /** ID of request */
   uint32_t _requestID;

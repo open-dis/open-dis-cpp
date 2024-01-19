@@ -8,7 +8,7 @@
 #include "dis6/EntityID.h"
 #include "dis6/EventID.h"
 #include "dis6/ShaftRPMs.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -21,7 +21,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT UnderwaterAcousticsPdu
+class UnderwaterAcousticsPdu
     : public DistributedEmissionsFamilyPdu {
  protected:
   /** ID of the entity that is the source of the emission */

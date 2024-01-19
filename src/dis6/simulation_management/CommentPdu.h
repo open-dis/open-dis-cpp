@@ -5,7 +5,7 @@
 #include "dis6/FixedDatum.h"
 #include "dis6/SimulationManagementFamilyPdu.h"
 #include "dis6/VariableDatum.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -17,7 +17,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT CommentPdu : public SimulationManagementFamilyPdu {
+class CommentPdu : public SimulationManagementFamilyPdu {
  protected:
   /** Number of fixed datum records */
   uint32_t _numberOfFixedDatumRecords;

@@ -5,7 +5,7 @@
 #include "dis6/EntityID.h"
 #include "dis6/IntercomCommunicationsParameters.h"
 #include "dis6/RadioCommunicationsFamilyPdu.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -19,7 +19,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT IntercomControlPdu : public RadioCommunicationsFamilyPdu {
+class IntercomControlPdu : public RadioCommunicationsFamilyPdu {
  protected:
   /** control type */
   uint8_t _controlType;

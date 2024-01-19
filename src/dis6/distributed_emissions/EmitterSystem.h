@@ -1,6 +1,6 @@
 #pragma once
 
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -12,7 +12,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT EmitterSystem {
+class EmitterSystem {
  protected:
   /** Name of the emitter, 16 bit enumeration */
   uint16_t _emitterName;

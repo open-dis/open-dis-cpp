@@ -1,6 +1,6 @@
 #pragma once
 
-#include "dis6/common/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -11,7 +11,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT Vector3Float {
+class Vector3Float {
  protected:
   /** X value */
   float _x;

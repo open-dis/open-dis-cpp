@@ -5,7 +5,7 @@
 #include "dis6/EntityID.h"
 #include "dis6/EntityManagementFamilyPdu.h"
 #include "dis6/RecordSet.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -18,7 +18,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT TransferControlRequestPdu
+class TransferControlRequestPdu
     : public EntityManagementFamilyPdu {
  protected:
   /** ID of entity originating request */

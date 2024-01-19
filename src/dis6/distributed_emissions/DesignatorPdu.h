@@ -15,7 +15,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT DesignatorPdu : public DistributedEmissionsFamilyPdu {
+class DesignatorPdu : public DistributedEmissionsFamilyPdu {
  protected:
   /** ID of the entity designating */
   EntityID _designatingEntityID;

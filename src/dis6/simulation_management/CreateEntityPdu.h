@@ -1,7 +1,7 @@
 #pragma once
 
 #include "dis6/SimulationManagementFamilyPdu.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -12,7 +12,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT CreateEntityPdu : public SimulationManagementFamilyPdu {
+class CreateEntityPdu : public SimulationManagementFamilyPdu {
  protected:
   /** Identifier for the request */
   uint32_t _requestID;

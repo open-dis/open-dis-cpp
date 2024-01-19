@@ -7,13 +7,11 @@
 
 #include <cstdint>
 
-#include <dis6/opendis6_export.h>  // for library symbols
-
-namespace DIS {
+namespace dis {
 /// the mask that will leave only the typemetric
 /// from an integer representing the Articulation Parameter's parameter type.
 /// this mask is based on the IEEE Std 1278.1-1995
-const uint32_t ARTICULATION_PARAMETER_TYPE_METRIC_MASK = 0x001F;
-}  // namespace DIS
+const uint32_t kArticulationParameterTypeMetricMask = 0x001F;
+}  // namespace dis
 
 #endif  // _dcl_dis_masks_h_

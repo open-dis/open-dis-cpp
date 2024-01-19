@@ -1,6 +1,6 @@
 #pragma once
 
-#include "dis6/common/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -11,7 +11,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT SixByteChunk {
+class SixByteChunk {
  protected:
   /** six bytes of arbitrary data */
   char _otherParameters[6];

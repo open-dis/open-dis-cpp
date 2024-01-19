@@ -7,22 +7,16 @@
 
 #include <ostream>  // for parameter type
 
-#include <dis6/opendis6_export.h>  // for library symbols
-
-namespace DIS {
+namespace dis {
 class EntityStatePdu;
 class EntityID;
 class DetonationPdu;
 class EntityType;
-}  // namespace DIS
+}  // namespace dis
 
-OPENDIS6_EXPORT std::ostream& operator<<(std::ostream& lhs,
-                                         const DIS::EntityType& rhs);
-OPENDIS6_EXPORT std::ostream& operator<<(std::ostream& lhs,
-                                         const DIS::EntityID& rhs);
-OPENDIS6_EXPORT std::ostream& operator<<(std::ostream& lhs,
-                                         const DIS::EntityStatePdu& rhs);
-OPENDIS6_EXPORT std::ostream& operator<<(std::ostream& lhs,
-                                         const DIS::DetonationPdu& rhs);
+std::ostream& operator<<(std::ostream& lhs, const dis::EntityType& rhs);
+std::ostream& operator<<(std::ostream& lhs, const dis::EntityID& rhs);
+std::ostream& operator<<(std::ostream& lhs, const dis::EntityStatePdu& rhs);
+std::ostream& operator<<(std::ostream& lhs, const dis::DetonationPdu& rhs);
 
 #endif  // _dis_stream_utils_h_

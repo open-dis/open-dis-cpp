@@ -13,19 +13,19 @@
 #pragma warning(disable : 4251)
 #endif
 
+#include <cstdint>
 #include <cstdlib>  // for size_t and NULL definition
 #include <cstring>  // for memcpy
 #include <string>   // for typedef, member
 #include <vector>   // for typedef, member
 
-#include <dis6/opendis6_export.h>  // for library symbols
-#include <dis6/utils/Endian.h>     // for enum
+#include "dis6/utils/Endian.h"  // for enum
 
-namespace DIS {
+namespace dis {
 /// a class to support managing a network buffer.
 /// the clients are responsible for managing the char buffer memory.
 /// this class explicitly defines operators for expected types.
-class OPENDIS6_EXPORT DataStream {
+class DataStream {
  public:
   /// Setup the internal buffer's Endian type.
   /// @param stream the Endian type to use for the internal buffer,
@@ -72,17 +72,17 @@ class OPENDIS6_EXPORT DataStream {
   DataStream& operator>>(uint16_t& c);
   DataStream& operator>>(int16_t& c);
 
-  Endian GetStreamEndian() const;
-  Endian GetMachineEndian() const;
+  [[nodiscard]] Endian GetStreamEndian() const;
+  [[nodiscard]] Endian GetMachineEndian() const;
 
-  size_t GetWritePos() const;
-  size_t GetReadPos() const;
+  [[nodiscard]] size_t GetWritePos() const;
+  [[nodiscard]] size_t GetReadPos() const;
 
-  size_t size() const;
+  [[nodiscard]] size_t size() const;
 
   void clear();
 
-  bool empty() const;
+  [[nodiscard]] bool empty() const;
 
  private:
   template <typename T, typename IterT>
@@ -102,7 +102,7 @@ class OPENDIS6_EXPORT DataStream {
     char* ch = reinterpret_cast<char*>(&t);
     DoFlip(ch, sizeof(T));
     DoWrite(ch, sizeof(T));
-    IncrementPointer<T>(_write_pos);
+    IncrementPointer<T>(write_pos_);
   }
 
   /// this algorithm should only be used for primitive types,
@@ -113,7 +113,7 @@ class OPENDIS6_EXPORT DataStream {
     DoRead(ch, sizeof(T));
     DoFlip(ch, sizeof(T));
     memcpy(&t, ch, sizeof(t));
-    IncrementPointer<T>(_read_pos);
+    IncrementPointer<T>(read_pos_);
   }
 
   /// will flip the buffer if the buffer endian is different than the machine's.
@@ -123,22 +123,22 @@ class OPENDIS6_EXPORT DataStream {
 
   void DoRead(char* ch, size_t bufsize);
 
-  typedef std::vector<char> BufferType;
+  using BufferType = std::vector<char>;
   // const BufferType& GetBuffer() const;
 
-  BufferType _buffer;
+  BufferType buffer_;
 
   /// the location of the read/write.
-  size_t _read_pos;
-  size_t _write_pos;
+  size_t read_pos_;
+  size_t write_pos_;
 
   /// the requirement for the managed buffer
-  Endian _stream_endian;
+  Endian stream_endian_;
 
   /// the native endian type
-  Endian _machine_endian;
+  Endian machine_endian_;
 };
-}  // namespace DIS
+}  // namespace dis
 
 #if _MSC_VER
 #pragma warning(pop)

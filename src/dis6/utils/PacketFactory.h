@@ -4,11 +4,10 @@
 #ifndef _dcl_dis_packet_factory_h_
 #define _dcl_dis_packet_factory_h_
 
+#include <cstdint>
 #include <map>  // for member
 
-#include <dis6/opendis6_export.h>  // for library symbols
-
-namespace DIS {
+namespace dis {
 class Pdu;
 
 /// a utility to make functions
@@ -18,7 +17,7 @@ BaseT* CreateImplementation() {
 }
 
 /// responsible for mapping an ID value to a Pdu type.
-class OPENDIS6_EXPORT PacketFactory {
+class PacketFactory {
  public:
   /// Create a Pdu.
   /// @param id the value representing the "type" of the Pdu.  The value will be
@@ -39,7 +38,7 @@ class OPENDIS6_EXPORT PacketFactory {
   template <class T>
   bool RegisterPacket(uint8_t id) {
     FunctionMap::value_type candidate(id, &CreateImplementation<Pdu, T>);
-    std::pair<FunctionMap::iterator, bool> result = _fMap.insert(candidate);
+    std::pair<FunctionMap::iterator, bool> result = f_map_.insert(candidate);
     return result.second;
   }
 
@@ -47,24 +46,24 @@ class OPENDIS6_EXPORT PacketFactory {
   /// @param id The value identifying the type of the Pdu.
   /// @return 'false' if no support previously existed.  'true' if support was
   /// removed.
-  bool UnRegisterPacket(char id) { return (_fMap.erase(id) > 0); }
+  bool UnRegisterPacket(char id) { return (f_map_.erase(id) > 0); }
 
   /// Check to know if the Pdu type is supported.
   /// @param id The value representing the Pdu type.
   /// @return 'true' if support for creating a Pdu was found, 'false' if not
   /// found.
-  bool IsRegistered(uint8_t id) const;
+  [[nodiscard]] bool IsRegistered(uint8_t id) const;
 
  private:
   /// the function signature required for creating Pdu instances.
-  typedef Pdu* (*CREATE_FUNC)();
+  using CREATE_FUNC = Pdu* (*)();
 
   /// the type to contain mappings to functions used to create Pdu instances.
-  typedef std::map<uint8_t, CREATE_FUNC> FunctionMap;
+  using FunctionMap = std::map<uint8_t, CREATE_FUNC>;
 
   /// instance of the storage mechanism for creating Pdu instances.
-  FunctionMap _fMap;
+  FunctionMap f_map_;
 };
-}  // namespace DIS
+}  // namespace dis
 
 #endif  // _dcl_dis_packet_factory_h_

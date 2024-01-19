@@ -8,7 +8,7 @@
 #include "dis6/Orientation.h"
 #include "dis6/Point.h"
 #include "dis6/Vector3Double.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -20,7 +20,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT MinefieldStatePdu : public MinefieldFamilyPdu {
+class MinefieldStatePdu : public MinefieldFamilyPdu {
  protected:
   /** Minefield ID */
   EntityID _minefieldID;

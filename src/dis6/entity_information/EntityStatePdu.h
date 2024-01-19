@@ -11,7 +11,7 @@
 #include "dis6/Orientation.h"
 #include "dis6/Vector3Double.h"
 #include "dis6/Vector3Float.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -23,7 +23,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT EntityStatePdu : public EntityInformationFamilyPdu {
+class EntityStatePdu : public EntityInformationFamilyPdu {
  protected:
   /** Unique ID for an entity that is tied to this state information */
   EntityID _entityID;

@@ -7,7 +7,7 @@
 #include "dis6/GridAxisRecord.h"
 #include "dis6/Orientation.h"
 #include "dis6/SyntheticEnvironmentFamilyPdu.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -20,7 +20,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT GriddedDataPdu : public SyntheticEnvironmentFamilyPdu {
+class GriddedDataPdu : public SyntheticEnvironmentFamilyPdu {
  protected:
   /** environmental simulation application ID */
   EntityID _environmentalSimulationApplicationID;

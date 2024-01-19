@@ -1,7 +1,7 @@
 #pragma once
 
 #include "dis6/Pdu.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -14,7 +14,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT EntityInformationFamilyPdu : public Pdu {
+class EntityInformationFamilyPdu : public Pdu {
  protected:
  public:
   EntityInformationFamilyPdu();

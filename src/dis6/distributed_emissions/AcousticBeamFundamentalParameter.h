@@ -11,7 +11,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT AcousticBeamFundamentalParameter {
+class AcousticBeamFundamentalParameter {
  protected:
   /** parameter index */
   uint16_t _activeEmissionParameterIndex;

@@ -6,7 +6,7 @@
 #include "dis6/EntityID.h"
 #include "dis6/PropulsionSystemData.h"
 #include "dis6/VectoringNozzleSystemData.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -18,7 +18,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT SeesPdu : public DistributedEmissionsFamilyPdu {
+class SeesPdu : public DistributedEmissionsFamilyPdu {
  protected:
   /** Originating entity ID */
   EntityID _orginatingEntityID;

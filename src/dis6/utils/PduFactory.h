@@ -14,7 +14,7 @@ namespace DIS {
  * @author DMcG
  */
 
-class OPENDIS6_EXPORT PduFactory {
+class PduFactory {
  public:
   PduFactory(void);
   ~PduFactory(void);

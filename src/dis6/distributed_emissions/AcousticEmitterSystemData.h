@@ -5,7 +5,7 @@
 #include "dis6/AcousticBeamData.h"
 #include "dis6/AcousticEmitterSystem.h"
 #include "dis6/Vector3Float.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -17,7 +17,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT AcousticEmitterSystemData {
+class AcousticEmitterSystemData {
  protected:
   /** Length of emitter system data */
   uint8_t _emitterSystemDataLength;

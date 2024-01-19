@@ -5,7 +5,7 @@
 #include "dis6/FixedDatum.h"
 #include "dis6/SimulationManagementWithReliabilityFamilyPdu.h"
 #include "dis6/VariableDatum.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -18,7 +18,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT SetDataReliablePdu
+class SetDataReliablePdu
     : public SimulationManagementWithReliabilityFamilyPdu {
  protected:
   /** level of reliability service used for this transaction */

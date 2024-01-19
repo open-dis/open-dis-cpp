@@ -1,14 +1,13 @@
 #ifndef _dcl_dis_endian_h_
 #define _dcl_dis_endian_h_
 
-#include <dis6/opendis6_export.h>  // for library symbols
-
-namespace DIS {
+namespace dis {
 /// the order of bytes that are on the left
-enum OPENDIS6_EXPORT Endian {
+enum Endian {
   LITTLE = 1,
   BIG = 0,
 };
-}  // namespace DIS
+
+}  // namespace dis
 
 #endif  // _dcl_dis_endian_h_

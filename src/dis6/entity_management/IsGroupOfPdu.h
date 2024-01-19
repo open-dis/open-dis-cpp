@@ -5,7 +5,7 @@
 #include "dis6/EntityID.h"
 #include "dis6/EntityManagementFamilyPdu.h"
 #include "dis6/VariableDatum.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -19,7 +19,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT IsGroupOfPdu : public EntityManagementFamilyPdu {
+class IsGroupOfPdu : public EntityManagementFamilyPdu {
  protected:
   /** ID of aggregated entities */
   EntityID _groupEntityID;

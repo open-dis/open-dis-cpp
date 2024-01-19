@@ -4,7 +4,7 @@
 #include "dis6/EntityInformationFamilyPdu.h"
 #include "dis6/EventID.h"
 #include "dis6/Vector3Float.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -16,7 +16,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT CollisionElasticPdu : public EntityInformationFamilyPdu {
+class CollisionElasticPdu : public EntityInformationFamilyPdu {
  protected:
   /** ID of the entity that issued the collision PDU */
   EntityID _issuingEntityID;

@@ -7,23 +7,21 @@
 
 #include <map>  // for member
 
-#include <dis6/opendis6_export.h>         // for library symbols
-#include <dis6/utils/Endian.h>            // for internal type
-#include <dis6/utils/IBufferProcessor.h>  // for base class
-#include <dis6/utils/IPduBank.h>
-#include <dis6/utils/PDUType.h>
+#include "dis6/utils/Endian.h"            // for internal type
+#include "dis6/utils/IBufferProcessor.h"  // for base class
+#include "dis6/utils/IPduBank.h"
+#include "dis6/utils/PDUType.h"
 
-namespace DIS {
+namespace dis {
 class Pdu;
 class IPacketProcessor;
 class DataStream;
 
 /// A framework for routing the packet to the correct processor.
-class OPENDIS6_EXPORT IncomingMessage : public IBufferProcessor {
+class IncomingMessage : public IBufferProcessor {
  public:
   /// the container type for supporting processors.
-  typedef std::multimap<uint8_t, IPacketProcessor*>
-      PacketProcessorContainer;
+  typedef std::multimap<uint8_t, IPacketProcessor*> PacketProcessorContainer;
 
   /// the container type for supporting PDU banks.
   typedef std::multimap<uint8_t, IPduBank*> PduBankContainer;
@@ -84,6 +82,6 @@ class OPENDIS6_EXPORT IncomingMessage : public IBufferProcessor {
                             PduBankContainer::iterator& containerIter);
 };
 
-}  // namespace DIS
+}  // namespace dis
 
 #endif  // _dcl_dis_incoming_message_

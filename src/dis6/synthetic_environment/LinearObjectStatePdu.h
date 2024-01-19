@@ -7,7 +7,7 @@
 #include "dis6/ObjectType.h"
 #include "dis6/SimulationAddress.h"
 #include "dis6/SyntheticEnvironmentFamilyPdu.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -20,7 +20,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT LinearObjectStatePdu
+class LinearObjectStatePdu
     : public SyntheticEnvironmentFamilyPdu {
  protected:
   /** Object in synthetic environment */

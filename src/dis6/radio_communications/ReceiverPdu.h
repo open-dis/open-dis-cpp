@@ -2,7 +2,7 @@
 
 #include "dis6/EntityID.h"
 #include "dis6/RadioCommunicationsFamilyPdu.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -13,7 +13,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT ReceiverPdu : public RadioCommunicationsFamilyPdu {
+class ReceiverPdu : public RadioCommunicationsFamilyPdu {
  protected:
   /** encoding scheme used, and enumeration */
   uint16_t _receiverState;

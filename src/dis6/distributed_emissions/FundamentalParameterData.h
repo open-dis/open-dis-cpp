@@ -1,6 +1,6 @@
 #pragma once
 
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -14,7 +14,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT FundamentalParameterData {
+class FundamentalParameterData {
  protected:
   /** center frequency of the emission in hertz. */
   float _frequency;

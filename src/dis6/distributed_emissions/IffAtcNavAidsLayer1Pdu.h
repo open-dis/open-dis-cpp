@@ -6,7 +6,7 @@
 #include "dis6/IffFundamentalData.h"
 #include "dis6/SystemID.h"
 #include "dis6/Vector3Float.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -17,7 +17,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT IffAtcNavAidsLayer1Pdu
+class IffAtcNavAidsLayer1Pdu
     : public DistributedEmissionsFamilyPdu {
  protected:
   /** ID of the entity that is the source of the emissions */

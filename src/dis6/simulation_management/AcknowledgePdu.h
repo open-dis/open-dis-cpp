@@ -2,7 +2,7 @@
 
 #include <cstdint>
 #include "dis6/SimulationManagementFamilyPdu.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -14,7 +14,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT AcknowledgePdu : public SimulationManagementFamilyPdu {
+class AcknowledgePdu : public SimulationManagementFamilyPdu {
  protected:
   /** type of message being acknowledged */
   uint16_t _acknowledgeFlag;

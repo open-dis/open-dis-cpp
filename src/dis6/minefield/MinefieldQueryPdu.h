@@ -7,7 +7,7 @@
 #include "dis6/MinefieldFamilyPdu.h"
 #include "dis6/Point.h"
 #include "dis6/TwoByteChunk.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -19,7 +19,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT MinefieldQueryPdu : public MinefieldFamilyPdu {
+class MinefieldQueryPdu : public MinefieldFamilyPdu {
  protected:
   /** Minefield ID */
   EntityID _minefieldID;

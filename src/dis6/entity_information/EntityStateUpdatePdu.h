@@ -8,7 +8,7 @@
 #include "dis6/Orientation.h"
 #include "dis6/Vector3Double.h"
 #include "dis6/Vector3Float.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -20,7 +20,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT EntityStateUpdatePdu : public EntityInformationFamilyPdu {
+class EntityStateUpdatePdu : public EntityInformationFamilyPdu {
  protected:
   /** This field shall identify the entity issuing the PDU */
   EntityID _entityID;

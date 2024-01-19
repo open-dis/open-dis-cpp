@@ -8,15 +8,13 @@
 
 #include <cstdint>
 
-#include <dis6/opendis6_export.h>  // for library symbols
-
-namespace DIS {
+namespace dis {
 /// a name-scope for conversion functions.
-struct OPENDIS6_EXPORT Convert {
+struct Convert {
   /// the number of bits used to store the type metric value
   /// within the Articulation Parameter's parameter type value.
   /// this mask is based on the IEEE Std 1278.1-1995
-  static const uint8_t ARTICULATION_PARAMETER_TYPE_METRIC_NUMBER_OF_BITS = 5;
+  static const uint8_t kArticulationParameterTypeMetricNumberOfBits = 5;
 
   /// make the value needed for the ArticulationParameter's Parameter Type.
   /// @param typeclass the enumeration for the articulated part.
@@ -46,6 +44,6 @@ struct OPENDIS6_EXPORT Convert {
   /// ARTICULATION_PARAMETER_TYPE_METRIC_NUMBER_OF_BITS bits precision
   static int GetArticulationTypeClass(int parametertype);
 };
-}  // namespace DIS
+}  // namespace dis
 
 #endif  // _dcl_dis_conversion_h_

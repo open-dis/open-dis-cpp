@@ -3,7 +3,7 @@
 #include "dis6/Orientation.h"
 #include "dis6/SixByteChunk.h"
 #include "dis6/Vector3Double.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -14,7 +14,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT LinearSegmentParameter {
+class LinearSegmentParameter {
  protected:
   /** number of segments */
   uint8_t _segmentNumber;

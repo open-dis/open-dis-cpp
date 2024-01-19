@@ -4,7 +4,7 @@
 
 #include "dis6/FundamentalParameterData.h"
 #include "dis6/TrackJamTarget.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -15,7 +15,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT ElectromagneticEmissionBeamData {
+class ElectromagneticEmissionBeamData {
  protected:
   /** This field shall specify the length of this beams data in 32 bit words */
   uint8_t _beamDataLength;

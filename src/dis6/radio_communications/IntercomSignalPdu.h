@@ -5,7 +5,7 @@
 
 #include "dis6/EntityID.h"
 #include "dis6/RadioCommunicationsFamilyPdu.h"
-#include "dis6/opendis6_export.h"
+
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -16,7 +16,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class OPENDIS6_EXPORT IntercomSignalPdu : public RadioCommunicationsFamilyPdu {
+class IntercomSignalPdu : public RadioCommunicationsFamilyPdu {
  protected:
   /** entity ID */
   EntityID _entityID;

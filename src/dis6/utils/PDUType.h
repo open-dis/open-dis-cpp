@@ -1,7 +1,7 @@
 #ifndef _dtdis_pdu_type_h_
 #define _dtdis_pdu_type_h_
 
-namespace DIS {
+namespace dis {
 enum PDUType {
   PDU_OTHER = 0,
   PDU_ENTITY_STATE = 1,
