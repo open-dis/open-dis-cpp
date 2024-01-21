@@ -4,13 +4,12 @@ using namespace DIS;
 
 TwoByteChunk::TwoByteChunk() {
   // Initialize fixed length array
-  for (int lengthotherParameters = 0; lengthotherParameters < 2;
-       lengthotherParameters++) {
-    _otherParameters[lengthotherParameters] = 0;
+  for (char& _otherParameter : _otherParameters) {
+    _otherParameter = 0;
   }
 }
 
-TwoByteChunk::~TwoByteChunk() {}
+TwoByteChunk::~TwoByteChunk() = default;
 
 char* TwoByteChunk::getOtherParameters() { return _otherParameters; }
 
@@ -24,34 +23,35 @@ void TwoByteChunk::setOtherParameters(const char* x) {
   }
 }
 
-void TwoByteChunk::marshal(DataStream& dataStream) const {
-  for (size_t idx = 0; idx < 2; idx++) {
-    dataStream << _otherParameters[idx];
+void TwoByteChunk::Marshal(DataStream& dataStream) const {
+  for (char _otherParameter : _otherParameters) {
+    dataStream << _otherParameter;
   }
 }
 
-void TwoByteChunk::unmarshal(DataStream& dataStream) {
-  for (size_t idx = 0; idx < 2; idx++) {
-    dataStream >> _otherParameters[idx];
+void TwoByteChunk::Unmarshal(DataStream& dataStream) {
+  for (char& _otherParameter : _otherParameters) {
+    dataStream >> _otherParameter;
   }
 }
 
 bool TwoByteChunk::operator==(const TwoByteChunk& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
   for (uint8_t idx = 0; idx < 2; idx++) {
-    if (!(_otherParameters[idx] == rhs._otherParameters[idx]))
-      ivarsEqual = false;
+    if (!(_otherParameters[idx] == rhs._otherParameters[idx])) {
+      ivars_equal = false;
+    }
   }
 
-  return ivarsEqual;
+  return ivars_equal;
 }
 
 int TwoByteChunk::getMarshalledSize() const {
-  int marshalSize = 0;
+  int marshal_size = 0;
 
-  marshalSize = marshalSize + 2 * 1;  // _otherParameters
-  return marshalSize;
+  marshal_size = marshal_size + 2 * 1;  // _otherParameters
+  return marshal_size;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.

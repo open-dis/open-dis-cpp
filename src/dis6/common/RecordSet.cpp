@@ -10,7 +10,7 @@ RecordSet::RecordSet()
       _recordValues(0),
       _pad4(0) {}
 
-RecordSet::~RecordSet() {}
+RecordSet::~RecordSet() = default;
 
 uint32_t RecordSet::getRecordID() const { return _recordID; }
 
@@ -40,7 +40,7 @@ uint8_t RecordSet::getPad4() const { return _pad4; }
 
 void RecordSet::setPad4(uint8_t pX) { _pad4 = pX; }
 
-void RecordSet::marshal(DataStream& dataStream) const {
+void RecordSet::Marshal(DataStream& dataStream) const {
   dataStream << _recordID;
   dataStream << _recordSetSerialNumber;
   dataStream << _recordLength;
@@ -49,7 +49,7 @@ void RecordSet::marshal(DataStream& dataStream) const {
   dataStream << _pad4;
 }
 
-void RecordSet::unmarshal(DataStream& dataStream) {
+void RecordSet::Unmarshal(DataStream& dataStream) {
   dataStream >> _recordID;
   dataStream >> _recordSetSerialNumber;
   dataStream >> _recordLength;
@@ -59,29 +59,40 @@ void RecordSet::unmarshal(DataStream& dataStream) {
 }
 
 bool RecordSet::operator==(const RecordSet& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  if (!(_recordID == rhs._recordID)) ivarsEqual = false;
-  if (!(_recordSetSerialNumber == rhs._recordSetSerialNumber))
-    ivarsEqual = false;
-  if (!(_recordLength == rhs._recordLength)) ivarsEqual = false;
-  if (!(_recordCount == rhs._recordCount)) ivarsEqual = false;
-  if (!(_recordValues == rhs._recordValues)) ivarsEqual = false;
-  if (!(_pad4 == rhs._pad4)) ivarsEqual = false;
+  if (!(_recordID == rhs._recordID)) {
+    ivars_equal = false;
+  }
+  if (!(_recordSetSerialNumber == rhs._recordSetSerialNumber)) {
+    ivars_equal = false;
+  }
+  if (!(_recordLength == rhs._recordLength)) {
+    ivars_equal = false;
+  }
+  if (!(_recordCount == rhs._recordCount)) {
+    ivars_equal = false;
+  }
+  if (!(_recordValues == rhs._recordValues)) {
+    ivars_equal = false;
+  }
+  if (!(_pad4 == rhs._pad4)) {
+    ivars_equal = false;
+  }
 
-  return ivarsEqual;
+  return ivars_equal;
 }
 
 int RecordSet::getMarshalledSize() const {
-  int marshalSize = 0;
+  int marshal_size = 0;
 
-  marshalSize = marshalSize + 4;  // _recordID
-  marshalSize = marshalSize + 4;  // _recordSetSerialNumber
-  marshalSize = marshalSize + 2;  // _recordLength
-  marshalSize = marshalSize + 2;  // _recordCount
-  marshalSize = marshalSize + 2;  // _recordValues
-  marshalSize = marshalSize + 1;  // _pad4
-  return marshalSize;
+  marshal_size = marshal_size + 4;  // _recordID
+  marshal_size = marshal_size + 4;  // _recordSetSerialNumber
+  marshal_size = marshal_size + 2;  // _recordLength
+  marshal_size = marshal_size + 2;  // _recordCount
+  marshal_size = marshal_size + 2;  // _recordValues
+  marshal_size = marshal_size + 1;  // _pad4
+  return marshal_size;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.

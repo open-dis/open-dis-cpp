@@ -26,8 +26,8 @@ class Vector3Double {
   Vector3Double();
   virtual ~Vector3Double();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(dis::DataStream& dataStream) const;
+  virtual void unmarshal(dis::DataStream& dataStream);
 
   double getX() const;
   void setX(double pX);

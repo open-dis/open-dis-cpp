@@ -41,13 +41,17 @@ void VariableDatum::setVariableDatums(const char* x, const uint32_t length) {
 
   // Figure out _arrayLength (including padding to force whole 8 byte chunks)
   uint32_t chunks = length / 8;
-  int remainder = length % 8;
-  if (remainder > 0) chunks++;
+  int const remainder = length % 8;
+  if (remainder > 0) {
+    chunks++;
+  }
   _arrayLength = chunks * 8;
 
   // .resize() might (theoretically) throw. want to catch? : what to do? zombie
   // datum?
-  if (_variableDatums.size() < length) _variableDatums.resize(length);
+  if (_variableDatums.size() < length) {
+    _variableDatums.resize(length);
+  }
 
   for (auto i = 0; i < length; i++) {
     _variableDatums[i] = x[i];
@@ -57,7 +61,7 @@ void VariableDatum::setVariableDatums(const char* x, const uint32_t length) {
   }
 }
 
-void VariableDatum::marshal(DataStream& dataStream) const {
+void VariableDatum::Marshal(DataStream& dataStream) const {
   dataStream << _variableDatumID;
   dataStream << _variableDatumLength;
 
@@ -66,19 +70,22 @@ void VariableDatum::marshal(DataStream& dataStream) const {
   }
 }
 
-void VariableDatum::unmarshal(DataStream& dataStream) {
+void VariableDatum::Unmarshal(DataStream& dataStream) {
   dataStream >> _variableDatumID;
   dataStream >> _variableDatumLength;
 
-  int byteLength = _variableDatumLength / 8;
-  int chunks = byteLength / 8;
-  if (byteLength % 8 > 0) chunks++;
+  int const byte_length = _variableDatumLength / 8;
+  int chunks = byte_length / 8;
+  if (byte_length % 8 > 0) {
+    chunks++;
+  }
   _arrayLength = chunks * 8;
 
   // .resize() might (theoretically) throw. want to catch? : what to do? zombie
   // datum?
-  if (_variableDatums.size() < _arrayLength)
+  if (_variableDatums.size() < _arrayLength) {
     _variableDatums.resize(_arrayLength);
+  }
 
   for (uint32_t idx = 0; idx < _arrayLength; idx++) {
     dataStream >> _variableDatums[idx];
@@ -89,33 +96,37 @@ void VariableDatum::unmarshal(DataStream& dataStream) {
 }
 
 bool VariableDatum::operator==(const VariableDatum& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  if (!(_variableDatumID == rhs._variableDatumID)) ivarsEqual = false;
-  if (!(_variableDatumLength == rhs._variableDatumLength)) ivarsEqual = false;
-  if (!(_variableDatums.size() == rhs._variableDatums.size()))
-    ivarsEqual = false;
-  else {
+  if (!(_variableDatumID == rhs._variableDatumID)) {
+    ivars_equal = false;
+  }
+  if (!(_variableDatumLength == rhs._variableDatumLength)) {
+    ivars_equal = false;
+  }
+  if (!(_variableDatums.size() == rhs._variableDatums.size())) {
+    ivars_equal = false;
+  } else {
     for (std::size_t idx = 0; idx < _variableDatums.size(); idx++) {
       if (!(_variableDatums[idx] == rhs._variableDatums[idx])) {
-        ivarsEqual = false;
+        ivars_equal = false;
         break;
       }
     }
   }
 
-  return ivarsEqual;
+  return ivars_equal;
 }
 
 uint32_t VariableDatum::getMarshalledSize() const {
-  uint32_t marshalSize = 0;
+  uint32_t marshal_size = 0;
 
-  marshalSize = marshalSize + 4;  // _variableDatumID
-  marshalSize = marshalSize + 4;  // _variableDatumLength
+  marshal_size = marshal_size + 4;  // _variableDatumID
+  marshal_size = marshal_size + 4;  // _variableDatumLength
 
-  marshalSize = marshalSize + _arrayLength;
+  marshal_size = marshal_size + _arrayLength;
 
-  return marshalSize;
+  return marshal_size;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.

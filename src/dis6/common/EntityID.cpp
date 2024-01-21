@@ -1,53 +1,60 @@
 #include "dis6/common/EntityID.h"
 
-using namespace DIS;
+namespace dis {
+EntityID::EntityID() : site_(0), application_(0), entity_(0) {}
 
-EntityID::EntityID() : _site(0), _application(0), _entity(0) {}
+EntityID::~EntityID() = default;
 
-EntityID::~EntityID() {}
+uint16_t EntityID::GetSite() const { return site_; }
 
-uint16_t EntityID::getSite() const { return _site; }
+void EntityID::SetSite(uint16_t pX) { site_ = pX; }
 
-void EntityID::setSite(uint16_t pX) { _site = pX; }
+uint16_t EntityID::GetApplication() const { return application_; }
 
-uint16_t EntityID::getApplication() const { return _application; }
+void EntityID::SetApplication(uint16_t pX) { application_ = pX; }
 
-void EntityID::setApplication(uint16_t pX) { _application = pX; }
+uint16_t EntityID::GetEntity() const { return entity_; }
 
-uint16_t EntityID::getEntity() const { return _entity; }
+void EntityID::SetEntity(uint16_t pX) { entity_ = pX; }
 
-void EntityID::setEntity(uint16_t pX) { _entity = pX; }
-
-void EntityID::marshal(DataStream& dataStream) const {
-  dataStream << _site;
-  dataStream << _application;
-  dataStream << _entity;
+void EntityID::Marshal(DataStream& dataStream) const {
+  dataStream << site_;
+  dataStream << application_;
+  dataStream << entity_;
 }
 
-void EntityID::unmarshal(DataStream& dataStream) {
-  dataStream >> _site;
-  dataStream >> _application;
-  dataStream >> _entity;
+void EntityID::Unmarshal(DataStream& dataStream) {
+  dataStream >> site_;
+  dataStream >> application_;
+  dataStream >> entity_;
 }
 
 bool EntityID::operator==(const EntityID& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  if (!(_site == rhs._site)) ivarsEqual = false;
-  if (!(_application == rhs._application)) ivarsEqual = false;
-  if (!(_entity == rhs._entity)) ivarsEqual = false;
+  if (!(site_ == rhs.site_)) {
+    ivars_equal = false;
+  }
+  if (!(application_ == rhs.application_)) {
+    ivars_equal = false;
+  }
+  if (!(entity_ == rhs.entity_)) {
+    ivars_equal = false;
+  }
 
-  return ivarsEqual;
+  return ivars_equal;
 }
 
-int EntityID::getMarshalledSize() const {
-  int marshalSize = 0;
+int EntityID::GetMarshalledSize() const {
+  int marshal_size = 0;
 
-  marshalSize = marshalSize + 2;  // _site
-  marshalSize = marshalSize + 2;  // _application
-  marshalSize = marshalSize + 2;  // _entity
-  return marshalSize;
+  marshal_size = marshal_size + 2;  // site_
+  marshal_size = marshal_size + 2;  // application_
+  marshal_size = marshal_size + 2;  // entity_
+  return marshal_size;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

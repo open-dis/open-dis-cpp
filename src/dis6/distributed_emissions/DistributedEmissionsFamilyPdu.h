@@ -1,10 +1,9 @@
 #pragma once
 
-#include "dis6/Pdu.h"
-
+#include "dis6/common/Pdu.h"
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // Section 5.3.7. Electromagnetic Emissions. Abstract superclass for distirubted
 // emissions PDU
 
@@ -19,14 +18,14 @@ class DistributedEmissionsFamilyPdu : public Pdu {
   DistributedEmissionsFamilyPdu();
   virtual ~DistributedEmissionsFamilyPdu();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void Marshal(DataStream& dataStream) const;
+  virtual void Unmarshal(DataStream& dataStream);
 
-  virtual int getMarshalledSize() const;
+  [[nodiscard]] virtual int GetMarshalledSize() const;
 
   bool operator==(const DistributedEmissionsFamilyPdu& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

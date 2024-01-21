@@ -1,58 +1,59 @@
 #include "dis6/common/EightByteChunk.h"
 
-using namespace DIS;
-
+namespace dis {
 EightByteChunk::EightByteChunk() {
   // Initialize fixed length array
-  for (int lengthotherParameters = 0; lengthotherParameters < 8;
-       lengthotherParameters++) {
-    _otherParameters[lengthotherParameters] = 0;
+  for (char& other_parameter : other_parameters_) {
+    other_parameter = 0;
   }
 }
 
-EightByteChunk::~EightByteChunk() {}
+EightByteChunk::~EightByteChunk() = default;
 
-char* EightByteChunk::getOtherParameters() { return _otherParameters; }
+char* EightByteChunk::GetOtherParameters() { return other_parameters_; }
 
-const char* EightByteChunk::getOtherParameters() const {
-  return _otherParameters;
+const char* EightByteChunk::GetOtherParameters() const {
+  return other_parameters_;
 }
 
-void EightByteChunk::setOtherParameters(const char* x) {
+void EightByteChunk::SetOtherParameters(const char* x) {
   for (int i = 0; i < 8; i++) {
-    _otherParameters[i] = x[i];
+    other_parameters_[i] = x[i];
   }
 }
 
-void EightByteChunk::marshal(DataStream& dataStream) const {
-  for (size_t idx = 0; idx < 8; idx++) {
-    dataStream << _otherParameters[idx];
+void EightByteChunk::Marshal(DataStream& dataStream) const {
+  for (char const other_parameter : other_parameters_) {
+    dataStream << other_parameter;
   }
 }
 
-void EightByteChunk::unmarshal(DataStream& dataStream) {
-  for (size_t idx = 0; idx < 8; idx++) {
-    dataStream >> _otherParameters[idx];
+void EightByteChunk::Unmarshal(DataStream& dataStream) {
+  for (char& other_parameter : other_parameters_) {
+    dataStream >> other_parameter;
   }
 }
 
 bool EightByteChunk::operator==(const EightByteChunk& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
   for (uint8_t idx = 0; idx < 8; idx++) {
-    if (!(_otherParameters[idx] == rhs._otherParameters[idx]))
-      ivarsEqual = false;
+    if (!(other_parameters_[idx] == rhs.other_parameters_[idx])) {
+      ivars_equal = false;
+    }
   }
 
-  return ivarsEqual;
+  return ivars_equal;
 }
 
-int EightByteChunk::getMarshalledSize() const {
-  int marshalSize = 0;
+int EightByteChunk::GetMarshalledSize() const {
+  int marshal_size = 0;
 
-  marshalSize = marshalSize + 8 * 1;  // _otherParameters
-  return marshalSize;
+  marshal_size = marshal_size + 8 * 1;  // other_parameters_
+  return marshal_size;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

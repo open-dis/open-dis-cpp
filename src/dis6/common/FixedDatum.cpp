@@ -4,7 +4,7 @@ using namespace DIS;
 
 FixedDatum::FixedDatum() : _fixedDatumID(0), _fixedDatumValue(0) {}
 
-FixedDatum::~FixedDatum() {}
+FixedDatum::~FixedDatum() = default;
 
 uint32_t FixedDatum::getFixedDatumID() const { return _fixedDatumID; }
 
@@ -14,31 +14,35 @@ uint32_t FixedDatum::getFixedDatumValue() const { return _fixedDatumValue; }
 
 void FixedDatum::setFixedDatumValue(uint32_t pX) { _fixedDatumValue = pX; }
 
-void FixedDatum::marshal(DataStream& dataStream) const {
+void FixedDatum::Marshal(DataStream& dataStream) const {
   dataStream << _fixedDatumID;
   dataStream << _fixedDatumValue;
 }
 
-void FixedDatum::unmarshal(DataStream& dataStream) {
+void FixedDatum::Unmarshal(DataStream& dataStream) {
   dataStream >> _fixedDatumID;
   dataStream >> _fixedDatumValue;
 }
 
 bool FixedDatum::operator==(const FixedDatum& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  if (!(_fixedDatumID == rhs._fixedDatumID)) ivarsEqual = false;
-  if (!(_fixedDatumValue == rhs._fixedDatumValue)) ivarsEqual = false;
+  if (!(_fixedDatumID == rhs._fixedDatumID)) {
+    ivars_equal = false;
+  }
+  if (!(_fixedDatumValue == rhs._fixedDatumValue)) {
+    ivars_equal = false;
+  }
 
-  return ivarsEqual;
+  return ivars_equal;
 }
 
 int FixedDatum::getMarshalledSize() const {
-  int marshalSize = 0;
+  int marshal_size = 0;
 
-  marshalSize = marshalSize + 4;  // _fixedDatumID
-  marshalSize = marshalSize + 4;  // _fixedDatumValue
-  return marshalSize;
+  marshal_size = marshal_size + 4;  // _fixedDatumID
+  marshal_size = marshal_size + 4;  // _fixedDatumValue
+  return marshal_size;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.

@@ -1,9 +1,10 @@
 #pragma once
 
+#include <cstdint>
 
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // The superclass for all PDUs. This incorporates the PduHeader record,
 // section 5.2.29.
 
@@ -15,59 +16,59 @@ namespace DIS {
 class Pdu {
  protected:
   /** The version of the protocol. 5=DIS-1995, 6=DIS-1998. */
-  uint8_t _protocolVersion;
+  uint8_t protocol_version_;
 
   /** Exercise ID */
-  uint8_t _exerciseID;
+  uint8_t exercise_id_;
 
   /** Type of pdu, unique for each PDU class */
-  uint8_t _pduType;
+  uint8_t pdu_type_;
 
   /** value that refers to the protocol family, eg SimulationManagement, et */
-  uint8_t _protocolFamily;
+  uint8_t protocol_family_;
 
   /** Timestamp value */
-  uint32_t _timestamp;
+  uint32_t timestamp_;
 
   /** Length, in bytes, of the PDU */
-  uint16_t _length;
+  uint16_t length_;
 
   /** zero-filled array of padding */
-  int16_t _padding;
+  int16_t padding_;
 
  public:
   Pdu();
   virtual ~Pdu();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void Marshal(DataStream& dataStream) const;
+  virtual void Unmarshal(DataStream& dataStream);
 
-  uint8_t getProtocolVersion() const;
-  void setProtocolVersion(uint8_t pX);
+  [[nodiscard]] static uint8_t GetProtocolVersion();
+  void SetProtocolVersion(uint8_t pX);
 
-  uint8_t getExerciseID() const;
-  void setExerciseID(uint8_t pX);
+  [[nodiscard]] static uint8_t GetExerciseId();
+  void SetExerciseId(uint8_t pX);
 
-  uint8_t getPduType() const;
-  void setPduType(uint8_t pX);
+  [[nodiscard]] static uint8_t GetPduType();
+  void SetPduType(uint8_t pX);
 
-  uint8_t getProtocolFamily() const;
-  void setProtocolFamily(uint8_t pX);
+  [[nodiscard]] uint8_t GetProtocolFamily() const;
+  void SetProtocolFamily(uint8_t pX);
 
-  uint32_t getTimestamp() const;
-  void setTimestamp(uint32_t pX);
+  [[nodiscard]] uint32_t GetTimestamp() const;
+  void SetTimestamp(uint32_t pX);
 
-  uint16_t getLength() const;
-  void setLength(uint16_t pX);
+  [[nodiscard]] uint16_t GetLength() const;
+  void SetLength(uint16_t pX);
 
-  int16_t getPadding() const;
-  void setPadding(int16_t pX);
+  [[nodiscard]] int16_t GetPadding() const;
+  void SetPadding(int16_t pX);
 
-  virtual int getMarshalledSize() const;
+  [[nodiscard]] virtual int GetMarshalledSize() const;
 
   bool operator==(const Pdu& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

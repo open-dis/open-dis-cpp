@@ -1,9 +1,10 @@
 #pragma once
 
+#include <cstdint>
 
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // Section 5.2.11. This field shall specify information about a particular
 // emitter system
 
@@ -15,35 +16,35 @@ namespace DIS {
 class EmitterSystem {
  protected:
   /** Name of the emitter, 16 bit enumeration */
-  uint16_t _emitterName;
+  uint16_t emitter_name_;
 
   /** function of the emitter, 8 bit enumeration */
-  uint8_t _function;
+  uint8_t function_;
 
   /** emitter ID, 8 bit enumeration */
-  uint8_t _emitterIdNumber;
+  uint8_t emitter_id_number_;
 
  public:
   EmitterSystem();
   virtual ~EmitterSystem();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void Marshal(DataStream& dataStream) const;
+  virtual void Unmarshal(DataStream& dataStream);
 
-  uint16_t getEmitterName() const;
-  void setEmitterName(uint16_t pX);
+  [[nodiscard]] uint16_t GetEmitterName() const;
+  void SetEmitterName(uint16_t pX);
 
-  uint8_t getFunction() const;
-  void setFunction(uint8_t pX);
+  [[nodiscard]] uint8_t GetFunction() const;
+  void SetFunction(uint8_t pX);
 
-  uint8_t getEmitterIdNumber() const;
-  void setEmitterIdNumber(uint8_t pX);
+  [[nodiscard]] uint8_t GetEmitterIdNumber() const;
+  void SetEmitterIdNumber(uint8_t pX);
 
-  virtual int getMarshalledSize() const;
+  [[nodiscard]] virtual int GetMarshalledSize() const;
 
   bool operator==(const EmitterSystem& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

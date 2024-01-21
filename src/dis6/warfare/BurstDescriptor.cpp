@@ -3,15 +3,17 @@
 using namespace DIS;
 
 BurstDescriptor::BurstDescriptor()
-    : _munition(), _warhead(0), _fuse(0), _quantity(0), _rate(0) {}
+    : _warhead(0), _fuse(0), _quantity(0), _rate(0) {}
 
-BurstDescriptor::~BurstDescriptor() {}
+BurstDescriptor::~BurstDescriptor() = default;
 
-EntityType& BurstDescriptor::getMunition() { return _munition; }
+dis::EntityType& BurstDescriptor::getMunition() { return _munition; }
 
-const EntityType& BurstDescriptor::getMunition() const { return _munition; }
+const dis::EntityType& BurstDescriptor::getMunition() const {
+  return _munition;
+}
 
-void BurstDescriptor::setMunition(const EntityType& pX) { _munition = pX; }
+void BurstDescriptor::setMunition(const dis::EntityType& pX) { _munition = pX; }
 
 uint16_t BurstDescriptor::getWarhead() const { return _warhead; }
 
@@ -29,16 +31,16 @@ uint16_t BurstDescriptor::getRate() const { return _rate; }
 
 void BurstDescriptor::setRate(uint16_t pX) { _rate = pX; }
 
-void BurstDescriptor::marshal(DataStream& dataStream) const {
-  _munition.marshal(dataStream);
+void BurstDescriptor::Marshal(DataStream& dataStream) const {
+  _munition.Marshal(dataStream);
   dataStream << _warhead;
   dataStream << _fuse;
   dataStream << _quantity;
   dataStream << _rate;
 }
 
-void BurstDescriptor::unmarshal(DataStream& dataStream) {
-  _munition.unmarshal(dataStream);
+void BurstDescriptor::Unmarshal(DataStream& dataStream) {
+  _munition.Unmarshal(dataStream);
   dataStream >> _warhead;
   dataStream >> _fuse;
   dataStream >> _quantity;
@@ -46,26 +48,36 @@ void BurstDescriptor::unmarshal(DataStream& dataStream) {
 }
 
 bool BurstDescriptor::operator==(const BurstDescriptor& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  if (!(_munition == rhs._munition)) ivarsEqual = false;
-  if (!(_warhead == rhs._warhead)) ivarsEqual = false;
-  if (!(_fuse == rhs._fuse)) ivarsEqual = false;
-  if (!(_quantity == rhs._quantity)) ivarsEqual = false;
-  if (!(_rate == rhs._rate)) ivarsEqual = false;
+  if (!(_munition == rhs._munition)) {
+    ivars_equal = false;
+  }
+  if (!(_warhead == rhs._warhead)) {
+    ivars_equal = false;
+  }
+  if (!(_fuse == rhs._fuse)) {
+    ivars_equal = false;
+  }
+  if (!(_quantity == rhs._quantity)) {
+    ivars_equal = false;
+  }
+  if (!(_rate == rhs._rate)) {
+    ivars_equal = false;
+  }
 
-  return ivarsEqual;
+  return ivars_equal;
 }
 
 int BurstDescriptor::getMarshalledSize() const {
-  int marshalSize = 0;
+  int marshal_size = 0;
 
-  marshalSize = marshalSize + _munition.getMarshalledSize();  // _munition
-  marshalSize = marshalSize + 2;                              // _warhead
-  marshalSize = marshalSize + 2;                              // _fuse
-  marshalSize = marshalSize + 2;                              // _quantity
-  marshalSize = marshalSize + 2;                              // _rate
-  return marshalSize;
+  marshal_size = marshal_size + _munition.GetMarshalledSize();  // _munition
+  marshal_size = marshal_size + 2;                              // _warhead
+  marshal_size = marshal_size + 2;                              // _fuse
+  marshal_size = marshal_size + 2;                              // _quantity
+  marshal_size = marshal_size + 2;                              // _rate
+  return marshal_size;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.

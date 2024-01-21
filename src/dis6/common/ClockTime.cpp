@@ -1,45 +1,50 @@
 #include "dis6/common/ClockTime.h"
 
-using namespace DIS;
+namespace dis {
+ClockTime::ClockTime() : hour_(0), time_past_hour_(0) {}
 
-ClockTime::ClockTime() : _hour(0), _timePastHour(0) {}
+ClockTime::~ClockTime() = default;
 
-ClockTime::~ClockTime() {}
+int ClockTime::GetHour() const { return hour_; }
 
-int ClockTime::getHour() const { return _hour; }
+void ClockTime::SetHour(int pX) { hour_ = pX; }
 
-void ClockTime::setHour(int pX) { _hour = pX; }
+uint32_t ClockTime::GetTimePastHour() const { return time_past_hour_; }
 
-uint32_t ClockTime::getTimePastHour() const { return _timePastHour; }
+void ClockTime::SetTimePastHour(uint32_t pX) { time_past_hour_ = pX; }
 
-void ClockTime::setTimePastHour(uint32_t pX) { _timePastHour = pX; }
-
-void ClockTime::marshal(DataStream& dataStream) const {
-  dataStream << _hour;
-  dataStream << _timePastHour;
+void ClockTime::Marshal(DataStream& dataStream) const {
+  dataStream << hour_;
+  dataStream << time_past_hour_;
 }
 
-void ClockTime::unmarshal(DataStream& dataStream) {
-  dataStream >> _hour;
-  dataStream >> _timePastHour;
+void ClockTime::Unmarshal(DataStream& dataStream) {
+  dataStream >> hour_;
+  dataStream >> time_past_hour_;
 }
 
 bool ClockTime::operator==(const ClockTime& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  if (!(_hour == rhs._hour)) ivarsEqual = false;
-  if (!(_timePastHour == rhs._timePastHour)) ivarsEqual = false;
+  if (!(hour_ == rhs.hour_)) {
+    ivars_equal = false;
+  }
+  if (!(time_past_hour_ == rhs.time_past_hour_)) {
+    ivars_equal = false;
+  }
 
-  return ivarsEqual;
+  return ivars_equal;
 }
 
-int ClockTime::getMarshalledSize() const {
-  int marshalSize = 0;
+int ClockTime::GetMarshalledSize() const {
+  int marshal_size = 0;
 
-  marshalSize = marshalSize + 4;  // _hour
-  marshalSize = marshalSize + 4;  // _timePastHour
-  return marshalSize;
+  marshal_size = marshal_size + 4;  // hour_
+  marshal_size = marshal_size + 4;  // time_past_hour_
+  return marshal_size;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

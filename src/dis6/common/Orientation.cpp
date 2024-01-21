@@ -4,7 +4,7 @@ using namespace DIS;
 
 Orientation::Orientation() : _psi(0.0), _theta(0.0), _phi(0.0) {}
 
-Orientation::~Orientation() {}
+Orientation::~Orientation() = default;
 
 float Orientation::getPsi() const { return _psi; }
 
@@ -18,35 +18,41 @@ float Orientation::getPhi() const { return _phi; }
 
 void Orientation::setPhi(float pX) { _phi = pX; }
 
-void Orientation::marshal(DataStream& dataStream) const {
+void Orientation::Marshal(DataStream& dataStream) const {
   dataStream << _psi;
   dataStream << _theta;
   dataStream << _phi;
 }
 
-void Orientation::unmarshal(DataStream& dataStream) {
+void Orientation::Unmarshal(DataStream& dataStream) {
   dataStream >> _psi;
   dataStream >> _theta;
   dataStream >> _phi;
 }
 
 bool Orientation::operator==(const Orientation& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  if (!(_psi == rhs._psi)) ivarsEqual = false;
-  if (!(_theta == rhs._theta)) ivarsEqual = false;
-  if (!(_phi == rhs._phi)) ivarsEqual = false;
+  if (!(_psi == rhs._psi)) {
+    ivars_equal = false;
+  }
+  if (!(_theta == rhs._theta)) {
+    ivars_equal = false;
+  }
+  if (!(_phi == rhs._phi)) {
+    ivars_equal = false;
+  }
 
-  return ivarsEqual;
+  return ivars_equal;
 }
 
 int Orientation::getMarshalledSize() const {
-  int marshalSize = 0;
+  int marshal_size = 0;
 
-  marshalSize = marshalSize + 4;  // _psi
-  marshalSize = marshalSize + 4;  // _theta
-  marshalSize = marshalSize + 4;  // _phi
-  return marshalSize;
+  marshal_size = marshal_size + 4;  // _psi
+  marshal_size = marshal_size + 4;  // _theta
+  marshal_size = marshal_size + 4;  // _phi
+  return marshal_size;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.

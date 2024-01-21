@@ -1,47 +1,46 @@
 #include "dis6/common/Pdu.h"
 
-using namespace DIS;
-
+namespace dis {
 Pdu::Pdu()
-    : _protocolVersion(6),
+    : protocol_version_(6),
       _exerciseID(0),
       _pduType(0),
-      _protocolFamily(0),
-      _timestamp(0),
-      _length(0),
-      _padding(0) {}
+      protocol_family_(0),
+      timestamp_(0),
+      length_(0),
+      padding_(0) {}
 
-Pdu::~Pdu() {}
+Pdu::~Pdu() = default;
 
-uint8_t Pdu::getProtocolVersion() const { return _protocolVersion; }
+uint8_t Pdu::GetProtocolVersion() { return _protocolVersion; }
 
-void Pdu::setProtocolVersion(uint8_t pX) { _protocolVersion = pX; }
+void Pdu::SetProtocolVersion(uint8_t pX) { protocol_version_ = pX; }
 
-uint8_t Pdu::getExerciseID() const { return _exerciseID; }
+uint8_t Pdu::GetExerciseId() { return _exerciseID; }
 
-void Pdu::setExerciseID(uint8_t pX) { _exerciseID = pX; }
+void Pdu::SetExerciseId(uint8_t pX) { _exerciseID = pX; }
 
-uint8_t Pdu::getPduType() const { return _pduType; }
+uint8_t Pdu::GetPduType() { return _pduType; }
 
-void Pdu::setPduType(uint8_t pX) { _pduType = pX; }
+void Pdu::SetPduType(uint8_t pX) { _pduType = pX; }
 
 uint8_t Pdu::getProtocolFamily() const { return _protocolFamily; }
 
-void Pdu::setProtocolFamily(uint8_t pX) { _protocolFamily = pX; }
+void Pdu::SetProtocolFamily(uint8_t pX) { _protocolFamily = pX; }
 
-uint32_t Pdu::getTimestamp() const { return _timestamp; }
+uint32_t Pdu::GetTimestamp() const { return _timestamp; }
 
-void Pdu::setTimestamp(uint32_t pX) { _timestamp = pX; }
+void Pdu::SetTimestamp(uint32_t pX) { _timestamp = pX; }
 
-uint16_t Pdu::getLength() const { return this->getMarshalledSize(); }
+uint16_t Pdu::GetLength() const { return this->getMarshalledSize(); }
 
-void Pdu::setLength(uint16_t pX) { _length = pX; }
+void Pdu::SetLength(uint16_t pX) { _length = pX; }
 
-int16_t Pdu::getPadding() const { return _padding; }
+int16_t Pdu::GetPadding() const { return _padding; }
 
-void Pdu::setPadding(int16_t pX) { _padding = pX; }
+void Pdu::SetPadding(int16_t pX) { _padding = pX; }
 
-void Pdu::marshal(DataStream& dataStream) const {
+void Pdu::Marshal(DataStream& dataStream) const {
   dataStream << _protocolVersion;
   dataStream << _exerciseID;
   dataStream << _pduType;
@@ -51,7 +50,7 @@ void Pdu::marshal(DataStream& dataStream) const {
   dataStream << _padding;
 }
 
-void Pdu::unmarshal(DataStream& dataStream) {
+void Pdu::Unmarshal(DataStream& dataStream) {
   dataStream >> _protocolVersion;
   dataStream >> _exerciseID;
   dataStream >> _pduType;
@@ -62,31 +61,47 @@ void Pdu::unmarshal(DataStream& dataStream) {
 }
 
 bool Pdu::operator==(const Pdu& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  if (!(_protocolVersion == rhs._protocolVersion)) ivarsEqual = false;
-  if (!(_exerciseID == rhs._exerciseID)) ivarsEqual = false;
-  if (!(_pduType == rhs._pduType)) ivarsEqual = false;
-  if (!(_protocolFamily == rhs._protocolFamily)) ivarsEqual = false;
-  if (!(_timestamp == rhs._timestamp)) ivarsEqual = false;
-  if (!(_length == rhs._length)) ivarsEqual = false;
-  if (!(_padding == rhs._padding)) ivarsEqual = false;
+  if (!(_protocolVersion == rhs._protocolVersion)) {
+    ivars_equal = false;
+  }
+  if (!(_exerciseID == rhs._exerciseID)) {
+    ivars_equal = false;
+  }
+  if (!(_pduType == rhs._pduType)) {
+    ivars_equal = false;
+  }
+  if (!(_protocolFamily == rhs._protocolFamily)) {
+    ivars_equal = false;
+  }
+  if (!(_timestamp == rhs._timestamp)) {
+    ivars_equal = false;
+  }
+  if (!(_length == rhs._length)) {
+    ivars_equal = false;
+  }
+  if (!(_padding == rhs._padding)) {
+    ivars_equal = false;
+  }
 
-  return ivarsEqual;
+  return ivars_equal;
 }
 
-int Pdu::getMarshalledSize() const {
-  int marshalSize = 0;
+static int Pdu::GetMarshalledSize() {
+  int marshal_size = 0;
 
-  marshalSize = marshalSize + 1;  // _protocolVersion
-  marshalSize = marshalSize + 1;  // _exerciseID
-  marshalSize = marshalSize + 1;  // _pduType
-  marshalSize = marshalSize + 1;  // _protocolFamily
-  marshalSize = marshalSize + 4;  // _timestamp
-  marshalSize = marshalSize + 2;  // _length
-  marshalSize = marshalSize + 2;  // _padding
-  return marshalSize;
+  marshal_size = marshal_size + 1;  // _protocolVersion
+  marshal_size = marshal_size + 1;  // _exerciseID
+  marshal_size = marshal_size + 1;  // _pduType
+  marshal_size = marshal_size + 1;  // _protocolFamily
+  marshal_size = marshal_size + 4;  // _timestamp
+  marshal_size = marshal_size + 2;  // _length
+  marshal_size = marshal_size + 2;  // _padding
+  return marshal_size;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

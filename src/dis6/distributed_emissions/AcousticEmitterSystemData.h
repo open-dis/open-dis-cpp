@@ -2,13 +2,12 @@
 
 #include <vector>
 
-#include "dis6/AcousticBeamData.h"
-#include "dis6/AcousticEmitterSystem.h"
-#include "dis6/Vector3Float.h"
-
+#include "dis6/common/Vector3Float.h"
+#include "dis6/distributed_emissions/AcousticBeamData.h"
+#include "dis6/distributed_emissions/AcousticEmitterSystem.h"
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // Used in the UA pdu; ties together an emmitter and a location. This requires
 // manual cleanup; the beam data should not be attached to each emitter system.
 
@@ -70,7 +69,7 @@ class AcousticEmitterSystemData {
 
   bool operator==(const AcousticEmitterSystemData& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

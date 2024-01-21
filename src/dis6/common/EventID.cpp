@@ -4,7 +4,7 @@ using namespace DIS;
 
 EventID::EventID() : _site(0), _application(0), _eventNumber(0) {}
 
-EventID::~EventID() {}
+EventID::~EventID() = default;
 
 uint16_t EventID::getSite() const { return _site; }
 
@@ -18,35 +18,41 @@ uint16_t EventID::getEventNumber() const { return _eventNumber; }
 
 void EventID::setEventNumber(uint16_t pX) { _eventNumber = pX; }
 
-void EventID::marshal(DataStream& dataStream) const {
+void EventID::Marshal(DataStream& dataStream) const {
   dataStream << _site;
   dataStream << _application;
   dataStream << _eventNumber;
 }
 
-void EventID::unmarshal(DataStream& dataStream) {
+void EventID::Unmarshal(DataStream& dataStream) {
   dataStream >> _site;
   dataStream >> _application;
   dataStream >> _eventNumber;
 }
 
 bool EventID::operator==(const EventID& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  if (!(_site == rhs._site)) ivarsEqual = false;
-  if (!(_application == rhs._application)) ivarsEqual = false;
-  if (!(_eventNumber == rhs._eventNumber)) ivarsEqual = false;
+  if (!(_site == rhs._site)) {
+    ivars_equal = false;
+  }
+  if (!(_application == rhs._application)) {
+    ivars_equal = false;
+  }
+  if (!(_eventNumber == rhs._eventNumber)) {
+    ivars_equal = false;
+  }
 
-  return ivarsEqual;
+  return ivars_equal;
 }
 
 int EventID::getMarshalledSize() const {
-  int marshalSize = 0;
+  int marshal_size = 0;
 
-  marshalSize = marshalSize + 2;  // _site
-  marshalSize = marshalSize + 2;  // _application
-  marshalSize = marshalSize + 2;  // _eventNumber
-  return marshalSize;
+  marshal_size = marshal_size + 2;  // _site
+  marshal_size = marshal_size + 2;  // _application
+  marshal_size = marshal_size + 2;  // _eventNumber
+  return marshal_size;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.

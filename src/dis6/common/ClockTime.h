@@ -1,9 +1,8 @@
 #pragma once
 
-
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // Section 5.2.8. Time measurements that exceed one hour. Hours is the number of
 // hours since January 1, 1970, UTC
 
@@ -15,29 +14,29 @@ namespace DIS {
 class ClockTime {
  protected:
   /** Hours in UTC */
-  int _hour;
+  int hour_;  // NOLINT
 
   /** Time past the hour */
-  uint32_t _timePastHour;
+  uint32_t time_past_hour_;  // NOLINT
 
  public:
   ClockTime();
   virtual ~ClockTime();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void Marshal(DataStream& dataStream) const;
+  virtual void Unmarshal(DataStream& dataStream);
 
-  int getHour() const;
-  void setHour(int pX);
+  [[nodiscard]] int GetHour() const;
+  void SetHour(int pX);
 
-  uint32_t getTimePastHour() const;
-  void setTimePastHour(uint32_t pX);
+  [[nodiscard]] uint32_t GetTimePastHour() const;
+  void SetTimePastHour(uint32_t pX);
 
-  virtual int getMarshalledSize() const;
+  [[nodiscard]] virtual int GetMarshalledSize() const;
 
   bool operator==(const ClockTime& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

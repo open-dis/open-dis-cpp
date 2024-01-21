@@ -2,31 +2,32 @@
 
 using namespace DIS;
 
-AcousticBeamFundamentalParameter::AcousticBeamFundamentalParameter()
-    : _activeEmissionParameterIndex(0),
-      _scanPattern(0),
-      _beamCenterAzimuth(0.0),
-      _azimuthalBeamwidth(0.0),
+dis::AcousticBeamFundamentalParameter::AcousticBeamFundamentalParameter()
+    : active_emission_parameter_index_(0),
+      scan_pattern_(0),
+      beam_center_azimuth_(0.0),
+      azimuthal_beamwidth_(0.0),
       _beamCenterDE(0.0),
-      _deBeamwidth(0.0) {}
+      de_beamwidth_(0.0) {}
 
-AcousticBeamFundamentalParameter::~AcousticBeamFundamentalParameter() {}
+dis::AcousticBeamFundamentalParameter::~AcousticBeamFundamentalParameter() =
+    default;
 
-uint16_t AcousticBeamFundamentalParameter::getActiveEmissionParameterIndex()
-    const {
+uint16_t
+dis::AcousticBeamFundamentalParameter::GetActiveEmissionParameterIndex() {
   return _activeEmissionParameterIndex;
 }
 
-void AcousticBeamFundamentalParameter::setActiveEmissionParameterIndex(
+void dis::AcousticBeamFundamentalParameter::SetActiveEmissionParameterIndex(
     uint16_t pX) {
-  _activeEmissionParameterIndex = pX;
+  active_emission_parameter_index_ = pX;
 }
 
-uint16_t AcousticBeamFundamentalParameter::getScanPattern() const {
+uint16_t dis::AcousticBeamFundamentalParameter::GetScanPattern() {
   return _scanPattern;
 }
 
-void AcousticBeamFundamentalParameter::setScanPattern(uint16_t pX) {
+void dis::AcousticBeamFundamentalParameter::setScanPattern(uint16_t pX) {
   _scanPattern = pX;
 }
 

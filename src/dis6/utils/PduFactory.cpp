@@ -20,9 +20,7 @@
 
 using namespace DIS;
 
-PduFactory::PduFactory(void) {}
-
-PduFactory::~PduFactory(void) {}
+PduFactory::PduFactory() = default;
 
 /**
  * Converts data read from the wire--a byte array--to a DIS PDU language
@@ -34,17 +32,17 @@ PduFactory::~PduFactory(void) {}
  * returns NULL. The caller should check for this.
  */
 
-Pdu* PduFactory::createPdu(const char* data) {
-  int dataLength = 1500;  // MTU, might fail for some very large PDUs
-  int pduType = data[2];
+Pdu* PduFactory::CreatePdu(const char* data) {
+  int const data_length = 1500;  // MTU, might fail for some very large PDUs
+  int const pdu_type = data[2];
 
   // std::cout << "Decoding PDU of type " << (int)pduType << std::endl;
 
-  DataStream dataStream(data, dataLength, DIS::BIG);
+  DataStream data_stream(data, dataLength, DIS::BIG);
 
   Pdu* pdu = NULL;
 
-  switch (pduType) {
+  switch (pdu_type) {
     case PDU_ENTITY_STATE:
       pdu = new EntityStatePdu();
       pdu->unmarshal(dataStream);
@@ -111,7 +109,7 @@ Pdu* PduFactory::createPdu(const char* data) {
       break;
 
     default:
-      std::cout << "Received Unrecognized PDU of type " << (int)pduType
+      std::cout << "Received Unrecognized PDU of type " << pdu_type
                 << " change PduFactory.cpp to add new PDUs" << std::endl;
       break;
   }

@@ -1,9 +1,8 @@
 #pragma once
 
-
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // Section 5.2.39. Specification of the data necessary to  describe the scan
 // volume of an emitter.
 
@@ -16,49 +15,49 @@ class BeamData {
  protected:
   /** Specifies the beam azimuth an elevation centers and corresponding
    * half-angles     to describe the scan volume */
-  float _beamAzimuthCenter;
+  float beam_azimuth_center_;
 
   /** Specifies the beam azimuth sweep to determine scan volume */
-  float _beamAzimuthSweep;
+  float beam_azimuth_sweep_;
 
   /** Specifies the beam elevation center to determine scan volume */
-  float _beamElevationCenter;
+  float beam_elevation_center_;
 
   /** Specifies the beam elevation sweep to determine scan volume */
-  float _beamElevationSweep;
+  float beam_elevation_sweep_;
 
   /** allows receiver to synchronize its regenerated scan pattern to     that of
    * the emmitter. Specifies the percentage of time a scan is through its
    * pattern from its origion. */
-  float _beamSweepSync;
+  float beam_sweep_sync_;
 
  public:
   BeamData();
   virtual ~BeamData();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void Marshal(DataStream& dataStream) const;
+  virtual void Unmarshal(DataStream& dataStream);
 
-  float getBeamAzimuthCenter() const;
-  void setBeamAzimuthCenter(float pX);
+  [[nodiscard]] float GetBeamAzimuthCenter() const;
+  void SetBeamAzimuthCenter(float pX);
 
-  float getBeamAzimuthSweep() const;
-  void setBeamAzimuthSweep(float pX);
+  [[nodiscard]] float GetBeamAzimuthSweep() const;
+  void SetBeamAzimuthSweep(float pX);
 
-  float getBeamElevationCenter() const;
-  void setBeamElevationCenter(float pX);
+  [[nodiscard]] float GetBeamElevationCenter() const;
+  void SetBeamElevationCenter(float pX);
 
-  float getBeamElevationSweep() const;
-  void setBeamElevationSweep(float pX);
+  [[nodiscard]] float GetBeamElevationSweep() const;
+  void SetBeamElevationSweep(float pX);
 
-  float getBeamSweepSync() const;
-  void setBeamSweepSync(float pX);
+  [[nodiscard]] float GetBeamSweepSync() const;
+  void SetBeamSweepSync(float pX);
 
-  virtual int getMarshalledSize() const;
+  [[nodiscard]] virtual int GetMarshalledSize() const;
 
   bool operator==(const BeamData& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

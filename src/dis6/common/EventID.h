@@ -27,8 +27,8 @@ class EventID {
   EventID();
   virtual ~EventID();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(dis::DataStream& dataStream) const;
+  virtual void unmarshal(dis::DataStream& dataStream);
 
   uint16_t getSite() const;
   void setSite(uint16_t pX);

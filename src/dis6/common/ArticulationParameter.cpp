@@ -3,88 +3,97 @@
 namespace dis {
 
 ArticulationParameter::ArticulationParameter()
-    : _parameterTypeDesignator(0),
-      _changeIndicator(0),
-      _partAttachedTo(0),
-      _parameterType(0),
-      _parameterValue(0.0) {}
+    : parameter_type_designator_(0),
+      change_indicator_(0),
+      part_attached_to_(0),
+      parameter_type_(0),
+      parameter_value_(0.0) {}
 
-ArticulationParameter::~ArticulationParameter() {}
+ArticulationParameter::~ArticulationParameter() = default;
 
-uint8_t ArticulationParameter::getParameterTypeDesignator() const {
-  return _parameterTypeDesignator;
+uint8_t ArticulationParameter::GetParameterTypeDesignator() const {
+  return parameter_type_designator_;
 }
 
-void ArticulationParameter::setParameterTypeDesignator(uint8_t pX) {
-  _parameterTypeDesignator = pX;
+void ArticulationParameter::SetParameterTypeDesignator(uint8_t pX) {
+  parameter_type_designator_ = pX;
 }
 
-uint8_t ArticulationParameter::getChangeIndicator() const {
-  return _changeIndicator;
+uint8_t ArticulationParameter::GetChangeIndicator() const {
+  return change_indicator_;
 }
 
-void ArticulationParameter::setChangeIndicator(uint8_t pX) {
-  _changeIndicator = pX;
+void ArticulationParameter::SetChangeIndicator(uint8_t pX) {
+  change_indicator_ = pX;
 }
 
-uint16_t ArticulationParameter::getPartAttachedTo() const {
-  return _partAttachedTo;
+uint16_t ArticulationParameter::GetPartAttachedTo() const {
+  return part_attached_to_;
 }
 
-void ArticulationParameter::setPartAttachedTo(uint16_t pX) {
-  _partAttachedTo = pX;
+void ArticulationParameter::SetPartAttachedTo(uint16_t pX) {
+  part_attached_to_ = pX;
 }
 
-int ArticulationParameter::getParameterType() const { return _parameterType; }
+int ArticulationParameter::GetParameterType() const { return parameter_type_; }
 
-void ArticulationParameter::setParameterType(int pX) { _parameterType = pX; }
+void ArticulationParameter::SetParameterType(int pX) { parameter_type_ = pX; }
 
-double ArticulationParameter::getParameterValue() const {
-  return _parameterValue;
+double ArticulationParameter::GetParameterValue() const {
+  return parameter_value_;
 }
 
-void ArticulationParameter::setParameterValue(double pX) {
-  _parameterValue = pX;
+void ArticulationParameter::SetParameterValue(double pX) {
+  parameter_value_ = pX;
 }
 
-void ArticulationParameter::marshal(DataStream& dataStream) const {
-  dataStream << _parameterTypeDesignator;
-  dataStream << _changeIndicator;
-  dataStream << _partAttachedTo;
-  dataStream << _parameterType;
-  dataStream << _parameterValue;
+void ArticulationParameter::Marshal(DataStream& dataStream) const {
+  dataStream << parameter_type_designator_;
+  dataStream << change_indicator_;
+  dataStream << part_attached_to_;
+  dataStream << parameter_type_;
+  dataStream << parameter_value_;
 }
 
-void ArticulationParameter::unmarshal(DataStream& dataStream) {
-  dataStream >> _parameterTypeDesignator;
-  dataStream >> _changeIndicator;
-  dataStream >> _partAttachedTo;
-  dataStream >> _parameterType;
-  dataStream >> _parameterValue;
+void ArticulationParameter::Unmarshal(DataStream& dataStream) {
+  dataStream >> parameter_type_designator_;
+  dataStream >> change_indicator_;
+  dataStream >> part_attached_to_;
+  dataStream >> parameter_type_;
+  dataStream >> parameter_value_;
 }
 
 bool ArticulationParameter::operator==(const ArticulationParameter& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  if (!(_parameterTypeDesignator == rhs._parameterTypeDesignator))
-    ivarsEqual = false;
-  if (!(_changeIndicator == rhs._changeIndicator)) ivarsEqual = false;
-  if (!(_partAttachedTo == rhs._partAttachedTo)) ivarsEqual = false;
-  if (!(_parameterType == rhs._parameterType)) ivarsEqual = false;
-  if (!(_parameterValue == rhs._parameterValue)) ivarsEqual = false;
+  if (!(parameter_type_designator_ == rhs.parameter_type_designator_)) {
+    ivars_equal = false;
+  }
+  if (!(change_indicator_ == rhs.change_indicator_)) {
+    ivars_equal = false;
+  }
+  if (!(part_attached_to_ == rhs.part_attached_to_)) {
+    ivars_equal = false;
+  }
+  if (!(parameter_type_ == rhs.parameter_type_)) {
+    ivars_equal = false;
+  }
+  if (!(parameter_value_ == rhs.parameter_value_)) {
+    ivars_equal = false;
+  }
 
-  return ivarsEqual;
+  return ivars_equal;
 }
 
-int ArticulationParameter::getMarshalledSize() const {
-  int marshalSize = 0;
+int ArticulationParameter::GetMarshalledSize() const {
+  int marshal_size = 0;
 
-  marshalSize = marshalSize + 1;  // _parameterTypeDesignator
-  marshalSize = marshalSize + 1;  // _changeIndicator
-  marshalSize = marshalSize + 2;  // _partAttachedTo
-  marshalSize = marshalSize + 4;  // _parameterType
-  marshalSize = marshalSize + 8;  // _parameterValue
-  return marshalSize;
+  marshal_size = marshal_size + 1;  // _parameterTypeDesignator
+  marshal_size = marshal_size + 1;  // _changeIndicator
+  marshal_size = marshal_size + 2;  // _partAttachedTo
+  marshal_size = marshal_size + 4;  // _parameterType
+  marshal_size = marshal_size + 8;  // _parameterValue
+  return marshal_size;
 }
 
 }  // namespace dis

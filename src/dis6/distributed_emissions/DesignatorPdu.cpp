@@ -2,24 +2,20 @@
 
 using namespace DIS;
 
-DesignatorPdu::DesignatorPdu()
-    : DistributedEmissionsFamilyPdu(),
-      _designatingEntityID(),
-      _codeName(0),
-      _designatedEntityID(),
+dis::DesignatorPdu::DesignatorPdu()
+    : _codeName(0),
+
       _designatorCode(0),
       _designatorPower(0.0),
       _designatorWavelength(0.0),
-      _designatorSpotWrtDesignated(),
-      _designatorSpotLocation(),
+
       _deadReckoningAlgorithm(0),
       _padding1(0),
-      _padding2(0),
-      _entityLinearAcceleration() {
-  setPduType(24);
+      _padding2(0) {
+  SetPduType(24);
 }
 
-DesignatorPdu::~DesignatorPdu() {}
+dis::DesignatorPdu::~DesignatorPdu() = default;
 
 EntityID& DesignatorPdu::getDesignatingEntityID() {
   return _designatingEntityID;

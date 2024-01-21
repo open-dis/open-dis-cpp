@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DIS6_COMMON_ARTICULATIONPARAMETER_H_
+#define DIS6_COMMON_ARTICULATIONPARAMETER_H_
 
 #include <cstdint>
 
@@ -53,7 +54,10 @@ class ArticulationParameter {
 
   bool operator==(const ArticulationParameter& rhs) const;
 };
+
 }  // namespace dis
+
+#endif  // DIS6_COMMON_ARTICULATIONPARAMETER_H_
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

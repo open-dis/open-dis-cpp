@@ -11,6 +11,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 # include GNUInstallDirs Module to get more generic directory handling
 include(GNUInstallDirs)
 
@@ -19,9 +21,14 @@ add_library(OpenDIS6 "")
 
 # Add src/ to the include directories to OpenDIS6
 target_include_directories(OpenDIS6
-  PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
-         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src>
-         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
+  PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>
+    $<INSTALL_INTERFACE:${INSTALL_INCLUDE_DIR}>
+)
+target_include_directories(OpenDIS6 SYSTEM
+  PUBLIC $<BUILD_INTERFACE:${PROJECT_BINARY_DIR/src}>
+    $<INSTALL_INTERFACE:${INSTALL_INCLUDE_DIR}>
+  PRIVATE $<BUILD_INTERFACE:${CMRC_INCLUDE_DIR}>
+)
 
 # Define OpenDIS7 Library
 add_library(OpenDIS7 "")

@@ -20,8 +20,8 @@ class FourByteChunk {
   FourByteChunk();
   virtual ~FourByteChunk();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(dis::DataStream& dataStream) const;
+  virtual void unmarshal(dis::DataStream& dataStream);
 
   char* getOtherParameters();
   const char* getOtherParameters() const;

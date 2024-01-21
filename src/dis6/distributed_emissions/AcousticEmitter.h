@@ -1,9 +1,10 @@
 #pragma once
 
+#include <cstdint>
 
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // Section 5.2.35. information about a specific UA emmtter
 
 // Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
@@ -14,35 +15,35 @@ namespace DIS {
 class AcousticEmitter {
  protected:
   /** the system for a particular UA emitter, and an enumeration */
-  uint16_t _acousticName;
+  uint16_t acoustic_name_;
 
   /** The function of the acoustic system */
-  uint8_t _function;
+  uint8_t function_;
 
   /** The UA emitter identification number relative to a specific system */
-  uint8_t _acousticIdNumber;
+  uint8_t acoustic_id_number_;
 
  public:
   AcousticEmitter();
   virtual ~AcousticEmitter();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void Marshal(DataStream& dataStream) const;
+  virtual void Unmarshal(DataStream& dataStream);
 
-  uint16_t getAcousticName() const;
-  void setAcousticName(uint16_t pX);
+  [[nodiscard]] uint16_t GetAcousticName() const;
+  void SetAcousticName(uint16_t pX);
 
-  uint8_t getFunction() const;
-  void setFunction(uint8_t pX);
+  [[nodiscard]] uint8_t GetFunction() const;
+  void SetFunction(uint8_t pX);
 
-  uint8_t getAcousticIdNumber() const;
-  void setAcousticIdNumber(uint8_t pX);
+  [[nodiscard]] uint8_t GetAcousticIdNumber() const;
+  void SetAcousticIdNumber(uint8_t pX);
 
-  virtual int getMarshalledSize() const;
+  [[nodiscard]] virtual int GetMarshalledSize() const;
 
   bool operator==(const AcousticEmitter& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

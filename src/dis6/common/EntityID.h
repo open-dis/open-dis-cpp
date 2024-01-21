@@ -1,9 +1,8 @@
 #pragma once
 
-
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // Each entity in a given DIS simulation application shall be given an entity
 // identifier number unique to all  other entities in that application. This
 // identifier number is valid for the duration of the exercise; however,  entity
@@ -27,35 +26,35 @@ namespace DIS {
 class EntityID {
  protected:
   /** The site ID */
-  uint16_t _site;
+  uint16_t site_;  // NOLINT
 
   /** The application ID */
-  uint16_t _application;
+  uint16_t application_;  // NOLINT
 
   /** the entity ID */
-  uint16_t _entity;
+  uint16_t entity_;  // NOLINT
 
  public:
   EntityID();
   virtual ~EntityID();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void Marshal(DataStream& dataStream) const;
+  virtual void Unmarshal(DataStream& dataStream);
 
-  uint16_t getSite() const;
-  void setSite(uint16_t pX);
+  [[nodiscard]] uint16_t GetSite() const;
+  void SetSite(uint16_t pX);
 
-  uint16_t getApplication() const;
-  void setApplication(uint16_t pX);
+  [[nodiscard]] uint16_t GetApplication() const;
+  void SetApplication(uint16_t pX);
 
-  uint16_t getEntity() const;
-  void setEntity(uint16_t pX);
+  [[nodiscard]] uint16_t GetEntity() const;
+  void SetEntity(uint16_t pX);
 
-  virtual int getMarshalledSize() const;
+  [[nodiscard]] virtual int GetMarshalledSize() const;
 
   bool operator==(const EntityID& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

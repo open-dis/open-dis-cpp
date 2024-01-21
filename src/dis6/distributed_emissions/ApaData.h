@@ -1,9 +1,10 @@
 #pragma once
 
+#include <cstdint>
 
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // Used in UA PDU
 
 // Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
@@ -14,29 +15,29 @@ namespace DIS {
 class ApaData {
  protected:
   /** Index of APA parameter */
-  uint16_t _parameterIndex;
+  uint16_t parameter_index_;
 
   /** Index of APA parameter */
-  int16_t _parameterValue;
+  int16_t parameter_value_;
 
  public:
   ApaData();
   virtual ~ApaData();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void Marshal(DataStream& dataStream) const;
+  virtual void Unmarshal(DataStream& dataStream);
 
-  uint16_t getParameterIndex() const;
-  void setParameterIndex(uint16_t pX);
+  [[nodiscard]] uint16_t GetParameterIndex() const;
+  void SetParameterIndex(uint16_t pX);
 
-  int16_t getParameterValue() const;
-  void setParameterValue(int16_t pX);
+  [[nodiscard]] int16_t GetParameterValue() const;
+  void SetParameterValue(int16_t pX);
 
-  virtual int getMarshalledSize() const;
+  [[nodiscard]] virtual int GetMarshalledSize() const;
 
   bool operator==(const ApaData& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

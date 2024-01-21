@@ -1,7 +1,6 @@
 #pragma once
 
 #include "dis6/common/EntityType.h"
-
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -17,7 +16,7 @@ namespace DIS {
 class BurstDescriptor {
  protected:
   /** What munition was used in the burst */
-  EntityType _munition;
+  dis::EntityType _munition;
 
   /** type of warhead */
   uint16_t _warhead;
@@ -35,12 +34,12 @@ class BurstDescriptor {
   BurstDescriptor();
   virtual ~BurstDescriptor();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(dis::DataStream& dataStream) const;
+  virtual void unmarshal(dis::DataStream& dataStream);
 
-  EntityType& getMunition();
-  const EntityType& getMunition() const;
-  void setMunition(const EntityType& pX);
+  dis::EntityType& getMunition();
+  const dis::EntityType& getMunition() const;
+  void setMunition(const dis::EntityType& pX);
 
   uint16_t getWarhead() const;
   void setWarhead(uint16_t pX);

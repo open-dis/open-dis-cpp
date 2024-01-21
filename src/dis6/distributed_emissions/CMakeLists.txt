@@ -32,12 +32,6 @@ set(distributed_emissions_src
   UnderwaterAcousticsPdu.cpp
 )
 
-list(TRANSFORM distributed_emissions_src PREPEND "${CMAKE_CURRENT_LIST_DIR}/")
-
-include(GenerateExportHeader)
-generate_export_header(OpenDIS6)
-list(APPEND distributed_emissions_hdr "${CMAKE_CURRENT_BINARY_DIR}/opendis6_export.h")
-
 target_sources(OpenDIS6 PRIVATE ${distributed_emissions_src})
 
 install(FILES ${distributed_emissions_hdr}

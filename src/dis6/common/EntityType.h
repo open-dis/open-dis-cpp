@@ -1,9 +1,8 @@
 #pragma once
 
-
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // Section 5.2.16. Identifies the type of entity, including kind of entity,
 // domain (surface, subsurface, air, etc) country, category, etc.
 
@@ -15,58 +14,58 @@ namespace DIS {
 class EntityType {
  protected:
   /** Kind of entity */
-  uint8_t _entityKind;
+  uint8_t entity_kind_;  // NOLINT
 
   /** Domain of entity (air, surface, subsurface, space, etc) */
-  uint8_t _domain;
+  uint8_t domain_;  // NOLINT
 
   /** country to which the design of the entity is attributed */
-  uint16_t _country;
+  uint16_t country_;  // NOLINT
 
   /** category of entity */
-  uint8_t _category;
+  uint8_t category_;  // NOLINT
 
   /** subcategory of entity */
-  uint8_t _subcategory;
+  uint8_t subcategory_;  // NOLINT
 
   /** specific info based on subcategory field */
-  uint8_t _specific;
+  uint8_t specific_;  // NOLINT
 
-  uint8_t _extra;
+  uint8_t extra_;  // NOLINT
 
  public:
   EntityType();
   virtual ~EntityType();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void Marshal(DataStream& dataStream) const;
+  virtual void Unmarshal(DataStream& dataStream);
 
-  uint8_t getEntityKind() const;
-  void setEntityKind(uint8_t pX);
+  [[nodiscard]] static uint8_t GetEntityKind();
+  void SetEntityKind(uint8_t pX);
 
-  uint8_t getDomain() const;
-  void setDomain(uint8_t pX);
+  [[nodiscard]] uint8_t GetDomain() const;
+  void SetDomain(uint8_t pX);
 
-  uint16_t getCountry() const;
-  void setCountry(uint16_t pX);
+  [[nodiscard]] uint16_t GetCountry() const;
+  void SetCountry(uint16_t pX);
 
-  uint8_t getCategory() const;
-  void setCategory(uint8_t pX);
+  [[nodiscard]] uint8_t GetCategory() const;
+  void SetCategory(uint8_t pX);
 
-  uint8_t getSubcategory() const;
-  void setSubcategory(uint8_t pX);
+  [[nodiscard]] uint8_t GetSubcategory() const;
+  void SetSubcategory(uint8_t pX);
 
-  uint8_t getSpecific() const;
-  void setSpecific(uint8_t pX);
+  [[nodiscard]] uint8_t GetSpecific() const;
+  void SetSpecific(uint8_t pX);
 
-  uint8_t getExtra() const;
-  void setExtra(uint8_t pX);
+  [[nodiscard]] uint8_t GetExtra() const;
+  void SetExtra(uint8_t pX);
 
-  virtual int getMarshalledSize() const;
+  [[nodiscard]] virtual int GetMarshalledSize() const;
 
   bool operator==(const EntityType& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

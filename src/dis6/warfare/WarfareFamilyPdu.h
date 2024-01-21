@@ -1,11 +1,10 @@
 #pragma once
 
-#include "dis6/EntityID.h"
-#include "dis6/Pdu.h"
-
+#include "dis6/common/EntityID.h"
+#include "dis6/common/Pdu.h"
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // Section 5.3.4. abstract superclass for fire and detonation pdus that have
 // shared information. COMPLETE
 
@@ -41,7 +40,7 @@ class WarfareFamilyPdu : public Pdu {
 
   bool operator==(const WarfareFamilyPdu& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

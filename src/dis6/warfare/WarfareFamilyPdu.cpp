@@ -1,13 +1,9 @@
-#include "dis6/WarfareFamilyPdu.h"
+#include "dis6/warfare/WarfareFamilyPdu.h"
 
-using namespace DIS;
+namespace dis {
+WarfareFamilyPdu::WarfareFamilyPdu() { SetProtocolFamily(2); }
 
-WarfareFamilyPdu::WarfareFamilyPdu()
-    : Pdu(), _firingEntityID(), _targetEntityID() {
-  setProtocolFamily(2);
-}
-
-WarfareFamilyPdu::~WarfareFamilyPdu() {}
+WarfareFamilyPdu::~WarfareFamilyPdu() = default;
 
 EntityID& WarfareFamilyPdu::getFiringEntityID() { return _firingEntityID; }
 
@@ -29,40 +25,45 @@ void WarfareFamilyPdu::setTargetEntityID(const EntityID& pX) {
   _targetEntityID = pX;
 }
 
-void WarfareFamilyPdu::marshal(DataStream& dataStream) const {
-  Pdu::marshal(dataStream);  // Marshal information in superclass first
-  _firingEntityID.marshal(dataStream);
-  _targetEntityID.marshal(dataStream);
+void WarfareFamilyPdu::Marshal(DataStream& dataStream) const {
+  Pdu::marshal(data_stream);  // Marshal information in superclass first
+  _firingEntityID.Marshal(dataStream);
+  _targetEntityID.Marshal(dataStream);
 }
 
-void WarfareFamilyPdu::unmarshal(DataStream& dataStream) {
-  Pdu::unmarshal(dataStream);  // unmarshal information in superclass first
-  _firingEntityID.unmarshal(dataStream);
-  _targetEntityID.unmarshal(dataStream);
+void WarfareFamilyPdu::Unmarshal(DataStream& dataStream) {
+  Pdu::unmarshal(data_stream);  // unmarshal information in superclass first
+  _firingEntityID.Unmarshal(dataStream);
+  _targetEntityID.Unmarshal(dataStream);
 }
 
 bool WarfareFamilyPdu::operator==(const WarfareFamilyPdu& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  ivarsEqual = Pdu::operator==(rhs);
+  ivars_equal = Pdu::operator==(rhs);
 
-  if (!(_firingEntityID == rhs._firingEntityID)) ivarsEqual = false;
-  if (!(_targetEntityID == rhs._targetEntityID)) ivarsEqual = false;
+  if (!(_firingEntityID == rhs._firingEntityID)) {
+    ivars_equal = false;
+  }
+  if (!(_targetEntityID == rhs._targetEntityID)) {
+    ivars_equal = false;
+  }
 
-  return ivarsEqual;
+  return ivars_equal;
 }
 
-int WarfareFamilyPdu::getMarshalledSize() const {
-  int marshalSize = 0;
+int WarfareFamilyPdu::GetMarshalledSize() const {
+  int marshal_size = 0;
 
-  marshalSize = Pdu::getMarshalledSize();
-  marshalSize =
-      marshalSize + _firingEntityID.getMarshalledSize();  // _firingEntityID
-  marshalSize =
-      marshalSize + _targetEntityID.getMarshalledSize();  // _targetEntityID
-  return marshalSize;
+  marshal_size = getMarshalledSize();
+  marshal_size =
+      marshal_size + _firingEntityID.GetMarshalledSize();  // _firingEntityID
+  marshal_size =
+      marshal_size + _targetEntityID.GetMarshalledSize();  // _targetEntityID
+  return marshal_size;
 }
 
+}  // namespace dis
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions

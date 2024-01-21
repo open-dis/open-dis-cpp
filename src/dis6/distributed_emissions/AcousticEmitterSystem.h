@@ -1,9 +1,10 @@
 #pragma once
 
+#include <cstdint>
 
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // 5.3.35: Information about a particular UA emitter shall be represented using
 // an Acoustic Emitter System record. This record shall consist of three fields:
 // Acoustic Name, Function, and Acoustic ID Number
@@ -16,10 +17,10 @@ namespace DIS {
 class AcousticEmitterSystem {
  protected:
   /** This field shall specify the system for a particular UA emitter. */
-  uint16_t _acousticName;
+  uint16_t acoustic_name_;
 
   /** This field shall describe the function of the acoustic system.  */
-  uint8_t _acousticFunction;
+  uint8_t acoustic_function_;
 
   /** This field shall specify the UA emitter identification number relative to
    * a specific system. This field shall be represented by an 8-bit unsigned
@@ -27,29 +28,29 @@ class AcousticEmitterSystem {
    * entity, even if in some instances two or more of the systems may be
    * identical UA emitter types. Numbering of systems shall begin with the
    * value 1.  */
-  uint8_t _acousticID;
+  uint8_t acoustic_id_;
 
  public:
   AcousticEmitterSystem();
   virtual ~AcousticEmitterSystem();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void Marshal(DataStream& dataStream) const;
+  virtual void Unmarshal(DataStream& dataStream);
 
-  uint16_t getAcousticName() const;
-  void setAcousticName(uint16_t pX);
+  [[nodiscard]] uint16_t GetAcousticName() const;
+  void SetAcousticName(uint16_t pX);
 
-  uint8_t getAcousticFunction() const;
-  void setAcousticFunction(uint8_t pX);
+  [[nodiscard]] uint8_t GetAcousticFunction() const;
+  void SetAcousticFunction(uint8_t pX);
 
-  uint8_t getAcousticID() const;
-  void setAcousticID(uint8_t pX);
+  [[nodiscard]] uint8_t GetAcousticId() const;
+  void SetAcousticId(uint8_t pX);
 
-  virtual int getMarshalledSize() const;
+  [[nodiscard]] virtual int GetMarshalledSize() const;
 
   bool operator==(const AcousticEmitterSystem& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

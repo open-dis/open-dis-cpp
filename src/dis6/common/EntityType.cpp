@@ -1,92 +1,107 @@
 #include "dis6/common/EntityType.h"
 
-using namespace DIS;
-
+namespace dis {
 EntityType::EntityType()
     : _entityKind(0),
-      _domain(0),
-      _country(0),
-      _category(0),
-      _subcategory(0),
-      _specific(0),
-      _extra(0) {}
+      domain_(0),
+      country_(0),
+      category_(0),
+      subcategory_(0),
+      specific_(0),
+      extra_(0) {}
 
-EntityType::~EntityType() {}
+EntityType::~EntityType() = default;
 
-uint8_t EntityType::getEntityKind() const { return _entityKind; }
+uint8_t EntityType::GetEntityKind() { return _entityKind; }
 
-void EntityType::setEntityKind(uint8_t pX) { _entityKind = pX; }
+void EntityType::SetEntityKind(uint8_t pX) { _entityKind = pX; }
 
-uint8_t EntityType::getDomain() const { return _domain; }
+uint8_t EntityType::GetDomain() const { return domain_; }
 
-void EntityType::setDomain(uint8_t pX) { _domain = pX; }
+void EntityType::SetDomain(uint8_t pX) { domain_ = pX; }
 
-uint16_t EntityType::getCountry() const { return _country; }
+uint16_t EntityType::GetCountry() const { return country_; }
 
-void EntityType::setCountry(uint16_t pX) { _country = pX; }
+void EntityType::SetCountry(uint16_t pX) { country_ = pX; }
 
-uint8_t EntityType::getCategory() const { return _category; }
+uint8_t EntityType::GetCategory() const { return category_; }
 
-void EntityType::setCategory(uint8_t pX) { _category = pX; }
+void EntityType::SetCategory(uint8_t pX) { category_ = pX; }
 
-uint8_t EntityType::getSubcategory() const { return _subcategory; }
+uint8_t EntityType::GetSubcategory() const { return subcategory_; }
 
-void EntityType::setSubcategory(uint8_t pX) { _subcategory = pX; }
+void EntityType::SetSubcategory(uint8_t pX) { subcategory_ = pX; }
 
-uint8_t EntityType::getSpecific() const { return _specific; }
+uint8_t EntityType::GetSpecific() const { return specific_; }
 
-void EntityType::setSpecific(uint8_t pX) { _specific = pX; }
+void EntityType::SetSpecific(uint8_t pX) { specific_ = pX; }
 
-uint8_t EntityType::getExtra() const { return _extra; }
+uint8_t EntityType::GetExtra() const { return extra_; }
 
-void EntityType::setExtra(uint8_t pX) { _extra = pX; }
+void EntityType::SetExtra(uint8_t pX) { extra_ = pX; }
 
-void EntityType::marshal(DataStream& dataStream) const {
-  dataStream << _entityKind;
-  dataStream << _domain;
-  dataStream << _country;
-  dataStream << _category;
-  dataStream << _subcategory;
-  dataStream << _specific;
-  dataStream << _extra;
+void EntityType::Marshal(DataStream& dataStream) const {
+  dataStream << entity_kind_;
+  dataStream << domain_;
+  dataStream << country_;
+  dataStream << category_;
+  dataStream << subcategory_;
+  dataStream << specific_;
+  dataStream << extra_;
 }
 
-void EntityType::unmarshal(DataStream& dataStream) {
-  dataStream >> _entityKind;
-  dataStream >> _domain;
-  dataStream >> _country;
-  dataStream >> _category;
-  dataStream >> _subcategory;
-  dataStream >> _specific;
-  dataStream >> _extra;
+void EntityType::Unmarshal(DataStream& dataStream) {
+  dataStream >> entity_kind_;
+  dataStream >> domain_;
+  dataStream >> country_;
+  dataStream >> category_;
+  dataStream >> subcategory_;
+  dataStream >> specific_;
+  dataStream >> extra_;
 }
 
 bool EntityType::operator==(const EntityType& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  if (!(_entityKind == rhs._entityKind)) ivarsEqual = false;
-  if (!(_domain == rhs._domain)) ivarsEqual = false;
-  if (!(_country == rhs._country)) ivarsEqual = false;
-  if (!(_category == rhs._category)) ivarsEqual = false;
-  if (!(_subcategory == rhs._subcategory)) ivarsEqual = false;
-  if (!(_specific == rhs._specific)) ivarsEqual = false;
-  if (!(_extra == rhs._extra)) ivarsEqual = false;
+  if (!(_entityKind == rhs.entity_kind_)) {
+    ivars_equal = false;
+  }
+  if (!(_domain == rhs.domain_)) {
+    ivars_equal = false;
+  }
+  if (!(_country == rhs.country_)) {
+    ivars_equal = false;
+  }
+  if (!(_category == rhs.category_)) {
+    ivars_equal = false;
+  }
+  if (!(_subcategory == rhs.subcategory_)) {
+    ivars_equal = false;
+  }
+  if (!(_specific == rhs.specific_)) {
+    ivars_equal = false;
+  }
+  if (!(_extra == rhs.extra_)) {
+    ivars_equal = false;
+  }
 
-  return ivarsEqual;
+  return ivars_equal;
 }
 
-int EntityType::getMarshalledSize() const {
-  int marshalSize = 0;
+int EntityType::GetMarshalledSize() const {
+  int marshal_size = 0;
 
-  marshalSize = marshalSize + 1;  // _entityKind
-  marshalSize = marshalSize + 1;  // _domain
-  marshalSize = marshalSize + 2;  // _country
-  marshalSize = marshalSize + 1;  // _category
-  marshalSize = marshalSize + 1;  // _subcategory
-  marshalSize = marshalSize + 1;  // _specific
-  marshalSize = marshalSize + 1;  // _extra
-  return marshalSize;
+  marshal_size = marshal_size + 1;  // _entityKind
+  marshal_size = marshal_size + 1;  // _domain
+  marshal_size = marshal_size + 2;  // _country
+  marshal_size = marshal_size + 1;  // _category
+  marshal_size = marshal_size + 1;  // _subcategory
+  marshal_size = marshal_size + 1;  // _specific
+  marshal_size = marshal_size + 1;  // _extra
+  return marshal_size;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

@@ -1,6 +1,6 @@
 #include "dis6/distribued_emissions/AcousticBeamData.h"
 
-using namespace DIS;
+namespace dis {
 
 AcousticBeamData::AcousticBeamData()
     : _beamDataLength(0),
@@ -74,6 +74,8 @@ int AcousticBeamData::getMarshalledSize() const {
                         .getMarshalledSize();  // _fundamentalDataParameters
   return marshalSize;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

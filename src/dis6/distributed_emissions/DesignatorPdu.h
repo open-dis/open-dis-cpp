@@ -1,13 +1,14 @@
 #pragma once
 
-#include "dis6/EntityID.h"
-#include "dis6/Vector3Double.h"
-#include "dis6/Vector3Float.h"
+#include <cstdint>
+
+#include "dis6/common/EntityID.h"
+#include "dis6/common/Vector3Double.h"
+#include "dis6/common/Vector3Float.h"
 #include "dis6/distributed_emissions/DistributedEmissionsFamilyPdu.h"
-#include "dis6/distributed_emissions/opendis6_export.h"
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // Section 5.3.7.2. Handles designating operations. COMPLETE
 
 // Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
@@ -39,10 +40,10 @@ class DesignatorPdu : public DistributedEmissionsFamilyPdu {
   float _designatorWavelength;
 
   /** designtor spot wrt the designated entity */
-  Vector3Float _designatorSpotWrtDesignated;
+  DIS::Vector3Float _designatorSpotWrtDesignated;
 
   /** designtor spot wrt the designated entity */
-  Vector3Double _designatorSpotLocation;
+  DIS::Vector3Double _designatorSpotLocation;
 
   /** Dead reckoning algorithm */
   char _deadReckoningAlgorithm;
@@ -54,7 +55,7 @@ class DesignatorPdu : public DistributedEmissionsFamilyPdu {
   char _padding2;
 
   /** linear accelleration of entity */
-  Vector3Float _entityLinearAcceleration;
+  DIS::Vector3Float _entityLinearAcceleration;
 
  public:
   DesignatorPdu();
@@ -83,13 +84,13 @@ class DesignatorPdu : public DistributedEmissionsFamilyPdu {
   float getDesignatorWavelength() const;
   void setDesignatorWavelength(float pX);
 
-  Vector3Float& getDesignatorSpotWrtDesignated();
-  const Vector3Float& getDesignatorSpotWrtDesignated() const;
-  void setDesignatorSpotWrtDesignated(const Vector3Float& pX);
+  DIS::Vector3Float& getDesignatorSpotWrtDesignated();
+  const DIS::Vector3Float& getDesignatorSpotWrtDesignated() const;
+  void setDesignatorSpotWrtDesignated(const DIS::Vector3Float& pX);
 
-  Vector3Double& getDesignatorSpotLocation();
-  const Vector3Double& getDesignatorSpotLocation() const;
-  void setDesignatorSpotLocation(const Vector3Double& pX);
+  DIS::Vector3Double& getDesignatorSpotLocation();
+  const DIS::Vector3Double& getDesignatorSpotLocation() const;
+  void setDesignatorSpotLocation(const DIS::Vector3Double& pX);
 
   char getDeadReckoningAlgorithm() const;
   void setDeadReckoningAlgorithm(char pX);
@@ -100,15 +101,15 @@ class DesignatorPdu : public DistributedEmissionsFamilyPdu {
   char getPadding2() const;
   void setPadding2(char pX);
 
-  Vector3Float& getEntityLinearAcceleration();
-  const Vector3Float& getEntityLinearAcceleration() const;
-  void setEntityLinearAcceleration(const Vector3Float& pX);
+  DIS::Vector3Float& getEntityLinearAcceleration();
+  const DIS::Vector3Float& getEntityLinearAcceleration() const;
+  void setEntityLinearAcceleration(const DIS::Vector3Float& pX);
 
   virtual int getMarshalledSize() const;
 
   bool operator==(const DesignatorPdu& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

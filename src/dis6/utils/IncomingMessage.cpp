@@ -11,7 +11,7 @@ using namespace DIS;
 
 // the DIS specification says the type is known for all PDUs at the 3rd byte of
 // the PDU buffer.
-const uint32_t PDU_TYPE_POSITION = 2;
+const uint32_t kPduTypePosition = 2;
 
 IncomingMessage::IncomingMessage() : _processors(), _pduBanks() {}
 

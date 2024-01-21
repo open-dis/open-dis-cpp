@@ -26,8 +26,8 @@ class Vector3Float {
   Vector3Float();
   virtual ~Vector3Float();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(dis::DataStream& dataStream) const;
+  virtual void unmarshal(dis::DataStream& dataStream);
 
   float getX() const;
   void setX(float pX);

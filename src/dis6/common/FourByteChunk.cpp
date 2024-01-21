@@ -4,13 +4,12 @@ using namespace DIS;
 
 FourByteChunk::FourByteChunk() {
   // Initialize fixed length array
-  for (int lengthotherParameters = 0; lengthotherParameters < 4;
-       lengthotherParameters++) {
-    _otherParameters[lengthotherParameters] = 0;
+  for (char& _otherParameter : _otherParameters) {
+    _otherParameter = 0;
   }
 }
 
-FourByteChunk::~FourByteChunk() {}
+FourByteChunk::~FourByteChunk() = default;
 
 char* FourByteChunk::getOtherParameters() { return _otherParameters; }
 
@@ -24,34 +23,35 @@ void FourByteChunk::setOtherParameters(const char* x) {
   }
 }
 
-void FourByteChunk::marshal(DataStream& dataStream) const {
-  for (size_t idx = 0; idx < 4; idx++) {
-    dataStream << _otherParameters[idx];
+void FourByteChunk::Marshal(DataStream& dataStream) const {
+  for (char _otherParameter : _otherParameters) {
+    dataStream << _otherParameter;
   }
 }
 
-void FourByteChunk::unmarshal(DataStream& dataStream) {
-  for (size_t idx = 0; idx < 4; idx++) {
-    dataStream >> _otherParameters[idx];
+void FourByteChunk::Unmarshal(DataStream& dataStream) {
+  for (char& _otherParameter : _otherParameters) {
+    dataStream >> _otherParameter;
   }
 }
 
 bool FourByteChunk::operator==(const FourByteChunk& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
   for (uint8_t idx = 0; idx < 4; idx++) {
-    if (!(_otherParameters[idx] == rhs._otherParameters[idx]))
-      ivarsEqual = false;
+    if (!(_otherParameters[idx] == rhs._otherParameters[idx])) {
+      ivars_equal = false;
+    }
   }
 
-  return ivarsEqual;
+  return ivars_equal;
 }
 
 int FourByteChunk::getMarshalledSize() const {
-  int marshalSize = 0;
+  int marshal_size = 0;
 
-  marshalSize = marshalSize + 4 * 1;  // _otherParameters
-  return marshalSize;
+  marshal_size = marshal_size + 4 * 1;  // _otherParameters
+  return marshal_size;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.

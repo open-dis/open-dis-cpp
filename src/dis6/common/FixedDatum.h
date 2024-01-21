@@ -23,8 +23,8 @@ class FixedDatum {
   FixedDatum();
   virtual ~FixedDatum();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(dis::DataStream& dataStream) const;
+  virtual void unmarshal(dis::DataStream& dataStream);
 
   uint32_t getFixedDatumID() const;
   void setFixedDatumID(uint32_t pX);

@@ -17,7 +17,7 @@ namespace DIS {
 class PduFactory {
  public:
   PduFactory(void);
-  ~PduFactory(void);
+  ~PduFactory(void) = default;
 
   /** Returns a PDU of the appropriate concrete subclass. Returns NULL
    * for failures or unrecognized PDU types.

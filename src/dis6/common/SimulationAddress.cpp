@@ -4,7 +4,7 @@ using namespace DIS;
 
 SimulationAddress::SimulationAddress() : _site(0), _application(0) {}
 
-SimulationAddress::~SimulationAddress() {}
+SimulationAddress::~SimulationAddress() = default;
 
 uint16_t SimulationAddress::getSite() const { return _site; }
 
@@ -14,31 +14,35 @@ uint16_t SimulationAddress::getApplication() const { return _application; }
 
 void SimulationAddress::setApplication(uint16_t pX) { _application = pX; }
 
-void SimulationAddress::marshal(DataStream& dataStream) const {
+void SimulationAddress::Marshal(DataStream& dataStream) const {
   dataStream << _site;
   dataStream << _application;
 }
 
-void SimulationAddress::unmarshal(DataStream& dataStream) {
+void SimulationAddress::Unmarshal(DataStream& dataStream) {
   dataStream >> _site;
   dataStream >> _application;
 }
 
 bool SimulationAddress::operator==(const SimulationAddress& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  if (!(_site == rhs._site)) ivarsEqual = false;
-  if (!(_application == rhs._application)) ivarsEqual = false;
+  if (!(_site == rhs._site)) {
+    ivars_equal = false;
+  }
+  if (!(_application == rhs._application)) {
+    ivars_equal = false;
+  }
 
-  return ivarsEqual;
+  return ivars_equal;
 }
 
 int SimulationAddress::getMarshalledSize() const {
-  int marshalSize = 0;
+  int marshal_size = 0;
 
-  marshalSize = marshalSize + 2;  // _site
-  marshalSize = marshalSize + 2;  // _application
-  return marshalSize;
+  marshal_size = marshal_size + 2;  // _site
+  marshal_size = marshal_size + 2;  // _application
+  return marshal_size;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.

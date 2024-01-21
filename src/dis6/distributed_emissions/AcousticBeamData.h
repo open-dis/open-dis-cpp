@@ -1,10 +1,11 @@
 #pragma once
 
+#include <cstdint>
+
 #include "dis6/distributed_emissions/AcousticBeamFundamentalParameter.h"
-#include "dis6/distributed_emissions/opendis6_export.h"
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // Used in UA PDU
 
 // Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
@@ -15,42 +16,43 @@ namespace DIS {
 class AcousticBeamData {
  protected:
   /** beam data length */
-  uint16_t _beamDataLength;
+  uint16_t beam_data_length_;
 
   /** beamIDNumber */
-  uint8_t _beamIDNumber;
+  uint8_t beam_id_number_;
 
   /** padding */
-  uint16_t _pad2;
+  uint16_t pad2_;
 
   /** fundamental data parameters */
-  AcousticBeamFundamentalParameter _fundamentalDataParameters;
+  AcousticBeamFundamentalParameter fundamental_data_parameters_;
 
  public:
   AcousticBeamData();
   virtual ~AcousticBeamData();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void Marshal(DataStream& dataStream) const;
+  virtual void Unmarshal(DataStream& dataStream);
 
-  uint16_t getBeamDataLength() const;
-  void setBeamDataLength(uint16_t pX);
+  [[nodiscard]] uint16_t GetBeamDataLength() const;
+  void SetBeamDataLength(uint16_t pX);
 
-  uint8_t getBeamIDNumber() const;
-  void setBeamIDNumber(uint8_t pX);
+  [[nodiscard]] uint8_t GetBeamIdNumber() const;
+  void SetBeamIdNumber(uint8_t pX);
 
-  uint16_t getPad2() const;
-  void setPad2(uint16_t pX);
+  [[nodiscard]] uint16_t GetPad2() const;
+  void SetPad2(uint16_t pX);
 
-  AcousticBeamFundamentalParameter& getFundamentalDataParameters();
-  const AcousticBeamFundamentalParameter& getFundamentalDataParameters() const;
-  void setFundamentalDataParameters(const AcousticBeamFundamentalParameter& pX);
+  AcousticBeamFundamentalParameter& GetFundamentalDataParameters();
+  [[nodiscard]] const AcousticBeamFundamentalParameter&
+  GetFundamentalDataParameters() const;
+  void SetFundamentalDataParameters(const AcousticBeamFundamentalParameter& pX);
 
-  virtual int getMarshalledSize() const;
+  [[nodiscard]] virtual int GetMarshalledSize() const;
 
   bool operator==(const AcousticBeamData& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

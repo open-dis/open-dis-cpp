@@ -1,9 +1,8 @@
 #pragma once
 
-
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // 64 bit piece of data
 
 // Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
@@ -14,24 +13,24 @@ namespace DIS {
 class EightByteChunk {
  protected:
   /** Eight bytes of arbitrary data */
-  char _otherParameters[8];
+  char other_parameters_[8];  // NOLINT
 
  public:
   EightByteChunk();
   virtual ~EightByteChunk();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void Marshal(DataStream& dataStream) const;
+  virtual void Unmarshal(DataStream& dataStream);
 
-  char* getOtherParameters();
-  const char* getOtherParameters() const;
-  void setOtherParameters(const char* pX);
+  char* GetOtherParameters();
+  [[nodiscard]] const char* GetOtherParameters() const;
+  void SetOtherParameters(const char* pX);
 
-  virtual int getMarshalledSize() const;
+  [[nodiscard]] virtual int GetMarshalledSize() const;
 
   bool operator==(const EightByteChunk& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
