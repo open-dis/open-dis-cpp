@@ -1,4 +1,4 @@
-#include "dis6/Environment.h"
+#include "dis6/synthetic_environment/Environment.h"
 
 using namespace DIS;
 
@@ -10,11 +10,9 @@ Environment::Environment()
       _geometry(0),
       _padding2(0) {}
 
-Environment::~Environment() {}
+Environment::~Environment() = default;
 
-uint32_t Environment::getEnvironmentType() const {
-  return _environmentType;
-}
+uint32_t Environment::getEnvironmentType() const { return _environmentType; }
 
 void Environment::setEnvironmentType(uint32_t pX) { _environmentType = pX; }
 
@@ -38,7 +36,7 @@ uint8_t Environment::getPadding2() const { return _padding2; }
 
 void Environment::setPadding2(uint8_t pX) { _padding2 = pX; }
 
-void Environment::marshal(DataStream& dataStream) const {
+void Environment::Marshal(DataStream& dataStream) const {
   dataStream << _environmentType;
   dataStream << _length;
   dataStream << _index;
@@ -47,7 +45,7 @@ void Environment::marshal(DataStream& dataStream) const {
   dataStream << _padding2;
 }
 
-void Environment::unmarshal(DataStream& dataStream) {
+void Environment::Unmarshal(DataStream& dataStream) {
   dataStream >> _environmentType;
   dataStream >> _length;
   dataStream >> _index;
@@ -57,28 +55,40 @@ void Environment::unmarshal(DataStream& dataStream) {
 }
 
 bool Environment::operator==(const Environment& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  if (!(_environmentType == rhs._environmentType)) ivarsEqual = false;
-  if (!(_length == rhs._length)) ivarsEqual = false;
-  if (!(_index == rhs._index)) ivarsEqual = false;
-  if (!(_padding1 == rhs._padding1)) ivarsEqual = false;
-  if (!(_geometry == rhs._geometry)) ivarsEqual = false;
-  if (!(_padding2 == rhs._padding2)) ivarsEqual = false;
+  if (!(_environmentType == rhs._environmentType)) {
+    ivars_equal = false;
+  }
+  if (!(_length == rhs._length)) {
+    ivars_equal = false;
+  }
+  if (!(_index == rhs._index)) {
+    ivars_equal = false;
+  }
+  if (!(_padding1 == rhs._padding1)) {
+    ivars_equal = false;
+  }
+  if (!(_geometry == rhs._geometry)) {
+    ivars_equal = false;
+  }
+  if (!(_padding2 == rhs._padding2)) {
+    ivars_equal = false;
+  }
 
-  return ivarsEqual;
+  return ivars_equal;
 }
 
 int Environment::getMarshalledSize() const {
-  int marshalSize = 0;
+  int marshal_size = 0;
 
-  marshalSize = marshalSize + 4;  // _environmentType
-  marshalSize = marshalSize + 1;  // _length
-  marshalSize = marshalSize + 1;  // _index
-  marshalSize = marshalSize + 1;  // _padding1
-  marshalSize = marshalSize + 1;  // _geometry
-  marshalSize = marshalSize + 1;  // _padding2
-  return marshalSize;
+  marshal_size = marshal_size + 4;  // _environmentType
+  marshal_size = marshal_size + 1;  // _length
+  marshal_size = marshal_size + 1;  // _index
+  marshal_size = marshal_size + 1;  // _padding1
+  marshal_size = marshal_size + 1;  // _geometry
+  marshal_size = marshal_size + 1;  // _padding2
+  return marshal_size;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.

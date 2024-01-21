@@ -3,8 +3,7 @@
 #include <cstdint>
 #include <vector>
 
-#include "dis6/GridAxisRecord.h"
-
+#include "dis6/synthetic_environment/GridAxisRecord.h"
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -28,8 +27,8 @@ class GridAxisRecordRepresentation0 : public GridAxisRecord {
   GridAxisRecordRepresentation0();
   virtual ~GridAxisRecordRepresentation0();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(dis::DataStream& dataStream) const;
+  virtual void unmarshal(dis::DataStream& dataStream);
 
   uint16_t getNumberOfBytes() const;
 

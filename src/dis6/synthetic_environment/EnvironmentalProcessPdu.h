@@ -2,11 +2,10 @@
 
 #include <vector>
 
-#include "dis6/EntityID.h"
-#include "dis6/EntityType.h"
-#include "dis6/Environment.h"
-#include "dis6/SyntheticEnvironmentFamilyPdu.h"
-
+#include "dis6/common/EntityID.h"
+#include "dis6/common/EntityType.h"
+#include "dis6/synthetic_environment/Environment.h"
+#include "dis6/synthetic_environment/SyntheticEnvironmentFamilyPdu.h"
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -19,14 +18,13 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class EnvironmentalProcessPdu
-    : public SyntheticEnvironmentFamilyPdu {
+class EnvironmentalProcessPdu : public SyntheticEnvironmentFamilyPdu {
  protected:
   /** Environmental process ID */
-  EntityID _environementalProcessID;
+  dis::EntityID _environementalProcessID;
 
   /** Environment type */
-  EntityType _environmentType;
+  dis::EntityType _environmentType;
 
   /** model type */
   uint8_t _modelType;
@@ -48,16 +46,16 @@ class EnvironmentalProcessPdu
   EnvironmentalProcessPdu();
   virtual ~EnvironmentalProcessPdu();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(dis::DataStream& dataStream) const;
+  virtual void unmarshal(dis::DataStream& dataStream);
 
-  EntityID& getEnvironementalProcessID();
-  const EntityID& getEnvironementalProcessID() const;
-  void setEnvironementalProcessID(const EntityID& pX);
+  dis::EntityID& getEnvironementalProcessID();
+  const dis::EntityID& getEnvironementalProcessID() const;
+  void setEnvironementalProcessID(const dis::EntityID& pX);
 
-  EntityType& getEnvironmentType();
-  const EntityType& getEnvironmentType() const;
-  void setEnvironmentType(const EntityType& pX);
+  dis::EntityType& getEnvironmentType();
+  const dis::EntityType& getEnvironmentType() const;
+  void setEnvironmentType(const dis::EntityType& pX);
 
   uint8_t getModelType() const;
   void setModelType(uint8_t pX);

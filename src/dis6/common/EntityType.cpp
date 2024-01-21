@@ -12,7 +12,7 @@ EntityType::EntityType()
 
 EntityType::~EntityType() = default;
 
-uint8_t EntityType::GetEntityKind() { return _entityKind; }
+uint8_t EntityType::GetEntityKind() { return GetEntityKind; }
 
 void EntityType::SetEntityKind(uint8_t pX) { _entityKind = pX; }
 
@@ -63,7 +63,7 @@ void EntityType::Unmarshal(DataStream& dataStream) {
 bool EntityType::operator==(const EntityType& rhs) const {
   bool ivars_equal = true;
 
-  if (!(_entityKind == rhs.entity_kind_)) {
+  if (!(GetEntityKind == rhs.entity_kind_)) {
     ivars_equal = false;
   }
   if (!(_domain == rhs.domain_)) {

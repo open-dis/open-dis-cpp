@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -37,8 +36,8 @@ class Environment {
   Environment();
   virtual ~Environment();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(dis::DataStream& dataStream) const;
+  virtual void unmarshal(dis::DataStream& dataStream);
 
   uint32_t getEnvironmentType() const;
   void setEnvironmentType(uint32_t pX);

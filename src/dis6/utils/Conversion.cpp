@@ -4,9 +4,6 @@
 
 namespace dis {
 
-// const uint8_t
-// Convert::ARTICULATION_PARAMETER_TYPE_METRIC_NUMBER_OF_BITS = 5;
-
 int Convert::MakeArticulationParameterType(int typeclass, int typemetric) {
   // enforce a ceiling on typemetric
   typemetric = typemetric & kArticulationParameterTypeMetricMask;

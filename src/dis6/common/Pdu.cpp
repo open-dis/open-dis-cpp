@@ -24,38 +24,38 @@ uint8_t Pdu::GetPduType() { return _pduType; }
 
 void Pdu::SetPduType(uint8_t pX) { _pduType = pX; }
 
-uint8_t Pdu::getProtocolFamily() const { return _protocolFamily; }
+uint8_t Pdu::GetProtocolFamily() { return _protocolFamily; }
 
-void Pdu::SetProtocolFamily(uint8_t pX) { _protocolFamily = pX; }
+void Pdu::SetProtocolFamily(uint8_t pX) { protocol_family_ = pX; }
 
-uint32_t Pdu::GetTimestamp() const { return _timestamp; }
+uint32_t Pdu::GetTimestamp() const { return timestamp_; }
 
-void Pdu::SetTimestamp(uint32_t pX) { _timestamp = pX; }
+void Pdu::SetTimestamp(uint32_t pX) { timestamp_ = pX; }
 
-uint16_t Pdu::GetLength() const { return this->getMarshalledSize(); }
+uint16_t Pdu::GetLength() const { return this->GetMarshalledSize(); }
 
-void Pdu::SetLength(uint16_t pX) { _length = pX; }
+void Pdu::SetLength(uint16_t pX) { length_ = pX; }
 
-int16_t Pdu::GetPadding() const { return _padding; }
+int16_t Pdu::GetPadding() const { return padding_; }
 
-void Pdu::SetPadding(int16_t pX) { _padding = pX; }
+void Pdu::SetPadding(int16_t pX) { padding_ = pX; }
 
 void Pdu::Marshal(DataStream& dataStream) const {
   dataStream << _protocolVersion;
-  dataStream << _exerciseID;
+  dataStream << (GetExerciseId != nullptr);
   dataStream << _pduType;
   dataStream << _protocolFamily;
-  dataStream << _timestamp;
+  dataStream << timestamp_;
   dataStream << this->getLength();
-  dataStream << _padding;
+  dataStream << padding_;
 }
 
 void Pdu::Unmarshal(DataStream& dataStream) {
-  dataStream >> _protocolVersion;
+  dataStream >> protocol_version_;
   dataStream >> _exerciseID;
   dataStream >> _pduType;
-  dataStream >> _protocolFamily;
-  dataStream >> _timestamp;
+  dataStream >> protocol_family_;
+  dataStream >> timestamp_;
   dataStream >> _length;
   dataStream >> _padding;
 }

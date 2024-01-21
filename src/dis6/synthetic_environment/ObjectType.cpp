@@ -1,11 +1,11 @@
-#include "dis6/ObjectType.h"
+#include "dis6/synthetic_environment/ObjectType.h"
 
 using namespace DIS;
 
 ObjectType::ObjectType()
     : _entityKind(0), _domain(0), _country(0), _category(0), _subcategory(0) {}
 
-ObjectType::~ObjectType() {}
+ObjectType::~ObjectType() = default;
 
 uint8_t ObjectType::getEntityKind() const { return _entityKind; }
 
@@ -27,7 +27,7 @@ uint8_t ObjectType::getSubcategory() const { return _subcategory; }
 
 void ObjectType::setSubcategory(uint8_t pX) { _subcategory = pX; }
 
-void ObjectType::marshal(DataStream& dataStream) const {
+void ObjectType::Marshal(DataStream& dataStream) const {
   dataStream << _entityKind;
   dataStream << _domain;
   dataStream << _country;
@@ -35,7 +35,7 @@ void ObjectType::marshal(DataStream& dataStream) const {
   dataStream << _subcategory;
 }
 
-void ObjectType::unmarshal(DataStream& dataStream) {
+void ObjectType::Unmarshal(DataStream& dataStream) {
   dataStream >> _entityKind;
   dataStream >> _domain;
   dataStream >> _country;
@@ -44,26 +44,36 @@ void ObjectType::unmarshal(DataStream& dataStream) {
 }
 
 bool ObjectType::operator==(const ObjectType& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  if (!(_entityKind == rhs._entityKind)) ivarsEqual = false;
-  if (!(_domain == rhs._domain)) ivarsEqual = false;
-  if (!(_country == rhs._country)) ivarsEqual = false;
-  if (!(_category == rhs._category)) ivarsEqual = false;
-  if (!(_subcategory == rhs._subcategory)) ivarsEqual = false;
+  if (!(_entityKind == rhs._entityKind)) {
+    ivars_equal = false;
+  }
+  if (!(_domain == rhs._domain)) {
+    ivars_equal = false;
+  }
+  if (!(_country == rhs._country)) {
+    ivars_equal = false;
+  }
+  if (!(_category == rhs._category)) {
+    ivars_equal = false;
+  }
+  if (!(_subcategory == rhs._subcategory)) {
+    ivars_equal = false;
+  }
 
-  return ivarsEqual;
+  return ivars_equal;
 }
 
 int ObjectType::getMarshalledSize() const {
-  int marshalSize = 0;
+  int marshal_size = 0;
 
-  marshalSize = marshalSize + 1;  // _entityKind
-  marshalSize = marshalSize + 1;  // _domain
-  marshalSize = marshalSize + 2;  // _country
-  marshalSize = marshalSize + 1;  // _category
-  marshalSize = marshalSize + 1;  // _subcategory
-  return marshalSize;
+  marshal_size = marshal_size + 1;  // _entityKind
+  marshal_size = marshal_size + 1;  // _domain
+  marshal_size = marshal_size + 2;  // _country
+  marshal_size = marshal_size + 1;  // _category
+  marshal_size = marshal_size + 1;  // _subcategory
+  return marshal_size;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.

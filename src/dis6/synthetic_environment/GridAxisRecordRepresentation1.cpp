@@ -1,12 +1,9 @@
-#include "dis6/GridAxisRecordRepresentation1.h"
+#include "dis6/synthetic_environment/GridAxisRecordRepresentation1.h"
 
 using namespace DIS;
 
 GridAxisRecordRepresentation1::GridAxisRecordRepresentation1()
-    : GridAxisRecord(),
-      _fieldScale(0.0),
-      _fieldOffset(0.0),
-      _numberOfValues(0) {}
+    : _fieldScale(0.0), _fieldOffset(0.0), _numberOfValues(0) {}
 
 GridAxisRecordRepresentation1::~GridAxisRecordRepresentation1() {
   _dataValues.clear();
@@ -51,10 +48,9 @@ void GridAxisRecordRepresentation1::marshal(DataStream& dataStream) const {
       dataStream);  // Marshal information in superclass first
   dataStream << _fieldScale;
   dataStream << _fieldOffset;
-  dataStream << (uint16_t)_dataValues.size();
+  dataStream << static_cast<uint16_t>(_dataValues.size());
 
-  for (size_t idx = 0; idx < _dataValues.size(); idx++) {
-    TwoByteChunk x = _dataValues[idx];
+  for (const auto& x : _dataValues) {
     x.marshal(dataStream);
   }
 }
@@ -76,34 +72,39 @@ void GridAxisRecordRepresentation1::unmarshal(DataStream& dataStream) {
 
 bool GridAxisRecordRepresentation1::operator==(
     const GridAxisRecordRepresentation1& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  ivarsEqual = GridAxisRecord::operator==(rhs);
+  ivars_equal = GridAxisRecord::operator==(rhs);
 
-  if (!(_fieldScale == rhs._fieldScale)) ivarsEqual = false;
-  if (!(_fieldOffset == rhs._fieldOffset)) ivarsEqual = false;
-
-  for (size_t idx = 0; idx < _dataValues.size(); idx++) {
-    if (!(_dataValues[idx] == rhs._dataValues[idx])) ivarsEqual = false;
+  if (!(_fieldScale == rhs._fieldScale)) {
+    ivars_equal = false;
+  }
+  if (!(_fieldOffset == rhs._fieldOffset)) {
+    ivars_equal = false;
   }
 
-  return ivarsEqual;
+  for (size_t idx = 0; idx < _dataValues.size(); idx++) {
+    if (!(_dataValues[idx] == rhs._dataValues[idx])) {
+      ivars_equal = false;
+    }
+  }
+
+  return ivars_equal;
 }
 
 int GridAxisRecordRepresentation1::getMarshalledSize() const {
-  int marshalSize = 0;
+  int marshal_size = 0;
 
-  marshalSize = GridAxisRecord::getMarshalledSize();
-  marshalSize = marshalSize + 4;  // _fieldScale
-  marshalSize = marshalSize + 4;  // _fieldOffset
-  marshalSize = marshalSize + 2;  // _numberOfValues
+  marshal_size = GridAxisRecord::getMarshalledSize();
+  marshal_size = marshal_size + 4;  // _fieldScale
+  marshal_size = marshal_size + 4;  // _fieldOffset
+  marshal_size = marshal_size + 2;  // _numberOfValues
 
-  for (uint64_t idx = 0; idx < _dataValues.size(); idx++) {
-    TwoByteChunk listElement = _dataValues[idx];
-    marshalSize = marshalSize + listElement.getMarshalledSize();
+  for (const auto& list_element : _dataValues) {
+    marshal_size = marshal_size + list_element.getMarshalledSize();
   }
 
-  return marshalSize;
+  return marshal_size;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.

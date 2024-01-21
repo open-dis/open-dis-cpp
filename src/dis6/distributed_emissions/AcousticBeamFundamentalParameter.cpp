@@ -27,44 +27,45 @@ uint16_t dis::AcousticBeamFundamentalParameter::GetScanPattern() {
   return _scanPattern;
 }
 
-void dis::AcousticBeamFundamentalParameter::setScanPattern(uint16_t pX) {
-  _scanPattern = pX;
+void dis::AcousticBeamFundamentalParameter::SetScanPattern(uint16_t pX) {
+  scan_pattern_ = pX;
 }
 
-float AcousticBeamFundamentalParameter::getBeamCenterAzimuth() const {
+float dis::AcousticBeamFundamentalParameter::GetBeamCenterAzimuth() {
   return _beamCenterAzimuth;
 }
 
-void AcousticBeamFundamentalParameter::setBeamCenterAzimuth(float pX) {
-  _beamCenterAzimuth = pX;
+void dis::AcousticBeamFundamentalParameter::SetBeamCenterAzimuth(float pX) {
+  beam_center_azimuth_ = pX;
 }
 
-float AcousticBeamFundamentalParameter::getAzimuthalBeamwidth() const {
+float dis::AcousticBeamFundamentalParameter::GetAzimuthalBeamwidth() {
   return _azimuthalBeamwidth;
 }
 
-void AcousticBeamFundamentalParameter::setAzimuthalBeamwidth(float pX) {
-  _azimuthalBeamwidth = pX;
+void dis::AcousticBeamFundamentalParameter::SetAzimuthalBeamwidth(float pX) {
+  azimuthal_beamwidth_ = pX;
 }
 
-float AcousticBeamFundamentalParameter::getBeamCenterDE() const {
+float dis::AcousticBeamFundamentalParameter::GetBeamCenterDe() {
   return _beamCenterDE;
 }
 
-void AcousticBeamFundamentalParameter::setBeamCenterDE(float pX) {
+void dis::AcousticBeamFundamentalParameter::SetBeamCenterDe(float pX) {
   _beamCenterDE = pX;
 }
 
-float AcousticBeamFundamentalParameter::getDeBeamwidth() const {
+float dis::AcousticBeamFundamentalParameter::GetDeBeamwidth() {
   return _deBeamwidth;
 }
 
-void AcousticBeamFundamentalParameter::setDeBeamwidth(float pX) {
-  _deBeamwidth = pX;
+void dis::AcousticBeamFundamentalParameter::SetDeBeamwidth(float pX) {
+  de_beamwidth_ = pX;
 }
 
-void AcousticBeamFundamentalParameter::marshal(DataStream& dataStream) const {
-  dataStream << _activeEmissionParameterIndex;
+void dis::AcousticBeamFundamentalParameter::Marshal(
+    DataStream& dataStream) const {
+  dataStream << (_activeEmissionParameterIndex != nullptr);
   dataStream << _scanPattern;
   dataStream << _beamCenterAzimuth;
   dataStream << _azimuthalBeamwidth;

@@ -1,69 +1,59 @@
-#include "dis6/ArealObjectStatePdu.h"
+#include "dis6/synthetic_environment/ArealObjectStatePdu.h"
 
 using namespace DIS;
 
 ArealObjectStatePdu::ArealObjectStatePdu()
-    : SyntheticEnvironmentFamilyPdu(),
-      _objectID(),
-      _referencedObjectID(),
-      _updateNumber(0),
+    : _updateNumber(0),
       _forceID(0),
       _modifications(0),
-      _objectType(),
-      _objectAppearance(),
-      _numberOfPoints(0),
-      _requesterID(),
-      _receivingID() {
-  setPduType(45);
+
+      _numberOfPoints(0) {
+  SetPduType(45);
 }
 
 ArealObjectStatePdu::~ArealObjectStatePdu() { _objectLocation.clear(); }
 
-EntityID& ArealObjectStatePdu::getObjectID() { return _objectID; }
+dis::EntityID& ArealObjectStatePdu::getObjectID() { return _objectID; }
 
-const EntityID& ArealObjectStatePdu::getObjectID() const { return _objectID; }
+const dis::EntityID& ArealObjectStatePdu::getObjectID() const {
+  return _objectID;
+}
 
-void ArealObjectStatePdu::setObjectID(const EntityID& pX) { _objectID = pX; }
+void ArealObjectStatePdu::setObjectID(const dis::EntityID& pX) {
+  _objectID = pX;
+}
 
-EntityID& ArealObjectStatePdu::getReferencedObjectID() {
+dis::EntityID& ArealObjectStatePdu::getReferencedObjectID() {
   return _referencedObjectID;
 }
 
-const EntityID& ArealObjectStatePdu::getReferencedObjectID() const {
+const dis::EntityID& ArealObjectStatePdu::getReferencedObjectID() const {
   return _referencedObjectID;
 }
 
-void ArealObjectStatePdu::setReferencedObjectID(const EntityID& pX) {
+void ArealObjectStatePdu::setReferencedObjectID(const dis::EntityID& pX) {
   _referencedObjectID = pX;
 }
 
-uint16_t ArealObjectStatePdu::getUpdateNumber() const {
-  return _updateNumber;
-}
+uint16_t ArealObjectStatePdu::getUpdateNumber() const { return _updateNumber; }
 
-void ArealObjectStatePdu::setUpdateNumber(uint16_t pX) {
-  _updateNumber = pX;
-}
+void ArealObjectStatePdu::setUpdateNumber(uint16_t pX) { _updateNumber = pX; }
 
 uint8_t ArealObjectStatePdu::getForceID() const { return _forceID; }
 
 void ArealObjectStatePdu::setForceID(uint8_t pX) { _forceID = pX; }
 
-uint8_t ArealObjectStatePdu::getModifications() const {
-  return _modifications;
-}
+uint8_t ArealObjectStatePdu::getModifications() const { return _modifications; }
 
-void ArealObjectStatePdu::setModifications(uint8_t pX) {
-  _modifications = pX;
-}
+void ArealObjectStatePdu::setModifications(uint8_t pX) { _modifications = pX; }
 
-EntityType& ArealObjectStatePdu::getObjectType() { return _objectType; }
+dis::EntityType& ArealObjectStatePdu::getObjectType() { return _objectType; }
 
-const EntityType& ArealObjectStatePdu::getObjectType() const {
+const dis::EntityType& ArealObjectStatePdu::getObjectType() const {
   return _objectType;
 }
 
-void ArealObjectStatePdu::setObjectType(const EntityType& pX) {
+void ArealObjectStatePdu::setObjectType(const dis::EntityType& pX) {
   _objectType = pX;
 }
 
@@ -131,12 +121,11 @@ void ArealObjectStatePdu::marshal(DataStream& dataStream) const {
   dataStream << _modifications;
   _objectType.marshal(dataStream);
   _objectAppearance.marshal(dataStream);
-  dataStream << (uint16_t)_objectLocation.size();
+  dataStream << static_cast<uint16_t>(_objectLocation.size());
   _requesterID.marshal(dataStream);
   _receivingID.marshal(dataStream);
 
-  for (size_t idx = 0; idx < _objectLocation.size(); idx++) {
-    Vector3Double x = _objectLocation[idx];
+  for (auto x : _objectLocation) {
     x.marshal(dataStream);
   }
 }
@@ -164,50 +153,72 @@ void ArealObjectStatePdu::unmarshal(DataStream& dataStream) {
 }
 
 bool ArealObjectStatePdu::operator==(const ArealObjectStatePdu& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  ivarsEqual = SyntheticEnvironmentFamilyPdu::operator==(rhs);
+  ivars_equal = SyntheticEnvironmentFamilyPdu::operator==(rhs);
 
-  if (!(_objectID == rhs._objectID)) ivarsEqual = false;
-  if (!(_referencedObjectID == rhs._referencedObjectID)) ivarsEqual = false;
-  if (!(_updateNumber == rhs._updateNumber)) ivarsEqual = false;
-  if (!(_forceID == rhs._forceID)) ivarsEqual = false;
-  if (!(_modifications == rhs._modifications)) ivarsEqual = false;
-  if (!(_objectType == rhs._objectType)) ivarsEqual = false;
-  if (!(_objectAppearance == rhs._objectAppearance)) ivarsEqual = false;
-  if (!(_requesterID == rhs._requesterID)) ivarsEqual = false;
-  if (!(_receivingID == rhs._receivingID)) ivarsEqual = false;
-
-  for (size_t idx = 0; idx < _objectLocation.size(); idx++) {
-    if (!(_objectLocation[idx] == rhs._objectLocation[idx])) ivarsEqual = false;
+  if (!(_objectID == rhs._objectID)) {
+    ivars_equal = false;
+  }
+  if (!(_referencedObjectID == rhs._referencedObjectID)) {
+    ivars_equal = false;
+  }
+  if (!(_updateNumber == rhs._updateNumber)) {
+    ivars_equal = false;
+  }
+  if (!(_forceID == rhs._forceID)) {
+    ivars_equal = false;
+  }
+  if (!(_modifications == rhs._modifications)) {
+    ivars_equal = false;
+  }
+  if (!(_objectType == rhs._objectType)) {
+    ivars_equal = false;
+  }
+  if (!(_objectAppearance == rhs._objectAppearance)) {
+    ivars_equal = false;
+  }
+  if (!(_requesterID == rhs._requesterID)) {
+    ivars_equal = false;
+  }
+  if (!(_receivingID == rhs._receivingID)) {
+    ivars_equal = false;
   }
 
-  return ivarsEqual;
+  for (size_t idx = 0; idx < _objectLocation.size(); idx++) {
+    if (!(_objectLocation[idx] == rhs._objectLocation[idx])) {
+      ivars_equal = false;
+    }
+  }
+
+  return ivars_equal;
 }
 
 int ArealObjectStatePdu::getMarshalledSize() const {
-  int marshalSize = 0;
+  int marshal_size = 0;
 
-  marshalSize = SyntheticEnvironmentFamilyPdu::getMarshalledSize();
-  marshalSize = marshalSize + _objectID.getMarshalledSize();  // _objectID
-  marshalSize = marshalSize +
-                _referencedObjectID.getMarshalledSize();  // _referencedObjectID
-  marshalSize = marshalSize + 2;                          // _updateNumber
-  marshalSize = marshalSize + 1;                          // _forceID
-  marshalSize = marshalSize + 1;                          // _modifications
-  marshalSize = marshalSize + _objectType.getMarshalledSize();  // _objectType
-  marshalSize =
-      marshalSize + _objectAppearance.getMarshalledSize();  // _objectAppearance
-  marshalSize = marshalSize + 2;                            // _numberOfPoints
-  marshalSize = marshalSize + _requesterID.getMarshalledSize();  // _requesterID
-  marshalSize = marshalSize + _receivingID.getMarshalledSize();  // _receivingID
+  marshal_size = SyntheticEnvironmentFamilyPdu::getMarshalledSize();
+  marshal_size = marshal_size + _objectID.getMarshalledSize();  // _objectID
+  marshal_size =
+      marshal_size +
+      _referencedObjectID.getMarshalledSize();  // _referencedObjectID
+  marshal_size = marshal_size + 2;              // _updateNumber
+  marshal_size = marshal_size + 1;              // _forceID
+  marshal_size = marshal_size + 1;              // _modifications
+  marshal_size = marshal_size + _objectType.getMarshalledSize();  // _objectType
+  marshal_size = marshal_size +
+                 _objectAppearance.getMarshalledSize();  // _objectAppearance
+  marshal_size = marshal_size + 2;                       // _numberOfPoints
+  marshal_size =
+      marshal_size + _requesterID.getMarshalledSize();  // _requesterID
+  marshal_size =
+      marshal_size + _receivingID.getMarshalledSize();  // _receivingID
 
-  for (uint64_t idx = 0; idx < _objectLocation.size(); idx++) {
-    Vector3Double listElement = _objectLocation[idx];
-    marshalSize = marshalSize + listElement.getMarshalledSize();
+  for (auto listElement : _objectLocation) {
+    marshal_size = marshal_size + listElement.getMarshalledSize();
   }
 
-  return marshalSize;
+  return marshal_size;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.

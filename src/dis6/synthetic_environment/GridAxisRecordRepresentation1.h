@@ -2,9 +2,8 @@
 
 #include <vector>
 
-#include "dis6/GridAxisRecord.h"
-#include "dis6/TwoByteChunk.h"
-
+#include "dis6/common/TwoByteChunk.h"
+#include "dis6/synthetic_environment/GridAxisRecord.h"
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -34,8 +33,8 @@ class GridAxisRecordRepresentation1 : public GridAxisRecord {
   GridAxisRecordRepresentation1();
   virtual ~GridAxisRecordRepresentation1();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(dis::DataStream& dataStream) const;
+  virtual void unmarshal(dis::DataStream& dataStream);
 
   float getFieldScale() const;
   void setFieldScale(float pX);

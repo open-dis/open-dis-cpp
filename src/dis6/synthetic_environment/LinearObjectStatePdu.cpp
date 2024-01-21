@@ -1,31 +1,27 @@
-#include "dis6/LinearObjectStatePdu.h"
+#include "dis6/synthetic_environment/LinearObjectStatePdu.h"
 
 using namespace DIS;
 
 LinearObjectStatePdu::LinearObjectStatePdu()
-    : SyntheticEnvironmentFamilyPdu(),
-      _objectID(),
-      _referencedObjectID(),
-      _updateNumber(0),
-      _forceID(0),
-      _numberOfSegments(0),
-      _requesterID(),
-      _receivingID(),
-      _objectType() {
-  setPduType(44);
+    : _updateNumber(0), _forceID(0), _numberOfSegments(0) {
+  SetPduType(44);
 }
 
 LinearObjectStatePdu::~LinearObjectStatePdu() {
   _linearSegmentParameters.clear();
 }
 
-EntityID& LinearObjectStatePdu::getObjectID() { return _objectID; }
+dis::EntityID& LinearObjectStatePdu::getObjectID() { return _objectID; }
 
-const EntityID& LinearObjectStatePdu::getObjectID() const { return _objectID; }
+const dis::EntityID& LinearObjectStatePdu::getObjectID() const {
+  return _objectID;
+}
 
-void LinearObjectStatePdu::setObjectID(const EntityID& pX) { _objectID = pX; }
+void LinearObjectStatePdu::setObjectID(const dis::EntityID& pX) {
+  _objectID = pX;
+}
 
-EntityID& LinearObjectStatePdu::getReferencedObjectID() {
+dis::EntityID& LinearObjectStatePdu::getReferencedObjectID() {
   return _referencedObjectID;
 }
 
@@ -33,17 +29,13 @@ const EntityID& LinearObjectStatePdu::getReferencedObjectID() const {
   return _referencedObjectID;
 }
 
-void LinearObjectStatePdu::setReferencedObjectID(const EntityID& pX) {
+void LinearObjectStatePdu::SetReferencedObjectId(const EntityID& pX) {
   _referencedObjectID = pX;
 }
 
-uint16_t LinearObjectStatePdu::getUpdateNumber() const {
-  return _updateNumber;
-}
+uint16_t LinearObjectStatePdu::getUpdateNumber() const { return _updateNumber; }
 
-void LinearObjectStatePdu::setUpdateNumber(uint16_t pX) {
-  _updateNumber = pX;
-}
+void LinearObjectStatePdu::setUpdateNumber(uint16_t pX) { _updateNumber = pX; }
 
 uint8_t LinearObjectStatePdu::getForceID() const { return _forceID; }
 
@@ -88,16 +80,16 @@ void LinearObjectStatePdu::setObjectType(const ObjectType& pX) {
 }
 
 std::vector<LinearSegmentParameter>&
-LinearObjectStatePdu::getLinearSegmentParameters() {
+LinearObjectStatePdu::GetLinearSegmentParameters() {
   return _linearSegmentParameters;
 }
 
 const std::vector<LinearSegmentParameter>&
-LinearObjectStatePdu::getLinearSegmentParameters() const {
+LinearObjectStatePdu::GetLinearSegmentParameters() const {
   return _linearSegmentParameters;
 }
 
-void LinearObjectStatePdu::setLinearSegmentParameters(
+void LinearObjectStatePdu::SetLinearSegmentParameters(
     const std::vector<LinearSegmentParameter>& pX) {
   _linearSegmentParameters = pX;
 }
@@ -109,13 +101,12 @@ void LinearObjectStatePdu::marshal(DataStream& dataStream) const {
   _referencedObjectID.marshal(dataStream);
   dataStream << _updateNumber;
   dataStream << _forceID;
-  dataStream << (uint8_t)_linearSegmentParameters.size();
+  dataStream << static_cast<uint8_t>(_linearSegmentParameters.size());
   _requesterID.marshal(dataStream);
   _receivingID.marshal(dataStream);
   _objectType.marshal(dataStream);
 
-  for (size_t idx = 0; idx < _linearSegmentParameters.size(); idx++) {
-    LinearSegmentParameter x = _linearSegmentParameters[idx];
+  for (auto x : _linearSegmentParameters) {
     x.marshal(dataStream);
   }
 }
@@ -141,47 +132,63 @@ void LinearObjectStatePdu::unmarshal(DataStream& dataStream) {
 }
 
 bool LinearObjectStatePdu::operator==(const LinearObjectStatePdu& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  ivarsEqual = SyntheticEnvironmentFamilyPdu::operator==(rhs);
+  ivars_equal = SyntheticEnvironmentFamilyPdu::operator==(rhs);
 
-  if (!(_objectID == rhs._objectID)) ivarsEqual = false;
-  if (!(_referencedObjectID == rhs._referencedObjectID)) ivarsEqual = false;
-  if (!(_updateNumber == rhs._updateNumber)) ivarsEqual = false;
-  if (!(_forceID == rhs._forceID)) ivarsEqual = false;
-  if (!(_requesterID == rhs._requesterID)) ivarsEqual = false;
-  if (!(_receivingID == rhs._receivingID)) ivarsEqual = false;
-  if (!(_objectType == rhs._objectType)) ivarsEqual = false;
-
-  for (size_t idx = 0; idx < _linearSegmentParameters.size(); idx++) {
-    if (!(_linearSegmentParameters[idx] == rhs._linearSegmentParameters[idx]))
-      ivarsEqual = false;
+  if (!(_objectID == rhs._objectID)) {
+    ivars_equal = false;
+  }
+  if (!(_referencedObjectID == rhs._referencedObjectID)) {
+    ivars_equal = false;
+  }
+  if (!(_updateNumber == rhs._updateNumber)) {
+    ivars_equal = false;
+  }
+  if (!(_forceID == rhs._forceID)) {
+    ivars_equal = false;
+  }
+  if (!(_requesterID == rhs._requesterID)) {
+    ivars_equal = false;
+  }
+  if (!(_receivingID == rhs._receivingID)) {
+    ivars_equal = false;
+  }
+  if (!(_objectType == rhs._objectType)) {
+    ivars_equal = false;
   }
 
-  return ivarsEqual;
+  for (size_t idx = 0; idx < _linearSegmentParameters.size(); idx++) {
+    if (!(_linearSegmentParameters[idx] == rhs._linearSegmentParameters[idx])) {
+      ivars_equal = false;
+    }
+  }
+
+  return ivars_equal;
 }
 
 int LinearObjectStatePdu::getMarshalledSize() const {
-  int marshalSize = 0;
+  int marshal_size = 0;
 
-  marshalSize = SyntheticEnvironmentFamilyPdu::getMarshalledSize();
-  marshalSize = marshalSize + _objectID.getMarshalledSize();  // _objectID
-  marshalSize = marshalSize +
-                _referencedObjectID.getMarshalledSize();  // _referencedObjectID
-  marshalSize = marshalSize + 2;                          // _updateNumber
-  marshalSize = marshalSize + 1;                          // _forceID
-  marshalSize = marshalSize + 1;                          // _numberOfSegments
-  marshalSize = marshalSize + _requesterID.getMarshalledSize();  // _requesterID
-  marshalSize = marshalSize + _receivingID.getMarshalledSize();  // _receivingID
-  marshalSize = marshalSize + _objectType.getMarshalledSize();   // _objectType
+  marshal_size = SyntheticEnvironmentFamilyPdu::getMarshalledSize();
+  marshal_size = marshal_size + _objectID.getMarshalledSize();  // _objectID
+  marshal_size =
+      marshal_size +
+      _referencedObjectID.getMarshalledSize();  // _referencedObjectID
+  marshal_size = marshal_size + 2;              // _updateNumber
+  marshal_size = marshal_size + 1;              // _forceID
+  marshal_size = marshal_size + 1;              // _numberOfSegments
+  marshal_size =
+      marshal_size + _requesterID.getMarshalledSize();  // _requesterID
+  marshal_size =
+      marshal_size + _receivingID.getMarshalledSize();  // _receivingID
+  marshal_size = marshal_size + _objectType.getMarshalledSize();  // _objectType
 
-  for (uint64_t idx = 0; idx < _linearSegmentParameters.size();
-       idx++) {
-    LinearSegmentParameter listElement = _linearSegmentParameters[idx];
-    marshalSize = marshalSize + listElement.getMarshalledSize();
+  for (auto listElement : _linearSegmentParameters) {
+    marshal_size = marshal_size + listElement.getMarshalledSize();
   }
 
-  return marshalSize;
+  return marshal_size;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.

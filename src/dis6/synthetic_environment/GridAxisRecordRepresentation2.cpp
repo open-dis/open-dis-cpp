@@ -1,9 +1,9 @@
-#include "dis6/GridAxisRecordRepresentation2.h"
+#include "dis6/synthetic_environment/GridAxisRecordRepresentation2.h"
 
 using namespace DIS;
 
 GridAxisRecordRepresentation2::GridAxisRecordRepresentation2()
-    : GridAxisRecord(), _numberOfValues(0) {}
+    : _numberOfValues(0) {}
 
 GridAxisRecordRepresentation2::~GridAxisRecordRepresentation2() {
   _dataValues.clear();
@@ -30,10 +30,9 @@ void GridAxisRecordRepresentation2::setDataValues(
 void GridAxisRecordRepresentation2::marshal(DataStream& dataStream) const {
   GridAxisRecord::marshal(
       dataStream);  // Marshal information in superclass first
-  dataStream << (uint16_t)_dataValues.size();
+  dataStream << static_cast<uint16_t>(_dataValues.size());
 
-  for (size_t idx = 0; idx < _dataValues.size(); idx++) {
-    FourByteChunk x = _dataValues[idx];
+  for (const auto& x : _dataValues) {
     x.marshal(dataStream);
   }
 }
@@ -53,29 +52,30 @@ void GridAxisRecordRepresentation2::unmarshal(DataStream& dataStream) {
 
 bool GridAxisRecordRepresentation2::operator==(
     const GridAxisRecordRepresentation2& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  ivarsEqual = GridAxisRecord::operator==(rhs);
+  ivars_equal = GridAxisRecord::operator==(rhs);
 
   for (size_t idx = 0; idx < _dataValues.size(); idx++) {
-    if (!(_dataValues[idx] == rhs._dataValues[idx])) ivarsEqual = false;
+    if (!(_dataValues[idx] == rhs._dataValues[idx])) {
+      ivars_equal = false;
+    }
   }
 
-  return ivarsEqual;
+  return ivars_equal;
 }
 
 int GridAxisRecordRepresentation2::getMarshalledSize() const {
-  int marshalSize = 0;
+  int marshal_size = 0;
 
-  marshalSize = GridAxisRecord::getMarshalledSize();
-  marshalSize = marshalSize + 2;  // _numberOfValues
+  marshal_size = GridAxisRecord::getMarshalledSize();
+  marshal_size = marshal_size + 2;  // _numberOfValues
 
-  for (uint64_t idx = 0; idx < _dataValues.size(); idx++) {
-    FourByteChunk listElement = _dataValues[idx];
-    marshalSize = marshalSize + listElement.getMarshalledSize();
+  for (const auto& list_element : _dataValues) {
+    marshal_size = marshal_size + list_element.getMarshalledSize();
   }
 
-  return marshalSize;
+  return marshal_size;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.

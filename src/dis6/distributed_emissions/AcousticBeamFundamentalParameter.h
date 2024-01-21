@@ -45,16 +45,16 @@ class AcousticBeamFundamentalParameter {
   [[nodiscard]] static uint16_t GetScanPattern();
   void SetScanPattern(uint16_t pX);
 
-  [[nodiscard]] float GetBeamCenterAzimuth() const;
+  [[nodiscard]] static float GetBeamCenterAzimuth();
   void SetBeamCenterAzimuth(float pX);
 
-  [[nodiscard]] float GetAzimuthalBeamwidth() const;
+  [[nodiscard]] static float GetAzimuthalBeamwidth();
   void SetAzimuthalBeamwidth(float pX);
 
-  [[nodiscard]] float GetBeamCenterDe() const;
+  [[nodiscard]] static float GetBeamCenterDe();
   void SetBeamCenterDe(float pX);
 
-  [[nodiscard]] float GetDeBeamwidth() const;
+  [[nodiscard]] static float GetDeBeamwidth();
   void SetDeBeamwidth(float pX);
 
   [[nodiscard]] virtual int GetMarshalledSize() const;

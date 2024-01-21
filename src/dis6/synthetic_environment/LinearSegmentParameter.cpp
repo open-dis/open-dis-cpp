@@ -1,19 +1,17 @@
-#include "dis6/LinearSegmentParameter.h"
+#include "dis6/synthetic_environment/LinearSegmentParameter.h"
 
 using namespace DIS;
 
 LinearSegmentParameter::LinearSegmentParameter()
     : _segmentNumber(0),
-      _segmentAppearance(),
-      _location(),
-      _orientation(),
+
       _segmentLength(0),
       _segmentWidth(0),
       _segmentHeight(0),
       _segmentDepth(0),
       _pad1(0) {}
 
-LinearSegmentParameter::~LinearSegmentParameter() {}
+LinearSegmentParameter::~LinearSegmentParameter() = default;
 
 uint8_t LinearSegmentParameter::getSegmentNumber() const {
   return _segmentNumber;
@@ -91,7 +89,7 @@ uint32_t LinearSegmentParameter::getPad1() const { return _pad1; }
 
 void LinearSegmentParameter::setPad1(uint32_t pX) { _pad1 = pX; }
 
-void LinearSegmentParameter::marshal(DataStream& dataStream) const {
+void LinearSegmentParameter::Marshal(DataStream& dataStream) const {
   dataStream << _segmentNumber;
   _segmentAppearance.marshal(dataStream);
   _location.marshal(dataStream);
@@ -103,7 +101,7 @@ void LinearSegmentParameter::marshal(DataStream& dataStream) const {
   dataStream << _pad1;
 }
 
-void LinearSegmentParameter::unmarshal(DataStream& dataStream) {
+void LinearSegmentParameter::Unmarshal(DataStream& dataStream) {
   dataStream >> _segmentNumber;
   _segmentAppearance.unmarshal(dataStream);
   _location.unmarshal(dataStream);
@@ -117,35 +115,54 @@ void LinearSegmentParameter::unmarshal(DataStream& dataStream) {
 
 bool LinearSegmentParameter::operator==(
     const LinearSegmentParameter& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  if (!(_segmentNumber == rhs._segmentNumber)) ivarsEqual = false;
-  if (!(_segmentAppearance == rhs._segmentAppearance)) ivarsEqual = false;
-  if (!(_location == rhs._location)) ivarsEqual = false;
-  if (!(_orientation == rhs._orientation)) ivarsEqual = false;
-  if (!(_segmentLength == rhs._segmentLength)) ivarsEqual = false;
-  if (!(_segmentWidth == rhs._segmentWidth)) ivarsEqual = false;
-  if (!(_segmentHeight == rhs._segmentHeight)) ivarsEqual = false;
-  if (!(_segmentDepth == rhs._segmentDepth)) ivarsEqual = false;
-  if (!(_pad1 == rhs._pad1)) ivarsEqual = false;
+  if (!(_segmentNumber == rhs._segmentNumber)) {
+    ivars_equal = false;
+  }
+  if (!(_segmentAppearance == rhs._segmentAppearance)) {
+    ivars_equal = false;
+  }
+  if (!(_location == rhs._location)) {
+    ivars_equal = false;
+  }
+  if (!(_orientation == rhs._orientation)) {
+    ivars_equal = false;
+  }
+  if (!(_segmentLength == rhs._segmentLength)) {
+    ivars_equal = false;
+  }
+  if (!(_segmentWidth == rhs._segmentWidth)) {
+    ivars_equal = false;
+  }
+  if (!(_segmentHeight == rhs._segmentHeight)) {
+    ivars_equal = false;
+  }
+  if (!(_segmentDepth == rhs._segmentDepth)) {
+    ivars_equal = false;
+  }
+  if (!(_pad1 == rhs._pad1)) {
+    ivars_equal = false;
+  }
 
-  return ivarsEqual;
+  return ivars_equal;
 }
 
 int LinearSegmentParameter::getMarshalledSize() const {
-  int marshalSize = 0;
+  int marshal_size = 0;
 
-  marshalSize = marshalSize + 1;  // _segmentNumber
-  marshalSize = marshalSize +
-                _segmentAppearance.getMarshalledSize();  // _segmentAppearance
-  marshalSize = marshalSize + _location.getMarshalledSize();     // _location
-  marshalSize = marshalSize + _orientation.getMarshalledSize();  // _orientation
-  marshalSize = marshalSize + 2;  // _segmentLength
-  marshalSize = marshalSize + 2;  // _segmentWidth
-  marshalSize = marshalSize + 2;  // _segmentHeight
-  marshalSize = marshalSize + 2;  // _segmentDepth
-  marshalSize = marshalSize + 4;  // _pad1
-  return marshalSize;
+  marshal_size = marshal_size + 1;  // _segmentNumber
+  marshal_size = marshal_size +
+                 _segmentAppearance.getMarshalledSize();  // _segmentAppearance
+  marshal_size = marshal_size + _location.getMarshalledSize();  // _location
+  marshal_size =
+      marshal_size + _orientation.getMarshalledSize();  // _orientation
+  marshal_size = marshal_size + 2;                      // _segmentLength
+  marshal_size = marshal_size + 2;                      // _segmentWidth
+  marshal_size = marshal_size + 2;                      // _segmentHeight
+  marshal_size = marshal_size + 2;                      // _segmentDepth
+  marshal_size = marshal_size + 4;                      // _pad1
+  return marshal_size;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.

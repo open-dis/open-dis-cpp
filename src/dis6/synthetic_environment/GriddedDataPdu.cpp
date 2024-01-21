@@ -1,39 +1,36 @@
-#include "dis6/GriddedDataPdu.h"
+#include "dis6/synthetic_environment/GriddedDataPdu.h"
 
 using namespace DIS;
 
 GriddedDataPdu::GriddedDataPdu()
-    : SyntheticEnvironmentFamilyPdu(),
-      _environmentalSimulationApplicationID(),
-      _fieldNumber(0),
+    : _fieldNumber(0),
       _pduNumber(0),
       _pduTotal(0),
       _coordinateSystem(0),
       _numberOfGridAxes(0),
       _constantGrid(0),
-      _environmentType(),
-      _orientation(),
+
       _sampleTime(0),
       _totalValues(0),
       _vectorDimension(0),
       _padding1(0),
       _padding2(0) {
-  setPduType(42);
+  SetPduType(42);
 }
 
 GriddedDataPdu::~GriddedDataPdu() { _gridDataList.clear(); }
 
-EntityID& GriddedDataPdu::getEnvironmentalSimulationApplicationID() {
+dis::EntityID& GriddedDataPdu::getEnvironmentalSimulationApplicationID() {
   return _environmentalSimulationApplicationID;
 }
 
-const EntityID& GriddedDataPdu::getEnvironmentalSimulationApplicationID()
+const dis::EntityID& GriddedDataPdu::getEnvironmentalSimulationApplicationID()
     const {
   return _environmentalSimulationApplicationID;
 }
 
 void GriddedDataPdu::setEnvironmentalSimulationApplicationID(
-    const EntityID& pX) {
+    const dis::EntityID& pX) {
   _environmentalSimulationApplicationID = pX;
 }
 
@@ -65,13 +62,15 @@ uint8_t GriddedDataPdu::getConstantGrid() const { return _constantGrid; }
 
 void GriddedDataPdu::setConstantGrid(uint8_t pX) { _constantGrid = pX; }
 
-EntityType& GriddedDataPdu::getEnvironmentType() { return _environmentType; }
-
-const EntityType& GriddedDataPdu::getEnvironmentType() const {
+dis::EntityType& GriddedDataPdu::getEnvironmentType() {
   return _environmentType;
 }
 
-void GriddedDataPdu::setEnvironmentType(const EntityType& pX) {
+const dis::EntityType& GriddedDataPdu::getEnvironmentType() const {
+  return _environmentType;
+}
+
+void GriddedDataPdu::setEnvironmentType(const dis::EntityType& pX) {
   _environmentType = pX;
 }
 
@@ -93,13 +92,9 @@ uint32_t GriddedDataPdu::getTotalValues() const { return _totalValues; }
 
 void GriddedDataPdu::setTotalValues(uint32_t pX) { _totalValues = pX; }
 
-uint8_t GriddedDataPdu::getVectorDimension() const {
-  return _vectorDimension;
-}
+uint8_t GriddedDataPdu::getVectorDimension() const { return _vectorDimension; }
 
-void GriddedDataPdu::setVectorDimension(uint8_t pX) {
-  _vectorDimension = pX;
-}
+void GriddedDataPdu::setVectorDimension(uint8_t pX) { _vectorDimension = pX; }
 
 uint16_t GriddedDataPdu::getPadding1() const { return _padding1; }
 
@@ -124,12 +119,12 @@ void GriddedDataPdu::setGridDataList(const std::vector<GridAxisRecord>& pX) {
 void GriddedDataPdu::marshal(DataStream& dataStream) const {
   SyntheticEnvironmentFamilyPdu::marshal(
       dataStream);  // Marshal information in superclass first
-  _environmentalSimulationApplicationID.marshal(dataStream);
+  _environmentalSimulationApplicationID.Marshal(dataStream);
   dataStream << _fieldNumber;
   dataStream << _pduNumber;
   dataStream << _pduTotal;
   dataStream << _coordinateSystem;
-  dataStream << (uint8_t)_gridDataList.size();
+  dataStream << static_cast<uint8_t>(_gridDataList.size());
   dataStream << _constantGrid;
   _environmentType.marshal(dataStream);
   _orientation.marshal(dataStream);
@@ -139,8 +134,7 @@ void GriddedDataPdu::marshal(DataStream& dataStream) const {
   dataStream << _padding1;
   dataStream << _padding2;
 
-  for (size_t idx = 0; idx < _gridDataList.size(); idx++) {
-    GridAxisRecord x = _gridDataList[idx];
+  for (auto x : _gridDataList) {
     x.marshal(dataStream);
   }
 }
@@ -172,62 +166,89 @@ void GriddedDataPdu::unmarshal(DataStream& dataStream) {
 }
 
 bool GriddedDataPdu::operator==(const GriddedDataPdu& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  ivarsEqual = SyntheticEnvironmentFamilyPdu::operator==(rhs);
+  ivars_equal = SyntheticEnvironmentFamilyPdu::operator==(rhs);
 
   if (!(_environmentalSimulationApplicationID ==
-        rhs._environmentalSimulationApplicationID))
-    ivarsEqual = false;
-  if (!(_fieldNumber == rhs._fieldNumber)) ivarsEqual = false;
-  if (!(_pduNumber == rhs._pduNumber)) ivarsEqual = false;
-  if (!(_pduTotal == rhs._pduTotal)) ivarsEqual = false;
-  if (!(_coordinateSystem == rhs._coordinateSystem)) ivarsEqual = false;
-  if (!(_constantGrid == rhs._constantGrid)) ivarsEqual = false;
-  if (!(_environmentType == rhs._environmentType)) ivarsEqual = false;
-  if (!(_orientation == rhs._orientation)) ivarsEqual = false;
-  if (!(_sampleTime == rhs._sampleTime)) ivarsEqual = false;
-  if (!(_totalValues == rhs._totalValues)) ivarsEqual = false;
-  if (!(_vectorDimension == rhs._vectorDimension)) ivarsEqual = false;
-  if (!(_padding1 == rhs._padding1)) ivarsEqual = false;
-  if (!(_padding2 == rhs._padding2)) ivarsEqual = false;
-
-  for (size_t idx = 0; idx < _gridDataList.size(); idx++) {
-    if (!(_gridDataList[idx] == rhs._gridDataList[idx])) ivarsEqual = false;
+        rhs._environmentalSimulationApplicationID)) {
+    ivars_equal = false;
+  }
+  if (!(_fieldNumber == rhs._fieldNumber)) {
+    ivars_equal = false;
+  }
+  if (!(_pduNumber == rhs._pduNumber)) {
+    ivars_equal = false;
+  }
+  if (!(_pduTotal == rhs._pduTotal)) {
+    ivars_equal = false;
+  }
+  if (!(_coordinateSystem == rhs._coordinateSystem)) {
+    ivars_equal = false;
+  }
+  if (!(_constantGrid == rhs._constantGrid)) {
+    ivars_equal = false;
+  }
+  if (!(_environmentType == rhs._environmentType)) {
+    ivars_equal = false;
+  }
+  if (!(_orientation == rhs._orientation)) {
+    ivars_equal = false;
+  }
+  if (!(_sampleTime == rhs._sampleTime)) {
+    ivars_equal = false;
+  }
+  if (!(_totalValues == rhs._totalValues)) {
+    ivars_equal = false;
+  }
+  if (!(_vectorDimension == rhs._vectorDimension)) {
+    ivars_equal = false;
+  }
+  if (!(_padding1 == rhs._padding1)) {
+    ivars_equal = false;
+  }
+  if (!(_padding2 == rhs._padding2)) {
+    ivars_equal = false;
   }
 
-  return ivarsEqual;
+  for (size_t idx = 0; idx < _gridDataList.size(); idx++) {
+    if (!(_gridDataList[idx] == rhs._gridDataList[idx])) {
+      ivars_equal = false;
+    }
+  }
+
+  return ivars_equal;
 }
 
 int GriddedDataPdu::getMarshalledSize() const {
-  int marshalSize = 0;
+  int marshal_size = 0;
 
-  marshalSize = SyntheticEnvironmentFamilyPdu::getMarshalledSize();
-  marshalSize =
-      marshalSize +
+  marshal_size = SyntheticEnvironmentFamilyPdu::getMarshalledSize();
+  marshal_size =
+      marshal_size +
       _environmentalSimulationApplicationID
-          .getMarshalledSize();   // _environmentalSimulationApplicationID
-  marshalSize = marshalSize + 2;  // _fieldNumber
-  marshalSize = marshalSize + 2;  // _pduNumber
-  marshalSize = marshalSize + 2;  // _pduTotal
-  marshalSize = marshalSize + 2;  // _coordinateSystem
-  marshalSize = marshalSize + 1;  // _numberOfGridAxes
-  marshalSize = marshalSize + 1;  // _constantGrid
-  marshalSize =
-      marshalSize + _environmentType.getMarshalledSize();  // _environmentType
-  marshalSize = marshalSize + _orientation.getMarshalledSize();  // _orientation
-  marshalSize = marshalSize + 8;                                 // _sampleTime
-  marshalSize = marshalSize + 4;                                 // _totalValues
-  marshalSize = marshalSize + 1;  // _vectorDimension
-  marshalSize = marshalSize + 2;  // _padding1
-  marshalSize = marshalSize + 1;  // _padding2
+          .getMarshalledSize();     // _environmentalSimulationApplicationID
+  marshal_size = marshal_size + 2;  // _fieldNumber
+  marshal_size = marshal_size + 2;  // _pduNumber
+  marshal_size = marshal_size + 2;  // _pduTotal
+  marshal_size = marshal_size + 2;  // _coordinateSystem
+  marshal_size = marshal_size + 1;  // _numberOfGridAxes
+  marshal_size = marshal_size + 1;  // _constantGrid
+  marshal_size =
+      marshal_size + _environmentType.getMarshalledSize();  // _environmentType
+  marshal_size =
+      marshal_size + _orientation.getMarshalledSize();  // _orientation
+  marshal_size = marshal_size + 8;                      // _sampleTime
+  marshal_size = marshal_size + 4;                      // _totalValues
+  marshal_size = marshal_size + 1;                      // _vectorDimension
+  marshal_size = marshal_size + 2;                      // _padding1
+  marshal_size = marshal_size + 1;                      // _padding2
 
-  for (uint64_t idx = 0; idx < _gridDataList.size(); idx++) {
-    GridAxisRecord listElement = _gridDataList[idx];
-    marshalSize = marshalSize + listElement.getMarshalledSize();
+  for (auto listElement : _gridDataList) {
+    marshal_size = marshal_size + listElement.getMarshalledSize();
   }
 
-  return marshalSize;
+  return marshal_size;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.

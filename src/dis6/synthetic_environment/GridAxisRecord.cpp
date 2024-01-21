@@ -1,10 +1,10 @@
-#include "dis6/GridAxisRecord.h"
+#include "dis6/synthetic_environment/GridAxisRecord.h"
 
 using namespace DIS;
 
 GridAxisRecord::GridAxisRecord() : _sampleType(0), _dataRepresentation(0) {}
 
-GridAxisRecord::~GridAxisRecord() {}
+GridAxisRecord::~GridAxisRecord() = default;
 
 uint16_t GridAxisRecord::getSampleType() const { return _sampleType; }
 
@@ -18,31 +18,35 @@ void GridAxisRecord::setDataRepresentation(uint16_t pX) {
   _dataRepresentation = pX;
 }
 
-void GridAxisRecord::marshal(DataStream& dataStream) const {
+void GridAxisRecord::Marshal(DataStream& dataStream) const {
   dataStream << _sampleType;
   dataStream << _dataRepresentation;
 }
 
-void GridAxisRecord::unmarshal(DataStream& dataStream) {
+void GridAxisRecord::Unmarshal(DataStream& dataStream) {
   dataStream >> _sampleType;
   dataStream >> _dataRepresentation;
 }
 
 bool GridAxisRecord::operator==(const GridAxisRecord& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  if (!(_sampleType == rhs._sampleType)) ivarsEqual = false;
-  if (!(_dataRepresentation == rhs._dataRepresentation)) ivarsEqual = false;
+  if (!(_sampleType == rhs._sampleType)) {
+    ivars_equal = false;
+  }
+  if (!(_dataRepresentation == rhs._dataRepresentation)) {
+    ivars_equal = false;
+  }
 
-  return ivarsEqual;
+  return ivars_equal;
 }
 
 int GridAxisRecord::getMarshalledSize() const {
-  int marshalSize = 0;
+  int marshal_size = 0;
 
-  marshalSize = marshalSize + 2;  // _sampleType
-  marshalSize = marshalSize + 2;  // _dataRepresentation
-  return marshalSize;
+  marshal_size = marshal_size + 2;  // _sampleType
+  marshal_size = marshal_size + 2;  // _dataRepresentation
+  return marshal_size;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.

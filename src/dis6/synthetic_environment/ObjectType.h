@@ -1,11 +1,10 @@
 #pragma once
 
-
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
-// Identifies type of object. This is a int16_ter version of EntityType that omits
-// the specific and extra fields.
+// Identifies type of object. This is a int16_ter version of EntityType that
+// omits the specific and extra fields.
 
 // Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
 // rights reserved.
@@ -33,8 +32,8 @@ class ObjectType {
   ObjectType();
   virtual ~ObjectType();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(dis::DataStream& dataStream) const;
+  virtual void unmarshal(dis::DataStream& dataStream);
 
   uint8_t getEntityKind() const;
   void setEntityKind(uint8_t pX);

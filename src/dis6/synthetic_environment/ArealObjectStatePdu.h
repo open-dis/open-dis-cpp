@@ -2,13 +2,12 @@
 
 #include <vector>
 
-#include "dis6/EntityID.h"
-#include "dis6/EntityType.h"
-#include "dis6/SimulationAddress.h"
-#include "dis6/SixByteChunk.h"
-#include "dis6/SyntheticEnvironmentFamilyPdu.h"
-#include "dis6/Vector3Double.h"
-
+#include "dis6/common/EntityID.h"
+#include "dis6/common/EntityType.h"
+#include "dis6/common/SimulationAddress.h"
+#include "dis6/common/SixByteChunk.h"
+#include "dis6/common/Vector3Double.h"
+#include "dis6/synthetic_environment/SyntheticEnvironmentFamilyPdu.h"
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -21,14 +20,13 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class ArealObjectStatePdu
-    : public SyntheticEnvironmentFamilyPdu {
+class ArealObjectStatePdu : public SyntheticEnvironmentFamilyPdu {
  protected:
   /** Object in synthetic environment */
-  EntityID _objectID;
+  dis::EntityID _objectID;
 
   /** Object with which this point object is associated */
-  EntityID _referencedObjectID;
+  dis::EntityID _referencedObjectID;
 
   /** unique update number of each state transition of an object */
   uint16_t _updateNumber;
@@ -40,7 +38,7 @@ class ArealObjectStatePdu
   uint8_t _modifications;
 
   /** Object type */
-  EntityType _objectType;
+  dis::EntityType _objectType;
 
   /** Object appearance */
   SixByteChunk _objectAppearance;
@@ -61,16 +59,16 @@ class ArealObjectStatePdu
   ArealObjectStatePdu();
   virtual ~ArealObjectStatePdu();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(dis::DataStream& dataStream) const;
+  virtual void unmarshal(dis::DataStream& dataStream);
 
-  EntityID& getObjectID();
-  const EntityID& getObjectID() const;
-  void setObjectID(const EntityID& pX);
+  dis::EntityID& getObjectID();
+  const dis::EntityID& getObjectID() const;
+  void setObjectID(const dis::EntityID& pX);
 
-  EntityID& getReferencedObjectID();
-  const EntityID& getReferencedObjectID() const;
-  void setReferencedObjectID(const EntityID& pX);
+  dis::EntityID& getReferencedObjectID();
+  const dis::EntityID& getReferencedObjectID() const;
+  void setReferencedObjectID(const dis::EntityID& pX);
 
   uint16_t getUpdateNumber() const;
   void setUpdateNumber(uint16_t pX);
@@ -81,9 +79,9 @@ class ArealObjectStatePdu
   uint8_t getModifications() const;
   void setModifications(uint8_t pX);
 
-  EntityType& getObjectType();
-  const EntityType& getObjectType() const;
-  void setObjectType(const EntityType& pX);
+  dis::EntityType& getObjectType();
+  const dis::EntityType& getObjectType() const;
+  void setObjectType(const dis::EntityType& pX);
 
   SixByteChunk& getObjectAppearance();
   const SixByteChunk& getObjectAppearance() const;

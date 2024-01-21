@@ -2,9 +2,8 @@
 
 #include <vector>
 
-#include "dis6/FourByteChunk.h"
-#include "dis6/GridAxisRecord.h"
-
+#include "dis6/common/FourByteChunk.h"
+#include "dis6/synthetic_environment/GridAxisRecord.h"
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -28,8 +27,8 @@ class GridAxisRecordRepresentation2 : public GridAxisRecord {
   GridAxisRecordRepresentation2();
   virtual ~GridAxisRecordRepresentation2();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(dis::DataStream& dataStream) const;
+  virtual void unmarshal(dis::DataStream& dataStream);
 
   uint16_t getNumberOfValues() const;
 

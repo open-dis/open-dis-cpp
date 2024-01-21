@@ -4,8 +4,8 @@ using namespace DIS;
 
 TwoByteChunk::TwoByteChunk() {
   // Initialize fixed length array
-  for (char& _otherParameter : _otherParameters) {
-    _otherParameter = 0;
+  for (char& other_parameter : _otherParameters) {
+    other_parameter = 0;
   }
 }
 
@@ -24,14 +24,14 @@ void TwoByteChunk::setOtherParameters(const char* x) {
 }
 
 void TwoByteChunk::Marshal(DataStream& dataStream) const {
-  for (char _otherParameter : _otherParameters) {
-    dataStream << _otherParameter;
+  for (char const other_parameter : _otherParameters) {
+    dataStream << other_parameter;
   }
 }
 
 void TwoByteChunk::Unmarshal(DataStream& dataStream) {
-  for (char& _otherParameter : _otherParameters) {
-    dataStream >> _otherParameter;
+  for (char const& other_parameter : _otherParameters) {
+    dataStream >> other_parameter;
   }
 }
 

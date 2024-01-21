@@ -52,7 +52,7 @@ class Pdu {
   [[nodiscard]] static uint8_t GetPduType();
   void SetPduType(uint8_t pX);
 
-  [[nodiscard]] uint8_t GetProtocolFamily() const;
+  [[nodiscard]] static uint8_t GetProtocolFamily();
   void SetProtocolFamily(uint8_t pX);
 
   [[nodiscard]] uint32_t GetTimestamp() const;

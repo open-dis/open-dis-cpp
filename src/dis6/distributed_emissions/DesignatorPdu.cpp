@@ -17,106 +17,115 @@ dis::DesignatorPdu::DesignatorPdu()
 
 dis::DesignatorPdu::~DesignatorPdu() = default;
 
-EntityID& DesignatorPdu::getDesignatingEntityID() {
+dis::EntityID& dis::DesignatorPdu::getDesignatingEntityID() {
   return _designatingEntityID;
 }
 
-const EntityID& DesignatorPdu::getDesignatingEntityID() const {
+const dis::EntityID& dis::DesignatorPdu::getDesignatingEntityID() const {
   return _designatingEntityID;
 }
 
-void DesignatorPdu::setDesignatingEntityID(const EntityID& pX) {
+void dis::DesignatorPdu::setDesignatingEntityID(const EntityID& pX) {
   _designatingEntityID = pX;
 }
 
-uint16_t DesignatorPdu::getCodeName() const { return _codeName; }
+uint16_t dis::DesignatorPdu::getCodeName() const { return _codeName; }
 
-void DesignatorPdu::setCodeName(uint16_t pX) { _codeName = pX; }
+void dis::DesignatorPdu::setCodeName(uint16_t pX) { _codeName = pX; }
 
-EntityID& DesignatorPdu::getDesignatedEntityID() { return _designatedEntityID; }
-
-const EntityID& DesignatorPdu::getDesignatedEntityID() const {
+dis::EntityID& dis::DesignatorPdu::getDesignatedEntityID() {
   return _designatedEntityID;
 }
 
-void DesignatorPdu::setDesignatedEntityID(const EntityID& pX) {
+const dis::EntityID& dis::DesignatorPdu::getDesignatedEntityID() const {
+  return _designatedEntityID;
+}
+
+void dis::DesignatorPdu::setDesignatedEntityID(const EntityID& pX) {
   _designatedEntityID = pX;
 }
 
-uint16_t DesignatorPdu::getDesignatorCode() const { return _designatorCode; }
+uint16_t dis::DesignatorPdu::getDesignatorCode() const {
+  return _designatorCode;
+}
 
-void DesignatorPdu::setDesignatorCode(uint16_t pX) { _designatorCode = pX; }
+void dis::DesignatorPdu::setDesignatorCode(uint16_t pX) {
+  _designatorCode = pX;
+}
 
-float DesignatorPdu::getDesignatorPower() const { return _designatorPower; }
+float dis::DesignatorPdu::getDesignatorPower() const {
+  return _designatorPower;
+}
 
-void DesignatorPdu::setDesignatorPower(float pX) { _designatorPower = pX; }
+void dis::DesignatorPdu::setDesignatorPower(float pX) { _designatorPower = pX; }
 
-float DesignatorPdu::getDesignatorWavelength() const {
+float dis::DesignatorPdu::getDesignatorWavelength() const {
   return _designatorWavelength;
 }
 
-void DesignatorPdu::setDesignatorWavelength(float pX) {
+void dis::DesignatorPdu::setDesignatorWavelength(float pX) {
   _designatorWavelength = pX;
 }
 
-Vector3Float& DesignatorPdu::getDesignatorSpotWrtDesignated() {
+Vector3Float& dis::DesignatorPdu::getDesignatorSpotWrtDesignated() {
   return _designatorSpotWrtDesignated;
 }
 
-const Vector3Float& DesignatorPdu::getDesignatorSpotWrtDesignated() const {
+const Vector3Float& dis::DesignatorPdu::getDesignatorSpotWrtDesignated() const {
   return _designatorSpotWrtDesignated;
 }
 
-void DesignatorPdu::setDesignatorSpotWrtDesignated(const Vector3Float& pX) {
+void dis::DesignatorPdu::setDesignatorSpotWrtDesignated(
+    const Vector3Float& pX) {
   _designatorSpotWrtDesignated = pX;
 }
 
-Vector3Double& DesignatorPdu::getDesignatorSpotLocation() {
+Vector3Double& dis::DesignatorPdu::getDesignatorSpotLocation() {
   return _designatorSpotLocation;
 }
 
-const Vector3Double& DesignatorPdu::getDesignatorSpotLocation() const {
+const Vector3Double& dis::DesignatorPdu::getDesignatorSpotLocation() const {
   return _designatorSpotLocation;
 }
 
-void DesignatorPdu::setDesignatorSpotLocation(const Vector3Double& pX) {
+void dis::DesignatorPdu::setDesignatorSpotLocation(const Vector3Double& pX) {
   _designatorSpotLocation = pX;
 }
 
-char DesignatorPdu::getDeadReckoningAlgorithm() const {
+char dis::DesignatorPdu::getDeadReckoningAlgorithm() const {
   return _deadReckoningAlgorithm;
 }
 
-void DesignatorPdu::setDeadReckoningAlgorithm(char pX) {
+void dis::DesignatorPdu::setDeadReckoningAlgorithm(char pX) {
   _deadReckoningAlgorithm = pX;
 }
 
-uint16_t DesignatorPdu::getPadding1() const { return _padding1; }
+uint16_t dis::DesignatorPdu::getPadding1() const { return _padding1; }
 
-void DesignatorPdu::setPadding1(uint16_t pX) { _padding1 = pX; }
+void dis::DesignatorPdu::setPadding1(uint16_t pX) { _padding1 = pX; }
 
-char DesignatorPdu::getPadding2() const { return _padding2; }
+char dis::DesignatorPdu::getPadding2() const { return _padding2; }
 
-void DesignatorPdu::setPadding2(char pX) { _padding2 = pX; }
+void dis::DesignatorPdu::setPadding2(char pX) { _padding2 = pX; }
 
-Vector3Float& DesignatorPdu::getEntityLinearAcceleration() {
+Vector3Float& dis::DesignatorPdu::getEntityLinearAcceleration() {
   return _entityLinearAcceleration;
 }
 
-const Vector3Float& DesignatorPdu::getEntityLinearAcceleration() const {
+const Vector3Float& dis::DesignatorPdu::getEntityLinearAcceleration() const {
   return _entityLinearAcceleration;
 }
 
-void DesignatorPdu::setEntityLinearAcceleration(const Vector3Float& pX) {
+void dis::DesignatorPdu::setEntityLinearAcceleration(const Vector3Float& pX) {
   _entityLinearAcceleration = pX;
 }
 
-void DesignatorPdu::marshal(DataStream& dataStream) const {
+void dis::DesignatorPdu::Marshal(DataStream& dataStream) const {
   DistributedEmissionsFamilyPdu::marshal(
-      dataStream);  // Marshal information in superclass first
-  _designatingEntityID.marshal(dataStream);
+      data_stream);  // Marshal information in superclass first
+  _designatingEntityID.Marshal(dataStream);
   dataStream << _codeName;
-  _designatedEntityID.marshal(dataStream);
+  _designatedEntityID.Marshal(dataStream);
   dataStream << _designatorCode;
   dataStream << _designatorPower;
   dataStream << _designatorWavelength;
@@ -128,9 +137,9 @@ void DesignatorPdu::marshal(DataStream& dataStream) const {
   _entityLinearAcceleration.marshal(dataStream);
 }
 
-void DesignatorPdu::unmarshal(DataStream& dataStream) {
+void dis::DesignatorPdu::Unmarshal(DataStream& dataStream) {
   DistributedEmissionsFamilyPdu::unmarshal(
-      dataStream);  // unmarshal information in superclass first
+      data_stream);  // unmarshal information in superclass first
   _designatingEntityID.unmarshal(dataStream);
   dataStream >> _codeName;
   _designatedEntityID.unmarshal(dataStream);

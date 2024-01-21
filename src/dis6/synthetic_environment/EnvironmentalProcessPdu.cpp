@@ -1,53 +1,48 @@
-#include "dis6/EnvironmentalProcessPdu.h"
+#include "dis6/synthetic_environment/EnvironmentalProcessPdu.h"
 
 using namespace DIS;
 
 EnvironmentalProcessPdu::EnvironmentalProcessPdu()
-    : SyntheticEnvironmentFamilyPdu(),
-      _environementalProcessID(),
-      _environmentType(),
-      _modelType(0),
+    : _modelType(0),
       _environmentStatus(0),
       _numberOfEnvironmentRecords(0),
       _sequenceNumber(0) {
-  setPduType(41);
+  SetPduType(41);
 }
 
 EnvironmentalProcessPdu::~EnvironmentalProcessPdu() {
   _environmentRecords.clear();
 }
 
-EntityID& EnvironmentalProcessPdu::getEnvironementalProcessID() {
+dis::EntityID& EnvironmentalProcessPdu::getEnvironementalProcessID() {
   return _environementalProcessID;
 }
 
-const EntityID& EnvironmentalProcessPdu::getEnvironementalProcessID() const {
+const dis::EntityID& EnvironmentalProcessPdu::getEnvironementalProcessID()
+    const {
   return _environementalProcessID;
 }
 
-void EnvironmentalProcessPdu::setEnvironementalProcessID(const EntityID& pX) {
+void EnvironmentalProcessPdu::setEnvironementalProcessID(
+    const dis::EntityID& pX) {
   _environementalProcessID = pX;
 }
 
-EntityType& EnvironmentalProcessPdu::getEnvironmentType() {
+dis::EntityType& EnvironmentalProcessPdu::getEnvironmentType() {
   return _environmentType;
 }
 
-const EntityType& EnvironmentalProcessPdu::getEnvironmentType() const {
+const dis::EntityType& EnvironmentalProcessPdu::getEnvironmentType() const {
   return _environmentType;
 }
 
-void EnvironmentalProcessPdu::setEnvironmentType(const EntityType& pX) {
+void EnvironmentalProcessPdu::setEnvironmentType(const dis::EntityType& pX) {
   _environmentType = pX;
 }
 
-uint8_t EnvironmentalProcessPdu::getModelType() const {
-  return _modelType;
-}
+uint8_t EnvironmentalProcessPdu::getModelType() const { return _modelType; }
 
-void EnvironmentalProcessPdu::setModelType(uint8_t pX) {
-  _modelType = pX;
-}
+void EnvironmentalProcessPdu::setModelType(uint8_t pX) { _modelType = pX; }
 
 uint8_t EnvironmentalProcessPdu::getEnvironmentStatus() const {
   return _environmentStatus;
@@ -86,15 +81,14 @@ void EnvironmentalProcessPdu::setEnvironmentRecords(
 void EnvironmentalProcessPdu::marshal(DataStream& dataStream) const {
   SyntheticEnvironmentFamilyPdu::marshal(
       dataStream);  // Marshal information in superclass first
-  _environementalProcessID.marshal(dataStream);
-  _environmentType.marshal(dataStream);
+  _environementalProcessID.Marshal(dataStream);
+  _environmentType.Marshal(dataStream);
   dataStream << _modelType;
   dataStream << _environmentStatus;
-  dataStream << (uint8_t)_environmentRecords.size();
+  dataStream << static_cast<uint8_t>(_environmentRecords.size());
   dataStream << _sequenceNumber;
 
-  for (size_t idx = 0; idx < _environmentRecords.size(); idx++) {
-    Environment x = _environmentRecords[idx];
+  for (const auto& x : _environmentRecords) {
     x.marshal(dataStream);
   }
 }
@@ -102,8 +96,8 @@ void EnvironmentalProcessPdu::marshal(DataStream& dataStream) const {
 void EnvironmentalProcessPdu::unmarshal(DataStream& dataStream) {
   SyntheticEnvironmentFamilyPdu::unmarshal(
       dataStream);  // unmarshal information in superclass first
-  _environementalProcessID.unmarshal(dataStream);
-  _environmentType.unmarshal(dataStream);
+  _environementalProcessID.Unmarshal(dataStream);
+  _environmentType.Unmarshal(dataStream);
   dataStream >> _modelType;
   dataStream >> _environmentStatus;
   dataStream >> _numberOfEnvironmentRecords;
@@ -119,45 +113,54 @@ void EnvironmentalProcessPdu::unmarshal(DataStream& dataStream) {
 
 bool EnvironmentalProcessPdu::operator==(
     const EnvironmentalProcessPdu& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  ivarsEqual = SyntheticEnvironmentFamilyPdu::operator==(rhs);
+  ivars_equal = SyntheticEnvironmentFamilyPdu::operator==(rhs);
 
-  if (!(_environementalProcessID == rhs._environementalProcessID))
-    ivarsEqual = false;
-  if (!(_environmentType == rhs._environmentType)) ivarsEqual = false;
-  if (!(_modelType == rhs._modelType)) ivarsEqual = false;
-  if (!(_environmentStatus == rhs._environmentStatus)) ivarsEqual = false;
-  if (!(_sequenceNumber == rhs._sequenceNumber)) ivarsEqual = false;
-
-  for (size_t idx = 0; idx < _environmentRecords.size(); idx++) {
-    if (!(_environmentRecords[idx] == rhs._environmentRecords[idx]))
-      ivarsEqual = false;
+  if (!(_environementalProcessID == rhs._environementalProcessID)) {
+    ivars_equal = false;
+  }
+  if (!(_environmentType == rhs._environmentType)) {
+    ivars_equal = false;
+  }
+  if (!(_modelType == rhs._modelType)) {
+    ivars_equal = false;
+  }
+  if (!(_environmentStatus == rhs._environmentStatus)) {
+    ivars_equal = false;
+  }
+  if (!(_sequenceNumber == rhs._sequenceNumber)) {
+    ivars_equal = false;
   }
 
-  return ivarsEqual;
+  for (size_t idx = 0; idx < _environmentRecords.size(); idx++) {
+    if (!(_environmentRecords[idx] == rhs._environmentRecords[idx])) {
+      ivars_equal = false;
+    }
+  }
+
+  return ivars_equal;
 }
 
 int EnvironmentalProcessPdu::getMarshalledSize() const {
-  int marshalSize = 0;
+  int marshal_size = 0;
 
-  marshalSize = SyntheticEnvironmentFamilyPdu::getMarshalledSize();
-  marshalSize =
-      marshalSize +
-      _environementalProcessID.getMarshalledSize();  // _environementalProcessID
-  marshalSize =
-      marshalSize + _environmentType.getMarshalledSize();  // _environmentType
-  marshalSize = marshalSize + 1;                           // _modelType
-  marshalSize = marshalSize + 1;                           // _environmentStatus
-  marshalSize = marshalSize + 1;  // _numberOfEnvironmentRecords
-  marshalSize = marshalSize + 2;  // _sequenceNumber
+  marshal_size = SyntheticEnvironmentFamilyPdu::getMarshalledSize();
+  marshal_size =
+      marshal_size +
+      _environementalProcessID.GetMarshalledSize();  // _environementalProcessID
+  marshal_size =
+      marshal_size + _environmentType.GetMarshalledSize();  // _environmentType
+  marshal_size = marshal_size + 1;                          // _modelType
+  marshal_size = marshal_size + 1;  // _environmentStatus
+  marshal_size = marshal_size + 1;  // _numberOfEnvironmentRecords
+  marshal_size = marshal_size + 2;  // _sequenceNumber
 
-  for (uint64_t idx = 0; idx < _environmentRecords.size(); idx++) {
-    Environment listElement = _environmentRecords[idx];
-    marshalSize = marshalSize + listElement.getMarshalledSize();
+  for (const auto& list_element : _environmentRecords) {
+    marshal_size = marshal_size + list_element.getMarshalledSize();
   }
 
-  return marshalSize;
+  return marshal_size;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.

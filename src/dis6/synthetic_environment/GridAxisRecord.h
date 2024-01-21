@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -23,8 +22,8 @@ class GridAxisRecord {
   GridAxisRecord();
   virtual ~GridAxisRecord();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(dis::DataStream& dataStream) const;
+  virtual void unmarshal(dis::DataStream& dataStream);
 
   uint16_t getSampleType() const;
   void setSampleType(uint16_t pX);

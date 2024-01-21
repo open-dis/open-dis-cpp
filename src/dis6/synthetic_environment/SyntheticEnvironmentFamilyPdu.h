@@ -1,7 +1,6 @@
 #pragma once
 
-#include "dis6/Pdu.h"
-
+#include "dis6/common/Pdu.h"
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -12,14 +11,14 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class SyntheticEnvironmentFamilyPdu : public Pdu {
+class SyntheticEnvironmentFamilyPdu : public dis::Pdu {
  protected:
  public:
   SyntheticEnvironmentFamilyPdu();
   virtual ~SyntheticEnvironmentFamilyPdu();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(dis::DataStream& dataStream) const;
+  virtual void unmarshal(dis::DataStream& dataStream);
 
   virtual int getMarshalledSize() const;
 

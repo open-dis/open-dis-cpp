@@ -2,12 +2,11 @@
 
 #include <vector>
 
-#include "dis6/EntityID.h"
-#include "dis6/EntityType.h"
-#include "dis6/GridAxisRecord.h"
-#include "dis6/Orientation.h"
-#include "dis6/SyntheticEnvironmentFamilyPdu.h"
-
+#include "dis6/common/EntityID.h"
+#include "dis6/common/EntityType.h"
+#include "dis6/common/Orientation.h"
+#include "dis6/synthetic_environment/GridAxisRecord.h"
+#include "dis6/synthetic_environment/SyntheticEnvironmentFamilyPdu.h"
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -23,7 +22,7 @@ namespace DIS {
 class GriddedDataPdu : public SyntheticEnvironmentFamilyPdu {
  protected:
   /** environmental simulation application ID */
-  EntityID _environmentalSimulationApplicationID;
+  dis::EntityID _environmentalSimulationApplicationID;
 
   /** unique identifier for each piece of enviornmental data */
   uint16_t _fieldNumber;
@@ -44,7 +43,7 @@ class GriddedDataPdu : public SyntheticEnvironmentFamilyPdu {
   uint8_t _constantGrid;
 
   /** type of environment */
-  EntityType _environmentType;
+  dis::EntityType _environmentType;
 
   /** orientation of the data grid */
   Orientation _orientation;
@@ -72,12 +71,12 @@ class GriddedDataPdu : public SyntheticEnvironmentFamilyPdu {
   GriddedDataPdu();
   virtual ~GriddedDataPdu();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(dis::DataStream& dataStream) const;
+  virtual void unmarshal(dis::DataStream& dataStream);
 
-  EntityID& getEnvironmentalSimulationApplicationID();
-  const EntityID& getEnvironmentalSimulationApplicationID() const;
-  void setEnvironmentalSimulationApplicationID(const EntityID& pX);
+  dis::EntityID& getEnvironmentalSimulationApplicationID();
+  const dis::EntityID& getEnvironmentalSimulationApplicationID() const;
+  void setEnvironmentalSimulationApplicationID(const dis::EntityID& pX);
 
   uint16_t getFieldNumber() const;
   void setFieldNumber(uint16_t pX);
@@ -96,9 +95,9 @@ class GriddedDataPdu : public SyntheticEnvironmentFamilyPdu {
   uint8_t getConstantGrid() const;
   void setConstantGrid(uint8_t pX);
 
-  EntityType& getEnvironmentType();
-  const EntityType& getEnvironmentType() const;
-  void setEnvironmentType(const EntityType& pX);
+  dis::EntityType& getEnvironmentType();
+  const dis::EntityType& getEnvironmentType() const;
+  void setEnvironmentType(const dis::EntityType& pX);
 
   Orientation& getOrientation();
   const Orientation& getOrientation() const;

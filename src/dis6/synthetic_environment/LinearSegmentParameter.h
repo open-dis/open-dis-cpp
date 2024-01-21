@@ -1,9 +1,8 @@
 #pragma once
 
-#include "dis6/Orientation.h"
-#include "dis6/SixByteChunk.h"
-#include "dis6/Vector3Double.h"
-
+#include "dis6/common/Orientation.h"
+#include "dis6/common/SixByteChunk.h"
+#include "dis6/common/Vector3Double.h"
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {
@@ -47,8 +46,8 @@ class LinearSegmentParameter {
   LinearSegmentParameter();
   virtual ~LinearSegmentParameter();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  virtual void marshal(dis::DataStream& dataStream) const;
+  virtual void unmarshal(dis::DataStream& dataStream);
 
   uint8_t getSegmentNumber() const;
   void setSegmentNumber(uint8_t pX);

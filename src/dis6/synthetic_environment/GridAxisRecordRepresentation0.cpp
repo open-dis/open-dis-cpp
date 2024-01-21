@@ -1,9 +1,9 @@
-#include "dis6/GridAxisRecordRepresentation0.h"
+#include "dis6/synthetic_environment/GridAxisRecordRepresentation0.h"
 
 using namespace DIS;
 
 GridAxisRecordRepresentation0::GridAxisRecordRepresentation0()
-    : GridAxisRecord(), _numberOfBytes(0) {}
+    : _numberOfBytes(0) {}
 
 GridAxisRecordRepresentation0::~GridAxisRecordRepresentation0() {
   _dataValues.clear();
@@ -30,9 +30,9 @@ void GridAxisRecordRepresentation0::setDataValues(
 void GridAxisRecordRepresentation0::marshal(DataStream& dataStream) const {
   GridAxisRecord::marshal(
       dataStream);  // Marshal information in superclass first
-  dataStream << (uint16_t)_dataValues.size();
+  dataStream << static_cast<uint16_t>(_dataValues.size());
 
-  for (auto& byte : _dataValues) {
+  for (const auto& byte : _dataValues) {
     dataStream << byte;
   }
 }
@@ -52,22 +52,22 @@ void GridAxisRecordRepresentation0::unmarshal(DataStream& dataStream) {
 
 bool GridAxisRecordRepresentation0::operator==(
     const GridAxisRecordRepresentation0& rhs) const {
-  auto ivarsEqual = true;
+  auto ivars_equal = true;
 
-  ivarsEqual =
+  ivars_equal =
       GridAxisRecord::operator==(rhs) && _dataValues == rhs._dataValues;
 
-  return ivarsEqual;
+  return ivars_equal;
 }
 
 int GridAxisRecordRepresentation0::getMarshalledSize() const {
-  auto marshalSize = 0;
+  auto marshal_size = 0;
 
-  marshalSize = GridAxisRecord::getMarshalledSize();
-  marshalSize += 2;  // _numberOfBytes
-  marshalSize += _dataValues.size();
+  marshal_size = GridAxisRecord::getMarshalledSize();
+  marshal_size += 2;  // _numberOfBytes
+  marshal_size += _dataValues.size();
 
-  return marshalSize;
+  return marshal_size;
 }
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
