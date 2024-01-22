@@ -16,96 +16,96 @@ namespace dis {
 //
 // @author DMcG, jkg
 
-class DesignatorPdu : public DistributedEmissionsFamilyPdu {
+class DesignatorPdu final : public DistributedEmissionsFamilyPdu {
  protected:
   /** ID of the entity designating */
-  EntityID _designatingEntityID;
+  EntityID designating_entity_id_;  // NOLINT
 
   /** This field shall specify a unique emitter database number assigned to
    * differentiate between otherwise similar or identical emitter beams within
    * an emitter system. */
-  uint16_t _codeName;
+  uint16_t code_name_;  // NOLINT
 
   /** ID of the entity being designated */
-  EntityID _designatedEntityID;
+  EntityID designated_entity_id_;  // NOLINT
 
   /** This field shall identify the designator code being used by the
    * designating entity  */
-  uint16_t _designatorCode;
+  uint16_t designator_code_;  // NOLINT
 
   /** This field shall identify the designator output power in watts */
-  float _designatorPower;
+  float designator_power_;  // NOLINT
 
   /** This field shall identify the designator wavelength in units of microns */
-  float _designatorWavelength;
+  float designator_wavelength_;  // NOLINT
 
   /** designtor spot wrt the designated entity */
-  DIS::Vector3Float _designatorSpotWrtDesignated;
+  Vector3Float designator_spot_wrt_designated_;  // NOLINT
 
   /** designtor spot wrt the designated entity */
-  DIS::Vector3Double _designatorSpotLocation;
+  Vector3Double designator_spot_location_;  // NOLINT
 
   /** Dead reckoning algorithm */
-  char _deadReckoningAlgorithm;
+  char dead_reckoning_algorithm_;  // NOLINT
 
   /** padding */
-  uint16_t _padding1;
+  uint16_t padding1_;  // NOLINT
 
   /** padding */
-  char _padding2;
+  char padding2_;  // NOLINT
 
   /** linear accelleration of entity */
-  DIS::Vector3Float _entityLinearAcceleration;
+  Vector3Float entity_linear_acceleration_;  // NOLINT
 
  public:
   DesignatorPdu();
-  virtual ~DesignatorPdu();
+  ~DesignatorPdu() final;
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  void Marshal(DataStream& dataStream) const override;
+  void Unmarshal(DataStream& dataStream) override;
 
-  EntityID& getDesignatingEntityID();
-  const EntityID& getDesignatingEntityID() const;
-  void setDesignatingEntityID(const EntityID& pX);
+  EntityID& GetDesignatingEntityId();
+  [[nodiscard]] const EntityID& GetDesignatingEntityId() const;
+  void SetDesignatingEntityId(const EntityID& pX);
 
-  uint16_t getCodeName() const;
-  void setCodeName(uint16_t pX);
+  [[nodiscard]] uint16_t GetCodeName() const;
+  void SetCodeName(uint16_t pX);
 
-  EntityID& getDesignatedEntityID();
-  const EntityID& getDesignatedEntityID() const;
-  void setDesignatedEntityID(const EntityID& pX);
+  EntityID& GetDesignatedEntityId();
+  [[nodiscard]] const EntityID& GetDesignatedEntityId() const;
+  void SetDesignatedEntityId(const EntityID& pX);
 
-  uint16_t getDesignatorCode() const;
-  void setDesignatorCode(uint16_t pX);
+  [[nodiscard]] uint16_t GetDesignatorCode() const;
+  void SetDesignatorCode(uint16_t pX);
 
-  float getDesignatorPower() const;
-  void setDesignatorPower(float pX);
+  [[nodiscard]] float GetDesignatorPower() const;
+  void SetDesignatorPower(float pX);
 
-  float getDesignatorWavelength() const;
-  void setDesignatorWavelength(float pX);
+  [[nodiscard]] float GetDesignatorWavelength() const;
+  void SetDesignatorWavelength(float pX);
 
-  DIS::Vector3Float& getDesignatorSpotWrtDesignated();
-  const DIS::Vector3Float& getDesignatorSpotWrtDesignated() const;
-  void setDesignatorSpotWrtDesignated(const DIS::Vector3Float& pX);
+  Vector3Float& GetDesignatorSpotWrtDesignated();
+  [[nodiscard]] const Vector3Float& GetDesignatorSpotWrtDesignated() const;
+  void SetDesignatorSpotWrtDesignated(const Vector3Float& pX);
 
-  DIS::Vector3Double& getDesignatorSpotLocation();
-  const DIS::Vector3Double& getDesignatorSpotLocation() const;
-  void setDesignatorSpotLocation(const DIS::Vector3Double& pX);
+  Vector3Double& GetDesignatorSpotLocation();
+  [[nodiscard]] const Vector3Double& GetDesignatorSpotLocation() const;
+  void SetDesignatorSpotLocation(const Vector3Double& pX);
 
-  char getDeadReckoningAlgorithm() const;
-  void setDeadReckoningAlgorithm(char pX);
+  [[nodiscard]] char GetDeadReckoningAlgorithm() const;
+  void SetDeadReckoningAlgorithm(char pX);
 
-  uint16_t getPadding1() const;
-  void setPadding1(uint16_t pX);
+  [[nodiscard]] uint16_t GetPadding1() const;
+  void SetPadding1(uint16_t pX);
 
-  char getPadding2() const;
-  void setPadding2(char pX);
+  [[nodiscard]] char GetPadding2() const;
+  void SetPadding2(char pX);
 
-  DIS::Vector3Float& getEntityLinearAcceleration();
-  const DIS::Vector3Float& getEntityLinearAcceleration() const;
-  void setEntityLinearAcceleration(const DIS::Vector3Float& pX);
+  Vector3Float& GetEntityLinearAcceleration();
+  [[nodiscard]] const Vector3Float& GetEntityLinearAcceleration() const;
+  void SetEntityLinearAcceleration(const Vector3Float& pX);
 
-  virtual int getMarshalledSize() const;
+  [[nodiscard]] int GetMarshalledSize() const override;
 
   bool operator==(const DesignatorPdu& rhs) const;
 };

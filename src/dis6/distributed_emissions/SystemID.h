@@ -1,9 +1,8 @@
 #pragma once
 
-
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // 5.2.58. Used in IFF ATC PDU
 
 // Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
@@ -48,7 +47,7 @@ class SystemID {
 
   bool operator==(const SystemID& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

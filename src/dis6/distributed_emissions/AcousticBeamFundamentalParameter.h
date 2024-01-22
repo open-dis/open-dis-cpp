@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DIS6_DISTRIBUTED_EMISSIONS_ACOUSTICBEAMFUNDAMENTALPARAMETER_H_
+#define DIS6_DISTRIBUTED_EMISSIONS_ACOUSTICBEAMFUNDAMENTALPARAMETER_H_
 
 #include <cstdint>
 
@@ -14,50 +15,50 @@ namespace dis {
 
 class AcousticBeamFundamentalParameter {
  protected:
-  /** parameter index */
-  uint16_t active_emission_parameter_index_;
+  /// parameter index
+  uint16_t active_emission_parameter_index_;  // NOLINT
 
-  /** scan pattern */
-  uint16_t scan_pattern_;
+  /// scan pattern
+  uint16_t scan_pattern_;  // NOLINT
 
-  /** beam center azimuth */
-  float beam_center_azimuth_;
+  /// beam center azimuth
+  float beam_center_azimuth_;  // NOLINT
 
-  /** azimuthal beamwidth */
-  float azimuthal_beamwidth_;
+  /// azimuthal beamwidth
+  float azimuthal_beamwidth_;  // NOLINT
 
-  /** beam center */
-  float beam_center_de_;
+  /// beam center
+  float beam_center_de_;  // NOLINT
 
-  /** DE beamwidth (vertical beamwidth) */
-  float de_beamwidth_;
+  /// DE beamwidth (vertical beamwidth)
+  float de_beamwidth_;  // NOLINT
 
  public:
   AcousticBeamFundamentalParameter();
-  virtual ~AcousticBeamFundamentalParameter();
+  ~AcousticBeamFundamentalParameter() = default;
 
-  virtual void Marshal(DataStream& dataStream) const;
-  virtual void Unmarshal(DataStream& dataStream);
+  void Marshal(DataStream& dataStream) const;
+  void Unmarshal(DataStream& dataStream);
 
-  [[nodiscard]] static uint16_t GetActiveEmissionParameterIndex();
+  [[nodiscard]] uint16_t GetActiveEmissionParameterIndex() const;
   void SetActiveEmissionParameterIndex(uint16_t pX);
 
-  [[nodiscard]] static uint16_t GetScanPattern();
+  [[nodiscard]] uint16_t GetScanPattern() const;
   void SetScanPattern(uint16_t pX);
 
-  [[nodiscard]] static float GetBeamCenterAzimuth();
+  [[nodiscard]] float GetBeamCenterAzimuth() const;
   void SetBeamCenterAzimuth(float pX);
 
-  [[nodiscard]] static float GetAzimuthalBeamwidth();
+  [[nodiscard]] float GetAzimuthalBeamwidth() const;
   void SetAzimuthalBeamwidth(float pX);
 
-  [[nodiscard]] static float GetBeamCenterDe();
+  [[nodiscard]] float GetBeamCenterDe() const;
   void SetBeamCenterDe(float pX);
 
-  [[nodiscard]] static float GetDeBeamwidth();
+  [[nodiscard]] float GetDeBeamwidth() const;
   void SetDeBeamwidth(float pX);
 
-  [[nodiscard]] virtual int GetMarshalledSize() const;
+  [[nodiscard]] static int GetMarshalledSize();
 
   bool operator==(const AcousticBeamFundamentalParameter& rhs) const;
 };
@@ -93,3 +94,5 @@ class AcousticBeamFundamentalParameter {
 // LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
+
+#endif  // DIS6_DISTRIBUTED_EMISSIONS_ACOUSTICBEAMFUNDAMENTALPARAMETER_H_

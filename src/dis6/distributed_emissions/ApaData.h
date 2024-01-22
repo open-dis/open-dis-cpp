@@ -22,10 +22,10 @@ class ApaData {
 
  public:
   ApaData();
-  virtual ~ApaData();
+  ~ApaData() = default;
 
-  virtual void Marshal(DataStream& dataStream) const;
-  virtual void Unmarshal(DataStream& dataStream);
+  void Marshal(DataStream& dataStream) const;
+  void Unmarshal(DataStream& dataStream);
 
   [[nodiscard]] uint16_t GetParameterIndex() const;
   void SetParameterIndex(uint16_t pX);
@@ -33,7 +33,7 @@ class ApaData {
   [[nodiscard]] int16_t GetParameterValue() const;
   void SetParameterValue(int16_t pX);
 
-  [[nodiscard]] virtual int GetMarshalledSize() const;
+  [[nodiscard]] int GetMarshalledSize() const;
 
   bool operator==(const ApaData& rhs) const;
 };

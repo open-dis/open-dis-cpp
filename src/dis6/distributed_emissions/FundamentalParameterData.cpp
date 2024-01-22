@@ -1,7 +1,6 @@
-#include "dis6/FundamentalParameterData.h"
+#include "dis6/distributed_emissions/FundamentalParameterData.h"
 
-using namespace DIS;
-
+namespace dis {
 FundamentalParameterData::FundamentalParameterData()
     : _frequency(0.0),
       _frequencyRange(0.0),
@@ -13,8 +12,6 @@ FundamentalParameterData::FundamentalParameterData()
       _beamElevationCenter(0.0),
       _beamElevationSweep(0.0),
       _beamSweepSync(0.0) {}
-
-FundamentalParameterData::~FundamentalParameterData() {}
 
 float FundamentalParameterData::getFrequency() const { return _frequency; }
 
@@ -149,6 +146,8 @@ int FundamentalParameterData::getMarshalledSize() const {
   marshalSize = marshalSize + 4;  // _beamSweepSync
   return marshalSize;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

@@ -2,12 +2,11 @@
 
 #include <vector>
 
-#include "dis6/FundamentalParameterData.h"
-#include "dis6/TrackJamTarget.h"
-
+#include "dis6/distributed_emissions/FundamentalParameterData.h"
+#include "dis6/distributed_emissions/TrackJamTarget.h"
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // Description of one electronic emission beam
 
 // Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
@@ -95,7 +94,7 @@ class ElectromagneticEmissionBeamData {
 
   bool operator==(const ElectromagneticEmissionBeamData& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

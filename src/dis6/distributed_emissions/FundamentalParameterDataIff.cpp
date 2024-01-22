@@ -1,7 +1,6 @@
-#include "dis6/FundamentalParameterDataIff.h"
+#include "dis6/distributed_emissions/FundamentalParameterDataIff.h"
 
-using namespace DIS;
-
+namespace dis {
 FundamentalParameterDataIff::FundamentalParameterDataIff()
     : _erp(0.0),
       _frequency(0.0),
@@ -11,8 +10,6 @@ FundamentalParameterDataIff::FundamentalParameterDataIff()
       _applicableModes(0),
       _pad2(0),
       _pad3(0) {}
-
-FundamentalParameterDataIff::~FundamentalParameterDataIff() {}
 
 float FundamentalParameterDataIff::getErp() const { return _erp; }
 
@@ -105,6 +102,8 @@ int FundamentalParameterDataIff::getMarshalledSize() const {
   marshalSize = marshalSize + 1;  // _pad3
   return marshalSize;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

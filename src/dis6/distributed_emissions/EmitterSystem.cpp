@@ -1,11 +1,9 @@
-#include "dis6/EmitterSystem.h"
+#include "dis6/distributed_emissions/EmitterSystem.h"
 
-using namespace DIS;
+namespace dis {
 
 EmitterSystem::EmitterSystem()
     : _emitterName(0), _function(0), _emitterIdNumber(0) {}
-
-EmitterSystem::~EmitterSystem() {}
 
 uint16_t EmitterSystem::getEmitterName() const { return _emitterName; }
 
@@ -15,13 +13,9 @@ uint8_t EmitterSystem::getFunction() const { return _function; }
 
 void EmitterSystem::setFunction(uint8_t pX) { _function = pX; }
 
-uint8_t EmitterSystem::getEmitterIdNumber() const {
-  return _emitterIdNumber;
-}
+uint8_t EmitterSystem::getEmitterIdNumber() const { return _emitterIdNumber; }
 
-void EmitterSystem::setEmitterIdNumber(uint8_t pX) {
-  _emitterIdNumber = pX;
-}
+void EmitterSystem::setEmitterIdNumber(uint8_t pX) { _emitterIdNumber = pX; }
 
 void EmitterSystem::marshal(DataStream& dataStream) const {
   dataStream << _emitterName;
@@ -53,6 +47,8 @@ int EmitterSystem::getMarshalledSize() const {
   marshalSize = marshalSize + 1;  // _emitterIdNumber
   return marshalSize;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

@@ -1,9 +1,8 @@
 #pragma once
 
-
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // Data about a vectoring nozzle system
 
 // Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
@@ -21,10 +20,10 @@ class VectoringNozzleSystemData {
 
  public:
   VectoringNozzleSystemData();
-  virtual ~VectoringNozzleSystemData();
+  ~VectoringNozzleSystemData();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  void marshal(DataStream& dataStream) const;
+  void unmarshal(DataStream& dataStream);
 
   float getHorizontalDeflectionAngle() const;
   void setHorizontalDeflectionAngle(float pX);
@@ -32,11 +31,11 @@ class VectoringNozzleSystemData {
   float getVerticalDeflectionAngle() const;
   void setVerticalDeflectionAngle(float pX);
 
-  virtual int getMarshalledSize() const;
+  int getMarshalledSize() const;
 
   bool operator==(const VectoringNozzleSystemData& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

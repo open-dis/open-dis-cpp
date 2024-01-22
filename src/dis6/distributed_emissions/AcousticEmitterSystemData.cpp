@@ -1,7 +1,6 @@
-#include "dis6/AcousticEmitterSystemData.h"
+#include "dis6/distributed_emissions/AcousticEmitterSystemData.h"
 
-using namespace DIS;
-
+namespace dis {
 AcousticEmitterSystemData::AcousticEmitterSystemData()
     : _emitterSystemDataLength(0),
       _numberOfBeams(0),
@@ -134,6 +133,8 @@ int AcousticEmitterSystemData::getMarshalledSize() const {
 
   return marshalSize;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

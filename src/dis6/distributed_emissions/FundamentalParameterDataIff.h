@@ -1,9 +1,8 @@
 #pragma once
 
-
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // 5.2.45. Fundamental IFF atc data
 
 // Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
@@ -39,10 +38,10 @@ class FundamentalParameterDataIff {
 
  public:
   FundamentalParameterDataIff();
-  virtual ~FundamentalParameterDataIff();
+  ~FundamentalParameterDataIff() = default;
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  void marshal(DataStream& dataStream) const;
+  void unmarshal(DataStream& dataStream);
 
   float getErp() const;
   void setErp(float pX);
@@ -68,11 +67,11 @@ class FundamentalParameterDataIff {
   uint8_t getPad3() const;
   void setPad3(uint8_t pX);
 
-  virtual int getMarshalledSize() const;
+  int getMarshalledSize() const;
 
   bool operator==(const FundamentalParameterDataIff& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

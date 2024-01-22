@@ -2,10 +2,9 @@
 
 #include <vector>
 
-#include "dis6/ElectromagneticEmissionBeamData.h"
-#include "dis6/EmitterSystem.h"
-#include "dis6/Vector3Float.h"
-
+#include "dis6/common/Vector3Float.h"
+#include "dis6/distributed_emissions/ElectromagneticEmissionBeamData.h"
+#include "dis6/distributed_emissions/EmitterSystem.h"
 #include "dis6/utils/DataStream.h"
 
 namespace DIS {

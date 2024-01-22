@@ -1,7 +1,6 @@
-#include "dis6/BeamData.h"
+#include "dis6/distributed_emissions/BeamData.h"
 
-using namespace DIS;
-
+namespace dis {
 BeamData::BeamData()
     : _beamAzimuthCenter(0.0),
       _beamAzimuthSweep(0.0),
@@ -69,6 +68,8 @@ int BeamData::getMarshalledSize() const {
   marshalSize = marshalSize + 4;  // _beamSweepSync
   return marshalSize;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

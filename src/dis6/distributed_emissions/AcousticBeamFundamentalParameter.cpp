@@ -1,113 +1,123 @@
 #include "dis6/distributed_emissions/AcousticBeamFundamentalParameter.h"
 
-using namespace DIS;
+namespace dis {
 
-dis::AcousticBeamFundamentalParameter::AcousticBeamFundamentalParameter()
+AcousticBeamFundamentalParameter::AcousticBeamFundamentalParameter()
     : active_emission_parameter_index_(0),
       scan_pattern_(0),
       beam_center_azimuth_(0.0),
       azimuthal_beamwidth_(0.0),
-      _beamCenterDE(0.0),
+      beam_center_de_(0.0),
       de_beamwidth_(0.0) {}
 
-dis::AcousticBeamFundamentalParameter::~AcousticBeamFundamentalParameter() =
-    default;
-
-uint16_t
-dis::AcousticBeamFundamentalParameter::GetActiveEmissionParameterIndex() {
-  return _activeEmissionParameterIndex;
+uint16_t AcousticBeamFundamentalParameter::GetActiveEmissionParameterIndex()
+    const {
+  return active_emission_parameter_index_;
 }
 
-void dis::AcousticBeamFundamentalParameter::SetActiveEmissionParameterIndex(
+void AcousticBeamFundamentalParameter::SetActiveEmissionParameterIndex(
     uint16_t pX) {
   active_emission_parameter_index_ = pX;
 }
 
-uint16_t dis::AcousticBeamFundamentalParameter::GetScanPattern() {
-  return _scanPattern;
+uint16_t AcousticBeamFundamentalParameter::GetScanPattern() const {
+  return scan_pattern_;
 }
 
-void dis::AcousticBeamFundamentalParameter::SetScanPattern(uint16_t pX) {
+void AcousticBeamFundamentalParameter::SetScanPattern(uint16_t pX) {
   scan_pattern_ = pX;
 }
 
-float dis::AcousticBeamFundamentalParameter::GetBeamCenterAzimuth() {
-  return _beamCenterAzimuth;
+float AcousticBeamFundamentalParameter::GetBeamCenterAzimuth() const {
+  return beam_center_azimuth_;
 }
 
-void dis::AcousticBeamFundamentalParameter::SetBeamCenterAzimuth(float pX) {
+void AcousticBeamFundamentalParameter::SetBeamCenterAzimuth(float pX) {
   beam_center_azimuth_ = pX;
 }
 
-float dis::AcousticBeamFundamentalParameter::GetAzimuthalBeamwidth() {
-  return _azimuthalBeamwidth;
+float AcousticBeamFundamentalParameter::GetAzimuthalBeamwidth() const {
+  return azimuthal_beamwidth_;
 }
 
-void dis::AcousticBeamFundamentalParameter::SetAzimuthalBeamwidth(float pX) {
+void AcousticBeamFundamentalParameter::SetAzimuthalBeamwidth(float pX) {
   azimuthal_beamwidth_ = pX;
 }
 
-float dis::AcousticBeamFundamentalParameter::GetBeamCenterDe() {
-  return _beamCenterDE;
+float AcousticBeamFundamentalParameter::GetBeamCenterDe() const {
+  return beam_center_de_;
 }
 
-void dis::AcousticBeamFundamentalParameter::SetBeamCenterDe(float pX) {
-  _beamCenterDE = pX;
+void AcousticBeamFundamentalParameter::SetBeamCenterDe(float pX) {
+  beam_center_de_ = pX;
 }
 
-float dis::AcousticBeamFundamentalParameter::GetDeBeamwidth() {
-  return _deBeamwidth;
+float AcousticBeamFundamentalParameter::GetDeBeamwidth() const {
+  return de_beamwidth_;
 }
 
-void dis::AcousticBeamFundamentalParameter::SetDeBeamwidth(float pX) {
+void AcousticBeamFundamentalParameter::SetDeBeamwidth(float pX) {
   de_beamwidth_ = pX;
 }
 
-void dis::AcousticBeamFundamentalParameter::Marshal(
-    DataStream& dataStream) const {
-  dataStream << (_activeEmissionParameterIndex != nullptr);
-  dataStream << _scanPattern;
-  dataStream << _beamCenterAzimuth;
-  dataStream << _azimuthalBeamwidth;
-  dataStream << _beamCenterDE;
-  dataStream << _deBeamwidth;
+void AcousticBeamFundamentalParameter::Marshal(DataStream& dataStream) const {
+  dataStream << active_emission_parameter_index_;
+  dataStream << scan_pattern_;
+  dataStream << beam_center_azimuth_;
+  dataStream << azimuthal_beamwidth_;
+  dataStream << beam_center_de_;
+  dataStream << de_beamwidth_;
 }
 
-void AcousticBeamFundamentalParameter::unmarshal(DataStream& dataStream) {
-  dataStream >> _activeEmissionParameterIndex;
-  dataStream >> _scanPattern;
-  dataStream >> _beamCenterAzimuth;
-  dataStream >> _azimuthalBeamwidth;
-  dataStream >> _beamCenterDE;
-  dataStream >> _deBeamwidth;
+void AcousticBeamFundamentalParameter::Unmarshal(DataStream& dataStream) {
+  dataStream >> active_emission_parameter_index_;
+  dataStream >> scan_pattern_;
+  dataStream >> beam_center_azimuth_;
+  dataStream >> azimuthal_beamwidth_;
+  dataStream >> beam_center_de_;
+  dataStream >> de_beamwidth_;
 }
 
 bool AcousticBeamFundamentalParameter::operator==(
     const AcousticBeamFundamentalParameter& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  if (!(_activeEmissionParameterIndex == rhs._activeEmissionParameterIndex))
-    ivarsEqual = false;
-  if (!(_scanPattern == rhs._scanPattern)) ivarsEqual = false;
-  if (!(_beamCenterAzimuth == rhs._beamCenterAzimuth)) ivarsEqual = false;
-  if (!(_azimuthalBeamwidth == rhs._azimuthalBeamwidth)) ivarsEqual = false;
-  if (!(_beamCenterDE == rhs._beamCenterDE)) ivarsEqual = false;
-  if (!(_deBeamwidth == rhs._deBeamwidth)) ivarsEqual = false;
+  if (active_emission_parameter_index_ !=
+      rhs.active_emission_parameter_index_) {
+    ivars_equal = false;
+  }
+  if (scan_pattern_ != rhs.scan_pattern_) {
+    ivars_equal = false;
+  }
+  if (beam_center_azimuth_ != rhs.beam_center_azimuth_) {
+    ivars_equal = false;
+  }
+  if (azimuthal_beamwidth_ != rhs.azimuthal_beamwidth_) {
+    ivars_equal = false;
+  }
+  if (beam_center_de_ != rhs.beam_center_de_) {
+    ivars_equal = false;
+  }
+  if (de_beamwidth_ != rhs.de_beamwidth_) {
+    ivars_equal = false;
+  }
 
-  return ivarsEqual;
+  return ivars_equal;
 }
 
-int AcousticBeamFundamentalParameter::getMarshalledSize() const {
-  int marshalSize = 0;
+int AcousticBeamFundamentalParameter::GetMarshalledSize() {
+  int marshal_size = 0;
 
-  marshalSize = marshalSize + 2;  // _activeEmissionParameterIndex
-  marshalSize = marshalSize + 2;  // _scanPattern
-  marshalSize = marshalSize + 4;  // _beamCenterAzimuth
-  marshalSize = marshalSize + 4;  // _azimuthalBeamwidth
-  marshalSize = marshalSize + 4;  // _beamCenterDE
-  marshalSize = marshalSize + 4;  // _deBeamwidth
-  return marshalSize;
+  marshal_size = marshal_size + 2;  // active_emission_parameter_index_
+  marshal_size = marshal_size + 2;  // scan_pattern_
+  marshal_size = marshal_size + 4;  // beam_center_azimuth_
+  marshal_size = marshal_size + 4;  // azimuthal_beamwidth_
+  marshal_size = marshal_size + 4;  // beam_center_de_
+  marshal_size = marshal_size + 4;  // de_beamwidth_
+  return marshal_size;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

@@ -1,7 +1,6 @@
-#include "dis6/IffAtcNavAidsLayer2Pdu.h"
+#include "dis6/distributed_emissions/IffAtcNavAidsLayer2Pdu.h"
 
-using namespace DIS;
-
+namespace dis {
 IffAtcNavAidsLayer2Pdu::IffAtcNavAidsLayer2Pdu()
     : IffAtcNavAidsLayer1Pdu(),
       _layerHeader(),
@@ -114,14 +113,15 @@ int IffAtcNavAidsLayer2Pdu::getMarshalledSize() const {
       marshalSize + _secondaryOperationalData
                         .getMarshalledSize();  // _secondaryOperationalData
 
-  for (uint64_t idx = 0; idx < _fundamentalIffParameters.size();
-       idx++) {
+  for (uint64_t idx = 0; idx < _fundamentalIffParameters.size(); idx++) {
     FundamentalParameterDataIff listElement = _fundamentalIffParameters[idx];
     marshalSize = marshalSize + listElement.getMarshalledSize();
   }
 
   return marshalSize;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

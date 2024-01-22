@@ -1,9 +1,8 @@
 #pragma once
 
-
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // Shaft RPMs, used in underwater acoustic clacluations.
 
 // Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
@@ -24,10 +23,10 @@ class ShaftRPMs {
 
  public:
   ShaftRPMs();
-  virtual ~ShaftRPMs();
+  ~ShaftRPMs() = default;
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  void marshal(DataStream& dataStream) const;
+  void unmarshal(DataStream& dataStream);
 
   int16_t getCurrentShaftRPMs() const;
   void setCurrentShaftRPMs(int16_t pX);
@@ -38,11 +37,11 @@ class ShaftRPMs {
   float getShaftRPMRateOfChange() const;
   void setShaftRPMRateOfChange(float pX);
 
-  virtual int getMarshalledSize() const;
+  int getMarshalledSize() const;
 
   bool operator==(const ShaftRPMs& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

@@ -1,7 +1,6 @@
-#include "dis6/SystemID.h"
+#include "dis6/distributed_emissions/SystemID.h"
 
-using namespace DIS;
-
+namespace dis {
 SystemID::SystemID()
     : _systemType(0), _systemName(0), _systemMode(0), _changeOptions(0) {}
 
@@ -57,6 +56,8 @@ int SystemID::getMarshalledSize() const {
   marshalSize = marshalSize + 1;  // _changeOptions
   return marshalSize;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

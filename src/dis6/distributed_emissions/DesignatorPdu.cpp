@@ -1,8 +1,7 @@
 #include "dis6/distributed_emissions/DesignatorPdu.h"
 
-using namespace DIS;
-
-dis::DesignatorPdu::DesignatorPdu()
+namespace dis {
+DesignatorPdu::DesignatorPdu()
     : _codeName(0),
 
       _designatorCode(0),
@@ -15,112 +14,103 @@ dis::DesignatorPdu::DesignatorPdu()
   SetPduType(24);
 }
 
-dis::DesignatorPdu::~DesignatorPdu() = default;
+DesignatorPdu::~DesignatorPdu() = default;
 
-dis::EntityID& dis::DesignatorPdu::getDesignatingEntityID() {
+EntityID& DesignatorPdu::getDesignatingEntityID() {
   return _designatingEntityID;
 }
 
-const dis::EntityID& dis::DesignatorPdu::getDesignatingEntityID() const {
+const EntityID& DesignatorPdu::getDesignatingEntityID() const {
   return _designatingEntityID;
 }
 
-void dis::DesignatorPdu::setDesignatingEntityID(const EntityID& pX) {
+void DesignatorPdu::setDesignatingEntityID(const EntityID& pX) {
   _designatingEntityID = pX;
 }
 
-uint16_t dis::DesignatorPdu::getCodeName() const { return _codeName; }
+uint16_t DesignatorPdu::getCodeName() const { return _codeName; }
 
-void dis::DesignatorPdu::setCodeName(uint16_t pX) { _codeName = pX; }
+void DesignatorPdu::setCodeName(uint16_t pX) { _codeName = pX; }
 
-dis::EntityID& dis::DesignatorPdu::getDesignatedEntityID() {
+EntityID& DesignatorPdu::getDesignatedEntityID() { return _designatedEntityID; }
+
+const EntityID& DesignatorPdu::getDesignatedEntityID() const {
   return _designatedEntityID;
 }
 
-const dis::EntityID& dis::DesignatorPdu::getDesignatedEntityID() const {
-  return _designatedEntityID;
-}
-
-void dis::DesignatorPdu::setDesignatedEntityID(const EntityID& pX) {
+void DesignatorPdu::setDesignatedEntityID(const EntityID& pX) {
   _designatedEntityID = pX;
 }
 
-uint16_t dis::DesignatorPdu::getDesignatorCode() const {
-  return _designatorCode;
-}
+uint16_t DesignatorPdu::getDesignatorCode() const { return _designatorCode; }
 
-void dis::DesignatorPdu::setDesignatorCode(uint16_t pX) {
-  _designatorCode = pX;
-}
+void DesignatorPdu::setDesignatorCode(uint16_t pX) { _designatorCode = pX; }
 
-float dis::DesignatorPdu::getDesignatorPower() const {
-  return _designatorPower;
-}
+float DesignatorPdu::getDesignatorPower() const { return _designatorPower; }
 
-void dis::DesignatorPdu::setDesignatorPower(float pX) { _designatorPower = pX; }
+void DesignatorPdu::setDesignatorPower(float pX) { _designatorPower = pX; }
 
-float dis::DesignatorPdu::getDesignatorWavelength() const {
+float DesignatorPdu::getDesignatorWavelength() const {
   return _designatorWavelength;
 }
 
-void dis::DesignatorPdu::setDesignatorWavelength(float pX) {
+void DesignatorPdu::setDesignatorWavelength(float pX) {
   _designatorWavelength = pX;
 }
 
-Vector3Float& dis::DesignatorPdu::getDesignatorSpotWrtDesignated() {
+Vector3Float& DesignatorPdu::getDesignatorSpotWrtDesignated() {
   return _designatorSpotWrtDesignated;
 }
 
-const Vector3Float& dis::DesignatorPdu::getDesignatorSpotWrtDesignated() const {
+const Vector3Float& DesignatorPdu::getDesignatorSpotWrtDesignated() const {
   return _designatorSpotWrtDesignated;
 }
 
-void dis::DesignatorPdu::setDesignatorSpotWrtDesignated(
-    const Vector3Float& pX) {
+void DesignatorPdu::setDesignatorSpotWrtDesignated(const Vector3Float& pX) {
   _designatorSpotWrtDesignated = pX;
 }
 
-Vector3Double& dis::DesignatorPdu::getDesignatorSpotLocation() {
+Vector3Double& DesignatorPdu::getDesignatorSpotLocation() {
   return _designatorSpotLocation;
 }
 
-const Vector3Double& dis::DesignatorPdu::getDesignatorSpotLocation() const {
+const Vector3Double& DesignatorPdu::getDesignatorSpotLocation() const {
   return _designatorSpotLocation;
 }
 
-void dis::DesignatorPdu::setDesignatorSpotLocation(const Vector3Double& pX) {
+void DesignatorPdu::setDesignatorSpotLocation(const Vector3Double& pX) {
   _designatorSpotLocation = pX;
 }
 
-char dis::DesignatorPdu::getDeadReckoningAlgorithm() const {
+char DesignatorPdu::getDeadReckoningAlgorithm() const {
   return _deadReckoningAlgorithm;
 }
 
-void dis::DesignatorPdu::setDeadReckoningAlgorithm(char pX) {
+void DesignatorPdu::setDeadReckoningAlgorithm(char pX) {
   _deadReckoningAlgorithm = pX;
 }
 
-uint16_t dis::DesignatorPdu::getPadding1() const { return _padding1; }
+uint16_t DesignatorPdu::getPadding1() const { return _padding1; }
 
-void dis::DesignatorPdu::setPadding1(uint16_t pX) { _padding1 = pX; }
+void DesignatorPdu::setPadding1(uint16_t pX) { _padding1 = pX; }
 
-char dis::DesignatorPdu::getPadding2() const { return _padding2; }
+char DesignatorPdu::getPadding2() const { return _padding2; }
 
-void dis::DesignatorPdu::setPadding2(char pX) { _padding2 = pX; }
+void DesignatorPdu::setPadding2(char pX) { _padding2 = pX; }
 
-Vector3Float& dis::DesignatorPdu::getEntityLinearAcceleration() {
+Vector3Float& DesignatorPdu::getEntityLinearAcceleration() {
   return _entityLinearAcceleration;
 }
 
-const Vector3Float& dis::DesignatorPdu::getEntityLinearAcceleration() const {
+const Vector3Float& DesignatorPdu::getEntityLinearAcceleration() const {
   return _entityLinearAcceleration;
 }
 
-void dis::DesignatorPdu::setEntityLinearAcceleration(const Vector3Float& pX) {
+void DesignatorPdu::setEntityLinearAcceleration(const Vector3Float& pX) {
   _entityLinearAcceleration = pX;
 }
 
-void dis::DesignatorPdu::Marshal(DataStream& dataStream) const {
+void DesignatorPdu::Marshal(DataStream& dataStream) const {
   DistributedEmissionsFamilyPdu::marshal(
       data_stream);  // Marshal information in superclass first
   _designatingEntityID.Marshal(dataStream);
@@ -137,7 +127,7 @@ void dis::DesignatorPdu::Marshal(DataStream& dataStream) const {
   _entityLinearAcceleration.marshal(dataStream);
 }
 
-void dis::DesignatorPdu::Unmarshal(DataStream& dataStream) {
+void DesignatorPdu::Unmarshal(DataStream& dataStream) {
   DistributedEmissionsFamilyPdu::unmarshal(
       data_stream);  // unmarshal information in superclass first
   _designatingEntityID.unmarshal(dataStream);
@@ -206,6 +196,8 @@ int DesignatorPdu::getMarshalledSize() const {
                         .getMarshalledSize();  // _entityLinearAcceleration
   return marshalSize;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

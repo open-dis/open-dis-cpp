@@ -1,16 +1,14 @@
-#include "dis6/SeesPdu.h"
+#include "dis6/distributed_emissions/SeesPdu.h"
 
-using namespace DIS;
-
+namespace dis {
 SeesPdu::SeesPdu()
-    : DistributedEmissionsFamilyPdu(),
-      _orginatingEntityID(),
+    : _orginatingEntityID(),
       _infraredSignatureRepresentationIndex(0),
       _acousticSignatureRepresentationIndex(0),
       _radarCrossSectionSignatureRepresentationIndex(0),
       _numberOfPropulsionSystems(0),
       _numberOfVectoringNozzleSystems(0) {
-  setPduType(30);
+  SetPduType(30);
 }
 
 SeesPdu::~SeesPdu() {
@@ -44,13 +42,11 @@ void SeesPdu::setAcousticSignatureRepresentationIndex(uint16_t pX) {
   _acousticSignatureRepresentationIndex = pX;
 }
 
-uint16_t SeesPdu::getRadarCrossSectionSignatureRepresentationIndex()
-    const {
+uint16_t SeesPdu::getRadarCrossSectionSignatureRepresentationIndex() const {
   return _radarCrossSectionSignatureRepresentationIndex;
 }
 
-void SeesPdu::setRadarCrossSectionSignatureRepresentationIndex(
-    uint16_t pX) {
+void SeesPdu::setRadarCrossSectionSignatureRepresentationIndex(uint16_t pX) {
   _radarCrossSectionSignatureRepresentationIndex = pX;
 }
 
@@ -190,6 +186,8 @@ int SeesPdu::getMarshalledSize() const {
 
   return marshalSize;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

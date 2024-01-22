@@ -2,16 +2,15 @@
 
 #include <vector>
 
-#include "dis6/AcousticEmitterSystemData.h"
-#include "dis6/ApaData.h"
-#include "dis6/DistributedEmissionsFamilyPdu.h"
-#include "dis6/EntityID.h"
-#include "dis6/EventID.h"
-#include "dis6/ShaftRPMs.h"
-
+#include "dis6/common/EntityID.h"
+#include "dis6/common/EventID.h"
+#include "dis6/distributed_emissions/AcousticEmitterSystemData.h"
+#include "dis6/distributed_emissions/ApaData.h"
+#include "dis6/distributed_emissions/DistributedEmissionsFamilyPdu.h"
+#include "dis6/distributed_emissions/ShaftRPMs.h"
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // Section 5.3.7.3. Information about underwater acoustic emmissions. This
 // requires manual cleanup.  The beam data records should ALL be a the finish,
 // rather than attached to each emitter system. UNFINISHED
@@ -21,8 +20,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class UnderwaterAcousticsPdu
-    : public DistributedEmissionsFamilyPdu {
+class UnderwaterAcousticsPdu final : public DistributedEmissionsFamilyPdu {
  protected:
   /** ID of the entity that is the source of the emission */
   EntityID _emittingEntityID;
@@ -71,10 +69,10 @@ class UnderwaterAcousticsPdu
 
  public:
   UnderwaterAcousticsPdu();
-  virtual ~UnderwaterAcousticsPdu();
+  ~UnderwaterAcousticsPdu() final;
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  void Marshal(DataStream& dataStream) const override;
+  void Unmarshal(DataStream& dataStream) override;
 
   EntityID& getEmittingEntityID();
   const EntityID& getEmittingEntityID() const;
@@ -114,11 +112,11 @@ class UnderwaterAcousticsPdu
   const std::vector<AcousticEmitterSystemData>& getEmitterSystems() const;
   void setEmitterSystems(const std::vector<AcousticEmitterSystemData>& pX);
 
-  virtual int getMarshalledSize() const;
+  [[nodiscard]] int GetMarshalledSize() const override;
 
   bool operator==(const UnderwaterAcousticsPdu& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

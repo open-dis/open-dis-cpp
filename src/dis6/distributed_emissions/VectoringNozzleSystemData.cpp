@@ -1,7 +1,6 @@
-#include "dis6/VectoringNozzleSystemData.h"
+#include "dis6/distributed_emissions/VectoringNozzleSystemData.h"
 
-using namespace DIS;
-
+namespace dis {
 VectoringNozzleSystemData::VectoringNozzleSystemData()
     : _horizontalDeflectionAngle(0.0), _verticalDeflectionAngle(0.0) {}
 
@@ -52,6 +51,8 @@ int VectoringNozzleSystemData::getMarshalledSize() const {
   marshalSize = marshalSize + 4;  // _verticalDeflectionAngle
   return marshalSize;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

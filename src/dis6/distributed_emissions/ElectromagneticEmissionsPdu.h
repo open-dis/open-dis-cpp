@@ -2,14 +2,13 @@
 
 #include <vector>
 
-#include "dis6/DistributedEmissionsFamilyPdu.h"
-#include "dis6/ElectromagneticEmissionSystemData.h"
-#include "dis6/EntityID.h"
-#include "dis6/EventID.h"
-
+#include "dis6/common/EntityID.h"
+#include "dis6/common/EventID.h"
+#include "dis6/distributed_emissions/DistributedEmissionsFamilyPdu.h"
+#include "dis6/distributed_emissions/ElectromagneticEmissionSystemData.h"
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // Section 5.3.7.1. Information about active electronic warfare (EW) emissions
 // and active EW countermeasures shall be communicated using an Electromagnetic
 // Emission PDU. COMPLETE (I think)
@@ -19,8 +18,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class ElectromagneticEmissionsPdu
-    : public DistributedEmissionsFamilyPdu {
+class ElectromagneticEmissionsPdu : public DistributedEmissionsFamilyPdu {
  protected:
   /** ID of the entity emitting */
   EntityID _emittingEntityID;
@@ -46,7 +44,7 @@ class ElectromagneticEmissionsPdu
 
  public:
   ElectromagneticEmissionsPdu();
-  virtual ~ElectromagneticEmissionsPdu();
+  ~ElectromagneticEmissionsPdu() override;
 
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
@@ -75,7 +73,7 @@ class ElectromagneticEmissionsPdu
 
   bool operator==(const ElectromagneticEmissionsPdu& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

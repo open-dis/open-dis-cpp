@@ -1,59 +1,60 @@
 #include "dis6/common/Vector3Double.h"
 
-using namespace DIS;
-
-Vector3Double::Vector3Double() : _x(0.0), _y(0.0), _z(0.0) {}
+namespace dis {
+Vector3Double::Vector3Double() : x_(0.0), y_(0.0), z_(0.0) {}
 
 Vector3Double::~Vector3Double() = default;
 
-double Vector3Double::getX() const { return _x; }
+double Vector3Double::GetX() const { return x_; }
 
-void Vector3Double::setX(double pX) { _x = pX; }
+void Vector3Double::SetX(double pX) { x_ = pX; }
 
-double Vector3Double::getY() const { return _y; }
+double Vector3Double::GetY() const { return y_; }
 
-void Vector3Double::setY(double pX) { _y = pX; }
+void Vector3Double::SetY(double pX) { y_ = pX; }
 
-double Vector3Double::getZ() const { return _z; }
+double Vector3Double::GetZ() const { return z_; }
 
-void Vector3Double::setZ(double pX) { _z = pX; }
+void Vector3Double::SetZ(double pX) { z_ = pX; }
 
 void Vector3Double::Marshal(DataStream& dataStream) const {
-  dataStream << _x;
-  dataStream << _y;
-  dataStream << _z;
+  dataStream << x_;
+  dataStream << y_;
+  dataStream << z_;
 }
 
 void Vector3Double::Unmarshal(DataStream& dataStream) {
-  dataStream >> _x;
-  dataStream >> _y;
-  dataStream >> _z;
+  dataStream >> x_;
+  dataStream >> y_;
+  dataStream >> z_;
 }
 
 bool Vector3Double::operator==(const Vector3Double& rhs) const {
   bool ivars_equal = true;
 
-  if (!(_x == rhs._x)) {
+  if (!(x_ == rhs.x_)) {
     ivars_equal = false;
   }
-  if (!(_y == rhs._y)) {
+  if (!(y_ == rhs.y_)) {
     ivars_equal = false;
   }
-  if (!(_z == rhs._z)) {
+  if (!(z_ == rhs.z_)) {
     ivars_equal = false;
   }
 
   return ivars_equal;
 }
 
-int Vector3Double::getMarshalledSize() const {
+int Vector3Double::GetMarshalledSize() {
   int marshal_size = 0;
 
-  marshal_size = marshal_size + 8;  // _x
-  marshal_size = marshal_size + 8;  // _y
-  marshal_size = marshal_size + 8;  // _z
+  marshal_size = marshal_size + 8;  // x_
+  marshal_size = marshal_size + 8;  // y_
+  marshal_size = marshal_size + 8;  // z_
   return marshal_size;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

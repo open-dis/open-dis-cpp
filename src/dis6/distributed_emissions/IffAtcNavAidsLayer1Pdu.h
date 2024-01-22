@@ -1,15 +1,14 @@
 #pragma once
 
-#include "dis6/DistributedEmissionsFamilyPdu.h"
-#include "dis6/EntityID.h"
-#include "dis6/EventID.h"
-#include "dis6/IffFundamentalData.h"
-#include "dis6/SystemID.h"
-#include "dis6/Vector3Float.h"
-
+#include "dis6/common/EntityID.h"
+#include "dis6/common/EventID.h"
+#include "dis6/common/Vector3Float.h"
+#include "dis6/distributed_emissions/DistributedEmissionsFamilyPdu.h"
+#include "dis6/distributed_emissions/IffFundamentalData.h"
+#include "dis6/distributed_emissions/SystemID.h"
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // 5.3.7.4.1: Navigational and IFF PDU. COMPLETE
 
 // Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
@@ -17,8 +16,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class IffAtcNavAidsLayer1Pdu
-    : public DistributedEmissionsFamilyPdu {
+class IffAtcNavAidsLayer1Pdu : public DistributedEmissionsFamilyPdu {
  protected:
   /** ID of the entity that is the source of the emissions */
   EntityID _emittingEntityId;
@@ -41,10 +39,10 @@ class IffAtcNavAidsLayer1Pdu
 
  public:
   IffAtcNavAidsLayer1Pdu();
-  virtual ~IffAtcNavAidsLayer1Pdu();
+  ~IffAtcNavAidsLayer1Pdu() override = default;
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  void Marshal(DataStream& dataStream) const override;
+  void Unmarshal(DataStream& dataStream) override;
 
   EntityID& getEmittingEntityId();
   const EntityID& getEmittingEntityId() const;
@@ -73,7 +71,7 @@ class IffAtcNavAidsLayer1Pdu
 
   bool operator==(const IffAtcNavAidsLayer1Pdu& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

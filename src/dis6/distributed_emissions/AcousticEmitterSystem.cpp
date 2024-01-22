@@ -1,66 +1,67 @@
-#include "dis6/AcousticEmitterSystem.h"
+#include "dis6/distributed_emissions/AcousticEmitterSystem.h"
 
-using namespace DIS;
-
+namespace dis {
 AcousticEmitterSystem::AcousticEmitterSystem()
-    : _acousticName(0), _acousticFunction(0), _acousticID(0) {}
+    : acoustic_name_(0), acoustic_function_(0), acoustic_id_(0) {}
 
-AcousticEmitterSystem::~AcousticEmitterSystem() {}
-
-uint16_t AcousticEmitterSystem::getAcousticName() const {
-  return _acousticName;
+uint16_t AcousticEmitterSystem::GetAcousticName() const {
+  return acoustic_name_;
 }
 
-void AcousticEmitterSystem::setAcousticName(uint16_t pX) {
-  _acousticName = pX;
+void AcousticEmitterSystem::SetAcousticName(uint16_t pX) {
+  acoustic_name_ = pX;
 }
 
-uint8_t AcousticEmitterSystem::getAcousticFunction() const {
-  return _acousticFunction;
+uint8_t AcousticEmitterSystem::GetAcousticFunction() const {
+  return acoustic_function_;
 }
 
-void AcousticEmitterSystem::setAcousticFunction(uint8_t pX) {
-  _acousticFunction = pX;
+void AcousticEmitterSystem::SetAcousticFunction(uint8_t pX) {
+  acoustic_function_ = pX;
 }
 
-uint8_t AcousticEmitterSystem::getAcousticID() const {
-  return _acousticID;
+uint8_t AcousticEmitterSystem::GetAcousticId() const { return acoustic_id_; }
+
+void AcousticEmitterSystem::SetAcousticId(uint8_t pX) { acoustic_id_ = pX; }
+
+void AcousticEmitterSystem::Marshal(DataStream& dataStream) const {
+  dataStream << acoustic_name_;
+  dataStream << acoustic_function_;
+  dataStream << acoustic_id_;
 }
 
-void AcousticEmitterSystem::setAcousticID(uint8_t pX) {
-  _acousticID = pX;
-}
-
-void AcousticEmitterSystem::marshal(DataStream& dataStream) const {
-  dataStream << _acousticName;
-  dataStream << _acousticFunction;
-  dataStream << _acousticID;
-}
-
-void AcousticEmitterSystem::unmarshal(DataStream& dataStream) {
-  dataStream >> _acousticName;
-  dataStream >> _acousticFunction;
-  dataStream >> _acousticID;
+void AcousticEmitterSystem::Unmarshal(DataStream& dataStream) {
+  dataStream >> acoustic_name_;
+  dataStream >> acoustic_function_;
+  dataStream >> acoustic_id_;
 }
 
 bool AcousticEmitterSystem::operator==(const AcousticEmitterSystem& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  if (!(_acousticName == rhs._acousticName)) ivarsEqual = false;
-  if (!(_acousticFunction == rhs._acousticFunction)) ivarsEqual = false;
-  if (!(_acousticID == rhs._acousticID)) ivarsEqual = false;
+  if (acoustic_name_ != rhs.acoustic_name_) {
+    ivars_equal = false;
+  }
+  if (acoustic_function_ != rhs.acoustic_function_) {
+    ivars_equal = false;
+  }
+  if (acoustic_id_ != rhs.acoustic_id_) {
+    ivars_equal = false;
+  }
 
-  return ivarsEqual;
+  return ivars_equal;
 }
 
-int AcousticEmitterSystem::getMarshalledSize() const {
-  int marshalSize = 0;
+int AcousticEmitterSystem::GetMarshalledSize() {
+  int marshal_size = 0;
 
-  marshalSize = marshalSize + 2;  // _acousticName
-  marshalSize = marshalSize + 1;  // _acousticFunction
-  marshalSize = marshalSize + 1;  // _acousticID
-  return marshalSize;
+  marshal_size = marshal_size + 2;  // acoustic_name_
+  marshal_size = marshal_size + 1;  // acoustic_function_
+  marshal_size = marshal_size + 1;  // acoustic_id_
+  return marshal_size;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

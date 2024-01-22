@@ -1,9 +1,8 @@
 #pragma once
 
-
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // Section 5.2.33. Three floating point values, x, y, and z
 
 // Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
@@ -13,36 +12,36 @@ namespace DIS {
 
 class Vector3Float {
  protected:
-  /** X value */
-  float _x;
+  /// X value
+  float x_;  // NOLINT
 
-  /** y Value */
-  float _y;
+  /// y value
+  float y_;  // NOLINT
 
-  /** Z value */
-  float _z;
+  /// Z value
+  float z_;  // NOLINT
 
  public:
   Vector3Float();
-  virtual ~Vector3Float();
+  ~Vector3Float() = default;
 
-  virtual void marshal(dis::DataStream& dataStream) const;
-  virtual void unmarshal(dis::DataStream& dataStream);
+  void Marshal(dis::DataStream& dataStream) const;
+  void Unmarshal(dis::DataStream& dataStream);
 
-  float getX() const;
-  void setX(float pX);
+  [[nodiscard]] float GetX() const;
+  void SetX(float pX);
 
-  float getY() const;
-  void setY(float pX);
+  [[nodiscard]] float GetY() const;
+  void SetY(float pX);
 
-  float getZ() const;
-  void setZ(float pX);
+  [[nodiscard]] float GetZ() const;
+  void SetZ(float pX);
 
-  virtual int getMarshalledSize() const;
+  [[nodiscard]] static int GetMarshalledSize();
 
   bool operator==(const Vector3Float& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

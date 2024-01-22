@@ -2,14 +2,13 @@
 
 #include <vector>
 
-#include "dis6/BeamData.h"
-#include "dis6/FundamentalParameterDataIff.h"
-#include "dis6/IffAtcNavAidsLayer1Pdu.h"
-#include "dis6/LayerHeader.h"
-
+#include "dis6/distributed_emissions/BeamData.h"
+#include "dis6/distributed_emissions/FundamentalParameterDataIff.h"
+#include "dis6/distributed_emissions/IffAtcNavAidsLayer1Pdu.h"
+#include "dis6/distributed_emissions/LayerHeader.h"
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // Section 5.3.7.4.2 When present, layer 2 should follow layer 1 and have the
 // following fields. This requires manual cleanup.        the beamData attribute
 // semantics are used in multiple ways. UNFINSISHED
@@ -19,7 +18,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class IffAtcNavAidsLayer2Pdu : public IffAtcNavAidsLayer1Pdu {
+class IffAtcNavAidsLayer2Pdu final : public IffAtcNavAidsLayer1Pdu {
  protected:
   /** layer header */
   LayerHeader _layerHeader;
@@ -35,10 +34,9 @@ class IffAtcNavAidsLayer2Pdu : public IffAtcNavAidsLayer1Pdu {
 
  public:
   IffAtcNavAidsLayer2Pdu();
-  virtual ~IffAtcNavAidsLayer2Pdu();
-
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  ~IffAtcNavAidsLayer2Pdu() final = default;
+  void Marshal(DataStream& dataStream) const override;
+  void Unmarshal(DataStream& dataStream) override;
 
   LayerHeader& getLayerHeader();
   const LayerHeader& getLayerHeader() const;
@@ -62,7 +60,7 @@ class IffAtcNavAidsLayer2Pdu : public IffAtcNavAidsLayer1Pdu {
 
   bool operator==(const IffAtcNavAidsLayer2Pdu& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

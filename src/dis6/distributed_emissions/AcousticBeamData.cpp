@@ -1,78 +1,84 @@
-#include "dis6/distribued_emissions/AcousticBeamData.h"
+#include "dis6/distributed_emissions/AcousticBeamData.h"
 
 namespace dis {
 
 AcousticBeamData::AcousticBeamData()
-    : _beamDataLength(0),
-      _beamIDNumber(0),
-      _pad2(0),
-      _fundamentalDataParameters() {}
+    : beam_data_length_(0), beam_id_number_(0), pad2_(0) {}
 
-AcousticBeamData::~AcousticBeamData() {}
+uint16_t AcousticBeamData::GetBeamDataLength() const {
+  return beam_data_length_;
+}
 
-uint16_t AcousticBeamData::getBeamDataLength() const { return _beamDataLength; }
+void AcousticBeamData::SetBeamDataLength(uint16_t pX) {
+  beam_data_length_ = pX;
+}
 
-void AcousticBeamData::setBeamDataLength(uint16_t pX) { _beamDataLength = pX; }
+uint8_t AcousticBeamData::GetBeamIdNumber() const { return beam_id_number_; }
 
-uint8_t AcousticBeamData::getBeamIDNumber() const { return _beamIDNumber; }
+void AcousticBeamData::SetBeamIdNumber(uint8_t pX) { beam_id_number_ = pX; }
 
-void AcousticBeamData::setBeamIDNumber(uint8_t pX) { _beamIDNumber = pX; }
+uint16_t AcousticBeamData::GetPad2() const { return pad2_; }
 
-uint16_t AcousticBeamData::getPad2() const { return _pad2; }
-
-void AcousticBeamData::setPad2(uint16_t pX) { _pad2 = pX; }
+void AcousticBeamData::SetPad2(uint16_t pX) { pad2_ = pX; }
 
 AcousticBeamFundamentalParameter&
-AcousticBeamData::getFundamentalDataParameters() {
-  return _fundamentalDataParameters;
+AcousticBeamData::GetFundamentalDataParameters() {
+  return fundamental_data_parameters_;
 }
 
 const AcousticBeamFundamentalParameter&
-AcousticBeamData::getFundamentalDataParameters() const {
-  return _fundamentalDataParameters;
+AcousticBeamData::GetFundamentalDataParameters() const {
+  return fundamental_data_parameters_;
 }
 
-void AcousticBeamData::setFundamentalDataParameters(
+void AcousticBeamData::SetFundamentalDataParameters(
     const AcousticBeamFundamentalParameter& pX) {
-  _fundamentalDataParameters = pX;
+  fundamental_data_parameters_ = pX;
 }
 
-void AcousticBeamData::marshal(DataStream& dataStream) const {
-  dataStream << _beamDataLength;
-  dataStream << _beamIDNumber;
-  dataStream << _pad2;
-  _fundamentalDataParameters.marshal(dataStream);
+void AcousticBeamData::Marshal(DataStream& dataStream) const {
+  dataStream << beam_data_length_;
+  dataStream << beam_id_number_;
+  dataStream << pad2_;
+  fundamental_data_parameters_.Marshal(dataStream);
 }
 
-void AcousticBeamData::unmarshal(DataStream& dataStream) {
-  dataStream >> _beamDataLength;
-  dataStream >> _beamIDNumber;
-  dataStream >> _pad2;
-  _fundamentalDataParameters.unmarshal(dataStream);
+void AcousticBeamData::Unmarshal(DataStream& dataStream) {
+  dataStream >> beam_data_length_;
+  dataStream >> beam_id_number_;
+  dataStream >> pad2_;
+  fundamental_data_parameters_.Unmarshal(dataStream);
 }
 
 bool AcousticBeamData::operator==(const AcousticBeamData& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  if (!(_beamDataLength == rhs._beamDataLength)) ivarsEqual = false;
-  if (!(_beamIDNumber == rhs._beamIDNumber)) ivarsEqual = false;
-  if (!(_pad2 == rhs._pad2)) ivarsEqual = false;
-  if (!(_fundamentalDataParameters == rhs._fundamentalDataParameters))
-    ivarsEqual = false;
+  if (!(beam_data_length_ == rhs.beam_data_length_)) {
+    ivars_equal = false;
+  }
+  if (!(beam_id_number_ == rhs.beam_id_number_)) {
+    ivars_equal = false;
+  }
+  if (!(pad2_ == rhs.pad2_)) {
+    ivars_equal = false;
+  }
+  if (!(fundamental_data_parameters_ == rhs.fundamental_data_parameters_)) {
+    ivars_equal = false;
+  }
 
-  return ivarsEqual;
+  return ivars_equal;
 }
 
-int AcousticBeamData::getMarshalledSize() const {
-  int marshalSize = 0;
+int AcousticBeamData::GetMarshalledSize() const {
+  int marshal_size = 0;
 
-  marshalSize = marshalSize + 2;  // _beamDataLength
-  marshalSize = marshalSize + 1;  // _beamIDNumber
-  marshalSize = marshalSize + 2;  // _pad2
-  marshalSize =
-      marshalSize + _fundamentalDataParameters
-                        .getMarshalledSize();  // _fundamentalDataParameters
-  return marshalSize;
+  marshal_size = marshal_size + 2;  // beam_data_length_
+  marshal_size = marshal_size + 1;  // beam_id_number_
+  marshal_size = marshal_size + 2;  // pad2_
+  marshal_size =
+      marshal_size + fundamental_data_parameters_
+                         .GetMarshalledSize();  // fundamental_data_parameters_
+  return marshal_size;
 }
 
 }  // namespace dis

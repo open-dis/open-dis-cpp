@@ -1,11 +1,8 @@
-#include "dis6/LayerHeader.h"
+#include "dis6/distributed_emissions/LayerHeader.h"
 
-using namespace DIS;
-
+namespace dis {
 LayerHeader::LayerHeader()
     : _layerNumber(0), _layerSpecificInformaiton(0), _length(0) {}
-
-LayerHeader::~LayerHeader() {}
 
 uint8_t LayerHeader::getLayerNumber() const { return _layerNumber; }
 
@@ -54,6 +51,8 @@ int LayerHeader::getMarshalledSize() const {
   marshalSize = marshalSize + 2;  // _length
   return marshalSize;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

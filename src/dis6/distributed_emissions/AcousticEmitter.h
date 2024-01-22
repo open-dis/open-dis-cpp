@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DIS6_DISTRIBUTED_EMISSIONS_ACOUSTICEMITTER_H_
+#define DIS6_DISTRIBUTED_EMISSIONS_ACOUSTICEMITTER_H_
 
 #include <cstdint>
 
@@ -14,21 +15,21 @@ namespace dis {
 
 class AcousticEmitter {
  protected:
-  /** the system for a particular UA emitter, and an enumeration */
-  uint16_t acoustic_name_;
+  /// the system for a particular UA emitter, and an enumeration
+  uint16_t acoustic_name_;  // NOLINT
 
-  /** The function of the acoustic system */
-  uint8_t function_;
+  /// The function of the acoustic system
+  uint8_t function_;  // NOLINT
 
-  /** The UA emitter identification number relative to a specific system */
-  uint8_t acoustic_id_number_;
+  /// The UA emitter identification number relative to a specific system
+  uint8_t acoustic_id_number_;  // NOLINT
 
  public:
   AcousticEmitter();
-  virtual ~AcousticEmitter();
+  ~AcousticEmitter() = default;
 
-  virtual void Marshal(DataStream& dataStream) const;
-  virtual void Unmarshal(DataStream& dataStream);
+  void Marshal(DataStream& dataStream) const;
+  void Unmarshal(DataStream& dataStream);
 
   [[nodiscard]] uint16_t GetAcousticName() const;
   void SetAcousticName(uint16_t pX);
@@ -39,7 +40,7 @@ class AcousticEmitter {
   [[nodiscard]] uint8_t GetAcousticIdNumber() const;
   void SetAcousticIdNumber(uint8_t pX);
 
-  [[nodiscard]] virtual int GetMarshalledSize() const;
+  [[nodiscard]] static int GetMarshalledSize();
 
   bool operator==(const AcousticEmitter& rhs) const;
 };
@@ -75,3 +76,5 @@ class AcousticEmitter {
 // LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
+
+#endif  // DIS6_DISTRIBUTED_EMISSIONS_ACOUSTICEMITTER_H_

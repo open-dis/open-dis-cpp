@@ -1,7 +1,6 @@
-#include "dis6/IffAtcNavAidsLayer1Pdu.h"
+#include "dis6/distributed_emissions/IffAtcNavAidsLayer1Pdu.h"
 
-using namespace DIS;
-
+namespace dis {
 IffAtcNavAidsLayer1Pdu::IffAtcNavAidsLayer1Pdu()
     : DistributedEmissionsFamilyPdu(),
       _emittingEntityId(),
@@ -12,8 +11,6 @@ IffAtcNavAidsLayer1Pdu::IffAtcNavAidsLayer1Pdu()
       _fundamentalParameters() {
   setPduType(28);
 }
-
-IffAtcNavAidsLayer1Pdu::~IffAtcNavAidsLayer1Pdu() {}
 
 EntityID& IffAtcNavAidsLayer1Pdu::getEmittingEntityId() {
   return _emittingEntityId;
@@ -123,6 +120,8 @@ int IffAtcNavAidsLayer1Pdu::getMarshalledSize() const {
       _fundamentalParameters.getMarshalledSize();  // _fundamentalParameters
   return marshalSize;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

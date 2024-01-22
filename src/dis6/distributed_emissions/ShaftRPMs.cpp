@@ -1,11 +1,8 @@
 #include "dis6/ShaftRPMs.h"
 
-using namespace DIS;
-
+namespace dis {
 ShaftRPMs::ShaftRPMs()
     : _currentShaftRPMs(0), _orderedShaftRPMs(0), _shaftRPMRateOfChange(0.0) {}
-
-ShaftRPMs::~ShaftRPMs() {}
 
 int16_t ShaftRPMs::getCurrentShaftRPMs() const { return _currentShaftRPMs; }
 
@@ -53,6 +50,8 @@ int ShaftRPMs::getMarshalledSize() const {
   marshalSize = marshalSize + 4;  // _shaftRPMRateOfChange
   return marshalSize;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

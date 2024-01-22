@@ -1,9 +1,8 @@
 #pragma once
 
-
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // Data about a propulsion system
 
 // Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
@@ -21,7 +20,7 @@ class PropulsionSystemData {
 
  public:
   PropulsionSystemData();
-  virtual ~PropulsionSystemData();
+  ~PropulsionSystemData() = default;
 
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
@@ -36,7 +35,7 @@ class PropulsionSystemData {
 
   bool operator==(const PropulsionSystemData& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

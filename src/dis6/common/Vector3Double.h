@@ -1,9 +1,8 @@
 #pragma once
 
-
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // Section 5.3.34. Three double precision floating point values, x, y, and z
 
 // Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
@@ -14,35 +13,35 @@ namespace DIS {
 class Vector3Double {
  protected:
   /** X value */
-  double _x;
+  double x_;  // NOLINT
 
   /** Y value */
-  double _y;
+  double y_;  // NOLINT
 
   /** Z value */
-  double _z;
+  double z_;  // NOLINT
 
  public:
   Vector3Double();
   virtual ~Vector3Double();
 
-  virtual void marshal(dis::DataStream& dataStream) const;
-  virtual void unmarshal(dis::DataStream& dataStream);
+  virtual void Marshal(DataStream& dataStream) const;
+  virtual void Unmarshal(DataStream& dataStream);
 
-  double getX() const;
-  void setX(double pX);
+  [[nodiscard]] double GetX() const;
+  void SetX(double pX);
 
-  double getY() const;
-  void setY(double pX);
+  [[nodiscard]] double GetY() const;
+  void SetY(double pX);
 
-  double getZ() const;
-  void setZ(double pX);
+  [[nodiscard]] double GetZ() const;
+  void SetZ(double pX);
 
-  virtual int getMarshalledSize() const;
+  [[nodiscard]] static int GetMarshalledSize();
 
   bool operator==(const Vector3Double& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

@@ -26,10 +26,10 @@ class EmitterSystem {
 
  public:
   EmitterSystem();
-  virtual ~EmitterSystem();
+  ~EmitterSystem() = default;
 
-  virtual void Marshal(DataStream& dataStream) const;
-  virtual void Unmarshal(DataStream& dataStream);
+  void Marshal(DataStream& dataStream) const;
+  void Unmarshal(DataStream& dataStream);
 
   [[nodiscard]] uint16_t GetEmitterName() const;
   void SetEmitterName(uint16_t pX);
@@ -40,7 +40,7 @@ class EmitterSystem {
   [[nodiscard]] uint8_t GetEmitterIdNumber() const;
   void SetEmitterIdNumber(uint8_t pX);
 
-  [[nodiscard]] virtual int GetMarshalledSize() const;
+  [[nodiscard]] int GetMarshalledSize() const;
 
   bool operator==(const EmitterSystem& rhs) const;
 };

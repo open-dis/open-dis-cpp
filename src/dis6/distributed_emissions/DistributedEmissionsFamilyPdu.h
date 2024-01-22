@@ -16,12 +16,12 @@ class DistributedEmissionsFamilyPdu : public Pdu {
  protected:
  public:
   DistributedEmissionsFamilyPdu();
-  virtual ~DistributedEmissionsFamilyPdu();
+  ~DistributedEmissionsFamilyPdu() override;
 
-  virtual void Marshal(DataStream& dataStream) const;
-  virtual void Unmarshal(DataStream& dataStream);
+  void Marshal(DataStream& dataStream) const override;
+  void Unmarshal(DataStream& dataStream) override;
 
-  [[nodiscard]] virtual int GetMarshalledSize() const;
+  [[nodiscard]] int GetMarshalledSize() const override;
 
   bool operator==(const DistributedEmissionsFamilyPdu& rhs) const;
 };

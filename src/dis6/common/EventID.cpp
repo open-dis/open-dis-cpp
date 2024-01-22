@@ -1,7 +1,6 @@
 #include "dis6/common/EventID.h"
 
-using namespace DIS;
-
+namespace dis {
 EventID::EventID() : _site(0), _application(0), _eventNumber(0) {}
 
 EventID::~EventID() = default;
@@ -54,6 +53,8 @@ int EventID::getMarshalledSize() const {
   marshal_size = marshal_size + 2;  // _eventNumber
   return marshal_size;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

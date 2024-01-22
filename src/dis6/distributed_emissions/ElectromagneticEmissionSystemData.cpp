@@ -1,7 +1,6 @@
-#include "dis6/ElectromagneticEmissionSystemData.h"
+#include "dis6/distributed_emissions/ElectromagneticEmissionSystemData.h"
 
-using namespace DIS;
-
+namespace dis {
 ElectromagneticEmissionSystemData::ElectromagneticEmissionSystemData()
     : _systemDataLength(0),
       _numberOfBeams(0),
@@ -29,8 +28,7 @@ uint16_t ElectromagneticEmissionSystemData::getEmissionsPadding2() const {
   return _emissionsPadding2;
 }
 
-void ElectromagneticEmissionSystemData::setEmissionsPadding2(
-    uint16_t pX) {
+void ElectromagneticEmissionSystemData::setEmissionsPadding2(uint16_t pX) {
   _emissionsPadding2 = pX;
 }
 
@@ -137,6 +135,8 @@ int ElectromagneticEmissionSystemData::getMarshalledSize() const {
 
   return marshalSize;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

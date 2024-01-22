@@ -1,9 +1,8 @@
 #pragma once
 
-
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // Section 5.2.22. Contains electromagnetic emmision regineratin parameters that
 // are        variable throughout a scenario dependent on the actions of the
 // participants in the simulation. Also provides basic parametric data that may
@@ -52,7 +51,7 @@ class FundamentalParameterData {
 
  public:
   FundamentalParameterData();
-  virtual ~FundamentalParameterData();
+  ~FundamentalParameterData() = default;
 
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
@@ -91,7 +90,7 @@ class FundamentalParameterData {
 
   bool operator==(const FundamentalParameterData& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

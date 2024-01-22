@@ -1,7 +1,6 @@
-#include "dis6/IffFundamentalData.h"
+#include "dis6/distributed_emissions/IffFundamentalData.h"
 
-using namespace DIS;
-
+namespace dis {
 IffFundamentalData::IffFundamentalData()
     : _systemStatus(0),
       _alternateParameter4(0),
@@ -16,13 +15,9 @@ IffFundamentalData::IffFundamentalData()
 
 IffFundamentalData::~IffFundamentalData() {}
 
-uint8_t IffFundamentalData::getSystemStatus() const {
-  return _systemStatus;
-}
+uint8_t IffFundamentalData::getSystemStatus() const { return _systemStatus; }
 
-void IffFundamentalData::setSystemStatus(uint8_t pX) {
-  _systemStatus = pX;
-}
+void IffFundamentalData::setSystemStatus(uint8_t pX) { _systemStatus = pX; }
 
 uint8_t IffFundamentalData::getAlternateParameter4() const {
   return _alternateParameter4;
@@ -126,6 +121,8 @@ int IffFundamentalData::getMarshalledSize() const {
   marshalSize = marshalSize + 2;  // _parameter6
   return marshalSize;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

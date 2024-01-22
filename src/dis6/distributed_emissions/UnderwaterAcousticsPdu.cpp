@@ -1,7 +1,6 @@
 #include "dis6/distributed_emissions/UnderwaterAcousticsPdu.h"
 
-using namespace DIS;
-
+namespace dis {
 UnderwaterAcousticsPdu::UnderwaterAcousticsPdu()
     : DistributedEmissionsFamilyPdu(),
       _emittingEntityID(),
@@ -253,6 +252,8 @@ int UnderwaterAcousticsPdu::getMarshalledSize() const {
 
   return marshal_size;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

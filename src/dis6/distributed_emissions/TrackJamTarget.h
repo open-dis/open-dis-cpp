@@ -1,10 +1,9 @@
 #pragma once
 
-#include "dis6/EntityID.h"
-
+#include "dis6/common/EntityID.h"
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // One track/jam target
 
 // Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
@@ -25,10 +24,10 @@ class TrackJamTarget {
 
  public:
   TrackJamTarget();
-  virtual ~TrackJamTarget();
+  ~TrackJamTarget() = default;
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  void marshal(DataStream& dataStream) const;
+  void unmarshal(DataStream& dataStream);
 
   EntityID& getTrackJam();
   const EntityID& getTrackJam() const;
@@ -40,11 +39,11 @@ class TrackJamTarget {
   uint8_t getBeamID() const;
   void setBeamID(uint8_t pX);
 
-  virtual int getMarshalledSize() const;
+  int getMarshalledSize() const;
 
   bool operator==(const TrackJamTarget& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

@@ -1,7 +1,6 @@
-#include "dis6/ElectromagneticEmissionBeamData.h"
+#include "dis6/distributed_emissions/ElectromagneticEmissionBeamData.h"
 
-using namespace DIS;
-
+namespace dis {
 ElectromagneticEmissionBeamData::ElectromagneticEmissionBeamData()
     : _beamDataLength(0),
       _beamIDNumber(0),
@@ -64,8 +63,7 @@ void ElectromagneticEmissionBeamData::setBeamFunction(uint8_t pX) {
   _beamFunction = pX;
 }
 
-uint8_t ElectromagneticEmissionBeamData::getNumberOfTrackJamTargets()
-    const {
+uint8_t ElectromagneticEmissionBeamData::getNumberOfTrackJamTargets() const {
   return _trackJamTargets.size();
 }
 
@@ -184,6 +182,8 @@ int ElectromagneticEmissionBeamData::getMarshalledSize() const {
 
   return marshalSize;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

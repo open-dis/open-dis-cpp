@@ -1,10 +1,8 @@
-#include "dis6/TrackJamTarget.h"
+#include "dis6/distributed_emissions/TrackJamTarget.h"
 
-using namespace DIS;
+namespace dis {
 
 TrackJamTarget::TrackJamTarget() : _trackJam(), _emitterID(0), _beamID(0) {}
-
-TrackJamTarget::~TrackJamTarget() {}
 
 EntityID& TrackJamTarget::getTrackJam() { return _trackJam; }
 
@@ -45,11 +43,13 @@ bool TrackJamTarget::operator==(const TrackJamTarget& rhs) const {
 int TrackJamTarget::getMarshalledSize() const {
   int marshalSize = 0;
 
-  marshalSize = marshalSize + _trackJam.getMarshalledSize();  // _trackJam
+  marshalSize = marshalSize + _trackJam.GetMarshalledSize();  // _trackJam
   marshalSize = marshalSize + 1;                              // _emitterID
   marshalSize = marshalSize + 1;                              // _beamID
   return marshalSize;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

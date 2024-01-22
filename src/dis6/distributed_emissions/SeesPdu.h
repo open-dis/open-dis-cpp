@@ -2,14 +2,13 @@
 
 #include <vector>
 
-#include "dis6/DistributedEmissionsFamilyPdu.h"
-#include "dis6/EntityID.h"
-#include "dis6/PropulsionSystemData.h"
-#include "dis6/VectoringNozzleSystemData.h"
-
+#include "dis6/common/EntityID.h"
+#include "dis6/distributed_emissions/DistributedEmissionsFamilyPdu.h"
+#include "dis6/distributed_emissions/PropulsionSystemData.h"
+#include "dis6/distributed_emissions/VectoringNozzleSystemData.h"
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // Section 5.3.7.5. SEES PDU, supplemental emissions entity state information.
 // COMPLETE
 
@@ -18,7 +17,7 @@ namespace DIS {
 //
 // @author DMcG, jkg
 
-class SeesPdu : public DistributedEmissionsFamilyPdu {
+class SeesPdu final : public DistributedEmissionsFamilyPdu {
  protected:
   /** Originating entity ID */
   EntityID _orginatingEntityID;
@@ -46,7 +45,7 @@ class SeesPdu : public DistributedEmissionsFamilyPdu {
 
  public:
   SeesPdu();
-  virtual ~SeesPdu();
+  ~SeesPdu() final;
 
   virtual void marshal(DataStream& dataStream) const;
   virtual void unmarshal(DataStream& dataStream);
@@ -80,7 +79,7 @@ class SeesPdu : public DistributedEmissionsFamilyPdu {
 
   bool operator==(const SeesPdu& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DIS6_DISTRIBUTED_EMISSIONS_ACOUSTICBEAMDATA_H_
+#define DIS6_DISTRIBUTED_EMISSIONS_ACOUSTICBEAMDATA_H_
 
 #include <cstdint>
 
@@ -15,24 +16,24 @@ namespace dis {
 
 class AcousticBeamData {
  protected:
-  /** beam data length */
-  uint16_t beam_data_length_;
+  /// beam data length
+  uint16_t beam_data_length_;  // NOLINT
 
-  /** beamIDNumber */
-  uint8_t beam_id_number_;
+  /// beamIDNumber
+  uint8_t beam_id_number_;  // NOLINT
 
-  /** padding */
-  uint16_t pad2_;
+  /// padding
+  uint16_t pad2_;  // NOLINT
 
-  /** fundamental data parameters */
-  AcousticBeamFundamentalParameter fundamental_data_parameters_;
+  /// fundamental data parameters
+  AcousticBeamFundamentalParameter fundamental_data_parameters_;  // NOLINT
 
  public:
   AcousticBeamData();
-  virtual ~AcousticBeamData();
+  ~AcousticBeamData() = default;
 
-  virtual void Marshal(DataStream& dataStream) const;
-  virtual void Unmarshal(DataStream& dataStream);
+  void Marshal(DataStream& dataStream) const;
+  void Unmarshal(DataStream& dataStream);
 
   [[nodiscard]] uint16_t GetBeamDataLength() const;
   void SetBeamDataLength(uint16_t pX);
@@ -48,7 +49,7 @@ class AcousticBeamData {
   GetFundamentalDataParameters() const;
   void SetFundamentalDataParameters(const AcousticBeamFundamentalParameter& pX);
 
-  [[nodiscard]] virtual int GetMarshalledSize() const;
+  [[nodiscard]] int GetMarshalledSize() const;
 
   bool operator==(const AcousticBeamData& rhs) const;
 };
@@ -84,3 +85,5 @@ class AcousticBeamData {
 // LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
 // ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
+
+#endif  // DIS6_DISTRIBUTED_EMISSIONS_ACOUSTICBEAMDATA_H_

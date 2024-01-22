@@ -1,10 +1,7 @@
-#include "dis6/ApaData.h"
+#include "dis6/distributed_emissions/ApaData.h"
 
-using namespace DIS;
-
+namespace dis {
 ApaData::ApaData() : _parameterIndex(0), _parameterValue(0) {}
-
-ApaData::~ApaData() {}
 
 uint16_t ApaData::getParameterIndex() const { return _parameterIndex; }
 
@@ -40,6 +37,8 @@ int ApaData::getMarshalledSize() const {
   marshalSize = marshalSize + 2;  // _parameterValue
   return marshalSize;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

@@ -1,11 +1,8 @@
-#include "dis6/PropulsionSystemData.h"
+#include "dis6/distributed_emissions/PropulsionSystemData.h"
 
-using namespace DIS;
-
+namespace dis {
 PropulsionSystemData::PropulsionSystemData()
     : _powerSetting(0.0), _engineRpm(0.0) {}
-
-PropulsionSystemData::~PropulsionSystemData() {}
 
 float PropulsionSystemData::getPowerSetting() const { return _powerSetting; }
 
@@ -41,6 +38,8 @@ int PropulsionSystemData::getMarshalledSize() const {
   marshalSize = marshalSize + 4;  // _engineRpm
   return marshalSize;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

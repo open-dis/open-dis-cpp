@@ -1,59 +1,58 @@
 #include "dis6/common/Vector3Float.h"
 
-using namespace DIS;
+namespace dis {
+Vector3Float::Vector3Float() : x_(0.0), y_(0.0), z_(0.0) {}
 
-Vector3Float::Vector3Float() : _x(0.0), _y(0.0), _z(0.0) {}
+float Vector3Float::GetX() const { return x_; }
 
-Vector3Float::~Vector3Float() = default;
+void Vector3Float::SetX(float pX) { x_ = pX; }
 
-float Vector3Float::getX() const { return _x; }
+float Vector3Float::GetY() const { return y_; }
 
-void Vector3Float::setX(float pX) { _x = pX; }
+void Vector3Float::SetY(float pX) { y_ = pX; }
 
-float Vector3Float::getY() const { return _y; }
+float Vector3Float::GetZ() const { return z_; }
 
-void Vector3Float::setY(float pX) { _y = pX; }
-
-float Vector3Float::getZ() const { return _z; }
-
-void Vector3Float::setZ(float pX) { _z = pX; }
+void Vector3Float::SetZ(float pX) { z_ = pX; }
 
 void Vector3Float::Marshal(DataStream& dataStream) const {
-  dataStream << _x;
-  dataStream << _y;
-  dataStream << _z;
+  dataStream << x_;
+  dataStream << y_;
+  dataStream << z_;
 }
 
 void Vector3Float::Unmarshal(DataStream& dataStream) {
-  dataStream >> _x;
-  dataStream >> _y;
-  dataStream >> _z;
+  dataStream >> x_;
+  dataStream >> y_;
+  dataStream >> z_;
 }
 
 bool Vector3Float::operator==(const Vector3Float& rhs) const {
   bool ivars_equal = true;
 
-  if (!(_x == rhs._x)) {
+  if (!(x_ == rhs.x_)) {
     ivars_equal = false;
   }
-  if (!(_y == rhs._y)) {
+  if (!(y_ == rhs.y_)) {
     ivars_equal = false;
   }
-  if (!(_z == rhs._z)) {
+  if (!(z_ == rhs.z_)) {
     ivars_equal = false;
   }
 
   return ivars_equal;
 }
 
-int Vector3Float::getMarshalledSize() const {
+int Vector3Float::GetMarshalledSize() {
   int marshal_size = 0;
 
-  marshal_size = marshal_size + 4;  // _x
-  marshal_size = marshal_size + 4;  // _y
-  marshal_size = marshal_size + 4;  // _z
+  marshal_size = marshal_size + 4;  // x_
+  marshal_size = marshal_size + 4;  // y_
+  marshal_size = marshal_size + 4;  // z_
   return marshal_size;
 }
+
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without
