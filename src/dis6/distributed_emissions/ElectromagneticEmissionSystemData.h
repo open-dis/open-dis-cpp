@@ -7,7 +7,7 @@
 #include "dis6/distributed_emissions/EmitterSystem.h"
 #include "dis6/utils/DataStream.h"
 
-namespace DIS {
+namespace dis {
 // Data about one electronic system
 
 // Copyright (c) 2007-2009, MOVES Institute, Naval Postgraduate School. All
@@ -20,58 +20,58 @@ class ElectromagneticEmissionSystemData {
   /** This field shall specify the length of this emitter system�s data
    * (including beam data and its track/jam information) in 32-bit words. The
    * length shall include the System Data Length field.  */
-  uint8_t _systemDataLength;
+  uint8_t system_data_length_;
 
   /** This field shall specify the number of beams being described in the
    * current PDU for the system being described.  */
-  uint8_t _numberOfBeams;
+  uint8_t number_of_beams_;
 
   /** padding. */
-  uint16_t _emissionsPadding2;
+  uint16_t emissions_padding2_;
 
   /** This field shall specify information about a particular emitter system */
-  EmitterSystem _emitterSystem;
+  EmitterSystem emitter_system_;
 
   /** Location with respect to the entity */
-  Vector3Float _location;
+  Vector3Float location_;
 
   /** variable length list of beam data records */
-  std::vector<ElectromagneticEmissionBeamData> _beamDataRecords;
+  std::vector<ElectromagneticEmissionBeamData> beam_data_records_;
 
  public:
   ElectromagneticEmissionSystemData();
-  virtual ~ElectromagneticEmissionSystemData();
+  ~ElectromagneticEmissionSystemData();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  void Marshal(DataStream& dataStream) const;
+  void Unmarshal(DataStream& dataStream);
 
-  uint8_t getSystemDataLength() const;
-  void setSystemDataLength(uint8_t pX);
+  [[nodiscard]] uint8_t GetSystemDataLength() const;
+  void SetSystemDataLength(uint8_t pX);
 
-  uint8_t getNumberOfBeams() const;
+  [[nodiscard]] uint8_t GetNumberOfBeams() const;
 
-  uint16_t getEmissionsPadding2() const;
-  void setEmissionsPadding2(uint16_t pX);
+  [[nodiscard]] uint16_t GetEmissionsPadding2() const;
+  void SetEmissionsPadding2(uint16_t pX);
 
-  EmitterSystem& getEmitterSystem();
-  const EmitterSystem& getEmitterSystem() const;
-  void setEmitterSystem(const EmitterSystem& pX);
+  EmitterSystem& GetEmitterSystem();
+  [[nodiscard]] const EmitterSystem& GetEmitterSystem() const;
+  void SetEmitterSystem(const EmitterSystem& pX);
 
-  Vector3Float& getLocation();
-  const Vector3Float& getLocation() const;
-  void setLocation(const Vector3Float& pX);
+  Vector3Float& GetLocation();
+  [[nodiscard]] const Vector3Float& GetLocation() const;
+  void SetLocation(const Vector3Float& pX);
 
-  std::vector<ElectromagneticEmissionBeamData>& getBeamDataRecords();
-  const std::vector<ElectromagneticEmissionBeamData>& getBeamDataRecords()
-      const;
-  void setBeamDataRecords(
+  std::vector<ElectromagneticEmissionBeamData>& GetBeamDataRecords();
+  [[nodiscard]] const std::vector<ElectromagneticEmissionBeamData>&
+  GetBeamDataRecords() const;
+  void SetBeamDataRecords(
       const std::vector<ElectromagneticEmissionBeamData>& pX);
 
-  virtual int getMarshalledSize() const;
+  [[nodiscard]] size_t GetMarshalledSize() const;
 
   bool operator==(const ElectromagneticEmissionSystemData& rhs) const;
 };
-}  // namespace DIS
+}  // namespace dis
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

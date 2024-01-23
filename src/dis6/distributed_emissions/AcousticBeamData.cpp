@@ -69,15 +69,10 @@ bool AcousticBeamData::operator==(const AcousticBeamData& rhs) const {
   return ivars_equal;
 }
 
-int AcousticBeamData::GetMarshalledSize() const {
-  int marshal_size = 0;
-
-  marshal_size = marshal_size + 2;  // beam_data_length_
-  marshal_size = marshal_size + 1;  // beam_id_number_
-  marshal_size = marshal_size + 2;  // pad2_
-  marshal_size =
-      marshal_size + fundamental_data_parameters_
-                         .GetMarshalledSize();  // fundamental_data_parameters_
+size_t AcousticBeamData::GetMarshalledSize() const {
+  size_t marshal_size = sizeof(beam_data_length_) + sizeof(beam_id_number_) +
+                        sizeof(pad2_) +
+                        fundamental_data_parameters_.GetMarshalledSize();
   return marshal_size;
 }
 

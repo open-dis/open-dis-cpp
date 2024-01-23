@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DIS6_COMMON_VECTOR3DOUBLE_H_
+#define DIS6_COMMON_VECTOR3DOUBLE_H_
 
 #include "dis6/utils/DataStream.h"
 
@@ -23,10 +24,10 @@ class Vector3Double {
 
  public:
   Vector3Double();
-  virtual ~Vector3Double();
+  ~Vector3Double() = default;
 
-  virtual void Marshal(DataStream& dataStream) const;
-  virtual void Unmarshal(DataStream& dataStream);
+  void Marshal(DataStream& dataStream) const;
+  void Unmarshal(DataStream& dataStream);
 
   [[nodiscard]] double GetX() const;
   void SetX(double pX);
@@ -37,11 +38,13 @@ class Vector3Double {
   [[nodiscard]] double GetZ() const;
   void SetZ(double pX);
 
-  [[nodiscard]] static int GetMarshalledSize();
+  [[nodiscard]] size_t GetMarshalledSize() const;
 
   bool operator==(const Vector3Double& rhs) const;
 };
 }  // namespace dis
+
+#endif  // DIS6_COMMON_VECTOR3DOUBLE_H_
 
 // Copyright (c) 1995-2009 held by the author(s).  All rights reserved.
 // Redistribution and use in source and binary forms, with or without

@@ -3,8 +3,6 @@
 namespace dis {
 Vector3Double::Vector3Double() : x_(0.0), y_(0.0), z_(0.0) {}
 
-Vector3Double::~Vector3Double() = default;
-
 double Vector3Double::GetX() const { return x_; }
 
 void Vector3Double::SetX(double pX) { x_ = pX; }
@@ -45,12 +43,8 @@ bool Vector3Double::operator==(const Vector3Double& rhs) const {
   return ivars_equal;
 }
 
-int Vector3Double::GetMarshalledSize() {
-  int marshal_size = 0;
-
-  marshal_size = marshal_size + 8;  // x_
-  marshal_size = marshal_size + 8;  // y_
-  marshal_size = marshal_size + 8;  // z_
+size_t Vector3Double::GetMarshalledSize() const {
+  size_t marshal_size = sizeof(x_) + sizeof(y_) + sizeof(z_);
   return marshal_size;
 }
 

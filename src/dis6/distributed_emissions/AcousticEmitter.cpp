@@ -48,12 +48,9 @@ bool AcousticEmitter::operator==(const AcousticEmitter& rhs) const {
   return ivars_equal;
 }
 
-int AcousticEmitter::GetMarshalledSize() {
-  int marshal_size = 0;
-
-  marshal_size = marshal_size + 2;  // acoustic_name_
-  marshal_size = marshal_size + 1;  // _function
-  marshal_size = marshal_size + 1;  // acoustic_id_number_
+size_t AcousticEmitter::GetMarshalledSize() const {
+  size_t marshal_size =
+      sizeof(acoustic_name_) + sizeof(function_) + sizeof(acoustic_id_number_);
   return marshal_size;
 }
 

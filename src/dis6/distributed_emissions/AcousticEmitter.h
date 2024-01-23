@@ -40,7 +40,7 @@ class AcousticEmitter {
   [[nodiscard]] uint8_t GetAcousticIdNumber() const;
   void SetAcousticIdNumber(uint8_t pX);
 
-  [[nodiscard]] static int GetMarshalledSize();
+  [[nodiscard]] size_t GetMarshalledSize() const;
 
   bool operator==(const AcousticEmitter& rhs) const;
 };

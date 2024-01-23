@@ -37,7 +37,7 @@ class Vector3Float {
   [[nodiscard]] float GetZ() const;
   void SetZ(float pX);
 
-  [[nodiscard]] static int GetMarshalledSize();
+  [[nodiscard]] size_t GetMarshalledSize() const;
 
   bool operator==(const Vector3Float& rhs) const;
 };

@@ -30,10 +30,10 @@ class ArticulationParameter {
 
  public:
   ArticulationParameter();
-  virtual ~ArticulationParameter();
+  ~ArticulationParameter() = default;
 
-  virtual void Marshal(DataStream& dataStream) const;
-  virtual void Unmarshal(DataStream& dataStream);
+  void Marshal(DataStream& dataStream) const;
+  void Unmarshal(DataStream& dataStream);
 
   [[nodiscard]] uint8_t GetParameterTypeDesignator() const;
   void SetParameterTypeDesignator(uint8_t pX);
@@ -50,7 +50,7 @@ class ArticulationParameter {
   [[nodiscard]] double GetParameterValue() const;
   void SetParameterValue(double pX);
 
-  [[nodiscard]] virtual int GetMarshalledSize() const;
+  [[nodiscard]] size_t GetMarshalledSize() const;
 
   bool operator==(const ArticulationParameter& rhs) const;
 };

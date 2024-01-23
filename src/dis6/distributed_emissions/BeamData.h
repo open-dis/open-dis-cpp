@@ -15,28 +15,28 @@ class BeamData {
  protected:
   /** Specifies the beam azimuth an elevation centers and corresponding
    * half-angles     to describe the scan volume */
-  float beam_azimuth_center_;
+  float beam_azimuth_center_;  // NOLINT
 
   /** Specifies the beam azimuth sweep to determine scan volume */
-  float beam_azimuth_sweep_;
+  float beam_azimuth_sweep_;  // NOLINT
 
   /** Specifies the beam elevation center to determine scan volume */
-  float beam_elevation_center_;
+  float beam_elevation_center_;  // NOLINT
 
   /** Specifies the beam elevation sweep to determine scan volume */
-  float beam_elevation_sweep_;
+  float beam_elevation_sweep_;  // NOLINT
 
   /** allows receiver to synchronize its regenerated scan pattern to     that of
    * the emmitter. Specifies the percentage of time a scan is through its
    * pattern from its origion. */
-  float beam_sweep_sync_;
+  float beam_sweep_sync_;  // NOLINT
 
  public:
   BeamData();
-  virtual ~BeamData();
+  ~BeamData() = default;
 
-  virtual void Marshal(DataStream& dataStream) const;
-  virtual void Unmarshal(DataStream& dataStream);
+  void Marshal(DataStream& dataStream) const;
+  void Unmarshal(DataStream& dataStream);
 
   [[nodiscard]] float GetBeamAzimuthCenter() const;
   void SetBeamAzimuthCenter(float pX);
@@ -53,7 +53,7 @@ class BeamData {
   [[nodiscard]] float GetBeamSweepSync() const;
   void SetBeamSweepSync(float pX);
 
-  [[nodiscard]] virtual int GetMarshalledSize() const;
+  [[nodiscard]] static int GetMarshalledSize();
 
   bool operator==(const BeamData& rhs) const;
 };

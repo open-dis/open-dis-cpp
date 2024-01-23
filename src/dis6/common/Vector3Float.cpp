@@ -43,12 +43,8 @@ bool Vector3Float::operator==(const Vector3Float& rhs) const {
   return ivars_equal;
 }
 
-int Vector3Float::GetMarshalledSize() {
-  int marshal_size = 0;
-
-  marshal_size = marshal_size + 4;  // x_
-  marshal_size = marshal_size + 4;  // y_
-  marshal_size = marshal_size + 4;  // z_
+size_t Vector3Float::GetMarshalledSize() const {
+  size_t marshal_size = sizeof(x_) + sizeof(y_) + sizeof(z_);
   return marshal_size;
 }
 

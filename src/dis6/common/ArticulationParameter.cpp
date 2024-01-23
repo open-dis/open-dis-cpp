@@ -9,8 +9,6 @@ ArticulationParameter::ArticulationParameter()
       parameter_type_(0),
       parameter_value_(0.0) {}
 
-ArticulationParameter::~ArticulationParameter() = default;
-
 uint8_t ArticulationParameter::GetParameterTypeDesignator() const {
   return parameter_type_designator_;
 }
@@ -85,14 +83,10 @@ bool ArticulationParameter::operator==(const ArticulationParameter& rhs) const {
   return ivars_equal;
 }
 
-int ArticulationParameter::GetMarshalledSize() const {
-  int marshal_size = 0;
-
-  marshal_size = marshal_size + 1;  // _parameterTypeDesignator
-  marshal_size = marshal_size + 1;  // _changeIndicator
-  marshal_size = marshal_size + 2;  // _partAttachedTo
-  marshal_size = marshal_size + 4;  // _parameterType
-  marshal_size = marshal_size + 8;  // _parameterValue
+size_t ArticulationParameter::GetMarshalledSize() const {
+  size_t marshal_size = sizeof(parameter_type_designator_) +
+                        sizeof(change_indicator_) + sizeof(part_attached_to_) +
+                        sizeof(parameter_type_) + sizeof(parameter_value_);
   return marshal_size;
 }
 

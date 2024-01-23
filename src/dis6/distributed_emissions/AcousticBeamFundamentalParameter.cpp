@@ -105,15 +105,11 @@ bool AcousticBeamFundamentalParameter::operator==(
   return ivars_equal;
 }
 
-int AcousticBeamFundamentalParameter::GetMarshalledSize() {
-  int marshal_size = 0;
-
-  marshal_size = marshal_size + 2;  // active_emission_parameter_index_
-  marshal_size = marshal_size + 2;  // scan_pattern_
-  marshal_size = marshal_size + 4;  // beam_center_azimuth_
-  marshal_size = marshal_size + 4;  // azimuthal_beamwidth_
-  marshal_size = marshal_size + 4;  // beam_center_de_
-  marshal_size = marshal_size + 4;  // de_beamwidth_
+size_t AcousticBeamFundamentalParameter::GetMarshalledSize() const {
+  size_t marshal_size = sizeof(active_emission_parameter_index_) +
+                        sizeof(scan_pattern_) + sizeof(beam_center_azimuth_) +
+                        sizeof(azimuthal_beamwidth_) + sizeof(beam_center_de_) +
+                        sizeof(de_beamwidth_);
   return marshal_size;
 }
 

@@ -49,7 +49,7 @@ class AcousticBeamData {
   GetFundamentalDataParameters() const;
   void SetFundamentalDataParameters(const AcousticBeamFundamentalParameter& pX);
 
-  [[nodiscard]] int GetMarshalledSize() const;
+  [[nodiscard]] size_t GetMarshalledSize() const;
 
   bool operator==(const AcousticBeamData& rhs) const;
 };

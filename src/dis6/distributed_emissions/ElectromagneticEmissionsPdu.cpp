@@ -3,13 +3,12 @@
 namespace dis {
 
 ElectromagneticEmissionsPdu::ElectromagneticEmissionsPdu()
-    : DistributedEmissionsFamilyPdu(),
-      _emittingEntityID(),
-      _eventID(),
+    :,
+      ,
       _stateUpdateIndicator(0),
       _numberOfSystems(0),
       _paddingForEmissionsPdu(0) {
-  setPduType(23);
+  SetPduType(23);
   setPaddingForEmissionsPdu(0);
 }
 

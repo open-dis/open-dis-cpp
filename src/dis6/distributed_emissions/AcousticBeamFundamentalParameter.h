@@ -58,7 +58,7 @@ class AcousticBeamFundamentalParameter {
   [[nodiscard]] float GetDeBeamwidth() const;
   void SetDeBeamwidth(float pX);
 
-  [[nodiscard]] static int GetMarshalledSize();
+  [[nodiscard]] size_t GetMarshalledSize() const;
 
   bool operator==(const AcousticBeamFundamentalParameter& rhs) const;
 };

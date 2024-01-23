@@ -17,80 +17,81 @@ namespace dis {
 class ElectromagneticEmissionBeamData {
  protected:
   /** This field shall specify the length of this beams data in 32 bit words */
-  uint8_t _beamDataLength;
+  uint8_t beam_data_length_;
 
   /** This field shall specify a unique emitter database number assigned to
    * differentiate between otherwise similar or identical emitter beams within
    * an emitter system. */
-  uint8_t _beamIDNumber;
+  uint8_t beam_id_number_;
 
   /** This field shall specify a Beam Parameter Index number that shall be used
    * by receiving entities in conjunction with the Emitter Name field to provide
    * a pointer to the stored database parameters required to regenerate the
    * beam.  */
-  uint16_t _beamParameterIndex;
+  uint16_t beam_parameter_index_;
 
   /** Fundamental parameter data such as frequency range, beam sweep, etc. */
-  FundamentalParameterData _fundamentalParameterData;
+  FundamentalParameterData fundamental_parameter_data_;
 
   /** beam function of a particular beam */
-  uint8_t _beamFunction;
+  uint8_t beam_function_;
 
   /** Number of track/jam targets */
-  uint8_t _numberOfTrackJamTargets;
+  uint8_t number_of_track_jam_targets_;
 
   /** wheher or not the receiving simulation apps can assume all the targets in
    * the scan pattern are being tracked/jammed */
-  uint8_t _highDensityTrackJam;
+  uint8_t high_density_track_jam_;
 
   /** padding */
-  uint8_t _pad4;
+  uint8_t pad4_;
 
   /** identify jamming techniques used */
-  uint32_t _jammingModeSequence;
+  uint32_t jamming_mode_sequence_;
 
   /** variable length list of track/jam targets */
-  std::vector<TrackJamTarget> _trackJamTargets;
+  std::vector<TrackJamTarget> track_jam_targets_;
 
  public:
   ElectromagneticEmissionBeamData();
-  virtual ~ElectromagneticEmissionBeamData();
+  ~ElectromagneticEmissionBeamData();
 
-  virtual void marshal(DataStream& dataStream) const;
-  virtual void unmarshal(DataStream& dataStream);
+  void Marshal(DataStream& dataStream) const;
+  void Unmarshal(DataStream& dataStream);
 
-  uint8_t getBeamDataLength() const;
-  void setBeamDataLength(uint8_t pX);
+  [[nodiscard]] uint8_t GetBeamDataLength() const;
+  void SetBeamDataLength(uint8_t pX);
 
-  uint8_t getBeamIDNumber() const;
-  void setBeamIDNumber(uint8_t pX);
+  [[nodiscard]] uint8_t GetBeamIdNumber() const;
+  void SetBeamIdNumber(uint8_t pX);
 
-  uint16_t getBeamParameterIndex() const;
-  void setBeamParameterIndex(uint16_t pX);
+  [[nodiscard]] uint16_t GetBeamParameterIndex() const;
+  void SetBeamParameterIndex(uint16_t pX);
 
-  FundamentalParameterData& getFundamentalParameterData();
-  const FundamentalParameterData& getFundamentalParameterData() const;
-  void setFundamentalParameterData(const FundamentalParameterData& pX);
+  FundamentalParameterData& GetFundamentalParameterData();
+  [[nodiscard]] const FundamentalParameterData& GetFundamentalParameterData()
+      const;
+  void SetFundamentalParameterData(const FundamentalParameterData& pX);
 
-  uint8_t getBeamFunction() const;
-  void setBeamFunction(uint8_t pX);
+  [[nodiscard]] uint8_t GetBeamFunction() const;
+  void SetBeamFunction(uint8_t pX);
 
-  uint8_t getNumberOfTrackJamTargets() const;
+  [[nodiscard]] uint8_t GetNumberOfTrackJamTargets() const;
 
-  uint8_t getHighDensityTrackJam() const;
-  void setHighDensityTrackJam(uint8_t pX);
+  [[nodiscard]] uint8_t GetHighDensityTrackJam() const;
+  void SetHighDensityTrackJam(uint8_t pX);
 
-  uint8_t getPad4() const;
-  void setPad4(uint8_t pX);
+  [[nodiscard]] uint8_t GetPad4() const;
+  void SetPad4(uint8_t pX);
 
-  uint32_t getJammingModeSequence() const;
-  void setJammingModeSequence(uint32_t pX);
+  [[nodiscard]] uint32_t GetJammingModeSequence() const;
+  void SetJammingModeSequence(uint32_t pX);
 
-  std::vector<TrackJamTarget>& getTrackJamTargets();
-  const std::vector<TrackJamTarget>& getTrackJamTargets() const;
-  void setTrackJamTargets(const std::vector<TrackJamTarget>& pX);
+  std::vector<TrackJamTarget>& GetTrackJamTargets();
+  [[nodiscard]] const std::vector<TrackJamTarget>& GetTrackJamTargets() const;
+  void SetTrackJamTargets(const std::vector<TrackJamTarget>& pX);
 
-  virtual int getMarshalledSize() const;
+  [[nodiscard]] size_t GetMarshalledSize() const;
 
   bool operator==(const ElectromagneticEmissionBeamData& rhs) const;
 };
