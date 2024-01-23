@@ -1,41 +1,45 @@
 #include "dis6/distributed_emissions/ApaData.h"
 
 namespace dis {
-ApaData::ApaData() : _parameterIndex(0), _parameterValue(0) {}
+ApaData::ApaData() : parameter_index_(0), parameter_value_(0) {}
 
-uint16_t ApaData::getParameterIndex() const { return _parameterIndex; }
+uint16_t ApaData::GetParameterIndex() const { return parameter_index_; }
 
-void ApaData::setParameterIndex(uint16_t pX) { _parameterIndex = pX; }
+void ApaData::SetParameterIndex(uint16_t pX) { parameter_index_ = pX; }
 
-int16_t ApaData::getParameterValue() const { return _parameterValue; }
+int16_t ApaData::GetParameterValue() const { return parameter_value_; }
 
-void ApaData::setParameterValue(int16_t pX) { _parameterValue = pX; }
+void ApaData::SetParameterValue(int16_t pX) { parameter_value_ = pX; }
 
-void ApaData::marshal(DataStream& dataStream) const {
-  dataStream << _parameterIndex;
-  dataStream << _parameterValue;
+void ApaData::Marshal(DataStream& dataStream) const {
+  dataStream << parameter_index_;
+  dataStream << parameter_value_;
 }
 
-void ApaData::unmarshal(DataStream& dataStream) {
-  dataStream >> _parameterIndex;
-  dataStream >> _parameterValue;
+void ApaData::Unmarshal(DataStream& dataStream) {
+  dataStream >> parameter_index_;
+  dataStream >> parameter_value_;
 }
 
 bool ApaData::operator==(const ApaData& rhs) const {
-  bool ivarsEqual = true;
+  bool ivars_equal = true;
 
-  if (!(_parameterIndex == rhs._parameterIndex)) ivarsEqual = false;
-  if (!(_parameterValue == rhs._parameterValue)) ivarsEqual = false;
+  if (!(parameter_index_ == rhs.parameter_index_)) {
+    ivars_equal = false;
+  }
+  if (!(parameter_value_ == rhs.parameter_value_)) {
+    ivars_equal = false;
+  }
 
-  return ivarsEqual;
+  return ivars_equal;
 }
 
-int ApaData::getMarshalledSize() const {
-  int marshalSize = 0;
+int ApaData::GetMarshalledSize() {
+  int marshal_size = 0;
 
-  marshalSize = marshalSize + 2;  // _parameterIndex
-  marshalSize = marshalSize + 2;  // _parameterValue
-  return marshalSize;
+  marshal_size = marshal_size + 2;  // _parameterIndex
+  marshal_size = marshal_size + 2;  // _parameterValue
+  return marshal_size;
 }
 
 }  // namespace dis

@@ -15,10 +15,10 @@ namespace dis {
 class ApaData {
  protected:
   /** Index of APA parameter */
-  uint16_t parameter_index_;
+  uint16_t parameter_index_;  // NOLINT
 
   /** Index of APA parameter */
-  int16_t parameter_value_;
+  int16_t parameter_value_;  // NOLINT
 
  public:
   ApaData();
@@ -33,7 +33,7 @@ class ApaData {
   [[nodiscard]] int16_t GetParameterValue() const;
   void SetParameterValue(int16_t pX);
 
-  [[nodiscard]] int GetMarshalledSize() const;
+  [[nodiscard]] static int GetMarshalledSize();
 
   bool operator==(const ApaData& rhs) const;
 };

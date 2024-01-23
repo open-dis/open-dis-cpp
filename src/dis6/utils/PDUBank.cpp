@@ -1,12 +1,5 @@
 #include "dis6/utils/PDUBank.h"
 
-#include "dis6/AcknowledgePdu.h"
-#include "dis6/ActionRequestPdu.h"
-#include "dis6/ActionResponsePdu.h"
-#include "dis6/AggregateStatePdu.h"
-#include "dis6/CollisionPdu.h"
-#include "dis6/CommentPdu.h"
-#include "dis6/CreateEntityPdu.h"
 #include "dis6/DataQueryPdu.h"
 #include "dis6/DesignatorPdu.h"
 #include "dis6/DetonationPdu.h"
@@ -26,15 +19,21 @@
 #include "dis6/ResupplyReceivedPdu.h"
 #include "dis6/ServiceRequestPdu.h"
 #include "dis6/SetDataPdu.h"
-#include "dis6/SignalPdu.h"
-#include "dis6/StartResumePdu.h"
-#include "dis6/StopFreezePdu.h"
 #include "dis6/TransferControlRequestPdu.h"
 #include "dis6/TransmitterPdu.h"
+#include "dis6/entity_information/CollisionPdu.h"
+#include "dis6/entity_management/AggregateStatePdu.h"
+#include "dis6/entity_management/CreateEntityPdu.h"
+#include "dis6/radio_communications/SignalPdu.h"
+#include "dis6/simulation_management/AcknowledgePdu.h"
+#include "dis6/simulation_management/ActionRequestPdu.h"
+#include "dis6/simulation_management/ActionResponsePdu.h"
+#include "dis6/simulation_management/CommentPdu.h"
+#include "dis6/simulation_management/StartResumePdu.h"
+#include "dis6/simulation_management/StopFreezePdu.h"
 
-using namespace DIS;
-
-Pdu* PduBank::GetStaticPDU(DIS::PDUType pdu_type) {
+namespace dis {
+Pdu* PduBank::GetStaticPDU(PDUType pdu_type) {
   static EntityStatePdu entityStatePdu;
   static FirePdu firePdu;
   static DetonationPdu detonationPdu;
@@ -166,3 +165,5 @@ Pdu* PduBank::GetStaticPDU(DIS::PDUType pdu_type) {
   }
   return NULL;
 }
+
+}  // namespace dis
