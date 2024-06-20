@@ -17,7 +17,7 @@ class OPENDIS6_EXPORT AcousticBeamData
 {
 protected:
   /** beam data length */
-  unsigned short _beamDataLength; 
+  unsigned char _beamDataLength; 
 
   /** beamIDNumber */
   unsigned char _beamIDNumber; 
