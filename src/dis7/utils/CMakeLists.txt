@@ -2,11 +2,14 @@
 set(utils_hdr
   DataStream.h
   Endian.h
+  ConversionUtils.h
+  PDUType.h
 )
 
 # Create list of all source files
 set(utils_src
   DataStream.cpp
+  ConversionUtils.cpp
 )
 
 # CMake < 3.16 requires target_sources to be specified as
