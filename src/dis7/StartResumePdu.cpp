@@ -4,8 +4,6 @@ using namespace DIS;
 
 
 StartResumePdu::StartResumePdu() : SimulationManagementFamilyPdu(),
-   _originatingID(), 
-   _receivingID(), 
    _realWorldTime(), 
    _simulationTime(), 
    _requestID(0)
@@ -15,36 +13,6 @@ StartResumePdu::StartResumePdu() : SimulationManagementFamilyPdu(),
 
 StartResumePdu::~StartResumePdu()
 {
-}
-
-EntityID& StartResumePdu::getOriginatingID() 
-{
-    return _originatingID;
-}
-
-const EntityID& StartResumePdu::getOriginatingID() const
-{
-    return _originatingID;
-}
-
-void StartResumePdu::setOriginatingID(const EntityID &pX)
-{
-    _originatingID = pX;
-}
-
-EntityID& StartResumePdu::getReceivingID() 
-{
-    return _receivingID;
-}
-
-const EntityID& StartResumePdu::getReceivingID() const
-{
-    return _receivingID;
-}
-
-void StartResumePdu::setReceivingID(const EntityID &pX)
-{
-    _receivingID = pX;
 }
 
 ClockTime& StartResumePdu::getRealWorldTime() 
@@ -90,8 +58,6 @@ void StartResumePdu::setRequestID(unsigned int pX)
 void StartResumePdu::marshal(DataStream& dataStream) const
 {
     SimulationManagementFamilyPdu::marshal(dataStream); // Marshal information in superclass first
-    _originatingID.marshal(dataStream);
-    _receivingID.marshal(dataStream);
     _realWorldTime.marshal(dataStream);
     _simulationTime.marshal(dataStream);
     dataStream << _requestID;
@@ -100,36 +66,32 @@ void StartResumePdu::marshal(DataStream& dataStream) const
 void StartResumePdu::unmarshal(DataStream& dataStream)
 {
     SimulationManagementFamilyPdu::unmarshal(dataStream); // unmarshal information in superclass first
-    _originatingID.unmarshal(dataStream);
-    _receivingID.unmarshal(dataStream);
     _realWorldTime.unmarshal(dataStream);
     _simulationTime.unmarshal(dataStream);
     dataStream >> _requestID;
 }
 
-
 bool StartResumePdu::operator ==(const StartResumePdu& rhs) const
- {
-     bool ivarsEqual = true;
+{
+    bool ivarsEqual = true;
 
-     ivarsEqual = SimulationManagementFamilyPdu::operator==(rhs);
+    ivarsEqual = SimulationManagementFamilyPdu::operator==(rhs);
 
-     if( ! (_originatingID == rhs._originatingID) ) ivarsEqual = false;
-     if( ! (_receivingID == rhs._receivingID) ) ivarsEqual = false;
-     if( ! (_realWorldTime == rhs._realWorldTime) ) ivarsEqual = false;
-     if( ! (_simulationTime == rhs._simulationTime) ) ivarsEqual = false;
-     if( ! (_requestID == rhs._requestID) ) ivarsEqual = false;
+    if (!(_realWorldTime == rhs._realWorldTime))
+        ivarsEqual = false;
+    if (!(_simulationTime == rhs._simulationTime))
+        ivarsEqual = false;
+    if (!(_requestID == rhs._requestID))
+        ivarsEqual = false;
 
     return ivarsEqual;
- }
+}
 
 int StartResumePdu::getMarshalledSize() const
 {
    int marshalSize = 0;
 
    marshalSize = SimulationManagementFamilyPdu::getMarshalledSize();
-   marshalSize = marshalSize + _originatingID.getMarshalledSize();  // _originatingID
-   marshalSize = marshalSize + _receivingID.getMarshalledSize();  // _receivingID
    marshalSize = marshalSize + _realWorldTime.getMarshalledSize();  // _realWorldTime
    marshalSize = marshalSize + _simulationTime.getMarshalledSize();  // _simulationTime
    marshalSize = marshalSize + 4;  // _requestID
