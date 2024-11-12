@@ -4,8 +4,6 @@ using namespace DIS;
 
 
 StopFreezePdu::StopFreezePdu() : SimulationManagementFamilyPdu(),
-   _originatingID(), 
-   _receivingID(), 
    _realWorldTime(), 
    _reason(0), 
    _frozenBehavior(0), 
@@ -17,36 +15,6 @@ StopFreezePdu::StopFreezePdu() : SimulationManagementFamilyPdu(),
 
 StopFreezePdu::~StopFreezePdu()
 {
-}
-
-EntityID& StopFreezePdu::getOriginatingID() 
-{
-    return _originatingID;
-}
-
-const EntityID& StopFreezePdu::getOriginatingID() const
-{
-    return _originatingID;
-}
-
-void StopFreezePdu::setOriginatingID(const EntityID &pX)
-{
-    _originatingID = pX;
-}
-
-EntityID& StopFreezePdu::getReceivingID() 
-{
-    return _receivingID;
-}
-
-const EntityID& StopFreezePdu::getReceivingID() const
-{
-    return _receivingID;
-}
-
-void StopFreezePdu::setReceivingID(const EntityID &pX)
-{
-    _receivingID = pX;
 }
 
 ClockTime& StopFreezePdu::getRealWorldTime() 
@@ -107,8 +75,6 @@ void StopFreezePdu::setRequestID(unsigned int pX)
 void StopFreezePdu::marshal(DataStream& dataStream) const
 {
     SimulationManagementFamilyPdu::marshal(dataStream); // Marshal information in superclass first
-    _originatingID.marshal(dataStream);
-    _receivingID.marshal(dataStream);
     _realWorldTime.marshal(dataStream);
     dataStream << _reason;
     dataStream << _frozenBehavior;
@@ -119,8 +85,6 @@ void StopFreezePdu::marshal(DataStream& dataStream) const
 void StopFreezePdu::unmarshal(DataStream& dataStream)
 {
     SimulationManagementFamilyPdu::unmarshal(dataStream); // unmarshal information in superclass first
-    _originatingID.unmarshal(dataStream);
-    _receivingID.unmarshal(dataStream);
     _realWorldTime.unmarshal(dataStream);
     dataStream >> _reason;
     dataStream >> _frozenBehavior;
@@ -130,29 +94,30 @@ void StopFreezePdu::unmarshal(DataStream& dataStream)
 
 
 bool StopFreezePdu::operator ==(const StopFreezePdu& rhs) const
- {
-     bool ivarsEqual = true;
+{
+    bool ivarsEqual = true;
 
-     ivarsEqual = SimulationManagementFamilyPdu::operator==(rhs);
+    ivarsEqual = SimulationManagementFamilyPdu::operator==(rhs);
 
-     if( ! (_originatingID == rhs._originatingID) ) ivarsEqual = false;
-     if( ! (_receivingID == rhs._receivingID) ) ivarsEqual = false;
-     if( ! (_realWorldTime == rhs._realWorldTime) ) ivarsEqual = false;
-     if( ! (_reason == rhs._reason) ) ivarsEqual = false;
-     if( ! (_frozenBehavior == rhs._frozenBehavior) ) ivarsEqual = false;
-     if( ! (_padding1 == rhs._padding1) ) ivarsEqual = false;
-     if( ! (_requestID == rhs._requestID) ) ivarsEqual = false;
+    if (!(_realWorldTime == rhs._realWorldTime))
+        ivarsEqual = false;
+    if (!(_reason == rhs._reason))
+        ivarsEqual = false;
+    if (!(_frozenBehavior == rhs._frozenBehavior))
+        ivarsEqual = false;
+    if (!(_padding1 == rhs._padding1))
+        ivarsEqual = false;
+    if (!(_requestID == rhs._requestID))
+        ivarsEqual = false;
 
     return ivarsEqual;
- }
+}
 
 int StopFreezePdu::getMarshalledSize() const
 {
    int marshalSize = 0;
 
    marshalSize = SimulationManagementFamilyPdu::getMarshalledSize();
-   marshalSize = marshalSize + _originatingID.getMarshalledSize();  // _originatingID
-   marshalSize = marshalSize + _receivingID.getMarshalledSize();  // _receivingID
    marshalSize = marshalSize + _realWorldTime.getMarshalledSize();  // _realWorldTime
    marshalSize = marshalSize + 1;  // _reason
    marshalSize = marshalSize + 1;  // _frozenBehavior
