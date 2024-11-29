@@ -2,6 +2,7 @@
 set(utils_hdr
   DataStream.h
   Endian.h
+  PDUType.h
 )
 
 # Create list of all source files
