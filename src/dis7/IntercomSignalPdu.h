@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdint>
 #include <dis7/EntityID.h>
 #include <dis7/RadioCommunicationsFamilyPdu.h>
 #include <dis7/opendis7_export.h>
