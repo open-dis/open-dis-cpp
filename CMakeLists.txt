@@ -32,6 +32,11 @@ target_include_directories(OpenDIS7
          $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src>
          $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
+if(WIN32)
+target_link_libraries(OpenDIS7 PRIVATE ws2_32)
+target_link_libraries(OpenDIS6 PRIVATE ws2_32)
+endif()
+
 # Add source directories
 add_subdirectory(src)
 add_subdirectory(cmake)
