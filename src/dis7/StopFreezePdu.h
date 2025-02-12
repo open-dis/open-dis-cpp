@@ -19,11 +19,6 @@ namespace DIS
 class OPENDIS7_EXPORT StopFreezePdu : public SimulationManagementFamilyPdu
 {
 protected:
-  /** Identifier for originating entity(or simulation) */
-  EntityID _originatingID; 
-
-  /** Identifier for the receiving entity(or simulation) */
-  EntityID _receivingID; 
 
   /** real-world(UTC) time at which the entity shall stop or freeze in the exercise */
   ClockTime _realWorldTime; 
@@ -48,14 +43,6 @@ protected:
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
 
-    EntityID& getOriginatingID(); 
-    const EntityID&  getOriginatingID() const; 
-    void setOriginatingID(const EntityID    &pX);
-
-    EntityID& getReceivingID(); 
-    const EntityID&  getReceivingID() const; 
-    void setReceivingID(const EntityID    &pX);
-
     ClockTime& getRealWorldTime(); 
     const ClockTime&  getRealWorldTime() const; 
     void setRealWorldTime(const ClockTime    &pX);
@@ -69,13 +56,12 @@ protected:
     short getPadding1() const; 
     void setPadding1(short pX); 
 
-    unsigned int getRequestID() const; 
-    void setRequestID(unsigned int pX); 
+    unsigned int getRequestID() const;
+    void setRequestID(unsigned int pX);
 
+    virtual int getMarshalledSize() const;
 
-virtual int getMarshalledSize() const;
-
-     bool operator  ==(const StopFreezePdu& rhs) const;
+    bool operator==(const StopFreezePdu &rhs) const;
 };
 }
 
