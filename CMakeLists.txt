@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.2)
-project(OpenDIS VERSION 1.0.1)
+project(OpenDIS VERSION 1.1.0)
 
 # Build options
 option(BUILD_SHARED_LIBS "build shared libraries" ON)
