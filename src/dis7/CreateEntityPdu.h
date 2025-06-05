@@ -18,12 +18,6 @@ namespace DIS
 class OPENDIS7_EXPORT CreateEntityPdu : public SimulationManagementFamilyPdu
 {
 protected:
-  /** Identifier for the request */
-  EntityID _originatingID; 
-
-  /** Identifier for the request */
-  EntityID _receivingID; 
-
   /** Identifier for the request.  See 6.2.75 */
   unsigned int _requestID; 
 
@@ -34,14 +28,6 @@ protected:
 
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
-
-    EntityID& getOriginatingID(); 
-    const EntityID&  getOriginatingID() const; 
-    void setOriginatingID(const EntityID    &pX);
-
-    EntityID& getReceivingID(); 
-    const EntityID&  getReceivingID() const; 
-    void setReceivingID(const EntityID    &pX);
 
     unsigned int getRequestID() const; 
     void setRequestID(unsigned int pX); 

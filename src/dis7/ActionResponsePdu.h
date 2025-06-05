@@ -21,12 +21,6 @@ namespace DIS
 class OPENDIS7_EXPORT ActionResponsePdu : public SimulationManagementFamilyPdu
 {
 protected:
-  /** Identifier for originating entity(or simulation) */
-  EntityID _originatingID; 
-
-  /** Identifier for the receiving entity(or simulation) */
-  EntityID _receivingID; 
-
   /** Request ID that is unique */
   unsigned int _requestID; 
 
@@ -52,14 +46,6 @@ protected:
 
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
-
-    EntityID& getOriginatingID(); 
-    const EntityID&  getOriginatingID() const; 
-    void setOriginatingID(const EntityID    &pX);
-
-    EntityID& getReceivingID(); 
-    const EntityID&  getReceivingID() const; 
-    void setReceivingID(const EntityID    &pX);
 
     unsigned int getRequestID() const; 
     void setRequestID(unsigned int pX); 
