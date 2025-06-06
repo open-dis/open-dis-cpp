@@ -18,12 +18,6 @@ namespace DIS
 class OPENDIS7_EXPORT AcknowledgePdu : public SimulationManagementFamilyPdu
 {
 protected:
-  /** Identifier for originating entity(or simulation) */
-  EntityID _originatingID; 
-
-  /** Identifier for the receiving entity(or simulation) */
-  EntityID _receivingID; 
-
   /** type of message being acknowledged */
   unsigned short _acknowledgeFlag; 
 
@@ -40,14 +34,6 @@ protected:
 
     virtual void marshal(DataStream& dataStream) const;
     virtual void unmarshal(DataStream& dataStream);
-
-    EntityID& getOriginatingID(); 
-    const EntityID&  getOriginatingID() const; 
-    void setOriginatingID(const EntityID    &pX);
-
-    EntityID& getReceivingID(); 
-    const EntityID&  getReceivingID() const; 
-    void setReceivingID(const EntityID    &pX);
 
     unsigned short getAcknowledgeFlag() const; 
     void setAcknowledgeFlag(unsigned short pX); 

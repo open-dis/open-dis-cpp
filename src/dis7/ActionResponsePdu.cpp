@@ -4,8 +4,6 @@ using namespace DIS;
 
 
 ActionResponsePdu::ActionResponsePdu() : SimulationManagementFamilyPdu(),
-   _originatingID(), 
-   _receivingID(), 
    _requestID(0), 
    _requestStatus(0), 
    _numberOfFixedDatumRecords(0), 
@@ -18,36 +16,6 @@ ActionResponsePdu::~ActionResponsePdu()
 {
     _fixedDatums.clear();
     _variableDatums.clear();
-}
-
-EntityID& ActionResponsePdu::getOriginatingID() 
-{
-    return _originatingID;
-}
-
-const EntityID& ActionResponsePdu::getOriginatingID() const
-{
-    return _originatingID;
-}
-
-void ActionResponsePdu::setOriginatingID(const EntityID &pX)
-{
-    _originatingID = pX;
-}
-
-EntityID& ActionResponsePdu::getReceivingID() 
-{
-    return _receivingID;
-}
-
-const EntityID& ActionResponsePdu::getReceivingID() const
-{
-    return _receivingID;
-}
-
-void ActionResponsePdu::setReceivingID(const EntityID &pX)
-{
-    _receivingID = pX;
 }
 
 unsigned int ActionResponsePdu::getRequestID() const
@@ -113,8 +81,6 @@ void ActionResponsePdu::setVariableDatums(const std::vector<VariableDatum>& pX)
 void ActionResponsePdu::marshal(DataStream& dataStream) const
 {
     SimulationManagementFamilyPdu::marshal(dataStream); // Marshal information in superclass first
-    _originatingID.marshal(dataStream);
-    _receivingID.marshal(dataStream);
     dataStream << _requestID;
     dataStream << _requestStatus;
     dataStream << ( unsigned int )_fixedDatums.size();
@@ -138,8 +104,6 @@ void ActionResponsePdu::marshal(DataStream& dataStream) const
 void ActionResponsePdu::unmarshal(DataStream& dataStream)
 {
     SimulationManagementFamilyPdu::unmarshal(dataStream); // unmarshal information in superclass first
-    _originatingID.unmarshal(dataStream);
-    _receivingID.unmarshal(dataStream);
     dataStream >> _requestID;
     dataStream >> _requestStatus;
     dataStream >> _numberOfFixedDatumRecords;
@@ -169,8 +133,6 @@ bool ActionResponsePdu::operator ==(const ActionResponsePdu& rhs) const
 
      ivarsEqual = SimulationManagementFamilyPdu::operator==(rhs);
 
-     if( ! (_originatingID == rhs._originatingID) ) ivarsEqual = false;
-     if( ! (_receivingID == rhs._receivingID) ) ivarsEqual = false;
      if( ! (_requestID == rhs._requestID) ) ivarsEqual = false;
      if( ! (_requestStatus == rhs._requestStatus) ) ivarsEqual = false;
 
@@ -194,8 +156,6 @@ int ActionResponsePdu::getMarshalledSize() const
    int marshalSize = 0;
 
    marshalSize = SimulationManagementFamilyPdu::getMarshalledSize();
-   marshalSize = marshalSize + _originatingID.getMarshalledSize();  // _originatingID
-   marshalSize = marshalSize + _receivingID.getMarshalledSize();  // _receivingID
    marshalSize = marshalSize + 4;  // _requestID
    marshalSize = marshalSize + 4;  // _requestStatus
    marshalSize = marshalSize + 4;  // _numberOfFixedDatumRecords
