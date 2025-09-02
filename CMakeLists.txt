@@ -5,7 +5,9 @@ project(OpenDIS VERSION 1.1.0)
 option(BUILD_SHARED_LIBS "build shared libraries" OFF)
 option(BUILD_EXAMPLES "build example sender/receiver applications" OFF)
 option(BUILD_TESTS "build unit tests" OFF)
-option(BUILD_OPENDIS7 "build OpenDIS7" OFF)
+
+option(BUILD_OPENDIS6 "build OpenDIS6" ON)
+option(BUILD_OPENDIS7 "build OpenDIS7" ON)
 
 # Enforce a C++11 compliant compiler
 set(CMAKE_CXX_STANDARD 11)
@@ -16,21 +18,23 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 include(GNUInstallDirs)
 
 # Define OpenDIS6 Library
-add_library(OpenDIS6 "")
+if(BUILD_OPENDIS6)
+  add_library(OpenDIS6 "")
 
-target_compile_options(OpenDIS6 PRIVATE
-    $<$<CXX_COMPILER_ID:GNU>:-Wno-attributes>
-    $<$<CXX_COMPILER_ID:Clang>:-Wno-attributes>
-)
+  target_compile_options(OpenDIS6 PRIVATE
+      $<$<CXX_COMPILER_ID:GNU>:-Wno-attributes>
+      $<$<CXX_COMPILER_ID:Clang>:-Wno-attributes>
+  )
 
-# Add src/ to the include directories to OpenDIS6
-target_include_directories(OpenDIS6
-  PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
-         $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src>
-         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
+  # Add src/ to the include directories to OpenDIS6
+  target_include_directories(OpenDIS6
+    PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
+          $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src>
+          $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
-if(WIN32)
-  target_link_libraries(OpenDIS6 PRIVATE ws2_32)
+  if(WIN32)
+    target_link_libraries(OpenDIS6 PRIVATE ws2_32)
+  endif()
 endif()
 
 if(BUILD_OPENDIS7)
@@ -69,11 +73,13 @@ if(BUILD_TESTS)
 endif()
 
 # Configure install target (i.e. what files to install)
-install(TARGETS OpenDIS6
-        EXPORT OpenDISTargets
-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+if(BUILD_OPENDIS6)
+  install(TARGETS OpenDIS6
+          EXPORT OpenDISTargets
+          RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+          LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+          ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+endif()
 
 if(BUILD_OPENDIS7)
   install(TARGETS OpenDIS7
