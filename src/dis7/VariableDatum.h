@@ -5,6 +5,7 @@
 #include <dis7/EightByteChunk.h>
 #include <vector>
 
+#define STATIC_ARRAY_LENGTH 128
 
 namespace DIS
 {
@@ -21,17 +22,11 @@ protected:
   unsigned int _variableDatumID; 
 
   /** Length, in bits, of the variable datum. */
-  unsigned int _variableDatumLength; 
+  unsigned int _variableDatumLength;
 
-  /** Variable datum. This can be any number of bits long, depending on the datum. */
-  unsigned int _variableDatumBits; 
-
-  /** padding to put the record on a 64 bit boundary */
-  unsigned int _padding; 
-
-  // Variable Data
-  std::vector<EightByteChunk> _variableDatums;
-
+  /** The variable datum data.*/
+  std::vector<char> _variableDatums;
+  unsigned int _arrayLength;
 
  public:
     VariableDatum();
@@ -46,12 +41,9 @@ protected:
     unsigned int getVariableDatumLength() const; 
     void setVariableDatumLength(unsigned int pX); 
 
-    unsigned int getVariableDatumBits() const; 
-    void setVariableDatumBits(unsigned int pX); 
-
-    unsigned int getPadding() const; 
-    void setPadding(unsigned int pX); 
-
+    char*  getVariableDatums();
+    const char*  getVariableDatums() const;
+    void setVariableDatums(const char* pX, const unsigned int length);
 
 virtual int getMarshalledSize() const;
 
