@@ -4,7 +4,7 @@ using namespace DIS;
 
 
 EntityAssociation::EntityAssociation():
-   _recordType(2), 
+   _recordType(4), 
    _changeIndicator(0), 
    _associationStatus(0), 
    _associationType(0), 

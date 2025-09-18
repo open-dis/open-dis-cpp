@@ -4,7 +4,7 @@ using namespace DIS;
 
 
 SeparationVP::SeparationVP():
-   _recordType(4), 
+   _recordType(2), 
    _reasonForSeparation(0), 
    _preEntityIndicator(0), 
    _padding1(0), 
