@@ -35,7 +35,7 @@ protected:
   unsigned short _owsSttionLocation; 
 
   /** Type of physical connection. EBV doc */
-  unsigned short _physicalConnectionType; 
+  unsigned char _physicalConnectionType; 
 
   /** Type of member the entity is within th egroup */
   unsigned char _groupMemberType; 
