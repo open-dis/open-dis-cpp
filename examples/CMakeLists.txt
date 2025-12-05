@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.2)
+cmake_minimum_required(VERSION 3.5)
 project(OpenDIS-Examples VERSION 1.0.0)
 
 # include GNUInstallDirs Module to get more generic directory handling
