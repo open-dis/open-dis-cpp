@@ -6,6 +6,7 @@ Note: This code base was originally auto generated with [xmlpg](https://github.c
 [![Travis (Linux) Build Status](https://app.travis-ci.com/open-dis/open-dis-cpp.svg?branch=master)](https://app.travis-ci.com/open-dis/open-dis-cpp)
 [![Build status](https://ci.appveyor.com/api/projects/status/nt6t12a654j91osg?svg=true)](https://ci.appveyor.com/project/leif81/open-dis-cpp)
 [![CodeDocs status](https://codedocs.xyz/open-dis/open-dis-cpp.svg)](https://codedocs.xyz/open-dis/open-dis-cpp/)
+[![Conan Center](https://img.shields.io/conan/v/open-dis-cpp)](https://conan.io/center/recipes/open-dis-cpp)
 
 ## Building Open DIS
 
