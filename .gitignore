@@ -8,6 +8,8 @@ Makefile
 obj/
 Build/
 build/
+build-vs/
+install/
 CMakeCache.txt
 *.dir/
 CMakeFiles
